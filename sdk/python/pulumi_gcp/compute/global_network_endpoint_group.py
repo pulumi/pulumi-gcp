@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['GlobalNetworkEndpointGroupArgs', 'GlobalNetworkEndpointGroup']
 
@@ -115,6 +119,133 @@ class GlobalNetworkEndpointGroupArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _GlobalNetworkEndpointGroupState:
+    def __init__(__self__, *,
+                 default_port: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_type: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering GlobalNetworkEndpointGroup resources.
+        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the
+               network endpoint.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
+               you create the resource.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group.
+               Possible values are `INTERNET_IP_PORT` and `INTERNET_FQDN_PORT`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        """
+        if default_port is not None:
+            pulumi.set(__self__, "default_port", default_port)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_endpoint_type is not None:
+            pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter(name="defaultPort")
+    def default_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The default port used if the port number is not specified in the
+        network endpoint.
+        """
+        return pulumi.get(self, "default_port")
+
+    @default_port.setter
+    def default_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_port", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when
+        you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkEndpointType")
+    def network_endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of network endpoints in this network endpoint group.
+        Possible values are `INTERNET_IP_PORT` and `INTERNET_FQDN_PORT`.
+        """
+        return pulumi.get(self, "network_endpoint_type")
+
+    @network_endpoint_type.setter
+    def network_endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_endpoint_type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class GlobalNetworkEndpointGroup(pulumi.CustomResource):
@@ -296,16 +427,16 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GlobalNetworkEndpointGroupArgs.__new__(GlobalNetworkEndpointGroupArgs)
 
-            __props__['default_port'] = default_port
-            __props__['description'] = description
-            __props__['name'] = name
+            __props__.__dict__["default_port"] = default_port
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
             if network_endpoint_type is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_type'")
-            __props__['network_endpoint_type'] = network_endpoint_type
-            __props__['project'] = project
-            __props__['self_link'] = None
+            __props__.__dict__["network_endpoint_type"] = network_endpoint_type
+            __props__.__dict__["project"] = project
+            __props__.__dict__["self_link"] = None
         super(GlobalNetworkEndpointGroup, __self__).__init__(
             'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
             resource_name,
@@ -348,14 +479,14 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GlobalNetworkEndpointGroupState.__new__(_GlobalNetworkEndpointGroupState)
 
-        __props__["default_port"] = default_port
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["network_endpoint_type"] = network_endpoint_type
-        __props__["project"] = project
-        __props__["self_link"] = self_link
+        __props__.__dict__["default_port"] = default_port
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network_endpoint_type"] = network_endpoint_type
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
         return GlobalNetworkEndpointGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -415,10 +546,4 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

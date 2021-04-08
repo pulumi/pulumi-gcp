@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -116,6 +120,115 @@ class EnvironmentArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _EnvironmentState:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Environment resources.
+        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment  Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain
+               no more than 64 entries. Entries of the labels map are UTF8 strings
+               that comply with the following restrictions:
+               Label keys must be between 1 and 63 characters long and must conform
+               to the following regular expression: `a-z?`.
+               Label values must be between 0 and 63 characters long and must
+               conform to the regular expression `(a-z?)?`.
+               No more than 64 labels can be associated with a given environment.
+               Both keys and values must be <= 128 bytes in size.
+        :param pulumi.Input[str] name: Name of the environment
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
+        """
+        Configuration parameters for this environment  Structure is documented below.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-defined labels for this environment. The labels map can contain
+        no more than 64 entries. Entries of the labels map are UTF8 strings
+        that comply with the following restrictions:
+        Label keys must be between 1 and 63 characters long and must conform
+        to the following regular expression: `a-z?`.
+        Label values must be between 0 and 63 characters long and must
+        conform to the regular expression `(a-z?)?`.
+        No more than 64 labels can be associated with a given environment.
+        Both keys and values must be <= 128 bytes in size.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the environment
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location or Compute Engine region for the environment.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Environment(pulumi.CustomResource):
@@ -402,13 +515,13 @@ class Environment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
-            __props__['config'] = config
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["config"] = config
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
         super(Environment, __self__).__init__(
             'gcp:composer/environment:Environment',
             resource_name,
@@ -448,13 +561,13 @@ class Environment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EnvironmentState.__new__(_EnvironmentState)
 
-        __props__["config"] = config
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["region"] = region
+        __props__.__dict__["config"] = config
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -505,10 +618,4 @@ class Environment(pulumi.CustomResource):
         The location or Compute Engine region for the environment.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

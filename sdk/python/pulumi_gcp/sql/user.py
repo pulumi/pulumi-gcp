@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['UserArgs', 'User']
 
@@ -147,6 +151,149 @@ class UserArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _UserState:
+    def __init__(__self__, *,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the user.
+               Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+               for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        :param pulumi.Input[str] host: The host the user can connect from. This is only supported
+               for MySQL instances. Don't set this field for PostgreSQL instances.
+               Can be an IP address. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] instance: The name of the Cloud SQL instance. Changing this
+               forces a new resource to be created.
+        :param pulumi.Input[str] name: The name of the user. Changing this forces a new resource
+               to be created.
+        :param pulumi.Input[str] password: The password for the user. Can be updated. For Postgres
+               instances this is a Required field.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
+               user during login. The default is the database's built-in user type. Flags
+               include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+        """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion policy for the user.
+        Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host the user can connect from. This is only supported
+        for MySQL instances. Don't set this field for PostgreSQL instances.
+        Can be an IP address. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Cloud SQL instance. Changing this
+        forces a new resource to be created.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the user. Changing this forces a new resource
+        to be created.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the user. Can be updated. For Postgres
+        instances this is a Required field.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user type. It determines the method to authenticate the
+        user during login. The default is the database's built-in user type. Flags
+        include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class User(pulumi.CustomResource):
@@ -346,17 +493,17 @@ class User(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = UserArgs.__new__(UserArgs)
 
-            __props__['deletion_policy'] = deletion_policy
-            __props__['host'] = host
+            __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["host"] = host
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
-            __props__['instance'] = instance
-            __props__['name'] = name
-            __props__['password'] = password
-            __props__['project'] = project
-            __props__['type'] = type
+            __props__.__dict__["instance"] = instance
+            __props__.__dict__["name"] = name
+            __props__.__dict__["password"] = password
+            __props__.__dict__["project"] = project
+            __props__.__dict__["type"] = type
         super(User, __self__).__init__(
             'gcp:sql/user:User',
             resource_name,
@@ -401,15 +548,15 @@ class User(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _UserState.__new__(_UserState)
 
-        __props__["deletion_policy"] = deletion_policy
-        __props__["host"] = host
-        __props__["instance"] = instance
-        __props__["name"] = name
-        __props__["password"] = password
-        __props__["project"] = project
-        __props__["type"] = type
+        __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["host"] = host
+        __props__.__dict__["instance"] = instance
+        __props__.__dict__["name"] = name
+        __props__.__dict__["password"] = password
+        __props__.__dict__["project"] = project
+        __props__.__dict__["type"] = type
         return User(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -477,10 +624,4 @@ class User(pulumi.CustomResource):
         include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

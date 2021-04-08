@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['TagTemplateIamPolicyArgs', 'TagTemplateIamPolicy']
 
@@ -62,6 +66,77 @@ class TagTemplateIamPolicyArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _TagTemplateIamPolicyState:
+    def __init__(__self__, *,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 policy_data: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tag_template: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TagTemplateIamPolicy resources.
+        """
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if policy_data is not None:
+            pulumi.set(__self__, "policy_data", policy_data)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tag_template is not None:
+            pulumi.set(__self__, "tag_template", tag_template)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="policyData")
+    def policy_data(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "policy_data")
+
+    @policy_data.setter
+    def policy_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_data", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tagTemplate")
+    def tag_template(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag_template")
+
+    @tag_template.setter
+    def tag_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_template", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class TagTemplateIamPolicy(pulumi.CustomResource):
@@ -126,17 +201,17 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TagTemplateIamPolicyArgs.__new__(TagTemplateIamPolicyArgs)
 
             if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
-            __props__['policy_data'] = policy_data
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["policy_data"] = policy_data
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             if tag_template is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_template'")
-            __props__['tag_template'] = tag_template
-            __props__['etag'] = None
+            __props__.__dict__["tag_template"] = tag_template
+            __props__.__dict__["etag"] = None
         super(TagTemplateIamPolicy, __self__).__init__(
             'gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy',
             resource_name,
@@ -162,13 +237,13 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TagTemplateIamPolicyState.__new__(_TagTemplateIamPolicyState)
 
-        __props__["etag"] = etag
-        __props__["policy_data"] = policy_data
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["tag_template"] = tag_template
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["policy_data"] = policy_data
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["tag_template"] = tag_template
         return TagTemplateIamPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -195,10 +270,4 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
     @pulumi.getter(name="tagTemplate")
     def tag_template(self) -> pulumi.Output[str]:
         return pulumi.get(self, "tag_template")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

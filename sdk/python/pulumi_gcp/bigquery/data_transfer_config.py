@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -288,6 +292,311 @@ class DataTransferConfigArgs:
     @service_account_name.setter
     def service_account_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account_name", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _DataTransferConfigState:
+    def __init__(__self__, *,
+                 data_refresh_window_days: Optional[pulumi.Input[int]] = None,
+                 data_source_id: Optional[pulumi.Input[str]] = None,
+                 destination_dataset_id: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 email_preferences: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 schedule_options: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']] = None,
+                 sensitive_params: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']] = None,
+                 service_account_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DataTransferConfig resources.
+        :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data.
+               For example, if dataRefreshWindowDays = 10, then every day BigQuery
+               reingests data for [today-10, today-1], rather than ingesting data for
+               just [today-1]. Only valid if the data source supports the feature.
+               Set the value to 0 to use the default value.
+        :param pulumi.Input[str] data_source_id: The data source id. Cannot be changed once the transfer config is created.
+        :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
+        :param pulumi.Input[bool] disabled: When set to true, no runs are scheduled for a given transfer.
+        :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
+        :param pulumi.Input['DataTransferConfigEmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the
+               email address of the user who owns this transfer config.
+               Structure is documented below.
+        :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
+               Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form
+               projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+               required. The name is ignored when creating a transfer config.
+        :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
+               associated with this transfer config finish.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: These parameters are specific to each data source.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom
+               schedule, this should be empty. If it is empty, the default value for
+               the data source will be used. The specified times are in UTC. Examples
+               of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+               jun 13:15, and first sunday of quarter 00:00. See more explanation
+               about the format here:
+               https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+               NOTE: the granularity should be at least 8 hours, or less frequent.
+        :param pulumi.Input['DataTransferConfigScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
+               Structure is documented below.
+        :param pulumi.Input['DataTransferConfigSensitiveParamsArgs'] sensitive_params: Different parameters are configured primarily using the the `params` field on this
+               resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+               sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+               in the `params` map in the api request.
+               Credentials may not be specified in both locations and will cause an error. Changing from one location
+               to a different credential configuration in the config will require an apply to update state.
+               Structure is documented below.
+        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
+               be created with this service account credentials. It requires that
+               requesting user calling this API has permissions to act as this service account.
+        """
+        if data_refresh_window_days is not None:
+            pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
+        if data_source_id is not None:
+            pulumi.set(__self__, "data_source_id", data_source_id)
+        if destination_dataset_id is not None:
+            pulumi.set(__self__, "destination_dataset_id", destination_dataset_id)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email_preferences is not None:
+            pulumi.set(__self__, "email_preferences", email_preferences)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notification_pubsub_topic is not None:
+            pulumi.set(__self__, "notification_pubsub_topic", notification_pubsub_topic)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if schedule_options is not None:
+            pulumi.set(__self__, "schedule_options", schedule_options)
+        if sensitive_params is not None:
+            pulumi.set(__self__, "sensitive_params", sensitive_params)
+        if service_account_name is not None:
+            pulumi.set(__self__, "service_account_name", service_account_name)
+
+    @property
+    @pulumi.getter(name="dataRefreshWindowDays")
+    def data_refresh_window_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days to look back to automatically refresh the data.
+        For example, if dataRefreshWindowDays = 10, then every day BigQuery
+        reingests data for [today-10, today-1], rather than ingesting data for
+        just [today-1]. Only valid if the data source supports the feature.
+        Set the value to 0 to use the default value.
+        """
+        return pulumi.get(self, "data_refresh_window_days")
+
+    @data_refresh_window_days.setter
+    def data_refresh_window_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "data_refresh_window_days", value)
+
+    @property
+    @pulumi.getter(name="dataSourceId")
+    def data_source_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data source id. Cannot be changed once the transfer config is created.
+        """
+        return pulumi.get(self, "data_source_id")
+
+    @data_source_id.setter
+    def data_source_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_source_id", value)
+
+    @property
+    @pulumi.getter(name="destinationDatasetId")
+    def destination_dataset_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The BigQuery target dataset id.
+        """
+        return pulumi.get(self, "destination_dataset_id")
+
+    @destination_dataset_id.setter
+    def destination_dataset_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_dataset_id", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, no runs are scheduled for a given transfer.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user specified display name for the transfer config.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="emailPreferences")
+    def email_preferences(self) -> Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']]:
+        """
+        Email notifications will be sent according to these preferences to the
+        email address of the user who owns this transfer config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "email_preferences")
+
+    @email_preferences.setter
+    def email_preferences(self, value: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']]):
+        pulumi.set(self, "email_preferences", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location where the transfer config should reside.
+        Examples: US, EU, asia-northeast1. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the transfer config. Transfer config names have the form
+        projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+        required. The name is ignored when creating a transfer config.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationPubsubTopic")
+    def notification_pubsub_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pub/Sub topic where notifications will be sent after transfer runs
+        associated with this transfer config finish.
+        """
+        return pulumi.get(self, "notification_pubsub_topic")
+
+    @notification_pubsub_topic.setter
+    def notification_pubsub_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notification_pubsub_topic", value)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        These parameters are specific to each data source.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data transfer schedule. If the data source does not support a custom
+        schedule, this should be empty. If it is empty, the default value for
+        the data source will be used. The specified times are in UTC. Examples
+        of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+        jun 13:15, and first sunday of quarter 00:00. See more explanation
+        about the format here:
+        https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        NOTE: the granularity should be at least 8 hours, or less frequent.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter(name="scheduleOptions")
+    def schedule_options(self) -> Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']]:
+        """
+        Options customizing the data transfer schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_options")
+
+    @schedule_options.setter
+    def schedule_options(self, value: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']]):
+        pulumi.set(self, "schedule_options", value)
+
+    @property
+    @pulumi.getter(name="sensitiveParams")
+    def sensitive_params(self) -> Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']]:
+        """
+        Different parameters are configured primarily using the the `params` field on this
+        resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+        sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+        in the `params` map in the api request.
+        Credentials may not be specified in both locations and will cause an error. Changing from one location
+        to a different credential configuration in the config will require an apply to update state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitive_params")
+
+    @sensitive_params.setter
+    def sensitive_params(self, value: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']]):
+        pulumi.set(self, "sensitive_params", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional service account name. If this field is set, transfer config will
+        be created with this service account credentials. It requires that
+        requesting user calling this API has permissions to act as this service account.
+        """
+        return pulumi.get(self, "service_account_name")
+
+    @service_account_name.setter
+    def service_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_name", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class DataTransferConfig(pulumi.CustomResource):
@@ -511,31 +820,31 @@ class DataTransferConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DataTransferConfigArgs.__new__(DataTransferConfigArgs)
 
-            __props__['data_refresh_window_days'] = data_refresh_window_days
+            __props__.__dict__["data_refresh_window_days"] = data_refresh_window_days
             if data_source_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_source_id'")
-            __props__['data_source_id'] = data_source_id
+            __props__.__dict__["data_source_id"] = data_source_id
             if destination_dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_dataset_id'")
-            __props__['destination_dataset_id'] = destination_dataset_id
-            __props__['disabled'] = disabled
+            __props__.__dict__["destination_dataset_id"] = destination_dataset_id
+            __props__.__dict__["disabled"] = disabled
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['email_preferences'] = email_preferences
-            __props__['location'] = location
-            __props__['notification_pubsub_topic'] = notification_pubsub_topic
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["email_preferences"] = email_preferences
+            __props__.__dict__["location"] = location
+            __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
             if params is None and not opts.urn:
                 raise TypeError("Missing required property 'params'")
-            __props__['params'] = params
-            __props__['project'] = project
-            __props__['schedule'] = schedule
-            __props__['schedule_options'] = schedule_options
-            __props__['sensitive_params'] = sensitive_params
-            __props__['service_account_name'] = service_account_name
-            __props__['name'] = None
+            __props__.__dict__["params"] = params
+            __props__.__dict__["project"] = project
+            __props__.__dict__["schedule"] = schedule
+            __props__.__dict__["schedule_options"] = schedule_options
+            __props__.__dict__["sensitive_params"] = sensitive_params
+            __props__.__dict__["service_account_name"] = service_account_name
+            __props__.__dict__["name"] = None
         super(DataTransferConfig, __self__).__init__(
             'gcp:bigquery/dataTransferConfig:DataTransferConfig',
             resource_name,
@@ -613,23 +922,23 @@ class DataTransferConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DataTransferConfigState.__new__(_DataTransferConfigState)
 
-        __props__["data_refresh_window_days"] = data_refresh_window_days
-        __props__["data_source_id"] = data_source_id
-        __props__["destination_dataset_id"] = destination_dataset_id
-        __props__["disabled"] = disabled
-        __props__["display_name"] = display_name
-        __props__["email_preferences"] = email_preferences
-        __props__["location"] = location
-        __props__["name"] = name
-        __props__["notification_pubsub_topic"] = notification_pubsub_topic
-        __props__["params"] = params
-        __props__["project"] = project
-        __props__["schedule"] = schedule
-        __props__["schedule_options"] = schedule_options
-        __props__["sensitive_params"] = sensitive_params
-        __props__["service_account_name"] = service_account_name
+        __props__.__dict__["data_refresh_window_days"] = data_refresh_window_days
+        __props__.__dict__["data_source_id"] = data_source_id
+        __props__.__dict__["destination_dataset_id"] = destination_dataset_id
+        __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["email_preferences"] = email_preferences
+        __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
+        __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
+        __props__.__dict__["params"] = params
+        __props__.__dict__["project"] = project
+        __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["schedule_options"] = schedule_options
+        __props__.__dict__["sensitive_params"] = sensitive_params
+        __props__.__dict__["service_account_name"] = service_account_name
         return DataTransferConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -778,10 +1087,4 @@ class DataTransferConfig(pulumi.CustomResource):
         requesting user calling this API has permissions to act as this service account.
         """
         return pulumi.get(self, "service_account_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -22,6 +26,29 @@ __all__ = [
 
 @pulumi.output_type
 class InboundSamlConfigIdpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpCertificates":
+            suggest = "idp_certificates"
+        elif key == "idpEntityId":
+            suggest = "idp_entity_id"
+        elif key == "ssoUrl":
+            suggest = "sso_url"
+        elif key == "signRequest":
+            suggest = "sign_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InboundSamlConfigIdpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InboundSamlConfigIdpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InboundSamlConfigIdpConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  idp_certificates: Sequence['outputs.InboundSamlConfigIdpConfigIdpCertificate'],
                  idp_entity_id: str,
@@ -73,12 +100,26 @@ class InboundSamlConfigIdpConfig(dict):
         """
         return pulumi.get(self, "sign_request")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InboundSamlConfigIdpConfigIdpCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "x509Certificate":
+            suggest = "x509_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InboundSamlConfigIdpConfigIdpCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InboundSamlConfigIdpConfigIdpCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InboundSamlConfigIdpConfigIdpCertificate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  x509_certificate: Optional[str] = None):
         """
@@ -97,12 +138,30 @@ class InboundSamlConfigIdpConfigIdpCertificate(dict):
         """
         return pulumi.get(self, "x509_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InboundSamlConfigSpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "callbackUri":
+            suggest = "callback_uri"
+        elif key == "spCertificates":
+            suggest = "sp_certificates"
+        elif key == "spEntityId":
+            suggest = "sp_entity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InboundSamlConfigSpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InboundSamlConfigSpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InboundSamlConfigSpConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  callback_uri: Optional[str] = None,
                  sp_certificates: Optional[Sequence['outputs.InboundSamlConfigSpConfigSpCertificate']] = None,
@@ -147,12 +206,26 @@ class InboundSamlConfigSpConfig(dict):
         """
         return pulumi.get(self, "sp_entity_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InboundSamlConfigSpConfigSpCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "x509Certificate":
+            suggest = "x509_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InboundSamlConfigSpConfigSpCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InboundSamlConfigSpConfigSpCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InboundSamlConfigSpConfigSpCertificate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  x509_certificate: Optional[str] = None):
         """
@@ -171,12 +244,32 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
         """
         return pulumi.get(self, "x509_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TenantInboundSamlConfigIdpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpCertificates":
+            suggest = "idp_certificates"
+        elif key == "idpEntityId":
+            suggest = "idp_entity_id"
+        elif key == "ssoUrl":
+            suggest = "sso_url"
+        elif key == "signRequest":
+            suggest = "sign_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TenantInboundSamlConfigIdpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TenantInboundSamlConfigIdpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TenantInboundSamlConfigIdpConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  idp_certificates: Sequence['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate'],
                  idp_entity_id: str,
@@ -228,12 +321,26 @@ class TenantInboundSamlConfigIdpConfig(dict):
         """
         return pulumi.get(self, "sign_request")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TenantInboundSamlConfigIdpConfigIdpCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "x509Certificate":
+            suggest = "x509_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TenantInboundSamlConfigIdpConfigIdpCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TenantInboundSamlConfigIdpConfigIdpCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TenantInboundSamlConfigIdpConfigIdpCertificate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  x509_certificate: Optional[str] = None):
         """
@@ -252,12 +359,30 @@ class TenantInboundSamlConfigIdpConfigIdpCertificate(dict):
         """
         return pulumi.get(self, "x509_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TenantInboundSamlConfigSpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "callbackUri":
+            suggest = "callback_uri"
+        elif key == "spEntityId":
+            suggest = "sp_entity_id"
+        elif key == "spCertificates":
+            suggest = "sp_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TenantInboundSamlConfigSpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TenantInboundSamlConfigSpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TenantInboundSamlConfigSpConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  callback_uri: str,
                  sp_entity_id: str,
@@ -300,12 +425,26 @@ class TenantInboundSamlConfigSpConfig(dict):
         """
         return pulumi.get(self, "sp_certificates")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TenantInboundSamlConfigSpConfigSpCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "x509Certificate":
+            suggest = "x509_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TenantInboundSamlConfigSpConfigSpCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TenantInboundSamlConfigSpConfigSpCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TenantInboundSamlConfigSpConfigSpCertificate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  x509_certificate: Optional[str] = None):
         """
@@ -323,8 +462,5 @@ class TenantInboundSamlConfigSpConfigSpCertificate(dict):
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

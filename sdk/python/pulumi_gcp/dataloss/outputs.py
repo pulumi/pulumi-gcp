@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -79,6 +83,23 @@ __all__ = [
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypeTransformations":
+            suggest = "info_type_transformations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_type_transformations: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations'):
         """
@@ -95,9 +116,6 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "info_type_transformations")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -119,12 +137,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(dict):
         """
         return pulumi.get(self, "transformations")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primitiveTransformation":
+            suggest = "primitive_transformation"
+        elif key == "infoTypes":
+            suggest = "info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation',
                  info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType']] = None):
@@ -158,9 +192,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "info_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType(dict):
@@ -179,12 +210,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterMaskConfig":
+            suggest = "character_mask_config"
+        elif key == "replaceConfig":
+            suggest = "replace_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  character_mask_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig'] = None,
                  replace_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig'] = None):
@@ -219,12 +266,32 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "replace_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "charactersToIgnores":
+            suggest = "characters_to_ignores"
+        elif key == "maskingCharacter":
+            suggest = "masking_character"
+        elif key == "numberToMask":
+            suggest = "number_to_mask"
+        elif key == "reverseOrder":
+            suggest = "reverse_order"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  characters_to_ignores: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore']] = None,
                  masking_character: Optional[str] = None,
@@ -285,12 +352,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "reverse_order")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterToSkip":
+            suggest = "character_to_skip"
+        elif key == "commonCharactersToIgnore":
+            suggest = "common_characters_to_ignore"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  character_to_skip: Optional[str] = None,
                  common_characters_to_ignore: Optional[str] = None):
@@ -321,12 +404,26 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "common_characters_to_ignore")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newValue":
+            suggest = "new_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue'):
         """
@@ -344,12 +441,40 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "new_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "dateValue":
+            suggest = "date_value"
+        elif key == "dayOfWeekValue":
+            suggest = "day_of_week_value"
+        elif key == "floatValue":
+            suggest = "float_value"
+        elif key == "integerValue":
+            suggest = "integer_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timeValue":
+            suggest = "time_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boolean_value: Optional[bool] = None,
                  date_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue'] = None,
@@ -458,9 +583,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "timestamp_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
@@ -505,9 +627,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         """
         return pulumi.get(self, "year")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -564,12 +683,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         return pulumi.get(self, "seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentOptions":
+            suggest = "content_options"
+        elif key == "customInfoTypes":
+            suggest = "custom_info_types"
+        elif key == "excludeInfoTypes":
+            suggest = "exclude_info_types"
+        elif key == "includeQuote":
+            suggest = "include_quote"
+        elif key == "infoTypes":
+            suggest = "info_types"
+        elif key == "minLikelihood":
+            suggest = "min_likelihood"
+        elif key == "ruleSets":
+            suggest = "rule_sets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_options: Optional[Sequence[str]] = None,
                  custom_info_types: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigCustomInfoType']] = None,
@@ -688,12 +833,30 @@ class PreventionInspectTemplateInspectConfig(dict):
         """
         return pulumi.get(self, "rule_sets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoType":
+            suggest = "info_type"
+        elif key == "exclusionType":
+            suggest = "exclusion_type"
+        elif key == "storedType":
+            suggest = "stored_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigCustomInfoType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoType.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_type: 'outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType',
                  dictionary: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary'] = None,
@@ -791,12 +954,28 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
         """
         return pulumi.get(self, "stored_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStoragePath":
+            suggest = "cloud_storage_path"
+        elif key == "wordList":
+            suggest = "word_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_storage_path: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList'] = None):
@@ -829,9 +1008,6 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(dict):
         """
         return pulumi.get(self, "word_list")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath(dict):
@@ -849,9 +1025,6 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
         A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
         return pulumi.get(self, "path")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -873,9 +1046,6 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList(dic
         """
         return pulumi.get(self, "words")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
@@ -896,12 +1066,26 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeRegex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupIndexes":
+            suggest = "group_indexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigCustomInfoTypeRegex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoTypeRegex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoTypeRegex.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pattern: str,
                  group_indexes: Optional[Sequence[int]] = None):
@@ -931,9 +1115,6 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeRegex(dict):
         """
         return pulumi.get(self, "group_indexes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(dict):
@@ -953,9 +1134,6 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(dict):
         or `projects/project-id/storedInfoTypes/432452342`.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -977,12 +1155,30 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxFindingsPerItem":
+            suggest = "max_findings_per_item"
+        elif key == "maxFindingsPerRequest":
+            suggest = "max_findings_per_request"
+        elif key == "maxFindingsPerInfoTypes":
+            suggest = "max_findings_per_info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigLimits.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_findings_per_item: int,
                  max_findings_per_request: int,
@@ -1023,12 +1219,28 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
         """
         return pulumi.get(self, "max_findings_per_info_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoType":
+            suggest = "info_type"
+        elif key == "maxFindings":
+            suggest = "max_findings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_type: 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType',
                  max_findings: int):
@@ -1063,9 +1275,6 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
         """
         return pulumi.get(self, "max_findings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType(dict):
@@ -1086,12 +1295,26 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypes":
+            suggest = "info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSet.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType'],
                  rules: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']):
@@ -1122,9 +1345,6 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
         """
         return pulumi.get(self, "rules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
@@ -1145,12 +1365,28 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusionRule":
+            suggest = "exclusion_rule"
+        elif key == "hotwordRule":
+            suggest = "hotword_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exclusion_rule: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule'] = None,
                  hotword_rule: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule'] = None):
@@ -1183,12 +1419,28 @@ class PreventionInspectTemplateInspectConfigRuleSetRule(dict):
         """
         return pulumi.get(self, "hotword_rule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchingType":
+            suggest = "matching_type"
+        elif key == "excludeInfoTypes":
+            suggest = "exclude_info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  matching_type: str,
                  dictionary: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary'] = None,
@@ -1248,12 +1500,28 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
         """
         return pulumi.get(self, "regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStoragePath":
+            suggest = "cloud_storage_path"
+        elif key == "wordList":
+            suggest = "word_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_storage_path: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList'] = None):
@@ -1286,9 +1554,6 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(d
         """
         return pulumi.get(self, "word_list")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(dict):
@@ -1306,9 +1571,6 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
         A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
         return pulumi.get(self, "path")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1330,12 +1592,26 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
         """
         return pulumi.get(self, "words")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypes":
+            suggest = "info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']):
         """
@@ -1352,9 +1628,6 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         Structure is documented below.
         """
         return pulumi.get(self, "info_types")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1376,12 +1649,26 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupIndexes":
+            suggest = "group_indexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pattern: str,
                  group_indexes: Optional[Sequence[int]] = None):
@@ -1411,12 +1698,28 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
         """
         return pulumi.get(self, "group_indexes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hotwordRegex":
+            suggest = "hotword_regex"
+        elif key == "likelihoodAdjustment":
+            suggest = "likelihood_adjustment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hotword_regex: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex',
                  likelihood_adjustment: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment',
@@ -1468,12 +1771,26 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
         """
         return pulumi.get(self, "proximity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupIndexes":
+            suggest = "group_indexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pattern: str,
                  group_indexes: Optional[Sequence[int]] = None):
@@ -1503,12 +1820,28 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
         """
         return pulumi.get(self, "group_indexes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedLikelihood":
+            suggest = "fixed_likelihood"
+        elif key == "relativeLikelihood":
+            suggest = "relative_likelihood"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fixed_likelihood: Optional[str] = None,
                  relative_likelihood: Optional[int] = None):
@@ -1549,12 +1882,28 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
         """
         return pulumi.get(self, "relative_likelihood")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "windowAfter":
+            suggest = "window_after"
+        elif key == "windowBefore":
+            suggest = "window_before"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  window_after: Optional[int] = None,
                  window_before: Optional[int] = None):
@@ -1583,12 +1932,28 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict
         """
         return pulumi.get(self, "window_before")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inspectTemplateName":
+            suggest = "inspect_template_name"
+        elif key == "storageConfig":
+            suggest = "storage_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJob.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  actions: Sequence['outputs.PreventionJobTriggerInspectJobAction'],
                  inspect_template_name: str,
@@ -1630,12 +1995,26 @@ class PreventionJobTriggerInspectJob(dict):
         """
         return pulumi.get(self, "storage_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "saveFindings":
+            suggest = "save_findings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobAction.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  save_findings: 'outputs.PreventionJobTriggerInspectJobActionSaveFindings'):
         """
@@ -1653,12 +2032,26 @@ class PreventionJobTriggerInspectJobAction(dict):
         """
         return pulumi.get(self, "save_findings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobActionSaveFindings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputConfig":
+            suggest = "output_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionSaveFindings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobActionSaveFindings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobActionSaveFindings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  output_config: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig'):
         """
@@ -1676,12 +2069,26 @@ class PreventionJobTriggerInspectJobActionSaveFindings(dict):
         """
         return pulumi.get(self, "output_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputSchema":
+            suggest = "output_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  table: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
                  output_schema: Optional[str] = None):
@@ -1725,12 +2132,30 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         """
         return pulumi.get(self, "output_schema")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -1771,12 +2196,32 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
         """
         return pulumi.get(self, "table_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQueryOptions":
+            suggest = "big_query_options"
+        elif key == "cloudStorageOptions":
+            suggest = "cloud_storage_options"
+        elif key == "datastoreOptions":
+            suggest = "datastore_options"
+        elif key == "timespanConfig":
+            suggest = "timespan_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  big_query_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptions'] = None,
                  cloud_storage_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions'] = None,
@@ -1837,12 +2282,26 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
         """
         return pulumi.get(self, "timespan_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableReference":
+            suggest = "table_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigBigQueryOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  table_reference: 'outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference'):
         """
@@ -1860,12 +2319,30 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
         """
         return pulumi.get(self, "table_reference")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -1905,12 +2382,36 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(d
         """
         return pulumi.get(self, "table_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSet":
+            suggest = "file_set"
+        elif key == "bytesLimitPerFile":
+            suggest = "bytes_limit_per_file"
+        elif key == "bytesLimitPerFilePercent":
+            suggest = "bytes_limit_per_file_percent"
+        elif key == "fileTypes":
+            suggest = "file_types"
+        elif key == "filesLimitPercent":
+            suggest = "files_limit_percent"
+        elif key == "sampleMethod":
+            suggest = "sample_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_set: 'outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet',
                  bytes_limit_per_file: Optional[int] = None,
@@ -2004,12 +2505,26 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
         """
         return pulumi.get(self, "sample_method")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regexFileSet":
+            suggest = "regex_file_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  regex_file_set: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet'] = None,
                  url: Optional[str] = None):
@@ -2048,12 +2563,30 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "excludeRegexes":
+            suggest = "exclude_regexes"
+        elif key == "includeRegexes":
+            suggest = "include_regexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: str,
                  exclude_regexes: Optional[Sequence[str]] = None,
@@ -2101,12 +2634,26 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
         """
         return pulumi.get(self, "include_regexes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partitionId":
+            suggest = "partition_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigDatastoreOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kind: 'outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind',
                  partition_id: 'outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId'):
@@ -2139,9 +2686,6 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(dict):
         """
         return pulumi.get(self, "partition_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
@@ -2160,12 +2704,28 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "namespaceId":
+            suggest = "namespace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project_id: str,
                  namespace_id: Optional[str] = None):
@@ -2193,12 +2753,32 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dic
         """
         return pulumi.get(self, "namespace_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timestampField":
+            suggest = "timestamp_field"
+        elif key == "enableAutoPopulationOfTimespanConfig":
+            suggest = "enable_auto_population_of_timespan_config"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigTimespanConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigTimespanConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigTimespanConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  timestamp_field: 'outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField',
                  enable_auto_population_of_timespan_config: Optional[bool] = None,
@@ -2256,9 +2836,6 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(dict):
@@ -2276,9 +2853,6 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
         The name of the Datastore kind.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2301,12 +2875,26 @@ class PreventionJobTriggerTrigger(dict):
         """
         return pulumi.get(self, "schedule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionJobTriggerTriggerSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recurrencePeriodDuration":
+            suggest = "recurrence_period_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerTriggerSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerTriggerSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerTriggerSchedule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recurrence_period_duration: Optional[str] = None):
         """
@@ -2329,12 +2917,28 @@ class PreventionJobTriggerTriggerSchedule(dict):
         """
         return pulumi.get(self, "recurrence_period_duration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeDictionary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStoragePath":
+            suggest = "cloud_storage_path"
+        elif key == "wordList":
+            suggest = "word_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionStoredInfoTypeDictionary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionStoredInfoTypeDictionary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionStoredInfoTypeDictionary.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_storage_path: Optional['outputs.PreventionStoredInfoTypeDictionaryCloudStoragePath'] = None,
                  word_list: Optional['outputs.PreventionStoredInfoTypeDictionaryWordList'] = None):
@@ -2367,9 +2971,6 @@ class PreventionStoredInfoTypeDictionary(dict):
         """
         return pulumi.get(self, "word_list")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeDictionaryCloudStoragePath(dict):
@@ -2387,9 +2988,6 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePath(dict):
         A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
         return pulumi.get(self, "path")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2411,12 +3009,30 @@ class PreventionStoredInfoTypeDictionaryWordList(dict):
         """
         return pulumi.get(self, "words")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeLargeCustomDictionary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputPath":
+            suggest = "output_path"
+        elif key == "bigQueryField":
+            suggest = "big_query_field"
+        elif key == "cloudStorageFileSet":
+            suggest = "cloud_storage_file_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionStoredInfoTypeLargeCustomDictionary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionStoredInfoTypeLargeCustomDictionary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionStoredInfoTypeLargeCustomDictionary.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  output_path: 'outputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPath',
                  big_query_field: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField'] = None,
@@ -2464,9 +3080,6 @@ class PreventionStoredInfoTypeLargeCustomDictionary(dict):
         """
         return pulumi.get(self, "cloud_storage_file_set")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(dict):
@@ -2500,9 +3113,6 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(dict):
         """
         return pulumi.get(self, "table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(dict):
@@ -2521,12 +3131,30 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -2564,9 +3192,6 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(dict):
         """
         return pulumi.get(self, "table_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(dict):
@@ -2584,9 +3209,6 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(dict):
         The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
         """
         return pulumi.get(self, "url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2606,12 +3228,26 @@ class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreventionStoredInfoTypeRegex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupIndexes":
+            suggest = "group_indexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionStoredInfoTypeRegex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionStoredInfoTypeRegex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionStoredInfoTypeRegex.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pattern: str,
                  group_indexes: Optional[Sequence[int]] = None):
@@ -2640,8 +3276,5 @@ class PreventionStoredInfoTypeRegex(dict):
         The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         return pulumi.get(self, "group_indexes")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

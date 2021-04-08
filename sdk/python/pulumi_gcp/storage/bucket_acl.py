@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['BucketACLArgs', 'BucketACL']
 
@@ -79,6 +83,81 @@ class BucketACLArgs:
     @role_entities.setter
     def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "role_entities", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _BucketACLState:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 default_acl: Optional[pulumi.Input[str]] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering BucketACL resources.
+        :param pulumi.Input[str] bucket: The name of the bucket it applies to.
+        :param pulumi.Input[str] default_acl: Configure this ACL to be the default ACL.
+        :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if default_acl is not None:
+            pulumi.set(__self__, "default_acl", default_acl)
+        if predefined_acl is not None:
+            pulumi.set(__self__, "predefined_acl", predefined_acl)
+        if role_entities is not None:
+            pulumi.set(__self__, "role_entities", role_entities)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the bucket it applies to.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="defaultAcl")
+    def default_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure this ACL to be the default ACL.
+        """
+        return pulumi.get(self, "default_acl")
+
+    @default_acl.setter
+    def default_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_acl", value)
+
+    @property
+    @pulumi.getter(name="predefinedAcl")
+    def predefined_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+        """
+        return pulumi.get(self, "predefined_acl")
+
+    @predefined_acl.setter
+    def predefined_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predefined_acl", value)
+
+    @property
+    @pulumi.getter(name="roleEntities")
+    def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+        """
+        return pulumi.get(self, "role_entities")
+
+    @role_entities.setter
+    def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_entities", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class BucketACL(pulumi.CustomResource):
@@ -209,14 +288,14 @@ class BucketACL(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BucketACLArgs.__new__(BucketACLArgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
-            __props__['default_acl'] = default_acl
-            __props__['predefined_acl'] = predefined_acl
-            __props__['role_entities'] = role_entities
+            __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["default_acl"] = default_acl
+            __props__.__dict__["predefined_acl"] = predefined_acl
+            __props__.__dict__["role_entities"] = role_entities
         super(BucketACL, __self__).__init__(
             'gcp:storage/bucketACL:BucketACL',
             resource_name,
@@ -245,12 +324,12 @@ class BucketACL(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BucketACLState.__new__(_BucketACLState)
 
-        __props__["bucket"] = bucket
-        __props__["default_acl"] = default_acl
-        __props__["predefined_acl"] = predefined_acl
-        __props__["role_entities"] = role_entities
+        __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["default_acl"] = default_acl
+        __props__.__dict__["predefined_acl"] = predefined_acl
+        __props__.__dict__["role_entities"] = role_entities
         return BucketACL(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -284,10 +363,4 @@ class BucketACL(pulumi.CustomResource):
         List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
         """
         return pulumi.get(self, "role_entities")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

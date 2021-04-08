@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['GroupArgs', 'Group']
 
@@ -108,6 +112,127 @@ class GroupArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _GroupState:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 is_cluster: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display
+               purposes.
+        :param pulumi.Input[str] filter: The filter used to determine which monitored resources
+               belong to this group.
+        :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a
+               cluster. The system can perform additional analysis on
+               groups that are clusters.
+        :param pulumi.Input[str] name: A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is
+               "projects/{project_id_or_number}/groups/{group_id}". For
+               groups with no parent, parentName is the empty string, "".
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if is_cluster is not None:
+            pulumi.set(__self__, "is_cluster", is_cluster)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_name is not None:
+            pulumi.set(__self__, "parent_name", parent_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-assigned name for this group, used only for display
+        purposes.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The filter used to determine which monitored resources
+        belong to this group.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="isCluster")
+    def is_cluster(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the members of this group are considered to be a
+        cluster. The system can perform additional analysis on
+        groups that are clusters.
+        """
+        return pulumi.get(self, "is_cluster")
+
+    @is_cluster.setter
+    def is_cluster(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_cluster", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentName")
+    def parent_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the group's parent, if it has one. The format is
+        "projects/{project_id_or_number}/groups/{group_id}". For
+        groups with no parent, parentName is the empty string, "".
+        """
+        return pulumi.get(self, "parent_name")
+
+    @parent_name.setter
+    def parent_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Group(pulumi.CustomResource):
@@ -274,18 +399,18 @@ class Group(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupArgs.__new__(GroupArgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
+            __props__.__dict__["display_name"] = display_name
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
-            __props__['filter'] = filter
-            __props__['is_cluster'] = is_cluster
-            __props__['parent_name'] = parent_name
-            __props__['project'] = project
-            __props__['name'] = None
+            __props__.__dict__["filter"] = filter
+            __props__.__dict__["is_cluster"] = is_cluster
+            __props__.__dict__["parent_name"] = parent_name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["name"] = None
         super(Group, __self__).__init__(
             'gcp:monitoring/group:Group',
             resource_name,
@@ -325,14 +450,14 @@ class Group(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GroupState.__new__(_GroupState)
 
-        __props__["display_name"] = display_name
-        __props__["filter"] = filter
-        __props__["is_cluster"] = is_cluster
-        __props__["name"] = name
-        __props__["parent_name"] = parent_name
-        __props__["project"] = project
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["filter"] = filter
+        __props__.__dict__["is_cluster"] = is_cluster
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent_name"] = parent_name
+        __props__.__dict__["project"] = project
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -389,10 +514,4 @@ class Group(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

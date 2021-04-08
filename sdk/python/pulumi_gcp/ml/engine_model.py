@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -154,6 +158,153 @@ class EngineModelArgs:
     @regions.setter
     def regions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regions", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _EngineModelState:
+    def __init__(__self__, *,
+                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
+                 online_prediction_logging: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 regions: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering EngineModel resources.
+        :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
+               prediction requests that do not specify a version.
+               Structure is documented below.
+        :param pulumi.Input[str] description: The description specified for the model when it was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
+        :param pulumi.Input[str] name: The name specified for the version when it was created.
+        :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+        :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
+               Currently only one region per model is supported
+        """
+        if default_version is not None:
+            pulumi.set(__self__, "default_version", default_version)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if online_prediction_console_logging is not None:
+            pulumi.set(__self__, "online_prediction_console_logging", online_prediction_console_logging)
+        if online_prediction_logging is not None:
+            pulumi.set(__self__, "online_prediction_logging", online_prediction_logging)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArgs']]:
+        """
+        The default version of the model. This version will be used to handle
+        prediction requests that do not specify a version.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_version")
+
+    @default_version.setter
+    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArgs']]):
+        pulumi.set(self, "default_version", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description specified for the model when it was created.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        One or more labels that you can add, to organize your models.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name specified for the version when it was created.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="onlinePredictionConsoleLogging")
+    def online_prediction_console_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+        """
+        return pulumi.get(self, "online_prediction_console_logging")
+
+    @online_prediction_console_logging.setter
+    def online_prediction_console_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "online_prediction_console_logging", value)
+
+    @property
+    @pulumi.getter(name="onlinePredictionLogging")
+    def online_prediction_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, online prediction access logs are sent to StackDriver Logging.
+        """
+        return pulumi.get(self, "online_prediction_logging")
+
+    @online_prediction_logging.setter
+    def online_prediction_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "online_prediction_logging", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of regions where the model is going to be deployed.
+        Currently only one region per model is supported
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regions", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class EngineModel(pulumi.CustomResource):
@@ -332,16 +483,16 @@ class EngineModel(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EngineModelArgs.__new__(EngineModelArgs)
 
-            __props__['default_version'] = default_version
-            __props__['description'] = description
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['online_prediction_console_logging'] = online_prediction_console_logging
-            __props__['online_prediction_logging'] = online_prediction_logging
-            __props__['project'] = project
-            __props__['regions'] = regions
+            __props__.__dict__["default_version"] = default_version
+            __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["online_prediction_console_logging"] = online_prediction_console_logging
+            __props__.__dict__["online_prediction_logging"] = online_prediction_logging
+            __props__.__dict__["project"] = project
+            __props__.__dict__["regions"] = regions
         super(EngineModel, __self__).__init__(
             'gcp:ml/engineModel:EngineModel',
             resource_name,
@@ -382,16 +533,16 @@ class EngineModel(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EngineModelState.__new__(_EngineModelState)
 
-        __props__["default_version"] = default_version
-        __props__["description"] = description
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["online_prediction_console_logging"] = online_prediction_console_logging
-        __props__["online_prediction_logging"] = online_prediction_logging
-        __props__["project"] = project
-        __props__["regions"] = regions
+        __props__.__dict__["default_version"] = default_version
+        __props__.__dict__["description"] = description
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["online_prediction_console_logging"] = online_prediction_console_logging
+        __props__.__dict__["online_prediction_logging"] = online_prediction_logging
+        __props__.__dict__["project"] = project
+        __props__.__dict__["regions"] = regions
         return EngineModel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -461,10 +612,4 @@ class EngineModel(pulumi.CustomResource):
         Currently only one region per model is supported
         """
         return pulumi.get(self, "regions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

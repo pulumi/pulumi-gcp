@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -17,6 +21,25 @@ __all__ = [
 
 @pulumi.output_type
 class InstanceFileShares(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "capacityGb":
+            suggest = "capacity_gb"
+        elif key == "nfsExportOptions":
+            suggest = "nfs_export_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFileShares. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFileShares.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFileShares.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  capacity_gb: int,
                  name: str,
@@ -59,12 +82,34 @@ class InstanceFileShares(dict):
         """
         return pulumi.get(self, "nfs_export_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceFileSharesNfsExportOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessMode":
+            suggest = "access_mode"
+        elif key == "anonGid":
+            suggest = "anon_gid"
+        elif key == "anonUid":
+            suggest = "anon_uid"
+        elif key == "ipRanges":
+            suggest = "ip_ranges"
+        elif key == "squashMode":
+            suggest = "squash_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFileSharesNfsExportOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFileSharesNfsExportOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFileSharesNfsExportOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_mode: Optional[str] = None,
                  anon_gid: Optional[int] = None,
@@ -153,12 +198,28 @@ class InstanceFileSharesNfsExportOption(dict):
         """
         return pulumi.get(self, "squash_mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddresses":
+            suggest = "ip_addresses"
+        elif key == "reservedIpRange":
+            suggest = "reserved_ip_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  modes: Sequence[str],
                  network: str,
@@ -218,8 +279,5 @@ class InstanceNetwork(dict):
         addresses reserved for this instance.
         """
         return pulumi.get(self, "reserved_ip_range")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

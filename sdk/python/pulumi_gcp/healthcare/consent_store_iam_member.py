@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -94,6 +98,113 @@ class ConsentStoreIamMemberArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['ConsentStoreIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ConsentStoreIamMemberState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['ConsentStoreIamMemberConditionArgs']] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ConsentStoreIamMember resources.
+        :param pulumi.Input[str] consent_store_id: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
+               'projects/{project}/locations/{location}/datasets/{dataset}'
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `healthcare.ConsentStoreIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if consent_store_id is not None:
+            pulumi.set(__self__, "consent_store_id", consent_store_id)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['ConsentStoreIamMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['ConsentStoreIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "consent_store_id")
+
+    @consent_store_id.setter
+    def consent_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consent_store_id", value)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifies the dataset addressed by this request. Must be in the format
+        'projects/{project}/locations/{location}/datasets/{dataset}'
+        Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `healthcare.ConsentStoreIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ConsentStoreIamMember(pulumi.CustomResource):
@@ -317,22 +428,22 @@ class ConsentStoreIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConsentStoreIamMemberArgs.__new__(ConsentStoreIamMemberArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if consent_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_store_id'")
-            __props__['consent_store_id'] = consent_store_id
+            __props__.__dict__["consent_store_id"] = consent_store_id
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
-            __props__['dataset'] = dataset
+            __props__.__dict__["dataset"] = dataset
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
+            __props__.__dict__["member"] = member
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(ConsentStoreIamMember, __self__).__init__(
             'gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember',
             resource_name,
@@ -367,14 +478,14 @@ class ConsentStoreIamMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConsentStoreIamMemberState.__new__(_ConsentStoreIamMemberState)
 
-        __props__["condition"] = condition
-        __props__["consent_store_id"] = consent_store_id
-        __props__["dataset"] = dataset
-        __props__["etag"] = etag
-        __props__["member"] = member
-        __props__["role"] = role
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["consent_store_id"] = consent_store_id
+        __props__.__dict__["dataset"] = dataset
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["member"] = member
+        __props__.__dict__["role"] = role
         return ConsentStoreIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -422,10 +533,4 @@ class ConsentStoreIamMember(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

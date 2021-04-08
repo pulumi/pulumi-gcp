@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -56,9 +60,6 @@ class ConsentStoreIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConsentStoreIamMemberCondition(dict):
@@ -85,9 +86,6 @@ class ConsentStoreIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -116,9 +114,6 @@ class DatasetIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatasetIamMemberCondition(dict):
@@ -145,9 +140,6 @@ class DatasetIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -176,9 +168,6 @@ class DicomStoreIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DicomStoreIamMemberCondition(dict):
@@ -206,12 +195,26 @@ class DicomStoreIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DicomStoreNotificationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopic":
+            suggest = "pubsub_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DicomStoreNotificationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DicomStoreNotificationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DicomStoreNotificationConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic: str):
         """
@@ -236,9 +239,6 @@ class DicomStoreNotificationConfig(dict):
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -267,9 +267,6 @@ class FhirStoreIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FhirStoreIamMemberCondition(dict):
@@ -297,12 +294,26 @@ class FhirStoreIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FhirStoreNotificationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopic":
+            suggest = "pubsub_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreNotificationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreNotificationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreNotificationConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic: str):
         """
@@ -328,12 +339,28 @@ class FhirStoreNotificationConfig(dict):
         """
         return pulumi.get(self, "pubsub_topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FhirStoreStreamConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryDestination":
+            suggest = "bigquery_destination"
+        elif key == "resourceTypes":
+            suggest = "resource_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreStreamConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreStreamConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreStreamConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bigquery_destination: 'outputs.FhirStoreStreamConfigBigqueryDestination',
                  resource_types: Optional[Sequence[str]] = None):
@@ -375,12 +402,28 @@ class FhirStoreStreamConfig(dict):
         """
         return pulumi.get(self, "resource_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FhirStoreStreamConfigBigqueryDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetUri":
+            suggest = "dataset_uri"
+        elif key == "schemaConfig":
+            suggest = "schema_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreStreamConfigBigqueryDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreStreamConfigBigqueryDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreStreamConfigBigqueryDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_uri: str,
                  schema_config: 'outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfig'):
@@ -409,12 +452,28 @@ class FhirStoreStreamConfigBigqueryDestination(dict):
         """
         return pulumi.get(self, "schema_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recursiveStructureDepth":
+            suggest = "recursive_structure_depth"
+        elif key == "schemaType":
+            suggest = "schema_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreStreamConfigBigqueryDestinationSchemaConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreStreamConfigBigqueryDestinationSchemaConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreStreamConfigBigqueryDestinationSchemaConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recursive_structure_depth: int,
                  schema_type: Optional[str] = None):
@@ -456,9 +515,6 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
         """
         return pulumi.get(self, "schema_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Hl7StoreIamBindingCondition(dict):
@@ -485,9 +541,6 @@ class Hl7StoreIamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -516,12 +569,26 @@ class Hl7StoreIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Hl7StoreNotificationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopic":
+            suggest = "pubsub_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Hl7StoreNotificationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Hl7StoreNotificationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Hl7StoreNotificationConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic: str):
         """
@@ -547,12 +614,26 @@ class Hl7StoreNotificationConfig(dict):
         """
         return pulumi.get(self, "pubsub_topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Hl7StoreNotificationConfigs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopic":
+            suggest = "pubsub_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Hl7StoreNotificationConfigs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Hl7StoreNotificationConfigs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Hl7StoreNotificationConfigs.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic: str,
                  filter: Optional[str] = None):
@@ -606,12 +687,28 @@ class Hl7StoreNotificationConfigs(dict):
         """
         return pulumi.get(self, "filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Hl7StoreParserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowNullHeader":
+            suggest = "allow_null_header"
+        elif key == "segmentTerminator":
+            suggest = "segment_terminator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Hl7StoreParserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Hl7StoreParserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Hl7StoreParserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_null_header: Optional[bool] = None,
                  schema: Optional[str] = None,
@@ -671,8 +768,5 @@ class Hl7StoreParserConfig(dict):
         Possible values are `V1` and `V2`.
         """
         return pulumi.get(self, "version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

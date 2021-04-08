@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['SshPublicKeyArgs', 'SshPublicKey']
 
@@ -78,6 +82,97 @@ class SshPublicKeyArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _SshPublicKeyState:
+    def __init__(__self__, *,
+                 expiration_time_usec: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SshPublicKey resources.
+        :param pulumi.Input[str] expiration_time_usec: An expiration time in microseconds since epoch.
+        :param pulumi.Input[str] fingerprint: The SHA-256 fingerprint of the SSH public key.
+        :param pulumi.Input[str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
+        :param pulumi.Input[str] project: The project ID of the Google Cloud Platform project.
+        :param pulumi.Input[str] user: The user email.
+        """
+        if expiration_time_usec is not None:
+            pulumi.set(__self__, "expiration_time_usec", expiration_time_usec)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="expirationTimeUsec")
+    def expiration_time_usec(self) -> Optional[pulumi.Input[str]]:
+        """
+        An expiration time in microseconds since epoch.
+        """
+        return pulumi.get(self, "expiration_time_usec")
+
+    @expiration_time_usec.setter
+    def expiration_time_usec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time_usec", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SHA-256 fingerprint of the SSH public key.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public key text in SSH format, defined by RFC4253 section 6.6.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID of the Google Cloud Platform project.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user email.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class SshPublicKey(pulumi.CustomResource):
@@ -210,17 +305,17 @@ class SshPublicKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SshPublicKeyArgs.__new__(SshPublicKeyArgs)
 
-            __props__['expiration_time_usec'] = expiration_time_usec
+            __props__.__dict__["expiration_time_usec"] = expiration_time_usec
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
-            __props__['project'] = project
+            __props__.__dict__["key"] = key
+            __props__.__dict__["project"] = project
             if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
-            __props__['user'] = user
-            __props__['fingerprint'] = None
+            __props__.__dict__["user"] = user
+            __props__.__dict__["fingerprint"] = None
         super(SshPublicKey, __self__).__init__(
             'gcp:oslogin/sshPublicKey:SshPublicKey',
             resource_name,
@@ -251,13 +346,13 @@ class SshPublicKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SshPublicKeyState.__new__(_SshPublicKeyState)
 
-        __props__["expiration_time_usec"] = expiration_time_usec
-        __props__["fingerprint"] = fingerprint
-        __props__["key"] = key
-        __props__["project"] = project
-        __props__["user"] = user
+        __props__.__dict__["expiration_time_usec"] = expiration_time_usec
+        __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["key"] = key
+        __props__.__dict__["project"] = project
+        __props__.__dict__["user"] = user
         return SshPublicKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -299,10 +394,4 @@ class SshPublicKey(pulumi.CustomResource):
         The user email.
         """
         return pulumi.get(self, "user")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -154,6 +158,255 @@ class CertificateArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _CertificateState:
+    def __init__(__self__, *,
+                 certificate_authority: Optional[pulumi.Input[str]] = None,
+                 certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]]] = None,
+                 config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pem_certificate: Optional[pulumi.Input[str]] = None,
+                 pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pem_csr: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Certificate resources.
+        :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
+               this field is present.
+        :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
+               Structure is documented below.
+        :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+               fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
+               running `gcloud beta privateca locations list`.
+        :param pulumi.Input[str] name: The name for this Certificate .
+        :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
+        :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
+               this field is present.
+        :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        """
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if certificate_descriptions is not None:
+            pulumi.set(__self__, "certificate_descriptions", certificate_descriptions)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+        if pem_certificates is not None:
+            pulumi.set(__self__, "pem_certificates", pem_certificates)
+        if pem_csr is not None:
+            pulumi.set(__self__, "pem_csr", pem_csr)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if revocation_details is not None:
+            pulumi.set(__self__, "revocation_details", revocation_details)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate Authority name.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @certificate_authority.setter
+    def certificate_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="certificateDescriptions")
+    def certificate_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]]]:
+        """
+        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
+        this field is present.
+        """
+        return pulumi.get(self, "certificate_descriptions")
+
+    @certificate_descriptions.setter
+    def certificate_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]]]):
+        pulumi.set(self, "certificate_descriptions", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['CertificateConfigArgs']]:
+        """
+        The config used to create a self-signed X.509 certificate or CSR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['CertificateConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time that this resource was created on the server. This is in RFC3339 text format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels with user-defined metadata to apply to this resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+        fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifetime", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the CertificateAuthority. A full list of valid locations can be found by
+        running `gcloud beta privateca locations list`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for this Certificate .
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The pem-encoded, signed X.509 certificate.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_certificate", value)
+
+    @property
+    @pulumi.getter(name="pemCertificates")
+    def pem_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required. Expected to be in leaf-to-root order according to RFC 5246.
+        """
+        return pulumi.get(self, "pem_certificates")
+
+    @pem_certificates.setter
+    def pem_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pem_certificates", value)
+
+    @property
+    @pulumi.getter(name="pemCsr")
+    def pem_csr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        """
+        return pulumi.get(self, "pem_csr")
+
+    @pem_csr.setter
+    def pem_csr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_csr", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="revocationDetails")
+    def revocation_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]]:
+        """
+        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
+        this field is present.
+        """
+        return pulumi.get(self, "revocation_details")
+
+    @revocation_details.setter
+    def revocation_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]]):
+        pulumi.set(self, "revocation_details", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Certificate(pulumi.CustomResource):
@@ -365,26 +618,26 @@ class Certificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CertificateArgs.__new__(CertificateArgs)
 
             if certificate_authority is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authority'")
-            __props__['certificate_authority'] = certificate_authority
-            __props__['config'] = config
-            __props__['labels'] = labels
-            __props__['lifetime'] = lifetime
+            __props__.__dict__["certificate_authority"] = certificate_authority
+            __props__.__dict__["config"] = config
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["lifetime"] = lifetime
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
-            __props__['location'] = location
-            __props__['name'] = name
-            __props__['pem_csr'] = pem_csr
-            __props__['project'] = project
-            __props__['certificate_descriptions'] = None
-            __props__['create_time'] = None
-            __props__['pem_certificate'] = None
-            __props__['pem_certificates'] = None
-            __props__['revocation_details'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
+            __props__.__dict__["pem_csr"] = pem_csr
+            __props__.__dict__["project"] = project
+            __props__.__dict__["certificate_descriptions"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["pem_certificate"] = None
+            __props__.__dict__["pem_certificates"] = None
+            __props__.__dict__["revocation_details"] = None
+            __props__.__dict__["update_time"] = None
         super(Certificate, __self__).__init__(
             'gcp:certificateauthority/certificate:Certificate',
             resource_name,
@@ -440,22 +693,22 @@ class Certificate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CertificateState.__new__(_CertificateState)
 
-        __props__["certificate_authority"] = certificate_authority
-        __props__["certificate_descriptions"] = certificate_descriptions
-        __props__["config"] = config
-        __props__["create_time"] = create_time
-        __props__["labels"] = labels
-        __props__["lifetime"] = lifetime
-        __props__["location"] = location
-        __props__["name"] = name
-        __props__["pem_certificate"] = pem_certificate
-        __props__["pem_certificates"] = pem_certificates
-        __props__["pem_csr"] = pem_csr
-        __props__["project"] = project
-        __props__["revocation_details"] = revocation_details
-        __props__["update_time"] = update_time
+        __props__.__dict__["certificate_authority"] = certificate_authority
+        __props__.__dict__["certificate_descriptions"] = certificate_descriptions
+        __props__.__dict__["config"] = config
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["lifetime"] = lifetime
+        __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
+        __props__.__dict__["pem_certificate"] = pem_certificate
+        __props__.__dict__["pem_certificates"] = pem_certificates
+        __props__.__dict__["pem_csr"] = pem_csr
+        __props__.__dict__["project"] = project
+        __props__.__dict__["revocation_details"] = revocation_details
+        __props__.__dict__["update_time"] = update_time
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -576,10 +829,4 @@ class Certificate(pulumi.CustomResource):
         Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

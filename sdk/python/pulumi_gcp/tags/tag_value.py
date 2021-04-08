@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['TagValueArgs', 'TagValue']
 
@@ -64,6 +68,135 @@ class TagValueArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _TagValueState:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespaced_name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 short_name: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TagValue resources.
+        :param pulumi.Input[str] create_time: Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] description: User-assigned description of the TagValue. Must not exceed 256 characters.
+        :param pulumi.Input[str] name: The generated numeric id for the TagValue.
+        :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
+        :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+               The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        :param pulumi.Input[str] update_time: Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
+               digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespaced_name is not None:
+            pulumi.set(__self__, "namespaced_name", namespaced_name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+        if short_name is not None:
+            pulumi.set(__self__, "short_name", short_name)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-assigned description of the TagValue. Must not exceed 256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The generated numeric id for the TagValue.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespacedName")
+    def namespaced_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        """
+        return pulumi.get(self, "namespaced_name")
+
+    @namespaced_name.setter
+    def namespaced_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespaced_name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+        The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        """
+        return pulumi.get(self, "short_name")
+
+    @short_name.setter
+    def short_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_name", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
+        digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class TagValue(pulumi.CustomResource):
@@ -129,6 +262,7 @@ class TagValue(pulumi.CustomResource):
                  args: TagValueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+<<<<<<< HEAD
         A TagValue is a child of a particular TagKey. TagValues are used to group cloud resources for the purpose of controlling them using policies.
 
         To get more information about TagValue, see:
@@ -154,6 +288,8 @@ class TagValue(pulumi.CustomResource):
             short_name="valuename")
         ```
 
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         ## Import
 
         TagValue can be imported using any of these accepted formats
@@ -202,19 +338,19 @@ class TagValue(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TagValueArgs.__new__(TagValueArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            __props__.__dict__["parent"] = parent
             if short_name is None and not opts.urn:
                 raise TypeError("Missing required property 'short_name'")
-            __props__['short_name'] = short_name
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['namespaced_name'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["short_name"] = short_name
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["namespaced_name"] = None
+            __props__.__dict__["update_time"] = None
         super(TagValue, __self__).__init__(
             'gcp:tags/tagValue:TagValue',
             resource_name,
@@ -252,15 +388,15 @@ class TagValue(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TagValueState.__new__(_TagValueState)
 
-        __props__["create_time"] = create_time
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["namespaced_name"] = namespaced_name
-        __props__["parent"] = parent
-        __props__["short_name"] = short_name
-        __props__["update_time"] = update_time
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespaced_name"] = namespaced_name
+        __props__.__dict__["parent"] = parent
+        __props__.__dict__["short_name"] = short_name
+        __props__.__dict__["update_time"] = update_time
         return TagValue(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -321,10 +457,4 @@ class TagValue(pulumi.CustomResource):
         digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

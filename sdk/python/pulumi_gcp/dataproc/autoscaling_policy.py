@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -127,6 +131,143 @@ class AutoscalingPolicyArgs:
     @worker_config.setter
     def worker_config(self, value: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']]):
         pulumi.set(self, "worker_config", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _AutoscalingPolicyState:
+    def __init__(__self__, *,
+                 basic_algorithm: Optional[pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 secondary_worker_config: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']] = None,
+                 worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None):
+        """
+        Input properties used for looking up and filtering AutoscalingPolicy resources.
+        :param pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs'] basic_algorithm: Basic algorithm for autoscaling.
+               Structure is documented below.
+        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
+               The default value is `global`.
+        :param pulumi.Input[str] name: The "resource name" of the autoscaling policy.
+        :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+               and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+               3 and 50 characters.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs'] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
+               Structure is documented below.
+        :param pulumi.Input['AutoscalingPolicyWorkerConfigArgs'] worker_config: Describes how the autoscaler will operate for primary workers.
+               Structure is documented below.
+        """
+        if basic_algorithm is not None:
+            pulumi.set(__self__, "basic_algorithm", basic_algorithm)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if secondary_worker_config is not None:
+            pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
+        if worker_config is not None:
+            pulumi.set(__self__, "worker_config", worker_config)
+
+    @property
+    @pulumi.getter(name="basicAlgorithm")
+    def basic_algorithm(self) -> Optional[pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs']]:
+        """
+        Basic algorithm for autoscaling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "basic_algorithm")
+
+    @basic_algorithm.setter
+    def basic_algorithm(self, value: Optional[pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs']]):
+        pulumi.set(self, "basic_algorithm", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The  location where the autoscaling policy should reside.
+        The default value is `global`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The "resource name" of the autoscaling policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+        and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+        3 and 50 characters.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="secondaryWorkerConfig")
+    def secondary_worker_config(self) -> Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']]:
+        """
+        Describes how the autoscaler will operate for secondary workers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secondary_worker_config")
+
+    @secondary_worker_config.setter
+    def secondary_worker_config(self, value: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']]):
+        pulumi.set(self, "secondary_worker_config", value)
+
+    @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']]:
+        """
+        Describes how the autoscaler will operate for primary workers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "worker_config")
+
+    @worker_config.setter
+    def worker_config(self, value: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']]):
+        pulumi.set(self, "worker_config", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class AutoscalingPolicy(pulumi.CustomResource):
@@ -300,17 +441,17 @@ class AutoscalingPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AutoscalingPolicyArgs.__new__(AutoscalingPolicyArgs)
 
-            __props__['basic_algorithm'] = basic_algorithm
-            __props__['location'] = location
+            __props__.__dict__["basic_algorithm"] = basic_algorithm
+            __props__.__dict__["location"] = location
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
-            __props__['policy_id'] = policy_id
-            __props__['project'] = project
-            __props__['secondary_worker_config'] = secondary_worker_config
-            __props__['worker_config'] = worker_config
-            __props__['name'] = None
+            __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["project"] = project
+            __props__.__dict__["secondary_worker_config"] = secondary_worker_config
+            __props__.__dict__["worker_config"] = worker_config
+            __props__.__dict__["name"] = None
         super(AutoscalingPolicy, __self__).__init__(
             'gcp:dataproc/autoscalingPolicy:AutoscalingPolicy',
             resource_name,
@@ -352,15 +493,15 @@ class AutoscalingPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AutoscalingPolicyState.__new__(_AutoscalingPolicyState)
 
-        __props__["basic_algorithm"] = basic_algorithm
-        __props__["location"] = location
-        __props__["name"] = name
-        __props__["policy_id"] = policy_id
-        __props__["project"] = project
-        __props__["secondary_worker_config"] = secondary_worker_config
-        __props__["worker_config"] = worker_config
+        __props__.__dict__["basic_algorithm"] = basic_algorithm
+        __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
+        __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["project"] = project
+        __props__.__dict__["secondary_worker_config"] = secondary_worker_config
+        __props__.__dict__["worker_config"] = worker_config
         return AutoscalingPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -425,10 +566,4 @@ class AutoscalingPolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "worker_config")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

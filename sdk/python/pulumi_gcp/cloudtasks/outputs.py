@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = [
     'QueueAppEngineRoutingOverride',
@@ -77,12 +81,30 @@ class QueueAppEngineRoutingOverride(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueueRateLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBurstSize":
+            suggest = "max_burst_size"
+        elif key == "maxConcurrentDispatches":
+            suggest = "max_concurrent_dispatches"
+        elif key == "maxDispatchesPerSecond":
+            suggest = "max_dispatches_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueRateLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueRateLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueRateLimits.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_burst_size: Optional[int] = None,
                  max_concurrent_dispatches: Optional[int] = None,
@@ -141,12 +163,34 @@ class QueueRateLimits(dict):
         """
         return pulumi.get(self, "max_dispatches_per_second")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueueRetryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAttempts":
+            suggest = "max_attempts"
+        elif key == "maxBackoff":
+            suggest = "max_backoff"
+        elif key == "maxDoublings":
+            suggest = "max_doublings"
+        elif key == "maxRetryDuration":
+            suggest = "max_retry_duration"
+        elif key == "minBackoff":
+            suggest = "min_backoff"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueRetryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueRetryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueRetryConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_attempts: Optional[int] = None,
                  max_backoff: Optional[str] = None,
@@ -247,12 +291,26 @@ class QueueRetryConfig(dict):
         """
         return pulumi.get(self, "min_backoff")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueueStackdriverLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRatio":
+            suggest = "sampling_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueStackdriverLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueStackdriverLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueStackdriverLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sampling_ratio: float):
         """
@@ -271,8 +329,5 @@ class QueueStackdriverLoggingConfig(dict):
         default and means that no operations are logged.
         """
         return pulumi.get(self, "sampling_ratio")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

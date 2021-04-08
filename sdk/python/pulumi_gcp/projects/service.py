@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ServiceArgs', 'Service']
 
@@ -81,6 +85,83 @@ class ServiceArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ServiceState:
+    def __init__(__self__, *,
+                 disable_dependent_services: Optional[pulumi.Input[bool]] = None,
+                 disable_on_destroy: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Service resources.
+        :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
+               If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        :param pulumi.Input[str] project: The project ID. If not provided, the provider project is used.
+        :param pulumi.Input[str] service: The service to enable.
+        """
+        if disable_dependent_services is not None:
+            pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
+        if disable_on_destroy is not None:
+            pulumi.set(__self__, "disable_on_destroy", disable_on_destroy)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="disableDependentServices")
+    def disable_dependent_services(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
+        If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        """
+        return pulumi.get(self, "disable_dependent_services")
+
+    @disable_dependent_services.setter
+    def disable_dependent_services(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_dependent_services", value)
+
+    @property
+    @pulumi.getter(name="disableOnDestroy")
+    def disable_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        """
+        return pulumi.get(self, "disable_on_destroy")
+
+    @disable_on_destroy.setter
+    def disable_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_on_destroy", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID. If not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service to enable.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Service(pulumi.CustomResource):
@@ -206,14 +287,14 @@ class Service(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServiceArgs.__new__(ServiceArgs)
 
-            __props__['disable_dependent_services'] = disable_dependent_services
-            __props__['disable_on_destroy'] = disable_on_destroy
-            __props__['project'] = project
+            __props__.__dict__["disable_dependent_services"] = disable_dependent_services
+            __props__.__dict__["disable_on_destroy"] = disable_on_destroy
+            __props__.__dict__["project"] = project
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
-            __props__['service'] = service
+            __props__.__dict__["service"] = service
         super(Service, __self__).__init__(
             'gcp:projects/service:Service',
             resource_name,
@@ -243,12 +324,12 @@ class Service(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServiceState.__new__(_ServiceState)
 
-        __props__["disable_dependent_services"] = disable_dependent_services
-        __props__["disable_on_destroy"] = disable_on_destroy
-        __props__["project"] = project
-        __props__["service"] = service
+        __props__.__dict__["disable_dependent_services"] = disable_dependent_services
+        __props__.__dict__["disable_on_destroy"] = disable_on_destroy
+        __props__.__dict__["project"] = project
+        __props__.__dict__["service"] = service
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -283,10 +364,4 @@ class Service(pulumi.CustomResource):
         The service to enable.
         """
         return pulumi.get(self, "service")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

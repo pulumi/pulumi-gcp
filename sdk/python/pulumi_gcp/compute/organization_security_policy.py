@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['OrganizationSecurityPolicyArgs', 'OrganizationSecurityPolicy']
 
@@ -88,6 +92,123 @@ class OrganizationSecurityPolicyArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _OrganizationSecurityPolicyState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
+        :param pulumi.Input[str] description: A textual description for the organization security policy.
+        :param pulumi.Input[str] display_name: A textual name of the security policy.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
+               Format: organizations/{organization_id} or folders/{folder_id}
+        :param pulumi.Input[str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
+               For organization security policies, the only supported type
+               is "FIREWALL".
+               Default value is `FIREWALL`.
+               Possible values are `FIREWALL`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A textual description for the organization security policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A textual name of the security policy.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of this resource. This field is used internally during updates of this resource.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
+        Format: organizations/{organization_id} or folders/{folder_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type indicates the intended use of the security policy.
+        For organization security policies, the only supported type
+        is "FIREWALL".
+        Default value is `FIREWALL`.
+        Possible values are `FIREWALL`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class OrganizationSecurityPolicy(pulumi.CustomResource):
@@ -203,18 +324,18 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationSecurityPolicyArgs.__new__(OrganizationSecurityPolicyArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
+            __props__.__dict__["display_name"] = display_name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['type'] = type
-            __props__['fingerprint'] = None
-            __props__['policy_id'] = None
+            __props__.__dict__["parent"] = parent
+            __props__.__dict__["type"] = type
+            __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["policy_id"] = None
         super(OrganizationSecurityPolicy, __self__).__init__(
             'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy',
             resource_name,
@@ -252,14 +373,14 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _OrganizationSecurityPolicyState.__new__(_OrganizationSecurityPolicyState)
 
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["fingerprint"] = fingerprint
-        __props__["parent"] = parent
-        __props__["policy_id"] = policy_id
-        __props__["type"] = type
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["parent"] = parent
+        __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["type"] = type
         return OrganizationSecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -314,10 +435,4 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         Possible values are `FIREWALL`.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

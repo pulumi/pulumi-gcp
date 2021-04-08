@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ProjectArgs', 'Project']
 
@@ -34,6 +38,67 @@ class ProjectArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ProjectState:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 project_number: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[str] display_name: The GCP project display name
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] project_number: The number of the google project that firebase is enabled on.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if project_number is not None:
+            pulumi.set(__self__, "project_number", project_number)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GCP project display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of the google project that firebase is enabled on.
+        """
+        return pulumi.get(self, "project_number")
+
+    @project_number.setter
+    def project_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_number", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Project(pulumi.CustomResource):
@@ -144,11 +209,11 @@ class Project(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__['project'] = project
-            __props__['display_name'] = None
-            __props__['project_number'] = None
+            __props__.__dict__["project"] = project
+            __props__.__dict__["display_name"] = None
+            __props__.__dict__["project_number"] = None
         super(Project, __self__).__init__(
             'gcp:firebase/project:Project',
             resource_name,
@@ -176,11 +241,11 @@ class Project(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectState.__new__(_ProjectState)
 
-        __props__["display_name"] = display_name
-        __props__["project"] = project
-        __props__["project_number"] = project_number
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["project_number"] = project_number
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -207,10 +272,4 @@ class Project(pulumi.CustomResource):
         The number of the google project that firebase is enabled on.
         """
         return pulumi.get(self, "project_number")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

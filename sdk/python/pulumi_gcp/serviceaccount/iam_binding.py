@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -81,6 +85,99 @@ class IAMBindingArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _IAMBindingState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 service_account_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering IAMBinding resources.
+        :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: (Computed) The etag of the service account IAM policy.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the service account IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified name of the service account to apply policy to.
+        """
+        return pulumi.get(self, "service_account_id")
+
+    @service_account_id.setter
+    def service_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_id", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class IAMBinding(pulumi.CustomResource):
@@ -413,19 +510,19 @@ class IAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IAMBindingArgs.__new__(IAMBindingArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
-            __props__['members'] = members
+            __props__.__dict__["members"] = members
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
+            __props__.__dict__["role"] = role
             if service_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_id'")
-            __props__['service_account_id'] = service_account_id
-            __props__['etag'] = None
+            __props__.__dict__["service_account_id"] = service_account_id
+            __props__.__dict__["etag"] = None
         super(IAMBinding, __self__).__init__(
             'gcp:serviceAccount/iAMBinding:IAMBinding',
             resource_name,
@@ -458,13 +555,13 @@ class IAMBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IAMBindingState.__new__(_IAMBindingState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["members"] = members
-        __props__["role"] = role
-        __props__["service_account_id"] = service_account_id
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["members"] = members
+        __props__.__dict__["role"] = role
+        __props__.__dict__["service_account_id"] = service_account_id
         return IAMBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -506,10 +603,4 @@ class IAMBinding(pulumi.CustomResource):
         The fully-qualified name of the service account to apply policy to.
         """
         return pulumi.get(self, "service_account_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

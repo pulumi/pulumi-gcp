@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -146,6 +150,177 @@ class InstanceGroupArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _InstanceGroupState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceGroup resources.
+        :param pulumi.Input[str] description: An optional textual description of the instance
+               group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the group. They should be given
+               as either self_link or id. When adding instances they must all be in the same
+               network and zone as the instance group.
+        :param pulumi.Input[str] name: The name which the port will be mapped to.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]] named_ports: The named port configuration. See the section below
+               for details on configuration.
+        :param pulumi.Input[str] network: The URL of the network the instance group is in. If
+               this is different from the network where the instances are in, the creation
+               fails. Defaults to the network where the instances are in (if neither
+               `network` nor `instances` is specified, this field will be blank).
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[int] size: The number of instances in the group.
+        :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if named_ports is not None:
+            pulumi.set(__self__, "named_ports", named_ports)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional textual description of the instance
+        group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of instances in the group. They should be given
+        as either self_link or id. When adding instances they must all be in the same
+        network and zone as the instance group.
+        """
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instances", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name which the port will be mapped to.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namedPorts")
+    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]:
+        """
+        The named port configuration. See the section below
+        for details on configuration.
+        """
+        return pulumi.get(self, "named_ports")
+
+    @named_ports.setter
+    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]):
+        pulumi.set(self, "named_ports", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network the instance group is in. If
+        this is different from the network where the instances are in, the creation
+        fails. Defaults to the network where the instances are in (if neither
+        `network` nor `instances` is specified, this field will be blank).
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of instances in the group.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone that this instance group should be created in.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class InstanceGroup(pulumi.CustomResource):
@@ -431,17 +606,17 @@ class InstanceGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceGroupArgs.__new__(InstanceGroupArgs)
 
-            __props__['description'] = description
-            __props__['instances'] = instances
-            __props__['name'] = name
-            __props__['named_ports'] = named_ports
-            __props__['network'] = network
-            __props__['project'] = project
-            __props__['zone'] = zone
-            __props__['self_link'] = None
-            __props__['size'] = None
+            __props__.__dict__["description"] = description
+            __props__.__dict__["instances"] = instances
+            __props__.__dict__["name"] = name
+            __props__.__dict__["named_ports"] = named_ports
+            __props__.__dict__["network"] = network
+            __props__.__dict__["project"] = project
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["size"] = None
         super(InstanceGroup, __self__).__init__(
             'gcp:compute/instanceGroup:InstanceGroup',
             resource_name,
@@ -488,17 +663,17 @@ class InstanceGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceGroupState.__new__(_InstanceGroupState)
 
-        __props__["description"] = description
-        __props__["instances"] = instances
-        __props__["name"] = name
-        __props__["named_ports"] = named_ports
-        __props__["network"] = network
-        __props__["project"] = project
-        __props__["self_link"] = self_link
-        __props__["size"] = size
-        __props__["zone"] = zone
+        __props__.__dict__["description"] = description
+        __props__.__dict__["instances"] = instances
+        __props__.__dict__["name"] = name
+        __props__.__dict__["named_ports"] = named_ports
+        __props__.__dict__["network"] = network
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["size"] = size
+        __props__.__dict__["zone"] = zone
         return InstanceGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -580,10 +755,4 @@ class InstanceGroup(pulumi.CustomResource):
         The zone that this instance group should be created in.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

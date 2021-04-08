@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = [
     'CryptoKeyIAMBindingCondition',
@@ -62,9 +66,6 @@ class CryptoKeyIAMBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CryptoKeyIAMMemberCondition(dict):
@@ -106,12 +107,26 @@ class CryptoKeyIAMMemberCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CryptoKeyVersionTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protectionLevel":
+            suggest = "protection_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyVersionTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyVersionTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyVersionTemplate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  protection_level: Optional[str] = None):
@@ -144,9 +159,6 @@ class CryptoKeyVersionTemplate(dict):
         Possible values are `SOFTWARE` and `HSM`.
         """
         return pulumi.get(self, "protection_level")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -189,9 +201,6 @@ class KeyRingIAMBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyRingIAMMemberCondition(dict):
@@ -233,9 +242,6 @@ class KeyRingIAMMemberCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyRingImportJobAttestation(dict):
@@ -257,9 +263,6 @@ class KeyRingImportJobAttestation(dict):
     def format(self) -> Optional[str]:
         return pulumi.get(self, "format")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyRingImportJobPublicKey(dict):
@@ -273,12 +276,26 @@ class KeyRingImportJobPublicKey(dict):
     def pem(self) -> Optional[str]:
         return pulumi.get(self, "pem")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistryCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeyCertificate":
+            suggest = "public_key_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistryCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistryCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistryCredential.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key_certificate: Mapping[str, Any]):
         """
@@ -294,12 +311,28 @@ class RegistryCredential(dict):
         """
         return pulumi.get(self, "public_key_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistryEventNotificationConfigItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopicName":
+            suggest = "pubsub_topic_name"
+        elif key == "subfolderMatches":
+            suggest = "subfolder_matches"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistryEventNotificationConfigItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistryEventNotificationConfigItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistryEventNotificationConfigItem.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic_name: str,
                  subfolder_matches: Optional[str] = None):
@@ -334,9 +367,6 @@ class RegistryEventNotificationConfigItem(dict):
         item.
         """
         return pulumi.get(self, "subfolder_matches")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

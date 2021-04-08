@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -27,6 +31,25 @@ __all__ = [
 
 @pulumi.output_type
 class AccessApprovalSettingsEnrolledService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudProduct":
+            suggest = "cloud_product"
+        elif key == "enrollmentLevel":
+            suggest = "enrollment_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApprovalSettingsEnrolledService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApprovalSettingsEnrolledService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApprovalSettingsEnrolledService.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_product: str,
                  enrollment_level: Optional[str] = None):
@@ -43,9 +66,6 @@ class AccessApprovalSettingsEnrolledService(dict):
     @pulumi.getter(name="enrollmentLevel")
     def enrollment_level(self) -> Optional[str]:
         return pulumi.get(self, "enrollment_level")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -74,9 +94,6 @@ class IAMBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IAMMemberCondition(dict):
@@ -104,12 +121,28 @@ class IAMMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IamAuditConfigAuditLogConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logType":
+            suggest = "log_type"
+        elif key == "exemptedMembers":
+            suggest = "exempted_members"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IamAuditConfigAuditLogConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IamAuditConfigAuditLogConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IamAuditConfigAuditLogConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_type: str,
                  exempted_members: Optional[Sequence[str]] = None):
@@ -147,9 +180,6 @@ class IamAuditConfigAuditLogConfig(dict):
         """
         return pulumi.get(self, "exempted_members")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyBooleanPolicy(dict):
@@ -168,12 +198,28 @@ class PolicyBooleanPolicy(dict):
         """
         return pulumi.get(self, "enforced")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyListPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inheritFromParent":
+            suggest = "inherit_from_parent"
+        elif key == "suggestedValue":
+            suggest = "suggested_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyListPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyListPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyListPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow: Optional['outputs.PolicyListPolicyAllow'] = None,
                  deny: Optional['outputs.PolicyListPolicyDeny'] = None,
@@ -224,9 +270,6 @@ class PolicyListPolicy(dict):
         """
         return pulumi.get(self, "suggested_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyListPolicyAllow(dict):
@@ -257,9 +300,6 @@ class PolicyListPolicyAllow(dict):
         The policy can define specific values that are allowed or denied.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -292,9 +332,6 @@ class PolicyListPolicyDeny(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyRestorePolicy(dict):
@@ -312,9 +349,6 @@ class PolicyRestorePolicy(dict):
         May only be set to true. If set, then the default Policy is restored.
         """
         return pulumi.get(self, "default")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

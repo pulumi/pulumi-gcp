@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -185,6 +189,187 @@ class PacketMirroringArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _PacketMirroringState:
+    def __init__(__self__, *,
+                 collector_ilb: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
+                 mirrored_resources: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input['PacketMirroringNetworkArgs']] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering PacketMirroring resources.
+        :param pulumi.Input['PacketMirroringCollectorIlbArgs'] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+               that will be used as collector for mirrored traffic. The
+               specified forwarding rule must have is_mirroring_collector
+               set to true.
+               Structure is documented below.
+        :param pulumi.Input[str] description: A human-readable description of the rule.
+        :param pulumi.Input['PacketMirroringFilterArgs'] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+               Structure is documented below.
+        :param pulumi.Input['PacketMirroringMirroredResourcesArgs'] mirrored_resources: A means of specifying which resources to mirror.
+               Structure is documented below.
+        :param pulumi.Input[str] name: The name of the packet mirroring rule
+        :param pulumi.Input['PacketMirroringNetworkArgs'] network: Specifies the mirrored VPC network. Only packets in this network
+               will be mirrored. All mirrored VMs should have a NIC in the given
+               network. All mirrored subnetworks should belong to the given network.
+               Structure is documented below.
+        :param pulumi.Input[int] priority: Since only one rule can be active at a time, priority is
+               used to break ties in the case of two rules that apply to
+               the same instances.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
+        """
+        if collector_ilb is not None:
+            pulumi.set(__self__, "collector_ilb", collector_ilb)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if mirrored_resources is not None:
+            pulumi.set(__self__, "mirrored_resources", mirrored_resources)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="collectorIlb")
+    def collector_ilb(self) -> Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']]:
+        """
+        The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        that will be used as collector for mirrored traffic. The
+        specified forwarding rule must have is_mirroring_collector
+        set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "collector_ilb")
+
+    @collector_ilb.setter
+    def collector_ilb(self, value: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']]):
+        pulumi.set(self, "collector_ilb", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input['PacketMirroringFilterArgs']]:
+        """
+        A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input['PacketMirroringFilterArgs']]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="mirroredResources")
+    def mirrored_resources(self) -> Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']]:
+        """
+        A means of specifying which resources to mirror.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mirrored_resources")
+
+    @mirrored_resources.setter
+    def mirrored_resources(self, value: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']]):
+        pulumi.set(self, "mirrored_resources", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the packet mirroring rule
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['PacketMirroringNetworkArgs']]:
+        """
+        Specifies the mirrored VPC network. Only packets in this network
+        will be mirrored. All mirrored VMs should have a NIC in the given
+        network. All mirrored subnetworks should belong to the given network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['PacketMirroringNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Since only one rule can be active at a time, priority is
+        used to break ties in the case of two rules that apply to
+        the same instances.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region in which the created address should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class PacketMirroring(pulumi.CustomResource):
@@ -459,23 +644,23 @@ class PacketMirroring(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PacketMirroringArgs.__new__(PacketMirroringArgs)
 
             if collector_ilb is None and not opts.urn:
                 raise TypeError("Missing required property 'collector_ilb'")
-            __props__['collector_ilb'] = collector_ilb
-            __props__['description'] = description
-            __props__['filter'] = filter
+            __props__.__dict__["collector_ilb"] = collector_ilb
+            __props__.__dict__["description"] = description
+            __props__.__dict__["filter"] = filter
             if mirrored_resources is None and not opts.urn:
                 raise TypeError("Missing required property 'mirrored_resources'")
-            __props__['mirrored_resources'] = mirrored_resources
-            __props__['name'] = name
+            __props__.__dict__["mirrored_resources"] = mirrored_resources
+            __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
-            __props__['network'] = network
-            __props__['priority'] = priority
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["network"] = network
+            __props__.__dict__["priority"] = priority
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
         super(PacketMirroring, __self__).__init__(
             'gcp:compute/packetMirroring:PacketMirroring',
             resource_name,
@@ -527,17 +712,17 @@ class PacketMirroring(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PacketMirroringState.__new__(_PacketMirroringState)
 
-        __props__["collector_ilb"] = collector_ilb
-        __props__["description"] = description
-        __props__["filter"] = filter
-        __props__["mirrored_resources"] = mirrored_resources
-        __props__["name"] = name
-        __props__["network"] = network
-        __props__["priority"] = priority
-        __props__["project"] = project
-        __props__["region"] = region
+        __props__.__dict__["collector_ilb"] = collector_ilb
+        __props__.__dict__["description"] = description
+        __props__.__dict__["filter"] = filter
+        __props__.__dict__["mirrored_resources"] = mirrored_resources
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
         return PacketMirroring(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -624,10 +809,4 @@ class PacketMirroring(pulumi.CustomResource):
         If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

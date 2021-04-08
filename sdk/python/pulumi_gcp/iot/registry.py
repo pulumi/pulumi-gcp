@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -190,6 +194,189 @@ class RegistryArgs:
     @state_notification_config.setter
     def state_notification_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "state_notification_config", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _RegistryState:
+    def __init__(__self__, *,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]] = None,
+                 event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEventNotificationConfigItemArgs']]]] = None,
+                 http_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 log_level: Optional[pulumi.Input[str]] = None,
+                 mqtt_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Registry resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]] credentials: List of public key certificates to authenticate devices.
+               The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegistryEventNotificationConfigItemArgs']]] event_notification_configs: List of configurations for event notifications, such as PubSub topics
+               to publish device events to.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, Any]] http_config: Activate or deactivate HTTP.
+               The structure is documented below.
+        :param pulumi.Input[str] log_level: The default logging verbosity for activity from devices in this
+               registry. Specifies which events should be written to logs. For
+               example, if the LogLevel is ERROR, only events that terminate in
+               errors will be logged. LogLevel is inclusive; enabling INFO logging
+               will also enable ERROR logging.
+               Default value is `NONE`.
+               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
+               The structure is documented below.
+        :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region in which the created registry should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[Mapping[str, Any]] state_notification_config: A PubSub topic to publish device state updates.
+               The structure is documented below.
+        """
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
+        if event_notification_configs is not None:
+            pulumi.set(__self__, "event_notification_configs", event_notification_configs)
+        if http_config is not None:
+            pulumi.set(__self__, "http_config", http_config)
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+        if mqtt_config is not None:
+            pulumi.set(__self__, "mqtt_config", mqtt_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if state_notification_config is not None:
+            pulumi.set(__self__, "state_notification_config", state_notification_config)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]]:
+        """
+        List of public key certificates to authenticate devices.
+        The structure is documented below.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]]):
+        pulumi.set(self, "credentials", value)
+
+    @property
+    @pulumi.getter(name="eventNotificationConfigs")
+    def event_notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEventNotificationConfigItemArgs']]]]:
+        """
+        List of configurations for event notifications, such as PubSub topics
+        to publish device events to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event_notification_configs")
+
+    @event_notification_configs.setter
+    def event_notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEventNotificationConfigItemArgs']]]]):
+        pulumi.set(self, "event_notification_configs", value)
+
+    @property
+    @pulumi.getter(name="httpConfig")
+    def http_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Activate or deactivate HTTP.
+        The structure is documented below.
+        """
+        return pulumi.get(self, "http_config")
+
+    @http_config.setter
+    def http_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "http_config", value)
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default logging verbosity for activity from devices in this
+        registry. Specifies which events should be written to logs. For
+        example, if the LogLevel is ERROR, only events that terminate in
+        errors will be logged. LogLevel is inclusive; enabling INFO logging
+        will also enable ERROR logging.
+        Default value is `NONE`.
+        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        """
+        return pulumi.get(self, "log_level")
+
+    @log_level.setter
+    def log_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_level", value)
+
+    @property
+    @pulumi.getter(name="mqttConfig")
+    def mqtt_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Activate or deactivate MQTT.
+        The structure is documented below.
+        """
+        return pulumi.get(self, "mqtt_config")
+
+    @mqtt_config.setter
+    def mqtt_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "mqtt_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource, required by device registry.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which the created registry should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="stateNotificationConfig")
+    def state_notification_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A PubSub topic to publish device state updates.
+        The structure is documented below.
+        """
+        return pulumi.get(self, "state_notification_config")
+
+    @state_notification_config.setter
+    def state_notification_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "state_notification_config", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Registry(pulumi.CustomResource):
@@ -459,17 +646,17 @@ class Registry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegistryArgs.__new__(RegistryArgs)
 
-            __props__['credentials'] = credentials
-            __props__['event_notification_configs'] = event_notification_configs
-            __props__['http_config'] = http_config
-            __props__['log_level'] = log_level
-            __props__['mqtt_config'] = mqtt_config
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['state_notification_config'] = state_notification_config
+            __props__.__dict__["credentials"] = credentials
+            __props__.__dict__["event_notification_configs"] = event_notification_configs
+            __props__.__dict__["http_config"] = http_config
+            __props__.__dict__["log_level"] = log_level
+            __props__.__dict__["mqtt_config"] = mqtt_config
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["state_notification_config"] = state_notification_config
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="gcp:kms/registry:Registry")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Registry, __self__).__init__(
@@ -524,17 +711,17 @@ class Registry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RegistryState.__new__(_RegistryState)
 
-        __props__["credentials"] = credentials
-        __props__["event_notification_configs"] = event_notification_configs
-        __props__["http_config"] = http_config
-        __props__["log_level"] = log_level
-        __props__["mqtt_config"] = mqtt_config
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["state_notification_config"] = state_notification_config
+        __props__.__dict__["credentials"] = credentials
+        __props__.__dict__["event_notification_configs"] = event_notification_configs
+        __props__.__dict__["http_config"] = http_config
+        __props__.__dict__["log_level"] = log_level
+        __props__.__dict__["mqtt_config"] = mqtt_config
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["state_notification_config"] = state_notification_config
         return Registry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -622,10 +809,4 @@ class Registry(pulumi.CustomResource):
         The structure is documented below.
         """
         return pulumi.get(self, "state_notification_config")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

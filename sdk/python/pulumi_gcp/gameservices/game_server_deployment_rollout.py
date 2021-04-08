@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -94,6 +98,113 @@ class GameServerDeploymentRolloutArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _GameServerDeploymentRolloutState:
+    def __init__(__self__, *,
+                 default_game_server_config: Optional[pulumi.Input[str]] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
+                 game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering GameServerDeploymentRollout resources.
+        :param pulumi.Input[str] default_game_server_config: This field points to the game server config that is
+               applied by default to all realms and clusters. For example,
+               `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        :param pulumi.Input[str] deployment_id: The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
+        :param pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
+               overrides. The overrides are processed in the order they are listed. As
+               soon as a match is found for a cluster, the rest of the list is not
+               processed.
+               Structure is documented below.
+        :param pulumi.Input[str] name: The resource id of the game server deployment eg:
+               'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if default_game_server_config is not None:
+            pulumi.set(__self__, "default_game_server_config", default_game_server_config)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if game_server_config_overrides is not None:
+            pulumi.set(__self__, "game_server_config_overrides", game_server_config_overrides)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="defaultGameServerConfig")
+    def default_game_server_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field points to the game server config that is
+        applied by default to all realms and clusters. For example,
+        `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        """
+        return pulumi.get(self, "default_game_server_config")
+
+    @default_game_server_config.setter
+    def default_game_server_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_game_server_config", value)
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
+        """
+        return pulumi.get(self, "deployment_id")
+
+    @deployment_id.setter
+    def deployment_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_id", value)
+
+    @property
+    @pulumi.getter(name="gameServerConfigOverrides")
+    def game_server_config_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]]:
+        """
+        The game_server_config_overrides contains the per game server config
+        overrides. The overrides are processed in the order they are listed. As
+        soon as a match is found for a cluster, the rest of the list is not
+        processed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "game_server_config_overrides")
+
+    @game_server_config_overrides.setter
+    def game_server_config_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]]):
+        pulumi.set(self, "game_server_config_overrides", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource id of the game server deployment eg:
+        'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class GameServerDeploymentRollout(pulumi.CustomResource):
@@ -313,17 +424,17 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GameServerDeploymentRolloutArgs.__new__(GameServerDeploymentRolloutArgs)
 
             if default_game_server_config is None and not opts.urn:
                 raise TypeError("Missing required property 'default_game_server_config'")
-            __props__['default_game_server_config'] = default_game_server_config
+            __props__.__dict__["default_game_server_config"] = default_game_server_config
             if deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment_id'")
-            __props__['deployment_id'] = deployment_id
-            __props__['game_server_config_overrides'] = game_server_config_overrides
-            __props__['project'] = project
-            __props__['name'] = None
+            __props__.__dict__["deployment_id"] = deployment_id
+            __props__.__dict__["game_server_config_overrides"] = game_server_config_overrides
+            __props__.__dict__["project"] = project
+            __props__.__dict__["name"] = None
         super(GameServerDeploymentRollout, __self__).__init__(
             'gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout',
             resource_name,
@@ -362,13 +473,13 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GameServerDeploymentRolloutState.__new__(_GameServerDeploymentRolloutState)
 
-        __props__["default_game_server_config"] = default_game_server_config
-        __props__["deployment_id"] = deployment_id
-        __props__["game_server_config_overrides"] = game_server_config_overrides
-        __props__["name"] = name
-        __props__["project"] = project
+        __props__.__dict__["default_game_server_config"] = default_game_server_config
+        __props__.__dict__["deployment_id"] = deployment_id
+        __props__.__dict__["game_server_config_overrides"] = game_server_config_overrides
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
         return GameServerDeploymentRollout(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -418,10 +529,4 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

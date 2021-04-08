@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -148,6 +152,147 @@ class PolicyArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _PolicyState:
+    def __init__(__self__, *,
+                 alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Policy resources.
+        :param pulumi.Input['PolicyAlternativeNameServerConfigArgs'] alternative_name_server_config: Sets an alternative name server for the associated networks.
+               When specified, all DNS queries are forwarded to a name server that you choose.
+               Names such as .internal are not available when an alternative name server is specified.
+               Structure is documented below.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
+               by VMs or applications over VPN connections. When enabled, a
+               virtual IP address will be allocated from each of the sub-networks
+               that are bound to this policy.
+        :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
+               Defaults to no logging if not set.
+        :param pulumi.Input[str] name: User assigned name for this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if alternative_name_server_config is not None:
+            pulumi.set(__self__, "alternative_name_server_config", alternative_name_server_config)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_inbound_forwarding is not None:
+            pulumi.set(__self__, "enable_inbound_forwarding", enable_inbound_forwarding)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="alternativeNameServerConfig")
+    def alternative_name_server_config(self) -> Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']]:
+        """
+        Sets an alternative name server for the associated networks.
+        When specified, all DNS queries are forwarded to a name server that you choose.
+        Names such as .internal are not available when an alternative name server is specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "alternative_name_server_config")
+
+    @alternative_name_server_config.setter
+    def alternative_name_server_config(self, value: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']]):
+        pulumi.set(self, "alternative_name_server_config", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A textual description field. Defaults to 'Managed by Pulumi'.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableInboundForwarding")
+    def enable_inbound_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows networks bound to this policy to receive DNS queries sent
+        by VMs or applications over VPN connections. When enabled, a
+        virtual IP address will be allocated from each of the sub-networks
+        that are bound to this policy.
+        """
+        return pulumi.get(self, "enable_inbound_forwarding")
+
+    @enable_inbound_forwarding.setter
+    def enable_inbound_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_inbound_forwarding", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether logging is enabled for the networks bound to this policy.
+        Defaults to no logging if not set.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User assigned name for this policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]]:
+        """
+        List of network names specifying networks to which this policy is applied.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Policy(pulumi.CustomResource):
@@ -348,15 +493,15 @@ class Policy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PolicyArgs.__new__(PolicyArgs)
 
-            __props__['alternative_name_server_config'] = alternative_name_server_config
-            __props__['description'] = description
-            __props__['enable_inbound_forwarding'] = enable_inbound_forwarding
-            __props__['enable_logging'] = enable_logging
-            __props__['name'] = name
-            __props__['networks'] = networks
-            __props__['project'] = project
+            __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
+            __props__.__dict__["description"] = description
+            __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding
+            __props__.__dict__["enable_logging"] = enable_logging
+            __props__.__dict__["name"] = name
+            __props__.__dict__["networks"] = networks
+            __props__.__dict__["project"] = project
         super(Policy, __self__).__init__(
             'gcp:dns/policy:Policy',
             resource_name,
@@ -400,15 +545,15 @@ class Policy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PolicyState.__new__(_PolicyState)
 
-        __props__["alternative_name_server_config"] = alternative_name_server_config
-        __props__["description"] = description
-        __props__["enable_inbound_forwarding"] = enable_inbound_forwarding
-        __props__["enable_logging"] = enable_logging
-        __props__["name"] = name
-        __props__["networks"] = networks
-        __props__["project"] = project
+        __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding
+        __props__.__dict__["enable_logging"] = enable_logging
+        __props__.__dict__["name"] = name
+        __props__.__dict__["networks"] = networks
+        __props__.__dict__["project"] = project
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -475,10 +620,4 @@ class Policy(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

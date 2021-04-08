@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -20,7 +24,10 @@ class NodeGroupArgs:
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -33,8 +40,11 @@ class NodeGroupArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+<<<<<<< HEAD
         :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -48,8 +58,11 @@ class NodeGroupArgs:
             pulumi.set(__self__, "description", description)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+<<<<<<< HEAD
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -120,6 +133,7 @@ class NodeGroupArgs:
         pulumi.set(self, "maintenance_policy", value)
 
     @property
+<<<<<<< HEAD
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']]:
         """
@@ -131,8 +145,7 @@ class NodeGroupArgs:
     @maintenance_window.setter
     def maintenance_window(self, value: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
-
-    @property
+=======
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -158,6 +171,187 @@ class NodeGroupArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone where this node group is located
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class _NodeGroupState:
+    def __init__(__self__, *,
+                 autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_template: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering NodeGroup resources.
+        :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
+               group autoscaler to automatically manage the sizes of your node groups.
+               Structure is documented below.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[int] size: The total number of nodes in the node group.
+        :param pulumi.Input[str] zone: Zone where this node group is located
+        """
+        if autoscaling_policy is not None:
+            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_template is not None:
+            pulumi.set(__self__, "node_template", node_template)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="autoscalingPolicy")
+    def autoscaling_policy(self) -> Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']]:
+        """
+        If you use sole-tenant nodes for your workloads, you can use the node
+        group autoscaler to automatically manage the sizes of your node groups.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_policy")
+
+    @autoscaling_policy.setter
+    def autoscaling_policy(self, value: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']]):
+        pulumi.set(self, "autoscaling_policy", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional textual description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_policy", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="nodeTemplate")
+    def node_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the node template to which this node group belongs.
+        """
+        return pulumi.get(self, "node_template")
+
+    @node_template.setter
+    def node_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_template", value)
+
+    @property
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The total number of nodes in the node group.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -327,9 +521,12 @@ class NodeGroup(pulumi.CustomResource):
             zone="us-central1-a",
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
+<<<<<<< HEAD
             maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
                 start_time="08:00",
             ),
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
             size=1,
             node_template=soletenant_tmpl.id,
             autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
@@ -377,7 +574,10 @@ class NodeGroup(pulumi.CustomResource):
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -401,23 +601,30 @@ class NodeGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NodeGroupArgs.__new__(NodeGroupArgs)
 
+<<<<<<< HEAD
             __props__['autoscaling_policy'] = autoscaling_policy
             __props__['description'] = description
             __props__['maintenance_policy'] = maintenance_policy
             __props__['maintenance_window'] = maintenance_window
             __props__['name'] = name
+=======
+            __props__.__dict__["autoscaling_policy"] = autoscaling_policy
+            __props__.__dict__["description"] = description
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["name"] = name
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
             if node_template is None and not opts.urn:
                 raise TypeError("Missing required property 'node_template'")
-            __props__['node_template'] = node_template
-            __props__['project'] = project
+            __props__.__dict__["node_template"] = node_template
+            __props__.__dict__["project"] = project
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
-            __props__['size'] = size
-            __props__['zone'] = zone
-            __props__['creation_timestamp'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["size"] = size
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["self_link"] = None
         super(NodeGroup, __self__).__init__(
             'gcp:compute/nodeGroup:NodeGroup',
             resource_name,
@@ -464,6 +671,7 @@ class NodeGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
+<<<<<<< HEAD
         __props__ = dict()
 
         __props__["autoscaling_policy"] = autoscaling_policy
@@ -477,6 +685,20 @@ class NodeGroup(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["size"] = size
         __props__["zone"] = zone
+=======
+        __props__ = _NodeGroupState.__new__(_NodeGroupState)
+
+        __props__.__dict__["autoscaling_policy"] = autoscaling_policy
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
+        __props__.__dict__["name"] = name
+        __props__.__dict__["node_template"] = node_template
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["size"] = size
+        __props__.__dict__["zone"] = zone
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -570,10 +792,4 @@ class NodeGroup(pulumi.CustomResource):
         Zone where this node group is located
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

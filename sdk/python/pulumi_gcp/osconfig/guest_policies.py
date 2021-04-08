@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -180,6 +184,239 @@ class GuestPoliciesArgs:
     @recipes.setter
     def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
         pulumi.set(self, "recipes", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _GuestPoliciesState:
+    def __init__(__self__, *,
+                 assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 guest_policy_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering GuestPolicies resources.
+        :param pulumi.Input['GuestPoliciesAssignmentArgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+               or groups of VM instances by different parameters such as labels, names, OS, or zones.
+               If left empty, all VM instances underneath this policy are targeted.
+               At the same level in the resource hierarchy (that is within a project), the service prevents
+               the creation of multiple policies that conflict with each other.
+               For more information, see how the service
+               [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+               Structure is documented below.
+        :param pulumi.Input[str] create_time: Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
+               "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
+        :param pulumi.Input[str] guest_policy_id: The logical name of the guest policy in the project with the following restrictions:
+               * Must contain only lowercase letters, numbers, and hyphens.
+               * Must start with a letter.
+               * Must be between 1-63 characters.
+               * Must end with a number or a letter.
+               * Must be unique within the project.
+        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+               Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+               This means that requests to create multiple recipes with the same name and version are rejected since they
+               could potentially have conflicting assignments.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]] package_repositories: A list of package repositories to configure on the VM instance.
+               This is done before any other configs are applied so they can use these repos.
+               Package repositories are only configured if the corresponding package manager(s) are available.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]] packages: The software packages to be managed by this policy.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]] recipes: A list of Recipes to install on the VM instance.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
+               "2014-10-02T15:01:23.045123456Z".
+        """
+        if assignment is not None:
+            pulumi.set(__self__, "assignment", assignment)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if guest_policy_id is not None:
+            pulumi.set(__self__, "guest_policy_id", guest_policy_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if package_repositories is not None:
+            pulumi.set(__self__, "package_repositories", package_repositories)
+        if packages is not None:
+            pulumi.set(__self__, "packages", packages)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if recipes is not None:
+            pulumi.set(__self__, "recipes", recipes)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def assignment(self) -> Optional[pulumi.Input['GuestPoliciesAssignmentArgs']]:
+        """
+        Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        or groups of VM instances by different parameters such as labels, names, OS, or zones.
+        If left empty, all VM instances underneath this policy are targeted.
+        At the same level in the resource hierarchy (that is within a project), the service prevents
+        the creation of multiple policies that conflict with each other.
+        For more information, see how the service
+        [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "assignment")
+
+    @assignment.setter
+    def assignment(self, value: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']]):
+        pulumi.set(self, "assignment", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
+        "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the guest policy. Length of the description is limited to 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The etag for this guest policy. If this is provided on update, it must match the server's etag.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="guestPolicyId")
+    def guest_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The logical name of the guest policy in the project with the following restrictions:
+        * Must contain only lowercase letters, numbers, and hyphens.
+        * Must start with a letter.
+        * Must be between 1-63 characters.
+        * Must end with a number or a letter.
+        * Must be unique within the project.
+        """
+        return pulumi.get(self, "guest_policy_id")
+
+    @guest_policy_id.setter
+    def guest_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "guest_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+        Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+        This means that requests to create multiple recipes with the same name and version are rejected since they
+        could potentially have conflicting assignments.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="packageRepositories")
+    def package_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]:
+        """
+        A list of package repositories to configure on the VM instance.
+        This is done before any other configs are applied so they can use these repos.
+        Package repositories are only configured if the corresponding package manager(s) are available.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "package_repositories")
+
+    @package_repositories.setter
+    def package_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]):
+        pulumi.set(self, "package_repositories", value)
+
+    @property
+    @pulumi.getter
+    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]:
+        """
+        The software packages to be managed by this policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "packages")
+
+    @packages.setter
+    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]):
+        pulumi.set(self, "packages", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def recipes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]:
+        """
+        A list of Recipes to install on the VM instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recipes")
+
+    @recipes.setter
+    def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
+        pulumi.set(self, "recipes", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
+        "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class GuestPolicies(pulumi.CustomResource):
@@ -600,23 +837,23 @@ class GuestPolicies(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GuestPoliciesArgs.__new__(GuestPoliciesArgs)
 
             if assignment is None and not opts.urn:
                 raise TypeError("Missing required property 'assignment'")
-            __props__['assignment'] = assignment
-            __props__['description'] = description
-            __props__['etag'] = etag
+            __props__.__dict__["assignment"] = assignment
+            __props__.__dict__["description"] = description
+            __props__.__dict__["etag"] = etag
             if guest_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'guest_policy_id'")
-            __props__['guest_policy_id'] = guest_policy_id
-            __props__['package_repositories'] = package_repositories
-            __props__['packages'] = packages
-            __props__['project'] = project
-            __props__['recipes'] = recipes
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["guest_policy_id"] = guest_policy_id
+            __props__.__dict__["package_repositories"] = package_repositories
+            __props__.__dict__["packages"] = packages
+            __props__.__dict__["project"] = project
+            __props__.__dict__["recipes"] = recipes
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["update_time"] = None
         super(GuestPolicies, __self__).__init__(
             'gcp:osconfig/guestPolicies:GuestPolicies',
             resource_name,
@@ -682,19 +919,19 @@ class GuestPolicies(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GuestPoliciesState.__new__(_GuestPoliciesState)
 
-        __props__["assignment"] = assignment
-        __props__["create_time"] = create_time
-        __props__["description"] = description
-        __props__["etag"] = etag
-        __props__["guest_policy_id"] = guest_policy_id
-        __props__["name"] = name
-        __props__["package_repositories"] = package_repositories
-        __props__["packages"] = packages
-        __props__["project"] = project
-        __props__["recipes"] = recipes
-        __props__["update_time"] = update_time
+        __props__.__dict__["assignment"] = assignment
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["guest_policy_id"] = guest_policy_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["package_repositories"] = package_repositories
+        __props__.__dict__["packages"] = packages
+        __props__.__dict__["project"] = project
+        __props__.__dict__["recipes"] = recipes
+        __props__.__dict__["update_time"] = update_time
         return GuestPolicies(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -807,10 +1044,4 @@ class GuestPolicies(pulumi.CustomResource):
         "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

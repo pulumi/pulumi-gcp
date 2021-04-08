@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -111,6 +115,143 @@ class HaVpnGatewayArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _HaVpnGatewayState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering HaVpnGateway resources.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035.  Specifically, the name must be 1-63 characters long and
+               match the regular expression `a-z?` which means
+               the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region this gateway should sit in.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if vpn_interfaces is not None:
+            pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035.  Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network this VPN gateway is accepting traffic for.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region this gateway should sit in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="vpnInterfaces")
+    def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]:
+        """
+        A list of interfaces on this VPN gateway.
+        """
+        return pulumi.get(self, "vpn_interfaces")
+
+    @vpn_interfaces.setter
+    def vpn_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]):
+        pulumi.set(self, "vpn_interfaces", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class HaVpnGateway(pulumi.CustomResource):
@@ -517,17 +658,17 @@ class HaVpnGateway(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = HaVpnGatewayArgs.__new__(HaVpnGatewayArgs)
 
-            __props__['description'] = description
-            __props__['name'] = name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
-            __props__['network'] = network
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['self_link'] = None
-            __props__['vpn_interfaces'] = None
+            __props__.__dict__["network"] = network
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["vpn_interfaces"] = None
         super(HaVpnGateway, __self__).__init__(
             'gcp:compute/haVpnGateway:HaVpnGateway',
             resource_name,
@@ -569,15 +710,15 @@ class HaVpnGateway(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _HaVpnGatewayState.__new__(_HaVpnGatewayState)
 
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["network"] = network
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["self_link"] = self_link
-        __props__["vpn_interfaces"] = vpn_interfaces
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["vpn_interfaces"] = vpn_interfaces
         return HaVpnGateway(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -642,10 +783,4 @@ class HaVpnGateway(pulumi.CustomResource):
         A list of interfaces on this VPN gateway.
         """
         return pulumi.get(self, "vpn_interfaces")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

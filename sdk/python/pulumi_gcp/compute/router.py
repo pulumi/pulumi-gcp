@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -127,6 +131,159 @@ class RouterArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _RouterState:
+    def __init__(__self__, *,
+                 bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Router resources.
+        :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
+               Structure is documented below.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?`
+               which means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network: A reference to the network to which this router belongs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: Region where the router resides.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        """
+        if bgp is not None:
+            pulumi.set(__self__, "bgp", bgp)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def bgp(self) -> Optional[pulumi.Input['RouterBgpArgs']]:
+        """
+        BGP information specific to this router.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bgp")
+
+    @bgp.setter
+    def bgp(self, value: Optional[pulumi.Input['RouterBgpArgs']]):
+        pulumi.set(self, "bgp", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-specified description for the IP range.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?`
+        which means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the network to which this router belongs.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region where the router resides.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Router(pulumi.CustomResource):
@@ -312,18 +469,18 @@ class Router(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouterArgs.__new__(RouterArgs)
 
-            __props__['bgp'] = bgp
-            __props__['description'] = description
-            __props__['name'] = name
+            __props__.__dict__["bgp"] = bgp
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
-            __props__['network'] = network
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['creation_timestamp'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["network"] = network
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["self_link"] = None
         super(Router, __self__).__init__(
             'gcp:compute/router:Router',
             resource_name,
@@ -367,16 +524,16 @@ class Router(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouterState.__new__(_RouterState)
 
-        __props__["bgp"] = bgp
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["network"] = network
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["self_link"] = self_link
+        __props__.__dict__["bgp"] = bgp
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["self_link"] = self_link
         return Router(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -449,10 +606,4 @@ class Router(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

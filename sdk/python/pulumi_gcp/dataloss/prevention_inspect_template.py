@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -91,6 +95,109 @@ class PreventionInspectTemplateArgs:
     @inspect_config.setter
     def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]):
         pulumi.set(self, "inspect_config", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _PreventionInspectTemplateState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering PreventionInspectTemplate resources.
+        :param pulumi.Input[str] description: A description of the inspect template.
+        :param pulumi.Input[str] display_name: User set display name of the inspect template.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
+               Structure is documented below.
+        :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
+        :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
+               * `projects/{{project}}`
+               * `projects/{{project}}/locations/{{location}}`
+               * `organizations/{{organization_id}}`
+               * `organizations/{{organization_id}}/locations/{{location}}`
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if inspect_config is not None:
+            pulumi.set(__self__, "inspect_config", inspect_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the inspect template.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User set display name of the inspect template.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="inspectConfig")
+    def inspect_config(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]:
+        """
+        The core content of the template.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inspect_config")
+
+    @inspect_config.setter
+    def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]):
+        pulumi.set(self, "inspect_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parent of the inspect template in any of the following formats:
+        * `projects/{{project}}`
+        * `projects/{{project}}/locations/{{location}}`
+        * `organizations/{{organization_id}}`
+        * `organizations/{{organization_id}}/locations/{{location}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class PreventionInspectTemplate(pulumi.CustomResource):
@@ -560,15 +667,15 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PreventionInspectTemplateArgs.__new__(PreventionInspectTemplateArgs)
 
-            __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['inspect_config'] = inspect_config
+            __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["inspect_config"] = inspect_config
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['name'] = None
+            __props__.__dict__["parent"] = parent
+            __props__.__dict__["name"] = None
         super(PreventionInspectTemplate, __self__).__init__(
             'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
             resource_name,
@@ -605,13 +712,13 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PreventionInspectTemplateState.__new__(_PreventionInspectTemplateState)
 
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["inspect_config"] = inspect_config
-        __props__["name"] = name
-        __props__["parent"] = parent
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["inspect_config"] = inspect_config
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         return PreventionInspectTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -659,10 +766,4 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         * `organizations/{{organization_id}}/locations/{{location}}`
         """
         return pulumi.get(self, "parent")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -99,6 +103,117 @@ class BucketIAMBindingArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['BucketIAMBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _BucketIAMBindingState:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input['BucketIAMBindingConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BucketIAMBinding resources.
+        :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input['BucketIAMBindingConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['BucketIAMBindingConditionArgs']]:
+        """
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['BucketIAMBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class BucketIAMBinding(pulumi.CustomResource):
@@ -425,19 +540,19 @@ class BucketIAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BucketIAMBindingArgs.__new__(BucketIAMBindingArgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
-            __props__['condition'] = condition
+            __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
-            __props__['members'] = members
+            __props__.__dict__["members"] = members
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(BucketIAMBinding, __self__).__init__(
             'gcp:storage/bucketIAMBinding:BucketIAMBinding',
             resource_name,
@@ -478,13 +593,13 @@ class BucketIAMBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BucketIAMBindingState.__new__(_BucketIAMBindingState)
 
-        __props__["bucket"] = bucket
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["members"] = members
-        __props__["role"] = role
+        __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["members"] = members
+        __props__.__dict__["role"] = role
         return BucketIAMBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -536,10 +651,4 @@ class BucketIAMBinding(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

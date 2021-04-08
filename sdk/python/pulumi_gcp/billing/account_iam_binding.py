@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -63,6 +67,77 @@ class AccountIamBindingArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['AccountIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _AccountIamBindingState:
+    def __init__(__self__, *,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input['AccountIamBindingConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccountIamBinding resources.
+        """
+        if billing_account_id is not None:
+            pulumi.set(__self__, "billing_account_id", billing_account_id)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "billing_account_id")
+
+    @billing_account_id.setter
+    def billing_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_account_id", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['AccountIamBindingConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['AccountIamBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class AccountIamBinding(pulumi.CustomResource):
@@ -127,19 +202,19 @@ class AccountIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountIamBindingArgs.__new__(AccountIamBindingArgs)
 
             if billing_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account_id'")
-            __props__['billing_account_id'] = billing_account_id
-            __props__['condition'] = condition
+            __props__.__dict__["billing_account_id"] = billing_account_id
+            __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
-            __props__['members'] = members
+            __props__.__dict__["members"] = members
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(AccountIamBinding, __self__).__init__(
             'gcp:billing/accountIamBinding:AccountIamBinding',
             resource_name,
@@ -165,13 +240,13 @@ class AccountIamBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountIamBindingState.__new__(_AccountIamBindingState)
 
-        __props__["billing_account_id"] = billing_account_id
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["members"] = members
-        __props__["role"] = role
+        __props__.__dict__["billing_account_id"] = billing_account_id
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["members"] = members
+        __props__.__dict__["role"] = role
         return AccountIamBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -198,10 +273,4 @@ class AccountIamBinding(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

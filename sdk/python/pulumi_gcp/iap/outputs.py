@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = [
     'AppEngineServiceIamBindingCondition',
@@ -67,9 +71,6 @@ class AppEngineServiceIamBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppEngineServiceIamMemberCondition(dict):
@@ -110,9 +111,6 @@ class AppEngineServiceIamMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -155,9 +153,6 @@ class AppEngineVersionIamBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppEngineVersionIamMemberCondition(dict):
@@ -198,9 +193,6 @@ class AppEngineVersionIamMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -243,9 +235,6 @@ class TunnelIamBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TunnelIamMemberCondition(dict):
@@ -286,9 +275,6 @@ class TunnelIamMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -331,9 +317,6 @@ class TunnelInstanceIAMBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TunnelInstanceIAMMemberCondition(dict):
@@ -374,9 +357,6 @@ class TunnelInstanceIAMMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -419,9 +399,6 @@ class WebBackendServiceIamBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebBackendServiceIamMemberCondition(dict):
@@ -462,9 +439,6 @@ class WebBackendServiceIamMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -507,9 +481,6 @@ class WebIamBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebIamMemberCondition(dict):
@@ -550,9 +521,6 @@ class WebIamMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -595,9 +563,6 @@ class WebTypeAppEngingIamBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebTypeAppEngingIamMemberCondition(dict):
@@ -638,9 +603,6 @@ class WebTypeAppEngingIamMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -683,9 +645,6 @@ class WebTypeComputeIamBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebTypeComputeIamMemberCondition(dict):
@@ -726,8 +685,5 @@ class WebTypeComputeIamMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

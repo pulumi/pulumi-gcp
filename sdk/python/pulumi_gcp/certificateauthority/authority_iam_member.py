@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -21,9 +25,12 @@ class AuthorityIamMemberArgs:
                  condition: Optional[pulumi.Input['AuthorityIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a AuthorityIamMember resource.
+<<<<<<< HEAD
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
         pulumi.set(__self__, "member", member)
@@ -52,11 +59,14 @@ class AuthorityIamMemberArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+<<<<<<< HEAD
         """
         The role that should be applied. Only one
         `certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         return pulumi.get(self, "role")
 
     @role.setter
@@ -71,6 +81,77 @@ class AuthorityIamMemberArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['AuthorityIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _AuthorityIamMemberState:
+    def __init__(__self__, *,
+                 certificate_authority: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input['AuthorityIamMemberConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AuthorityIamMember resources.
+        """
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_authority")
+
+    @certificate_authority.setter
+    def certificate_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['AuthorityIamMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['AuthorityIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class AuthorityIamMember(pulumi.CustomResource):
@@ -171,6 +252,7 @@ class AuthorityIamMember(pulumi.CustomResource):
                  args: AuthorityIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+<<<<<<< HEAD
         Three different resources help you manage your IAM policy for Certificate Authority Service CertificateAuthority. Each of these resources serves a different use case:
 
         * `certificateauthority.AuthorityIamPolicy`: Authoritative. Sets the IAM policy for the certificateauthority and replaces any existing policy already attached.
@@ -243,6 +325,16 @@ class AuthorityIamMember(pulumi.CustomResource):
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+=======
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AuthorityIamMemberArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a AuthorityIamMember resource with the given unique name, props, and options.
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         :param str resource_name: The name of the resource.
         :param AuthorityIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -280,19 +372,19 @@ class AuthorityIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AuthorityIamMemberArgs.__new__(AuthorityIamMemberArgs)
 
             if certificate_authority is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authority'")
-            __props__['certificate_authority'] = certificate_authority
-            __props__['condition'] = condition
+            __props__.__dict__["certificate_authority"] = certificate_authority
+            __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
+            __props__.__dict__["member"] = member
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(AuthorityIamMember, __self__).__init__(
             'gcp:certificateauthority/authorityIamMember:AuthorityIamMember',
             resource_name,
@@ -322,13 +414,13 @@ class AuthorityIamMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AuthorityIamMemberState.__new__(_AuthorityIamMemberState)
 
-        __props__["certificate_authority"] = certificate_authority
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["member"] = member
-        __props__["role"] = role
+        __props__.__dict__["certificate_authority"] = certificate_authority
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["member"] = member
+        __props__.__dict__["role"] = role
         return AuthorityIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -363,10 +455,4 @@ class AuthorityIamMember(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -257,6 +261,273 @@ class ManagedZoneArgs:
     @visibility.setter
     def visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visibility", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ManagedZoneState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
+                 dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
+                 forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
+                 private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 reverse_lookup: Optional[pulumi.Input[bool]] = None,
+                 service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
+                 visibility: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ManagedZone resources.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
+        :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
+               Structure is documented below.
+        :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
+        :param pulumi.Input['ManagedZoneForwardingConfigArgs'] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
+               for this zone. The value of this field contains the set of destinations
+               to forward to.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
+        :param pulumi.Input[str] name: User assigned name for this resource.
+               Must be unique within the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
+        :param pulumi.Input['ManagedZonePeeringConfigArgs'] peering_config: The presence of this field indicates that DNS Peering is enabled for this
+               zone. The value of this field contains the network to peer with.
+               Structure is documented below.
+        :param pulumi.Input['ManagedZonePrivateVisibilityConfigArgs'] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
+               resources that the zone is visible from.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+               lookup queries using automatically configured records for VPC resources. This only applies
+               to networks listed under `private_visibility_config`.
+        :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+        :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
+               while private zones are visible only to Virtual Private Cloud resources.
+               Default value is `public`.
+               Possible values are `private` and `public`.
+        """
+        if description is None:
+            description = 'Managed by Pulumi'
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dns_name is not None:
+            pulumi.set(__self__, "dns_name", dns_name)
+        if dnssec_config is not None:
+            pulumi.set(__self__, "dnssec_config", dnssec_config)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
+        if forwarding_config is not None:
+            pulumi.set(__self__, "forwarding_config", forwarding_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+        if peering_config is not None:
+            pulumi.set(__self__, "peering_config", peering_config)
+        if private_visibility_config is not None:
+            pulumi.set(__self__, "private_visibility_config", private_visibility_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if reverse_lookup is not None:
+            pulumi.set(__self__, "reverse_lookup", reverse_lookup)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A textual description field. Defaults to 'Managed by Pulumi'.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS name of this managed zone, for instance "example.com.".
+        """
+        return pulumi.get(self, "dns_name")
+
+    @dns_name.setter
+    def dns_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_name", value)
+
+    @property
+    @pulumi.getter(name="dnssecConfig")
+    def dnssec_config(self) -> Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']]:
+        """
+        DNSSEC configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dnssec_config")
+
+    @dnssec_config.setter
+    def dnssec_config(self, value: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']]):
+        pulumi.set(self, "dnssec_config", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set this true to delete all records in the zone.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="forwardingConfig")
+    def forwarding_config(self) -> Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']]:
+        """
+        The presence for this field indicates that outbound forwarding is enabled
+        for this zone. The value of this field contains the set of destinations
+        to forward to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "forwarding_config")
+
+    @forwarding_config.setter
+    def forwarding_config(self, value: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']]):
+        pulumi.set(self, "forwarding_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to this ManagedZone.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User assigned name for this resource.
+        Must be unique within the project.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Delegate your managed_zone to these virtual name servers; defined by the server
+        """
+        return pulumi.get(self, "name_servers")
+
+    @name_servers.setter
+    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "name_servers", value)
+
+    @property
+    @pulumi.getter(name="peeringConfig")
+    def peering_config(self) -> Optional[pulumi.Input['ManagedZonePeeringConfigArgs']]:
+        """
+        The presence of this field indicates that DNS Peering is enabled for this
+        zone. The value of this field contains the network to peer with.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "peering_config")
+
+    @peering_config.setter
+    def peering_config(self, value: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']]):
+        pulumi.set(self, "peering_config", value)
+
+    @property
+    @pulumi.getter(name="privateVisibilityConfig")
+    def private_visibility_config(self) -> Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']]:
+        """
+        For privately visible zones, the set of Virtual Private Cloud
+        resources that the zone is visible from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_visibility_config")
+
+    @private_visibility_config.setter
+    def private_visibility_config(self, value: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']]):
+        pulumi.set(self, "private_visibility_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="reverseLookup")
+    def reverse_lookup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        lookup queries using automatically configured records for VPC resources. This only applies
+        to networks listed under `private_visibility_config`.
+        """
+        return pulumi.get(self, "reverse_lookup")
+
+    @reverse_lookup.setter
+    def reverse_lookup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reverse_lookup", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']]:
+        """
+        The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone's visibility: public zones are exposed to the Internet,
+        while private zones are visible only to Virtual Private Cloud resources.
+        Default value is `public`.
+        Possible values are `private` and `public`.
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visibility", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ManagedZone(pulumi.CustomResource):
@@ -663,26 +934,26 @@ class ManagedZone(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
             if description is None:
                 description = 'Managed by Pulumi'
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if dns_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dns_name'")
-            __props__['dns_name'] = dns_name
-            __props__['dnssec_config'] = dnssec_config
-            __props__['force_destroy'] = force_destroy
-            __props__['forwarding_config'] = forwarding_config
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['peering_config'] = peering_config
-            __props__['private_visibility_config'] = private_visibility_config
-            __props__['project'] = project
-            __props__['reverse_lookup'] = reverse_lookup
-            __props__['service_directory_config'] = service_directory_config
-            __props__['visibility'] = visibility
-            __props__['name_servers'] = None
+            __props__.__dict__["dns_name"] = dns_name
+            __props__.__dict__["dnssec_config"] = dnssec_config
+            __props__.__dict__["force_destroy"] = force_destroy
+            __props__.__dict__["forwarding_config"] = forwarding_config
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["peering_config"] = peering_config
+            __props__.__dict__["private_visibility_config"] = private_visibility_config
+            __props__.__dict__["project"] = project
+            __props__.__dict__["reverse_lookup"] = reverse_lookup
+            __props__.__dict__["service_directory_config"] = service_directory_config
+            __props__.__dict__["visibility"] = visibility
+            __props__.__dict__["name_servers"] = None
         super(ManagedZone, __self__).__init__(
             'gcp:dns/managedZone:ManagedZone',
             resource_name,
@@ -746,22 +1017,22 @@ class ManagedZone(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ManagedZoneState.__new__(_ManagedZoneState)
 
-        __props__["description"] = description
-        __props__["dns_name"] = dns_name
-        __props__["dnssec_config"] = dnssec_config
-        __props__["force_destroy"] = force_destroy
-        __props__["forwarding_config"] = forwarding_config
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["name_servers"] = name_servers
-        __props__["peering_config"] = peering_config
-        __props__["private_visibility_config"] = private_visibility_config
-        __props__["project"] = project
-        __props__["reverse_lookup"] = reverse_lookup
-        __props__["service_directory_config"] = service_directory_config
-        __props__["visibility"] = visibility
+        __props__.__dict__["description"] = description
+        __props__.__dict__["dns_name"] = dns_name
+        __props__.__dict__["dnssec_config"] = dnssec_config
+        __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["forwarding_config"] = forwarding_config
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["name_servers"] = name_servers
+        __props__.__dict__["peering_config"] = peering_config
+        __props__.__dict__["private_visibility_config"] = private_visibility_config
+        __props__.__dict__["project"] = project
+        __props__.__dict__["reverse_lookup"] = reverse_lookup
+        __props__.__dict__["service_directory_config"] = service_directory_config
+        __props__.__dict__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -890,10 +1161,4 @@ class ManagedZone(pulumi.CustomResource):
         Possible values are `private` and `public`.
         """
         return pulumi.get(self, "visibility")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

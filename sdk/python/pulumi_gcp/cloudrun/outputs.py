@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -53,6 +57,25 @@ __all__ = [
 
 @pulumi.output_type
 class DomainMappingMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceVersion":
+            suggest = "resource_version"
+        elif key == "selfLink":
+            suggest = "self_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainMappingMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainMappingMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainMappingMetadata.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  namespace: str,
                  annotations: Optional[Mapping[str, str]] = None,
@@ -182,12 +205,30 @@ class DomainMappingMetadata(dict):
         """
         return pulumi.get(self, "uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainMappingSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routeName":
+            suggest = "route_name"
+        elif key == "certificateMode":
+            suggest = "certificate_mode"
+        elif key == "forceOverride":
+            suggest = "force_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainMappingSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainMappingSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainMappingSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  route_name: str,
                  certificate_mode: Optional[str] = None,
@@ -239,12 +280,30 @@ class DomainMappingSpec(dict):
         """
         return pulumi.get(self, "force_override")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainMappingStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mappedRouteName":
+            suggest = "mapped_route_name"
+        elif key == "observedGeneration":
+            suggest = "observed_generation"
+        elif key == "resourceRecords":
+            suggest = "resource_records"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainMappingStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainMappingStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainMappingStatus.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conditions: Optional[Sequence['outputs.DomainMappingStatusCondition']] = None,
                  mapped_route_name: Optional[str] = None,
@@ -278,9 +337,6 @@ class DomainMappingStatus(dict):
     @pulumi.getter(name="resourceRecords")
     def resource_records(self) -> Optional[Sequence['outputs.DomainMappingStatusResourceRecord']]:
         return pulumi.get(self, "resource_records")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -319,9 +375,6 @@ class DomainMappingStatusCondition(dict):
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainMappingStatusResourceRecord(dict):
@@ -357,9 +410,6 @@ class DomainMappingStatusResourceRecord(dict):
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IamBindingCondition(dict):
@@ -386,9 +436,6 @@ class IamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -417,12 +464,28 @@ class IamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceVersion":
+            suggest = "resource_version"
+        elif key == "selfLink":
+            suggest = "self_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetadata.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  annotations: Optional[Mapping[str, str]] = None,
                  generation: Optional[int] = None,
@@ -553,12 +616,30 @@ class ServiceMetadata(dict):
         """
         return pulumi.get(self, "uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latestCreatedRevisionName":
+            suggest = "latest_created_revision_name"
+        elif key == "latestReadyRevisionName":
+            suggest = "latest_ready_revision_name"
+        elif key == "observedGeneration":
+            suggest = "observed_generation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceStatus.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conditions: Optional[Sequence['outputs.ServiceStatusCondition']] = None,
                  latest_created_revision_name: Optional[str] = None,
@@ -601,9 +682,6 @@ class ServiceStatus(dict):
     def url(self) -> Optional[str]:
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceStatusCondition(dict):
@@ -640,9 +718,6 @@ class ServiceStatusCondition(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -681,12 +756,28 @@ class ServiceTemplate(dict):
         """
         return pulumi.get(self, "spec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceVersion":
+            suggest = "resource_version"
+        elif key == "selfLink":
+            suggest = "self_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateMetadata.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  annotations: Optional[Mapping[str, str]] = None,
                  generation: Optional[int] = None,
@@ -829,12 +920,32 @@ class ServiceTemplateMetadata(dict):
         """
         return pulumi.get(self, "uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerConcurrency":
+            suggest = "container_concurrency"
+        elif key == "serviceAccountName":
+            suggest = "service_account_name"
+        elif key == "servingState":
+            suggest = "serving_state"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_concurrency: Optional[int] = None,
                  containers: Optional[Sequence['outputs.ServiceTemplateSpecContainer']] = None,
@@ -925,12 +1036,28 @@ class ServiceTemplateSpec(dict):
         """
         return pulumi.get(self, "timeout_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "envFroms":
+            suggest = "env_froms"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image: str,
                  args: Optional[Sequence[str]] = None,
@@ -1102,9 +1229,6 @@ class ServiceTemplateSpecContainer(dict):
         """
         return pulumi.get(self, "working_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerEnv(dict):
@@ -1150,12 +1274,28 @@ class ServiceTemplateSpecContainerEnv(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerEnvFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMapRef":
+            suggest = "config_map_ref"
+        elif key == "secretRef":
+            suggest = "secret_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerEnvFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerEnvFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerEnvFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_map_ref: Optional['outputs.ServiceTemplateSpecContainerEnvFromConfigMapRef'] = None,
                  prefix: Optional[str] = None,
@@ -1200,12 +1340,26 @@ class ServiceTemplateSpecContainerEnvFrom(dict):
         """
         return pulumi.get(self, "secret_ref")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerEnvFromConfigMapRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localObjectReference":
+            suggest = "local_object_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerEnvFromConfigMapRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerEnvFromConfigMapRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerEnvFromConfigMapRef.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  local_object_reference: Optional['outputs.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference'] = None,
                  optional: Optional[bool] = None):
@@ -1236,9 +1390,6 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRef(dict):
         """
         return pulumi.get(self, "optional")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
@@ -1257,12 +1408,26 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerEnvFromSecretRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localObjectReference":
+            suggest = "local_object_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerEnvFromSecretRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerEnvFromSecretRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerEnvFromSecretRef.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  local_object_reference: Optional['outputs.ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference'] = None,
                  optional: Optional[bool] = None):
@@ -1293,9 +1458,6 @@ class ServiceTemplateSpecContainerEnvFromSecretRef(dict):
         """
         return pulumi.get(self, "optional")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
@@ -1314,12 +1476,26 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerPort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerPort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerPort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerPort.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_port: int,
                  name: Optional[str] = None,
@@ -1358,9 +1534,6 @@ class ServiceTemplateSpecContainerPort(dict):
         Protocol used on port. Defaults to TCP.
         """
         return pulumi.get(self, "protocol")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1405,12 +1578,28 @@ class ServiceTemplateSpecContainerResources(dict):
         """
         return pulumi.get(self, "requests")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceTraffic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latestRevision":
+            suggest = "latest_revision"
+        elif key == "revisionName":
+            suggest = "revision_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTraffic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTraffic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTraffic.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  percent: int,
                  latest_revision: Optional[bool] = None,
@@ -1455,9 +1644,6 @@ class ServiceTraffic(dict):
         RevisionName of a specific revision to which to send this portion of traffic.
         """
         return pulumi.get(self, "revision_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

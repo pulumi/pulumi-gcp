@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -34,12 +38,26 @@ class MembershipAuthority(dict):
         """
         return pulumi.get(self, "issuer")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MembershipEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeCluster":
+            suggest = "gke_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembershipEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembershipEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembershipEndpoint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gke_cluster: Optional['outputs.MembershipEndpointGkeCluster'] = None):
         """
@@ -58,12 +76,26 @@ class MembershipEndpoint(dict):
         """
         return pulumi.get(self, "gke_cluster")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MembershipEndpointGkeCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembershipEndpointGkeCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembershipEndpointGkeCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembershipEndpointGkeCluster.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_link: str):
         pulumi.set(__self__, "resource_link", resource_link)
@@ -72,8 +104,5 @@ class MembershipEndpointGkeCluster(dict):
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> str:
         return pulumi.get(self, "resource_link")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

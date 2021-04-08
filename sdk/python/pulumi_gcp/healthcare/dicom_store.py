@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -101,6 +105,117 @@ class DicomStoreArgs:
     @notification_config.setter
     def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _DicomStoreState:
+    def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DicomStore resources.
+        :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
+               'projects/{project}/locations/{location}/datasets/{dataset}'
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+               conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+               Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+               bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+               No more than 64 labels can be associated with a given store.
+               An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] name: The resource name for the DicomStore.
+               ** Changing this property may recreate the Dicom store (removing all data) **
+        :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[str] self_link: The fully qualified name of this dataset
+        """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifies the dataset addressed by this request. Must be in the format
+        'projects/{project}/locations/{location}/datasets/{dataset}'
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-supplied key-value pairs used to organize DICOM stores.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        No more than 64 labels can be associated with a given store.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the DicomStore.
+        ** Changing this property may recreate the Dicom store (removing all data) **
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified name of this dataset
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class DicomStore(pulumi.CustomResource):
@@ -257,15 +372,15 @@ class DicomStore(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DicomStoreArgs.__new__(DicomStoreArgs)
 
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
-            __props__['dataset'] = dataset
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['notification_config'] = notification_config
-            __props__['self_link'] = None
+            __props__.__dict__["dataset"] = dataset
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["notification_config"] = notification_config
+            __props__.__dict__["self_link"] = None
         super(DicomStore, __self__).__init__(
             'gcp:healthcare/dicomStore:DicomStore',
             resource_name,
@@ -306,13 +421,13 @@ class DicomStore(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DicomStoreState.__new__(_DicomStoreState)
 
-        __props__["dataset"] = dataset
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["notification_config"] = notification_config
-        __props__["self_link"] = self_link
+        __props__.__dict__["dataset"] = dataset
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["notification_config"] = notification_config
+        __props__.__dict__["self_link"] = self_link
         return DicomStore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -364,10 +479,4 @@ class DicomStore(pulumi.CustomResource):
         The fully qualified name of this dataset
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

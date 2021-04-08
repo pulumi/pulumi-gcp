@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ProjectDefaultNetworkTierArgs', 'ProjectDefaultNetworkTier']
 
@@ -51,6 +55,53 @@ class ProjectDefaultNetworkTierArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ProjectDefaultNetworkTierState:
+    def __init__(__self__, *,
+                 network_tier: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ProjectDefaultNetworkTier resources.
+        :param pulumi.Input[str] network_tier: The default network tier to be configured for the project.
+               This field can take the following values: `PREMIUM` or `STANDARD`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
+        if network_tier is not None:
+            pulumi.set(__self__, "network_tier", network_tier)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default network tier to be configured for the project.
+        This field can take the following values: `PREMIUM` or `STANDARD`.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ProjectDefaultNetworkTier(pulumi.CustomResource):
@@ -161,12 +212,12 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectDefaultNetworkTierArgs.__new__(ProjectDefaultNetworkTierArgs)
 
             if network_tier is None and not opts.urn:
                 raise TypeError("Missing required property 'network_tier'")
-            __props__['network_tier'] = network_tier
-            __props__['project'] = project
+            __props__.__dict__["network_tier"] = network_tier
+            __props__.__dict__["project"] = project
         super(ProjectDefaultNetworkTier, __self__).__init__(
             'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
             resource_name,
@@ -193,10 +244,10 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectDefaultNetworkTierState.__new__(_ProjectDefaultNetworkTierState)
 
-        __props__["network_tier"] = network_tier
-        __props__["project"] = project
+        __props__.__dict__["network_tier"] = network_tier
+        __props__.__dict__["project"] = project
         return ProjectDefaultNetworkTier(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -216,10 +267,4 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

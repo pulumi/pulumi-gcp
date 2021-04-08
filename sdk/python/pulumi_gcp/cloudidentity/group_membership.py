@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -88,6 +92,155 @@ class GroupMembershipArgs:
     @preferred_member_key.setter
     def preferred_member_key(self, value: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]):
         pulumi.set(self, "preferred_member_key", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _GroupMembershipState:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
+                 member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering GroupMembership resources.
+        :param pulumi.Input[str] create_time: The time when the Membership was created.
+        :param pulumi.Input[str] group: The name of the Group to create this membership in.
+        :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
+               Structure is documented below.
+        :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+               Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+        :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]] roles: The MembershipRoles that apply to the Membership.
+               Must not contain duplicate MembershipRoles with the same name.
+               Structure is documented below.
+        :param pulumi.Input[str] type: The type of the membership.
+        :param pulumi.Input[str] update_time: The time when the Membership was last updated.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if member_key is not None:
+            pulumi.set(__self__, "member_key", member_key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if preferred_member_key is not None:
+            pulumi.set(__self__, "preferred_member_key", preferred_member_key)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the Membership was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Group to create this membership in.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter(name="memberKey")
+    def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
+        """
+        EntityKey of the member.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "member_key")
+
+    @member_key.setter
+    def member_key(self, value: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]):
+        pulumi.set(self, "member_key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+        Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="preferredMemberKey")
+    def preferred_member_key(self) -> Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]:
+        """
+        EntityKey of the member.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preferred_member_key")
+
+    @preferred_member_key.setter
+    def preferred_member_key(self, value: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]):
+        pulumi.set(self, "preferred_member_key", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]]:
+        """
+        The MembershipRoles that apply to the Membership.
+        Must not contain duplicate MembershipRoles with the same name.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the membership.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the Membership was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class GroupMembership(pulumi.CustomResource):
@@ -264,20 +417,20 @@ class GroupMembership(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupMembershipArgs.__new__(GroupMembershipArgs)
 
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
-            __props__['group'] = group
-            __props__['member_key'] = member_key
-            __props__['preferred_member_key'] = preferred_member_key
+            __props__.__dict__["group"] = group
+            __props__.__dict__["member_key"] = member_key
+            __props__.__dict__["preferred_member_key"] = preferred_member_key
             if roles is None and not opts.urn:
                 raise TypeError("Missing required property 'roles'")
-            __props__['roles'] = roles
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['type'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["roles"] = roles
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["type"] = None
+            __props__.__dict__["update_time"] = None
         super(GroupMembership, __self__).__init__(
             'gcp:cloudidentity/groupMembership:GroupMembership',
             resource_name,
@@ -319,16 +472,16 @@ class GroupMembership(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GroupMembershipState.__new__(_GroupMembershipState)
 
-        __props__["create_time"] = create_time
-        __props__["group"] = group
-        __props__["member_key"] = member_key
-        __props__["name"] = name
-        __props__["preferred_member_key"] = preferred_member_key
-        __props__["roles"] = roles
-        __props__["type"] = type
-        __props__["update_time"] = update_time
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["group"] = group
+        __props__.__dict__["member_key"] = member_key
+        __props__.__dict__["name"] = name
+        __props__.__dict__["preferred_member_key"] = preferred_member_key
+        __props__.__dict__["roles"] = roles
+        __props__.__dict__["type"] = type
+        __props__.__dict__["update_time"] = update_time
         return GroupMembership(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -399,10 +552,4 @@ class GroupMembership(pulumi.CustomResource):
         The time when the Membership was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

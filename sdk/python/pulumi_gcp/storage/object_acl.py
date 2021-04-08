@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ObjectACLArgs', 'ObjectACL']
 
@@ -80,6 +84,83 @@ class ObjectACLArgs:
     @role_entities.setter
     def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "role_entities", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ObjectACLState:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering ObjectACL resources.
+        :param pulumi.Input[str] bucket: The name of the bucket the object is stored in.
+        :param pulumi.Input[str] object: The name of the object to apply the acl to.
+        :param pulumi.Input[str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+               Must be set if `predefined_acl` is not.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if object is not None:
+            pulumi.set(__self__, "object", object)
+        if predefined_acl is not None:
+            pulumi.set(__self__, "predefined_acl", predefined_acl)
+        if role_entities is not None:
+            pulumi.set(__self__, "role_entities", role_entities)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the bucket the object is stored in.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the object to apply the acl to.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter(name="predefinedAcl")
+    def predefined_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        """
+        return pulumi.get(self, "predefined_acl")
+
+    @predefined_acl.setter
+    def predefined_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predefined_acl", value)
+
+    @property
+    @pulumi.getter(name="roleEntities")
+    def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+        Must be set if `predefined_acl` is not.
+        """
+        return pulumi.get(self, "role_entities")
+
+    @role_entities.setter
+    def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_entities", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ObjectACL(pulumi.CustomResource):
@@ -221,16 +302,16 @@ class ObjectACL(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ObjectACLArgs.__new__(ObjectACLArgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
+            __props__.__dict__["bucket"] = bucket
             if object is None and not opts.urn:
                 raise TypeError("Missing required property 'object'")
-            __props__['object'] = object
-            __props__['predefined_acl'] = predefined_acl
-            __props__['role_entities'] = role_entities
+            __props__.__dict__["object"] = object
+            __props__.__dict__["predefined_acl"] = predefined_acl
+            __props__.__dict__["role_entities"] = role_entities
         super(ObjectACL, __self__).__init__(
             'gcp:storage/objectACL:ObjectACL',
             resource_name,
@@ -260,12 +341,12 @@ class ObjectACL(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ObjectACLState.__new__(_ObjectACLState)
 
-        __props__["bucket"] = bucket
-        __props__["object"] = object
-        __props__["predefined_acl"] = predefined_acl
-        __props__["role_entities"] = role_entities
+        __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["object"] = object
+        __props__.__dict__["predefined_acl"] = predefined_acl
+        __props__.__dict__["role_entities"] = role_entities
         return ObjectACL(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -300,10 +381,4 @@ class ObjectACL(pulumi.CustomResource):
         Must be set if `predefined_acl` is not.
         """
         return pulumi.get(self, "role_entities")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

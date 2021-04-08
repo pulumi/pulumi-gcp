@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -130,6 +134,149 @@ class InstanceArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 num_nodes: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
+               quite the same as a region) which defines defines the geographic placement and
+               replication of your databases in this instance. It determines where your data
+               is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+               In order to obtain a valid list please consult the
+               [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
+               unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
+               the instance is created. The name must be between 6 and 30 characters
+               in length.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] state: Instance status: 'CREATING' or 'READY'.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if num_nodes is not None:
+            pulumi.set(__self__, "num_nodes", num_nodes)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance's configuration (similar but not
+        quite the same as a region) which defines defines the geographic placement and
+        replication of your databases in this instance. It determines where your data
+        is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+        In order to obtain a valid list please consult the
+        [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The descriptive name for this instance as it appears in UIs. Must be
+        unique per project and between 4 and 30 characters in length.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier for the instance, which cannot be changed after
+        the instance is created. The name must be between 6 and 30 characters
+        in length.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="numNodes")
+    def num_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes allocated to this instance.
+        """
+        return pulumi.get(self, "num_nodes")
+
+    @num_nodes.setter
+    def num_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_nodes", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance status: 'CREATING' or 'READY'.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Instance(pulumi.CustomResource):
@@ -322,19 +469,19 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
-            __props__['config'] = config
+            __props__.__dict__["config"] = config
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['num_nodes'] = num_nodes
-            __props__['project'] = project
-            __props__['state'] = None
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["num_nodes"] = num_nodes
+            __props__.__dict__["project"] = project
+            __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(
             'gcp:spanner/instance:Instance',
             resource_name,
@@ -379,15 +526,15 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["config"] = config
-        __props__["display_name"] = display_name
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["num_nodes"] = num_nodes
-        __props__["project"] = project
-        __props__["state"] = state
+        __props__.__dict__["config"] = config
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["num_nodes"] = num_nodes
+        __props__.__dict__["project"] = project
+        __props__.__dict__["state"] = state
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -455,10 +602,4 @@ class Instance(pulumi.CustomResource):
         Instance status: 'CREATING' or 'READY'.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

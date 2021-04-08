@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -107,6 +111,125 @@ class JobIAMMemberArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _JobIAMMemberState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['JobIAMMemberConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering JobIAMMember resources.
+        :param pulumi.Input[str] etag: (Computed) The etag of the jobs's IAM policy.
+        :param pulumi.Input[str] project: The project in which the job belongs. If it
+               is not provided, the provider will use a default.
+        :param pulumi.Input[str] region: The region in which the job belongs. If it
+               is not provided, the provider will use a default.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['JobIAMMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['JobIAMMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the jobs's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the job belongs. If it
+        is not provided, the provider will use a default.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which the job belongs. If it
+        is not provided, the provider will use a default.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class JobIAMMember(pulumi.CustomResource):
@@ -322,21 +445,21 @@ class JobIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = JobIAMMemberArgs.__new__(JobIAMMemberArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
-            __props__['job_id'] = job_id
+            __props__.__dict__["job_id"] = job_id
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["member"] = member
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(JobIAMMember, __self__).__init__(
             'gcp:dataproc/jobIAMMember:JobIAMMember',
             resource_name,
@@ -372,15 +495,15 @@ class JobIAMMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _JobIAMMemberState.__new__(_JobIAMMemberState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["job_id"] = job_id
-        __props__["member"] = member
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["role"] = role
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["job_id"] = job_id
+        __props__.__dict__["member"] = member
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["role"] = role
         return JobIAMMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -433,10 +556,4 @@ class JobIAMMember(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

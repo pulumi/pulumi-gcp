@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -266,6 +270,329 @@ class ImageArgs:
     @source_snapshot.setter
     def source_snapshot(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_snapshot", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ImageState:
+    def __init__(__self__, *,
+                 archive_size_bytes: Optional[pulumi.Input[int]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
+                 family: Optional[pulumi.Input[str]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+                 label_fingerprint: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 source_disk: Optional[pulumi.Input[str]] = None,
+                 source_image: Optional[pulumi.Input[str]] = None,
+                 source_snapshot: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Image resources.
+        :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
+               you create the resource.
+        :param pulumi.Input[int] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can
+               create disks by specifying an image family instead of a specific
+               image name. The image family always returns its latest image that is
+               not deprecated. The name of the image family must comply with
+               RFC1035.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable images.
+               Structure is documented below.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and
+               match the regular expression `a-z?` which means
+               the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the
+               last character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
+               Structure is documented below.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] source_disk: The source disk to create this image based on.
+               You must provide either this property or the
+               rawDisk.source property but not both to create an image.
+        :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+               URL of one of the following:
+               * The selfLink URL
+               * This property
+               * The rawDisk.source URL
+               * The sourceDisk URL
+        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
+               In order to create an image, you must provide the full or partial URL of one of the following:
+               * The selfLink URL
+               * This property
+               * The sourceImage URL
+               * The rawDisk.source URL
+               * The sourceDisk URL
+        """
+        if archive_size_bytes is not None:
+            pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if family is not None:
+            pulumi.set(__self__, "family", family)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if label_fingerprint is not None:
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if licenses is not None:
+            pulumi.set(__self__, "licenses", licenses)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if raw_disk is not None:
+            pulumi.set(__self__, "raw_disk", raw_disk)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if source_disk is not None:
+            pulumi.set(__self__, "source_disk", source_disk)
+        if source_image is not None:
+            pulumi.set(__self__, "source_image", source_image)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+
+    @property
+    @pulumi.getter(name="archiveSizeBytes")
+    def archive_size_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        """
+        return pulumi.get(self, "archive_size_bytes")
+
+    @archive_size_bytes.setter
+    def archive_size_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "archive_size_bytes", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when
+        you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Size of the image when restored onto a persistent disk (in GB).
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def family(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the image family to which this image belongs. You can
+        create disks by specifying an image family instead of a specific
+        image name. The image family always returns its latest image that is
+        not deprecated. The name of the image family must comply with
+        RFC1035.
+        """
+        return pulumi.get(self, "family")
+
+    @family.setter
+    def family(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family", value)
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable images.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
+        pulumi.set(self, "guest_os_features", value)
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @label_fingerprint.setter
+    def label_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label_fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels to apply to this Image.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
+
+    @licenses.setter
+    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "licenses", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the
+        last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="rawDisk")
+    def raw_disk(self) -> Optional[pulumi.Input['ImageRawDiskArgs']]:
+        """
+        The parameters of the raw disk image.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "raw_disk")
+
+    @raw_disk.setter
+    def raw_disk(self, value: Optional[pulumi.Input['ImageRawDiskArgs']]):
+        pulumi.set(self, "raw_disk", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source disk to create this image based on.
+        You must provide either this property or the
+        rawDisk.source property but not both to create an image.
+        """
+        return pulumi.get(self, "source_disk")
+
+    @source_disk.setter
+    def source_disk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_disk", value)
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+        URL of one of the following:
+        * The selfLink URL
+        * This property
+        * The rawDisk.source URL
+        * The sourceDisk URL
+        """
+        return pulumi.get(self, "source_image")
+
+    @source_image.setter
+    def source_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_image", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the source snapshot used to create this image.
+        In order to create an image, you must provide the full or partial URL of one of the following:
+        * The selfLink URL
+        * This property
+        * The sourceImage URL
+        * The rawDisk.source URL
+        * The sourceDisk URL
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @source_snapshot.setter
+    def source_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Image(pulumi.CustomResource):
@@ -524,24 +851,24 @@ class Image(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ImageArgs.__new__(ImageArgs)
 
-            __props__['description'] = description
-            __props__['disk_size_gb'] = disk_size_gb
-            __props__['family'] = family
-            __props__['guest_os_features'] = guest_os_features
-            __props__['labels'] = labels
-            __props__['licenses'] = licenses
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['raw_disk'] = raw_disk
-            __props__['source_disk'] = source_disk
-            __props__['source_image'] = source_image
-            __props__['source_snapshot'] = source_snapshot
-            __props__['archive_size_bytes'] = None
-            __props__['creation_timestamp'] = None
-            __props__['label_fingerprint'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disk_size_gb"] = disk_size_gb
+            __props__.__dict__["family"] = family
+            __props__.__dict__["guest_os_features"] = guest_os_features
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["licenses"] = licenses
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["raw_disk"] = raw_disk
+            __props__.__dict__["source_disk"] = source_disk
+            __props__.__dict__["source_image"] = source_image
+            __props__.__dict__["source_snapshot"] = source_snapshot
+            __props__.__dict__["archive_size_bytes"] = None
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["self_link"] = None
         super(Image, __self__).__init__(
             'gcp:compute/image:Image',
             resource_name,
@@ -622,24 +949,24 @@ class Image(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ImageState.__new__(_ImageState)
 
-        __props__["archive_size_bytes"] = archive_size_bytes
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["disk_size_gb"] = disk_size_gb
-        __props__["family"] = family
-        __props__["guest_os_features"] = guest_os_features
-        __props__["label_fingerprint"] = label_fingerprint
-        __props__["labels"] = labels
-        __props__["licenses"] = licenses
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["raw_disk"] = raw_disk
-        __props__["self_link"] = self_link
-        __props__["source_disk"] = source_disk
-        __props__["source_image"] = source_image
-        __props__["source_snapshot"] = source_snapshot
+        __props__.__dict__["archive_size_bytes"] = archive_size_bytes
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disk_size_gb"] = disk_size_gb
+        __props__.__dict__["family"] = family
+        __props__.__dict__["guest_os_features"] = guest_os_features
+        __props__.__dict__["label_fingerprint"] = label_fingerprint
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["licenses"] = licenses
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["raw_disk"] = raw_disk
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["source_disk"] = source_disk
+        __props__.__dict__["source_image"] = source_image
+        __props__.__dict__["source_snapshot"] = source_snapshot
         return Image(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -797,10 +1124,4 @@ class Image(pulumi.CustomResource):
         * The sourceDisk URL
         """
         return pulumi.get(self, "source_snapshot")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

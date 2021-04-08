@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['TargetGrpcProxyArgs', 'TargetGrpcProxy']
 
@@ -132,6 +136,203 @@ class TargetGrpcProxyArgs:
     @validate_for_proxyless.setter
     def validate_for_proxyless(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_for_proxyless", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _TargetGrpcProxyState:
+    def __init__(__self__, *,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 self_link_with_id: Optional[pulumi.Input[str]] = None,
+                 url_map: Optional[pulumi.Input[str]] = None,
+                 validate_for_proxyless: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering TargetGrpcProxy resources.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+               This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
+               patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
+               fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource
+               is created. The name must be 1-63 characters long, and comply
+               with RFC1035. Specifically, the name must be 1-63 characters long
+               and match the regular expression `a-z?` which
+               means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] self_link_with_id: Server-defined URL with id for the resource.
+        :param pulumi.Input[str] url_map: URL to the UrlMap resource that defines the mapping from URL to
+               the BackendService. The protocol field in the BackendService
+               must be set to GRPC.
+        :param pulumi.Input[bool] validate_for_proxyless: If true, indicates that the BackendServices referenced by
+               the urlMap may be accessed by gRPC applications without using
+               a sidecar proxy. This will enable configuration checks on urlMap
+               and its referenced BackendServices to not allow unsupported features.
+               A gRPC application must use "xds:///" scheme in the target URI
+               of the service it is connecting to. If false, indicates that the
+               BackendServices referenced by the urlMap will be accessed by gRPC
+               applications via a sidecar proxy. In this case, a gRPC application
+               must not use "xds:///" scheme in the target URI of the service
+               it is connecting to
+        """
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if self_link_with_id is not None:
+            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
+        if url_map is not None:
+            pulumi.set(__self__, "url_map", url_map)
+        if validate_for_proxyless is not None:
+            pulumi.set(__self__, "validate_for_proxyless", validate_for_proxyless)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
+        patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
+        fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource
+        is created. The name must be 1-63 characters long, and comply
+        with RFC1035. Specifically, the name must be 1-63 characters long
+        and match the regular expression `a-z?` which
+        means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server-defined URL with id for the resource.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @self_link_with_id.setter
+    def self_link_with_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link_with_id", value)
+
+    @property
+    @pulumi.getter(name="urlMap")
+    def url_map(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to the UrlMap resource that defines the mapping from URL to
+        the BackendService. The protocol field in the BackendService
+        must be set to GRPC.
+        """
+        return pulumi.get(self, "url_map")
+
+    @url_map.setter
+    def url_map(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_map", value)
+
+    @property
+    @pulumi.getter(name="validateForProxyless")
+    def validate_for_proxyless(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, indicates that the BackendServices referenced by
+        the urlMap may be accessed by gRPC applications without using
+        a sidecar proxy. This will enable configuration checks on urlMap
+        and its referenced BackendServices to not allow unsupported features.
+        A gRPC application must use "xds:///" scheme in the target URI
+        of the service it is connecting to. If false, indicates that the
+        BackendServices referenced by the urlMap will be accessed by gRPC
+        applications via a sidecar proxy. In this case, a gRPC application
+        must not use "xds:///" scheme in the target URI of the service
+        it is connecting to
+        """
+        return pulumi.get(self, "validate_for_proxyless")
+
+    @validate_for_proxyless.setter
+    def validate_for_proxyless(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "validate_for_proxyless", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class TargetGrpcProxy(pulumi.CustomResource):
@@ -445,17 +646,17 @@ class TargetGrpcProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TargetGrpcProxyArgs.__new__(TargetGrpcProxyArgs)
 
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['url_map'] = url_map
-            __props__['validate_for_proxyless'] = validate_for_proxyless
-            __props__['creation_timestamp'] = None
-            __props__['fingerprint'] = None
-            __props__['self_link'] = None
-            __props__['self_link_with_id'] = None
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["url_map"] = url_map
+            __props__.__dict__["validate_for_proxyless"] = validate_for_proxyless
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
         super(TargetGrpcProxy, __self__).__init__(
             'gcp:compute/targetGrpcProxy:TargetGrpcProxy',
             resource_name,
@@ -515,17 +716,17 @@ class TargetGrpcProxy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TargetGrpcProxyState.__new__(_TargetGrpcProxyState)
 
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["fingerprint"] = fingerprint
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["self_link"] = self_link
-        __props__["self_link_with_id"] = self_link_with_id
-        __props__["url_map"] = url_map
-        __props__["validate_for_proxyless"] = validate_for_proxyless
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["self_link_with_id"] = self_link_with_id
+        __props__.__dict__["url_map"] = url_map
+        __props__.__dict__["validate_for_proxyless"] = validate_for_proxyless
         return TargetGrpcProxy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -620,10 +821,4 @@ class TargetGrpcProxy(pulumi.CustomResource):
         it is connecting to
         """
         return pulumi.get(self, "validate_for_proxyless")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

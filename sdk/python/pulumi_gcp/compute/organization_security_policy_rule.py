@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -196,6 +200,199 @@ class OrganizationSecurityPolicyRuleArgs:
     @target_service_accounts.setter
     def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "target_service_accounts", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _OrganizationSecurityPolicyRuleState:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 preview: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering OrganizationSecurityPolicyRule resources.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
+               "allow", "deny" or "goto_next".
+        :param pulumi.Input[str] description: A description of the rule.
+        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
+               Possible values are `INGRESS` and `EGRESS`.
+        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the
+               configured export destination in Stackdriver.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
+        :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
+        :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
+               between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+               highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies.
+               This field allows you to control which network's VMs get
+               this rule. If this field is left blank, all VMs
+               within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
+               instances that are applied with this rule.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if preview is not None:
+            pulumi.set(__self__, "preview", preview)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if target_resources is not None:
+            pulumi.set(__self__, "target_resources", target_resources)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        Possible values are `INGRESS` and `EGRESS`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']]:
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']]):
+        pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OrganizationSecurityPolicy this rule applies to.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter
+    def preview(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the specified action is not enforced.
+        """
+        return pulumi.get(self, "preview")
+
+    @preview.setter
+    def preview(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preview", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest prority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="targetResources")
+    def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of network resource URLs to which this rule applies.
+        This field allows you to control which network's VMs get
+        this rule. If this field is left blank, all VMs
+        within the organization will receive the rule.
+        """
+        return pulumi.get(self, "target_resources")
+
+    @target_resources.setter
+    def target_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_resources", value)
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @target_service_accounts.setter
+    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_service_accounts", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class OrganizationSecurityPolicyRule(pulumi.CustomResource):
@@ -335,26 +532,26 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationSecurityPolicyRuleArgs.__new__(OrganizationSecurityPolicyRuleArgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
-            __props__['action'] = action
-            __props__['description'] = description
-            __props__['direction'] = direction
-            __props__['enable_logging'] = enable_logging
+            __props__.__dict__["action"] = action
+            __props__.__dict__["description"] = description
+            __props__.__dict__["direction"] = direction
+            __props__.__dict__["enable_logging"] = enable_logging
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
-            __props__['match'] = match
+            __props__.__dict__["match"] = match
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
-            __props__['policy_id'] = policy_id
-            __props__['preview'] = preview
+            __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["preview"] = preview
             if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
-            __props__['priority'] = priority
-            __props__['target_resources'] = target_resources
-            __props__['target_service_accounts'] = target_service_accounts
+            __props__.__dict__["priority"] = priority
+            __props__.__dict__["target_resources"] = target_resources
+            __props__.__dict__["target_service_accounts"] = target_service_accounts
         super(OrganizationSecurityPolicyRule, __self__).__init__(
             'gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule',
             resource_name,
@@ -406,18 +603,18 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _OrganizationSecurityPolicyRuleState.__new__(_OrganizationSecurityPolicyRuleState)
 
-        __props__["action"] = action
-        __props__["description"] = description
-        __props__["direction"] = direction
-        __props__["enable_logging"] = enable_logging
-        __props__["match"] = match
-        __props__["policy_id"] = policy_id
-        __props__["preview"] = preview
-        __props__["priority"] = priority
-        __props__["target_resources"] = target_resources
-        __props__["target_service_accounts"] = target_service_accounts
+        __props__.__dict__["action"] = action
+        __props__.__dict__["description"] = description
+        __props__.__dict__["direction"] = direction
+        __props__.__dict__["enable_logging"] = enable_logging
+        __props__.__dict__["match"] = match
+        __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["preview"] = preview
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["target_resources"] = target_resources
+        __props__.__dict__["target_service_accounts"] = target_service_accounts
         return OrganizationSecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -510,10 +707,4 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

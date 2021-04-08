@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -81,6 +85,99 @@ class Hl7StoreIamMemberArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['Hl7StoreIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _Hl7StoreIamMemberState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['Hl7StoreIamMemberConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Hl7StoreIamMember resources.
+        :param pulumi.Input[str] etag: (Computed) The etag of the HL7v2 store's IAM policy.
+        :param pulumi.Input[str] hl7_v2_store_id: The HL7v2 store ID, in the form
+               `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
+               `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
+               project setting will be used as a fallback.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if hl7_v2_store_id is not None:
+            pulumi.set(__self__, "hl7_v2_store_id", hl7_v2_store_id)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['Hl7StoreIamMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['Hl7StoreIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the HL7v2 store's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="hl7V2StoreId")
+    def hl7_v2_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HL7v2 store ID, in the form
+        `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
+        `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
+        project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "hl7_v2_store_id")
+
+    @hl7_v2_store_id.setter
+    def hl7_v2_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hl7_v2_store_id", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Hl7StoreIamMember(pulumi.CustomResource):
@@ -300,19 +397,19 @@ class Hl7StoreIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = Hl7StoreIamMemberArgs.__new__(Hl7StoreIamMemberArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if hl7_v2_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'hl7_v2_store_id'")
-            __props__['hl7_v2_store_id'] = hl7_v2_store_id
+            __props__.__dict__["hl7_v2_store_id"] = hl7_v2_store_id
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
+            __props__.__dict__["member"] = member
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(Hl7StoreIamMember, __self__).__init__(
             'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
             resource_name,
@@ -346,13 +443,13 @@ class Hl7StoreIamMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _Hl7StoreIamMemberState.__new__(_Hl7StoreIamMemberState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["hl7_v2_store_id"] = hl7_v2_store_id
-        __props__["member"] = member
-        __props__["role"] = role
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["hl7_v2_store_id"] = hl7_v2_store_id
+        __props__.__dict__["member"] = member
+        __props__.__dict__["role"] = role
         return Hl7StoreIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -393,10 +490,4 @@ class Hl7StoreIamMember(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

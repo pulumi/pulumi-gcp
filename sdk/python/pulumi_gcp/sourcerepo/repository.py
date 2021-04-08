@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -74,6 +78,105 @@ class RepositoryArgs:
     @pubsub_configs.setter
     def pubsub_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
         pulumi.set(self, "pubsub_configs", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _RepositoryState:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Repository resources.
+        :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
+               The repo name may contain slashes. eg, `name/with/slash`
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+               Keyed by the topic names.
+               Structure is documented below.
+        :param pulumi.Input[int] size: The disk usage of the repo, in bytes.
+        :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if pubsub_configs is not None:
+            pulumi.set(__self__, "pubsub_configs", pubsub_configs)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the repository, of the form `{{repo}}`.
+        The repo name may contain slashes. eg, `name/with/slash`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pubsubConfigs")
+    def pubsub_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]:
+        """
+        How this repository publishes a change in the repository through Cloud Pub/Sub.
+        Keyed by the topic names.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pubsub_configs")
+
+    @pubsub_configs.setter
+    def pubsub_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
+        pulumi.set(self, "pubsub_configs", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The disk usage of the repo, in bytes.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to clone the repository from Google Cloud Source Repositories.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Repository(pulumi.CustomResource):
@@ -233,13 +336,13 @@ class Repository(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['pubsub_configs'] = pubsub_configs
-            __props__['size'] = None
-            __props__['url'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["pubsub_configs"] = pubsub_configs
+            __props__.__dict__["size"] = None
+            __props__.__dict__["url"] = None
         super(Repository, __self__).__init__(
             'gcp:sourcerepo/repository:Repository',
             resource_name,
@@ -274,13 +377,13 @@ class Repository(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RepositoryState.__new__(_RepositoryState)
 
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["pubsub_configs"] = pubsub_configs
-        __props__["size"] = size
-        __props__["url"] = url
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["pubsub_configs"] = pubsub_configs
+        __props__.__dict__["size"] = size
+        __props__.__dict__["url"] = url
         return Repository(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -326,10 +429,4 @@ class Repository(pulumi.CustomResource):
         URL to clone the repository from Google Cloud Source Repositories.
         """
         return pulumi.get(self, "url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

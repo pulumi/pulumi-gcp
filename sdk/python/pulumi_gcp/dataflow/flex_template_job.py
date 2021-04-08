@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['FlexTemplateJobArgs', 'FlexTemplateJob']
 
@@ -152,6 +156,186 @@ class FlexTemplateJobArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _FlexTemplateJobState:
+    def __init__(__self__, *,
+                 container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 on_delete: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FlexTemplateJob resources.
+        :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
+               Template.
+        :param pulumi.Input[str] job_id: The unique ID of this job.
+        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values
+               should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+               page. **Note**: This field is marked as deprecated as the API does not currently
+               support adding labels.
+               **NOTE**: Google-provided Dataflow templates often provide default labels
+               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
+               labels will be ignored to prevent diffs on re-apply.
+        :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
+               deletion during `pulumi destroy`.  See above note.
+        :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as
+               used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+               such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
+               provided, the provider project is used.
+        :param pulumi.Input[str] region: The region in which the created job should run.
+        :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
+        """
+        if container_spec_gcs_path is not None:
+            pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if labels is not None:
+            warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
+            pulumi.log.warn("""labels is deprecated: Deprecated until the API supports this field""")
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if on_delete is not None:
+            pulumi.set(__self__, "on_delete", on_delete)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="containerSpecGcsPath")
+    def container_spec_gcs_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GCS path to the Dataflow job Flex
+        Template.
+        """
+        return pulumi.get(self, "container_spec_gcs_path")
+
+    @container_spec_gcs_path.setter
+    def container_spec_gcs_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_spec_gcs_path", value)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique ID of this job.
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        User labels to be specified for the job. Keys and values
+        should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+        page. **Note**: This field is marked as deprecated as the API does not currently
+        support adding labels.
+        **NOTE**: Google-provided Dataflow templates often provide default labels
+        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
+        labels will be ignored to prevent diffs on re-apply.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource, required by Dataflow.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="onDelete")
+    def on_delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of "drain" or "cancel". Specifies behavior of
+        deletion during `pulumi destroy`.  See above note.
+        """
+        return pulumi.get(self, "on_delete")
+
+    @on_delete.setter
+    def on_delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_delete", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Key/Value pairs to be passed to the Dataflow job (as
+        used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+        such as `serviceAccount`, `workerMachineType`, etc can be specified here.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the resource belongs. If it is not
+        provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which the created job should run.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class FlexTemplateJob(pulumi.CustomResource):
@@ -326,22 +510,22 @@ class FlexTemplateJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FlexTemplateJobArgs.__new__(FlexTemplateJobArgs)
 
             if container_spec_gcs_path is None and not opts.urn:
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
-            __props__['container_spec_gcs_path'] = container_spec_gcs_path
+            __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
             if labels is not None and not opts.urn:
                 warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
                 pulumi.log.warn("""labels is deprecated: Deprecated until the API supports this field""")
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['on_delete'] = on_delete
-            __props__['parameters'] = parameters
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['job_id'] = None
-            __props__['state'] = None
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["on_delete"] = on_delete
+            __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["job_id"] = None
+            __props__.__dict__["state"] = None
         super(FlexTemplateJob, __self__).__init__(
             'gcp:dataflow/flexTemplateJob:FlexTemplateJob',
             resource_name,
@@ -391,17 +575,17 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FlexTemplateJobState.__new__(_FlexTemplateJobState)
 
-        __props__["container_spec_gcs_path"] = container_spec_gcs_path
-        __props__["job_id"] = job_id
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["on_delete"] = on_delete
-        __props__["parameters"] = parameters
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["state"] = state
+        __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
+        __props__.__dict__["job_id"] = job_id
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["on_delete"] = on_delete
+        __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["state"] = state
         return FlexTemplateJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -486,10 +670,4 @@ class FlexTemplateJob(pulumi.CustomResource):
         The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

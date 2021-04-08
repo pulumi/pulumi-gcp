@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ConnectionArgs', 'Connection']
 
@@ -69,6 +73,85 @@ class ConnectionArgs:
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ConnectionState:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 peering: Optional[pulumi.Input[str]] = None,
+                 reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
+               this service provider. Note that invoking this method with a different range when connection
+               is already established will not reallocate already provisioned service producer subnetworks.
+        :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
+               service provider organization. For Google services that support this functionality it is
+               'servicenetworking.googleapis.com'.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if peering is not None:
+            pulumi.set(__self__, "peering", peering)
+        if reserved_peering_ranges is not None:
+            pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of VPC network connected with service producers using VPC peering.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def peering(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "peering")
+
+    @peering.setter
+    def peering(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peering", value)
+
+    @property
+    @pulumi.getter(name="reservedPeeringRanges")
+    def reserved_peering_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Named IP address range(s) of PEERING type reserved for
+        this service provider. Note that invoking this method with a different range when connection
+        is already established will not reallocate already provisioned service producer subnetworks.
+        """
+        return pulumi.get(self, "reserved_peering_ranges")
+
+    @reserved_peering_ranges.setter
+    def reserved_peering_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "reserved_peering_ranges", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provider peering service that is managing peering connectivity for a
+        service provider organization. For Google services that support this functionality it is
+        'servicenetworking.googleapis.com'.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Connection(pulumi.CustomResource):
@@ -138,18 +221,18 @@ class Connection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
-            __props__['network'] = network
+            __props__.__dict__["network"] = network
             if reserved_peering_ranges is None and not opts.urn:
                 raise TypeError("Missing required property 'reserved_peering_ranges'")
-            __props__['reserved_peering_ranges'] = reserved_peering_ranges
+            __props__.__dict__["reserved_peering_ranges"] = reserved_peering_ranges
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
-            __props__['service'] = service
-            __props__['peering'] = None
+            __props__.__dict__["service"] = service
+            __props__.__dict__["peering"] = None
         super(Connection, __self__).__init__(
             'gcp:servicenetworking/connection:Connection',
             resource_name,
@@ -181,12 +264,12 @@ class Connection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConnectionState.__new__(_ConnectionState)
 
-        __props__["network"] = network
-        __props__["peering"] = peering
-        __props__["reserved_peering_ranges"] = reserved_peering_ranges
-        __props__["service"] = service
+        __props__.__dict__["network"] = network
+        __props__.__dict__["peering"] = peering
+        __props__.__dict__["reserved_peering_ranges"] = reserved_peering_ranges
+        __props__.__dict__["service"] = service
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -221,10 +304,4 @@ class Connection(pulumi.CustomResource):
         'servicenetworking.googleapis.com'.
         """
         return pulumi.get(self, "service")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

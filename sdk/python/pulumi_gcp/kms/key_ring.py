@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['KeyRingArgs', 'KeyRing']
 
@@ -67,6 +71,88 @@ class KeyRingArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _KeyRingState:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering KeyRing resources.
+        :param pulumi.Input[str] location: The location for the KeyRing.
+               A full list of valid locations can be found by running `gcloud kms locations list`.
+        :param pulumi.Input[str] name: The resource name for the KeyRing.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            warnings.warn("""Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""self_link is deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""")
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location for the KeyRing.
+        A full list of valid locations can be found by running `gcloud kms locations list`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the KeyRing.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class KeyRing(pulumi.CustomResource):
@@ -208,14 +294,14 @@ class KeyRing(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyRingArgs.__new__(KeyRingArgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
-            __props__['location'] = location
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['self_link'] = None
+            __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["self_link"] = None
         super(KeyRing, __self__).__init__(
             'gcp:kms/keyRing:KeyRing',
             resource_name,
@@ -246,12 +332,12 @@ class KeyRing(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KeyRingState.__new__(_KeyRingState)
 
-        __props__["location"] = location
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["self_link"] = self_link
+        __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
         return KeyRing(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -287,10 +373,4 @@ class KeyRing(pulumi.CustomResource):
         The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -82,6 +86,23 @@ __all__ = [
 
 @pulumi.output_type
 class AccessLevelBasic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "combiningFunction":
+            suggest = "combining_function"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelBasic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelBasic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelBasic.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conditions: Sequence['outputs.AccessLevelBasicCondition'],
                  combining_function: Optional[str] = None):
@@ -123,12 +144,30 @@ class AccessLevelBasic(dict):
         """
         return pulumi.get(self, "combining_function")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelBasicCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "devicePolicy":
+            suggest = "device_policy"
+        elif key == "ipSubnetworks":
+            suggest = "ip_subnetworks"
+        elif key == "requiredAccessLevels":
+            suggest = "required_access_levels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelBasicCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelBasicCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelBasicCondition.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device_policy: Optional['outputs.AccessLevelBasicConditionDevicePolicy'] = None,
                  ip_subnetworks: Optional[Sequence[str]] = None,
@@ -257,12 +296,36 @@ class AccessLevelBasicCondition(dict):
         """
         return pulumi.get(self, "required_access_levels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelBasicConditionDevicePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedDeviceManagementLevels":
+            suggest = "allowed_device_management_levels"
+        elif key == "allowedEncryptionStatuses":
+            suggest = "allowed_encryption_statuses"
+        elif key == "osConstraints":
+            suggest = "os_constraints"
+        elif key == "requireAdminApproval":
+            suggest = "require_admin_approval"
+        elif key == "requireCorpOwned":
+            suggest = "require_corp_owned"
+        elif key == "requireScreenLock":
+            suggest = "require_screen_lock"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelBasicConditionDevicePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelBasicConditionDevicePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelBasicConditionDevicePolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_device_management_levels: Optional[Sequence[str]] = None,
                  allowed_encryption_statuses: Optional[Sequence[str]] = None,
@@ -353,12 +416,28 @@ class AccessLevelBasicConditionDevicePolicy(dict):
         """
         return pulumi.get(self, "require_screen_lock")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osType":
+            suggest = "os_type"
+        elif key == "minimumVersion":
+            suggest = "minimum_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelBasicConditionDevicePolicyOsConstraint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelBasicConditionDevicePolicyOsConstraint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelBasicConditionDevicePolicyOsConstraint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  os_type: str,
                  minimum_version: Optional[str] = None):
@@ -392,12 +471,36 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
         """
         return pulumi.get(self, "minimum_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelConditionDevicePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedDeviceManagementLevels":
+            suggest = "allowed_device_management_levels"
+        elif key == "allowedEncryptionStatuses":
+            suggest = "allowed_encryption_statuses"
+        elif key == "osConstraints":
+            suggest = "os_constraints"
+        elif key == "requireAdminApproval":
+            suggest = "require_admin_approval"
+        elif key == "requireCorpOwned":
+            suggest = "require_corp_owned"
+        elif key == "requireScreenLock":
+            suggest = "require_screen_lock"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelConditionDevicePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelConditionDevicePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelConditionDevicePolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_device_management_levels: Optional[Sequence[str]] = None,
                  allowed_encryption_statuses: Optional[Sequence[str]] = None,
@@ -488,12 +591,28 @@ class AccessLevelConditionDevicePolicy(dict):
         """
         return pulumi.get(self, "require_screen_lock")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelConditionDevicePolicyOsConstraint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osType":
+            suggest = "os_type"
+        elif key == "minimumVersion":
+            suggest = "minimum_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelConditionDevicePolicyOsConstraint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelConditionDevicePolicyOsConstraint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelConditionDevicePolicyOsConstraint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  os_type: str,
                  minimum_version: Optional[str] = None):
@@ -527,9 +646,6 @@ class AccessLevelConditionDevicePolicyOsConstraint(dict):
         """
         return pulumi.get(self, "minimum_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelCustom(dict):
@@ -553,9 +669,6 @@ class AccessLevelCustom(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "expr")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -610,9 +723,6 @@ class AccessLevelCustomExpr(dict):
         Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -689,12 +799,26 @@ class AccessLevelsAccessLevel(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelsAccessLevelBasic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "combiningFunction":
+            suggest = "combining_function"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelsAccessLevelBasic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelsAccessLevelBasic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelsAccessLevelBasic.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conditions: Sequence['outputs.AccessLevelsAccessLevelBasicCondition'],
                  combining_function: Optional[str] = None):
@@ -736,12 +860,30 @@ class AccessLevelsAccessLevelBasic(dict):
         """
         return pulumi.get(self, "combining_function")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelsAccessLevelBasicCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "devicePolicy":
+            suggest = "device_policy"
+        elif key == "ipSubnetworks":
+            suggest = "ip_subnetworks"
+        elif key == "requiredAccessLevels":
+            suggest = "required_access_levels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelsAccessLevelBasicCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelsAccessLevelBasicCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelsAccessLevelBasicCondition.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device_policy: Optional['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicy'] = None,
                  ip_subnetworks: Optional[Sequence[str]] = None,
@@ -870,12 +1012,36 @@ class AccessLevelsAccessLevelBasicCondition(dict):
         """
         return pulumi.get(self, "required_access_levels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedDeviceManagementLevels":
+            suggest = "allowed_device_management_levels"
+        elif key == "allowedEncryptionStatuses":
+            suggest = "allowed_encryption_statuses"
+        elif key == "osConstraints":
+            suggest = "os_constraints"
+        elif key == "requireAdminApproval":
+            suggest = "require_admin_approval"
+        elif key == "requireCorpOwned":
+            suggest = "require_corp_owned"
+        elif key == "requireScreenLock":
+            suggest = "require_screen_lock"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelsAccessLevelBasicConditionDevicePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelsAccessLevelBasicConditionDevicePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelsAccessLevelBasicConditionDevicePolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_device_management_levels: Optional[Sequence[str]] = None,
                  allowed_encryption_statuses: Optional[Sequence[str]] = None,
@@ -966,12 +1132,28 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
         """
         return pulumi.get(self, "require_screen_lock")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osType":
+            suggest = "os_type"
+        elif key == "minimumVersion":
+            suggest = "minimum_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  os_type: str,
                  minimum_version: Optional[str] = None):
@@ -1005,9 +1187,6 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
         """
         return pulumi.get(self, "minimum_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessLevelsAccessLevelCustom(dict):
@@ -1031,9 +1210,6 @@ class AccessLevelsAccessLevelCustom(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "expr")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1089,12 +1265,34 @@ class AccessLevelsAccessLevelCustomExpr(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevels":
+            suggest = "access_levels"
+        elif key == "egressPolicies":
+            suggest = "egress_policies"
+        elif key == "ingressPolicies":
+            suggest = "ingress_policies"
+        elif key == "restrictedServices":
+            suggest = "restricted_services"
+        elif key == "vpcAccessibleServices":
+            suggest = "vpc_accessible_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_levels: Optional[Sequence[str]] = None,
                  egress_policies: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicy']] = None,
@@ -1223,12 +1421,28 @@ class ServicePerimeterSpec(dict):
         """
         return pulumi.get(self, "vpc_accessible_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecEgressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressFrom":
+            suggest = "egress_from"
+        elif key == "egressTo":
+            suggest = "egress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecEgressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecEgressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecEgressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  egress_from: Optional['outputs.ServicePerimeterSpecEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimeterSpecEgressPolicyEgressTo'] = None):
@@ -1263,12 +1477,26 @@ class ServicePerimeterSpecEgressPolicy(dict):
         """
         return pulumi.get(self, "egress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None):
@@ -1306,9 +1534,6 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
         Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1353,12 +1578,28 @@ class ServicePerimeterSpecEgressPolicyEgressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecEgressPolicyEgressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecEgressPolicyEgressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -1399,9 +1640,6 @@ class ServicePerimeterSpecEgressPolicyEgressToOperation(dict):
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
@@ -1439,12 +1677,28 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecIngressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressFrom":
+            suggest = "ingress_from"
+        elif key == "ingressTo":
+            suggest = "ingress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecIngressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecIngressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecIngressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingress_from: Optional['outputs.ServicePerimeterSpecIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimeterSpecIngressPolicyIngressTo'] = None):
@@ -1481,12 +1735,26 @@ class ServicePerimeterSpecIngressPolicy(dict):
         """
         return pulumi.get(self, "ingress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecIngressPolicyIngressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecIngressPolicyIngressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecIngressPolicyIngressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None,
@@ -1539,12 +1807,26 @@ class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
         """
         return pulumi.get(self, "sources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecIngressPolicyIngressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecIngressPolicyIngressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecIngressPolicyIngressFromSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
@@ -1597,9 +1879,6 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
         """
         return pulumi.get(self, "resource")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecIngressPolicyIngressTo(dict):
@@ -1643,12 +1922,28 @@ class ServicePerimeterSpecIngressPolicyIngressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecIngressPolicyIngressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecIngressPolicyIngressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecIngressPolicyIngressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecIngressPolicyIngressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -1689,9 +1984,6 @@ class ServicePerimeterSpecIngressPolicyIngressToOperation(dict):
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
@@ -1729,12 +2021,28 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterSpecVpcAccessibleServices(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "enableRestriction":
+            suggest = "enable_restriction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecVpcAccessibleServices. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecVpcAccessibleServices.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecVpcAccessibleServices.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
@@ -1767,12 +2075,34 @@ class ServicePerimeterSpecVpcAccessibleServices(dict):
         """
         return pulumi.get(self, "enable_restriction")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevels":
+            suggest = "access_levels"
+        elif key == "egressPolicies":
+            suggest = "egress_policies"
+        elif key == "ingressPolicies":
+            suggest = "ingress_policies"
+        elif key == "restrictedServices":
+            suggest = "restricted_services"
+        elif key == "vpcAccessibleServices":
+            suggest = "vpc_accessible_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatus.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_levels: Optional[Sequence[str]] = None,
                  egress_policies: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicy']] = None,
@@ -1901,12 +2231,28 @@ class ServicePerimeterStatus(dict):
         """
         return pulumi.get(self, "vpc_accessible_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusEgressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressFrom":
+            suggest = "egress_from"
+        elif key == "egressTo":
+            suggest = "egress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusEgressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusEgressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusEgressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  egress_from: Optional['outputs.ServicePerimeterStatusEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimeterStatusEgressPolicyEgressTo'] = None):
@@ -1941,12 +2287,26 @@ class ServicePerimeterStatusEgressPolicy(dict):
         """
         return pulumi.get(self, "egress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None):
@@ -1984,9 +2344,6 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
         Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2031,12 +2388,28 @@ class ServicePerimeterStatusEgressPolicyEgressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusEgressPolicyEgressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusEgressPolicyEgressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -2077,9 +2450,6 @@ class ServicePerimeterStatusEgressPolicyEgressToOperation(dict):
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
@@ -2117,12 +2487,28 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusIngressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressFrom":
+            suggest = "ingress_from"
+        elif key == "ingressTo":
+            suggest = "ingress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusIngressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusIngressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusIngressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingress_from: Optional['outputs.ServicePerimeterStatusIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimeterStatusIngressPolicyIngressTo'] = None):
@@ -2159,12 +2545,26 @@ class ServicePerimeterStatusIngressPolicy(dict):
         """
         return pulumi.get(self, "ingress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusIngressPolicyIngressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusIngressPolicyIngressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusIngressPolicyIngressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None,
@@ -2217,12 +2617,26 @@ class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
         """
         return pulumi.get(self, "sources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusIngressPolicyIngressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusIngressPolicyIngressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusIngressPolicyIngressFromSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
@@ -2275,9 +2689,6 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
         """
         return pulumi.get(self, "resource")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusIngressPolicyIngressTo(dict):
@@ -2321,12 +2732,28 @@ class ServicePerimeterStatusIngressPolicyIngressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusIngressPolicyIngressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusIngressPolicyIngressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusIngressPolicyIngressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusIngressPolicyIngressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -2367,9 +2794,6 @@ class ServicePerimeterStatusIngressPolicyIngressToOperation(dict):
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
@@ -2407,12 +2831,28 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterStatusVpcAccessibleServices(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "enableRestriction":
+            suggest = "enable_restriction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusVpcAccessibleServices. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusVpcAccessibleServices.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusVpcAccessibleServices.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
@@ -2445,12 +2885,32 @@ class ServicePerimeterStatusVpcAccessibleServices(dict):
         """
         return pulumi.get(self, "enable_restriction")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "perimeterType":
+            suggest = "perimeter_type"
+        elif key == "updateTime":
+            suggest = "update_time"
+        elif key == "useExplicitDryRunSpec":
+            suggest = "use_explicit_dry_run_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  title: str,
@@ -2631,12 +3091,34 @@ class ServicePerimetersServicePerimeter(dict):
         """
         return pulumi.get(self, "use_explicit_dry_run_spec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevels":
+            suggest = "access_levels"
+        elif key == "egressPolicies":
+            suggest = "egress_policies"
+        elif key == "ingressPolicies":
+            suggest = "ingress_policies"
+        elif key == "restrictedServices":
+            suggest = "restricted_services"
+        elif key == "vpcAccessibleServices":
+            suggest = "vpc_accessible_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_levels: Optional[Sequence[str]] = None,
                  egress_policies: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicy']] = None,
@@ -2765,12 +3247,28 @@ class ServicePerimetersServicePerimeterSpec(dict):
         """
         return pulumi.get(self, "vpc_accessible_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecEgressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressFrom":
+            suggest = "egress_from"
+        elif key == "egressTo":
+            suggest = "egress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecEgressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  egress_from: Optional['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo'] = None):
@@ -2805,12 +3303,26 @@ class ServicePerimetersServicePerimeterSpecEgressPolicy(dict):
         """
         return pulumi.get(self, "egress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None):
@@ -2848,9 +3360,6 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
         Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2895,12 +3404,28 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -2941,9 +3466,6 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(dict):
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
@@ -2981,12 +3503,28 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSe
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecIngressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressFrom":
+            suggest = "ingress_from"
+        elif key == "ingressTo":
+            suggest = "ingress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecIngressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingress_from: Optional['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo'] = None):
@@ -3023,12 +3561,26 @@ class ServicePerimetersServicePerimeterSpecIngressPolicy(dict):
         """
         return pulumi.get(self, "ingress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None,
@@ -3081,12 +3633,26 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
         """
         return pulumi.get(self, "sources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
@@ -3139,9 +3705,6 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
         """
         return pulumi.get(self, "resource")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
@@ -3185,12 +3748,28 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -3231,9 +3810,6 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(dict)
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
@@ -3271,12 +3847,28 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethod
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "enableRestriction":
+            suggest = "enable_restriction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecVpcAccessibleServices. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecVpcAccessibleServices.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecVpcAccessibleServices.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
@@ -3309,12 +3901,34 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
         """
         return pulumi.get(self, "enable_restriction")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevels":
+            suggest = "access_levels"
+        elif key == "egressPolicies":
+            suggest = "egress_policies"
+        elif key == "ingressPolicies":
+            suggest = "ingress_policies"
+        elif key == "restrictedServices":
+            suggest = "restricted_services"
+        elif key == "vpcAccessibleServices":
+            suggest = "vpc_accessible_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatus.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_levels: Optional[Sequence[str]] = None,
                  egress_policies: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicy']] = None,
@@ -3443,12 +4057,28 @@ class ServicePerimetersServicePerimeterStatus(dict):
         """
         return pulumi.get(self, "vpc_accessible_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusEgressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressFrom":
+            suggest = "egress_from"
+        elif key == "egressTo":
+            suggest = "egress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusEgressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  egress_from: Optional['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom'] = None,
                  egress_to: Optional['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo'] = None):
@@ -3483,12 +4113,26 @@ class ServicePerimetersServicePerimeterStatusEgressPolicy(dict):
         """
         return pulumi.get(self, "egress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None):
@@ -3526,9 +4170,6 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
         Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3573,12 +4214,28 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -3619,9 +4276,6 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation(dict)
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
@@ -3659,12 +4313,28 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethod
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusIngressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressFrom":
+            suggest = "ingress_from"
+        elif key == "ingressTo":
+            suggest = "ingress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusIngressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingress_from: Optional['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom'] = None,
                  ingress_to: Optional['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo'] = None):
@@ -3701,12 +4371,26 @@ class ServicePerimetersServicePerimeterStatusIngressPolicy(dict):
         """
         return pulumi.get(self, "ingress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
                  identity_type: Optional[str] = None,
@@ -3759,12 +4443,26 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
         """
         return pulumi.get(self, "sources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
@@ -3817,9 +4515,6 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
         """
         return pulumi.get(self, "resource")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
@@ -3863,12 +4558,28 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector']] = None,
                  service_name: Optional[str] = None):
@@ -3909,9 +4620,6 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation(dic
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
@@ -3949,12 +4657,28 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMeth
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "enableRestriction":
+            suggest = "enable_restriction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusVpcAccessibleServices. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusVpcAccessibleServices.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusVpcAccessibleServices.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
@@ -3986,8 +4710,5 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
         list of APIs specified in 'allowedServices'.
         """
         return pulumi.get(self, "enable_restriction")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

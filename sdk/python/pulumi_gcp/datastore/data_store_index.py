@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -89,6 +93,105 @@ class DataStoreIndexArgs:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _DataStoreIndexState:
+    def __init__(__self__, *,
+                 ancestor: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering DataStoreIndex resources.
+        :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
+               Default value is `NONE`.
+               Possible values are `NONE` and `ALL_ANCESTORS`.
+        :param pulumi.Input[str] index_id: The index id.
+        :param pulumi.Input[str] kind: The entity kind which the index applies to.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]] properties: An ordered list of properties to index on.
+               Structure is documented below.
+        """
+        if ancestor is not None:
+            pulumi.set(__self__, "ancestor", ancestor)
+        if index_id is not None:
+            pulumi.set(__self__, "index_id", index_id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def ancestor(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy for including ancestors in the index.
+        Default value is `NONE`.
+        Possible values are `NONE` and `ALL_ANCESTORS`.
+        """
+        return pulumi.get(self, "ancestor")
+
+    @ancestor.setter
+    def ancestor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ancestor", value)
+
+    @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The index id.
+        """
+        return pulumi.get(self, "index_id")
+
+    @index_id.setter
+    def index_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entity kind which the index applies to.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]]:
+        """
+        An ordered list of properties to index on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]]):
+        pulumi.set(self, "properties", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class DataStoreIndex(pulumi.CustomResource):
@@ -261,15 +364,15 @@ class DataStoreIndex(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DataStoreIndexArgs.__new__(DataStoreIndexArgs)
 
-            __props__['ancestor'] = ancestor
+            __props__.__dict__["ancestor"] = ancestor
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
-            __props__['kind'] = kind
-            __props__['project'] = project
-            __props__['properties'] = properties
-            __props__['index_id'] = None
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["project"] = project
+            __props__.__dict__["properties"] = properties
+            __props__.__dict__["index_id"] = None
         super(DataStoreIndex, __self__).__init__(
             'gcp:datastore/dataStoreIndex:DataStoreIndex',
             resource_name,
@@ -304,13 +407,13 @@ class DataStoreIndex(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DataStoreIndexState.__new__(_DataStoreIndexState)
 
-        __props__["ancestor"] = ancestor
-        __props__["index_id"] = index_id
-        __props__["kind"] = kind
-        __props__["project"] = project
-        __props__["properties"] = properties
+        __props__.__dict__["ancestor"] = ancestor
+        __props__.__dict__["index_id"] = index_id
+        __props__.__dict__["kind"] = kind
+        __props__.__dict__["project"] = project
+        __props__.__dict__["properties"] = properties
         return DataStoreIndex(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -356,10 +459,4 @@ class DataStoreIndex(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "properties")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

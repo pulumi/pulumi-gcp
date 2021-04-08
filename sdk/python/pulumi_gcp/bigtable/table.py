@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -103,6 +107,103 @@ class TableArgs:
     @split_keys.setter
     def split_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "split_keys", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _TableState:
+    def __init__(__self__, *,
+                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Table resources.
+        :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
+        :param pulumi.Input[str] name: The name of the table.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
+               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               to delete/recreate the entire `bigtable.Table` resource.
+        """
+        if column_families is not None:
+            pulumi.set(__self__, "column_families", column_families)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if split_keys is not None:
+            pulumi.set(__self__, "split_keys", split_keys)
+
+    @property
+    @pulumi.getter(name="columnFamilies")
+    def column_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]]:
+        """
+        A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        """
+        return pulumi.get(self, "column_families")
+
+    @column_families.setter
+    def column_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]]):
+        pulumi.set(self, "column_families", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Bigtable instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the table.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="splitKeys")
+    def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of predefined keys to split the table on.
+        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        to delete/recreate the entire `bigtable.Table` resource.
+        """
+        return pulumi.get(self, "split_keys")
+
+    @split_keys.setter
+    def split_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "split_keys", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Table(pulumi.CustomResource):
@@ -261,15 +362,15 @@ class Table(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TableArgs.__new__(TableArgs)
 
-            __props__['column_families'] = column_families
+            __props__.__dict__["column_families"] = column_families
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
-            __props__['instance_name'] = instance_name
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['split_keys'] = split_keys
+            __props__.__dict__["instance_name"] = instance_name
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["split_keys"] = split_keys
         super(Table, __self__).__init__(
             'gcp:bigtable/table:Table',
             resource_name,
@@ -303,13 +404,13 @@ class Table(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TableState.__new__(_TableState)
 
-        __props__["column_families"] = column_families
-        __props__["instance_name"] = instance_name
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["split_keys"] = split_keys
+        __props__.__dict__["column_families"] = column_families
+        __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["split_keys"] = split_keys
         return Table(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -354,10 +455,4 @@ class Table(pulumi.CustomResource):
         to delete/recreate the entire `bigtable.Table` resource.
         """
         return pulumi.get(self, "split_keys")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

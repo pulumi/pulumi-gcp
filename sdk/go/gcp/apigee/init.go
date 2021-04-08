@@ -23,8 +23,11 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:apigee/envGroup:EnvGroup":
 		r = &EnvGroup{}
+<<<<<<< HEAD
 	case "gcp:apigee/envGroupAttachment:EnvGroupAttachment":
 		r = &EnvGroupAttachment{}
+=======
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 	case "gcp:apigee/environment:Environment":
 		r = &Environment{}
 	case "gcp:apigee/instance:Instance":

@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ProjectMetadataArgs', 'ProjectMetadata']
 
@@ -49,6 +53,51 @@ class ProjectMetadataArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ProjectMetadataState:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ProjectMetadata resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A series of key value pairs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A series of key value pairs.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ProjectMetadata(pulumi.CustomResource):
@@ -204,12 +253,12 @@ class ProjectMetadata(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectMetadataArgs.__new__(ProjectMetadataArgs)
 
             if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")
-            __props__['metadata'] = metadata
-            __props__['project'] = project
+            __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["project"] = project
         super(ProjectMetadata, __self__).__init__(
             'gcp:compute/projectMetadata:ProjectMetadata',
             resource_name,
@@ -235,10 +284,10 @@ class ProjectMetadata(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectMetadataState.__new__(_ProjectMetadataState)
 
-        __props__["metadata"] = metadata
-        __props__["project"] = project
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["project"] = project
         return ProjectMetadata(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -257,10 +306,4 @@ class ProjectMetadata(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

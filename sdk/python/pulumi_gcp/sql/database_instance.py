@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -29,7 +33,11 @@ class DatabaseInstanceArgs:
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
+<<<<<<< HEAD
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+=======
+        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during 
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
                resource creation, the provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -61,7 +69,10 @@ class DatabaseInstanceArgs:
                region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
                make sure you understand this.
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
+<<<<<<< HEAD
                configuration is detailed below. Valid only for MySQL instances.
+=======
+               configuration is detailed below.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
@@ -99,7 +110,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['DatabaseInstanceCloneArgs']]:
         """
-        The context needed to create this instance as a clone of another instance. When this field is set during
+        The context needed to create this instance as a clone of another instance. When this field is set during 
         resource creation, the provider will attempt to clone another instance as indicated in the context. The
         configuration is detailed below.
         """
@@ -219,7 +230,7 @@ class DatabaseInstanceArgs:
     def replica_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]:
         """
         The configuration for replication. The
-        configuration is detailed below. Valid only for MySQL instances.
+        configuration is detailed below.
         """
         return pulumi.get(self, "replica_configuration")
 
@@ -255,6 +266,427 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "root_password", value)
 
     @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsArgs']]:
+        """
+        The settings to use for the database. The
+        configuration is detailed below. Required if `clone` is not set.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
+
+@pulumi.input_type
+class _DatabaseInstanceState:
+    def __init__(__self__, *,
+                 clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
+                 database_version: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 first_ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]] = None,
+                 master_instance_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 public_ip_address: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
+                 restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
+                 root_password: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]] = None,
+                 service_account_email_address: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
+        """
+        Input properties used for looking up and filtering DatabaseInstance resources.
+        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during 
+               resource creation, the provider will attempt to clone another instance as indicated in the context. The
+               configuration is detailed below.
+        :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
+               connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
+        :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
+               SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+               `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
+               `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+               `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+               [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
+               includes an up-to-date reference of supported versions.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail.
+        :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
+               up disk encryption currently requires manual steps outside of this provider.
+               The provided key must be in the same region as the SQL instance.  In order
+               to use this feature, a special kind of service account must be created and
+               granted permission on this key.  This step can currently only be done
+               manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+               That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+               key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
+        :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
+               the master in the replication setup. Note, this requires the master to have
+               `binary_log_enabled` set, as well as existing backups.
+        :param pulumi.Input[str] name: A name for this whitelist entry.
+        :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
+        :param pulumi.Input[str] project: The full project ID of the source instance.`
+        :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
+        :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
+               available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
+               A valid region must be provided to use this resource. If a region is not provided in the resource definition,
+               the provider region will be used instead, but this will be an apply-time error for instances if the provider
+               region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+               make sure you understand this.
+        :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
+               configuration is detailed below.
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
+        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+<<<<<<< HEAD
+=======
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
+               instance.
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
+               configuration is detailed below. Required if `clone` is not set.
+        """
+        if clone is not None:
+            pulumi.set(__self__, "clone", clone)
+<<<<<<< HEAD
+=======
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        if database_version is not None:
+            pulumi.set(__self__, "database_version", database_version)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if encryption_key_name is not None:
+            pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+<<<<<<< HEAD
+=======
+        if first_ip_address is not None:
+            pulumi.set(__self__, "first_ip_address", first_ip_address)
+        if ip_addresses is not None:
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        if master_instance_name is not None:
+            pulumi.set(__self__, "master_instance_name", master_instance_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+<<<<<<< HEAD
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+=======
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if public_ip_address is not None:
+            pulumi.set(__self__, "public_ip_address", public_ip_address)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if replica_configuration is not None:
+            pulumi.set(__self__, "replica_configuration", replica_configuration)
+        if restore_backup_context is not None:
+            pulumi.set(__self__, "restore_backup_context", restore_backup_context)
+        if root_password is not None:
+            pulumi.set(__self__, "root_password", root_password)
+<<<<<<< HEAD
+=======
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if server_ca_certs is not None:
+            pulumi.set(__self__, "server_ca_certs", server_ca_certs)
+        if service_account_email_address is not None:
+            pulumi.set(__self__, "service_account_email_address", service_account_email_address)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter
+    def clone(self) -> Optional[pulumi.Input['DatabaseInstanceCloneArgs']]:
+        """
+<<<<<<< HEAD
+        The context needed to create this instance as a clone of another instance. When this field is set during
+=======
+        The context needed to create this instance as a clone of another instance. When this field is set during 
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        resource creation, the provider will attempt to clone another instance as indicated in the context. The
+        configuration is detailed below.
+        """
+        return pulumi.get(self, "clone")
+
+    @clone.setter
+    def clone(self, value: Optional[pulumi.Input['DatabaseInstanceCloneArgs']]):
+        pulumi.set(self, "clone", value)
+
+    @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The connection name of the instance to be used in
+        connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
+        """
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_name", value)
+
+    @property
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MySQL, PostgreSQL or
+        SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+        `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
+        `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+        `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+        [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
+        includes an up-to-date reference of supported versions.
+        """
+        return pulumi.get(self, "database_version")
+
+    @database_version.setter
+    def database_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_version", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` command that deletes the instance will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="encryptionKeyName")
+    def encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to the encryption key used for the CMEK disk encryption.  Setting
+        up disk encryption currently requires manual steps outside of this provider.
+        The provided key must be in the same region as the SQL instance.  In order
+        to use this feature, a special kind of service account must be created and
+        granted permission on this key.  This step can currently only be done
+        manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        """
+        return pulumi.get(self, "encryption_key_name")
+
+    @encryption_key_name.setter
+    def encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key_name", value)
+
+    @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="firstIpAddress")
+    def first_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first IPv4 address of any type assigned.
+        """
+        return pulumi.get(self, "first_ip_address")
+
+    @first_ip_address.setter
+    def first_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "first_ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]]:
+        return pulumi.get(self, "ip_addresses")
+
+    @ip_addresses.setter
+    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]]):
+        pulumi.set(self, "ip_addresses", value)
+
+    @property
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+    @pulumi.getter(name="masterInstanceName")
+    def master_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance that will act as
+        the master in the replication setup. Note, this requires the master to have
+        `binary_log_enabled` set, as well as existing backups.
+        """
+        return pulumi.get(self, "master_instance_name")
+
+    @master_instance_name.setter
+    def master_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_instance_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for this whitelist entry.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first private (`PRIVATE`) IPv4 address assigned.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full project ID of the source instance.`
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first public (`PRIMARY`) IPv4 address assigned.
+        """
+        return pulumi.get(self, "public_ip_address")
+
+    @public_ip_address.setter
+    def public_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ip_address", value)
+
+    @property
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region the instance will sit in. Note, Cloud SQL is not
+        available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
+        A valid region must be provided to use this resource. If a region is not provided in the resource definition,
+        the provider region will be used instead, but this will be an apply-time error for instances if the provider
+        region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+        make sure you understand this.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="replicaConfiguration")
+    def replica_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]:
+        """
+        The configuration for replication. The
+<<<<<<< HEAD
+        configuration is detailed below. Valid only for MySQL instances.
+=======
+        configuration is detailed below.
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
+        """
+        return pulumi.get(self, "replica_configuration")
+
+    @replica_configuration.setter
+    def replica_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]):
+        pulumi.set(self, "replica_configuration", value)
+
+    @property
+    @pulumi.getter(name="restoreBackupContext")
+    def restore_backup_context(self) -> Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]:
+        """
+        The context needed to restore the database to a backup run. This field will
+        cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
+        """
+        return pulumi.get(self, "restore_backup_context")
+
+    @restore_backup_context.setter
+    def restore_backup_context(self, value: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]):
+        pulumi.set(self, "restore_backup_context", value)
+
+    @property
+    @pulumi.getter(name="rootPassword")
+    def root_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        """
+        return pulumi.get(self, "root_password")
+
+    @root_password.setter
+    def root_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_password", value)
+
+    @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="serverCaCerts")
+    def server_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]]:
+        return pulumi.get(self, "server_ca_certs")
+
+    @server_ca_certs.setter
+    def server_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]]):
+        pulumi.set(self, "server_ca_certs", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmailAddress")
+    def service_account_email_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account email address assigned to the
+        instance.
+        """
+        return pulumi.get(self, "service_account_email_address")
+
+    @service_account_email_address.setter
+    def service_account_email_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email_address", value)
+
+    @property
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsArgs']]:
         """
@@ -584,28 +1016,28 @@ class DatabaseInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseInstanceArgs.__new__(DatabaseInstanceArgs)
 
-            __props__['clone'] = clone
-            __props__['database_version'] = database_version
-            __props__['deletion_protection'] = deletion_protection
-            __props__['encryption_key_name'] = encryption_key_name
-            __props__['master_instance_name'] = master_instance_name
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['replica_configuration'] = replica_configuration
-            __props__['restore_backup_context'] = restore_backup_context
-            __props__['root_password'] = root_password
-            __props__['settings'] = settings
-            __props__['connection_name'] = None
-            __props__['first_ip_address'] = None
-            __props__['ip_addresses'] = None
-            __props__['private_ip_address'] = None
-            __props__['public_ip_address'] = None
-            __props__['self_link'] = None
-            __props__['server_ca_certs'] = None
-            __props__['service_account_email_address'] = None
+            __props__.__dict__["clone"] = clone
+            __props__.__dict__["database_version"] = database_version
+            __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["encryption_key_name"] = encryption_key_name
+            __props__.__dict__["master_instance_name"] = master_instance_name
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["replica_configuration"] = replica_configuration
+            __props__.__dict__["restore_backup_context"] = restore_backup_context
+            __props__.__dict__["root_password"] = root_password
+            __props__.__dict__["settings"] = settings
+            __props__.__dict__["connection_name"] = None
+            __props__.__dict__["first_ip_address"] = None
+            __props__.__dict__["ip_addresses"] = None
+            __props__.__dict__["private_ip_address"] = None
+            __props__.__dict__["public_ip_address"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["server_ca_certs"] = None
+            __props__.__dict__["service_account_email_address"] = None
         super(DatabaseInstance, __self__).__init__(
             'gcp:sql/databaseInstance:DatabaseInstance',
             resource_name,
@@ -694,28 +1126,28 @@ class DatabaseInstance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseInstanceState.__new__(_DatabaseInstanceState)
 
-        __props__["clone"] = clone
-        __props__["connection_name"] = connection_name
-        __props__["database_version"] = database_version
-        __props__["deletion_protection"] = deletion_protection
-        __props__["encryption_key_name"] = encryption_key_name
-        __props__["first_ip_address"] = first_ip_address
-        __props__["ip_addresses"] = ip_addresses
-        __props__["master_instance_name"] = master_instance_name
-        __props__["name"] = name
-        __props__["private_ip_address"] = private_ip_address
-        __props__["project"] = project
-        __props__["public_ip_address"] = public_ip_address
-        __props__["region"] = region
-        __props__["replica_configuration"] = replica_configuration
-        __props__["restore_backup_context"] = restore_backup_context
-        __props__["root_password"] = root_password
-        __props__["self_link"] = self_link
-        __props__["server_ca_certs"] = server_ca_certs
-        __props__["service_account_email_address"] = service_account_email_address
-        __props__["settings"] = settings
+        __props__.__dict__["clone"] = clone
+        __props__.__dict__["connection_name"] = connection_name
+        __props__.__dict__["database_version"] = database_version
+        __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["encryption_key_name"] = encryption_key_name
+        __props__.__dict__["first_ip_address"] = first_ip_address
+        __props__.__dict__["ip_addresses"] = ip_addresses
+        __props__.__dict__["master_instance_name"] = master_instance_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["private_ip_address"] = private_ip_address
+        __props__.__dict__["project"] = project
+        __props__.__dict__["public_ip_address"] = public_ip_address
+        __props__.__dict__["region"] = region
+        __props__.__dict__["replica_configuration"] = replica_configuration
+        __props__.__dict__["restore_backup_context"] = restore_backup_context
+        __props__.__dict__["root_password"] = root_password
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["server_ca_certs"] = server_ca_certs
+        __props__.__dict__["service_account_email_address"] = service_account_email_address
+        __props__.__dict__["settings"] = settings
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -901,10 +1333,4 @@ class DatabaseInstance(pulumi.CustomResource):
         configuration is detailed below. Required if `clone` is not set.
         """
         return pulumi.get(self, "settings")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -62,6 +66,29 @@ __all__ = [
 
 @pulumi.output_type
 class AlertPolicyCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "conditionAbsent":
+            suggest = "condition_absent"
+        elif key == "conditionMonitoringQueryLanguage":
+            suggest = "condition_monitoring_query_language"
+        elif key == "conditionThreshold":
+            suggest = "condition_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyCondition.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_name: str,
                  condition_absent: Optional['outputs.AlertPolicyConditionConditionAbsent'] = None,
@@ -154,9 +181,6 @@ class AlertPolicyCondition(dict):
         policy.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -304,12 +328,32 @@ class AlertPolicyConditionConditionAbsent(dict):
         """
         return pulumi.get(self, "trigger")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertPolicyConditionConditionAbsentAggregation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alignmentPeriod":
+            suggest = "alignment_period"
+        elif key == "crossSeriesReducer":
+            suggest = "cross_series_reducer"
+        elif key == "groupByFields":
+            suggest = "group_by_fields"
+        elif key == "perSeriesAligner":
+            suggest = "per_series_aligner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyConditionConditionAbsentAggregation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyConditionConditionAbsentAggregation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyConditionConditionAbsentAggregation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alignment_period: Optional[str] = None,
                  cross_series_reducer: Optional[str] = None,
@@ -504,9 +548,6 @@ class AlertPolicyConditionConditionAbsentAggregation(dict):
         """
         return pulumi.get(self, "per_series_aligner")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertPolicyConditionConditionAbsentTrigger(dict):
@@ -545,9 +586,6 @@ class AlertPolicyConditionConditionAbsentTrigger(dict):
         condition to be triggered.
         """
         return pulumi.get(self, "percent")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -634,9 +672,6 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
         """
         return pulumi.get(self, "trigger")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(dict):
@@ -676,12 +711,30 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(dict):
         """
         return pulumi.get(self, "percent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertPolicyConditionConditionThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denominatorAggregations":
+            suggest = "denominator_aggregations"
+        elif key == "denominatorFilter":
+            suggest = "denominator_filter"
+        elif key == "thresholdValue":
+            suggest = "threshold_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyConditionConditionThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyConditionConditionThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyConditionConditionThreshold.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  comparison: str,
                  duration: str,
@@ -950,12 +1003,32 @@ class AlertPolicyConditionConditionThreshold(dict):
         """
         return pulumi.get(self, "trigger")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertPolicyConditionConditionThresholdAggregation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alignmentPeriod":
+            suggest = "alignment_period"
+        elif key == "crossSeriesReducer":
+            suggest = "cross_series_reducer"
+        elif key == "groupByFields":
+            suggest = "group_by_fields"
+        elif key == "perSeriesAligner":
+            suggest = "per_series_aligner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyConditionConditionThresholdAggregation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyConditionConditionThresholdAggregation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyConditionConditionThresholdAggregation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alignment_period: Optional[str] = None,
                  cross_series_reducer: Optional[str] = None,
@@ -1149,13 +1222,33 @@ class AlertPolicyConditionConditionThresholdAggregation(dict):
         Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
         """
         return pulumi.get(self, "per_series_aligner")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alignmentPeriod":
+            suggest = "alignment_period"
+        elif key == "crossSeriesReducer":
+            suggest = "cross_series_reducer"
+        elif key == "groupByFields":
+            suggest = "group_by_fields"
+        elif key == "perSeriesAligner":
+            suggest = "per_series_aligner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyConditionConditionThresholdDenominatorAggregation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyConditionConditionThresholdDenominatorAggregation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyConditionConditionThresholdDenominatorAggregation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alignment_period: Optional[str] = None,
                  cross_series_reducer: Optional[str] = None,
@@ -1349,9 +1442,6 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
         Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
         """
         return pulumi.get(self, "per_series_aligner")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1392,12 +1482,28 @@ class AlertPolicyConditionConditionThresholdTrigger(dict):
         """
         return pulumi.get(self, "percent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertPolicyCreationRecord(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mutateTime":
+            suggest = "mutate_time"
+        elif key == "mutatedBy":
+            suggest = "mutated_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyCreationRecord. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyCreationRecord.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyCreationRecord.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mutate_time: Optional[str] = None,
                  mutated_by: Optional[str] = None):
@@ -1416,12 +1522,26 @@ class AlertPolicyCreationRecord(dict):
     def mutated_by(self) -> Optional[str]:
         return pulumi.get(self, "mutated_by")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertPolicyDocumentation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyDocumentation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyDocumentation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyDocumentation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  mime_type: Optional[str] = None):
@@ -1458,12 +1578,26 @@ class AlertPolicyDocumentation(dict):
         """
         return pulumi.get(self, "mime_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomServiceTelemetry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceName":
+            suggest = "resource_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomServiceTelemetry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomServiceTelemetry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomServiceTelemetry.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_name: Optional[str] = None):
         """
@@ -1484,12 +1618,26 @@ class CustomServiceTelemetry(dict):
         """
         return pulumi.get(self, "resource_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricDescriptorLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricDescriptorLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricDescriptorLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricDescriptorLabel.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key: str,
                  description: Optional[str] = None,
@@ -1533,12 +1681,28 @@ class MetricDescriptorLabel(dict):
         """
         return pulumi.get(self, "value_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricDescriptorMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingestDelay":
+            suggest = "ingest_delay"
+        elif key == "samplePeriod":
+            suggest = "sample_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricDescriptorMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricDescriptorMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricDescriptorMetadata.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingest_delay: Optional[str] = None,
                  sample_period: Optional[str] = None):
@@ -1567,12 +1731,28 @@ class MetricDescriptorMetadata(dict):
         """
         return pulumi.get(self, "sample_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NotificationChannelSensitiveLabels(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authToken":
+            suggest = "auth_token"
+        elif key == "serviceKey":
+            suggest = "service_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationChannelSensitiveLabels. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationChannelSensitiveLabels.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationChannelSensitiveLabels.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auth_token: Optional[str] = None,
                  password: Optional[str] = None,
@@ -1618,9 +1798,6 @@ class NotificationChannelSensitiveLabels(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "service_key")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1723,9 +1900,6 @@ class SloBasicSli(dict):
         """
         return pulumi.get(self, "versions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloBasicSliAvailability(dict):
@@ -1744,9 +1918,6 @@ class SloBasicSliAvailability(dict):
         Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1770,12 +1941,28 @@ class SloBasicSliLatency(dict):
         """
         return pulumi.get(self, "threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloRequestBasedSli(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distributionCut":
+            suggest = "distribution_cut"
+        elif key == "goodTotalRatio":
+            suggest = "good_total_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloRequestBasedSli. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloRequestBasedSli.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloRequestBasedSli.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  distribution_cut: Optional['outputs.SloRequestBasedSliDistributionCut'] = None,
                  good_total_ratio: Optional['outputs.SloRequestBasedSliGoodTotalRatio'] = None):
@@ -1824,12 +2011,26 @@ class SloRequestBasedSli(dict):
         """
         return pulumi.get(self, "good_total_ratio")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloRequestBasedSliDistributionCut(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distributionFilter":
+            suggest = "distribution_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloRequestBasedSliDistributionCut. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloRequestBasedSliDistributionCut.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloRequestBasedSliDistributionCut.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  distribution_filter: str,
                  range: 'outputs.SloRequestBasedSliDistributionCutRange'):
@@ -1874,9 +2075,6 @@ class SloRequestBasedSliDistributionCut(dict):
         """
         return pulumi.get(self, "range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloRequestBasedSliDistributionCutRange(dict):
@@ -1916,12 +2114,30 @@ class SloRequestBasedSliDistributionCutRange(dict):
         """
         return pulumi.get(self, "min")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloRequestBasedSliGoodTotalRatio(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "badServiceFilter":
+            suggest = "bad_service_filter"
+        elif key == "goodServiceFilter":
+            suggest = "good_service_filter"
+        elif key == "totalServiceFilter":
+            suggest = "total_service_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloRequestBasedSliGoodTotalRatio. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloRequestBasedSliGoodTotalRatio.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloRequestBasedSliGoodTotalRatio.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bad_service_filter: Optional[str] = None,
                  good_service_filter: Optional[str] = None,
@@ -1996,12 +2212,34 @@ class SloRequestBasedSliGoodTotalRatio(dict):
         """
         return pulumi.get(self, "total_service_filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSli(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "goodBadMetricFilter":
+            suggest = "good_bad_metric_filter"
+        elif key == "goodTotalRatioThreshold":
+            suggest = "good_total_ratio_threshold"
+        elif key == "metricMeanInRange":
+            suggest = "metric_mean_in_range"
+        elif key == "metricSumInRange":
+            suggest = "metric_sum_in_range"
+        elif key == "windowPeriod":
+            suggest = "window_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloWindowsBasedSli. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloWindowsBasedSli.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloWindowsBasedSli.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  good_bad_metric_filter: Optional[str] = None,
                  good_total_ratio_threshold: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThreshold'] = None,
@@ -2114,12 +2352,26 @@ class SloWindowsBasedSli(dict):
         """
         return pulumi.get(self, "window_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicSliPerformance":
+            suggest = "basic_sli_performance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloWindowsBasedSliGoodTotalRatioThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThreshold.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_sli_performance: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance'] = None,
                  performance: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformance'] = None,
@@ -2167,9 +2419,6 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
         this service that return in no more than threshold.
         """
         return pulumi.get(self, "threshold")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2272,9 +2521,6 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
         """
         return pulumi.get(self, "versions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(dict):
@@ -2293,9 +2539,6 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(d
         Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2319,12 +2562,28 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(dict):
         """
         return pulumi.get(self, "threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distributionCut":
+            suggest = "distribution_cut"
+        elif key == "goodTotalRatio":
+            suggest = "good_total_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloWindowsBasedSliGoodTotalRatioThresholdPerformance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformance.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  distribution_cut: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut'] = None,
                  good_total_ratio: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio'] = None):
@@ -2373,12 +2632,26 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance(dict):
         """
         return pulumi.get(self, "good_total_ratio")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distributionFilter":
+            suggest = "distribution_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  distribution_filter: str,
                  range: 'outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange'):
@@ -2423,9 +2696,6 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
         """
         return pulumi.get(self, "range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(dict):
@@ -2465,12 +2735,30 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(d
         """
         return pulumi.get(self, "min")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "badServiceFilter":
+            suggest = "bad_service_filter"
+        elif key == "goodServiceFilter":
+            suggest = "good_service_filter"
+        elif key == "totalServiceFilter":
+            suggest = "total_service_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bad_service_filter: Optional[str] = None,
                  good_service_filter: Optional[str] = None,
@@ -2545,12 +2833,26 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(dict):
         """
         return pulumi.get(self, "total_service_filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliMetricMeanInRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeSeries":
+            suggest = "time_series"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloWindowsBasedSliMetricMeanInRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloWindowsBasedSliMetricMeanInRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloWindowsBasedSliMetricMeanInRange.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  range: 'outputs.SloWindowsBasedSliMetricMeanInRangeRange',
                  time_series: str):
@@ -2601,9 +2903,6 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
         """
         return pulumi.get(self, "time_series")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliMetricMeanInRangeRange(dict):
@@ -2643,12 +2942,26 @@ class SloWindowsBasedSliMetricMeanInRangeRange(dict):
         """
         return pulumi.get(self, "min")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliMetricSumInRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeSeries":
+            suggest = "time_series"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloWindowsBasedSliMetricSumInRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloWindowsBasedSliMetricSumInRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloWindowsBasedSliMetricSumInRange.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  range: 'outputs.SloWindowsBasedSliMetricSumInRangeRange',
                  time_series: str):
@@ -2699,9 +3012,6 @@ class SloWindowsBasedSliMetricSumInRange(dict):
         """
         return pulumi.get(self, "time_series")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SloWindowsBasedSliMetricSumInRangeRange(dict):
@@ -2741,9 +3051,6 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
         """
         return pulumi.get(self, "min")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UptimeCheckConfigContentMatcher(dict):
@@ -2778,12 +3085,36 @@ class UptimeCheckConfigContentMatcher(dict):
         """
         return pulumi.get(self, "matcher")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UptimeCheckConfigHttpCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authInfo":
+            suggest = "auth_info"
+        elif key == "contentType":
+            suggest = "content_type"
+        elif key == "maskHeaders":
+            suggest = "mask_headers"
+        elif key == "requestMethod":
+            suggest = "request_method"
+        elif key == "useSsl":
+            suggest = "use_ssl"
+        elif key == "validateSsl":
+            suggest = "validate_ssl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UptimeCheckConfigHttpCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UptimeCheckConfigHttpCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UptimeCheckConfigHttpCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auth_info: Optional['outputs.UptimeCheckConfigHttpCheckAuthInfo'] = None,
                  body: Optional[str] = None,
@@ -2916,9 +3247,6 @@ class UptimeCheckConfigHttpCheck(dict):
         """
         return pulumi.get(self, "validate_ssl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UptimeCheckConfigHttpCheckAuthInfo(dict):
@@ -2950,9 +3278,6 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UptimeCheckConfigMonitoredResource(dict):
@@ -2982,12 +3307,28 @@ class UptimeCheckConfigMonitoredResource(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UptimeCheckConfigResourceGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UptimeCheckConfigResourceGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UptimeCheckConfigResourceGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UptimeCheckConfigResourceGroup.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  group_id: Optional[str] = None,
                  resource_type: Optional[str] = None):
@@ -3018,9 +3359,6 @@ class UptimeCheckConfigResourceGroup(dict):
         """
         return pulumi.get(self, "resource_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UptimeCheckConfigTcpCheck(dict):
@@ -3038,9 +3376,6 @@ class UptimeCheckConfigTcpCheck(dict):
         The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """
         return pulumi.get(self, "port")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

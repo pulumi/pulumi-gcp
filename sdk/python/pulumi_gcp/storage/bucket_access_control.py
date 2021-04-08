@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['BucketAccessControlArgs', 'BucketAccessControl']
 
@@ -92,6 +96,127 @@ class BucketAccessControlArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _BucketAccessControlState:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 entity: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BucketAccessControl resources.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] domain: The domain associated with the entity.
+        :param pulumi.Input[str] email: The email address associated with the entity.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms:
+               user-userId
+               user-email
+               group-groupId
+               group-email
+               domain-domain
+               project-team-projectId
+               allUsers
+               allAuthenticatedUsers
+               Examples:
+               The user liz@example.com would be user-liz@example.com.
+               The group example@googlegroups.com would be
+               group-example@googlegroups.com.
+               To refer to all members of the Google Apps for Business domain
+               example.com, the entity would be domain-example.com.
+        :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER`, `READER`, and `WRITER`.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if entity is not None:
+            pulumi.set(__self__, "entity", entity)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain associated with the entity.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address associated with the entity.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entity holding the permission, in one of the following forms:
+        user-userId
+        user-email
+        group-groupId
+        group-email
+        domain-domain
+        project-team-projectId
+        allUsers
+        allAuthenticatedUsers
+        Examples:
+        The user liz@example.com would be user-liz@example.com.
+        The group example@googlegroups.com would be
+        group-example@googlegroups.com.
+        To refer to all members of the Google Apps for Business domain
+        example.com, the entity would be domain-example.com.
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access permission for the entity.
+        Possible values are `OWNER`, `READER`, and `WRITER`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class BucketAccessControl(pulumi.CustomResource):
@@ -260,17 +385,17 @@ class BucketAccessControl(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BucketAccessControlArgs.__new__(BucketAccessControlArgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
+            __props__.__dict__["bucket"] = bucket
             if entity is None and not opts.urn:
                 raise TypeError("Missing required property 'entity'")
-            __props__['entity'] = entity
-            __props__['role'] = role
-            __props__['domain'] = None
-            __props__['email'] = None
+            __props__.__dict__["entity"] = entity
+            __props__.__dict__["role"] = role
+            __props__.__dict__["domain"] = None
+            __props__.__dict__["email"] = None
         super(BucketAccessControl, __self__).__init__(
             'gcp:storage/bucketAccessControl:BucketAccessControl',
             resource_name,
@@ -316,13 +441,13 @@ class BucketAccessControl(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BucketAccessControlState.__new__(_BucketAccessControlState)
 
-        __props__["bucket"] = bucket
-        __props__["domain"] = domain
-        __props__["email"] = email
-        __props__["entity"] = entity
-        __props__["role"] = role
+        __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["domain"] = domain
+        __props__.__dict__["email"] = email
+        __props__.__dict__["entity"] = entity
+        __props__.__dict__["role"] = role
         return BucketAccessControl(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -379,10 +504,4 @@ class BucketAccessControl(pulumi.CustomResource):
         Possible values are `OWNER`, `READER`, and `WRITER`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

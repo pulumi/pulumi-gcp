@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['PolicyTagArgs', 'PolicyTag']
 
@@ -92,6 +96,129 @@ class PolicyTagArgs:
     @parent_policy_tag.setter
     def parent_policy_tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent_policy_tag", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _PolicyTagState:
+    def __init__(__self__, *,
+                 child_policy_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_policy_tag: Optional[pulumi.Input[str]] = None,
+                 taxonomy: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering PolicyTag resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] child_policy_tags: Resource names of child policy tags of this policy tag.
+        :param pulumi.Input[str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
+               newlines, carriage returns and page breaks; and be at most 2000 bytes long when
+               encoded in UTF-8. If not set, defaults to an empty description.
+               If not set, defaults to an empty description.
+        :param pulumi.Input[str] display_name: User defined name of this policy tag. It must: be unique within the parent
+               taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
+               not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+        :param pulumi.Input[str] name: Resource name of this policy tag, whose format is:
+               "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
+        :param pulumi.Input[str] parent_policy_tag: Resource name of this policy tag's parent policy tag.
+               If empty, it means this policy tag is a top level policy tag.
+               If not set, defaults to an empty string.
+        :param pulumi.Input[str] taxonomy: Taxonomy the policy tag is associated with
+        """
+        if child_policy_tags is not None:
+            pulumi.set(__self__, "child_policy_tags", child_policy_tags)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_policy_tag is not None:
+            pulumi.set(__self__, "parent_policy_tag", parent_policy_tag)
+        if taxonomy is not None:
+            pulumi.set(__self__, "taxonomy", taxonomy)
+
+    @property
+    @pulumi.getter(name="childPolicyTags")
+    def child_policy_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Resource names of child policy tags of this policy tag.
+        """
+        return pulumi.get(self, "child_policy_tags")
+
+    @child_policy_tags.setter
+    def child_policy_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "child_policy_tags", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of this policy tag. It must: contain only unicode characters, tabs,
+        newlines, carriage returns and page breaks; and be at most 2000 bytes long when
+        encoded in UTF-8. If not set, defaults to an empty description.
+        If not set, defaults to an empty description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User defined name of this policy tag. It must: be unique within the parent
+        taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
+        not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of this policy tag, whose format is:
+        "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentPolicyTag")
+    def parent_policy_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of this policy tag's parent policy tag.
+        If empty, it means this policy tag is a top level policy tag.
+        If not set, defaults to an empty string.
+        """
+        return pulumi.get(self, "parent_policy_tag")
+
+    @parent_policy_tag.setter
+    def parent_policy_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_policy_tag", value)
+
+    @property
+    @pulumi.getter
+    def taxonomy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Taxonomy the policy tag is associated with
+        """
+        return pulumi.get(self, "taxonomy")
+
+    @taxonomy.setter
+    def taxonomy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "taxonomy", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class PolicyTag(pulumi.CustomResource):
@@ -299,18 +426,18 @@ class PolicyTag(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PolicyTagArgs.__new__(PolicyTagArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['parent_policy_tag'] = parent_policy_tag
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["parent_policy_tag"] = parent_policy_tag
             if taxonomy is None and not opts.urn:
                 raise TypeError("Missing required property 'taxonomy'")
-            __props__['taxonomy'] = taxonomy
-            __props__['child_policy_tags'] = None
-            __props__['name'] = None
+            __props__.__dict__["taxonomy"] = taxonomy
+            __props__.__dict__["child_policy_tags"] = None
+            __props__.__dict__["name"] = None
         super(PolicyTag, __self__).__init__(
             'gcp:datacatalog/policyTag:PolicyTag',
             resource_name,
@@ -351,14 +478,14 @@ class PolicyTag(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PolicyTagState.__new__(_PolicyTagState)
 
-        __props__["child_policy_tags"] = child_policy_tags
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["name"] = name
-        __props__["parent_policy_tag"] = parent_policy_tag
-        __props__["taxonomy"] = taxonomy
+        __props__.__dict__["child_policy_tags"] = child_policy_tags
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent_policy_tag"] = parent_policy_tag
+        __props__.__dict__["taxonomy"] = taxonomy
         return PolicyTag(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -416,10 +543,4 @@ class PolicyTag(pulumi.CustomResource):
         Taxonomy the policy tag is associated with
         """
         return pulumi.get(self, "taxonomy")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

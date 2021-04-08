@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -260,6 +264,291 @@ class TriggerArgs:
     @trigger_template.setter
     def trigger_template(self, value: Optional[pulumi.Input['TriggerTriggerTemplateArgs']]):
         pulumi.set(self, "trigger_template", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _TriggerState:
+    def __init__(__self__, *,
+                 build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 filename: Optional[pulumi.Input[str]] = None,
+                 github: Optional[pulumi.Input['TriggerGithubArgs']] = None,
+                 ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
+                 trigger_template: Optional[pulumi.Input['TriggerTriggerTemplateArgs']] = None):
+        """
+        Input properties used for looking up and filtering Trigger resources.
+        :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
+               Structure is documented below.
+        :param pulumi.Input[str] create_time: Time when the trigger was created.
+        :param pulumi.Input[str] description: Human-readable description of the trigger.
+        :param pulumi.Input[bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
+        :param pulumi.Input[str] filename: Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
+        :param pulumi.Input['TriggerGithubArgs'] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+               One of `trigger_template` or `github` must be provided.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+               extended with support for `**`.
+               If ignoredFiles and changed files are both empty, then they are not
+               used to determine whether or not to trigger a build.
+               If ignoredFiles is not empty, then we ignore any files that match any
+               of the ignored_file globs. If the change has no files that are outside
+               of the ignoredFiles globs, then we do not trigger a build.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+               extended with support for `**`.
+               If any of the files altered in the commit pass the ignoredFiles filter
+               and includedFiles is empty, then as far as this filter is concerned, we
+               should trigger the build.
+               If any of the files altered in the commit pass the ignoredFiles filter
+               and includedFiles is not empty, then we make sure that at least one of
+               those files matches a includedFiles glob. If not, then we do not trigger
+               a build.
+        :param pulumi.Input[str] name: Name of the volume to mount.
+               Volume names must be unique per build step and must be valid names for Docker volumes.
+               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
+        :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
+        :param pulumi.Input['TriggerTriggerTemplateArgs'] trigger_template: Template describing the types of source changes to trigger a build.
+               Branch and tag names in trigger templates are interpreted as regular
+               expressions. Any branch or tag change that matches that regular
+               expression will trigger a build.
+               One of `trigger_template` or `github` must be provided.
+               Structure is documented below.
+        """
+        if build is not None:
+            pulumi.set(__self__, "build", build)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if filename is not None:
+            pulumi.set(__self__, "filename", filename)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if ignored_files is not None:
+            pulumi.set(__self__, "ignored_files", ignored_files)
+        if included_files is not None:
+            pulumi.set(__self__, "included_files", included_files)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if substitutions is not None:
+            pulumi.set(__self__, "substitutions", substitutions)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if trigger_id is not None:
+            pulumi.set(__self__, "trigger_id", trigger_id)
+        if trigger_template is not None:
+            pulumi.set(__self__, "trigger_template", trigger_template)
+
+    @property
+    @pulumi.getter
+    def build(self) -> Optional[pulumi.Input['TriggerBuildArgs']]:
+        """
+        Contents of the build template. Either a filename or build template must be provided.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "build")
+
+    @build.setter
+    def build(self, value: Optional[pulumi.Input['TriggerBuildArgs']]):
+        pulumi.set(self, "build", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time when the trigger was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable description of the trigger.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the trigger is disabled or not. If true, the trigger will never result in a build.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def filename(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
+        """
+        return pulumi.get(self, "filename")
+
+    @filename.setter
+    def filename(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename", value)
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional[pulumi.Input['TriggerGithubArgs']]:
+        """
+        Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        One of `trigger_template` or `github` must be provided.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "github")
+
+    @github.setter
+    def github(self, value: Optional[pulumi.Input['TriggerGithubArgs']]):
+        pulumi.set(self, "github", value)
+
+    @property
+    @pulumi.getter(name="ignoredFiles")
+    def ignored_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        extended with support for `**`.
+        If ignoredFiles and changed files are both empty, then they are not
+        used to determine whether or not to trigger a build.
+        If ignoredFiles is not empty, then we ignore any files that match any
+        of the ignored_file globs. If the change has no files that are outside
+        of the ignoredFiles globs, then we do not trigger a build.
+        """
+        return pulumi.get(self, "ignored_files")
+
+    @ignored_files.setter
+    def ignored_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ignored_files", value)
+
+    @property
+    @pulumi.getter(name="includedFiles")
+    def included_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        extended with support for `**`.
+        If any of the files altered in the commit pass the ignoredFiles filter
+        and includedFiles is empty, then as far as this filter is concerned, we
+        should trigger the build.
+        If any of the files altered in the commit pass the ignoredFiles filter
+        and includedFiles is not empty, then we make sure that at least one of
+        those files matches a includedFiles glob. If not, then we do not trigger
+        a build.
+        """
+        return pulumi.get(self, "included_files")
+
+    @included_files.setter
+    def included_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_files", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the volume to mount.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Substitutions to use in a triggered build. Should only be used with triggers.run
+        """
+        return pulumi.get(self, "substitutions")
+
+    @substitutions.setter
+    def substitutions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "substitutions", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags for annotation of a Build. These are not docker tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier for the trigger.
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_id", value)
+
+    @property
+    @pulumi.getter(name="triggerTemplate")
+    def trigger_template(self) -> Optional[pulumi.Input['TriggerTriggerTemplateArgs']]:
+        """
+        Template describing the types of source changes to trigger a build.
+        Branch and tag names in trigger templates are interpreted as regular
+        expressions. Any branch or tag change that matches that regular
+        expression will trigger a build.
+        One of `trigger_template` or `github` must be provided.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_template")
+
+    @trigger_template.setter
+    def trigger_template(self, value: Optional[pulumi.Input['TriggerTriggerTemplateArgs']]):
+        pulumi.set(self, "trigger_template", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Trigger(pulumi.CustomResource):
@@ -603,22 +892,22 @@ class Trigger(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TriggerArgs.__new__(TriggerArgs)
 
-            __props__['build'] = build
-            __props__['description'] = description
-            __props__['disabled'] = disabled
-            __props__['filename'] = filename
-            __props__['github'] = github
-            __props__['ignored_files'] = ignored_files
-            __props__['included_files'] = included_files
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['substitutions'] = substitutions
-            __props__['tags'] = tags
-            __props__['trigger_template'] = trigger_template
-            __props__['create_time'] = None
-            __props__['trigger_id'] = None
+            __props__.__dict__["build"] = build
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disabled"] = disabled
+            __props__.__dict__["filename"] = filename
+            __props__.__dict__["github"] = github
+            __props__.__dict__["ignored_files"] = ignored_files
+            __props__.__dict__["included_files"] = included_files
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["substitutions"] = substitutions
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["trigger_template"] = trigger_template
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["trigger_id"] = None
         super(Trigger, __self__).__init__(
             'gcp:cloudbuild/trigger:Trigger',
             resource_name,
@@ -692,22 +981,22 @@ class Trigger(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TriggerState.__new__(_TriggerState)
 
-        __props__["build"] = build
-        __props__["create_time"] = create_time
-        __props__["description"] = description
-        __props__["disabled"] = disabled
-        __props__["filename"] = filename
-        __props__["github"] = github
-        __props__["ignored_files"] = ignored_files
-        __props__["included_files"] = included_files
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["substitutions"] = substitutions
-        __props__["tags"] = tags
-        __props__["trigger_id"] = trigger_id
-        __props__["trigger_template"] = trigger_template
+        __props__.__dict__["build"] = build
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["filename"] = filename
+        __props__.__dict__["github"] = github
+        __props__.__dict__["ignored_files"] = ignored_files
+        __props__.__dict__["included_files"] = included_files
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["substitutions"] = substitutions
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["trigger_id"] = trigger_id
+        __props__.__dict__["trigger_template"] = trigger_template
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -846,10 +1135,4 @@ class Trigger(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "trigger_template")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

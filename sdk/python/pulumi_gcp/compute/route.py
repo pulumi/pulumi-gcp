@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['RouteArgs', 'Route']
 
@@ -284,6 +288,319 @@ class RouteArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _RouteState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dest_range: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 next_hop_gateway: Optional[pulumi.Input[str]] = None,
+                 next_hop_ilb: Optional[pulumi.Input[str]] = None,
+                 next_hop_instance: Optional[pulumi.Input[str]] = None,
+                 next_hop_instance_zone: Optional[pulumi.Input[str]] = None,
+                 next_hop_ip: Optional[pulumi.Input[str]] = None,
+                 next_hop_network: Optional[pulumi.Input[str]] = None,
+                 next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Route resources.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property
+               when you create the resource.
+        :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to.
+               Only IPv4 is supported.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035.  Specifically, the name must be 1-63 characters long and
+               match the regular expression `a-z?` which means
+               the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the
+               last character, which cannot be a dash.
+        :param pulumi.Input[str] network: The network that this route applies to.
+        :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
+               Currently, you can only specify the internet gateway, using a full or
+               partial valid URL:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
+               * `projects/project/global/gateways/default-internet-gateway`
+               * `global/gateways/default-internet-gateway`
+               * The string `default-internet-gateway`.
+        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
+               You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+               https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               regions/region/forwardingRules/forwardingRule
+               Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
+               You can specify this as a full or partial URL. For example:
+               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
+               * `projects/project/zones/zone/instances/instance`
+               * `zones/zone/instances/instance`
+               * Just the instance name, with the zone in `next_hop_instance_zone`.
+        :param pulumi.Input[str] next_hop_instance_zone: (Optional when `next_hop_instance` is
+               specified)  The zone of the instance specified in
+               `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+               a URL.
+        :param pulumi.Input[str] next_hop_ip: Network IP address of an instance that should handle matching packets.
+        :param pulumi.Input[str] next_hop_network: URL to a Network that should handle matching packets.
+        :param pulumi.Input[str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases
+               where there is more than one matching route of equal prefix length.
+               In the case of two routes with equal prefix length, the one with the
+               lowest-numbered priority value wins.
+               Default value is 1000. Valid range is 0 through 65535.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dest_range is not None:
+            pulumi.set(__self__, "dest_range", dest_range)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if next_hop_gateway is not None:
+            pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        if next_hop_ilb is not None:
+            pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
+        if next_hop_instance is not None:
+            pulumi.set(__self__, "next_hop_instance", next_hop_instance)
+        if next_hop_instance_zone is not None:
+            pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        if next_hop_ip is not None:
+            pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        if next_hop_network is not None:
+            pulumi.set(__self__, "next_hop_network", next_hop_network)
+        if next_hop_vpn_tunnel is not None:
+            pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property
+        when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="destRange")
+    def dest_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination range of outgoing packets that this route applies to.
+        Only IPv4 is supported.
+        """
+        return pulumi.get(self, "dest_range")
+
+    @dest_range.setter
+    def dest_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_range", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035.  Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the
+        last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network that this route applies to.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="nextHopGateway")
+    def next_hop_gateway(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to a gateway that should handle matching packets.
+        Currently, you can only specify the internet gateway, using a full or
+        partial valid URL:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
+        * `projects/project/global/gateways/default-internet-gateway`
+        * `global/gateways/default-internet-gateway`
+        * The string `default-internet-gateway`.
+        """
+        return pulumi.get(self, "next_hop_gateway")
+
+    @next_hop_gateway.setter
+    def next_hop_gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_gateway", value)
+
+    @property
+    @pulumi.getter(name="nextHopIlb")
+    def next_hop_ilb(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
+        You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+        https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        regions/region/forwardingRules/forwardingRule
+        Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        """
+        return pulumi.get(self, "next_hop_ilb")
+
+    @next_hop_ilb.setter
+    def next_hop_ilb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_ilb", value)
+
+    @property
+    @pulumi.getter(name="nextHopInstance")
+    def next_hop_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to an instance that should handle matching packets.
+        You can specify this as a full or partial URL. For example:
+        * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
+        * `projects/project/zones/zone/instances/instance`
+        * `zones/zone/instances/instance`
+        * Just the instance name, with the zone in `next_hop_instance_zone`.
+        """
+        return pulumi.get(self, "next_hop_instance")
+
+    @next_hop_instance.setter
+    def next_hop_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_instance", value)
+
+    @property
+    @pulumi.getter(name="nextHopInstanceZone")
+    def next_hop_instance_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional when `next_hop_instance` is
+        specified)  The zone of the instance specified in
+        `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+        a URL.
+        """
+        return pulumi.get(self, "next_hop_instance_zone")
+
+    @next_hop_instance_zone.setter
+    def next_hop_instance_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_instance_zone", value)
+
+    @property
+    @pulumi.getter(name="nextHopIp")
+    def next_hop_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network IP address of an instance that should handle matching packets.
+        """
+        return pulumi.get(self, "next_hop_ip")
+
+    @next_hop_ip.setter
+    def next_hop_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_ip", value)
+
+    @property
+    @pulumi.getter(name="nextHopNetwork")
+    def next_hop_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to a Network that should handle matching packets.
+        """
+        return pulumi.get(self, "next_hop_network")
+
+    @next_hop_network.setter
+    def next_hop_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_network", value)
+
+    @property
+    @pulumi.getter(name="nextHopVpnTunnel")
+    def next_hop_vpn_tunnel(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to a VpnTunnel that should handle matching packets.
+        """
+        return pulumi.get(self, "next_hop_vpn_tunnel")
+
+    @next_hop_vpn_tunnel.setter
+    def next_hop_vpn_tunnel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_vpn_tunnel", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of this route. Priority is used to break ties in cases
+        where there is more than one matching route of equal prefix length.
+        In the case of two routes with equal prefix length, the one with the
+        lowest-numbered priority value wins.
+        Default value is 1000. Valid range is 0 through 65535.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of instance tags to which this route applies.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Route(pulumi.CustomResource):
@@ -594,27 +911,27 @@ class Route(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouteArgs.__new__(RouteArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if dest_range is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_range'")
-            __props__['dest_range'] = dest_range
-            __props__['name'] = name
+            __props__.__dict__["dest_range"] = dest_range
+            __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
-            __props__['network'] = network
-            __props__['next_hop_gateway'] = next_hop_gateway
-            __props__['next_hop_ilb'] = next_hop_ilb
-            __props__['next_hop_instance'] = next_hop_instance
-            __props__['next_hop_instance_zone'] = next_hop_instance_zone
-            __props__['next_hop_ip'] = next_hop_ip
-            __props__['next_hop_vpn_tunnel'] = next_hop_vpn_tunnel
-            __props__['priority'] = priority
-            __props__['project'] = project
-            __props__['tags'] = tags
-            __props__['next_hop_network'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["network"] = network
+            __props__.__dict__["next_hop_gateway"] = next_hop_gateway
+            __props__.__dict__["next_hop_ilb"] = next_hop_ilb
+            __props__.__dict__["next_hop_instance"] = next_hop_instance
+            __props__.__dict__["next_hop_instance_zone"] = next_hop_instance_zone
+            __props__.__dict__["next_hop_ip"] = next_hop_ip
+            __props__.__dict__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
+            __props__.__dict__["priority"] = priority
+            __props__.__dict__["project"] = project
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["next_hop_network"] = None
+            __props__.__dict__["self_link"] = None
         super(Route, __self__).__init__(
             'gcp:compute/route:Route',
             resource_name,
@@ -696,23 +1013,23 @@ class Route(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouteState.__new__(_RouteState)
 
-        __props__["description"] = description
-        __props__["dest_range"] = dest_range
-        __props__["name"] = name
-        __props__["network"] = network
-        __props__["next_hop_gateway"] = next_hop_gateway
-        __props__["next_hop_ilb"] = next_hop_ilb
-        __props__["next_hop_instance"] = next_hop_instance
-        __props__["next_hop_instance_zone"] = next_hop_instance_zone
-        __props__["next_hop_ip"] = next_hop_ip
-        __props__["next_hop_network"] = next_hop_network
-        __props__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
-        __props__["priority"] = priority
-        __props__["project"] = project
-        __props__["self_link"] = self_link
-        __props__["tags"] = tags
+        __props__.__dict__["description"] = description
+        __props__.__dict__["dest_range"] = dest_range
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
+        __props__.__dict__["next_hop_gateway"] = next_hop_gateway
+        __props__.__dict__["next_hop_ilb"] = next_hop_ilb
+        __props__.__dict__["next_hop_instance"] = next_hop_instance
+        __props__.__dict__["next_hop_instance_zone"] = next_hop_instance_zone
+        __props__.__dict__["next_hop_ip"] = next_hop_ip
+        __props__.__dict__["next_hop_network"] = next_hop_network
+        __props__.__dict__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["tags"] = tags
         return Route(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -865,10 +1182,4 @@ class Route(pulumi.CustomResource):
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

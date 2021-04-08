@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 
 __all__ = [
@@ -24,6 +28,23 @@ __all__ = [
 
 @pulumi.output_type
 class GameServerClusterConnectionInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusterReference":
+            suggest = "gke_cluster_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GameServerClusterConnectionInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GameServerClusterConnectionInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GameServerClusterConnectionInfo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gke_cluster_reference: 'outputs.GameServerClusterConnectionInfoGkeClusterReference',
                  namespace: str):
@@ -55,9 +76,6 @@ class GameServerClusterConnectionInfo(dict):
         during creation.
         """
         return pulumi.get(self, "namespace")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -91,12 +109,26 @@ class GameServerClusterConnectionInfoGkeClusterReference(dict):
         """
         return pulumi.get(self, "cluster")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GameServerConfigFleetConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fleetSpec":
+            suggest = "fleet_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GameServerConfigFleetConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GameServerConfigFleetConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GameServerConfigFleetConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fleet_spec: str,
                  name: Optional[str] = None):
@@ -136,12 +168,26 @@ class GameServerConfigFleetConfig(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GameServerConfigScalingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fleetAutoscalerSpec":
+            suggest = "fleet_autoscaler_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GameServerConfigScalingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GameServerConfigScalingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GameServerConfigScalingConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fleet_autoscaler_spec: str,
                  name: str,
@@ -204,12 +250,32 @@ class GameServerConfigScalingConfig(dict):
         """
         return pulumi.get(self, "selectors")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GameServerConfigScalingConfigSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronJobDuration":
+            suggest = "cron_job_duration"
+        elif key == "cronSpec":
+            suggest = "cron_spec"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GameServerConfigScalingConfigSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GameServerConfigScalingConfigSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GameServerConfigScalingConfigSchedule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cron_job_duration: Optional[str] = None,
                  cron_spec: Optional[str] = None,
@@ -274,9 +340,6 @@ class GameServerConfigScalingConfigSchedule(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GameServerConfigScalingConfigSelector(dict):
@@ -296,12 +359,28 @@ class GameServerConfigScalingConfigSelector(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GameServerDeploymentRolloutGameServerConfigOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configVersion":
+            suggest = "config_version"
+        elif key == "realmsSelector":
+            suggest = "realms_selector"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GameServerDeploymentRolloutGameServerConfigOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GameServerDeploymentRolloutGameServerConfigOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GameServerDeploymentRolloutGameServerConfigOverride.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_version: Optional[str] = None,
                  realms_selector: Optional['outputs.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector'] = None):
@@ -332,9 +411,6 @@ class GameServerDeploymentRolloutGameServerConfigOverride(dict):
         """
         return pulumi.get(self, "realms_selector")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector(dict):
@@ -353,9 +429,6 @@ class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector(dict):
         List of realms to match against.
         """
         return pulumi.get(self, "realms")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

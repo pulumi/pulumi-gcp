@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -119,6 +123,137 @@ class InstanceIAMBindingArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _InstanceIAMBindingState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['InstanceIAMBindingConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceIAMBinding resources.
+        :param pulumi.Input['InstanceIAMBindingConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] instance_name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] zone: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+               zone is specified, it is taken from the provider configuration.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['InstanceIAMBindingConditionArgs']]:
+        """
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['InstanceIAMBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        zone is specified, it is taken from the provider configuration.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class InstanceIAMBinding(pulumi.CustomResource):
@@ -470,21 +605,21 @@ class InstanceIAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceIAMBindingArgs.__new__(InstanceIAMBindingArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
-            __props__['instance_name'] = instance_name
+            __props__.__dict__["instance_name"] = instance_name
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
-            __props__['members'] = members
-            __props__['project'] = project
+            __props__.__dict__["members"] = members
+            __props__.__dict__["project"] = project
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['zone'] = zone
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["etag"] = None
         super(InstanceIAMBinding, __self__).__init__(
             'gcp:compute/instanceIAMBinding:InstanceIAMBinding',
             resource_name,
@@ -524,15 +659,15 @@ class InstanceIAMBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceIAMBindingState.__new__(_InstanceIAMBindingState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["instance_name"] = instance_name
-        __props__["members"] = members
-        __props__["project"] = project
-        __props__["role"] = role
-        __props__["zone"] = zone
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["members"] = members
+        __props__.__dict__["project"] = project
+        __props__.__dict__["role"] = role
+        __props__.__dict__["zone"] = zone
         return InstanceIAMBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -593,10 +728,4 @@ class InstanceIAMBinding(pulumi.CustomResource):
         zone is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

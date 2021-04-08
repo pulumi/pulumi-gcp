@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['LienArgs', 'Lien']
 
@@ -96,6 +100,133 @@ class LienArgs:
     @restrictions.setter
     def restrictions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "restrictions", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _LienState:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 origin: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Lien resources.
+        :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[str] name: A system-generated unique identifier for this Lien.
+        :param pulumi.Input[str] origin: A stable, user-visible/meaningful string identifying the origin
+               of the Lien, intended to be inspected programmatically. Maximum length of
+               200 characters.
+        :param pulumi.Input[str] parent: A reference to the resource this Lien is attached to.
+               The server will validate the parent against those for which Liens are supported.
+               Since a variety of objects can have Liens against them, you must provide the type
+               prefix (e.g. "projects/my-project-name").
+        :param pulumi.Input[str] reason: Concise user-visible strings indicating why an action cannot be performed
+               on a resource. Maximum length of 200 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restrictions: The types of operations which should be blocked as a result of this Lien.
+               Each value should correspond to an IAM permission. The server will validate
+               the permissions against those for which Liens are supported.  An empty
+               list is meaningless and will be rejected.
+               e.g. ['resourcemanager.projects.delete']
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if origin is not None:
+            pulumi.set(__self__, "origin", origin)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if restrictions is not None:
+            pulumi.set(__self__, "restrictions", restrictions)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time of creation
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A system-generated unique identifier for this Lien.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def origin(self) -> Optional[pulumi.Input[str]]:
+        """
+        A stable, user-visible/meaningful string identifying the origin
+        of the Lien, intended to be inspected programmatically. Maximum length of
+        200 characters.
+        """
+        return pulumi.get(self, "origin")
+
+    @origin.setter
+    def origin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the resource this Lien is attached to.
+        The server will validate the parent against those for which Liens are supported.
+        Since a variety of objects can have Liens against them, you must provide the type
+        prefix (e.g. "projects/my-project-name").
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        Concise user-visible strings indicating why an action cannot be performed
+        on a resource. Maximum length of 200 characters.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def restrictions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The types of operations which should be blocked as a result of this Lien.
+        Each value should correspond to an IAM permission. The server will validate
+        the permissions against those for which Liens are supported.  An empty
+        list is meaningless and will be rejected.
+        e.g. ['resourcemanager.projects.delete']
+        """
+        return pulumi.get(self, "restrictions")
+
+    @restrictions.setter
+    def restrictions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "restrictions", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Lien(pulumi.CustomResource):
@@ -222,22 +353,22 @@ class Lien(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LienArgs.__new__(LienArgs)
 
             if origin is None and not opts.urn:
                 raise TypeError("Missing required property 'origin'")
-            __props__['origin'] = origin
+            __props__.__dict__["origin"] = origin
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            __props__.__dict__["parent"] = parent
             if reason is None and not opts.urn:
                 raise TypeError("Missing required property 'reason'")
-            __props__['reason'] = reason
+            __props__.__dict__["reason"] = reason
             if restrictions is None and not opts.urn:
                 raise TypeError("Missing required property 'restrictions'")
-            __props__['restrictions'] = restrictions
-            __props__['create_time'] = None
-            __props__['name'] = None
+            __props__.__dict__["restrictions"] = restrictions
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
         super(Lien, __self__).__init__(
             'gcp:resourcemanager/lien:Lien',
             resource_name,
@@ -280,14 +411,14 @@ class Lien(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LienState.__new__(_LienState)
 
-        __props__["create_time"] = create_time
-        __props__["name"] = name
-        __props__["origin"] = origin
-        __props__["parent"] = parent
-        __props__["reason"] = reason
-        __props__["restrictions"] = restrictions
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["name"] = name
+        __props__.__dict__["origin"] = origin
+        __props__.__dict__["parent"] = parent
+        __props__.__dict__["reason"] = reason
+        __props__.__dict__["restrictions"] = restrictions
         return Lien(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -347,10 +478,4 @@ class Lien(pulumi.CustomResource):
         e.g. ['resourcemanager.projects.delete']
         """
         return pulumi.get(self, "restrictions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

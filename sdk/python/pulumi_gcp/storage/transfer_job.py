@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -97,6 +101,163 @@ class TransferJobArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _TransferJobState:
+    def __init__(__self__, *,
+                 creation_time: Optional[pulumi.Input[str]] = None,
+                 deletion_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 last_modification_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
+        """
+        Input properties used for looking up and filtering TransferJob resources.
+        :param pulumi.Input[str] creation_time: When the Transfer Job was created.
+        :param pulumi.Input[str] deletion_time: When the Transfer Job was deleted.
+        :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
+        :param pulumi.Input[str] last_modification_time: When the Transfer Job was last modified.
+        :param pulumi.Input[str] name: The name of the Transfer Job.
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
+        """
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if deletion_time is not None:
+            pulumi.set(__self__, "deletion_time", deletion_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if last_modification_time is not None:
+            pulumi.set(__self__, "last_modification_time", last_modification_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if transfer_spec is not None:
+            pulumi.set(__self__, "transfer_spec", transfer_spec)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the Transfer Job was created.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_time", value)
+
+    @property
+    @pulumi.getter(name="deletionTime")
+    def deletion_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the Transfer Job was deleted.
+        """
+        return pulumi.get(self, "deletion_time")
+
+    @deletion_time.setter
+    def deletion_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique description to identify the Transfer Job.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="lastModificationTime")
+    def last_modification_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the Transfer Job was last modified.
+        """
+        return pulumi.get(self, "last_modification_time")
+
+    @last_modification_time.setter
+    def last_modification_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modification_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Transfer Job.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
+        """
+        Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['TransferJobScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="transferSpec")
+    def transfer_spec(self) -> Optional[pulumi.Input['TransferJobTransferSpecArgs']]:
+        """
+        Transfer specification. Structure documented below.
+        """
+        return pulumi.get(self, "transfer_spec")
+
+    @transfer_spec.setter
+    def transfer_spec(self, value: Optional[pulumi.Input['TransferJobTransferSpecArgs']]):
+        pulumi.set(self, "transfer_spec", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class TransferJob(pulumi.CustomResource):
@@ -321,23 +482,23 @@ class TransferJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TransferJobArgs.__new__(TransferJobArgs)
 
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
-            __props__['project'] = project
+            __props__.__dict__["description"] = description
+            __props__.__dict__["project"] = project
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
-            __props__['schedule'] = schedule
-            __props__['status'] = status
+            __props__.__dict__["schedule"] = schedule
+            __props__.__dict__["status"] = status
             if transfer_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'transfer_spec'")
-            __props__['transfer_spec'] = transfer_spec
-            __props__['creation_time'] = None
-            __props__['deletion_time'] = None
-            __props__['last_modification_time'] = None
-            __props__['name'] = None
+            __props__.__dict__["transfer_spec"] = transfer_spec
+            __props__.__dict__["creation_time"] = None
+            __props__.__dict__["deletion_time"] = None
+            __props__.__dict__["last_modification_time"] = None
+            __props__.__dict__["name"] = None
         super(TransferJob, __self__).__init__(
             'gcp:storage/transferJob:TransferJob',
             resource_name,
@@ -377,17 +538,17 @@ class TransferJob(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TransferJobState.__new__(_TransferJobState)
 
-        __props__["creation_time"] = creation_time
-        __props__["deletion_time"] = deletion_time
-        __props__["description"] = description
-        __props__["last_modification_time"] = last_modification_time
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["schedule"] = schedule
-        __props__["status"] = status
-        __props__["transfer_spec"] = transfer_spec
+        __props__.__dict__["creation_time"] = creation_time
+        __props__.__dict__["deletion_time"] = deletion_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["last_modification_time"] = last_modification_time
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["status"] = status
+        __props__.__dict__["transfer_spec"] = transfer_spec
         return TransferJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -462,10 +623,4 @@ class TransferJob(pulumi.CustomResource):
         Transfer specification. Structure documented below.
         """
         return pulumi.get(self, "transfer_spec")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

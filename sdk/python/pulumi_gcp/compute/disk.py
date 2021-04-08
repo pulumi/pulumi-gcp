@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -392,6 +396,527 @@ class DiskArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _DiskState:
+    def __init__(__self__, *,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
+                 label_fingerprint: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 last_attach_timestamp: Optional[pulumi.Input[str]] = None,
+                 last_detach_timestamp: Optional[pulumi.Input[str]] = None,
+                 multi_writer: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 snapshot: Optional[pulumi.Input[str]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
+                 source_image_id: Optional[pulumi.Input[str]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 source_snapshot_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Disk resources.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
+               you create the resource.
+        :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+               After you encrypt a disk with a customer-supplied key, you must
+               provide the same key if you use the disk later (e.g. to create a disk
+               snapshot or an image, or to attach the disk to a virtual machine).
+               Customer-supplied encryption keys do not protect access to metadata of
+               the disk.
+               If you do not provide an encryption key when creating the disk, then
+               the disk will be encrypted using an automatically generated key and
+               you do not need to provide a key to use the disk later.
+               Structure is documented below.
+        :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
+               one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+               images names must include the family name. If they don't, use the
+               [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+               For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+               These images can be referred by family name here.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               Default value is `SCSI`.
+               Possible values are `SCSI` and `NVME`.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+        :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
+        :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
+        :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
+               in a request, a default value is used. Currently supported sizes
+               are 4096 and 16384, other sizes may be added in the future.
+               If an unsupported value is requested, the error message will list
+               the supported values for the caller's project.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+               ~>**NOTE** This value does not support updating the
+               resource policy, as resource policies can not be updated more than
+               one at a time. Use
+               `compute.DiskResourcePolicyAttachment`
+               to allow for updating the resource policy attached to the disk.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
+               field when creating a persistent disk using the `image` or
+               `snapshot` parameter, or specify it alone to create an empty
+               persistent disk.
+               If you specify this field along with `image` or `snapshot`,
+               the value must not be less than the size of the image
+               or the size of the snapshot.
+               ~>**NOTE** If you change the size, the provider updates the disk size
+               if upsizing is detected but recreates the disk if downsizing is requested.
+               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+               and recreating.
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
+               * `snapshot`
+        :param pulumi.Input['DiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
+        :param pulumi.Input[str] source_image_id: The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
+               persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
+               under the same name, the source image ID would identify the exact version of the image that was used.
+        :param pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+               if the source snapshot is protected by a customer-supplied encryption
+               key.
+               Structure is documented below.
+        :param pulumi.Input[str] source_snapshot_id: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
+               this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
+               recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
+               create the disk. Provide this when creating the disk.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
+        """
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disk_encryption_key is not None:
+            pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if label_fingerprint is not None:
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if last_attach_timestamp is not None:
+            pulumi.set(__self__, "last_attach_timestamp", last_attach_timestamp)
+        if last_detach_timestamp is not None:
+            pulumi.set(__self__, "last_detach_timestamp", last_detach_timestamp)
+        if multi_writer is not None:
+            pulumi.set(__self__, "multi_writer", multi_writer)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if physical_block_size_bytes is not None:
+            pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot is not None:
+            pulumi.set(__self__, "snapshot", snapshot)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_image_id is not None:
+            pulumi.set(__self__, "source_image_id", source_image_id)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+        if source_snapshot_id is not None:
+            pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when
+        you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskEncryptionKey")
+    def disk_encryption_key(self) -> Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]:
+        """
+        Encrypts the disk using a customer-supplied encryption key.
+        After you encrypt a disk with a customer-supplied key, you must
+        provide the same key if you use the disk later (e.g. to create a disk
+        snapshot or an image, or to attach the disk to a virtual machine).
+        Customer-supplied encryption keys do not protect access to metadata of
+        the disk.
+        If you do not provide an encryption key when creating the disk, then
+        the disk will be encrypted using an automatically generated key and
+        you do not need to provide a key to use the disk later.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disk_encryption_key")
+
+    @disk_encryption_key.setter
+    def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]):
+        pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image from which to initialize this disk. This can be
+        one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        images names must include the family name. If they don't, use the
+        [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        These images can be referred by family name here.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        Default value is `SCSI`.
+        Possible values are `SCSI` and `NVME`.
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @label_fingerprint.setter
+    def label_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label_fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels to apply to this disk.  A list of key->value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="lastAttachTimestamp")
+    def last_attach_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last attach timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_attach_timestamp")
+
+    @last_attach_timestamp.setter
+    def last_attach_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_attach_timestamp", value)
+
+    @property
+    @pulumi.getter(name="lastDetachTimestamp")
+    def last_detach_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last detach timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_detach_timestamp")
+
+    @last_detach_timestamp.setter
+    def last_detach_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_detach_timestamp", value)
+
+    @property
+    @pulumi.getter(name="multiWriter")
+    def multi_writer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not the disk can be read/write attached to more than one instance.
+        """
+        return pulumi.get(self, "multi_writer")
+
+    @multi_writer.setter
+    def multi_writer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_writer", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="physicalBlockSizeBytes")
+    def physical_block_size_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Physical block size of the persistent disk, in bytes. If not present
+        in a request, a default value is used. Currently supported sizes
+        are 4096 and 16384, other sizes may be added in the future.
+        If an unsupported value is requested, the error message will list
+        the supported values for the caller's project.
+        """
+        return pulumi.get(self, "physical_block_size_bytes")
+
+    @physical_block_size_bytes.setter
+    def physical_block_size_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "physical_block_size_bytes", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Resource policies applied to this disk for automatic snapshot creations.
+        ~>**NOTE** This value does not support updating the
+        resource policy, as resource policies can not be updated more than
+        one at a time. Use
+        `compute.DiskResourcePolicyAttachment`
+        to allow for updating the resource policy attached to the disk.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_policies", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Size of the persistent disk, specified in GB. You can specify this
+        field when creating a persistent disk using the `image` or
+        `snapshot` parameter, or specify it alone to create an empty
+        persistent disk.
+        If you specify this field along with `image` or `snapshot`,
+        the value must not be less than the size of the image
+        or the size of the snapshot.
+        ~>**NOTE** If you change the size, the provider updates the disk size
+        if upsizing is detected but recreates the disk if downsizing is requested.
+        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        and recreating.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. If the snapshot is in another
+        project than this disk, you must supply a full URL. For example, the
+        following are valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        * `projects/project/global/snapshots/snapshot`
+        * `global/snapshots/snapshot`
+        * `snapshot`
+        """
+        return pulumi.get(self, "snapshot")
+
+    @snapshot.setter
+    def snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot", value)
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source image. Required if
+        the source image is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @source_image_encryption_key.setter
+    def source_image_encryption_key(self, value: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]):
+        pulumi.set(self, "source_image_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
+        persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
+        under the same name, the source image ID would identify the exact version of the image that was used.
+        """
+        return pulumi.get(self, "source_image_id")
+
+    @source_image_id.setter
+    def source_image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_image_id", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source snapshot. Required
+        if the source snapshot is protected by a customer-supplied encryption
+        key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @source_snapshot_encryption_key.setter
+    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]):
+        pulumi.set(self, "source_snapshot_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshotId")
+    def source_snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
+        this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
+        recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        """
+        return pulumi.get(self, "source_snapshot_id")
+
+    @source_snapshot_id.setter
+    def source_snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the disk type resource describing which disk type to use to
+        create the disk. Provide this when creating the disk.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the zone where the disk resides.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Disk(pulumi.CustomResource):
@@ -677,32 +1202,32 @@ class Disk(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DiskArgs.__new__(DiskArgs)
 
-            __props__['description'] = description
-            __props__['disk_encryption_key'] = disk_encryption_key
-            __props__['image'] = image
-            __props__['interface'] = interface
-            __props__['labels'] = labels
-            __props__['multi_writer'] = multi_writer
-            __props__['name'] = name
-            __props__['physical_block_size_bytes'] = physical_block_size_bytes
-            __props__['project'] = project
-            __props__['resource_policies'] = resource_policies
-            __props__['size'] = size
-            __props__['snapshot'] = snapshot
-            __props__['source_image_encryption_key'] = source_image_encryption_key
-            __props__['source_snapshot_encryption_key'] = source_snapshot_encryption_key
-            __props__['type'] = type
-            __props__['zone'] = zone
-            __props__['creation_timestamp'] = None
-            __props__['label_fingerprint'] = None
-            __props__['last_attach_timestamp'] = None
-            __props__['last_detach_timestamp'] = None
-            __props__['self_link'] = None
-            __props__['source_image_id'] = None
-            __props__['source_snapshot_id'] = None
-            __props__['users'] = None
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            __props__.__dict__["image"] = image
+            __props__.__dict__["interface"] = interface
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["multi_writer"] = multi_writer
+            __props__.__dict__["name"] = name
+            __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
+            __props__.__dict__["project"] = project
+            __props__.__dict__["resource_policies"] = resource_policies
+            __props__.__dict__["size"] = size
+            __props__.__dict__["snapshot"] = snapshot
+            __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
+            __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
+            __props__.__dict__["type"] = type
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["last_attach_timestamp"] = None
+            __props__.__dict__["last_detach_timestamp"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["source_image_id"] = None
+            __props__.__dict__["source_snapshot_id"] = None
+            __props__.__dict__["users"] = None
         super(Disk, __self__).__init__(
             'gcp:compute/disk:Disk',
             resource_name,
@@ -834,32 +1359,32 @@ class Disk(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DiskState.__new__(_DiskState)
 
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["disk_encryption_key"] = disk_encryption_key
-        __props__["image"] = image
-        __props__["interface"] = interface
-        __props__["label_fingerprint"] = label_fingerprint
-        __props__["labels"] = labels
-        __props__["last_attach_timestamp"] = last_attach_timestamp
-        __props__["last_detach_timestamp"] = last_detach_timestamp
-        __props__["multi_writer"] = multi_writer
-        __props__["name"] = name
-        __props__["physical_block_size_bytes"] = physical_block_size_bytes
-        __props__["project"] = project
-        __props__["resource_policies"] = resource_policies
-        __props__["self_link"] = self_link
-        __props__["size"] = size
-        __props__["snapshot"] = snapshot
-        __props__["source_image_encryption_key"] = source_image_encryption_key
-        __props__["source_image_id"] = source_image_id
-        __props__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
-        __props__["source_snapshot_id"] = source_snapshot_id
-        __props__["type"] = type
-        __props__["users"] = users
-        __props__["zone"] = zone
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["image"] = image
+        __props__.__dict__["interface"] = interface
+        __props__.__dict__["label_fingerprint"] = label_fingerprint
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["last_attach_timestamp"] = last_attach_timestamp
+        __props__.__dict__["last_detach_timestamp"] = last_detach_timestamp
+        __props__.__dict__["multi_writer"] = multi_writer
+        __props__.__dict__["name"] = name
+        __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
+        __props__.__dict__["project"] = project
+        __props__.__dict__["resource_policies"] = resource_policies
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["size"] = size
+        __props__.__dict__["snapshot"] = snapshot
+        __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
+        __props__.__dict__["source_image_id"] = source_image_id
+        __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
+        __props__.__dict__["source_snapshot_id"] = source_snapshot_id
+        __props__.__dict__["type"] = type
+        __props__.__dict__["users"] = users
+        __props__.__dict__["zone"] = zone
         return Disk(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1116,10 +1641,4 @@ class Disk(pulumi.CustomResource):
         A reference to the zone where the disk resides.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

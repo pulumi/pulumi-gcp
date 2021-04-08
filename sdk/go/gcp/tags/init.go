@@ -25,6 +25,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TagBinding{}
 	case "gcp:tags/tagKey:TagKey":
 		r = &TagKey{}
+<<<<<<< HEAD
 	case "gcp:tags/tagKeyIamBinding:TagKeyIamBinding":
 		r = &TagKeyIamBinding{}
 	case "gcp:tags/tagKeyIamMember:TagKeyIamMember":
@@ -39,6 +40,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TagValueIamMember{}
 	case "gcp:tags/tagValueIamPolicy:TagValueIamPolicy":
 		r = &TagValueIamPolicy{}
+=======
+	case "gcp:tags/tagValue:TagValue":
+		r = &TagValue{}
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

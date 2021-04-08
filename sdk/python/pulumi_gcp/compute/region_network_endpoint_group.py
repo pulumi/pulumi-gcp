@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from .. import _utilities, _tables
+=======
+from .. import _utilities
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -177,6 +181,193 @@ class RegionNetworkEndpointGroupArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _RegionNetworkEndpointGroupState:
+    def __init__(__self__, *,
+                 app_engine: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']] = None,
+                 cloud_function: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']] = None,
+                 cloud_run: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_type: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RegionNetworkEndpointGroup resources.
+        :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS".
+               Only one of cloud_run, app_engine or cloud_function may be set.
+               Structure is documented below.
+        :param pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS".
+               Only one of cloud_run, app_engine or cloud_function may be set.
+               Structure is documented below.
+        :param pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS".
+               Only one of cloud_run, app_engine or cloud_function may be set.
+               Structure is documented below.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
+               you create the resource.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+               Default value is `SERVERLESS`.
+               Possible values are `SERVERLESS`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: A reference to the region where the Serverless NEGs Reside.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        """
+        if app_engine is not None:
+            pulumi.set(__self__, "app_engine", app_engine)
+        if cloud_function is not None:
+            pulumi.set(__self__, "cloud_function", cloud_function)
+        if cloud_run is not None:
+            pulumi.set(__self__, "cloud_run", cloud_run)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_endpoint_type is not None:
+            pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter(name="appEngine")
+    def app_engine(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']]:
+        """
+        Only valid when networkEndpointType is "SERVERLESS".
+        Only one of cloud_run, app_engine or cloud_function may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "app_engine")
+
+    @app_engine.setter
+    def app_engine(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']]):
+        pulumi.set(self, "app_engine", value)
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']]:
+        """
+        Only valid when networkEndpointType is "SERVERLESS".
+        Only one of cloud_run, app_engine or cloud_function may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_function")
+
+    @cloud_function.setter
+    def cloud_function(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']]):
+        pulumi.set(self, "cloud_function", value)
+
+    @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']]:
+        """
+        Only valid when networkEndpointType is "SERVERLESS".
+        Only one of cloud_run, app_engine or cloud_function may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @cloud_run.setter
+    def cloud_run(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']]):
+        pulumi.set(self, "cloud_run", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when
+        you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkEndpointType")
+    def network_endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+        Default value is `SERVERLESS`.
+        Possible values are `SERVERLESS`.
+        """
+        return pulumi.get(self, "network_endpoint_type")
+
+    @network_endpoint_type.setter
+    def network_endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_endpoint_type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the region where the Serverless NEGs Reside.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+>>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class RegionNetworkEndpointGroup(pulumi.CustomResource):
@@ -553,19 +744,19 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegionNetworkEndpointGroupArgs.__new__(RegionNetworkEndpointGroupArgs)
 
-            __props__['app_engine'] = app_engine
-            __props__['cloud_function'] = cloud_function
-            __props__['cloud_run'] = cloud_run
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['network_endpoint_type'] = network_endpoint_type
-            __props__['project'] = project
+            __props__.__dict__["app_engine"] = app_engine
+            __props__.__dict__["cloud_function"] = cloud_function
+            __props__.__dict__["cloud_run"] = cloud_run
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["network_endpoint_type"] = network_endpoint_type
+            __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['self_link'] = None
+            __props__.__dict__["region"] = region
+            __props__.__dict__["self_link"] = None
         super(RegionNetworkEndpointGroup, __self__).__init__(
             'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
             resource_name,
@@ -620,17 +811,17 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RegionNetworkEndpointGroupState.__new__(_RegionNetworkEndpointGroupState)
 
-        __props__["app_engine"] = app_engine
-        __props__["cloud_function"] = cloud_function
-        __props__["cloud_run"] = cloud_run
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["network_endpoint_type"] = network_endpoint_type
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["self_link"] = self_link
+        __props__.__dict__["app_engine"] = app_engine
+        __props__.__dict__["cloud_function"] = cloud_function
+        __props__.__dict__["cloud_run"] = cloud_run
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network_endpoint_type"] = network_endpoint_type
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["self_link"] = self_link
         return RegionNetworkEndpointGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -720,10 +911,4 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
