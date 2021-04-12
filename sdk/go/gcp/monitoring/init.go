@@ -22,25 +22,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:monitoring/alertPolicy:AlertPolicy":
-		r, err = NewAlertPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlertPolicy{}
 	case "gcp:monitoring/customService:CustomService":
-		r, err = NewCustomService(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomService{}
 	case "gcp:monitoring/dashboard:Dashboard":
-		r, err = NewDashboard(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dashboard{}
 	case "gcp:monitoring/group:Group":
-		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Group{}
 	case "gcp:monitoring/metricDescriptor:MetricDescriptor":
-		r, err = NewMetricDescriptor(ctx, name, nil, pulumi.URN_(urn))
+		r = &MetricDescriptor{}
 	case "gcp:monitoring/notificationChannel:NotificationChannel":
-		r, err = NewNotificationChannel(ctx, name, nil, pulumi.URN_(urn))
+		r = &NotificationChannel{}
 	case "gcp:monitoring/slo:Slo":
-		r, err = NewSlo(ctx, name, nil, pulumi.URN_(urn))
+		r = &Slo{}
 	case "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig":
-		r, err = NewUptimeCheckConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &UptimeCheckConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,15 +5,137 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Reservation']
+__all__ = ['ReservationArgs', 'Reservation']
+
+@pulumi.input_type
+class ReservationArgs:
+    def __init__(__self__, *,
+                 specific_reservation: pulumi.Input['ReservationSpecificReservationArgs'],
+                 zone: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 specific_reservation_required: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Reservation resource.
+        :param pulumi.Input['ReservationSpecificReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
+               Structure is documented below.
+        :param pulumi.Input[str] zone: The zone where the reservation is made.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
+               consume this reservation. Otherwise, it can be consumed by VMs with
+               affinity for any reservation. Defaults to false.
+        """
+        pulumi.set(__self__, "specific_reservation", specific_reservation)
+        pulumi.set(__self__, "zone", zone)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if specific_reservation_required is not None:
+            pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> pulumi.Input['ReservationSpecificReservationArgs']:
+        """
+        Reservation for instances with specific machine shapes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "specific_reservation")
+
+    @specific_reservation.setter
+    def specific_reservation(self, value: pulumi.Input['ReservationSpecificReservationArgs']):
+        pulumi.set(self, "specific_reservation", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[str]:
+        """
+        The zone where the reservation is made.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="specificReservationRequired")
+    def specific_reservation_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, only VMs that target this reservation by name can
+        consume this reservation. Otherwise, it can be consumed by VMs with
+        affinity for any reservation. Defaults to false.
+        """
+        return pulumi.get(self, "specific_reservation_required")
+
+    @specific_reservation_required.setter
+    def specific_reservation_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "specific_reservation_required", value)
 
 
 class Reservation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -99,6 +221,90 @@ class Reservation(pulumi.CustomResource):
                affinity for any reservation. Defaults to false.
         :param pulumi.Input[str] zone: The zone where the reservation is made.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ReservationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a reservation resource. A reservation ensures that capacity is
+        held in a specific zone even if the reserved VMs are not running.
+
+        Reservations apply only to Compute Engine, Cloud Dataproc, and Google
+        Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
+        `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
+        services not listed above
+        like Cloud SQL and Dataflow.
+
+        To get more information about Reservation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
+        * How-to Guides
+            * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+
+        ## Example Usage
+        ### Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gce_reservation = gcp.compute.Reservation("gceReservation",
+            specific_reservation=gcp.compute.ReservationSpecificReservationArgs(
+                count=1,
+                instance_properties=gcp.compute.ReservationSpecificReservationInstancePropertiesArgs(
+                    machine_type="n2-standard-2",
+                    min_cpu_platform="Intel Cascade Lake",
+                ),
+            ),
+            zone="us-central1-a")
+        ```
+
+        ## Import
+
+        Reservation can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/reservation:Reservation default projects/{{project}}/zones/{{zone}}/reservations/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/reservation:Reservation default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/reservation:Reservation default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ReservationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ReservationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
+                 specific_reservation_required: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

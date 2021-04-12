@@ -5,13 +5,111 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['FirewallRule']
+__all__ = ['FirewallRuleArgs', 'FirewallRule']
+
+@pulumi.input_type
+class FirewallRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 source_range: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FirewallRule resource.
+        :param pulumi.Input[str] action: The action to take if this rule matches.
+               Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+        :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to.
+        :param pulumi.Input[str] description: An optional string description of this rule.
+        :param pulumi.Input[int] priority: A positive integer that defines the order of rule evaluation.
+               Rules with the lowest priority are evaluated first.
+               A default rule at priority Int32.MaxValue matches all IPv4 and
+               IPv6 traffic when no previous rule matches. Only the action of
+               this rule can be modified by the user.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "source_range", source_range)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        The action to take if this rule matches.
+        Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="sourceRange")
+    def source_range(self) -> pulumi.Input[str]:
+        """
+        IP address or range, defined using CIDR notation, of requests that this rule applies to.
+        """
+        return pulumi.get(self, "source_range")
+
+    @source_range.setter
+    def source_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_range", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional string description of this rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        A positive integer that defines the order of rule evaluation.
+        Rules with the lowest priority are evaluated first.
+        A default rule at priority Int32.MaxValue matches all IPv4 and
+        IPv6 traffic when no previous rule matches. Only the action of
+        this rule can be modified by the user.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class FirewallRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -83,6 +181,81 @@ class FirewallRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FirewallRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A single firewall rule that is evaluated against incoming traffic
+        and provides an action to take on matched requests.
+
+        To get more information about FirewallRule, see:
+
+        * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
+
+        ## Example Usage
+        ### App Engine Firewall Rule Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="ae-project",
+            org_id="123456789")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        rule = gcp.appengine.FirewallRule("rule",
+            project=app.project,
+            priority=1000,
+            action="ALLOW",
+            source_range="*")
+        ```
+
+        ## Import
+
+        FirewallRule can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FirewallRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FirewallRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 source_range: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

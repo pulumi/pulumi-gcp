@@ -5,13 +5,137 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AttachedDisk']
+__all__ = ['AttachedDiskArgs', 'AttachedDisk']
+
+@pulumi.input_type
+class AttachedDiskArgs:
+    def __init__(__self__, *,
+                 disk: pulumi.Input[str],
+                 instance: pulumi.Input[str],
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AttachedDisk resource.
+        :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
+        :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
+               If the `self_link` is provided then `zone` and `project` are extracted from the
+               self link. If only the name is used then `zone` and `project` must be defined
+               as properties on the resource or provider.
+        :param pulumi.Input[str] device_name: Specifies a unique device name of your choice that is
+               reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+               system running within the instance. This name can be used to
+               reference the device for mounting, resizing, and so on, from within
+               the instance.
+        :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
+               READ_ONLY. If not specified, the default is to attach the disk in
+               READ_WRITE mode.
+        :param pulumi.Input[str] project: The project that the referenced compute instance is a part of. If `instance` is referenced by its
+               `self_link` the project defined in the link will take precedence.
+        :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
+               `self_link` the zone defined in the link will take precedence.
+        """
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "instance", instance)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[str]:
+        """
+        `name` or `self_link` of the disk that will be attached.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Input[str]:
+        """
+        `name` or `self_link` of the compute instance that the disk will be attached to.
+        If the `self_link` is provided then `zone` and `project` are extracted from the
+        self link. If only the name is used then `zone` and `project` must be defined
+        as properties on the resource or provider.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a unique device name of your choice that is
+        reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+        system running within the instance. This name can be used to
+        reference the device for mounting, resizing, and so on, from within
+        the instance.
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode in which to attach this disk, either READ_WRITE or
+        READ_ONLY. If not specified, the default is to attach the disk in
+        READ_WRITE mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project that the referenced compute instance is a part of. If `instance` is referenced by its
+        `self_link` the project defined in the link will take precedence.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone that the referenced compute instance is located within. If `instance` is referenced by its
+        `self_link` the zone defined in the link will take precedence.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class AttachedDisk(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -93,6 +217,85 @@ class AttachedDisk(pulumi.CustomResource):
         :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
                `self_link` the zone defined in the link will take precedence.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AttachedDiskArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Persistent disks can be attached to a compute instance using the `attached_disk`
+        section within the compute instance configuration.
+        However there may be situations where managing the attached disks via the compute
+        instance config isn't preferable or possible, such as attaching dynamic
+        numbers of disks using the `count` variable.
+
+        To get more information about attaching disks, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
+        * How-to Guides
+            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+
+        **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_instance = gcp.compute.Instance("defaultInstance",
+            machine_type="e2-medium",
+            zone="us-west1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )])
+        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
+            disk=google_compute_disk["default"]["id"],
+            instance=default_instance.id)
+        ```
+
+        ## Import
+
+        Attached Disk can be imported the following ways
+
+        ```sh
+         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AttachedDiskArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AttachedDiskArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 disk: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

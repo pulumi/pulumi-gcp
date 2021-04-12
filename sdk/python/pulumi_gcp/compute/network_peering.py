@@ -5,13 +5,133 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['NetworkPeering']
+__all__ = ['NetworkPeeringArgs', 'NetworkPeering']
+
+@pulumi.input_type
+class NetworkPeeringArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 peer_network: pulumi.Input[str],
+                 export_custom_routes: Optional[pulumi.Input[bool]] = None,
+                 export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
+                 import_custom_routes: Optional[pulumi.Input[bool]] = None,
+                 import_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NetworkPeering resource.
+        :param pulumi.Input[str] network: The primary network of the peering.
+        :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
+               may belong to a different project.
+        :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        :param pulumi.Input[str] name: Name of the peering.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "peer_network", peer_network)
+        if export_custom_routes is not None:
+            pulumi.set(__self__, "export_custom_routes", export_custom_routes)
+        if export_subnet_routes_with_public_ip is not None:
+            pulumi.set(__self__, "export_subnet_routes_with_public_ip", export_subnet_routes_with_public_ip)
+        if import_custom_routes is not None:
+            pulumi.set(__self__, "import_custom_routes", import_custom_routes)
+        if import_subnet_routes_with_public_ip is not None:
+            pulumi.set(__self__, "import_subnet_routes_with_public_ip", import_subnet_routes_with_public_ip)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The primary network of the peering.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="peerNetwork")
+    def peer_network(self) -> pulumi.Input[str]:
+        """
+        The peer network in the peering. The peer network
+        may belong to a different project.
+        """
+        return pulumi.get(self, "peer_network")
+
+    @peer_network.setter
+    def peer_network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peer_network", value)
+
+    @property
+    @pulumi.getter(name="exportCustomRoutes")
+    def export_custom_routes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to export the custom routes to the peer network. Defaults to `false`.
+        """
+        return pulumi.get(self, "export_custom_routes")
+
+    @export_custom_routes.setter
+    def export_custom_routes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "export_custom_routes", value)
+
+    @property
+    @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
+    def export_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        """
+        return pulumi.get(self, "export_subnet_routes_with_public_ip")
+
+    @export_subnet_routes_with_public_ip.setter
+    def export_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "export_subnet_routes_with_public_ip", value)
+
+    @property
+    @pulumi.getter(name="importCustomRoutes")
+    def import_custom_routes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to import the custom routes from the peer network. Defaults to `false`.
+        """
+        return pulumi.get(self, "import_custom_routes")
+
+    @import_custom_routes.setter
+    def import_custom_routes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_custom_routes", value)
+
+    @property
+    @pulumi.getter(name="importSubnetRoutesWithPublicIp")
+    def import_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        """
+        return pulumi.get(self, "import_subnet_routes_with_public_ip")
+
+    @import_subnet_routes_with_public_ip.setter
+    def import_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_subnet_routes_with_public_ip", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the peering.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class NetworkPeering(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -71,6 +191,72 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NetworkPeeringArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a network peering within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+
+        > Both network must create a peering with each other for the peering
+        to be functional.
+
+        > Subnets IP ranges across peered VPC networks cannot overlap.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", auto_create_subnetworks=False)
+        other = gcp.compute.Network("other", auto_create_subnetworks=False)
+        peering1 = gcp.compute.NetworkPeering("peering1",
+            network=default.id,
+            peer_network=other.id)
+        peering2 = gcp.compute.NetworkPeering("peering2",
+            network=other.id,
+            peer_network=default.id)
+        ```
+
+        ## Import
+
+        VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeering:NetworkPeering peering_network project-name/network-name/peering-name
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NetworkPeeringArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkPeeringArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 export_custom_routes: Optional[pulumi.Input[bool]] = None,
+                 export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
+                 import_custom_routes: Optional[pulumi.Input[bool]] = None,
+                 import_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 peer_network: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,69 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SecretVersion']
+__all__ = ['SecretVersionArgs', 'SecretVersion']
+
+@pulumi.input_type
+class SecretVersionArgs:
+    def __init__(__self__, *,
+                 secret: pulumi.Input[str],
+                 secret_data: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a SecretVersion resource.
+        :param pulumi.Input[str] secret: Secret Manager secret resource
+        :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "secret_data", secret_data)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[str]:
+        """
+        Secret Manager secret resource
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="secretData")
+    def secret_data(self) -> pulumi.Input[str]:
+        """
+        The secret data. Must be no larger than 64KiB.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "secret_data")
+
+    @secret_data.setter
+    def secret_data(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_data", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The current state of the SecretVersion.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 class SecretVersion(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +118,67 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SecretVersionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A secret version resource.
+
+        > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
+        state as plain-text.
+
+        ## Example Usage
+        ### Secret Version Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        ```
+
+        ## Import
+
+        SecretVersion can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default {{name}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SecretVersionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecretVersionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 secret_data: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

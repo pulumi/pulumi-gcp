@@ -5,15 +5,58 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApplicationUrlDispatchRules']
+__all__ = ['ApplicationUrlDispatchRulesArgs', 'ApplicationUrlDispatchRules']
+
+@pulumi.input_type
+class ApplicationUrlDispatchRulesArgs:
+    def __init__(__self__, *,
+                 dispatch_rules: pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]],
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApplicationUrlDispatchRules resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "dispatch_rules", dispatch_rules)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="dispatchRules")
+    def dispatch_rules(self) -> pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]:
+        """
+        Rules to match an HTTP request and dispatch that request to a service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dispatch_rules")
+
+    @dispatch_rules.setter
+    def dispatch_rules(self, value: pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]):
+        pulumi.set(self, "dispatch_rules", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class ApplicationUrlDispatchRules(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -85,6 +128,88 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationUrlDispatchRulesArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Rules to match an HTTP request and dispatch that request to a service.
+
+        To get more information about ApplicationUrlDispatchRules, see:
+
+        * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
+
+        ## Example Usage
+        ### App Engine Application Url Dispatch Rules Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+        admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
+            version_id="v3",
+            service="admin",
+            runtime="nodejs10",
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            noop_on_destroy=True)
+        web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
+            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
+                domain="*",
+                path="/*",
+                service="default",
+            ),
+            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
+                domain="*",
+                path="/admin/*",
+                service=admin_v3.service,
+            ),
+        ])
+        ```
+
+        ## Import
+
+        ApplicationUrlDispatchRules can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationUrlDispatchRulesArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationUrlDispatchRulesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

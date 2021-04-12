@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:folder/accessApprovalSettings:AccessApprovalSettings":
-		r, err = NewAccessApprovalSettings(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessApprovalSettings{}
 	case "gcp:folder/iAMBinding:IAMBinding":
-		r, err = NewIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMBinding{}
 	case "gcp:folder/iAMMember:IAMMember":
-		r, err = NewIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMMember{}
 	case "gcp:folder/iAMPolicy:IAMPolicy":
-		r, err = NewIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMPolicy{}
 	case "gcp:folder/iamAuditConfig:IamAuditConfig":
-		r, err = NewIamAuditConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamAuditConfig{}
 	case "gcp:folder/organizationPolicy:OrganizationPolicy":
-		r, err = NewOrganizationPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

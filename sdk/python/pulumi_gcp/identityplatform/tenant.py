@@ -5,13 +5,106 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Tenant']
+__all__ = ['TenantArgs', 'Tenant']
+
+@pulumi.input_type
+class TenantArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 allow_password_signup: Optional[pulumi.Input[bool]] = None,
+                 disable_auth: Optional[pulumi.Input[bool]] = None,
+                 enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Tenant resource.
+        :param pulumi.Input[str] display_name: Human friendly display name of the tenant.
+        :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.
+        :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under
+               the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+               are not able to manage its users.
+        :param pulumi.Input[bool] enable_email_link_signin: Whether to enable email link user authentication.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        if allow_password_signup is not None:
+            pulumi.set(__self__, "allow_password_signup", allow_password_signup)
+        if disable_auth is not None:
+            pulumi.set(__self__, "disable_auth", disable_auth)
+        if enable_email_link_signin is not None:
+            pulumi.set(__self__, "enable_email_link_signin", enable_email_link_signin)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Human friendly display name of the tenant.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="allowPasswordSignup")
+    def allow_password_signup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow email/password user authentication.
+        """
+        return pulumi.get(self, "allow_password_signup")
+
+    @allow_password_signup.setter
+    def allow_password_signup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_password_signup", value)
+
+    @property
+    @pulumi.getter(name="disableAuth")
+    def disable_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether authentication is disabled for the tenant. If true, the users under
+        the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+        are not able to manage its users.
+        """
+        return pulumi.get(self, "disable_auth")
+
+    @disable_auth.setter
+    def disable_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_auth", value)
+
+    @property
+    @pulumi.getter(name="enableEmailLinkSignin")
+    def enable_email_link_signin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable email link user authentication.
+        """
+        return pulumi.get(self, "enable_email_link_signin")
+
+    @enable_email_link_signin.setter
+    def enable_email_link_signin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_email_link_signin", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Tenant(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -72,6 +165,73 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TenantArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Tenant configuration in a multi-tenant project.
+
+        You must enable the
+        [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+        the marketplace prior to using this resource.
+
+        You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
+        the Cloud Console prior to creating tenants.
+
+        ## Example Usage
+        ### Identity Platform Tenant Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant",
+            allow_password_signup=True,
+            display_name="tenant")
+        ```
+
+        ## Import
+
+        Tenant can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TenantArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TenantArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_password_signup: Optional[pulumi.Input[bool]] = None,
+                 disable_auth: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

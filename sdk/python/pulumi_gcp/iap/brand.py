@@ -5,13 +5,77 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Brand']
+__all__ = ['BrandArgs', 'Brand']
+
+@pulumi.input_type
+class BrandArgs:
+    def __init__(__self__, *,
+                 application_title: pulumi.Input[str],
+                 support_email: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Brand resource.
+        :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
+        :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen. Can be either a
+               user or group email. When a user email is specified, the caller must
+               be the user with the associated email address. When a group email is
+               specified, the caller can be either a user or a service account which
+               is an owner of the specified group in Cloud Identity.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "application_title", application_title)
+        pulumi.set(__self__, "support_email", support_email)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="applicationTitle")
+    def application_title(self) -> pulumi.Input[str]:
+        """
+        Application name displayed on OAuth consent screen.
+        """
+        return pulumi.get(self, "application_title")
+
+    @application_title.setter
+    def application_title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_title", value)
+
+    @property
+    @pulumi.getter(name="supportEmail")
+    def support_email(self) -> pulumi.Input[str]:
+        """
+        Support email displayed on the OAuth consent screen. Can be either a
+        user or group email. When a user email is specified, the caller must
+        be the user with the associated email address. When a group email is
+        specified, the caller can be either a user or a service account which
+        is an owner of the specified group in Cloud Identity.
+        """
+        return pulumi.get(self, "support_email")
+
+    @support_email.setter
+    def support_email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "support_email", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Brand(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +122,59 @@ class Brand(pulumi.CustomResource):
                specified, the caller can be either a user or a service account which
                is an owner of the specified group in Cloud Identity.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BrandArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        OAuth brand data. Only "Organization Internal" brands can be created
+        programmatically via API. To convert it into an external brands
+        please use the GCP Console.
+
+        > **Note:** Brands can only be created once for a Google Cloud
+        project and the underlying Google API doesn't not support DELETE or PATCH methods.
+        Destroying a provider-managed Brand will remove it from state
+        but *will not delete it from Google Cloud.*
+
+        To get more information about Brand, see:
+
+        * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
+        * How-to Guides
+            * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
+
+        ## Example Usage
+
+        ## Import
+
+        Brand can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BrandArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BrandArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 application_title: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 support_email: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

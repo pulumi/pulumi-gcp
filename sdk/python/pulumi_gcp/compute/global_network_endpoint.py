@@ -5,13 +5,103 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['GlobalNetworkEndpoint']
+__all__ = ['GlobalNetworkEndpointArgs', 'GlobalNetworkEndpoint']
+
+@pulumi.input_type
+class GlobalNetworkEndpointArgs:
+    def __init__(__self__, *,
+                 global_network_endpoint_group: pulumi.Input[str],
+                 port: pulumi.Input[int],
+                 fqdn: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a GlobalNetworkEndpoint resource.
+        :param pulumi.Input[str] global_network_endpoint_group: The global network endpoint group this endpoint is part of.
+        :param pulumi.Input[int] port: Port number of the external endpoint.
+        :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
+               This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "global_network_endpoint_group", global_network_endpoint_group)
+        pulumi.set(__self__, "port", port)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="globalNetworkEndpointGroup")
+    def global_network_endpoint_group(self) -> pulumi.Input[str]:
+        """
+        The global network endpoint group this endpoint is part of.
+        """
+        return pulumi.get(self, "global_network_endpoint_group")
+
+    @global_network_endpoint_group.setter
+    def global_network_endpoint_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "global_network_endpoint_group", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Port number of the external endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully qualified domain name of network endpoint.
+        This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @fqdn.setter
+    def fqdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fqdn", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 address external endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class GlobalNetworkEndpoint(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -76,6 +166,78 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GlobalNetworkEndpointArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Global Network endpoint represents a IP address and port combination that exists outside of GCP.
+        **NOTE**: Global network endpoints cannot be created outside of a
+        global network endpoint group.
+
+        To get more information about GlobalNetworkEndpoint, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+
+        ## Example Usage
+        ### Global Network Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_FQDN_PORT")
+        default_endpoint = gcp.compute.GlobalNetworkEndpoint("default-endpoint",
+            global_network_endpoint_group=neg.name,
+            fqdn="www.example.com",
+            port=90)
+        ```
+
+        ## Import
+
+        GlobalNetworkEndpoint can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GlobalNetworkEndpointArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GlobalNetworkEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 fqdn: Optional[pulumi.Input[str]] = None,
+                 global_network_endpoint_group: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

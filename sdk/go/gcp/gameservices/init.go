@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:gameservices/gameServerCluster:GameServerCluster":
-		r, err = NewGameServerCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &GameServerCluster{}
 	case "gcp:gameservices/gameServerConfig:GameServerConfig":
-		r, err = NewGameServerConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &GameServerConfig{}
 	case "gcp:gameservices/gameServerDeployment:GameServerDeployment":
-		r, err = NewGameServerDeployment(ctx, name, nil, pulumi.URN_(urn))
+		r = &GameServerDeployment{}
 	case "gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout":
-		r, err = NewGameServerDeploymentRollout(ctx, name, nil, pulumi.URN_(urn))
+		r = &GameServerDeploymentRollout{}
 	case "gcp:gameservices/realm:Realm":
-		r, err = NewRealm(ctx, name, nil, pulumi.URN_(urn))
+		r = &Realm{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,15 +5,178 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PerInstanceConfig']
+__all__ = ['PerInstanceConfigArgs', 'PerInstanceConfig']
+
+@pulumi.input_type
+class PerInstanceConfigArgs:
+    def __init__(__self__, *,
+                 instance_group_manager: pulumi.Input[str],
+                 minimal_action: Optional[pulumi.Input[str]] = None,
+                 most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a PerInstanceConfig resource.
+        :param pulumi.Input[str] instance_group_manager: The instance group manager this instance config is part of.
+        :param pulumi.Input[str] minimal_action: The minimal action to perform on the instance during an update.
+               Default is `NONE`. Possible values are:
+               * REPLACE
+               * RESTART
+               * REFRESH
+               * NONE
+        :param pulumi.Input[str] most_disruptive_allowed_action: The most disruptive action to perform on the instance during an update.
+               Default is `REPLACE`. Possible values are:
+               * REPLACE
+               * RESTART
+               * REFRESH
+               * NONE
+        :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
+        :param pulumi.Input['PerInstanceConfigPreservedStateArgs'] preserved_state: The preserved state for this instance.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
+               When false, deleting this config will *not* immediately remove any state from the underlying instance.
+               State will be removed on the next instance recreation or update.
+        :param pulumi.Input[str] zone: Zone where the containing instance group manager is located
+        """
+        pulumi.set(__self__, "instance_group_manager", instance_group_manager)
+        if minimal_action is not None:
+            pulumi.set(__self__, "minimal_action", minimal_action)
+        if most_disruptive_allowed_action is not None:
+            pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if preserved_state is not None:
+            pulumi.set(__self__, "preserved_state", preserved_state)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if remove_instance_state_on_destroy is not None:
+            pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="instanceGroupManager")
+    def instance_group_manager(self) -> pulumi.Input[str]:
+        """
+        The instance group manager this instance config is part of.
+        """
+        return pulumi.get(self, "instance_group_manager")
+
+    @instance_group_manager.setter
+    def instance_group_manager(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_group_manager", value)
+
+    @property
+    @pulumi.getter(name="minimalAction")
+    def minimal_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimal action to perform on the instance during an update.
+        Default is `NONE`. Possible values are:
+        * REPLACE
+        * RESTART
+        * REFRESH
+        * NONE
+        """
+        return pulumi.get(self, "minimal_action")
+
+    @minimal_action.setter
+    def minimal_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimal_action", value)
+
+    @property
+    @pulumi.getter(name="mostDisruptiveAllowedAction")
+    def most_disruptive_allowed_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The most disruptive action to perform on the instance during an update.
+        Default is `REPLACE`. Possible values are:
+        * REPLACE
+        * RESTART
+        * REFRESH
+        * NONE
+        """
+        return pulumi.get(self, "most_disruptive_allowed_action")
+
+    @most_disruptive_allowed_action.setter
+    def most_disruptive_allowed_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "most_disruptive_allowed_action", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for this per-instance config and its corresponding instance.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="preservedState")
+    def preserved_state(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]:
+        """
+        The preserved state for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preserved_state")
+
+    @preserved_state.setter
+    def preserved_state(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]):
+        pulumi.set(self, "preserved_state", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="removeInstanceStateOnDestroy")
+    def remove_instance_state_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, deleting this config will immediately remove any specified state from the underlying instance.
+        When false, deleting this config will *not* immediately remove any state from the underlying instance.
+        State will be removed on the next instance recreation or update.
+        """
+        return pulumi.get(self, "remove_instance_state_on_destroy")
+
+    @remove_instance_state_on_destroy.setter
+    def remove_instance_state_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_instance_state_on_destroy", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone where the containing instance group manager is located
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class PerInstanceConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -85,6 +248,70 @@ class PerInstanceConfig(pulumi.CustomResource):
                State will be removed on the next instance recreation or update.
         :param pulumi.Input[str] zone: Zone where the containing instance group manager is located
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PerInstanceConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A config defined for a single managed instance that belongs to an instance group manager. It preserves the instance name
+        across instance group manager operations and can define stateful disks or metadata that are unique to the instance.
+
+        To get more information about PerInstanceConfig, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
+
+        ## Example Usage
+
+        ## Import
+
+        PerInstanceConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{zone}}/{{instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PerInstanceConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PerInstanceConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_group_manager: Optional[pulumi.Input[str]] = None,
+                 minimal_action: Optional[pulumi.Input[str]] = None,
+                 most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

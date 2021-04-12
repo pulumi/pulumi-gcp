@@ -5,15 +5,159 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EngineModel']
+__all__ = ['EngineModelArgs', 'EngineModel']
+
+@pulumi.input_type
+class EngineModelArgs:
+    def __init__(__self__, *,
+                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
+                 online_prediction_logging: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 regions: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a EngineModel resource.
+        :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
+               prediction requests that do not specify a version.
+               Structure is documented below.
+        :param pulumi.Input[str] description: The description specified for the model when it was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
+        :param pulumi.Input[str] name: The name specified for the version when it was created.
+        :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+        :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
+               Currently only one region per model is supported
+        """
+        if default_version is not None:
+            pulumi.set(__self__, "default_version", default_version)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if online_prediction_console_logging is not None:
+            pulumi.set(__self__, "online_prediction_console_logging", online_prediction_console_logging)
+        if online_prediction_logging is not None:
+            pulumi.set(__self__, "online_prediction_logging", online_prediction_logging)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArgs']]:
+        """
+        The default version of the model. This version will be used to handle
+        prediction requests that do not specify a version.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_version")
+
+    @default_version.setter
+    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArgs']]):
+        pulumi.set(self, "default_version", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description specified for the model when it was created.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        One or more labels that you can add, to organize your models.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name specified for the version when it was created.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="onlinePredictionConsoleLogging")
+    def online_prediction_console_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+        """
+        return pulumi.get(self, "online_prediction_console_logging")
+
+    @online_prediction_console_logging.setter
+    def online_prediction_console_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "online_prediction_console_logging", value)
+
+    @property
+    @pulumi.getter(name="onlinePredictionLogging")
+    def online_prediction_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, online prediction access logs are sent to StackDriver Logging.
+        """
+        return pulumi.get(self, "online_prediction_logging")
+
+    @online_prediction_logging.setter
+    def online_prediction_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "online_prediction_logging", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of regions where the model is going to be deployed.
+        Currently only one region per model is supported
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regions", value)
 
 
 class EngineModel(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -92,6 +236,87 @@ class EngineModel(pulumi.CustomResource):
         :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[EngineModelArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a machine learning solution.
+
+        A model can have multiple versions, each of which is a deployed, trained model
+        ready to receive prediction requests. The model itself is just a container.
+
+        ## Example Usage
+        ### Ml Model Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.ml.EngineModel("default",
+            description="My model",
+            regions="us-central1")
+        ```
+        ### Ml Model Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.ml.EngineModel("default",
+            description="My model",
+            labels={
+                "my_model": "foo",
+            },
+            online_prediction_console_logging=True,
+            online_prediction_logging=True,
+            regions="us-central1")
+        ```
+
+        ## Import
+
+        Model can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EngineModelArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EngineModelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
+                 online_prediction_logging: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 regions: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

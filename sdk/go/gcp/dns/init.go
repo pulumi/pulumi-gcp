@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:dns/managedZone:ManagedZone":
-		r, err = NewManagedZone(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagedZone{}
 	case "gcp:dns/policy:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	case "gcp:dns/recordSet:RecordSet":
-		r, err = NewRecordSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &RecordSet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Lien']
+__all__ = ['LienArgs', 'Lien']
+
+@pulumi.input_type
+class LienArgs:
+    def __init__(__self__, *,
+                 origin: pulumi.Input[str],
+                 parent: pulumi.Input[str],
+                 reason: pulumi.Input[str],
+                 restrictions: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        The set of arguments for constructing a Lien resource.
+        :param pulumi.Input[str] origin: A stable, user-visible/meaningful string identifying the origin
+               of the Lien, intended to be inspected programmatically. Maximum length of
+               200 characters.
+        :param pulumi.Input[str] parent: A reference to the resource this Lien is attached to.
+               The server will validate the parent against those for which Liens are supported.
+               Since a variety of objects can have Liens against them, you must provide the type
+               prefix (e.g. "projects/my-project-name").
+        :param pulumi.Input[str] reason: Concise user-visible strings indicating why an action cannot be performed
+               on a resource. Maximum length of 200 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restrictions: The types of operations which should be blocked as a result of this Lien.
+               Each value should correspond to an IAM permission. The server will validate
+               the permissions against those for which Liens are supported.  An empty
+               list is meaningless and will be rejected.
+               e.g. ['resourcemanager.projects.delete']
+        """
+        pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "restrictions", restrictions)
+
+    @property
+    @pulumi.getter
+    def origin(self) -> pulumi.Input[str]:
+        """
+        A stable, user-visible/meaningful string identifying the origin
+        of the Lien, intended to be inspected programmatically. Maximum length of
+        200 characters.
+        """
+        return pulumi.get(self, "origin")
+
+    @origin.setter
+    def origin(self, value: pulumi.Input[str]):
+        pulumi.set(self, "origin", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        A reference to the resource this Lien is attached to.
+        The server will validate the parent against those for which Liens are supported.
+        Since a variety of objects can have Liens against them, you must provide the type
+        prefix (e.g. "projects/my-project-name").
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> pulumi.Input[str]:
+        """
+        Concise user-visible strings indicating why an action cannot be performed
+        on a resource. Maximum length of 200 characters.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: pulumi.Input[str]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def restrictions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The types of operations which should be blocked as a result of this Lien.
+        Each value should correspond to an IAM permission. The server will validate
+        the permissions against those for which Liens are supported.  An empty
+        list is meaningless and will be rejected.
+        e.g. ['resourcemanager.projects.delete']
+        """
+        return pulumi.get(self, "restrictions")
+
+    @restrictions.setter
+    def restrictions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "restrictions", value)
 
 
 class Lien(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +153,60 @@ class Lien(pulumi.CustomResource):
                list is meaningless and will be rejected.
                e.g. ['resourcemanager.projects.delete']
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LienArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Lien represents an encumbrance on the actions that can be performed on a resource.
+
+        ## Example Usage
+        ### Resource Manager Lien
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project", project_id="staging-project")
+        lien = gcp.resourcemanager.Lien("lien",
+            origin="machine-readable-explanation",
+            parent=project.number.apply(lambda number: f"projects/{number}"),
+            reason="This project is an important environment",
+            restrictions=["resourcemanager.projects.delete"])
+        ```
+
+        ## Import
+
+        Lien can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LienArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LienArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 origin: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

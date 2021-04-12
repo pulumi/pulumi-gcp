@@ -5,13 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['OrganizationSecurityPolicy']
+__all__ = ['OrganizationSecurityPolicyArgs', 'OrganizationSecurityPolicy']
+
+@pulumi.input_type
+class OrganizationSecurityPolicyArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 parent: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationSecurityPolicy resource.
+        :param pulumi.Input[str] display_name: A textual name of the security policy.
+        :param pulumi.Input[str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
+               Format: organizations/{organization_id} or folders/{folder_id}
+        :param pulumi.Input[str] description: A textual description for the organization security policy.
+        :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
+               For organization security policies, the only supported type
+               is "FIREWALL".
+               Default value is `FIREWALL`.
+               Possible values are `FIREWALL`.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "parent", parent)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        A textual name of the security policy.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
+        Format: organizations/{organization_id} or folders/{folder_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A textual description for the organization security policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type indicates the intended use of the security policy.
+        For organization security policies, the only supported type
+        is "FIREWALL".
+        Default value is `FIREWALL`.
+        Possible values are `FIREWALL`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class OrganizationSecurityPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +137,57 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                Default value is `FIREWALL`.
                Possible values are `FIREWALL`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationSecurityPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Organization security policies are used to control incoming/outgoing traffic.
+
+        To get more information about OrganizationSecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+        * How-to Guides
+            * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+
+        ## Example Usage
+
+        ## Import
+
+        OrganizationSecurityPolicy can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationSecurityPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

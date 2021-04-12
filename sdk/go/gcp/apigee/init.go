@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:apigee/envGroup:EnvGroup":
-		r, err = NewEnvGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &EnvGroup{}
 	case "gcp:apigee/environment:Environment":
-		r, err = NewEnvironment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Environment{}
 	case "gcp:apigee/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp:apigee/instanceAttachment:InstanceAttachment":
-		r, err = NewInstanceAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceAttachment{}
 	case "gcp:apigee/organization:Organization":
-		r, err = NewOrganization(ctx, name, nil, pulumi.URN_(urn))
+		r = &Organization{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,72 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['KeyRing']
+__all__ = ['KeyRingArgs', 'KeyRing']
+
+@pulumi.input_type
+class KeyRingArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a KeyRing resource.
+        :param pulumi.Input[str] location: The location for the KeyRing.
+               A full list of valid locations can be found by running `gcloud kms locations list`.
+        :param pulumi.Input[str] name: The resource name for the KeyRing.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location for the KeyRing.
+        A full list of valid locations can be found by running `gcloud kms locations list`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the KeyRing.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class KeyRing(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -68,6 +127,72 @@ class KeyRing(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyRingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
+
+        > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
+        Destroying a provider-managed KeyRing will remove it from state but
+        *will not delete the resource from the project.*
+
+        To get more information about KeyRing, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
+        * How-to Guides
+            * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+
+        ## Example Usage
+        ### Kms Key Ring Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_keyring = gcp.kms.KeyRing("example-keyring", location="global")
+        ```
+
+        ## Import
+
+        KeyRing can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KeyRingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

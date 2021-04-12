@@ -22,31 +22,32 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:kms/cryptoKey:CryptoKey":
-		r, err = NewCryptoKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &CryptoKey{}
 	case "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding":
-		r, err = NewCryptoKeyIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &CryptoKeyIAMBinding{}
 	case "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember":
-		r, err = NewCryptoKeyIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &CryptoKeyIAMMember{}
 	case "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy":
-		r, err = NewCryptoKeyIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &CryptoKeyIAMPolicy{}
 	case "gcp:kms/keyRing:KeyRing":
-		r, err = NewKeyRing(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRing{}
 	case "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding":
-		r, err = NewKeyRingIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingIAMBinding{}
 	case "gcp:kms/keyRingIAMMember:KeyRingIAMMember":
-		r, err = NewKeyRingIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingIAMMember{}
 	case "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy":
-		r, err = NewKeyRingIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingIAMPolicy{}
 	case "gcp:kms/keyRingImportJob:KeyRingImportJob":
-		r, err = NewKeyRingImportJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingImportJob{}
 	case "gcp:kms/registry:Registry":
-		r, err = NewRegistry(ctx, name, nil, pulumi.URN_(urn))
+		r = &Registry{}
 	case "gcp:kms/secretCiphertext:SecretCiphertext":
-		r, err = NewSecretCiphertext(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecretCiphertext{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

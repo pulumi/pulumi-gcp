@@ -5,15 +5,105 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Secret']
+__all__ = ['SecretArgs', 'Secret']
+
+@pulumi.input_type
+class SecretArgs:
+    def __init__(__self__, *,
+                 replication: pulumi.Input['SecretReplicationArgs'],
+                 secret_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Secret resource.
+        :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+               after the Secret has been created.
+               Structure is documented below.
+        :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "secret_id", secret_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def replication(self) -> pulumi.Input['SecretReplicationArgs']:
+        """
+        The replication policy of the secret data attached to the Secret. It cannot be changed
+        after the Secret has been created.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replication")
+
+    @replication.setter
+    def replication(self, value: pulumi.Input['SecretReplicationArgs']):
+        pulumi.set(self, "replication", value)
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> pulumi.Input[str]:
+        """
+        This must be unique within the project.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels assigned to this Secret.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        No more than 64 labels can be assigned to a given resource.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Secret(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -90,6 +180,83 @@ class Secret(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SecretArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Secret is a logical secret whose value and versions can be accessed.
+
+        To get more information about Secret, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
+
+        ## Example Usage
+        ### Secret Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[
+                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                            location="us-central1",
+                        ),
+                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                            location="us-east1",
+                        ),
+                    ],
+                ),
+            ),
+            secret_id="secret")
+        ```
+
+        ## Import
+
+        Secret can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SecretArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecretArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
+                 secret_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

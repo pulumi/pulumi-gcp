@@ -5,15 +5,91 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KeyRingImportJob']
+__all__ = ['KeyRingImportJobArgs', 'KeyRingImportJob']
+
+@pulumi.input_type
+class KeyRingImportJobArgs:
+    def __init__(__self__, *,
+                 import_job_id: pulumi.Input[str],
+                 import_method: pulumi.Input[str],
+                 key_ring: pulumi.Input[str],
+                 protection_level: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a KeyRingImportJob resource.
+        :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+        :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
+               Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+        :param pulumi.Input[str] key_ring: The KeyRing that this import job belongs to.
+               Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+        :param pulumi.Input[str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
+               versionTemplate on the CryptoKey you attempt to import into.
+               Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+        """
+        pulumi.set(__self__, "import_job_id", import_job_id)
+        pulumi.set(__self__, "import_method", import_method)
+        pulumi.set(__self__, "key_ring", key_ring)
+        pulumi.set(__self__, "protection_level", protection_level)
+
+    @property
+    @pulumi.getter(name="importJobId")
+    def import_job_id(self) -> pulumi.Input[str]:
+        """
+        It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+        """
+        return pulumi.get(self, "import_job_id")
+
+    @import_job_id.setter
+    def import_job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "import_job_id", value)
+
+    @property
+    @pulumi.getter(name="importMethod")
+    def import_method(self) -> pulumi.Input[str]:
+        """
+        The wrapping method to be used for incoming key material.
+        Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+        """
+        return pulumi.get(self, "import_method")
+
+    @import_method.setter
+    def import_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "import_method", value)
+
+    @property
+    @pulumi.getter(name="keyRing")
+    def key_ring(self) -> pulumi.Input[str]:
+        """
+        The KeyRing that this import job belongs to.
+        Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+        """
+        return pulumi.get(self, "key_ring")
+
+    @key_ring.setter
+    def key_ring(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_ring", value)
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> pulumi.Input[str]:
+        """
+        The protection level of the ImportJob. This must match the protectionLevel of the
+        versionTemplate on the CryptoKey you attempt to import into.
+        Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+        """
+        return pulumi.get(self, "protection_level")
+
+    @protection_level.setter
+    def protection_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protection_level", value)
 
 
 class KeyRingImportJob(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -61,6 +137,60 @@ class KeyRingImportJob(pulumi.CustomResource):
                versionTemplate on the CryptoKey you attempt to import into.
                Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyRingImportJobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A `KeyRingImportJob` can be used to create `CryptoKeys` and `CryptoKeyVersions` using pre-existing
+        key material, generated outside of Cloud KMS. A `KeyRingImportJob` expires 3 days after it is created.
+        Once expired, Cloud KMS will no longer be able to import or unwrap any key material that
+        was wrapped with the `KeyRingImportJob`'s public key.
+
+        > **Note:** KeyRingImportJobs cannot be deleted from Google Cloud Platform.
+        Destroying a provider-managed KeyRingImportJob will remove it from state but
+        *will not delete the resource from the project.*
+
+        To get more information about KeyRingImportJob, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.importJobs)
+        * How-to Guides
+            * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
+
+        ## Example Usage
+
+        ## Import
+
+        KeyRingImportJob can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KeyRingImportJobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingImportJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 import_job_id: Optional[pulumi.Input[str]] = None,
+                 import_method: Optional[pulumi.Input[str]] = None,
+                 key_ring: Optional[pulumi.Input[str]] = None,
+                 protection_level: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

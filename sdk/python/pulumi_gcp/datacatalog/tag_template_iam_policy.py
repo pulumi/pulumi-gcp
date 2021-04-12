@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['TagTemplateIamPolicy']
+__all__ = ['TagTemplateIamPolicyArgs', 'TagTemplateIamPolicy']
+
+@pulumi.input_type
+class TagTemplateIamPolicyArgs:
+    def __init__(__self__, *,
+                 policy_data: pulumi.Input[str],
+                 tag_template: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TagTemplateIamPolicy resource.
+        """
+        pulumi.set(__self__, "policy_data", policy_data)
+        pulumi.set(__self__, "tag_template", tag_template)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="policyData")
+    def policy_data(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy_data")
+
+    @policy_data.setter
+    def policy_data(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_data", value)
+
+    @property
+    @pulumi.getter(name="tagTemplate")
+    def tag_template(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag_template")
+
+    @tag_template.setter
+    def tag_template(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_template", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class TagTemplateIamPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -27,6 +81,36 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TagTemplateIamPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a TagTemplateIamPolicy resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param TagTemplateIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TagTemplateIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy_data: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tag_template: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

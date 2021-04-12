@@ -5,13 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['InstanceAttachment']
+__all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
+
+@pulumi.input_type
+class InstanceAttachmentArgs:
+    def __init__(__self__, *,
+                 environment: pulumi.Input[str],
+                 instance_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a InstanceAttachment resource.
+        :param pulumi.Input[str] environment: The resource ID of the environment.
+        :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
+               in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+        """
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> pulumi.Input[str]:
+        """
+        The resource ID of the environment.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The Apigee instance associated with the Apigee environment,
+        in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
 
 class InstanceAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +89,55 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An `Instance attachment` in Apigee.
+
+        To get more information about InstanceAttachment, see:
+
+        * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.attachments/create)
+        * How-to Guides
+            * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+
+        ## Example Usage
+
+        ## Import
+
+        InstanceAttachment can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/attachments/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

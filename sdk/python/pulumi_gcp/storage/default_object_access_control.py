@@ -5,15 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DefaultObjectAccessControl']
+__all__ = ['DefaultObjectAccessControlArgs', 'DefaultObjectAccessControl']
+
+@pulumi.input_type
+class DefaultObjectAccessControlArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 entity: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 object: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DefaultObjectAccessControl resource.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms:
+               * user-{{userId}}
+               * user-{{email}} (such as "user-liz@example.com")
+               * group-{{groupId}}
+               * group-{{email}} (such as "group-example@googlegroups.com")
+               * domain-{{domain}} (such as "domain-example.com")
+               * project-team-{{projectId}}
+               * allUsers
+               * allAuthenticatedUsers
+        :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER` and `READER`.
+        :param pulumi.Input[str] object: The name of the object, if applied to an object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "role", role)
+        if object is not None:
+            pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> pulumi.Input[str]:
+        """
+        The entity holding the permission, in one of the following forms:
+        * user-{{userId}}
+        * user-{{email}} (such as "user-liz@example.com")
+        * group-{{groupId}}
+        * group-{{email}} (such as "group-example@googlegroups.com")
+        * domain-{{domain}} (such as "domain-example.com")
+        * project-team-{{projectId}}
+        * allUsers
+        * allAuthenticatedUsers
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The access permission for the entity.
+        Possible values are `OWNER` and `READER`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the object, if applied to an object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object", value)
 
 
 class DefaultObjectAccessControl(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -83,6 +170,77 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are `OWNER` and `READER`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DefaultObjectAccessControlArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The DefaultObjectAccessControls resources represent the Access Control
+        Lists (ACLs) applied to a new object within a Google Cloud Storage bucket
+        when no ACL was provided for that object. ACLs let you specify who has
+        access to your bucket contents and to what extent.
+
+        There are two roles that can be assigned to an entity:
+
+        READERs can get an object, though the acl property will not be revealed.
+        OWNERs are READERs, and they can get the acl property, update an object,
+        and call all objectAccessControls methods on the object. The owner of an
+        object is always an OWNER.
+        For more information, see Access Control, with the caveat that this API
+        uses READER and OWNER instead of READ and FULL_CONTROL.
+
+        To get more information about DefaultObjectAccessControl, see:
+
+        * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+
+        ## Example Usage
+        ### Storage Default Object Access Control Public
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
+
+        ## Import
+
+        DefaultObjectAccessControl can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DefaultObjectAccessControlArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DefaultObjectAccessControlArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 entity: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

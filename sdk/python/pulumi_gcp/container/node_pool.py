@@ -5,15 +5,300 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NodePool']
+__all__ = ['NodePoolArgs', 'NodePool']
+
+@pulumi.input_type
+class NodePoolArgs:
+    def __init__(__self__, *,
+                 cluster: pulumi.Input[str],
+                 autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
+                 initial_node_count: Optional[pulumi.Input[int]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
+                 max_pods_per_node: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NodePool resource.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
+               the size of the node pool to the current cluster usage. Structure is documented below.
+        :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
+               regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+               this will force recreation of the resource. WARNING: Resizing your node pool manually
+               may change this value in your existing cluster, which will trigger destruction
+               and recreation on the next provider run (to rectify the discrepancy).  If you don't
+               need this value, don't set it.  If you do need it, you can use a lifecycle block to
+               ignore subsqeuent changes to this field.
+        :param pulumi.Input[str] location: The location (region or zone) of the cluster.
+        :param pulumi.Input['NodePoolManagementArgs'] management: Node management configuration, wherein auto-repair and
+               auto-upgrade is configured. Structure is documented below.
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in this node pool.
+               Note that this does not work on node pools which are "route-based" - that is, node
+               pools belonging to clusters that do not have IP Aliasing enabled.
+               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+               for more information.
+        :param pulumi.Input[str] name: The name of the node pool. If left blank, the provider will
+               auto-generate a unique name.
+        :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
+               with the specified prefix. Conflicts with `name`.
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: The node configuration of the pool. See
+               container.Cluster for schema.
+        :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
+               update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
+               be in the region of their regional cluster or in the same region as their
+               cluster's zone for zonal clusters. If unspecified, the cluster-level
+               `node_locations` will be used.
+        :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
+               the provider-configured project will be used.
+        :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
+               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+               The maximum number of nodes upgraded simultaneously is limited to 20.
+        :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
+               and `auto_upgrade` are both specified, they will fight each other for what the node version should
+               be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+               recommended that you specify explicit versions as the provider will see spurious diffs
+               when fuzzy versions are used. See the `container.getEngineVersions` data source's
+               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
+        if initial_node_count is not None:
+            pulumi.set(__self__, "initial_node_count", initial_node_count)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
+        if max_pods_per_node is not None:
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if node_config is not None:
+            pulumi.set(__self__, "node_config", node_config)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if node_locations is not None:
+            pulumi.set(__self__, "node_locations", node_locations)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if upgrade_settings is not None:
+            pulumi.set(__self__, "upgrade_settings", upgrade_settings)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input[str]:
+        """
+        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional[pulumi.Input['NodePoolAutoscalingArgs']]:
+        """
+        Configuration required by cluster autoscaler to adjust
+        the size of the node pool to the current cluster usage. Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling")
+
+    @autoscaling.setter
+    def autoscaling(self, value: Optional[pulumi.Input['NodePoolAutoscalingArgs']]):
+        pulumi.set(self, "autoscaling", value)
+
+    @property
+    @pulumi.getter(name="initialNodeCount")
+    def initial_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The initial number of nodes for the pool. In
+        regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+        this will force recreation of the resource. WARNING: Resizing your node pool manually
+        may change this value in your existing cluster, which will trigger destruction
+        and recreation on the next provider run (to rectify the discrepancy).  If you don't
+        need this value, don't set it.  If you do need it, you can use a lifecycle block to
+        ignore subsqeuent changes to this field.
+        """
+        return pulumi.get(self, "initial_node_count")
+
+    @initial_node_count.setter
+    def initial_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_node_count", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location (region or zone) of the cluster.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[pulumi.Input['NodePoolManagementArgs']]:
+        """
+        Node management configuration, wherein auto-repair and
+        auto-upgrade is configured. Structure is documented below.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input['NodePoolManagementArgs']]):
+        pulumi.set(self, "management", value)
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of pods per node in this node pool.
+        Note that this does not work on node pools which are "route-based" - that is, node
+        pools belonging to clusters that do not have IP Aliasing enabled.
+        See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+        for more information.
+        """
+        return pulumi.get(self, "max_pods_per_node")
+
+    @max_pods_per_node.setter
+    def max_pods_per_node(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_pods_per_node", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the node pool. If left blank, the provider will
+        auto-generate a unique name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name for the node pool beginning
+        with the specified prefix. Conflicts with `name`.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
+        """
+        The node configuration of the pool. See
+        container.Cluster for schema.
+        """
+        return pulumi.get(self, "node_config")
+
+    @node_config.setter
+    def node_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigArgs']]):
+        pulumi.set(self, "node_config", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes per instance group. This field can be used to
+        update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="nodeLocations")
+    def node_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of zones in which the node pool's nodes should be located. Nodes must
+        be in the region of their regional cluster or in the same region as their
+        cluster's zone for zonal clusters. If unspecified, the cluster-level
+        `node_locations` will be used.
+        """
+        return pulumi.get(self, "node_locations")
+
+    @node_locations.setter
+    def node_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_locations", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which to create the node pool. If blank,
+        the provider-configured project will be used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="upgradeSettings")
+    def upgrade_settings(self) -> Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']]:
+        """
+        Specify node upgrade settings to change how many nodes GKE attempts to
+        upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        The maximum number of nodes upgraded simultaneously is limited to 20.
+        """
+        return pulumi.get(self, "upgrade_settings")
+
+    @upgrade_settings.setter
+    def upgrade_settings(self, value: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']]):
+        pulumi.set(self, "upgrade_settings", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kubernetes version for the nodes in this pool. Note that if this field
+        and `auto_upgrade` are both specified, they will fight each other for what the node version should
+        be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+        recommended that you specify explicit versions as the provider will see spurious diffs
+        when fuzzy versions are used. See the `container.getEngineVersions` data source's
+        `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class NodePool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -121,6 +406,87 @@ class NodePool(pulumi.CustomResource):
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NodePoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
+        the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
+        and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
+
+        ## Example Usage
+        ### Using A Separately Managed Node Pool (Recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1)
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            location="us-central1",
+            cluster=primary.name,
+            node_count=1,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
+                preemptible=True,
+                machine_type="e2-medium",
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
+
+        ## Import
+
+        Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+
+        ```sh
+         $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NodePoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NodePoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 initial_node_count: Optional[pulumi.Input[int]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
+                 max_pods_per_node: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

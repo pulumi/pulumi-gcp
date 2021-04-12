@@ -5,13 +5,338 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['VPNTunnel']
+__all__ = ['VPNTunnelArgs', 'VPNTunnel']
+
+@pulumi.input_type
+class VPNTunnelArgs:
+    def __init__(__self__, *,
+                 shared_secret: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 ike_version: Optional[pulumi.Input[int]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 peer_external_gateway: Optional[pulumi.Input[str]] = None,
+                 peer_external_gateway_interface: Optional[pulumi.Input[int]] = None,
+                 peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
+                 peer_ip: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 router: Optional[pulumi.Input[str]] = None,
+                 target_vpn_gateway: Optional[pulumi.Input[str]] = None,
+                 vpn_gateway: Optional[pulumi.Input[str]] = None,
+                 vpn_gateway_interface: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a VPNTunnel resource.
+        :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN
+               gateway and the peer VPN gateway.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
+               peer VPN gateway.
+               Acceptable IKE versions are 1 or 2. Default version is 2.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this VpnTunnel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selectors: Local traffic selector to use when establishing the VPN tunnel with
+               peer VPN gateway. The value should be a CIDR formatted string,
+               for example `192.168.0.0/16`. The ranges should be disjoint.
+               Only IPv4 is supported.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63
+               characters long and match the regular expression
+               `a-z?` which means the first character
+               must be a lowercase letter, and all following characters must
+               be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
+        :param pulumi.Input[int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
+        :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+               If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+               ID in the peer GCP VPN gateway.
+               This field must reference a `compute.HaVpnGateway` resource.
+        :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selectors: Remote traffic selector to use when establishing the VPN tunnel with
+               peer VPN gateway. The value should be a CIDR formatted string,
+               for example `192.168.0.0/16`. The ranges should be disjoint.
+               Only IPv4 is supported.
+        :param pulumi.Input[str] router: URL of router resource to be used for dynamic routing.
+        :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
+               associated.
+        :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
+               This must be used if a High Availability VPN gateway resource is created.
+               This field must reference a `compute.HaVpnGateway` resource.
+        :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        """
+        pulumi.set(__self__, "shared_secret", shared_secret)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ike_version is not None:
+            pulumi.set(__self__, "ike_version", ike_version)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if local_traffic_selectors is not None:
+            pulumi.set(__self__, "local_traffic_selectors", local_traffic_selectors)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if peer_external_gateway is not None:
+            pulumi.set(__self__, "peer_external_gateway", peer_external_gateway)
+        if peer_external_gateway_interface is not None:
+            pulumi.set(__self__, "peer_external_gateway_interface", peer_external_gateway_interface)
+        if peer_gcp_gateway is not None:
+            pulumi.set(__self__, "peer_gcp_gateway", peer_gcp_gateway)
+        if peer_ip is not None:
+            pulumi.set(__self__, "peer_ip", peer_ip)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if remote_traffic_selectors is not None:
+            pulumi.set(__self__, "remote_traffic_selectors", remote_traffic_selectors)
+        if router is not None:
+            pulumi.set(__self__, "router", router)
+        if target_vpn_gateway is not None:
+            pulumi.set(__self__, "target_vpn_gateway", target_vpn_gateway)
+        if vpn_gateway is not None:
+            pulumi.set(__self__, "vpn_gateway", vpn_gateway)
+        if vpn_gateway_interface is not None:
+            pulumi.set(__self__, "vpn_gateway_interface", vpn_gateway_interface)
+
+    @property
+    @pulumi.getter(name="sharedSecret")
+    def shared_secret(self) -> pulumi.Input[str]:
+        """
+        Shared secret used to set the secure session between the Cloud VPN
+        gateway and the peer VPN gateway.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "shared_secret")
+
+    @shared_secret.setter
+    def shared_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "shared_secret", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        IKE protocol version to use when establishing the VPN tunnel with
+        peer VPN gateway.
+        Acceptable IKE versions are 1 or 2. Default version is 2.
+        """
+        return pulumi.get(self, "ike_version")
+
+    @ike_version.setter
+    def ike_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ike_version", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels to apply to this VpnTunnel.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="localTrafficSelectors")
+    def local_traffic_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Local traffic selector to use when establishing the VPN tunnel with
+        peer VPN gateway. The value should be a CIDR formatted string,
+        for example `192.168.0.0/16`. The ranges should be disjoint.
+        Only IPv4 is supported.
+        """
+        return pulumi.get(self, "local_traffic_selectors")
+
+    @local_traffic_selectors.setter
+    def local_traffic_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "local_traffic_selectors", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63
+        characters long and match the regular expression
+        `a-z?` which means the first character
+        must be a lowercase letter, and all following characters must
+        be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="peerExternalGateway")
+    def peer_external_gateway(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the peer side external VPN gateway to which this VPN tunnel is connected.
+        """
+        return pulumi.get(self, "peer_external_gateway")
+
+    @peer_external_gateway.setter
+    def peer_external_gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_external_gateway", value)
+
+    @property
+    @pulumi.getter(name="peerExternalGatewayInterface")
+    def peer_external_gateway_interface(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interface ID of the external VPN gateway to which this VPN tunnel is connected.
+        """
+        return pulumi.get(self, "peer_external_gateway_interface")
+
+    @peer_external_gateway_interface.setter
+    def peer_external_gateway_interface(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "peer_external_gateway_interface", value)
+
+    @property
+    @pulumi.getter(name="peerGcpGateway")
+    def peer_gcp_gateway(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+        If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+        ID in the peer GCP VPN gateway.
+        This field must reference a `compute.HaVpnGateway` resource.
+        """
+        return pulumi.get(self, "peer_gcp_gateway")
+
+    @peer_gcp_gateway.setter
+    def peer_gcp_gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_gcp_gateway", value)
+
+    @property
+    @pulumi.getter(name="peerIp")
+    def peer_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the peer VPN gateway. Only IPv4 is supported.
+        """
+        return pulumi.get(self, "peer_ip")
+
+    @peer_ip.setter
+    def peer_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_ip", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="remoteTrafficSelectors")
+    def remote_traffic_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Remote traffic selector to use when establishing the VPN tunnel with
+        peer VPN gateway. The value should be a CIDR formatted string,
+        for example `192.168.0.0/16`. The ranges should be disjoint.
+        Only IPv4 is supported.
+        """
+        return pulumi.get(self, "remote_traffic_selectors")
+
+    @remote_traffic_selectors.setter
+    def remote_traffic_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "remote_traffic_selectors", value)
+
+    @property
+    @pulumi.getter
+    def router(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of router resource to be used for dynamic routing.
+        """
+        return pulumi.get(self, "router")
+
+    @router.setter
+    def router(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router", value)
+
+    @property
+    @pulumi.getter(name="targetVpnGateway")
+    def target_vpn_gateway(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the Target VPN gateway with which this VPN tunnel is
+        associated.
+        """
+        return pulumi.get(self, "target_vpn_gateway")
+
+    @target_vpn_gateway.setter
+    def target_vpn_gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_vpn_gateway", value)
+
+    @property
+    @pulumi.getter(name="vpnGateway")
+    def vpn_gateway(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the VPN gateway with which this VPN tunnel is associated.
+        This must be used if a High Availability VPN gateway resource is created.
+        This field must reference a `compute.HaVpnGateway` resource.
+        """
+        return pulumi.get(self, "vpn_gateway")
+
+    @vpn_gateway.setter
+    def vpn_gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpn_gateway", value)
+
+    @property
+    @pulumi.getter(name="vpnGatewayInterface")
+    def vpn_gateway_interface(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        """
+        return pulumi.get(self, "vpn_gateway_interface")
+
+    @vpn_gateway_interface.setter
+    def vpn_gateway_interface(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vpn_gateway_interface", value)
 
 
 class VPNTunnel(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -198,6 +523,167 @@ class VPNTunnel(pulumi.CustomResource):
                This field must reference a `compute.HaVpnGateway` resource.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VPNTunnelArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        VPN tunnel resource.
+
+        To get more information about VpnTunnel, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
+        * How-to Guides
+            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+            * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+
+        > **Warning:** All arguments including `shared_secret` will be stored in the raw
+        state as plain-text.
+
+        ## Example Usage
+        ### Vpn Tunnel Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1")
+        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id)
+        vpn_static_ip = gcp.compute.Address("vpnStaticIp")
+        fr_esp = gcp.compute.ForwardingRule("frEsp",
+            ip_protocol="ESP",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway.id)
+        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
+            ip_protocol="UDP",
+            port_range="500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway.id)
+        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
+            ip_protocol="UDP",
+            port_range="4500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway.id)
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            peer_ip="15.0.0.120",
+            shared_secret="a secret message",
+            target_vpn_gateway=target_gateway.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
+        route1 = gcp.compute.Route("route1",
+            network=network1.name,
+            dest_range="15.0.0.0/24",
+            priority=1000,
+            next_hop_vpn_tunnel=tunnel1.id)
+        ```
+        ### Vpn Tunnel Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1", opts=pulumi.ResourceOptions(provider=google_beta))
+        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        vpn_static_ip = gcp.compute.Address("vpnStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
+        fr_esp = gcp.compute.ForwardingRule("frEsp",
+            ip_protocol="ESP",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
+            ip_protocol="UDP",
+            port_range="500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
+            ip_protocol="UDP",
+            port_range="4500",
+            ip_address=vpn_static_ip.address,
+            target=target_gateway.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            peer_ip="15.0.0.120",
+            shared_secret="a secret message",
+            target_vpn_gateway=target_gateway.id,
+            labels={
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[
+                    fr_esp,
+                    fr_udp500,
+                    fr_udp4500,
+                ]))
+        route1 = gcp.compute.Route("route1",
+            network=network1.name,
+            dest_range="15.0.0.0/24",
+            priority=1000,
+            next_hop_vpn_tunnel=tunnel1.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        VpnTunnel can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VPNTunnelArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VPNTunnelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ike_version: Optional[pulumi.Input[int]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 peer_external_gateway: Optional[pulumi.Input[str]] = None,
+                 peer_external_gateway_interface: Optional[pulumi.Input[int]] = None,
+                 peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
+                 peer_ip: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 router: Optional[pulumi.Input[str]] = None,
+                 shared_secret: Optional[pulumi.Input[str]] = None,
+                 target_vpn_gateway: Optional[pulumi.Input[str]] = None,
+                 vpn_gateway: Optional[pulumi.Input[str]] = None,
+                 vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

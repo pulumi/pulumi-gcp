@@ -5,13 +5,54 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ProjectMetadata']
+__all__ = ['ProjectMetadataArgs', 'ProjectMetadata']
+
+@pulumi.input_type
+class ProjectMetadataArgs:
+    def __init__(__self__, *,
+                 metadata: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ProjectMetadata resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A series of key value pairs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "metadata", metadata)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        A series of key value pairs.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class ProjectMetadata(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -74,6 +115,80 @@ class ProjectMetadata(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectMetadataArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Authoritatively manages metadata common to all instances for a project in GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
+
+        > **Note:**  This resource manages all project-level metadata including project-level ssh keys.
+        Keys unset in config but set on the server will be removed. If you want to manage only single
+        key/value pairs within the project metadata rather than the entire set, then use
+        google_compute_project_metadata_item.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.ProjectMetadata("default", metadata={
+            "13": "42",
+            "fizz": "buzz",
+            "foo": "bar",
+        })
+        ```
+        ### Adding An SSH Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        #A key set in project metadata is propagated to every instance in the project.
+        #This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
+        #It is better to use OS Login instead.
+        my_ssh_key = gcp.compute.ProjectMetadata("mySshKey", metadata={
+            "ssh-keys": \"\"\"      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
+              foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
+            
+        \"\"\",
+        })
+        ```
+
+        ## Import
+
+        This resource can be imported using the project ID
+
+        ```sh
+         $ pulumi import gcp:compute/projectMetadata:ProjectMetadata foo my-project-id`
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectMetadataArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectMetadataArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,108 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Variable']
+__all__ = ['VariableArgs', 'Variable']
+
+@pulumi.input_type
+class VariableArgs:
+    def __init__(__self__, *,
+                 parent: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Variable resource.
+        :param pulumi.Input[str] parent: The name of the RuntimeConfig resource containing this
+               variable.
+        :param pulumi.Input[str] name: The name of the variable to manage. Note that variable
+               names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] text: or `value` - (Required) The content to associate with the variable.
+               Exactly one of `text` or `variable` must be specified. If `text` is specified,
+               it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+               is specified, it must be base64 encoded and less than 4096 bytes in length.
+        """
+        pulumi.set(__self__, "parent", parent)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The name of the RuntimeConfig resource containing this
+        variable.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the variable to manage. Note that variable
+        names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        or `value` - (Required) The content to associate with the variable.
+        Exactly one of `text` or `variable` must be specified. If `text` is specified,
+        it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+        is specified, it must be base64 encoded and less than 4096 bytes in length.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 class Variable(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -56,6 +151,55 @@ class Variable(pulumi.CustomResource):
                it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
                is specified, it must be base64 encoded and less than 4096 bytes in length.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VariableArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a RuntimeConfig variable in Google Cloud. For more information, see the
+        [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
+        or the
+        [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+
+        ## Import
+
+        Runtime Config Variables can be imported using the `name` or full variable name, e.g.
+
+        ```sh
+         $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
+        ```
+
+        ```sh
+         $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+        ```
+
+         When importing using only the name, the provider project must be set.
+
+        :param str resource_name: The name of the resource.
+        :param VariableArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VariableArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

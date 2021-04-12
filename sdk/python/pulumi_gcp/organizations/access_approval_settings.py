@@ -5,15 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessApprovalSettings']
+__all__ = ['AccessApprovalSettingsArgs', 'AccessApprovalSettings']
+
+@pulumi.input_type
+class AccessApprovalSettingsArgs:
+    def __init__(__self__, *,
+                 enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
+                 organization_id: pulumi.Input[str],
+                 notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a AccessApprovalSettings resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+               resource given by name against any of these services contained here will be required to have explicit approval.
+               Enrollment can be done for individual services. A maximum of 10 enrolled services will be enforced, to be expanded as
+               the set of supported services is expanded.
+        :param pulumi.Input[str] organization_id: ID of the organization of the access approval settings.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+               a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+               addresses are allowed.
+        """
+        pulumi.set(__self__, "enrolled_services", enrolled_services)
+        pulumi.set(__self__, "organization_id", organization_id)
+        if notification_emails is not None:
+            pulumi.set(__self__, "notification_emails", notification_emails)
+
+    @property
+    @pulumi.getter(name="enrolledServices")
+    def enrolled_services(self) -> pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]:
+        """
+        A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+        resource given by name against any of these services contained here will be required to have explicit approval.
+        Enrollment can be done for individual services. A maximum of 10 enrolled services will be enforced, to be expanded as
+        the set of supported services is expanded.
+        """
+        return pulumi.get(self, "enrolled_services")
+
+    @enrolled_services.setter
+    def enrolled_services(self, value: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]):
+        pulumi.set(self, "enrolled_services", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        """
+        ID of the organization of the access approval settings.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="notificationEmails")
+    def notification_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+        addresses are allowed.
+        """
+        return pulumi.get(self, "notification_emails")
+
+    @notification_emails.setter
+    def notification_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_emails", value)
 
 
 class AccessApprovalSettings(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +100,35 @@ class AccessApprovalSettings(pulumi.CustomResource):
                addresses are allowed.
         :param pulumi.Input[str] organization_id: ID of the organization of the access approval settings.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccessApprovalSettingsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a AccessApprovalSettings resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param AccessApprovalSettingsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessApprovalSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+                 notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig":
-		r, err = NewDefaultSupportedIdpConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &DefaultSupportedIdpConfig{}
 	case "gcp:identityplatform/inboundSamlConfig:InboundSamlConfig":
-		r, err = NewInboundSamlConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &InboundSamlConfig{}
 	case "gcp:identityplatform/oauthIdpConfig:OauthIdpConfig":
-		r, err = NewOauthIdpConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &OauthIdpConfig{}
 	case "gcp:identityplatform/tenant:Tenant":
-		r, err = NewTenant(ctx, name, nil, pulumi.URN_(urn))
+		r = &Tenant{}
 	case "gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig":
-		r, err = NewTenantDefaultSupportedIdpConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &TenantDefaultSupportedIdpConfig{}
 	case "gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig":
-		r, err = NewTenantInboundSamlConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &TenantInboundSamlConfig{}
 	case "gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig":
-		r, err = NewTenantOauthIdpConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &TenantOauthIdpConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -22,35 +22,36 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig":
-		r, err = NewBillingAccountBucketConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &BillingAccountBucketConfig{}
 	case "gcp:logging/billingAccountExclusion:BillingAccountExclusion":
-		r, err = NewBillingAccountExclusion(ctx, name, nil, pulumi.URN_(urn))
+		r = &BillingAccountExclusion{}
 	case "gcp:logging/billingAccountSink:BillingAccountSink":
-		r, err = NewBillingAccountSink(ctx, name, nil, pulumi.URN_(urn))
+		r = &BillingAccountSink{}
 	case "gcp:logging/folderBucketConfig:FolderBucketConfig":
-		r, err = NewFolderBucketConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &FolderBucketConfig{}
 	case "gcp:logging/folderExclusion:FolderExclusion":
-		r, err = NewFolderExclusion(ctx, name, nil, pulumi.URN_(urn))
+		r = &FolderExclusion{}
 	case "gcp:logging/folderSink:FolderSink":
-		r, err = NewFolderSink(ctx, name, nil, pulumi.URN_(urn))
+		r = &FolderSink{}
 	case "gcp:logging/metric:Metric":
-		r, err = NewMetric(ctx, name, nil, pulumi.URN_(urn))
+		r = &Metric{}
 	case "gcp:logging/organizationBucketConfig:OrganizationBucketConfig":
-		r, err = NewOrganizationBucketConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationBucketConfig{}
 	case "gcp:logging/organizationExclusion:OrganizationExclusion":
-		r, err = NewOrganizationExclusion(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationExclusion{}
 	case "gcp:logging/organizationSink:OrganizationSink":
-		r, err = NewOrganizationSink(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationSink{}
 	case "gcp:logging/projectBucketConfig:ProjectBucketConfig":
-		r, err = NewProjectBucketConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectBucketConfig{}
 	case "gcp:logging/projectExclusion:ProjectExclusion":
-		r, err = NewProjectExclusion(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectExclusion{}
 	case "gcp:logging/projectSink:ProjectSink":
-		r, err = NewProjectSink(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectSink{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

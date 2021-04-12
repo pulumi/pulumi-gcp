@@ -5,15 +5,96 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PreventionInspectTemplate']
+__all__ = ['PreventionInspectTemplateArgs', 'PreventionInspectTemplate']
+
+@pulumi.input_type
+class PreventionInspectTemplateArgs:
+    def __init__(__self__, *,
+                 parent: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None):
+        """
+        The set of arguments for constructing a PreventionInspectTemplate resource.
+        :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
+               * `projects/{{project}}`
+               * `projects/{{project}}/locations/{{location}}`
+               * `organizations/{{organization_id}}`
+               * `organizations/{{organization_id}}/locations/{{location}}`
+        :param pulumi.Input[str] description: A description of the inspect template.
+        :param pulumi.Input[str] display_name: User set display name of the inspect template.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "parent", parent)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if inspect_config is not None:
+            pulumi.set(__self__, "inspect_config", inspect_config)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The parent of the inspect template in any of the following formats:
+        * `projects/{{project}}`
+        * `projects/{{project}}/locations/{{location}}`
+        * `organizations/{{organization_id}}`
+        * `organizations/{{organization_id}}/locations/{{location}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the inspect template.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User set display name of the inspect template.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="inspectConfig")
+    def inspect_config(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]:
+        """
+        The core content of the template.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inspect_config")
+
+    @inspect_config.setter
+    def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]):
+        pulumi.set(self, "inspect_config", value)
 
 
 class PreventionInspectTemplate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -236,6 +317,234 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PreventionInspectTemplateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An inspect job template.
+
+        To get more information about InspectTemplate, see:
+
+        * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.inspectTemplates)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
+
+        ## Example Usage
+        ### Dlp Inspect Template Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionInspectTemplate("basic",
+            description="My description",
+            display_name="display_name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                info_types=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="EMAIL_ADDRESS",
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="PERSON_NAME",
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="LAST_NAME",
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="DOMAIN_NAME",
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="PHONE_NUMBER",
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                        name="FIRST_NAME",
+                    ),
+                ],
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_info_type=[
+                        {
+                            "infoType": {
+                                "name": "PERSON_NAME",
+                            },
+                            "maxFindings": "75",
+                        },
+                        {
+                            "infoType": {
+                                "name": "LAST_NAME",
+                            },
+                            "maxFindings": "80",
+                        },
+                    ],
+                    max_findings_per_item=10,
+                    max_findings_per_request=50,
+                ),
+                min_likelihood="UNLIKELY",
+                rule_sets=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="EMAIL_ADDRESS",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                                matching_type="MATCHING_TYPE_FULL_MATCH",
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                    pattern=".+@example.com",
+                                ),
+                            ),
+                        )],
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[
+                            gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                                name="EMAIL_ADDRESS",
+                            ),
+                            gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                                name="DOMAIN_NAME",
+                            ),
+                            gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                                name="PHONE_NUMBER",
+                            ),
+                            gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                                name="PERSON_NAME",
+                            ),
+                            gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                                name="FIRST_NAME",
+                            ),
+                        ],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                                dictionary=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs(
+                                    word_list=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs(
+                                        words=["TEST"],
+                                    ),
+                                ),
+                                matching_type="MATCHING_TYPE_PARTIAL_MATCH",
+                            ),
+                        )],
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="PERSON_NAME",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                                    pattern="patient",
+                                ),
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                    fixed_likelihood="VERY_LIKELY",
+                                ),
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                    window_before=50,
+                                ),
+                            ),
+                        )],
+                    ),
+                ],
+            ),
+            parent="projects/my-project-name")
+        ```
+        ### Dlp Inspect Template Custom Type
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.dataloss.PreventionInspectTemplate("custom",
+            description="My description",
+            display_name="display_name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+                        name="MY_CUSTOM_TYPE",
+                    ),
+                    likelihood="UNLIKELY",
+                    regex=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs(
+                        pattern="test*",
+                    ),
+                )],
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                    name="EMAIL_ADDRESS",
+                )],
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_item=10,
+                    max_findings_per_request=50,
+                ),
+                min_likelihood="UNLIKELY",
+                rule_sets=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="EMAIL_ADDRESS",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                                matching_type="MATCHING_TYPE_FULL_MATCH",
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                    pattern=".+@example.com",
+                                ),
+                            ),
+                        )],
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="MY_CUSTOM_TYPE",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                                    pattern="example*",
+                                ),
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                    fixed_likelihood="VERY_LIKELY",
+                                ),
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                    window_before=50,
+                                ),
+                            ),
+                        )],
+                    ),
+                ],
+            ),
+            parent="projects/my-project-name")
+        ```
+
+        ## Import
+
+        InspectTemplate can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PreventionInspectTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PreventionInspectTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

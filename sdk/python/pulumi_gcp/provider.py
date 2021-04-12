@@ -5,14 +5,1204 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from ._inputs import *
 
-__all__ = ['Provider']
+__all__ = ['ProviderArgs', 'Provider']
+
+@pulumi.input_type
+class ProviderArgs:
+    def __init__(__self__, *,
+                 access_approval_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 access_token: Optional[pulumi.Input[str]] = None,
+                 active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
+                 big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 billing_project: Optional[pulumi.Input[str]] = None,
+                 binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 compute_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 credentials: Optional[pulumi.Input[str]] = None,
+                 data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 impersonate_service_account: Optional[pulumi.Input[str]] = None,
+                 impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 request_timeout: Optional[pulumi.Input[str]] = None,
+                 resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 secret_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_usage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 user_project_override: Optional[pulumi.Input[bool]] = None,
+                 vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Provider resource.
+        """
+        if access_approval_custom_endpoint is not None:
+            pulumi.set(__self__, "access_approval_custom_endpoint", access_approval_custom_endpoint)
+        if access_context_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "access_context_manager_custom_endpoint", access_context_manager_custom_endpoint)
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if active_directory_custom_endpoint is not None:
+            pulumi.set(__self__, "active_directory_custom_endpoint", active_directory_custom_endpoint)
+        if api_gateway_custom_endpoint is not None:
+            pulumi.set(__self__, "api_gateway_custom_endpoint", api_gateway_custom_endpoint)
+        if apigee_custom_endpoint is not None:
+            pulumi.set(__self__, "apigee_custom_endpoint", apigee_custom_endpoint)
+        if app_engine_custom_endpoint is not None:
+            pulumi.set(__self__, "app_engine_custom_endpoint", app_engine_custom_endpoint)
+        if artifact_registry_custom_endpoint is not None:
+            pulumi.set(__self__, "artifact_registry_custom_endpoint", artifact_registry_custom_endpoint)
+        if batching is not None:
+            pulumi.set(__self__, "batching", batching)
+        if big_query_custom_endpoint is not None:
+            pulumi.set(__self__, "big_query_custom_endpoint", big_query_custom_endpoint)
+        if bigquery_connection_custom_endpoint is not None:
+            pulumi.set(__self__, "bigquery_connection_custom_endpoint", bigquery_connection_custom_endpoint)
+        if bigquery_data_transfer_custom_endpoint is not None:
+            pulumi.set(__self__, "bigquery_data_transfer_custom_endpoint", bigquery_data_transfer_custom_endpoint)
+        if bigquery_reservation_custom_endpoint is not None:
+            pulumi.set(__self__, "bigquery_reservation_custom_endpoint", bigquery_reservation_custom_endpoint)
+        if bigtable_custom_endpoint is not None:
+            pulumi.set(__self__, "bigtable_custom_endpoint", bigtable_custom_endpoint)
+        if billing_custom_endpoint is not None:
+            pulumi.set(__self__, "billing_custom_endpoint", billing_custom_endpoint)
+        if billing_project is not None:
+            pulumi.set(__self__, "billing_project", billing_project)
+        if binary_authorization_custom_endpoint is not None:
+            pulumi.set(__self__, "binary_authorization_custom_endpoint", binary_authorization_custom_endpoint)
+        if cloud_asset_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_asset_custom_endpoint", cloud_asset_custom_endpoint)
+        if cloud_billing_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_billing_custom_endpoint", cloud_billing_custom_endpoint)
+        if cloud_build_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_build_custom_endpoint", cloud_build_custom_endpoint)
+        if cloud_functions_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_functions_custom_endpoint", cloud_functions_custom_endpoint)
+        if cloud_identity_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_identity_custom_endpoint", cloud_identity_custom_endpoint)
+        if cloud_iot_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_iot_custom_endpoint", cloud_iot_custom_endpoint)
+        if cloud_run_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_run_custom_endpoint", cloud_run_custom_endpoint)
+        if cloud_scheduler_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
+        if cloud_tasks_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
+        if composer_custom_endpoint is not None:
+            pulumi.set(__self__, "composer_custom_endpoint", composer_custom_endpoint)
+        if compute_beta_custom_endpoint is not None:
+            pulumi.set(__self__, "compute_beta_custom_endpoint", compute_beta_custom_endpoint)
+        if compute_custom_endpoint is not None:
+            pulumi.set(__self__, "compute_custom_endpoint", compute_custom_endpoint)
+        if container_analysis_custom_endpoint is not None:
+            pulumi.set(__self__, "container_analysis_custom_endpoint", container_analysis_custom_endpoint)
+        if container_beta_custom_endpoint is not None:
+            pulumi.set(__self__, "container_beta_custom_endpoint", container_beta_custom_endpoint)
+        if container_custom_endpoint is not None:
+            pulumi.set(__self__, "container_custom_endpoint", container_custom_endpoint)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
+        if data_catalog_custom_endpoint is not None:
+            pulumi.set(__self__, "data_catalog_custom_endpoint", data_catalog_custom_endpoint)
+        if data_fusion_custom_endpoint is not None:
+            pulumi.set(__self__, "data_fusion_custom_endpoint", data_fusion_custom_endpoint)
+        if data_loss_prevention_custom_endpoint is not None:
+            pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
+        if dataflow_custom_endpoint is not None:
+            pulumi.set(__self__, "dataflow_custom_endpoint", dataflow_custom_endpoint)
+        if dataproc_beta_custom_endpoint is not None:
+            pulumi.set(__self__, "dataproc_beta_custom_endpoint", dataproc_beta_custom_endpoint)
+        if dataproc_custom_endpoint is not None:
+            pulumi.set(__self__, "dataproc_custom_endpoint", dataproc_custom_endpoint)
+        if dataproc_metastore_custom_endpoint is not None:
+            pulumi.set(__self__, "dataproc_metastore_custom_endpoint", dataproc_metastore_custom_endpoint)
+        if datastore_custom_endpoint is not None:
+            pulumi.set(__self__, "datastore_custom_endpoint", datastore_custom_endpoint)
+        if deployment_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
+        if dialogflow_custom_endpoint is not None:
+            pulumi.set(__self__, "dialogflow_custom_endpoint", dialogflow_custom_endpoint)
+        if dns_custom_endpoint is not None:
+            pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
+        if essential_contacts_custom_endpoint is not None:
+            pulumi.set(__self__, "essential_contacts_custom_endpoint", essential_contacts_custom_endpoint)
+        if eventarc_custom_endpoint is not None:
+            pulumi.set(__self__, "eventarc_custom_endpoint", eventarc_custom_endpoint)
+        if filestore_custom_endpoint is not None:
+            pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
+        if firebase_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
+        if firestore_custom_endpoint is not None:
+            pulumi.set(__self__, "firestore_custom_endpoint", firestore_custom_endpoint)
+        if game_services_custom_endpoint is not None:
+            pulumi.set(__self__, "game_services_custom_endpoint", game_services_custom_endpoint)
+        if gke_hub_custom_endpoint is not None:
+            pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
+        if healthcare_custom_endpoint is not None:
+            pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
+        if iam_beta_custom_endpoint is not None:
+            pulumi.set(__self__, "iam_beta_custom_endpoint", iam_beta_custom_endpoint)
+        if iam_credentials_custom_endpoint is not None:
+            pulumi.set(__self__, "iam_credentials_custom_endpoint", iam_credentials_custom_endpoint)
+        if iam_custom_endpoint is not None:
+            pulumi.set(__self__, "iam_custom_endpoint", iam_custom_endpoint)
+        if iap_custom_endpoint is not None:
+            pulumi.set(__self__, "iap_custom_endpoint", iap_custom_endpoint)
+        if identity_platform_custom_endpoint is not None:
+            pulumi.set(__self__, "identity_platform_custom_endpoint", identity_platform_custom_endpoint)
+        if impersonate_service_account is not None:
+            pulumi.set(__self__, "impersonate_service_account", impersonate_service_account)
+        if impersonate_service_account_delegates is not None:
+            pulumi.set(__self__, "impersonate_service_account_delegates", impersonate_service_account_delegates)
+        if kms_custom_endpoint is not None:
+            pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
+        if logging_custom_endpoint is not None:
+            pulumi.set(__self__, "logging_custom_endpoint", logging_custom_endpoint)
+        if memcache_custom_endpoint is not None:
+            pulumi.set(__self__, "memcache_custom_endpoint", memcache_custom_endpoint)
+        if ml_engine_custom_endpoint is not None:
+            pulumi.set(__self__, "ml_engine_custom_endpoint", ml_engine_custom_endpoint)
+        if monitoring_custom_endpoint is not None:
+            pulumi.set(__self__, "monitoring_custom_endpoint", monitoring_custom_endpoint)
+        if network_management_custom_endpoint is not None:
+            pulumi.set(__self__, "network_management_custom_endpoint", network_management_custom_endpoint)
+        if notebooks_custom_endpoint is not None:
+            pulumi.set(__self__, "notebooks_custom_endpoint", notebooks_custom_endpoint)
+        if os_config_custom_endpoint is not None:
+            pulumi.set(__self__, "os_config_custom_endpoint", os_config_custom_endpoint)
+        if os_login_custom_endpoint is not None:
+            pulumi.set(__self__, "os_login_custom_endpoint", os_login_custom_endpoint)
+        if privateca_custom_endpoint is not None:
+            pulumi.set(__self__, "privateca_custom_endpoint", privateca_custom_endpoint)
+        if project is None:
+            project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if pubsub_custom_endpoint is not None:
+            pulumi.set(__self__, "pubsub_custom_endpoint", pubsub_custom_endpoint)
+        if pubsub_lite_custom_endpoint is not None:
+            pulumi.set(__self__, "pubsub_lite_custom_endpoint", pubsub_lite_custom_endpoint)
+        if redis_custom_endpoint is not None:
+            pulumi.set(__self__, "redis_custom_endpoint", redis_custom_endpoint)
+        if region is None:
+            region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if request_timeout is not None:
+            pulumi.set(__self__, "request_timeout", request_timeout)
+        if resource_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "resource_manager_custom_endpoint", resource_manager_custom_endpoint)
+        if resource_manager_v2_custom_endpoint is not None:
+            pulumi.set(__self__, "resource_manager_v2_custom_endpoint", resource_manager_v2_custom_endpoint)
+        if runtime_config_custom_endpoint is not None:
+            pulumi.set(__self__, "runtime_config_custom_endpoint", runtime_config_custom_endpoint)
+        if runtimeconfig_custom_endpoint is not None:
+            pulumi.set(__self__, "runtimeconfig_custom_endpoint", runtimeconfig_custom_endpoint)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "secret_manager_custom_endpoint", secret_manager_custom_endpoint)
+        if security_center_custom_endpoint is not None:
+            pulumi.set(__self__, "security_center_custom_endpoint", security_center_custom_endpoint)
+        if security_scanner_custom_endpoint is not None:
+            pulumi.set(__self__, "security_scanner_custom_endpoint", security_scanner_custom_endpoint)
+        if service_directory_custom_endpoint is not None:
+            pulumi.set(__self__, "service_directory_custom_endpoint", service_directory_custom_endpoint)
+        if service_management_custom_endpoint is not None:
+            pulumi.set(__self__, "service_management_custom_endpoint", service_management_custom_endpoint)
+        if service_networking_custom_endpoint is not None:
+            pulumi.set(__self__, "service_networking_custom_endpoint", service_networking_custom_endpoint)
+        if service_usage_custom_endpoint is not None:
+            pulumi.set(__self__, "service_usage_custom_endpoint", service_usage_custom_endpoint)
+        if source_repo_custom_endpoint is not None:
+            pulumi.set(__self__, "source_repo_custom_endpoint", source_repo_custom_endpoint)
+        if spanner_custom_endpoint is not None:
+            pulumi.set(__self__, "spanner_custom_endpoint", spanner_custom_endpoint)
+        if sql_custom_endpoint is not None:
+            pulumi.set(__self__, "sql_custom_endpoint", sql_custom_endpoint)
+        if storage_custom_endpoint is not None:
+            pulumi.set(__self__, "storage_custom_endpoint", storage_custom_endpoint)
+        if storage_transfer_custom_endpoint is not None:
+            pulumi.set(__self__, "storage_transfer_custom_endpoint", storage_transfer_custom_endpoint)
+        if tags_custom_endpoint is not None:
+            pulumi.set(__self__, "tags_custom_endpoint", tags_custom_endpoint)
+        if tpu_custom_endpoint is not None:
+            pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
+        if user_project_override is not None:
+            pulumi.set(__self__, "user_project_override", user_project_override)
+        if vpc_access_custom_endpoint is not None:
+            pulumi.set(__self__, "vpc_access_custom_endpoint", vpc_access_custom_endpoint)
+        if workflows_custom_endpoint is not None:
+            pulumi.set(__self__, "workflows_custom_endpoint", workflows_custom_endpoint)
+        if zone is None:
+            zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="accessApprovalCustomEndpoint")
+    def access_approval_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_approval_custom_endpoint")
+
+    @access_approval_custom_endpoint.setter
+    def access_approval_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_approval_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="accessContextManagerCustomEndpoint")
+    def access_context_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_context_manager_custom_endpoint")
+
+    @access_context_manager_custom_endpoint.setter
+    def access_context_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_context_manager_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_token", value)
+
+    @property
+    @pulumi.getter(name="activeDirectoryCustomEndpoint")
+    def active_directory_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "active_directory_custom_endpoint")
+
+    @active_directory_custom_endpoint.setter
+    def active_directory_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "active_directory_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="apiGatewayCustomEndpoint")
+    def api_gateway_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_gateway_custom_endpoint")
+
+    @api_gateway_custom_endpoint.setter
+    def api_gateway_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_gateway_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="apigeeCustomEndpoint")
+    def apigee_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "apigee_custom_endpoint")
+
+    @apigee_custom_endpoint.setter
+    def apigee_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "apigee_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="appEngineCustomEndpoint")
+    def app_engine_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "app_engine_custom_endpoint")
+
+    @app_engine_custom_endpoint.setter
+    def app_engine_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_engine_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="artifactRegistryCustomEndpoint")
+    def artifact_registry_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "artifact_registry_custom_endpoint")
+
+    @artifact_registry_custom_endpoint.setter
+    def artifact_registry_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_registry_custom_endpoint", value)
+
+    @property
+    @pulumi.getter
+    def batching(self) -> Optional[pulumi.Input['ProviderBatchingArgs']]:
+        return pulumi.get(self, "batching")
+
+    @batching.setter
+    def batching(self, value: Optional[pulumi.Input['ProviderBatchingArgs']]):
+        pulumi.set(self, "batching", value)
+
+    @property
+    @pulumi.getter(name="bigQueryCustomEndpoint")
+    def big_query_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "big_query_custom_endpoint")
+
+    @big_query_custom_endpoint.setter
+    def big_query_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "big_query_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="bigqueryConnectionCustomEndpoint")
+    def bigquery_connection_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bigquery_connection_custom_endpoint")
+
+    @bigquery_connection_custom_endpoint.setter
+    def bigquery_connection_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bigquery_connection_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="bigqueryDataTransferCustomEndpoint")
+    def bigquery_data_transfer_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bigquery_data_transfer_custom_endpoint")
+
+    @bigquery_data_transfer_custom_endpoint.setter
+    def bigquery_data_transfer_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bigquery_data_transfer_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="bigqueryReservationCustomEndpoint")
+    def bigquery_reservation_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bigquery_reservation_custom_endpoint")
+
+    @bigquery_reservation_custom_endpoint.setter
+    def bigquery_reservation_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bigquery_reservation_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="bigtableCustomEndpoint")
+    def bigtable_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bigtable_custom_endpoint")
+
+    @bigtable_custom_endpoint.setter
+    def bigtable_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bigtable_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="billingCustomEndpoint")
+    def billing_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "billing_custom_endpoint")
+
+    @billing_custom_endpoint.setter
+    def billing_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="billingProject")
+    def billing_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "billing_project")
+
+    @billing_project.setter
+    def billing_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_project", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorizationCustomEndpoint")
+    def binary_authorization_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "binary_authorization_custom_endpoint")
+
+    @binary_authorization_custom_endpoint.setter
+    def binary_authorization_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "binary_authorization_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudAssetCustomEndpoint")
+    def cloud_asset_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_asset_custom_endpoint")
+
+    @cloud_asset_custom_endpoint.setter
+    def cloud_asset_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_asset_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudBillingCustomEndpoint")
+    def cloud_billing_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_billing_custom_endpoint")
+
+    @cloud_billing_custom_endpoint.setter
+    def cloud_billing_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_billing_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudBuildCustomEndpoint")
+    def cloud_build_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_build_custom_endpoint")
+
+    @cloud_build_custom_endpoint.setter
+    def cloud_build_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_build_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudFunctionsCustomEndpoint")
+    def cloud_functions_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_functions_custom_endpoint")
+
+    @cloud_functions_custom_endpoint.setter
+    def cloud_functions_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_functions_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudIdentityCustomEndpoint")
+    def cloud_identity_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_identity_custom_endpoint")
+
+    @cloud_identity_custom_endpoint.setter
+    def cloud_identity_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_identity_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudIotCustomEndpoint")
+    def cloud_iot_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_iot_custom_endpoint")
+
+    @cloud_iot_custom_endpoint.setter
+    def cloud_iot_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_iot_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudRunCustomEndpoint")
+    def cloud_run_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_run_custom_endpoint")
+
+    @cloud_run_custom_endpoint.setter
+    def cloud_run_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_run_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudSchedulerCustomEndpoint")
+    def cloud_scheduler_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_scheduler_custom_endpoint")
+
+    @cloud_scheduler_custom_endpoint.setter
+    def cloud_scheduler_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_scheduler_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudTasksCustomEndpoint")
+    def cloud_tasks_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_tasks_custom_endpoint")
+
+    @cloud_tasks_custom_endpoint.setter
+    def cloud_tasks_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_tasks_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="composerCustomEndpoint")
+    def composer_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "composer_custom_endpoint")
+
+    @composer_custom_endpoint.setter
+    def composer_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "composer_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="computeBetaCustomEndpoint")
+    def compute_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compute_beta_custom_endpoint")
+
+    @compute_beta_custom_endpoint.setter
+    def compute_beta_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compute_beta_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="computeCustomEndpoint")
+    def compute_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compute_custom_endpoint")
+
+    @compute_custom_endpoint.setter
+    def compute_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compute_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="containerAnalysisCustomEndpoint")
+    def container_analysis_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_analysis_custom_endpoint")
+
+    @container_analysis_custom_endpoint.setter
+    def container_analysis_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_analysis_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="containerBetaCustomEndpoint")
+    def container_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_beta_custom_endpoint")
+
+    @container_beta_custom_endpoint.setter
+    def container_beta_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_beta_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="containerCustomEndpoint")
+    def container_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_custom_endpoint")
+
+    @container_custom_endpoint.setter
+    def container_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_custom_endpoint", value)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credentials", value)
+
+    @property
+    @pulumi.getter(name="dataCatalogCustomEndpoint")
+    def data_catalog_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "data_catalog_custom_endpoint")
+
+    @data_catalog_custom_endpoint.setter
+    def data_catalog_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_catalog_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dataFusionCustomEndpoint")
+    def data_fusion_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "data_fusion_custom_endpoint")
+
+    @data_fusion_custom_endpoint.setter
+    def data_fusion_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_fusion_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dataLossPreventionCustomEndpoint")
+    def data_loss_prevention_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "data_loss_prevention_custom_endpoint")
+
+    @data_loss_prevention_custom_endpoint.setter
+    def data_loss_prevention_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_loss_prevention_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dataflowCustomEndpoint")
+    def dataflow_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataflow_custom_endpoint")
+
+    @dataflow_custom_endpoint.setter
+    def dataflow_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataflow_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dataprocBetaCustomEndpoint")
+    def dataproc_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataproc_beta_custom_endpoint")
+
+    @dataproc_beta_custom_endpoint.setter
+    def dataproc_beta_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_beta_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dataprocCustomEndpoint")
+    def dataproc_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataproc_custom_endpoint")
+
+    @dataproc_custom_endpoint.setter
+    def dataproc_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dataprocMetastoreCustomEndpoint")
+    def dataproc_metastore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataproc_metastore_custom_endpoint")
+
+    @dataproc_metastore_custom_endpoint.setter
+    def dataproc_metastore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_metastore_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="datastoreCustomEndpoint")
+    def datastore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "datastore_custom_endpoint")
+
+    @datastore_custom_endpoint.setter
+    def datastore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="deploymentManagerCustomEndpoint")
+    def deployment_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "deployment_manager_custom_endpoint")
+
+    @deployment_manager_custom_endpoint.setter
+    def deployment_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_manager_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dialogflowCustomEndpoint")
+    def dialogflow_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dialogflow_custom_endpoint")
+
+    @dialogflow_custom_endpoint.setter
+    def dialogflow_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dialogflow_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dnsCustomEndpoint")
+    def dns_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dns_custom_endpoint")
+
+    @dns_custom_endpoint.setter
+    def dns_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="essentialContactsCustomEndpoint")
+    def essential_contacts_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "essential_contacts_custom_endpoint")
+
+    @essential_contacts_custom_endpoint.setter
+    def essential_contacts_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "essential_contacts_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="eventarcCustomEndpoint")
+    def eventarc_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "eventarc_custom_endpoint")
+
+    @eventarc_custom_endpoint.setter
+    def eventarc_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eventarc_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="filestoreCustomEndpoint")
+    def filestore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "filestore_custom_endpoint")
+
+    @filestore_custom_endpoint.setter
+    def filestore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filestore_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="firebaseCustomEndpoint")
+    def firebase_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firebase_custom_endpoint")
+
+    @firebase_custom_endpoint.setter
+    def firebase_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebase_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="firestoreCustomEndpoint")
+    def firestore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firestore_custom_endpoint")
+
+    @firestore_custom_endpoint.setter
+    def firestore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firestore_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="gameServicesCustomEndpoint")
+    def game_services_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "game_services_custom_endpoint")
+
+    @game_services_custom_endpoint.setter
+    def game_services_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "game_services_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="gkeHubCustomEndpoint")
+    def gke_hub_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gke_hub_custom_endpoint")
+
+    @gke_hub_custom_endpoint.setter
+    def gke_hub_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_hub_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="healthcareCustomEndpoint")
+    def healthcare_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "healthcare_custom_endpoint")
+
+    @healthcare_custom_endpoint.setter
+    def healthcare_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "healthcare_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="iamBetaCustomEndpoint")
+    def iam_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iam_beta_custom_endpoint")
+
+    @iam_beta_custom_endpoint.setter
+    def iam_beta_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_beta_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="iamCredentialsCustomEndpoint")
+    def iam_credentials_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iam_credentials_custom_endpoint")
+
+    @iam_credentials_custom_endpoint.setter
+    def iam_credentials_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_credentials_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="iamCustomEndpoint")
+    def iam_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iam_custom_endpoint")
+
+    @iam_custom_endpoint.setter
+    def iam_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="iapCustomEndpoint")
+    def iap_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iap_custom_endpoint")
+
+    @iap_custom_endpoint.setter
+    def iap_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iap_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="identityPlatformCustomEndpoint")
+    def identity_platform_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "identity_platform_custom_endpoint")
+
+    @identity_platform_custom_endpoint.setter
+    def identity_platform_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_platform_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="impersonateServiceAccount")
+    def impersonate_service_account(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "impersonate_service_account")
+
+    @impersonate_service_account.setter
+    def impersonate_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "impersonate_service_account", value)
+
+    @property
+    @pulumi.getter(name="impersonateServiceAccountDelegates")
+    def impersonate_service_account_delegates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "impersonate_service_account_delegates")
+
+    @impersonate_service_account_delegates.setter
+    def impersonate_service_account_delegates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "impersonate_service_account_delegates", value)
+
+    @property
+    @pulumi.getter(name="kmsCustomEndpoint")
+    def kms_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kms_custom_endpoint")
+
+    @kms_custom_endpoint.setter
+    def kms_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="loggingCustomEndpoint")
+    def logging_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "logging_custom_endpoint")
+
+    @logging_custom_endpoint.setter
+    def logging_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logging_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="memcacheCustomEndpoint")
+    def memcache_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "memcache_custom_endpoint")
+
+    @memcache_custom_endpoint.setter
+    def memcache_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memcache_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="mlEngineCustomEndpoint")
+    def ml_engine_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ml_engine_custom_endpoint")
+
+    @ml_engine_custom_endpoint.setter
+    def ml_engine_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ml_engine_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="monitoringCustomEndpoint")
+    def monitoring_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "monitoring_custom_endpoint")
+
+    @monitoring_custom_endpoint.setter
+    def monitoring_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitoring_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="networkManagementCustomEndpoint")
+    def network_management_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_management_custom_endpoint")
+
+    @network_management_custom_endpoint.setter
+    def network_management_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_management_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="notebooksCustomEndpoint")
+    def notebooks_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "notebooks_custom_endpoint")
+
+    @notebooks_custom_endpoint.setter
+    def notebooks_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notebooks_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="osConfigCustomEndpoint")
+    def os_config_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "os_config_custom_endpoint")
+
+    @os_config_custom_endpoint.setter
+    def os_config_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_config_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="osLoginCustomEndpoint")
+    def os_login_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "os_login_custom_endpoint")
+
+    @os_login_custom_endpoint.setter
+    def os_login_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_login_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="privatecaCustomEndpoint")
+    def privateca_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "privateca_custom_endpoint")
+
+    @privateca_custom_endpoint.setter
+    def privateca_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "privateca_custom_endpoint", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pubsubCustomEndpoint")
+    def pubsub_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pubsub_custom_endpoint")
+
+    @pubsub_custom_endpoint.setter
+    def pubsub_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pubsub_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="pubsubLiteCustomEndpoint")
+    def pubsub_lite_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pubsub_lite_custom_endpoint")
+
+    @pubsub_lite_custom_endpoint.setter
+    def pubsub_lite_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pubsub_lite_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="redisCustomEndpoint")
+    def redis_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "redis_custom_endpoint")
+
+    @redis_custom_endpoint.setter
+    def redis_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redis_custom_endpoint", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="requestTimeout")
+    def request_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_timeout")
+
+    @request_timeout.setter
+    def request_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_timeout", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerCustomEndpoint")
+    def resource_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_manager_custom_endpoint")
+
+    @resource_manager_custom_endpoint.setter
+    def resource_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_manager_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerV2CustomEndpoint")
+    def resource_manager_v2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_manager_v2_custom_endpoint")
+
+    @resource_manager_v2_custom_endpoint.setter
+    def resource_manager_v2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_manager_v2_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="runtimeConfigCustomEndpoint")
+    def runtime_config_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "runtime_config_custom_endpoint")
+
+    @runtime_config_custom_endpoint.setter
+    def runtime_config_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_config_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="runtimeconfigCustomEndpoint")
+    def runtimeconfig_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "runtimeconfig_custom_endpoint")
+
+    @runtimeconfig_custom_endpoint.setter
+    def runtimeconfig_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtimeconfig_custom_endpoint", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="secretManagerCustomEndpoint")
+    def secret_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_manager_custom_endpoint")
+
+    @secret_manager_custom_endpoint.setter
+    def secret_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="securityCenterCustomEndpoint")
+    def security_center_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_center_custom_endpoint")
+
+    @security_center_custom_endpoint.setter
+    def security_center_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_center_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="securityScannerCustomEndpoint")
+    def security_scanner_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_scanner_custom_endpoint")
+
+    @security_scanner_custom_endpoint.setter
+    def security_scanner_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_scanner_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryCustomEndpoint")
+    def service_directory_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_directory_custom_endpoint")
+
+    @service_directory_custom_endpoint.setter
+    def service_directory_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_directory_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="serviceManagementCustomEndpoint")
+    def service_management_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_management_custom_endpoint")
+
+    @service_management_custom_endpoint.setter
+    def service_management_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_management_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="serviceNetworkingCustomEndpoint")
+    def service_networking_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_networking_custom_endpoint")
+
+    @service_networking_custom_endpoint.setter
+    def service_networking_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_networking_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="serviceUsageCustomEndpoint")
+    def service_usage_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_usage_custom_endpoint")
+
+    @service_usage_custom_endpoint.setter
+    def service_usage_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_usage_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="sourceRepoCustomEndpoint")
+    def source_repo_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_repo_custom_endpoint")
+
+    @source_repo_custom_endpoint.setter
+    def source_repo_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_repo_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="spannerCustomEndpoint")
+    def spanner_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "spanner_custom_endpoint")
+
+    @spanner_custom_endpoint.setter
+    def spanner_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spanner_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="sqlCustomEndpoint")
+    def sql_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sql_custom_endpoint")
+
+    @sql_custom_endpoint.setter
+    def sql_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="storageCustomEndpoint")
+    def storage_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_custom_endpoint")
+
+    @storage_custom_endpoint.setter
+    def storage_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="storageTransferCustomEndpoint")
+    def storage_transfer_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_transfer_custom_endpoint")
+
+    @storage_transfer_custom_endpoint.setter
+    def storage_transfer_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_transfer_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="tagsCustomEndpoint")
+    def tags_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tags_custom_endpoint")
+
+    @tags_custom_endpoint.setter
+    def tags_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tags_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="tpuCustomEndpoint")
+    def tpu_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tpu_custom_endpoint")
+
+    @tpu_custom_endpoint.setter
+    def tpu_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tpu_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="userProjectOverride")
+    def user_project_override(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "user_project_override")
+
+    @user_project_override.setter
+    def user_project_override(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_project_override", value)
+
+    @property
+    @pulumi.getter(name="vpcAccessCustomEndpoint")
+    def vpc_access_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpc_access_custom_endpoint")
+
+    @vpc_access_custom_endpoint.setter
+    def vpc_access_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_access_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="workflowsCustomEndpoint")
+    def workflows_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workflows_custom_endpoint")
+
+    @workflows_custom_endpoint.setter
+    def workflows_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflows_custom_endpoint", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class Provider(pulumi.ProviderResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -126,6 +1316,134 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ProviderArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The provider type for the google-beta package. By default, resources use package-wide configuration
+        settings, however an explicit `Provider` instance may be created and passed during resource
+        construction to achieve fine-grained programmatic control over provider settings. See the
+        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
+        :param str resource_name: The name of the resource.
+        :param ProviderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_approval_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 access_token: Optional[pulumi.Input[str]] = None,
+                 active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 billing_project: Optional[pulumi.Input[str]] = None,
+                 binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 compute_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 credentials: Optional[pulumi.Input[str]] = None,
+                 data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 impersonate_service_account: Optional[pulumi.Input[str]] = None,
+                 impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 request_timeout: Optional[pulumi.Input[str]] = None,
+                 resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 secret_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_usage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 user_project_override: Optional[pulumi.Input[bool]] = None,
+                 vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

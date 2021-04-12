@@ -5,13 +5,77 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Source']
+__all__ = ['SourceArgs', 'Source']
+
+@pulumi.input_type
+class SourceArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 organization: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Source resource.
+        :param pulumi.Input[str] display_name: The source’s display name. A source’s display name must be unique
+               amongst its siblings, for example, two sources with the same parent
+               can't share the same display name. The display name must start and end
+               with a letter or digit, may contain letters, digits, spaces, hyphens,
+               and underscores, and can be no longer than 32 characters.
+        :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
+               lives in.
+        :param pulumi.Input[str] description: The description of the source (max of 1024 characters).
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "organization", organization)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The source’s display name. A source’s display name must be unique
+        amongst its siblings, for example, two sources with the same parent
+        can't share the same display name. The display name must start and end
+        with a letter or digit, may contain letters, digits, spaces, hyphens,
+        and underscores, and can be no longer than 32 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def organization(self) -> pulumi.Input[str]:
+        """
+        The organization whose Cloud Security Command Center the Source
+        lives in.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the source (max of 1024 characters).
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 class Source(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -69,6 +133,70 @@ class Source(pulumi.CustomResource):
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SourceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Cloud Security Command Center's (Cloud SCC) finding source. A finding
+        source is an entity or a mechanism that can produce a finding. A source is
+        like a container of findings that come from the same scanner, logger,
+        monitor, etc.
+
+        To get more information about Source, see:
+
+        * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+
+        ## Example Usage
+        ### Scc Source Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_source = gcp.securitycenter.Source("customSource",
+            description="My custom Cloud Security Command Center Finding Source",
+            display_name="My Source",
+            organization="123456789")
+        ```
+
+        ## Import
+
+        Source can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:securitycenter/source:Source default organizations/{{organization}}/sources/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:securitycenter/source:Source default {{organization}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SourceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 organization: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

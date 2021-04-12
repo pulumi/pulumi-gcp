@@ -5,13 +5,74 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Connection']
+__all__ = ['ConnectionArgs', 'Connection']
+
+@pulumi.input_type
+class ConnectionArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 reserved_peering_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 service: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a Connection resource.
+        :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
+               this service provider. Note that invoking this method with a different range when connection
+               is already established will not reallocate already provisioned service producer subnetworks.
+        :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
+               service provider organization. For Google services that support this functionality it is
+               'servicenetworking.googleapis.com'.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        Name of VPC network connected with service producers using VPC peering.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="reservedPeeringRanges")
+    def reserved_peering_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Named IP address range(s) of PEERING type reserved for
+        this service provider. Note that invoking this method with a different range when connection
+        is already established will not reallocate already provisioned service producer subnetworks.
+        """
+        return pulumi.get(self, "reserved_peering_ranges")
+
+    @reserved_peering_ranges.setter
+    def reserved_peering_ranges(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "reserved_peering_ranges", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Provider peering service that is managing peering connectivity for a
+        service provider organization. For Google services that support this functionality it is
+        'servicenetworking.googleapis.com'.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
 
 
 class Connection(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +94,35 @@ class Connection(pulumi.CustomResource):
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Connection resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

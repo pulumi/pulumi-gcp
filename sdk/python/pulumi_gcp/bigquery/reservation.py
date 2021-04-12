@@ -5,13 +5,110 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Reservation']
+__all__ = ['ReservationArgs', 'Reservation']
+
+@pulumi.input_type
+class ReservationArgs:
+    def __init__(__self__, *,
+                 slot_capacity: pulumi.Input[int],
+                 ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Reservation resource.
+        :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+               unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
+               the same admin project. If true, a query using this reservation will execute with the slot
+               capacity specified above at most.
+        :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
+               Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "slot_capacity", slot_capacity)
+        if ignore_idle_slots is not None:
+            pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="slotCapacity")
+    def slot_capacity(self) -> pulumi.Input[int]:
+        """
+        Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+        unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        """
+        return pulumi.get(self, "slot_capacity")
+
+    @slot_capacity.setter
+    def slot_capacity(self, value: pulumi.Input[int]):
+        pulumi.set(self, "slot_capacity", value)
+
+    @property
+    @pulumi.getter(name="ignoreIdleSlots")
+    def ignore_idle_slots(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, any query using this reservation will use idle slots from other reservations within
+        the same admin project. If true, a query using this reservation will execute with the slot
+        capacity specified above at most.
+        """
+        return pulumi.get(self, "ignore_idle_slots")
+
+    @ignore_idle_slots.setter
+    def ignore_idle_slots(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_idle_slots", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location where the transfer config should reside.
+        Examples: US, EU, asia-northeast1. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the reservation. This field must only contain alphanumeric characters or dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Reservation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -74,6 +171,73 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ReservationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A reservation is a mechanism used to guarantee BigQuery slots to users.
+
+        To get more information about Reservation, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
+        * How-to Guides
+            * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+
+        ## Example Usage
+        ### Bigquery Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reservation = gcp.bigquery.Reservation("reservation",
+            ignore_idle_slots=False,
+            location="asia-northeast1",
+            slot_capacity=0)
+        ```
+
+        ## Import
+
+        Reservation can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigquery/reservation:Reservation default projects/{{project}}/locations/{{location}}/reservations/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/reservation:Reservation default {{project}}/{{location}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/reservation:Reservation default {{location}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ReservationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ReservationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 slot_capacity: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

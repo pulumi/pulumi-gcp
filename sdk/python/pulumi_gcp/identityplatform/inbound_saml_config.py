@@ -5,15 +5,128 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InboundSamlConfig']
+__all__ = ['InboundSamlConfigArgs', 'InboundSamlConfig']
+
+@pulumi.input_type
+class InboundSamlConfigArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 idp_config: pulumi.Input['InboundSamlConfigIdpConfigArgs'],
+                 sp_config: pulumi.Input['InboundSamlConfigSpConfigArgs'],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a InboundSamlConfig resource.
+        :param pulumi.Input[str] display_name: Human friendly display name.
+        :param pulumi.Input['InboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
+               Structure is documented below.
+        :param pulumi.Input['InboundSamlConfigSpConfigArgs'] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+               and accept an authentication assertion issued by a SAML identity provider.
+               Structure is documented below.
+        :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
+        :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
+               hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
+               alphanumeric character, and have at least 2 characters.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "idp_config", idp_config)
+        pulumi.set(__self__, "sp_config", sp_config)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Human friendly display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="idpConfig")
+    def idp_config(self) -> pulumi.Input['InboundSamlConfigIdpConfigArgs']:
+        """
+        SAML IdP configuration when the project acts as the relying party
+        Structure is documented below.
+        """
+        return pulumi.get(self, "idp_config")
+
+    @idp_config.setter
+    def idp_config(self, value: pulumi.Input['InboundSamlConfigIdpConfigArgs']):
+        pulumi.set(self, "idp_config", value)
+
+    @property
+    @pulumi.getter(name="spConfig")
+    def sp_config(self) -> pulumi.Input['InboundSamlConfigSpConfigArgs']:
+        """
+        SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        and accept an authentication assertion issued by a SAML identity provider.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sp_config")
+
+    @sp_config.setter
+    def sp_config(self, value: pulumi.Input['InboundSamlConfigSpConfigArgs']):
+        pulumi.set(self, "sp_config", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this config allows users to sign in with the provider.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
+        hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
+        alphanumeric character, and have at least 2 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class InboundSamlConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -87,6 +200,82 @@ class InboundSamlConfig(pulumi.CustomResource):
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InboundSamlConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Inbound SAML configuration for a Identity Toolkit project.
+
+        You must enable the
+        [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+        the marketplace prior to using this resource.
+
+        ## Example Usage
+        ### Identity Platform Inbound Saml Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
+            display_name="Display Name",
+            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
+                idp_entity_id="tf-idp",
+                sign_request=True,
+                sso_url="https://example.com",
+                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
+                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                )],
+            ),
+            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(
+                sp_entity_id="tf-sp",
+                callback_uri="https://example.com",
+            ))
+        ```
+
+        ## Import
+
+        InboundSamlConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InboundSamlConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InboundSamlConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 idp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 sp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

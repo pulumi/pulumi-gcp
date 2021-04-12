@@ -5,13 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Client']
+__all__ = ['ClientArgs', 'Client']
+
+@pulumi.input_type
+class ClientArgs:
+    def __init__(__self__, *,
+                 brand: pulumi.Input[str],
+                 display_name: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a Client resource.
+        :param pulumi.Input[str] brand: Identifier of the brand to which this client
+               is attached to. The format is
+               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
+        """
+        pulumi.set(__self__, "brand", brand)
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter
+    def brand(self) -> pulumi.Input[str]:
+        """
+        Identifier of the brand to which this client
+        is attached to. The format is
+        `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        """
+        return pulumi.get(self, "brand")
+
+    @brand.setter
+    def brand(self, value: pulumi.Input[str]):
+        pulumi.set(self, "brand", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Human-friendly name given to the OAuth client.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
 
 class Client(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +99,62 @@ class Client(pulumi.CustomResource):
                `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClientArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Contains the data that describes an Identity Aware Proxy owned client.
+
+        > **Note:** Only internal org clients can be created via declarative tools. External clients must be
+        manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
+        in this tool.
+
+        To get more information about Client, see:
+
+        * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
+        * How-to Guides
+            * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+
+        > **Warning:** All arguments including `secret` will be stored in the raw
+        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+
+        ## Example Usage
+
+        ## Import
+
+        Client can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ClientArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClientArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 brand: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

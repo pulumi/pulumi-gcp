@@ -5,13 +5,142 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Domain']
+__all__ = ['DomainArgs', 'Domain']
+
+@pulumi.input_type
+class DomainArgs:
+    def __init__(__self__, *,
+                 domain_name: pulumi.Input[str],
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 reserved_ip_range: pulumi.Input[str],
+                 admin: Optional[pulumi.Input[str]] = None,
+                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
+               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
+               e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
+               Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
+        :param pulumi.Input[str] admin: The name of delegated administrator account used to perform Active Directory operations.
+               If not specified, setupadmin will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
+               If CIDR subnets overlap between networks, domain creation will fail.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "locations", locations)
+        pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+        if admin is not None:
+            pulumi.set(__self__, "admin", admin)
+        if authorized_networks is not None:
+            pulumi.set(__self__, "authorized_networks", authorized_networks)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
+        https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
+        e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> pulumi.Input[str]:
+        """
+        The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
+        Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
+        """
+        return pulumi.get(self, "reserved_ip_range")
+
+    @reserved_ip_range.setter
+    def reserved_ip_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "reserved_ip_range", value)
+
+    @property
+    @pulumi.getter
+    def admin(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of delegated administrator account used to perform Active Directory operations.
+        If not specified, setupadmin will be used.
+        """
+        return pulumi.get(self, "admin")
+
+    @admin.setter
+    def admin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "admin", value)
+
+    @property
+    @pulumi.getter(name="authorizedNetworks")
+    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
+        If CIDR subnets overlap between networks, domain creation will fail.
+        """
+        return pulumi.get(self, "authorized_networks")
+
+    @authorized_networks.setter
+    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_networks", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels that can contain user-provided metadata
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Domain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -71,6 +200,67 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
                Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Microsoft AD domain
+
+        To get more information about Domain, see:
+
+        * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains)
+        * How-to Guides
+            * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
+
+        ## Example Usage
+        ### Active Directory Domain Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain = gcp.activedirectory.Domain("ad-domain",
+            domain_name="tfgen.org.com",
+            locations=["us-central1"],
+            reserved_ip_range="192.168.255.0/24")
+        ```
+
+        ## Import
+
+        Domain can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin: Optional[pulumi.Input[str]] = None,
+                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 reserved_ip_range: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

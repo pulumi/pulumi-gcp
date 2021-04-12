@@ -5,13 +5,56 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ProjectLocation']
+__all__ = ['ProjectLocationArgs', 'ProjectLocation']
+
+@pulumi.input_type
+class ProjectLocationArgs:
+    def __init__(__self__, *,
+                 location_id: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ProjectLocation resource.
+        :param pulumi.Input[str] location_id: The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+               resource locations.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "location_id", location_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="locationId")
+    def location_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+        resource locations.
+        """
+        return pulumi.get(self, "location_id")
+
+    @location_id.setter
+    def location_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class ProjectLocation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -59,6 +102,64 @@ class ProjectLocation(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectLocationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
+
+        This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
+        locationId. This location must be one of the available GCP resource locations.
+
+        After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
+        The default GCP resource location for the specified FirebaseProject might already be set because either the
+        GCP Project already has an App Engine application or defaultLocation.finalize was previously called with a
+        specified locationId. Any new calls to defaultLocation.finalize with a different specified locationId will
+        return a 409 error.
+
+        To get more information about ProjectLocation, see:
+
+        * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.defaultLocation/finalize)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
+        ## Example Usage
+
+        ## Import
+
+        ProjectLocation can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:firebase/projectLocation:ProjectLocation default projects/{{project}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:firebase/projectLocation:ProjectLocation default {{project}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectLocationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectLocationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 location_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['OrganizationSecurityPolicyAssociation']
+__all__ = ['OrganizationSecurityPolicyAssociationArgs', 'OrganizationSecurityPolicyAssociation']
+
+@pulumi.input_type
+class OrganizationSecurityPolicyAssociationArgs:
+    def __init__(__self__, *,
+                 attachment_id: pulumi.Input[str],
+                 policy_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationSecurityPolicyAssociation resource.
+        :param pulumi.Input[str] attachment_id: The resource that the security policy is attached to.
+        :param pulumi.Input[str] policy_id: The security policy ID of the association.
+        :param pulumi.Input[str] name: The name for an association.
+        """
+        pulumi.set(__self__, "attachment_id", attachment_id)
+        pulumi.set(__self__, "policy_id", policy_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="attachmentId")
+    def attachment_id(self) -> pulumi.Input[str]:
+        """
+        The resource that the security policy is attached to.
+        """
+        return pulumi.get(self, "attachment_id")
+
+    @attachment_id.setter
+    def attachment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attachment_id", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Input[str]:
+        """
+        The security policy ID of the association.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for an association.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -50,6 +104,56 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for an association.
         :param pulumi.Input[str] policy_id: The security policy ID of the association.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationSecurityPolicyAssociationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An association for the OrganizationSecurityPolicy.
+
+        To get more information about OrganizationSecurityPolicyAssociation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+        * How-to Guides
+            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+
+        ## Example Usage
+
+        ## Import
+
+        OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationSecurityPolicyAssociationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attachment_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

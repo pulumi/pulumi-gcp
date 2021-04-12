@@ -5,15 +5,294 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InterconnectAttachment']
+__all__ = ['InterconnectAttachmentArgs', 'InterconnectAttachment']
+
+@pulumi.input_type
+class InterconnectAttachmentArgs:
+    def __init__(__self__, *,
+                 router: pulumi.Input[str],
+                 admin_enabled: Optional[pulumi.Input[bool]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 edge_availability_domain: Optional[pulumi.Input[str]] = None,
+                 interconnect: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 vlan_tag8021q: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a InterconnectAttachment resource.
+        :param pulumi.Input[str] router: URL of the cloud router to be used for dynamic routing. This router must be in
+               the same region as this InterconnectAttachment. The InterconnectAttachment will
+               automatically connect the Interconnect to the network & region within which the
+               Cloud Router is configured.
+        :param pulumi.Input[bool] admin_enabled: Whether the VLAN attachment is enabled or disabled.  When using
+               PARTNER type this will Pre-Activate the interconnect attachment
+        :param pulumi.Input[str] bandwidth: Provisioned bandwidth capacity for the interconnect attachment.
+               For attachments of type DEDICATED, the user can set the bandwidth.
+               For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
+               Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
+               Defaults to BPS_10G
+               Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
+               of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
+               All prefixes must be within link-local address space (169.254.0.0/16)
+               and must be /29 or shorter (/28, /27, etc). Google will attempt to select
+               an unused /29 from the supplied candidate prefix(es). The request will
+               fail if all possible /29s are in use on Google's edge. If not supplied,
+               Google will randomly select an unused /29 from all of link-local space.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
+               PARTNER, at creation time. For improved reliability, customers should
+               configure a pair of attachments with one per availability domain. The
+               selected availability domain will be provided to the Partner via the
+               pairing key so that the provisioned circuit will lie in the specified
+               domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
+               traffic will traverse through. Required if type is DEDICATED, must not
+               be set if type is PARTNER.
+        :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
+               this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
+               name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+               name must be 1-63 characters long and match the regular expression
+               `a-z?` which means the first character must be a
+               lowercase letter, and all following characters must be a dash, lowercase
+               letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
+        :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
+               DEDICATED.
+               Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
+               using PARTNER type this will be managed upstream.
+        """
+        pulumi.set(__self__, "router", router)
+        if admin_enabled is not None:
+            pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if candidate_subnets is not None:
+            pulumi.set(__self__, "candidate_subnets", candidate_subnets)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if edge_availability_domain is not None:
+            pulumi.set(__self__, "edge_availability_domain", edge_availability_domain)
+        if interconnect is not None:
+            pulumi.set(__self__, "interconnect", interconnect)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vlan_tag8021q is not None:
+            pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
+
+    @property
+    @pulumi.getter
+    def router(self) -> pulumi.Input[str]:
+        """
+        URL of the cloud router to be used for dynamic routing. This router must be in
+        the same region as this InterconnectAttachment. The InterconnectAttachment will
+        automatically connect the Interconnect to the network & region within which the
+        Cloud Router is configured.
+        """
+        return pulumi.get(self, "router")
+
+    @router.setter
+    def router(self, value: pulumi.Input[str]):
+        pulumi.set(self, "router", value)
+
+    @property
+    @pulumi.getter(name="adminEnabled")
+    def admin_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the VLAN attachment is enabled or disabled.  When using
+        PARTNER type this will Pre-Activate the interconnect attachment
+        """
+        return pulumi.get(self, "admin_enabled")
+
+    @admin_enabled.setter
+    def admin_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_enabled", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provisioned bandwidth capacity for the interconnect attachment.
+        For attachments of type DEDICATED, the user can set the bandwidth.
+        For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
+        Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
+        Defaults to BPS_10G
+        Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="candidateSubnets")
+    def candidate_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Up to 16 candidate prefixes that can be used to restrict the allocation
+        of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
+        All prefixes must be within link-local address space (169.254.0.0/16)
+        and must be /29 or shorter (/28, /27, etc). Google will attempt to select
+        an unused /29 from the supplied candidate prefix(es). The request will
+        fail if all possible /29s are in use on Google's edge. If not supplied,
+        Google will randomly select an unused /29 from all of link-local space.
+        """
+        return pulumi.get(self, "candidate_subnets")
+
+    @candidate_subnets.setter
+    def candidate_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "candidate_subnets", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="edgeAvailabilityDomain")
+    def edge_availability_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired availability domain for the attachment. Only available for type
+        PARTNER, at creation time. For improved reliability, customers should
+        configure a pair of attachments with one per availability domain. The
+        selected availability domain will be provided to the Partner via the
+        pairing key so that the provisioned circuit will lie in the specified
+        domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        """
+        return pulumi.get(self, "edge_availability_domain")
+
+    @edge_availability_domain.setter
+    def edge_availability_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edge_availability_domain", value)
+
+    @property
+    @pulumi.getter
+    def interconnect(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the underlying Interconnect object that this attachment's
+        traffic will traverse through. Required if type is DEDICATED, must not
+        be set if type is PARTNER.
+        """
+        return pulumi.get(self, "interconnect")
+
+    @interconnect.setter
+    def interconnect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interconnect", value)
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum Transmission Unit (MTU), in bytes, of packets passing through
+        this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        """
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mtu", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The
+        name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        name must be 1-63 characters long and match the regular expression
+        `a-z?` which means the first character must be a
+        lowercase letter, and all following characters must be a dash, lowercase
+        letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region where the regional interconnect attachment resides.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of InterconnectAttachment you wish to create. Defaults to
+        DEDICATED.
+        Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="vlanTag8021q")
+    def vlan_tag8021q(self) -> Optional[pulumi.Input[int]]:
+        """
+        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
+        using PARTNER type this will be managed upstream.
+        """
+        return pulumi.get(self, "vlan_tag8021q")
+
+    @vlan_tag8021q.setter
+    def vlan_tag8021q(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_tag8021q", value)
 
 
 class InterconnectAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -125,6 +404,87 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InterconnectAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents an InterconnectAttachment (VLAN attachment) resource. For more
+        information, see Creating VLAN Attachments.
+
+        ## Example Usage
+        ### Interconnect Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
+        foobar_router = gcp.compute.Router("foobarRouter",
+            network=foobar_network.name,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=16550,
+            ))
+        on_prem = gcp.compute.InterconnectAttachment("onPrem",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=foobar_router.id,
+            mtu="1500")
+        ```
+
+        ## Import
+
+        InterconnectAttachment can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InterconnectAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InterconnectAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_enabled: Optional[pulumi.Input[bool]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 edge_availability_domain: Optional[pulumi.Input[str]] = None,
+                 interconnect: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 vlan_tag8021q: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

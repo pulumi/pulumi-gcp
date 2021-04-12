@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:diagflow/agent:Agent":
-		r, err = NewAgent(ctx, name, nil, pulumi.URN_(urn))
+		r = &Agent{}
 	case "gcp:diagflow/entityType:EntityType":
-		r, err = NewEntityType(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntityType{}
 	case "gcp:diagflow/intent:Intent":
-		r, err = NewIntent(ctx, name, nil, pulumi.URN_(urn))
+		r = &Intent{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

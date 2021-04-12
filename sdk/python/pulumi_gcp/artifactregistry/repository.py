@@ -5,13 +5,149 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Repository']
+__all__ = ['RepositoryArgs', 'Repository']
+
+@pulumi.input_type
+class RepositoryArgs:
+    def __init__(__self__, *,
+                 format: pulumi.Input[str],
+                 repository_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Repository resource.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository.
+        :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
+               "repo1"
+        :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
+               used to encrypt the contents of the Repository. Has the form:
+               `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+               This value may not be changed after the Repository has been created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
+               This field may contain up to 64 entries. Label keys and values may be no
+               longer than 63 characters. Label keys must begin with a lowercase letter
+               and may only contain lowercase letters, numeric characters, underscores,
+               and dashes.
+        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "repository_id", repository_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        """
+        The format of packages that are stored in the repository.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter(name="repositoryId")
+    def repository_id(self) -> pulumi.Input[str]:
+        """
+        The last part of the repository name, for example:
+        "repo1"
+        """
+        return pulumi.get(self, "repository_id")
+
+    @repository_id.setter
+    def repository_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-provided description of the repository.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud KMS resource name of the customer managed encryption key that’s
+        used to encrypt the contents of the Repository. Has the form:
+        `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        This value may not be changed after the Repository has been created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels with user-defined metadata.
+        This field may contain up to 64 entries. Label keys and values may be no
+        longer than 63 characters. Label keys must begin with a lowercase letter
+        and may only contain lowercase letters, numeric characters, underscores,
+        and dashes.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the location this repository is located in.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Repository(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -125,6 +261,118 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RepositoryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A repository for storing artifacts
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+
+        ## Example Usage
+        ### Artifact Registry Repository Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository",
+            format="DOCKER",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Artifact Registry Repository Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with cmek",
+            format="DOCKER",
+            kms_key_name="kms-key",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Artifact Registry Repository Iam
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with iam",
+            format="DOCKER",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        test_account = gcp.service_account.Account("test-account",
+            account_id="my-account",
+            display_name="Test Service Account",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        test_iam = gcp.artifactregistry.RepositoryIamMember("test-iam",
+            location=my_repo.location,
+            repository=my_repo.name,
+            role="roles/artifactregistry.reader",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Repository can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RepositoryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RepositoryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 repository_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

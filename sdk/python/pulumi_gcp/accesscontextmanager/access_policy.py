@@ -5,13 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AccessPolicy']
+__all__ = ['AccessPolicyArgs', 'AccessPolicy']
+
+@pulumi.input_type
+class AccessPolicyArgs:
+    def __init__(__self__, *,
+                 parent: pulumi.Input[str],
+                 title: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a AccessPolicy resource.
+        :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+               Format: organizations/{organization_id}
+        :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
+        """
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+        Format: organizations/{organization_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Human readable title. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
 
 
 class AccessPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +105,71 @@ class AccessPolicy(pulumi.CustomResource):
                Format: organizations/{organization_id}
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccessPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        AccessPolicy is a container for AccessLevels (which define the necessary
+        attributes to use GCP services) and ServicePerimeters (which define
+        regions of services able to freely pass data within a perimeter). An
+        access policy is globally visible within an organization, and the
+        restrictions it specifies apply to all projects within an organization.
+
+        To get more information about AccessPolicy, see:
+
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
+        * How-to Guides
+            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+
+        > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+        you must specify a `billing_project` and set `user_project_override` to true
+        in the provider configuration. Otherwise the ACM API will return a 403 error.
+        Your account must have the `serviceusage.services.use` permission on the
+        `billing_project` you defined.
+
+        ## Example Usage
+        ### Access Context Manager Access Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        ```
+
+        ## Import
+
+        AccessPolicy can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AccessPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

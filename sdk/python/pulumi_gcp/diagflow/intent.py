@@ -5,15 +5,248 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Intent']
+__all__ = ['IntentArgs', 'Intent']
+
+@pulumi.input_type
+class IntentArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 action: Optional[pulumi.Input[str]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 is_fallback: Optional[pulumi.Input[bool]] = None,
+                 ml_disabled: Optional[pulumi.Input[bool]] = None,
+                 parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 reset_contexts: Optional[pulumi.Input[bool]] = None,
+                 webhook_state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Intent resource.
+        :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
+        :param pulumi.Input[str] action: The name of the action associated with the intent.
+               Note: The action name must not contain whitespaces.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+               (i.e. default platform).
+               Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+               the contexts must be present in the active user session for an event to trigger this intent. See the
+               [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
+               Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
+        :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent.
+        :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent.
+               Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+               ONLY match mode. Also, auto-markup in the UI is turned off.
+        :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
+               - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+               to the Normal priority in the console.
+               - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] reset_contexts: Indicates whether to delete all contexts in the current session when this intent is matched.
+        :param pulumi.Input[str] webhook_state: Indicates whether webhooks are enabled for the intent.
+               * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+               * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+               filling prompt is forwarded to the webhook.
+               Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if default_response_platforms is not None:
+            pulumi.set(__self__, "default_response_platforms", default_response_platforms)
+        if events is not None:
+            pulumi.set(__self__, "events", events)
+        if input_context_names is not None:
+            pulumi.set(__self__, "input_context_names", input_context_names)
+        if is_fallback is not None:
+            pulumi.set(__self__, "is_fallback", is_fallback)
+        if ml_disabled is not None:
+            pulumi.set(__self__, "ml_disabled", ml_disabled)
+        if parent_followup_intent_name is not None:
+            pulumi.set(__self__, "parent_followup_intent_name", parent_followup_intent_name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if reset_contexts is not None:
+            pulumi.set(__self__, "reset_contexts", reset_contexts)
+        if webhook_state is not None:
+            pulumi.set(__self__, "webhook_state", webhook_state)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The name of this intent to be displayed on the console.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the action associated with the intent.
+        Note: The action name must not contain whitespaces.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="defaultResponsePlatforms")
+    def default_response_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+        (i.e. default platform).
+        Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+        """
+        return pulumi.get(self, "default_response_platforms")
+
+    @default_response_platforms.setter
+    def default_response_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "default_response_platforms", value)
+
+    @property
+    @pulumi.getter
+    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+        the contexts must be present in the active user session for an event to trigger this intent. See the
+        [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+        """
+        return pulumi.get(self, "events")
+
+    @events.setter
+    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "events", value)
+
+    @property
+    @pulumi.getter(name="inputContextNames")
+    def input_context_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of context names required for this intent to be triggered.
+        Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
+        """
+        return pulumi.get(self, "input_context_names")
+
+    @input_context_names.setter
+    def input_context_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "input_context_names", value)
+
+    @property
+    @pulumi.getter(name="isFallback")
+    def is_fallback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this is a fallback intent.
+        """
+        return pulumi.get(self, "is_fallback")
+
+    @is_fallback.setter
+    def is_fallback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_fallback", value)
+
+    @property
+    @pulumi.getter(name="mlDisabled")
+    def ml_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether Machine Learning is disabled for the intent.
+        Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+        ONLY match mode. Also, auto-markup in the UI is turned off.
+        """
+        return pulumi.get(self, "ml_disabled")
+
+    @ml_disabled.setter
+    def ml_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ml_disabled", value)
+
+    @property
+    @pulumi.getter(name="parentFollowupIntentName")
+    def parent_followup_intent_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the parent intent in the chain of followup intents.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        """
+        return pulumi.get(self, "parent_followup_intent_name")
+
+    @parent_followup_intent_name.setter
+    def parent_followup_intent_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_followup_intent_name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of this intent. Higher numbers represent higher priorities.
+        - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+        to the Normal priority in the console.
+        - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="resetContexts")
+    def reset_contexts(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to delete all contexts in the current session when this intent is matched.
+        """
+        return pulumi.get(self, "reset_contexts")
+
+    @reset_contexts.setter
+    def reset_contexts(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reset_contexts", value)
+
+    @property
+    @pulumi.getter(name="webhookState")
+    def webhook_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether webhooks are enabled for the intent.
+        * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+        * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+        filling prompt is forwarded to the webhook.
+        Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        """
+        return pulumi.get(self, "webhook_state")
+
+    @webhook_state.setter
+    def webhook_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook_state", value)
 
 
 class Intent(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -97,6 +330,75 @@ class Intent(pulumi.CustomResource):
                filling prompt is forwarded to the webhook.
                Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a Dialogflow intent. Intents convert a number of user expressions or patterns into an action. An action
+        is an extraction of a user command or sentence semantics.
+
+        To get more information about Intent, see:
+
+        * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+
+        ## Example Usage
+        ### Dialogflow Intent Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_agent = gcp.diagflow.Agent("basicAgent",
+            display_name="example_agent",
+            default_language_code="en",
+            time_zone="America/New_York")
+        basic_intent = gcp.diagflow.Intent("basicIntent", display_name="basic-intent",
+        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+        ```
+
+        ## Import
+
+        Intent can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:diagflow/intent:Intent default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IntentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 is_fallback: Optional[pulumi.Input[bool]] = None,
+                 ml_disabled: Optional[pulumi.Input[bool]] = None,
+                 parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 reset_contexts: Optional[pulumi.Input[bool]] = None,
+                 webhook_state: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -22,27 +22,28 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:servicedirectory/endpoint:Endpoint":
-		r, err = NewEndpoint(ctx, name, nil, pulumi.URN_(urn))
+		r = &Endpoint{}
 	case "gcp:servicedirectory/namespace:Namespace":
-		r, err = NewNamespace(ctx, name, nil, pulumi.URN_(urn))
+		r = &Namespace{}
 	case "gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding":
-		r, err = NewNamespaceIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceIamBinding{}
 	case "gcp:servicedirectory/namespaceIamMember:NamespaceIamMember":
-		r, err = NewNamespaceIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceIamMember{}
 	case "gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy":
-		r, err = NewNamespaceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceIamPolicy{}
 	case "gcp:servicedirectory/service:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "gcp:servicedirectory/serviceIamBinding:ServiceIamBinding":
-		r, err = NewServiceIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIamBinding{}
 	case "gcp:servicedirectory/serviceIamMember:ServiceIamMember":
-		r, err = NewServiceIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIamMember{}
 	case "gcp:servicedirectory/serviceIamPolicy:ServiceIamPolicy":
-		r, err = NewServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,85 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ObjectACL']
+__all__ = ['ObjectACLArgs', 'ObjectACL']
+
+@pulumi.input_type
+class ObjectACLArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ObjectACL resource.
+        :param pulumi.Input[str] bucket: The name of the bucket the object is stored in.
+        :param pulumi.Input[str] object: The name of the object to apply the acl to.
+        :param pulumi.Input[str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+               Must be set if `predefined_acl` is not.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if predefined_acl is not None:
+            pulumi.set(__self__, "predefined_acl", predefined_acl)
+        if role_entities is not None:
+            pulumi.set(__self__, "role_entities", role_entities)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the bucket the object is stored in.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        The name of the object to apply the acl to.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter(name="predefinedAcl")
+    def predefined_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        """
+        return pulumi.get(self, "predefined_acl")
+
+    @predefined_acl.setter
+    def predefined_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predefined_acl", value)
+
+    @property
+    @pulumi.getter(name="roleEntities")
+    def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+        Must be set if `predefined_acl` is not.
+        """
+        return pulumi.get(self, "role_entities")
+
+    @role_entities.setter
+    def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_entities", value)
 
 
 class ObjectACL(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -68,6 +140,72 @@ class ObjectACL(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Must be set if `predefined_acl` is not.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ObjectACLArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Authoritatively manages the access control list (ACL) for an object in a Google
+        Cloud Storage (GCS) bucket. Removing a `storage.ObjectACL` sets the
+        acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
+
+        For more information see
+        [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+        and
+        [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
+
+        > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
+        role entity pairs.
+
+        ## Example Usage
+
+        Create an object ACL with one owner and one reader.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image = gcp.storage.BucketObject("image",
+            bucket=image_store.name,
+            source=pulumi.FileAsset("image1.jpg"))
+        image_store_acl = gcp.storage.ObjectACL("image-store-acl",
+            bucket=image_store.name,
+            object=image.output_name,
+            role_entities=[
+                "OWNER:user-my.email@gmail.com",
+                "READER:group-mygroup",
+            ])
+        ```
+
+        ## Import
+
+        This resource does not support import.
+
+        :param str resource_name: The name of the resource.
+        :param ObjectACLArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ObjectACLArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

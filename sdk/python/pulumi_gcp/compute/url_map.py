@@ -5,15 +5,221 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['URLMap']
+__all__ = ['URLMapArgs', 'URLMap']
+
+@pulumi.input_type
+class URLMapArgs:
+    def __init__(__self__, *,
+                 default_route_action: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']] = None,
+                 default_service: Optional[pulumi.Input[str]] = None,
+                 default_url_redirect: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 header_action: Optional[pulumi.Input['URLMapHeaderActionArgs']] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
+        """
+        The set of arguments for constructing a URLMap resource.
+        :param pulumi.Input['URLMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+               advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+               to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+               Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               Structure is documented below.
+        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
+        :param pulumi.Input['URLMapDefaultUrlRedirectArgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+               by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+               defaultRouteAction must not be set.
+               Structure is documented below.
+        :param pulumi.Input[str] description: Description of this test case.
+        :param pulumi.Input['URLMapHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
+               the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing
+               HttpRouteRule, PathMatcher and UrlMap.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]] host_rules: The list of HostRules to use against the URL.
+               Structure is documented below.
+        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
+               request, in the absence of which the request match fails.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
+               hostRule matches the URL's host portion.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]] tests: The list of expected URL mapping tests. Request to update this UrlMap will
+               succeed only if all of the test cases pass. You can specify a maximum of 100
+               tests per UrlMap.
+               Structure is documented below.
+        """
+        if default_route_action is not None:
+            pulumi.set(__self__, "default_route_action", default_route_action)
+        if default_service is not None:
+            pulumi.set(__self__, "default_service", default_service)
+        if default_url_redirect is not None:
+            pulumi.set(__self__, "default_url_redirect", default_url_redirect)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
+        if host_rules is not None:
+            pulumi.set(__self__, "host_rules", host_rules)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path_matchers is not None:
+            pulumi.set(__self__, "path_matchers", path_matchers)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if tests is not None:
+            pulumi.set(__self__, "tests", tests)
+
+    @property
+    @pulumi.getter(name="defaultRouteAction")
+    def default_route_action(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]:
+        """
+        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+        to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+        Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_route_action")
+
+    @default_route_action.setter
+    def default_route_action(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]):
+        pulumi.set(self, "default_route_action", value)
+
+    @property
+    @pulumi.getter(name="defaultService")
+    def default_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backend service or backend bucket to use when none of the given paths match.
+        """
+        return pulumi.get(self, "default_service")
+
+    @default_service.setter
+    def default_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_service", value)
+
+    @property
+    @pulumi.getter(name="defaultUrlRedirect")
+    def default_url_redirect(self) -> Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']]:
+        """
+        When none of the specified hostRules match, the request is redirected to a URL specified
+        by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        defaultRouteAction must not be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_url_redirect")
+
+    @default_url_redirect.setter
+    def default_url_redirect(self, value: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']]):
+        pulumi.set(self, "default_url_redirect", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of this test case.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['URLMapHeaderActionArgs']]:
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing
+        HttpRouteRule, PathMatcher and UrlMap.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['URLMapHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
+
+    @property
+    @pulumi.getter(name="hostRules")
+    def host_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]:
+        """
+        The list of HostRules to use against the URL.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "host_rules")
+
+    @host_rules.setter
+    def host_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]):
+        pulumi.set(self, "host_rules", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the query parameter to match. The query parameter must exist in the
+        request, in the absence of which the request match fails.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pathMatchers")
+    def path_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]:
+        """
+        The name of the PathMatcher to use to match the path portion of the URL if the
+        hostRule matches the URL's host portion.
+        """
+        return pulumi.get(self, "path_matchers")
+
+    @path_matchers.setter
+    def path_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]):
+        pulumi.set(self, "path_matchers", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def tests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]]:
+        """
+        The list of expected URL mapping tests. Request to update this UrlMap will
+        succeed only if all of the test cases pass. You can specify a maximum of 100
+        tests per UrlMap.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tests")
+
+    @tests.setter
+    def tests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]]):
+        pulumi.set(self, "tests", value)
 
 
 class URLMap(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -563,6 +769,541 @@ class URLMap(pulumi.CustomResource):
                tests per UrlMap.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[URLMapArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        UrlMaps are used to route requests to a backend service based on rules
+        that you define for the host and path of an incoming URL.
+
+        To get more information about UrlMap, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
+
+        ## Example Usage
+        ### Url Map Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HttpHealthCheck("default",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        login = gcp.compute.BackendService("login",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id])
+        static_bucket = gcp.storage.Bucket("staticBucket", location="US")
+        static_backend_bucket = gcp.compute.BackendBucket("staticBackendBucket",
+            bucket_name=static_bucket.name,
+            enable_cdn=True)
+        urlmap = gcp.compute.URLMap("urlmap",
+            description="a description",
+            default_service=static_backend_bucket.id,
+            host_rules=[
+                gcp.compute.URLMapHostRuleArgs(
+                    hosts=["mysite.com"],
+                    path_matcher="mysite",
+                ),
+                gcp.compute.URLMapHostRuleArgs(
+                    hosts=["myothersite.com"],
+                    path_matcher="otherpaths",
+                ),
+            ],
+            path_matchers=[
+                gcp.compute.URLMapPathMatcherArgs(
+                    name="mysite",
+                    default_service=static_backend_bucket.id,
+                    path_rules=[
+                        gcp.compute.URLMapPathMatcherPathRuleArgs(
+                            paths=["/home"],
+                            service=static_backend_bucket.id,
+                        ),
+                        gcp.compute.URLMapPathMatcherPathRuleArgs(
+                            paths=["/login"],
+                            service=login.id,
+                        ),
+                        gcp.compute.URLMapPathMatcherPathRuleArgs(
+                            paths=["/static"],
+                            service=static_backend_bucket.id,
+                        ),
+                    ],
+                ),
+                gcp.compute.URLMapPathMatcherArgs(
+                    name="otherpaths",
+                    default_service=static_backend_bucket.id,
+                ),
+            ],
+            tests=[gcp.compute.URLMapTestArgs(
+                service=static_backend_bucket.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Url Map Traffic Director Route
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.BackendService("home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_SELF_MANAGED")
+        urlmap = gcp.compute.URLMap("urlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    header_action={
+                        "requestHeadersToRemoves": ["RemoveMe2"],
+                        "requestHeadersToAdds": [{
+                            "headerName": "AddSomethingElse",
+                            "headerValue": "MyOtherValue",
+                            "replace": True,
+                        }],
+                        "responseHeadersToRemoves": ["RemoveMe3"],
+                        "responseHeadersToAdds": [{
+                            "headerName": "AddMe",
+                            "headerValue": "MyValue",
+                            "replace": False,
+                        }],
+                    },
+                    match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                        full_path_match="a full path",
+                        header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                            header_name="someheader",
+                            exact_match="match this exactly",
+                            invert_match=True,
+                        )],
+                        ignore_case=True,
+                        metadata_filters=[{
+                            "filterMatchCriteria": "MATCH_ANY",
+                            "filterLabels": [{
+                                "name": "PLANET",
+                                "value": "MARS",
+                            }],
+                        }],
+                        query_parameter_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                            name="a query parameter",
+                            present_match=True,
+                        )],
+                    )],
+                    url_redirect=gcp.compute.URLMapPathMatcherRouteRuleUrlRedirectArgs(
+                        host_redirect="A host",
+                        https_redirect=False,
+                        path_redirect="some/path",
+                        redirect_response_code="TEMPORARY_REDIRECT",
+                        strip_query=True,
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.URLMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Url Map Traffic Director Route Partial
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.BackendService("home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_SELF_MANAGED")
+        urlmap = gcp.compute.URLMap("urlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                        prefix_match="/someprefix",
+                        header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                            header_name="someheader",
+                            exact_match="match this exactly",
+                            invert_match=True,
+                        )],
+                    )],
+                    url_redirect=gcp.compute.URLMapPathMatcherRouteRuleUrlRedirectArgs(
+                        path_redirect="some/path",
+                        redirect_response_code="TEMPORARY_REDIRECT",
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.URLMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Url Map Traffic Director Path
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.BackendService("home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_SELF_MANAGED")
+        urlmap = gcp.compute.URLMap("urlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/home"],
+                    route_action=gcp.compute.URLMapPathMatcherPathRuleRouteActionArgs(
+                        cors_policy=gcp.compute.URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs(
+                            allow_credentials=True,
+                            allow_headers=["Allowed content"],
+                            allow_methods=["GET"],
+                            allow_origin_regexes=["abc.*"],
+                            allow_origins=["Allowed origin"],
+                            expose_headers=["Exposed header"],
+                            max_age=30,
+                            disabled=False,
+                        ),
+                        fault_injection_policy=gcp.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs(
+                            abort=gcp.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs(
+                                http_status=234,
+                                percentage=5.6,
+                            ),
+                            delay=gcp.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs(
+                                fixed_delay=gcp.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs(
+                                    seconds="0",
+                                    nanos=50000,
+                                ),
+                                percentage=7.8,
+                            ),
+                        ),
+                        request_mirror_policy=gcp.compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs(
+                            backend_service=home.id,
+                        ),
+                        retry_policy={
+                            "numRetries": 4,
+                            "perTryTimeout": {
+                                "seconds": 30,
+                            },
+                            "retryConditions": [
+                                "5xx",
+                                "deadline-exceeded",
+                            ],
+                        },
+                        timeout=gcp.compute.URLMapPathMatcherPathRuleRouteActionTimeoutArgs(
+                            seconds="20",
+                            nanos=750000000,
+                        ),
+                        url_rewrite=gcp.compute.URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs(
+                            host_rewrite="A replacement header",
+                            path_prefix_rewrite="A replacement path",
+                        ),
+                        weighted_backend_services=[gcp.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
+                            backend_service=home.id,
+                            weight=400,
+                            header_action={
+                                "requestHeadersToRemoves": ["RemoveMe"],
+                                "requestHeadersToAdds": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": True,
+                                }],
+                                "responseHeadersToRemoves": ["RemoveMe"],
+                                "responseHeadersToAdds": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": False,
+                                }],
+                            },
+                        )],
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.URLMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Url Map Traffic Director Path Partial
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.BackendService("home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_SELF_MANAGED")
+        urlmap = gcp.compute.URLMap("urlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/home"],
+                    route_action=gcp.compute.URLMapPathMatcherPathRuleRouteActionArgs(
+                        cors_policy=gcp.compute.URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs(
+                            allow_credentials=True,
+                            allow_headers=["Allowed content"],
+                            allow_methods=["GET"],
+                            allow_origin_regexes=["abc.*"],
+                            allow_origins=["Allowed origin"],
+                            expose_headers=["Exposed header"],
+                            max_age=30,
+                            disabled=False,
+                        ),
+                        weighted_backend_services=[gcp.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
+                            backend_service=home.id,
+                            weight=400,
+                            header_action={
+                                "requestHeadersToRemoves": ["RemoveMe"],
+                                "requestHeadersToAdds": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": True,
+                                }],
+                                "responseHeadersToRemoves": ["RemoveMe"],
+                                "responseHeadersToAdds": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": False,
+                                }],
+                            },
+                        )],
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.URLMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Url Map Header Based Routing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.id])
+        service_a = gcp.compute.BackendService("service-a",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.id])
+        service_b = gcp.compute.BackendService("service-b",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.id])
+        urlmap = gcp.compute.URLMap("urlmap",
+            description="header-based routing example",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["*"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                route_rules=[
+                    gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                        priority=1,
+                        service=service_a.id,
+                        match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                            prefix_match="/",
+                            ignore_case=True,
+                            header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                                header_name="abtest",
+                                exact_match="a",
+                            )],
+                        )],
+                    ),
+                    gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                        priority=2,
+                        service=service_b.id,
+                        match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                            ignore_case=True,
+                            prefix_match="/",
+                            header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                                header_name="abtest",
+                                exact_match="b",
+                            )],
+                        )],
+                    ),
+                ],
+            )])
+        ```
+        ### Url Map Parameter Based Routing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.id])
+        service_a = gcp.compute.BackendService("service-a",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.id])
+        service_b = gcp.compute.BackendService("service-b",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.id])
+        urlmap = gcp.compute.URLMap("urlmap",
+            description="parameter-based routing example",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["*"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                route_rules=[
+                    gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                        priority=1,
+                        service=service_a.id,
+                        match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                            prefix_match="/",
+                            ignore_case=True,
+                            query_parameter_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                                name="abtest",
+                                exact_match="a",
+                            )],
+                        )],
+                    ),
+                    gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                        priority=2,
+                        service=service_b.id,
+                        match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                            ignore_case=True,
+                            prefix_match="/",
+                            query_parameter_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                                name="abtest",
+                                exact_match="b",
+                            )],
+                        )],
+                    ),
+                ],
+            )])
+        ```
+
+        ## Import
+
+        UrlMap can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/uRLMap:URLMap default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param URLMapArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(URLMapArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_route_action: Optional[pulumi.Input[pulumi.InputType['URLMapDefaultRouteActionArgs']]] = None,
+                 default_service: Optional[pulumi.Input[str]] = None,
+                 default_url_redirect: Optional[pulumi.Input[pulumi.InputType['URLMapDefaultUrlRedirectArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 header_action: Optional[pulumi.Input[pulumi.InputType['URLMapHeaderActionArgs']]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

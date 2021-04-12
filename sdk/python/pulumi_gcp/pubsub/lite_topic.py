@@ -5,15 +5,125 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LiteTopic']
+__all__ = ['LiteTopicArgs', 'LiteTopic']
+
+@pulumi.input_type
+class LiteTopicArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 partition_config: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LiteTopic resource.
+        :param pulumi.Input[str] name: Name of the topic.
+        :param pulumi.Input['LiteTopicPartitionConfigArgs'] partition_config: The settings for this topic's partitions.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of the pubsub lite topic.
+        :param pulumi.Input['LiteTopicRetentionConfigArgs'] retention_config: The settings for a topic's message retention.
+               Structure is documented below.
+        :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if partition_config is not None:
+            pulumi.set(__self__, "partition_config", partition_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if retention_config is not None:
+            pulumi.set(__self__, "retention_config", retention_config)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="partitionConfig")
+    def partition_config(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigArgs']]:
+        """
+        The settings for this topic's partitions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "partition_config")
+
+    @partition_config.setter
+    def partition_config(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']]):
+        pulumi.set(self, "partition_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the pubsub lite topic.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="retentionConfig")
+    def retention_config(self) -> Optional[pulumi.Input['LiteTopicRetentionConfigArgs']]:
+        """
+        The settings for a topic's message retention.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retention_config")
+
+    @retention_config.setter
+    def retention_config(self, value: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']]):
+        pulumi.set(self, "retention_config", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone of the pubsub lite topic.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class LiteTopic(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -89,6 +199,87 @@ class LiteTopic(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[LiteTopicArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A named resource to which messages are sent by publishers.
+
+        To get more information about Topic, see:
+
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+        * How-to Guides
+            * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+
+        ## Example Usage
+        ### Pubsub Lite Topic Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.pubsub.LiteTopic("example",
+            project=project.number,
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+                count=1,
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                    publish_mib_per_sec=4,
+                    subscribe_mib_per_sec=8,
+                ),
+            ),
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+                per_partition_bytes="32212254720",
+            ))
+        ```
+
+        ## Import
+
+        Topic can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteTopic:LiteTopic default projects/{{project}}/locations/{{zone}}/topics/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LiteTopicArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LiteTopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 partition_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 retention_config: Optional[pulumi.Input[pulumi.InputType['LiteTopicRetentionConfigArgs']]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
