@@ -5,13 +5,73 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['DefaultServiceAccounts']
+__all__ = ['DefaultServiceAccountsArgs', 'DefaultServiceAccounts']
+
+@pulumi.input_type
+class DefaultServiceAccountsArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 restore_policy: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DefaultServiceAccounts resource.
+        :param pulumi.Input[str] action: The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
+        :param pulumi.Input[str] project: The project ID where service accounts are created.
+        :param pulumi.Input[str] restore_policy: The action to be performed in the default service accounts on the resource destroy.
+               Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+               If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+               If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "project", project)
+        if restore_policy is not None:
+            pulumi.set(__self__, "restore_policy", restore_policy)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The project ID where service accounts are created.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="restorePolicy")
+    def restore_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to be performed in the default service accounts on the resource destroy.
+        Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+        If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+        If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
+        """
+        return pulumi.get(self, "restore_policy")
+
+    @restore_policy.setter
+    def restore_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restore_policy", value)
 
 
 class DefaultServiceAccounts(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +133,76 @@ class DefaultServiceAccounts(pulumi.CustomResource):
                If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
                If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DefaultServiceAccountsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Allows management of Google Cloud Platform project default service accounts.
+
+        When certain service APIs are enabled, Google Cloud Platform automatically creates service accounts to help get started, but
+        this is not recommended for production environments as per [Google's documentation](https://cloud.google.com/iam/docs/service-accounts#default).
+        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+
+        > **WARNING** Some Google Cloud products do not work if the default service accounts are deleted so it is better to `DEPRIVILEGE` as
+        Google **CAN NOT** recover service accounts that have been deleted for more than 30 days.
+        Also Google recommends using the `constraints/iam.automaticIamGrantsForDefaultServiceAccounts` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html)
+        to disable automatic IAM Grants to default service accounts.
+
+        > This resource works on a best-effort basis, as no API formally describes the default service accounts
+        and it is for users who are unable to use constraints. If the default service accounts change their name
+        or additional service accounts are added, this resource will need to be updated.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DELETE",
+            project="my-project-id")
+        ```
+
+        To enable the default service accounts on the resource destroy:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DISABLE",
+            project="my-project-id",
+            restore_policy="REVERT")
+        ```
+
+        ## Import
+
+        This resource does not support import
+
+        :param str resource_name: The name of the resource.
+        :param DefaultServiceAccountsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DefaultServiceAccountsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 restore_policy: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

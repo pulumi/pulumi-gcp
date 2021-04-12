@@ -5,15 +5,128 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Membership']
+__all__ = ['MembershipArgs', 'Membership']
+
+@pulumi.input_type
+class MembershipArgs:
+    def __init__(__self__, *,
+                 membership_id: pulumi.Input[str],
+                 authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Membership resource.
+        :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
+        :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
+               See the workload identity documentation for more details:
+               https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+               Structure is documented below.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console.
+        :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "membership_id", membership_id)
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="membershipId")
+    def membership_id(self) -> pulumi.Input[str]:
+        """
+        The client-provided identifier of the membership.
+        """
+        return pulumi.get(self, "membership_id")
+
+    @membership_id.setter
+    def membership_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "membership_id", value)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> Optional[pulumi.Input['MembershipAuthorityArgs']]:
+        """
+        Authority encodes how Google will recognize identities from this Membership.
+        See the workload identity documentation for more details:
+        https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authority")
+
+    @authority.setter
+    def authority(self, value: Optional[pulumi.Input['MembershipAuthorityArgs']]):
+        pulumi.set(self, "authority", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this entity type to be displayed on the console.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input['MembershipEndpointArgs']]:
+        """
+        If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input['MembershipEndpointArgs']]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels to apply to this membership.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Membership(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +162,45 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MembershipArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Membership can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:gkehub/membership:Membership default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MembershipArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MembershipArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authority: Optional[pulumi.Input[pulumi.InputType['MembershipAuthorityArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -22,27 +22,28 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:organizations/accessApprovalSettings:AccessApprovalSettings":
-		r, err = NewAccessApprovalSettings(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessApprovalSettings{}
 	case "gcp:organizations/folder:Folder":
-		r, err = NewFolder(ctx, name, nil, pulumi.URN_(urn))
+		r = &Folder{}
 	case "gcp:organizations/iAMBinding:IAMBinding":
-		r, err = NewIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMBinding{}
 	case "gcp:organizations/iAMCustomRole:IAMCustomRole":
-		r, err = NewIAMCustomRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMCustomRole{}
 	case "gcp:organizations/iAMMember:IAMMember":
-		r, err = NewIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMMember{}
 	case "gcp:organizations/iAMPolicy:IAMPolicy":
-		r, err = NewIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMPolicy{}
 	case "gcp:organizations/iamAuditConfig:IamAuditConfig":
-		r, err = NewIamAuditConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamAuditConfig{}
 	case "gcp:organizations/policy:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	case "gcp:organizations/project:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

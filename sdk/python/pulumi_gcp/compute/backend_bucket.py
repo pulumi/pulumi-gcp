@@ -5,15 +5,152 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BackendBucket']
+__all__ = ['BackendBucketArgs', 'BackendBucket']
+
+@pulumi.input_type
+class BackendBucketArgs:
+    def __init__(__self__, *,
+                 bucket_name: pulumi.Input[str],
+                 cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
+                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_cdn: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a BackendBucket resource.
+        :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
+        :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this Backend Bucket.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
+               client when the resource is created.
+        :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035.  Specifically, the name must be 1-63 characters long and
+               match the regular expression `a-z?` which means
+               the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the
+               last character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        if cdn_policy is not None:
+            pulumi.set(__self__, "cdn_policy", cdn_policy)
+        if custom_response_headers is not None:
+            pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_cdn is not None:
+            pulumi.set(__self__, "enable_cdn", enable_cdn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Input[str]:
+        """
+        Cloud Storage bucket name.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter(name="cdnPolicy")
+    def cdn_policy(self) -> Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]:
+        """
+        Cloud CDN configuration for this Backend Bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cdn_policy")
+
+    @cdn_policy.setter
+    def cdn_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]):
+        pulumi.set(self, "cdn_policy", value)
+
+    @property
+    @pulumi.getter(name="customResponseHeaders")
+    def custom_response_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Headers that the HTTP/S load balancer should add to proxied responses.
+        """
+        return pulumi.get(self, "custom_response_headers")
+
+    @custom_response_headers.setter
+    def custom_response_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_response_headers", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional textual description of the resource; provided by the
+        client when the resource is created.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableCdn")
+    def enable_cdn(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, enable Cloud CDN for this BackendBucket.
+        """
+        return pulumi.get(self, "enable_cdn")
+
+    @enable_cdn.setter
+    def enable_cdn(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_cdn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035.  Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the
+        last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class BackendBucket(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -91,6 +228,82 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BackendBucketArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
+        load balancing.
+
+        An HTTP(S) load balancer can direct traffic to specified URLs to a
+        backend bucket rather than a backend service. It can send requests for
+        static content to a Cloud Storage bucket and requests for dynamic content
+        to a virtual machine instance.
+
+        To get more information about BackendBucket, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
+        * How-to Guides
+            * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+
+        ## Example Usage
+        ### Backend Bucket Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
+        image_backend = gcp.compute.BackendBucket("imageBackend",
+            description="Contains beautiful images",
+            bucket_name=image_bucket.name,
+            enable_cdn=True)
+        ```
+
+        ## Import
+
+        BackendBucket can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BackendBucketArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BackendBucketArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_cdn: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

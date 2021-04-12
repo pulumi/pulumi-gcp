@@ -5,15 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TransferJob']
+__all__ = ['TransferJobArgs', 'TransferJob']
+
+@pulumi.input_type
+class TransferJobArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 schedule: pulumi.Input['TransferJobScheduleArgs'],
+                 transfer_spec: pulumi.Input['TransferJobTransferSpecArgs'],
+                 project: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TransferJob resource.
+        :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
+        :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "transfer_spec", transfer_spec)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        Unique description to identify the Transfer Job.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input['TransferJobScheduleArgs']:
+        """
+        Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input['TransferJobScheduleArgs']):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter(name="transferSpec")
+    def transfer_spec(self) -> pulumi.Input['TransferJobTransferSpecArgs']:
+        """
+        Transfer specification. Structure documented below.
+        """
+        return pulumi.get(self, "transfer_spec")
+
+    @transfer_spec.setter
+    def transfer_spec(self, value: pulumi.Input['TransferJobTransferSpecArgs']):
+        pulumi.set(self, "transfer_spec", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class TransferJob(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -112,6 +199,113 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TransferJobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Transfer Job in Google Cloud Storage Transfer.
+
+        To get more information about Google Cloud Storage Transfer, see:
+
+        * [Overview](https://cloud.google.com/storage-transfer/docs/overview)
+        * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
+        * How-to Guides
+            * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
+
+        ## Example Usage
+
+        Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.storage.get_transfer_project_servie_account(project=var["project"])
+        s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
+            storage_class="NEARLINE",
+            project=var["project"])
+        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
+            bucket=s3_backup_bucket_bucket.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:{default.email}",
+            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
+        s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
+            description="Nightly backup of S3 bucket",
+            project=var["project"],
+            transfer_spec=gcp.storage.TransferJobTransferSpecArgs(
+                object_conditions=gcp.storage.TransferJobTransferSpecObjectConditionsArgs(
+                    max_time_elapsed_since_last_modification="600s",
+                    exclude_prefixes=["requests.gz"],
+                ),
+                transfer_options=gcp.storage.TransferJobTransferSpecTransferOptionsArgs(
+                    delete_objects_unique_in_sink=False,
+                ),
+                aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
+                    bucket_name=var["aws_s3_bucket"],
+                    aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
+                        access_key_id=var["aws_access_key"],
+                        secret_access_key=var["aws_secret_key"],
+                    ),
+                ),
+                gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
+                    bucket_name=s3_backup_bucket_bucket.name,
+                ),
+            ),
+            schedule=gcp.storage.TransferJobScheduleArgs(
+                schedule_start_date=gcp.storage.TransferJobScheduleScheduleStartDateArgs(
+                    year=2018,
+                    month=10,
+                    day=1,
+                ),
+                schedule_end_date=gcp.storage.TransferJobScheduleScheduleEndDateArgs(
+                    year=2019,
+                    month=1,
+                    day=15,
+                ),
+                start_time_of_day=gcp.storage.TransferJobScheduleStartTimeOfDayArgs(
+                    hours=23,
+                    minutes=30,
+                    seconds=0,
+                    nanos=0,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket_iam_member]))
+        ```
+
+        ## Import
+
+        Storage buckets can be imported using the Transfer Job's `project` and `name` without the `transferJob/` prefix, e.g.
+
+        ```sh
+         $ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TransferJobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TransferJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,95 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PreventionDeidentifyTemplate']
+__all__ = ['PreventionDeidentifyTemplateArgs', 'PreventionDeidentifyTemplate']
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateArgs:
+    def __init__(__self__, *,
+                 deidentify_config: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'],
+                 parent: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a PreventionDeidentifyTemplate resource.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
+               Structure is documented below.
+        :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
+               * `projects/{{project}}`
+               * `projects/{{project}}/locations/{{location}}`
+               * `organizations/{{organization_id}}`
+               * `organizations/{{organization_id}}/locations/{{location}}`
+        :param pulumi.Input[str] description: A description of the template.
+        :param pulumi.Input[str] display_name: User set display name of the template.
+        """
+        pulumi.set(__self__, "deidentify_config", deidentify_config)
+        pulumi.set(__self__, "parent", parent)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="deidentifyConfig")
+    def deidentify_config(self) -> pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']:
+        """
+        Configuration of the deidentify template
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deidentify_config")
+
+    @deidentify_config.setter
+    def deidentify_config(self, value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']):
+        pulumi.set(self, "deidentify_config", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The parent of the template in any of the following formats:
+        * `projects/{{project}}`
+        * `projects/{{project}}/locations/{{location}}`
+        * `organizations/{{organization_id}}`
+        * `organizations/{{organization_id}}/locations/{{location}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the template.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User set display name of the template.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
 
 class PreventionDeidentifyTemplate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -129,6 +209,127 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PreventionDeidentifyTemplateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Allows creation of templates to de-identify content.
+
+        To get more information about DeidentifyTemplate, see:
+
+        * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.deidentifyTemplates)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
+
+        ## Example Usage
+        ### Dlp Deidentify Template Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
+                    transformations=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="PHONE_NUMBER",
+                                ),
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="CREDIT_CARD_NUMBER",
+                                ),
+                            ],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                        integer_value=9,
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="EMAIL_ADDRESS",
+                                ),
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="LAST_NAME",
+                                ),
+                            ],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                character_mask_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs(
+                                    characters_to_ignore=[{
+                                        "commonCharactersToIgnore": "PUNCTUATION",
+                                    }],
+                                    masking_character="X",
+                                    number_to_mask=4,
+                                    reverse_order=True,
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="DATE_OF_BIRTH",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                        date_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs(
+                                            day=1,
+                                            month=1,
+                                            year=2020,
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ],
+                ),
+            ),
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name")
+        ```
+
+        ## Import
+
+        DeidentifyTemplate can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PreventionDeidentifyTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PreventionDeidentifyTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

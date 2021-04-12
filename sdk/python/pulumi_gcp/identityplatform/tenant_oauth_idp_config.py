@@ -5,13 +5,147 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['TenantOauthIdpConfig']
+__all__ = ['TenantOauthIdpConfigArgs', 'TenantOauthIdpConfig']
+
+@pulumi.input_type
+class TenantOauthIdpConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
+                 issuer: pulumi.Input[str],
+                 tenant: pulumi.Input[str],
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TenantOauthIdpConfig resource.
+        :param pulumi.Input[str] client_id: The client id of an OAuth client.
+        :param pulumi.Input[str] display_name: Human friendly display name.
+        :param pulumi.Input[str] issuer: For OIDC Idps, the issuer identifier.
+        :param pulumi.Input[str] tenant: The name of the tenant where this OIDC IDP configuration resource exists
+        :param pulumi.Input[str] client_secret: The client secret of the OAuth client, to enable OIDC code flow.
+        :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
+        :param pulumi.Input[str] name: The name of the OauthIdpConfig. Must start with `oidc.`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "tenant", tenant)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        """
+        The client id of an OAuth client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Human friendly display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> pulumi.Input[str]:
+        """
+        For OIDC Idps, the issuer identifier.
+        """
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: pulumi.Input[str]):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter
+    def tenant(self) -> pulumi.Input[str]:
+        """
+        The name of the tenant where this OIDC IDP configuration resource exists
+        """
+        return pulumi.get(self, "tenant")
+
+    @tenant.setter
+    def tenant(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tenant", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client secret of the OAuth client, to enable OIDC code flow.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this config allows users to sign in with the provider.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the OauthIdpConfig. Must start with `oidc.`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class TenantOauthIdpConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -78,6 +212,78 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tenant: The name of the tenant where this OIDC IDP configuration resource exists
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TenantOauthIdpConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        OIDC IdP configuration for a Identity Toolkit project within a tenant.
+
+        You must enable the
+        [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+        the marketplace prior to using this resource.
+
+        ## Example Usage
+        ### Identity Platform Tenant Oauth Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig",
+            tenant=tenant.name,
+            display_name="Display Name",
+            client_id="client-id",
+            issuer="issuer",
+            enabled=True,
+            client_secret="secret")
+        ```
+
+        ## Import
+
+        TenantOauthIdpConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TenantOauthIdpConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TenantOauthIdpConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tenant: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

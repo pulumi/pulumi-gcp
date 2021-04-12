@@ -5,13 +5,98 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['FolderBucketConfig']
+__all__ = ['FolderBucketConfigArgs', 'FolderBucketConfig']
+
+@pulumi.input_type
+class FolderBucketConfigArgs:
+    def __init__(__self__, *,
+                 bucket_id: pulumi.Input[str],
+                 folder: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a FolderBucketConfig resource.
+        :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
+        :param pulumi.Input[str] folder: The parent resource that contains the logging bucket.
+        :param pulumi.Input[str] location: The location of the bucket.
+        :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
+        """
+        pulumi.set(__self__, "bucket_id", bucket_id)
+        pulumi.set(__self__, "folder", folder)
+        pulumi.set(__self__, "location", location)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+
+    @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Input[str]:
+        """
+        The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
+        """
+        return pulumi.get(self, "bucket_id")
+
+    @bucket_id.setter
+    def bucket_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket_id", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> pulumi.Input[str]:
+        """
+        The parent resource that contains the logging bucket.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: pulumi.Input[str]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location of the bucket.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes this bucket.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_days", value)
 
 
 class FolderBucketConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +147,66 @@ class FolderBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FolderBucketConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a folder-level logging bucket config. For more information see
+        [the official logging documentation](https://cloud.google.com/logging/docs/) and
+        [Storing Logs](https://cloud.google.com/logging/docs/storage).
+
+        > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.organizations.Folder("default",
+            display_name="some-folder-name",
+            parent="organizations/123456789")
+        basic = gcp.logging.FolderBucketConfig("basic",
+            folder=default.name,
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        ```
+
+        ## Import
+
+        This resource can be imported using the following format
+
+        ```sh
+         $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FolderBucketConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FolderBucketConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

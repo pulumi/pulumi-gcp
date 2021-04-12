@@ -5,15 +5,159 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Instance']
+__all__ = ['InstanceArgs', 'Instance']
+
+@pulumi.input_type
+class InstanceArgs:
+    def __init__(__self__, *,
+                 file_shares: pulumi.Input['InstanceFileSharesArgs'],
+                 networks: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]],
+                 tier: pulumi.Input[str],
+                 zone: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Instance resource.
+        :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
+               single file share is supported.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: VPC networks to which the instance is connected. For this version,
+               only a single network is supported.
+               Structure is documented below.
+        :param pulumi.Input[str] tier: The service tier of the instance.
+               Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
+        :param pulumi.Input[str] description: A description of the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "file_shares", file_shares)
+        pulumi.set(__self__, "networks", networks)
+        pulumi.set(__self__, "tier", tier)
+        pulumi.set(__self__, "zone", zone)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="fileShares")
+    def file_shares(self) -> pulumi.Input['InstanceFileSharesArgs']:
+        """
+        File system shares on the instance. For this version, only a
+        single file share is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_shares")
+
+    @file_shares.setter
+    def file_shares(self, value: pulumi.Input['InstanceFileSharesArgs']):
+        pulumi.set(self, "file_shares", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]:
+        """
+        VPC networks to which the instance is connected. For this version,
+        only a single network is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> pulumi.Input[str]:
+        """
+        The service tier of the instance.
+        Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tier", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[str]:
+        """
+        The name of the Filestore zone of the instance.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the instance.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user-provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the fileshare (16 characters or less)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Instance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -129,6 +273,122 @@ class Instance(pulumi.CustomResource):
                Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Google Cloud Filestore instance.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+            * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+            * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+
+        ## Example Usage
+        ### Filestore Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2660,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="PREMIUM",
+            zone="us-central1-b")
+        ```
+        ### Filestore Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            zone="us-central1-b",
+            tier="BASIC_SSD",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2660,
+                name="share1",
+                nfs_export_options=[
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        ip_ranges=["10.0.0.0/24"],
+                        access_mode="READ_WRITE",
+                        squash_mode="NO_ROOT_SQUASH",
+                    ),
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        ip_ranges=["10.10.0.0/24"],
+                        access_mode="READ_ONLY",
+                        squash_mode="ROOT_SQUASH",
+                        anon_uid=123,
+                        anon_gid=456,
+                    ),
+                ],
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Instance can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

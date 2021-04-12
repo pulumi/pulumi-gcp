@@ -5,15 +5,217 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Entry']
+__all__ = ['EntryArgs', 'Entry']
+
+@pulumi.input_type
+class EntryArgs:
+    def __init__(__self__, *,
+                 entry_group: pulumi.Input[str],
+                 entry_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']] = None,
+                 linked_resource: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_specified_system: Optional[pulumi.Input[str]] = None,
+                 user_specified_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Entry resource.
+        :param pulumi.Input[str] entry_group: The name of the entry group this entry is in.
+        :param pulumi.Input[str] entry_id: The id of the entry to create.
+        :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
+        :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry,
+               for example, "Analytics Data - Jan 2011".
+        :param pulumi.Input['EntryGcsFilesetSpecArgs'] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+               Structure is documented below.
+        :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to.
+               For Google Cloud Platform resources, linkedResource is the full name of the resource.
+               For example, the linkedResource for a table resource from BigQuery is:
+               //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+               Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
+               this field is optional and defaults to an empty string.
+        :param pulumi.Input[str] schema: Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
+               attached to it. See
+               https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+               for what fields this schema can contain.
+        :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
+               Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+               Possible values are `FILESET`.
+        :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with.
+               userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
+               and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        :param pulumi.Input[str] user_specified_type: Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
+               When creating an entry, users should check the enum values first, if nothing matches the entry
+               to be created, then provide a custom value, for example "my_special_type".
+               userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
+               numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        """
+        pulumi.set(__self__, "entry_group", entry_group)
+        pulumi.set(__self__, "entry_id", entry_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if gcs_fileset_spec is not None:
+            pulumi.set(__self__, "gcs_fileset_spec", gcs_fileset_spec)
+        if linked_resource is not None:
+            pulumi.set(__self__, "linked_resource", linked_resource)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if user_specified_system is not None:
+            pulumi.set(__self__, "user_specified_system", user_specified_system)
+        if user_specified_type is not None:
+            pulumi.set(__self__, "user_specified_type", user_specified_type)
+
+    @property
+    @pulumi.getter(name="entryGroup")
+    def entry_group(self) -> pulumi.Input[str]:
+        """
+        The name of the entry group this entry is in.
+        """
+        return pulumi.get(self, "entry_group")
+
+    @entry_group.setter
+    def entry_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_group", value)
+
+    @property
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> pulumi.Input[str]:
+        """
+        The id of the entry to create.
+        """
+        return pulumi.get(self, "entry_id")
+
+    @entry_id.setter
+    def entry_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Entry description, which can consist of several sentences or paragraphs that describe entry contents.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display information such as title and description. A short name to identify the entry,
+        for example, "Analytics Data - Jan 2011".
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gcsFilesetSpec")
+    def gcs_fileset_spec(self) -> Optional[pulumi.Input['EntryGcsFilesetSpecArgs']]:
+        """
+        Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_fileset_spec")
+
+    @gcs_fileset_spec.setter
+    def gcs_fileset_spec(self, value: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']]):
+        pulumi.set(self, "gcs_fileset_spec", value)
+
+    @property
+    @pulumi.getter(name="linkedResource")
+    def linked_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource this metadata entry refers to.
+        For Google Cloud Platform resources, linkedResource is the full name of the resource.
+        For example, the linkedResource for a table resource from BigQuery is:
+        //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+        Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
+        this field is optional and defaults to an empty string.
+        """
+        return pulumi.get(self, "linked_resource")
+
+    @linked_resource.setter
+    def linked_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linked_resource", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
+        attached to it. See
+        https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+        for what fields this schema can contain.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the entry. Only used for Entries with types in the EntryType enum.
+        Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+        Possible values are `FILESET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="userSpecifiedSystem")
+    def user_specified_system(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field indicates the entry's source system that Data Catalog does not integrate with.
+        userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
+        and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        """
+        return pulumi.get(self, "user_specified_system")
+
+    @user_specified_system.setter
+    def user_specified_system(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_specified_system", value)
+
+    @property
+    @pulumi.getter(name="userSpecifiedType")
+    def user_specified_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
+        When creating an entry, users should check the enum values first, if nothing matches the entry
+        to be created, then provide a custom value, for example "my_special_type".
+        userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
+        numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        """
+        return pulumi.get(self, "user_specified_type")
+
+    @user_specified_type.setter
+    def user_specified_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_specified_type", value)
 
 
 class Entry(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -166,6 +368,145 @@ class Entry(pulumi.CustomResource):
                userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
                numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EntryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Entry Metadata. A Data Catalog Entry resource represents another resource in Google Cloud Platform
+        (such as a BigQuery dataset or a Pub/Sub topic) or outside of Google Cloud Platform. Clients can use
+        the linkedResource field in the Entry resource to refer to the original resource ID of the source system.
+
+        An Entry resource contains resource details, such as its schema. An Entry can also be used to attach
+        flexible metadata, such as a Tag.
+
+        To get more information about Entry, see:
+
+        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+
+        ## Example Usage
+        ### Data Catalog Entry Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basicEntry",
+            entry_group=entry_group.id,
+            entry_id="my_entry",
+            user_specified_type="my_custom_type",
+            user_specified_system="SomethingExternal")
+        ```
+        ### Data Catalog Entry Fileset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basicEntry",
+            entry_group=entry_group.id,
+            entry_id="my_entry",
+            type="FILESET",
+            gcs_fileset_spec=gcp.datacatalog.EntryGcsFilesetSpecArgs(
+                file_patterns=["gs://fake_bucket/dir/*"],
+            ))
+        ```
+        ### Data Catalog Entry Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basicEntry",
+            entry_group=entry_group.id,
+            entry_id="my_entry",
+            user_specified_type="my_user_specified_type",
+            user_specified_system="Something_custom",
+            linked_resource="my/linked/resource",
+            display_name="my custom type entry",
+            description="a custom type entry for a user specified system",
+            schema=\"\"\"{
+          "columns": [
+            {
+              "column": "first_name",
+              "description": "First name",
+              "mode": "REQUIRED",
+              "type": "STRING"
+            },
+            {
+              "column": "last_name",
+              "description": "Last name",
+              "mode": "REQUIRED",
+              "type": "STRING"
+            },
+            {
+              "column": "address",
+              "description": "Address",
+              "mode": "REPEATED",
+              "subcolumns": [
+                {
+                  "column": "city",
+                  "description": "City",
+                  "mode": "NULLABLE",
+                  "type": "STRING"
+                },
+                {
+                  "column": "state",
+                  "description": "State",
+                  "mode": "NULLABLE",
+                  "type": "STRING"
+                }
+              ],
+              "type": "RECORD"
+            }
+          ]
+        }
+        \"\"\")
+        ```
+
+        ## Import
+
+        Entry can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:datacatalog/entry:Entry default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EntryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EntryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 entry_group: Optional[pulumi.Input[str]] = None,
+                 entry_id: Optional[pulumi.Input[str]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['EntryGcsFilesetSpecArgs']]] = None,
+                 linked_resource: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_specified_system: Optional[pulumi.Input[str]] = None,
+                 user_specified_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

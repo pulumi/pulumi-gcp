@@ -5,13 +5,109 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Endpoint']
+__all__ = ['EndpointArgs', 'Endpoint']
+
+@pulumi.input_type
+class EndpointArgs:
+    def __init__(__self__, *,
+                 endpoint_id: pulumi.Input[str],
+                 service: pulumi.Input[str],
+                 address: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a Endpoint resource.
+        :param pulumi.Input[str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
+               lowercase letters or the hyphen character.
+        :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
+        :param pulumi.Input[str] address: IPv4 or IPv6 address of the endpoint.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for the endpoint. This data can be consumed
+               by service clients. The entire metadata dictionary may contain
+               up to 512 characters, spread across all key-value pairs.
+               Metadata that goes beyond any these limits will be rejected.
+        :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
+               range of [0, 65535]. If unspecified, the default is 0.
+        """
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "service", service)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Input[str]:
+        """
+        The Resource ID must be 1-63 characters long, including digits,
+        lowercase letters or the hyphen character.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @endpoint_id.setter
+    def endpoint_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_id", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        The resource name of the service that this endpoint provides.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 or IPv6 address of the endpoint.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Metadata for the endpoint. This data can be consumed
+        by service clients. The entire metadata dictionary may contain
+        up to 512 characters, spread across all key-value pairs.
+        Metadata that goes beyond any these limits will be rejected.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port that the endpoint is running on, must be in the
+        range of [0, 65535]. If unspecified, the default is 0.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 
 class Endpoint(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -88,6 +184,87 @@ class Endpoint(pulumi.CustomResource):
                range of [0, 65535]. If unspecified, the default is 0.
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EndpointArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An individual endpoint that provides a service.
+
+        To get more information about Endpoint, see:
+
+        * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
+        * How-to Guides
+            * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
+
+        ## Example Usage
+        ### Service Directory Endpoint Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
+            namespace_id="example-namespace",
+            location="us-central1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_service = gcp.servicedirectory.Service("exampleService",
+            service_id="example-service",
+            namespace=example_namespace.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
+            endpoint_id="example-endpoint",
+            service=example_service.id,
+            metadata={
+                "stage": "prod",
+                "region": "us-central1",
+            },
+            address="1.2.3.4",
+            port=5353,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Endpoint can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EndpointArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 endpoint_id: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

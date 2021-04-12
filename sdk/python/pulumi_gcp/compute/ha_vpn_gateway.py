@@ -5,15 +5,116 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['HaVpnGateway']
+__all__ = ['HaVpnGatewayArgs', 'HaVpnGateway']
+
+@pulumi.input_type
+class HaVpnGatewayArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a HaVpnGateway resource.
+        :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035.  Specifically, the name must be 1-63 characters long and
+               match the regular expression `a-z?` which means
+               the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region this gateway should sit in.
+        """
+        pulumi.set(__self__, "network", network)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The network this VPN gateway is accepting traffic for.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035.  Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region this gateway should sit in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class HaVpnGateway(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -206,6 +307,201 @@ class HaVpnGateway(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HaVpnGatewayArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a VPN gateway running in GCP. This virtual device is managed
+        by Google, but used only by you. This type of VPN Gateway allows for the creation
+        of VPN solutions with higher availability than classic Target VPN Gateways.
+
+        To get more information about HaVpnGateway, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnGateways)
+        * How-to Guides
+            * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+
+        ## Example Usage
+        ### Ha Vpn Gateway Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+            region="us-central1",
+            network=network1.id)
+        ```
+        ### Ha Vpn Gateway Gcp To Gcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1",
+            routing_mode="GLOBAL",
+            auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+            region="us-central1",
+            network=network1.id)
+        network2 = gcp.compute.Network("network2",
+            routing_mode="GLOBAL",
+            auto_create_subnetworks=False)
+        ha_gateway2 = gcp.compute.HaVpnGateway("haGateway2",
+            region="us-central1",
+            network=network2.id)
+        network1_subnet1 = gcp.compute.Subnetwork("network1Subnet1",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=network1.id)
+        network1_subnet2 = gcp.compute.Subnetwork("network1Subnet2",
+            ip_cidr_range="10.0.2.0/24",
+            region="us-west1",
+            network=network1.id)
+        network2_subnet1 = gcp.compute.Subnetwork("network2Subnet1",
+            ip_cidr_range="192.168.1.0/24",
+            region="us-central1",
+            network=network2.id)
+        network2_subnet2 = gcp.compute.Subnetwork("network2Subnet2",
+            ip_cidr_range="192.168.2.0/24",
+            region="us-east1",
+            network=network2.id)
+        router1 = gcp.compute.Router("router1",
+            network=network1.name,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ))
+        router2 = gcp.compute.Router("router2",
+            network=network2.name,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64515,
+            ))
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            region="us-central1",
+            vpn_gateway=ha_gateway1.id,
+            peer_gcp_gateway=ha_gateway2.id,
+            shared_secret="a secret message",
+            router=router1.id,
+            vpn_gateway_interface=0)
+        tunnel2 = gcp.compute.VPNTunnel("tunnel2",
+            region="us-central1",
+            vpn_gateway=ha_gateway1.id,
+            peer_gcp_gateway=ha_gateway2.id,
+            shared_secret="a secret message",
+            router=router1.id,
+            vpn_gateway_interface=1)
+        tunnel3 = gcp.compute.VPNTunnel("tunnel3",
+            region="us-central1",
+            vpn_gateway=ha_gateway2.id,
+            peer_gcp_gateway=ha_gateway1.id,
+            shared_secret="a secret message",
+            router=router2.id,
+            vpn_gateway_interface=0)
+        tunnel4 = gcp.compute.VPNTunnel("tunnel4",
+            region="us-central1",
+            vpn_gateway=ha_gateway2.id,
+            peer_gcp_gateway=ha_gateway1.id,
+            shared_secret="a secret message",
+            router=router2.id,
+            vpn_gateway_interface=1)
+        router1_interface1 = gcp.compute.RouterInterface("router1Interface1",
+            router=router1.name,
+            region="us-central1",
+            ip_range="169.254.0.1/30",
+            vpn_tunnel=tunnel1.name)
+        router1_peer1 = gcp.compute.RouterPeer("router1Peer1",
+            router=router1.name,
+            region="us-central1",
+            peer_ip_address="169.254.0.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router1_interface1.name)
+        router1_interface2 = gcp.compute.RouterInterface("router1Interface2",
+            router=router1.name,
+            region="us-central1",
+            ip_range="169.254.1.1/30",
+            vpn_tunnel=tunnel2.name)
+        router1_peer2 = gcp.compute.RouterPeer("router1Peer2",
+            router=router1.name,
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router1_interface2.name)
+        router2_interface1 = gcp.compute.RouterInterface("router2Interface1",
+            router=router2.name,
+            region="us-central1",
+            ip_range="169.254.0.1/30",
+            vpn_tunnel=tunnel3.name)
+        router2_peer1 = gcp.compute.RouterPeer("router2Peer1",
+            router=router2.name,
+            region="us-central1",
+            peer_ip_address="169.254.0.2",
+            peer_asn=64514,
+            advertised_route_priority=100,
+            interface=router2_interface1.name)
+        router2_interface2 = gcp.compute.RouterInterface("router2Interface2",
+            router=router2.name,
+            region="us-central1",
+            ip_range="169.254.1.1/30",
+            vpn_tunnel=tunnel4.name)
+        router2_peer2 = gcp.compute.RouterPeer("router2Peer2",
+            router=router2.name,
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=64514,
+            advertised_route_priority=100,
+            interface=router2_interface2.name)
+        ```
+
+        ## Import
+
+        HaVpnGateway can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param HaVpnGatewayArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HaVpnGatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

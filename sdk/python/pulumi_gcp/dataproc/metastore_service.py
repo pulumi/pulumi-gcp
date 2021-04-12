@@ -5,15 +5,184 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MetastoreService']
+__all__ = ['MetastoreServiceArgs', 'MetastoreService']
+
+@pulumi.input_type
+class MetastoreServiceArgs:
+    def __init__(__self__, *,
+                 service_id: pulumi.Input[str],
+                 hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a MetastoreService resource.
+        :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+               and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+               3 and 63 characters.
+        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
+        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
+               The default value is `global`.
+        :param pulumi.Input['MetastoreServiceMaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service.
+               This specifies when the service can be restarted for maintenance purposes in UTC time.
+               Structure is documented below.
+        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+               "projects/{projectNumber}/global/networks/{network_id}".
+        :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] tier: The tier of the service.
+               Possible values are `DEVELOPER` and `ENTERPRISE`.
+        """
+        pulumi.set(__self__, "service_id", service_id)
+        if hive_metastore_config is not None:
+            pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+        and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+        3 and 63 characters.
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="hiveMetastoreConfig")
+    def hive_metastore_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]:
+        """
+        Configuration information specific to running Hive metastore software as the metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hive_metastore_config")
+
+    @hive_metastore_config.setter
+    def hive_metastore_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]):
+        pulumi.set(self, "hive_metastore_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-defined labels for the metastore service.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The  location where the autoscaling policy should reside.
+        The default value is `global`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]:
+        """
+        The one hour maintenance window of the metastore service.
+        This specifies when the service can be restarted for maintenance purposes in UTC time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        "projects/{projectNumber}/global/networks/{network_id}".
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TCP port at which the metastore service is reached. Default: 9083.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tier of the service.
+        Possible values are `DEVELOPER` and `ENTERPRISE`.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
 
 
 class MetastoreService(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -91,6 +260,80 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are `DEVELOPER` and `ENTERPRISE`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MetastoreServiceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A managed metastore service that serves metadata queries.
+
+        ## Example Usage
+        ### Dataproc Metastore Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+                hour_of_day=2,
+                day_of_week="SUNDAY",
+            ),
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="2.3.6",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Service can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MetastoreServiceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MetastoreServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

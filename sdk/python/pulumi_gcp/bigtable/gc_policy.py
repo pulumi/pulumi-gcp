@@ -5,15 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GCPolicy']
+__all__ = ['GCPolicyArgs', 'GCPolicy']
+
+@pulumi.input_type
+class GCPolicyArgs:
+    def __init__(__self__, *,
+                 column_family: pulumi.Input[str],
+                 instance_name: pulumi.Input[str],
+                 table: pulumi.Input[str],
+                 max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
+                 max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a GCPolicy resource.
+        :param pulumi.Input[str] column_family: The name of the column family.
+        :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
+        :param pulumi.Input[str] table: The name of the table.
+        :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
+        :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
+        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "column_family", column_family)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "table", table)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+        if max_versions is not None:
+            pulumi.set(__self__, "max_versions", max_versions)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="columnFamily")
+    def column_family(self) -> pulumi.Input[str]:
+        """
+        The name of the column family.
+        """
+        return pulumi.get(self, "column_family")
+
+    @column_family.setter
+    def column_family(self, value: pulumi.Input[str]):
+        pulumi.set(self, "column_family", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Bigtable instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        The name of the table.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input['GCPolicyMaxAgeArgs']]:
+        """
+        GC policy that applies to all cells older than the given age.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input['GCPolicyMaxAgeArgs']]):
+        pulumi.set(self, "max_age", value)
+
+    @property
+    @pulumi.getter(name="maxVersions")
+    def max_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]:
+        """
+        GC policy that applies to all versions of a cell except for the most recent.
+        """
+        return pulumi.get(self, "max_versions")
+
+    @max_versions.setter
+    def max_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]):
+        pulumi.set(self, "max_versions", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class GCPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -90,6 +207,90 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GCPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
+        [the official documentation](https://cloud.google.com/bigtable/) and
+        [API](https://cloud.google.com/bigtable/docs/go/reference).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
+            cluster_id="tf-instance-cluster",
+            num_nodes=3,
+            storage_type="HDD",
+        )])
+        table = gcp.bigtable.Table("table",
+            instance_name=instance.name,
+            column_families=[gcp.bigtable.TableColumnFamilyArgs(
+                family="name",
+            )])
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance.name,
+            table=table.name,
+            column_family="name",
+            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
+                duration="168h",
+            ))
+        ```
+
+        Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=google_bigtable_instance["instance"]["name"],
+            table=google_bigtable_table["table"]["name"],
+            column_family="name",
+            mode="UNION",
+            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
+                duration="168h",
+            ),
+            max_versions=[gcp.bigtable.GCPolicyMaxVersionArgs(
+                number=10,
+            )])
+        ```
+
+        ## Import
+
+        This resource does not support import.
+
+        :param str resource_name: The name of the resource.
+        :param GCPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GCPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 column_family: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 max_age: Optional[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]] = None,
+                 max_versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxVersionArgs']]]]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 table: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,97 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['BucketAccessControl']
+__all__ = ['BucketAccessControlArgs', 'BucketAccessControl']
+
+@pulumi.input_type
+class BucketAccessControlArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 entity: pulumi.Input[str],
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a BucketAccessControl resource.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms:
+               user-userId
+               user-email
+               group-groupId
+               group-email
+               domain-domain
+               project-team-projectId
+               allUsers
+               allAuthenticatedUsers
+               Examples:
+               The user liz@example.com would be user-liz@example.com.
+               The group example@googlegroups.com would be
+               group-example@googlegroups.com.
+               To refer to all members of the Google Apps for Business domain
+               example.com, the entity would be domain-example.com.
+        :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER`, `READER`, and `WRITER`.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "entity", entity)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> pulumi.Input[str]:
+        """
+        The entity holding the permission, in one of the following forms:
+        user-userId
+        user-email
+        group-groupId
+        group-email
+        domain-domain
+        project-team-projectId
+        allUsers
+        allAuthenticatedUsers
+        Examples:
+        The user liz@example.com would be user-liz@example.com.
+        The group example@googlegroups.com would be
+        group-example@googlegroups.com.
+        To refer to all members of the Google Apps for Business domain
+        example.com, the entity would be domain-example.com.
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access permission for the entity.
+        Possible values are `OWNER`, `READER`, and `WRITER`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
 
 class BucketAccessControl(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -88,6 +172,79 @@ class BucketAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are `OWNER`, `READER`, and `WRITER`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BucketAccessControlArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Bucket ACLs can be managed authoritatively using the
+        `storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.
+
+        The BucketAccessControls resource manages the Access Control List
+        (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who
+        has access to your data and to what extent.
+
+        There are three roles that can be assigned to an entity:
+
+        READERs can get the bucket, though no acl property will be returned, and
+        list the bucket's objects.  WRITERs are READERs, and they can insert
+        objects into the bucket and delete the bucket's objects.  OWNERs are
+        WRITERs, and they can get the acl property of a bucket, update a bucket,
+        and call all BucketAccessControls methods on the bucket.  For more
+        information, see Access Control, with the caveat that this API uses
+        READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
+
+        To get more information about BucketAccessControl, see:
+
+        * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+
+        ## Example Usage
+        ### Storage Bucket Access Control Public Bucket
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        public_rule = gcp.storage.BucketAccessControl("publicRule",
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
+
+        ## Import
+
+        BucketAccessControl can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BucketAccessControlArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BucketAccessControlArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 entity: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

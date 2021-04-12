@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:sourcerepo/repository:Repository":
-		r, err = NewRepository(ctx, name, nil, pulumi.URN_(urn))
+		r = &Repository{}
 	case "gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding":
-		r, err = NewRepositoryIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &RepositoryIamBinding{}
 	case "gcp:sourcerepo/repositoryIamMember:RepositoryIamMember":
-		r, err = NewRepositoryIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &RepositoryIamMember{}
 	case "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy":
-		r, err = NewRepositoryIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RepositoryIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

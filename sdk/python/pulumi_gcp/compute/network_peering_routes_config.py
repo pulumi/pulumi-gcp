@@ -5,13 +5,99 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['NetworkPeeringRoutesConfig']
+__all__ = ['NetworkPeeringRoutesConfigArgs', 'NetworkPeeringRoutesConfig']
+
+@pulumi.input_type
+class NetworkPeeringRoutesConfigArgs:
+    def __init__(__self__, *,
+                 export_custom_routes: pulumi.Input[bool],
+                 import_custom_routes: pulumi.Input[bool],
+                 network: pulumi.Input[str],
+                 peering: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NetworkPeeringRoutesConfig resource.
+        :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.
+        :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes to the peer network.
+        :param pulumi.Input[str] network: The name of the primary network for the peering.
+        :param pulumi.Input[str] peering: Name of the peering.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "export_custom_routes", export_custom_routes)
+        pulumi.set(__self__, "import_custom_routes", import_custom_routes)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "peering", peering)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="exportCustomRoutes")
+    def export_custom_routes(self) -> pulumi.Input[bool]:
+        """
+        Whether to export the custom routes to the peer network.
+        """
+        return pulumi.get(self, "export_custom_routes")
+
+    @export_custom_routes.setter
+    def export_custom_routes(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "export_custom_routes", value)
+
+    @property
+    @pulumi.getter(name="importCustomRoutes")
+    def import_custom_routes(self) -> pulumi.Input[bool]:
+        """
+        Whether to import the custom routes to the peer network.
+        """
+        return pulumi.get(self, "import_custom_routes")
+
+    @import_custom_routes.setter
+    def import_custom_routes(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "import_custom_routes", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The name of the primary network for the peering.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def peering(self) -> pulumi.Input[str]:
+        """
+        Name of the peering.
+        """
+        return pulumi.get(self, "peering")
+
+    @peering.setter
+    def peering(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peering", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class NetworkPeeringRoutesConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -84,6 +170,87 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NetworkPeeringRoutesConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manage a network peering's route settings without managing the peering as
+        a whole. This resource is primarily intended for use with GCP-generated
+        peerings that shouldn't otherwise be managed by other tools. Deleting this
+        resource is a no-op and the peering will not be modified.
+
+        To get more information about NetworkPeeringRoutesConfig, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
+
+        ## Example Usage
+        ### Network Peering Routes Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_primary = gcp.compute.Network("networkPrimary", auto_create_subnetworks=False)
+        network_secondary = gcp.compute.Network("networkSecondary", auto_create_subnetworks=False)
+        peering_primary = gcp.compute.NetworkPeering("peeringPrimary",
+            network=network_primary.id,
+            peer_network=network_secondary.id,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes",
+            peering=peering_primary.name,
+            network=network_primary.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_secondary = gcp.compute.NetworkPeering("peeringSecondary",
+            network=network_secondary.id,
+            peer_network=network_primary.id)
+        ```
+
+        ## Import
+
+        NetworkPeeringRoutesConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NetworkPeeringRoutesConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkPeeringRoutesConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 export_custom_routes: Optional[pulumi.Input[bool]] = None,
+                 import_custom_routes: Optional[pulumi.Input[bool]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 peering: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

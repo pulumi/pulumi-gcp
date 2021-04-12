@@ -5,15 +5,86 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMBinding']
+__all__ = ['IAMBindingArgs', 'IAMBinding']
+
+@pulumi.input_type
+class IAMBindingArgs:
+    def __init__(__self__, *,
+                 members: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 role: pulumi.Input[str],
+                 service_account_id: pulumi.Input[str],
+                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
+        """
+        The set of arguments for constructing a IAMBinding resource.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
+        :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "service_account_id", service_account_id)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def members(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> pulumi.Input[str]:
+        """
+        The fully-qualified name of the service account to apply policy to.
+        """
+        return pulumi.get(self, "service_account_id")
+
+    @service_account_id.setter
+    def service_account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_id", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
 
 
 class IAMBinding(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -166,6 +237,167 @@ class IAMBinding(pulumi.CustomResource):
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IAMBindingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource, such as allowing the members to run operations as or modify the service account. To configure permissions for a service account on other GCP resources, use the google_project_iam set of resources.
+
+        Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
+
+        * `serviceAccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
+        * `serviceAccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
+        * `serviceAccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
+
+        > **Note:** `serviceAccount.IAMPolicy` **cannot** be used in conjunction with `serviceAccount.IAMBinding` and `serviceAccount.IAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_service\_account\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"],
+        )])
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can interact with")
+        admin_account_iam = gcp.service_account.IAMPolicy("admin-account-iam",
+            service_account_id=sa.name,
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_service\_account\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
+            condition=gcp.service.account.IAMBindingConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+                title="expires_after_2019_12_31",
+            ),
+            members=["user:jane@example.com"],
+            role="roles/iam.serviceAccountUser",
+            service_account_id=sa.name)
+        ```
+
+        ## google\_service\_account\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            member="user:jane@example.com")
+        # Allow SA service account use the default GCE account
+        gce_default_account_iam = gcp.service_account.IAMMember("gce-default-account-iam",
+            service_account_id=default.name,
+            role="roles/iam.serviceAccountUser",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
+            condition=gcp.service.account.IAMMemberConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+                title="expires_after_2019_12_31",
+            ),
+            member="user:jane@example.com",
+            role="roles/iam.serviceAccountUser",
+            service_account_id=sa.name)
+        ```
+
+        ## Import
+
+        Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
+
+        ```sh
+         $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+        ```
+
+        ```sh
+         $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
+        ```
+
+        ```sh
+         $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
+
+        ```sh
+         $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+        ```
+
+        ```sh
+         $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 service_account_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

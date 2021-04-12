@@ -5,15 +5,140 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Device']
+__all__ = ['DeviceArgs', 'Device']
+
+@pulumi.input_type
+class DeviceArgs:
+    def __init__(__self__, *,
+                 registry: pulumi.Input[str],
+                 blocked: Optional[pulumi.Input[bool]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
+                 gateway_config: Optional[pulumi.Input['DeviceGatewayConfigArgs']] = None,
+                 log_level: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Device resource.
+        :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
+        :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]] credentials: The credentials used to authenticate this device.
+               Structure is documented below.
+        :param pulumi.Input['DeviceGatewayConfigArgs'] gateway_config: Gateway-related configuration and state.
+               Structure is documented below.
+        :param pulumi.Input[str] log_level: The logging verbosity for device activity.
+               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
+        :param pulumi.Input[str] name: A unique name for the resource.
+        """
+        pulumi.set(__self__, "registry", registry)
+        if blocked is not None:
+            pulumi.set(__self__, "blocked", blocked)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
+        if gateway_config is not None:
+            pulumi.set(__self__, "gateway_config", gateway_config)
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> pulumi.Input[str]:
+        """
+        The name of the device registry where this device should be created.
+        """
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter
+    def blocked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If a device is blocked, connections or requests from this device will fail.
+        """
+        return pulumi.get(self, "blocked")
+
+    @blocked.setter
+    def blocked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blocked", value)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]]:
+        """
+        The credentials used to authenticate this device.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]]):
+        pulumi.set(self, "credentials", value)
+
+    @property
+    @pulumi.getter(name="gatewayConfig")
+    def gateway_config(self) -> Optional[pulumi.Input['DeviceGatewayConfigArgs']]:
+        """
+        Gateway-related configuration and state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_config")
+
+    @gateway_config.setter
+    def gateway_config(self, value: Optional[pulumi.Input['DeviceGatewayConfigArgs']]):
+        pulumi.set(self, "gateway_config", value)
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The logging verbosity for device activity.
+        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        """
+        return pulumi.get(self, "log_level")
+
+    @log_level.setter
+    def log_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_level", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The metadata key-value pairs assigned to the device.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Device(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -92,6 +217,89 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeviceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Google Cloud IoT Core device.
+
+        To get more information about Device, see:
+
+        * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/iot/docs/)
+
+        ## Example Usage
+        ### Cloudiot Device Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        registry = gcp.iot.Registry("registry")
+        test_device = gcp.iot.Device("test-device", registry=registry.id)
+        ```
+        ### Cloudiot Device Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        registry = gcp.iot.Registry("registry")
+        test_device = gcp.iot.Device("test-device",
+            registry=registry.id,
+            credentials=[gcp.iot.DeviceCredentialArgs(
+                public_key={
+                    "format": "RSA_PEM",
+                    "key": (lambda path: open(path).read())("test-fixtures/rsa_public.pem"),
+                },
+            )],
+            blocked=False,
+            log_level="INFO",
+            metadata={
+                "test_key_1": "test_value_1",
+            },
+            gateway_config=gcp.iot.DeviceGatewayConfigArgs(
+                gateway_type="NON_GATEWAY",
+            ))
+        ```
+
+        ## Import
+
+        Device can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iot/device:Device default {{registry}}/devices/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DeviceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeviceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 blocked: Optional[pulumi.Input[bool]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+                 gateway_config: Optional[pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']]] = None,
+                 log_level: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 registry: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

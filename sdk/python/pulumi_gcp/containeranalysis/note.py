@@ -5,15 +5,172 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Note']
+__all__ = ['NoteArgs', 'Note']
+
+@pulumi.input_type
+class NoteArgs:
+    def __init__(__self__, *,
+                 attestation_authority: pulumi.Input['NoteAttestationAuthorityArgs'],
+                 expiration_time: Optional[pulumi.Input[str]] = None,
+                 long_description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
+                 short_description: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Note resource.
+        :param pulumi.Input['NoteAttestationAuthorityArgs'] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+               For example, an organization might have one AttestationAuthority for
+               "QA" and one for "build". This Note is intended to act strictly as a
+               grouping mechanism for the attached Occurrences (Attestations). This
+               grouping mechanism also provides a security boundary, since IAM ACLs
+               gate the ability for a principle to attach an Occurrence to a given
+               Note. It also provides a single point of lookup to find all attached
+               Attestation Occurrences, even if they don't all live in the same
+               project.
+               Structure is documented below.
+        :param pulumi.Input[str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
+        :param pulumi.Input[str] long_description: A detailed description of the note
+        :param pulumi.Input[str] name: The name of the note.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
+        :param pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
+        :param pulumi.Input[str] short_description: A one sentence description of the note.
+        """
+        pulumi.set(__self__, "attestation_authority", attestation_authority)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
+        if long_description is not None:
+            pulumi.set(__self__, "long_description", long_description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if related_note_names is not None:
+            pulumi.set(__self__, "related_note_names", related_note_names)
+        if related_urls is not None:
+            pulumi.set(__self__, "related_urls", related_urls)
+        if short_description is not None:
+            pulumi.set(__self__, "short_description", short_description)
+
+    @property
+    @pulumi.getter(name="attestationAuthority")
+    def attestation_authority(self) -> pulumi.Input['NoteAttestationAuthorityArgs']:
+        """
+        Note kind that represents a logical attestation "role" or "authority".
+        For example, an organization might have one AttestationAuthority for
+        "QA" and one for "build". This Note is intended to act strictly as a
+        grouping mechanism for the attached Occurrences (Attestations). This
+        grouping mechanism also provides a security boundary, since IAM ACLs
+        gate the ability for a principle to attach an Occurrence to a given
+        Note. It also provides a single point of lookup to find all attached
+        Attestation Occurrences, even if they don't all live in the same
+        project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attestation_authority")
+
+    @attestation_authority.setter
+    def attestation_authority(self, value: pulumi.Input['NoteAttestationAuthorityArgs']):
+        pulumi.set(self, "attestation_authority", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time of expiration for this note. Leave empty if note does not expire.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter(name="longDescription")
+    def long_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A detailed description of the note
+        """
+        return pulumi.get(self, "long_description")
+
+    @long_description.setter
+    def long_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the note.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="relatedNoteNames")
+    def related_note_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of other notes related to this note.
+        """
+        return pulumi.get(self, "related_note_names")
+
+    @related_note_names.setter
+    def related_note_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "related_note_names", value)
+
+    @property
+    @pulumi.getter(name="relatedUrls")
+    def related_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
+        """
+        URLs associated with this note and related metadata.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "related_urls")
+
+    @related_urls.setter
+    def related_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]):
+        pulumi.set(self, "related_urls", value)
+
+    @property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A one sentence description of the note.
+        """
+        return pulumi.get(self, "short_description")
+
+    @short_description.setter
+    def short_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_description", value)
 
 
 class Note(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -116,6 +273,104 @@ class Note(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NoteArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Container Analysis note is a high-level piece of metadata that
+        describes a type of analysis that can be done for a resource.
+
+        To get more information about Note, see:
+
+        * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/container-analysis/)
+            * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
+
+        ## Example Usage
+        ### Container Analysis Note Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        ```
+        ### Container Analysis Note Attestation Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="Attestor Note",
+                ),
+            ),
+            expiration_time="2120-10-02T15:01:23.045123456Z",
+            long_description="a longer description of test note",
+            related_urls=[
+                gcp.containeranalysis.NoteRelatedUrlArgs(
+                    label="foo",
+                    url="some.url",
+                ),
+                gcp.containeranalysis.NoteRelatedUrlArgs(
+                    url="google.com",
+                ),
+            ],
+            short_description="test note")
+        ```
+
+        ## Import
+
+        Note can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:containeranalysis/note:Note default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:containeranalysis/note:Note default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NoteArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NoteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attestation_authority: Optional[pulumi.Input[pulumi.InputType['NoteAttestationAuthorityArgs']]] = None,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
+                 long_description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
+                 short_description: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

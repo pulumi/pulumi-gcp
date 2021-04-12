@@ -5,15 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Topic']
+__all__ = ['TopicArgs', 'Topic']
+
+@pulumi.input_type
+class TopicArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Topic resource.
+        :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
+               to messages published on this topic. Your project's PubSub service account
+               (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+               `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+               The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Topic.
+        :param pulumi.Input['TopicMessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+               messages published to the topic may be stored. If not present, then no
+               constraints are in effect.
+               Structure is documented below.
+        :param pulumi.Input[str] name: Name of the topic.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if message_storage_policy is not None:
+            pulumi.set(__self__, "message_storage_policy", message_storage_policy)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Cloud KMS CryptoKey to be used to protect access
+        to messages published on this topic. Your project's PubSub service account
+        (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to this Topic.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="messageStoragePolicy")
+    def message_storage_policy(self) -> Optional[pulumi.Input['TopicMessageStoragePolicyArgs']]:
+        """
+        Policy constraining the set of Google Cloud Platform regions where
+        messages published to the topic may be stored. If not present, then no
+        constraints are in effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_storage_policy")
+
+    @message_storage_policy.setter
+    def message_storage_policy(self, value: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']]):
+        pulumi.set(self, "message_storage_policy", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Topic(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -101,6 +205,95 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[TopicArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A named resource to which messages are sent by publishers.
+
+        To get more information about Topic, see:
+
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+        * How-to Guides
+            * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+
+        > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
+        by using the `projects.ServiceIdentity` resource.
+
+        ## Example Usage
+        ### Pubsub Topic Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", labels={
+            "foo": "bar",
+        })
+        ```
+        ### Pubsub Topic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="global")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
+        ```
+        ### Pubsub Topic Geo Restricted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+            allowed_persistence_regions=["europe-west3"],
+        ))
+        ```
+
+        ## Import
+
+        Topic can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TopicArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

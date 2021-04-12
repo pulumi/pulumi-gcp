@@ -5,15 +5,64 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IamAuditConfig']
+__all__ = ['IamAuditConfigArgs', 'IamAuditConfig']
+
+@pulumi.input_type
+class IamAuditConfigArgs:
+    def __init__(__self__, *,
+                 audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]],
+                 folder: pulumi.Input[str],
+                 service: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a IamAuditConfig resource.
+        :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission. This can be specified multiple times.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging. The special value allServices covers all services.
+        """
+        pulumi.set(__self__, "audit_log_configs", audit_log_configs)
+        pulumi.set(__self__, "folder", folder)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="auditLogConfigs")
+    def audit_log_configs(self) -> pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]:
+        """
+        The configuration for logging of each type of permission. This can be specified multiple times.
+        """
+        return pulumi.get(self, "audit_log_configs")
+
+    @audit_log_configs.setter
+    def audit_log_configs(self, value: pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]):
+        pulumi.set(self, "audit_log_configs", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: pulumi.Input[str]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Service which will be enabled for audit logging. The special value allServices covers all services.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
 
 
 class IamAuditConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -30,6 +79,35 @@ class IamAuditConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission. This can be specified multiple times.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging. The special value allServices covers all services.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IamAuditConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a IamAuditConfig resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param IamAuditConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IamAuditConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

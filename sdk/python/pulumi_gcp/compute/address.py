@@ -5,13 +5,225 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Address']
+__all__ = ['AddressArgs', 'Address']
+
+@pulumi.input_type
+class AddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_tier: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Address resource.
+        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
+               IPv4 is supported. An address may only be specified for INTERNAL
+               address types. The IP address must be inside the specified subnetwork,
+               if any.
+        :param pulumi.Input[str] address_type: The type of address to reserve.
+               Default value is `EXTERNAL`.
+               Possible values are `INTERNAL` and `EXTERNAL`.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?`
+               which means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
+               specified, it is assumed to be PREMIUM.
+               Possible values are `PREMIUM` and `STANDARD`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
+               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+               * VPC_PEERING for addresses that are reserved for VPC peer networks.
+               This should only be set when using an Internal address.
+               Possible values are `GCE_ENDPOINT`, `VPC_PEERING`, and `SHARED_LOADBALANCER_VIP`.
+        :param pulumi.Input[str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
+               address is specified, it must be within the subnetwork's IP range.
+               This field can only be used with INTERNAL type with
+               GCE_ENDPOINT/DNS_RESOLVER purposes.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if address_type is not None:
+            pulumi.set(__self__, "address_type", address_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_tier is not None:
+            pulumi.set(__self__, "network_tier", network_tier)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The static external IP address represented by this resource. Only
+        IPv4 is supported. An address may only be specified for INTERNAL
+        address types. The IP address must be inside the specified subnetwork,
+        if any.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of address to reserve.
+        Default value is `EXTERNAL`.
+        Possible values are `INTERNAL` and `EXTERNAL`.
+        """
+        return pulumi.get(self, "address_type")
+
+    @address_type.setter
+    def address_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels to apply to this address.  A list of key->value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?`
+        which means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The networking tier used for configuring this address. If this field is not
+        specified, it is assumed to be PREMIUM.
+        Possible values are `PREMIUM` and `STANDARD`.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        The purpose of this resource, which can be one of the following values:
+        * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+        * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        * VPC_PEERING for addresses that are reserved for VPC peer networks.
+        This should only be set when using an Internal address.
+        Possible values are `GCE_ENDPOINT`, `VPC_PEERING`, and `SHARED_LOADBALANCER_VIP`.
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region in which the created address should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the subnetwork in which to reserve the address. If an IP
+        address is specified, it must be within the subnetwork's IP range.
+        This field can only be used with INTERNAL type with
+        GCE_ENDPOINT/DNS_RESOLVER purposes.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
 
 
 class Address(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -166,6 +378,143 @@ class Address(pulumi.CustomResource):
                This field can only be used with INTERNAL type with
                GCE_ENDPOINT/DNS_RESOLVER purposes.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[AddressArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents an Address resource.
+
+        Each virtual machine instance has an ephemeral internal IP address and,
+        optionally, an external IP address. To communicate between instances on
+        the same network, you can use an instance's internal IP address. To
+        communicate with the Internet and instances outside of the same network,
+        you must specify the instance's external IP address.
+
+        Internal IP addresses are ephemeral and only belong to an instance for
+        the lifetime of the instance; if the instance is deleted and recreated,
+        the instance is assigned a new internal IP address, either by Compute
+        Engine or by you. External IP addresses can be either ephemeral or
+        static.
+
+        To get more information about Address, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
+        * How-to Guides
+            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+            * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+
+        ## Example Usage
+        ### Address Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ip_address = gcp.compute.Address("ipAddress")
+        ```
+        ### Address With Subnetwork
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        internal_with_subnet_and_address = gcp.compute.Address("internalWithSubnetAndAddress",
+            subnetwork=default_subnetwork.id,
+            address_type="INTERNAL",
+            address="10.0.42.42",
+            region="us-central1")
+        ```
+        ### Address With Gce Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        internal_with_gce_endpoint = gcp.compute.Address("internalWithGceEndpoint",
+            address_type="INTERNAL",
+            purpose="GCE_ENDPOINT")
+        ```
+        ### Instance With Ip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        static = gcp.compute.Address("static")
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        instance_with_ip = gcp.compute.Instance("instanceWithIp",
+            machine_type="f1-micro",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=debian_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
+                    nat_ip=static.address,
+                )],
+            )])
+        ```
+
+        ## Import
+
+        Address can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AddressArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AddressArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_tier: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

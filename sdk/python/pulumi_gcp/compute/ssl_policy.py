@@ -5,13 +5,169 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SSLPolicy']
+__all__ = ['SSLPolicyArgs', 'SSLPolicy']
+
+@pulumi.input_type
+class SSLPolicyArgs:
+    def __init__(__self__, *,
+                 custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SSLPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_features: Profile specifies the set of SSL features that can be used by the
+               load balancer when negotiating SSL with clients. This can be one of
+               `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+               the set of SSL features to enable must be specified in the
+               `customFeatures` field.
+               See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+               for which ciphers are available to use. **Note**: this argument
+               *must* be present when using the `CUSTOM` profile. This argument
+               *must not* be present when using any other profile.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
+               to establish a connection with the load balancer.
+               Default value is `TLS_1_0`.
+               Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the
+               load balancer when negotiating SSL with clients. If using `CUSTOM`,
+               the set of SSL features to enable must be specified in the
+               `customFeatures` field.
+               See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+               for information on what cipher suites each profile provides. If
+               `CUSTOM` is used, the `custom_features` attribute **must be set**.
+               Default value is `COMPATIBLE`.
+               Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if custom_features is not None:
+            pulumi.set(__self__, "custom_features", custom_features)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if min_tls_version is not None:
+            pulumi.set(__self__, "min_tls_version", min_tls_version)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Profile specifies the set of SSL features that can be used by the
+        load balancer when negotiating SSL with clients. This can be one of
+        `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+        the set of SSL features to enable must be specified in the
+        `customFeatures` field.
+        See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+        for which ciphers are available to use. **Note**: this argument
+        *must* be present when using the `CUSTOM` profile. This argument
+        *must not* be present when using any other profile.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @custom_features.setter
+    def custom_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_features", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum version of SSL protocol that can be used by the clients
+        to establish a connection with the load balancer.
+        Default value is `TLS_1_0`.
+        Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+        """
+        return pulumi.get(self, "min_tls_version")
+
+    @min_tls_version.setter
+    def min_tls_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_tls_version", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Profile specifies the set of SSL features that can be used by the
+        load balancer when negotiating SSL with clients. If using `CUSTOM`,
+        the set of SSL features to enable must be specified in the
+        `customFeatures` field.
+        See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+        for information on what cipher suites each profile provides. If
+        `CUSTOM` is used, the `custom_features` attribute **must be set**.
+        Default value is `COMPATIBLE`.
+        Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "profile", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class SSLPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -105,6 +261,82 @@ class SSLPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[SSLPolicyArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a SSL policy. SSL policies give you the ability to control the
+        features of SSL that your SSL proxy or HTTPS load balancer negotiates.
+
+        To get more information about SslPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
+        * How-to Guides
+            * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+
+        ## Example Usage
+        ### Ssl Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
+        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
+            min_tls_version="TLS_1_2",
+            profile="MODERN")
+        custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
+            custom_features=[
+                "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+            ],
+            min_tls_version="TLS_1_2",
+            profile="CUSTOM")
+        ```
+
+        ## Import
+
+        SslPolicy can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SSLPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SSLPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

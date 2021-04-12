@@ -5,15 +5,263 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Authority']
+__all__ = ['AuthorityArgs', 'Authority']
+
+@pulumi.input_type
+class AuthorityArgs:
+    def __init__(__self__, *,
+                 certificate_authority_id: pulumi.Input[str],
+                 config: pulumi.Input['AuthorityConfigArgs'],
+                 key_spec: pulumi.Input['AuthorityKeySpecArgs'],
+                 location: pulumi.Input[str],
+                 disable_on_delete: Optional[pulumi.Input[bool]] = None,
+                 gcs_bucket: Optional[pulumi.Input[str]] = None,
+                 issuing_options: Optional[pulumi.Input['AuthorityIssuingOptionsArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Authority resource.
+        :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
+        :param pulumi.Input['AuthorityConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
+               Structure is documented below.
+        :param pulumi.Input['AuthorityKeySpecArgs'] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+               is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
+               certificate. Otherwise, it is used to sign a CSR.
+               Structure is documented below.
+        :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
+               running `gcloud beta privateca locations list`.
+        :param pulumi.Input[bool] disable_on_delete: If set to `true`, the Certificate Authority will be disabled
+               on delete. If the Certitificate Authorities is not disabled,
+               it cannot be deleted. Use with care. Defaults to `false`.
+        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+               such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+               (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+               my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+               created.
+        :param pulumi.Input['AuthorityIssuingOptionsArgs'] issuing_options: Options that affect all certificates issued by a CertificateAuthority.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
+               "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+               fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] tier: The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
+               server side certificates issued, and support certificate revocation. For more details,
+               please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
+               Default value is `ENTERPRISE`.
+               Possible values are `ENTERPRISE` and `DEVOPS`.
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority.
+               > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+               be manually activated (via Cloud Console of `gcloud`) before they can
+               issue certificates.
+               Default value is `SELF_SIGNED`.
+               Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+        """
+        pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "key_spec", key_spec)
+        pulumi.set(__self__, "location", location)
+        if disable_on_delete is not None:
+            pulumi.set(__self__, "disable_on_delete", disable_on_delete)
+        if gcs_bucket is not None:
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+        if issuing_options is not None:
+            pulumi.set(__self__, "issuing_options", issuing_options)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityId")
+    def certificate_authority_id(self) -> pulumi.Input[str]:
+        """
+        The user provided Resource ID for this Certificate Authority.
+        """
+        return pulumi.get(self, "certificate_authority_id")
+
+    @certificate_authority_id.setter
+    def certificate_authority_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_authority_id", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Input['AuthorityConfigArgs']:
+        """
+        The config used to create a self-signed X.509 certificate or CSR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input['AuthorityConfigArgs']):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="keySpec")
+    def key_spec(self) -> pulumi.Input['AuthorityKeySpecArgs']:
+        """
+        Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+        is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
+        certificate. Otherwise, it is used to sign a CSR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "key_spec")
+
+    @key_spec.setter
+    def key_spec(self, value: pulumi.Input['AuthorityKeySpecArgs']):
+        pulumi.set(self, "key_spec", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        Location of the CertificateAuthority. A full list of valid locations can be found by
+        running `gcloud beta privateca locations list`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="disableOnDelete")
+    def disable_on_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the Certificate Authority will be disabled
+        on delete. If the Certitificate Authorities is not disabled,
+        it cannot be deleted. Use with care. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_on_delete")
+
+    @disable_on_delete.setter
+    def disable_on_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_on_delete", value)
+
+    @property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+        such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+        (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+        my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+        created.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @gcs_bucket.setter
+    def gcs_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_bucket", value)
+
+    @property
+    @pulumi.getter(name="issuingOptions")
+    def issuing_options(self) -> Optional[pulumi.Input['AuthorityIssuingOptionsArgs']]:
+        """
+        Options that affect all certificates issued by a CertificateAuthority.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "issuing_options")
+
+    @issuing_options.setter
+    def issuing_options(self, value: Optional[pulumi.Input['AuthorityIssuingOptionsArgs']]):
+        pulumi.set(self, "issuing_options", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels with user-defined metadata.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
+        "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+        fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifetime", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
+        server side certificates issued, and support certificate revocation. For more details,
+        please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
+        Default value is `ENTERPRISE`.
+        Possible values are `ENTERPRISE` and `DEVOPS`.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Type of this CertificateAuthority.
+        > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+        be manually activated (via Cloud Console of `gcloud`) before they can
+        issue certificates.
+        Default value is `SELF_SIGNED`.
+        Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class Authority(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -178,6 +426,147 @@ class Authority(pulumi.CustomResource):
                Default value is `SELF_SIGNED`.
                Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AuthorityArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A CertificateAuthority represents an individual Certificate Authority. A
+        CertificateAuthority can be used to create Certificates.
+
+        > **Warning:** Please remember that all resources created during preview (via this provider)
+        will be deleted when CA service transitions to General Availability (GA). Relying on these
+        certificate authorities for production traffic is discouraged.
+
+        To get more information about CertificateAuthority, see:
+
+        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+
+        ## Example Usage
+        ### Privateca Certificate Authority Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                    ),
+                    common_name="my-certificate-authority",
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
+                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            disable_on_delete=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Privateca Certificate Authority Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            tier="DEVOPS",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        country_code="US",
+                        organization="HashiCorp",
+                        organizational_unit="Terraform",
+                        locality="San Francisco",
+                        province="CA",
+                        street_address="101 2nd St #700",
+                        postal_code="94105",
+                    ),
+                    common_name="my-certificate-authority",
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                        email_addresses=["email@example.com"],
+                        ip_addresses=["127.0.0.1"],
+                        uris=["http://www.ietf.org/rfc/rfc3986.txt"],
+                    ),
+                ),
+                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
+                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                ),
+            ),
+            lifetime="86400s",
+            issuing_options=gcp.certificateauthority.AuthorityIssuingOptionsArgs(
+                include_ca_cert_url=True,
+                include_crl_access_url=False,
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="EC_P256_SHA256",
+            ),
+            disable_on_delete=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        CertificateAuthority can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{certificate_authority_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{certificate_authority_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AuthorityArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AuthorityArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_authority_id: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
+                 disable_on_delete: Optional[pulumi.Input[bool]] = None,
+                 gcs_bucket: Optional[pulumi.Input[str]] = None,
+                 issuing_options: Optional[pulumi.Input[pulumi.InputType['AuthorityIssuingOptionsArgs']]] = None,
+                 key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

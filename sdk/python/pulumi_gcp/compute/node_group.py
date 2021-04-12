@@ -5,15 +5,155 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NodeGroup']
+__all__ = ['NodeGroupArgs', 'NodeGroup']
+
+@pulumi.input_type
+class NodeGroupArgs:
+    def __init__(__self__, *,
+                 node_template: pulumi.Input[str],
+                 size: pulumi.Input[int],
+                 autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NodeGroup resource.
+        :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
+        :param pulumi.Input[int] size: The total number of nodes in the node group.
+        :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
+               group autoscaler to automatically manage the sizes of your node groups.
+               Structure is documented below.
+        :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] zone: Zone where this node group is located
+        """
+        pulumi.set(__self__, "node_template", node_template)
+        pulumi.set(__self__, "size", size)
+        if autoscaling_policy is not None:
+            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="nodeTemplate")
+    def node_template(self) -> pulumi.Input[str]:
+        """
+        The URL of the node template to which this node group belongs.
+        """
+        return pulumi.get(self, "node_template")
+
+    @node_template.setter
+    def node_template(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_template", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[int]:
+        """
+        The total number of nodes in the node group.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="autoscalingPolicy")
+    def autoscaling_policy(self) -> Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']]:
+        """
+        If you use sole-tenant nodes for your workloads, you can use the node
+        group autoscaler to automatically manage the sizes of your node groups.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_policy")
+
+    @autoscaling_policy.setter
+    def autoscaling_policy(self, value: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']]):
+        pulumi.set(self, "autoscaling_policy", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional textual description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone where this node group is located
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class NodeGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -114,6 +254,110 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[int] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NodeGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+
+        To get more information about NodeGroup, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+        * How-to Guides
+            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through provider config or through external changes will cause
+        the provider to delete and recreate the node group.
+
+        ## Example Usage
+        ### Node Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for the Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id)
+        ```
+        ### Node Group Autoscaling Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
+            maintenance_policy="RESTART_IN_PLACE",
+            size=1,
+            node_template=soletenant_tmpl.id,
+            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
+                mode="ONLY_SCALE_OUT",
+                min_nodes=1,
+                max_nodes=10,
+            ))
+        ```
+
+        ## Import
+
+        NodeGroup can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NodeGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NodeGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_template: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

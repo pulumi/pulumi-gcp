@@ -5,15 +5,258 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FhirStore']
+__all__ = ['FhirStoreArgs', 'FhirStore']
+
+@pulumi.input_type
+class FhirStoreArgs:
+    def __init__(__self__, *,
+                 dataset: pulumi.Input[str],
+                 disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
+                 disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+                 enable_history_import: Optional[pulumi.Input[bool]] = None,
+                 enable_update_create: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FhirStore resource.
+        :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
+               'projects/{project}/locations/{location}/datasets/{dataset}'
+        :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
+               creation. The default value is false, meaning that the API will enforce referential integrity and fail the
+               requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
+               will skip referential integrity check. Consequently, operations that rely on references, such as
+               Patient.get$everything, will not return all the results if broken references exist.
+               ** Changing this property may recreate the FHIR store (removing all data) **
+        :param pulumi.Input[bool] disable_resource_versioning: Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
+               of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
+               versions to be recorded automatically. The historical versions can be fetched through the history APIs, but
+               cannot be updated. If set to true, no historical versions will be kept. The server will send back errors for
+               attempts to read the historical versions.
+               ** Changing this property may recreate the FHIR store (removing all data) **
+        :param pulumi.Input[bool] enable_history_import: Whether to allow the bulk import API to accept history bundles and directly insert historical resource
+               versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
+               occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
+               will fail with an error.
+               ** Changing this property may recreate the FHIR store (removing all data) **
+               ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
+        :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
+               operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
+               the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
+               logs with appropriate levels of care if client-specified resource IDs contain sensitive data such as patient
+               identifiers, those IDs will be part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
+               notifications.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize FHIR stores.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+               conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+               Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+               bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+               No more than 64 labels can be associated with a given store.
+               An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] name: The resource name for the FhirStore.
+               ** Changing this property may recreate the FHIR store (removing all data) **
+        :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+               this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+               resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+               from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+               bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+               the order of dozens of seconds) is expected before the results show up in the streaming destination.
+               Structure is documented below.
+        :param pulumi.Input[str] version: The FHIR specification version.
+               Default value is `STU3`.
+               Possible values are `DSTU2`, `STU3`, and `R4`.
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        if disable_referential_integrity is not None:
+            pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
+        if disable_resource_versioning is not None:
+            pulumi.set(__self__, "disable_resource_versioning", disable_resource_versioning)
+        if enable_history_import is not None:
+            pulumi.set(__self__, "enable_history_import", enable_history_import)
+        if enable_update_create is not None:
+            pulumi.set(__self__, "enable_update_create", enable_update_create)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
+        if stream_configs is not None:
+            pulumi.set(__self__, "stream_configs", stream_configs)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> pulumi.Input[str]:
+        """
+        Identifies the dataset addressed by this request. Must be in the format
+        'projects/{project}/locations/{location}/datasets/{dataset}'
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter(name="disableReferentialIntegrity")
+    def disable_referential_integrity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
+        creation. The default value is false, meaning that the API will enforce referential integrity and fail the
+        requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
+        will skip referential integrity check. Consequently, operations that rely on references, such as
+        Patient.get$everything, will not return all the results if broken references exist.
+        ** Changing this property may recreate the FHIR store (removing all data) **
+        """
+        return pulumi.get(self, "disable_referential_integrity")
+
+    @disable_referential_integrity.setter
+    def disable_referential_integrity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_referential_integrity", value)
+
+    @property
+    @pulumi.getter(name="disableResourceVersioning")
+    def disable_resource_versioning(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
+        of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
+        versions to be recorded automatically. The historical versions can be fetched through the history APIs, but
+        cannot be updated. If set to true, no historical versions will be kept. The server will send back errors for
+        attempts to read the historical versions.
+        ** Changing this property may recreate the FHIR store (removing all data) **
+        """
+        return pulumi.get(self, "disable_resource_versioning")
+
+    @disable_resource_versioning.setter
+    def disable_resource_versioning(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_resource_versioning", value)
+
+    @property
+    @pulumi.getter(name="enableHistoryImport")
+    def enable_history_import(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow the bulk import API to accept history bundles and directly insert historical resource
+        versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
+        occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
+        will fail with an error.
+        ** Changing this property may recreate the FHIR store (removing all data) **
+        ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
+        """
+        return pulumi.get(self, "enable_history_import")
+
+    @enable_history_import.setter
+    def enable_history_import(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_history_import", value)
+
+    @property
+    @pulumi.getter(name="enableUpdateCreate")
+    def enable_update_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
+        operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
+        the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
+        logs with appropriate levels of care if client-specified resource IDs contain sensitive data such as patient
+        identifiers, those IDs will be part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
+        notifications.
+        """
+        return pulumi.get(self, "enable_update_create")
+
+    @enable_update_create.setter
+    def enable_update_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_update_create", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-supplied key-value pairs used to organize FHIR stores.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        No more than 64 labels can be associated with a given store.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the FhirStore.
+        ** Changing this property may recreate the FHIR store (removing all data) **
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
+
+    @property
+    @pulumi.getter(name="streamConfigs")
+    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]:
+        """
+        A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+        resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+        from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+        bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+        the order of dozens of seconds) is expected before the results show up in the streaming destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "stream_configs")
+
+    @stream_configs.setter
+    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]):
+        pulumi.set(self, "stream_configs", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FHIR specification version.
+        Default value is `STU3`.
+        Possible values are `DSTU2`, `STU3`, and `R4`.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class FhirStore(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -161,6 +404,120 @@ class FhirStore(pulumi.CustomResource):
                Default value is `STU3`.
                Possible values are `DSTU2`, `STU3`, and `R4`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FhirStoreArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
+        standard for Healthcare information exchange
+
+        To get more information about FhirStore, see:
+
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.fhirStores)
+        * How-to Guides
+            * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
+
+        ## Example Usage
+        ### Healthcare Fhir Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic")
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        default = gcp.healthcare.FhirStore("default",
+            dataset=dataset.id,
+            version="R4",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
+                pubsub_topic=topic.id,
+            ),
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+        ### Healthcare Fhir Store Streaming Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        bq_dataset = gcp.bigquery.Dataset("bqDataset",
+            dataset_id="bq_example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
+        default = gcp.healthcare.FhirStore("default",
+            dataset=dataset.id,
+            version="R4",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            labels={
+                "label1": "labelvalue1",
+            },
+            stream_configs=[gcp.healthcare.FhirStoreStreamConfigArgs(
+                resource_types=["Observation"],
+                bigquery_destination=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationArgs(
+                    dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
+                    schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
+                        recursive_structure_depth=3,
+                    ),
+                ),
+            )])
+        topic = gcp.pubsub.Topic("topic")
+        ```
+
+        ## Import
+
+        FhirStore can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FhirStoreArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FhirStoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
+                 disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+                 enable_history_import: Optional[pulumi.Input[bool]] = None,
+                 enable_update_create: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['IAMPolicy']
+__all__ = ['IAMPolicyArgs', 'IAMPolicy']
+
+@pulumi.input_type
+class IAMPolicyArgs:
+    def __init__(__self__, *,
+                 org_id: pulumi.Input[str],
+                 policy_data: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a IAMPolicy resource.
+        :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
+        """
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "policy_data", policy_data)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> pulumi.Input[str]:
+        """
+        The numeric ID of the organization in which you want to manage the audit logging config.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="policyData")
+    def policy_data(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy_data")
+
+    @policy_data.setter
+    def policy_data(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_data", value)
 
 
 class IAMPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -26,6 +60,34 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IAMPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a IAMPolicy resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param IAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 policy_data: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

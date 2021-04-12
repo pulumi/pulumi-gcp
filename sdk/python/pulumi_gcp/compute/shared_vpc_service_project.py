@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SharedVPCServiceProject']
+__all__ = ['SharedVPCServiceProjectArgs', 'SharedVPCServiceProject']
+
+@pulumi.input_type
+class SharedVPCServiceProjectArgs:
+    def __init__(__self__, *,
+                 host_project: pulumi.Input[str],
+                 service_project: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a SharedVPCServiceProject resource.
+        :param pulumi.Input[str] host_project: The ID of a host project to associate.
+        :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
+        """
+        pulumi.set(__self__, "host_project", host_project)
+        pulumi.set(__self__, "service_project", service_project)
+
+    @property
+    @pulumi.getter(name="hostProject")
+    def host_project(self) -> pulumi.Input[str]:
+        """
+        The ID of a host project to associate.
+        """
+        return pulumi.get(self, "host_project")
+
+    @host_project.setter
+    def host_project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_project", value)
+
+    @property
+    @pulumi.getter(name="serviceProject")
+    def service_project(self) -> pulumi.Input[str]:
+        """
+        The ID of the project that will serve as a Shared VPC service project.
+        """
+        return pulumi.get(self, "service_project")
+
+    @service_project.setter
+    def service_project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_project", value)
 
 
 class SharedVPCServiceProject(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +95,64 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SharedVPCServiceProjectArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Enables the Google Compute Engine
+        [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
+        feature for a project, assigning it as a Shared VPC service project associated
+        with a given host project.
+
+        For more information, see,
+        [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
+        where the Shared VPC feature is referred to by its former name "XPN".
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service1 = gcp.compute.SharedVPCServiceProject("service1",
+            host_project="host-project-id",
+            service_project="service-project-id-1")
+        ```
+
+        For a complete Shared VPC example with both host and service projects, see
+        [`compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
+
+        ## Import
+
+        Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject service1 host-project-id/service-project-id-1
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SharedVPCServiceProjectArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SharedVPCServiceProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 host_project: Optional[pulumi.Input[str]] = None,
+                 service_project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

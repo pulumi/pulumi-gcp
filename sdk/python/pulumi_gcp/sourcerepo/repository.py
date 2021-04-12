@@ -5,15 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Repository']
+__all__ = ['RepositoryArgs', 'Repository']
+
+@pulumi.input_type
+class RepositoryArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None):
+        """
+        The set of arguments for constructing a Repository resource.
+        :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
+               The repo name may contain slashes. eg, `name/with/slash`
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+               Keyed by the topic names.
+               Structure is documented below.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if pubsub_configs is not None:
+            pulumi.set(__self__, "pubsub_configs", pubsub_configs)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the repository, of the form `{{repo}}`.
+        The repo name may contain slashes. eg, `name/with/slash`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pubsubConfigs")
+    def pubsub_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]:
+        """
+        How this repository publishes a change in the repository through Cloud Pub/Sub.
+        Keyed by the topic names.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pubsub_configs")
+
+    @pubsub_configs.setter
+    def pubsub_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
+        pulumi.set(self, "pubsub_configs", value)
 
 
 class Repository(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -80,6 +144,80 @@ class Repository(pulumi.CustomResource):
                Keyed by the topic names.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[RepositoryArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A repository (or repo) is a Git repository storing versioned source content.
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/source-repositories/)
+
+        ## Example Usage
+        ### Sourcerepo Repository Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.sourcerepo.Repository("my-repo")
+        ```
+        ### Sourcerepo Repository Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_account = gcp.service_account.Account("testAccount",
+            account_id="my-account",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic")
+        my_repo = gcp.sourcerepo.Repository("my-repo", pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
+            topic=topic.id,
+            message_format="JSON",
+            service_account_email=test_account.email,
+        )])
+        ```
+
+        ## Import
+
+        Repository can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RepositoryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RepositoryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

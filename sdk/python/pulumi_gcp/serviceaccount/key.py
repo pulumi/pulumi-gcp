@@ -5,13 +5,126 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Key']
+__all__ = ['KeyArgs', 'Key']
+
+@pulumi.input_type
+class KeyArgs:
+    def __init__(__self__, *,
+                 service_account_id: pulumi.Input[str],
+                 keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 key_algorithm: Optional[pulumi.Input[str]] = None,
+                 private_key_type: Optional[pulumi.Input[str]] = None,
+                 public_key_data: Optional[pulumi.Input[str]] = None,
+                 public_key_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Key resource.
+        :param pulumi.Input[str] service_account_id: The Service account id of the Key. This can be a string in the format
+               `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
+               unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+        :param pulumi.Input[Mapping[str, Any]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
+               Valid values are listed at
+               [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
+               (only used on create)
+        :param pulumi.Input[str] private_key_type: The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
+        :param pulumi.Input[str] public_key_data: Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+        :param pulumi.Input[str] public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
+        """
+        pulumi.set(__self__, "service_account_id", service_account_id)
+        if keepers is not None:
+            pulumi.set(__self__, "keepers", keepers)
+        if key_algorithm is not None:
+            pulumi.set(__self__, "key_algorithm", key_algorithm)
+        if private_key_type is not None:
+            pulumi.set(__self__, "private_key_type", private_key_type)
+        if public_key_data is not None:
+            pulumi.set(__self__, "public_key_data", public_key_data)
+        if public_key_type is not None:
+            pulumi.set(__self__, "public_key_type", public_key_type)
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> pulumi.Input[str]:
+        """
+        The Service account id of the Key. This can be a string in the format
+        `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
+        unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+        """
+        return pulumi.get(self, "service_account_id")
+
+    @service_account_id.setter
+    def service_account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_id", value)
+
+    @property
+    @pulumi.getter
+    def keepers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        """
+        return pulumi.get(self, "keepers")
+
+    @keepers.setter
+    def keepers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "keepers", value)
+
+    @property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
+        Valid values are listed at
+        [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
+        (only used on create)
+        """
+        return pulumi.get(self, "key_algorithm")
+
+    @key_algorithm.setter
+    def key_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_algorithm", value)
+
+    @property
+    @pulumi.getter(name="privateKeyType")
+    def private_key_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
+        """
+        return pulumi.get(self, "private_key_type")
+
+    @private_key_type.setter
+    def private_key_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_type", value)
+
+    @property
+    @pulumi.getter(name="publicKeyData")
+    def public_key_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+        """
+        return pulumi.get(self, "public_key_data")
+
+    @public_key_data.setter
+    def public_key_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key_data", value)
+
+    @property
+    @pulumi.getter(name="publicKeyType")
+    def public_key_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
+        """
+        return pulumi.get(self, "public_key_type")
+
+    @public_key_type.setter
+    def public_key_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key_type", value)
 
 
 class Key(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +177,62 @@ class Key(pulumi.CustomResource):
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
                unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates and manages service account keys, which allow the use of a service account outside of Google Cloud.
+
+        * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+
+        ## Example Usage
+        ### Creating A New Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            public_key_type="TYPE_X509_PEM_FILE")
+        ```
+
+        ## Import
+
+        This resource does not support import.
+
+        :param str resource_name: The name of the resource.
+        :param KeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 key_algorithm: Optional[pulumi.Input[str]] = None,
+                 private_key_type: Optional[pulumi.Input[str]] = None,
+                 public_key_data: Optional[pulumi.Input[str]] = None,
+                 public_key_type: Optional[pulumi.Input[str]] = None,
+                 service_account_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

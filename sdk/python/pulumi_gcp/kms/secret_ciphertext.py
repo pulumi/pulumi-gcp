@@ -5,13 +5,73 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SecretCiphertext']
+__all__ = ['SecretCiphertextArgs', 'SecretCiphertext']
+
+@pulumi.input_type
+class SecretCiphertextArgs:
+    def __init__(__self__, *,
+                 crypto_key: pulumi.Input[str],
+                 plaintext: pulumi.Input[str],
+                 additional_authenticated_data: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SecretCiphertext resource.
+        :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
+               Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
+        :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "crypto_key", crypto_key)
+        pulumi.set(__self__, "plaintext", plaintext)
+        if additional_authenticated_data is not None:
+            pulumi.set(__self__, "additional_authenticated_data", additional_authenticated_data)
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> pulumi.Input[str]:
+        """
+        The full name of the CryptoKey that will be used to encrypt the provided plaintext.
+        Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @crypto_key.setter
+    def crypto_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_key", value)
+
+    @property
+    @pulumi.getter
+    def plaintext(self) -> pulumi.Input[str]:
+        """
+        The plaintext to be encrypted.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "plaintext")
+
+    @plaintext.setter
+    def plaintext(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plaintext", value)
+
+    @property
+    @pulumi.getter(name="additionalAuthenticatedData")
+    def additional_authenticated_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        The additional authenticated data used for integrity checks during encryption and decryption.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "additional_authenticated_data")
+
+    @additional_authenticated_data.setter
+    def additional_authenticated_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_authenticated_data", value)
 
 
 class SecretCiphertext(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -82,6 +142,85 @@ class SecretCiphertext(pulumi.CustomResource):
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SecretCiphertextArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
+
+        > **NOTE:** Using this resource will allow you to conceal secret data within your
+        resource definitions, but it does not take care of protecting that data in the
+        logging output, plan output, or state output.  Please take care to secure your secret
+        data outside of resource definitions.
+
+        To get more information about SecretCiphertext, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
+        * How-to Guides
+            * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+
+        > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw
+        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+
+        ## Example Usage
+        ### Kms Secret Ciphertext Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        cryptokey = gcp.kms.CryptoKey("cryptokey",
+            key_ring=keyring.id,
+            rotation_period="100000s")
+        my_password = gcp.kms.SecretCiphertext("myPassword",
+            crypto_key=cryptokey.id,
+            plaintext="my-secret-password")
+        instance = gcp.compute.Instance("instance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )],
+            metadata={
+                "password": my_password.ciphertext,
+            })
+        ```
+
+        ## Import
+
+        This resource does not support import.
+
+        :param str resource_name: The name of the resource.
+        :param SecretCiphertextArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecretCiphertextArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_authenticated_data: Optional[pulumi.Input[str]] = None,
+                 crypto_key: Optional[pulumi.Input[str]] = None,
+                 plaintext: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

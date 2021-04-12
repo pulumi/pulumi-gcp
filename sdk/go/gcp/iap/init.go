@@ -22,61 +22,62 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding":
-		r, err = NewAppEngineServiceIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppEngineServiceIamBinding{}
 	case "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember":
-		r, err = NewAppEngineServiceIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppEngineServiceIamMember{}
 	case "gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy":
-		r, err = NewAppEngineServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppEngineServiceIamPolicy{}
 	case "gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding":
-		r, err = NewAppEngineVersionIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppEngineVersionIamBinding{}
 	case "gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember":
-		r, err = NewAppEngineVersionIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppEngineVersionIamMember{}
 	case "gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy":
-		r, err = NewAppEngineVersionIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppEngineVersionIamPolicy{}
 	case "gcp:iap/brand:Brand":
-		r, err = NewBrand(ctx, name, nil, pulumi.URN_(urn))
+		r = &Brand{}
 	case "gcp:iap/client:Client":
-		r, err = NewClient(ctx, name, nil, pulumi.URN_(urn))
+		r = &Client{}
 	case "gcp:iap/tunnelIamBinding:TunnelIamBinding":
-		r, err = NewTunnelIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &TunnelIamBinding{}
 	case "gcp:iap/tunnelIamMember:TunnelIamMember":
-		r, err = NewTunnelIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &TunnelIamMember{}
 	case "gcp:iap/tunnelIamPolicy:TunnelIamPolicy":
-		r, err = NewTunnelIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TunnelIamPolicy{}
 	case "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding":
-		r, err = NewTunnelInstanceIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &TunnelInstanceIAMBinding{}
 	case "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember":
-		r, err = NewTunnelInstanceIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &TunnelInstanceIAMMember{}
 	case "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy":
-		r, err = NewTunnelInstanceIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TunnelInstanceIAMPolicy{}
 	case "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding":
-		r, err = NewWebBackendServiceIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebBackendServiceIamBinding{}
 	case "gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember":
-		r, err = NewWebBackendServiceIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebBackendServiceIamMember{}
 	case "gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy":
-		r, err = NewWebBackendServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebBackendServiceIamPolicy{}
 	case "gcp:iap/webIamBinding:WebIamBinding":
-		r, err = NewWebIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebIamBinding{}
 	case "gcp:iap/webIamMember:WebIamMember":
-		r, err = NewWebIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebIamMember{}
 	case "gcp:iap/webIamPolicy:WebIamPolicy":
-		r, err = NewWebIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebIamPolicy{}
 	case "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding":
-		r, err = NewWebTypeAppEngingIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebTypeAppEngingIamBinding{}
 	case "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember":
-		r, err = NewWebTypeAppEngingIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebTypeAppEngingIamMember{}
 	case "gcp:iap/webTypeAppEngingIamPolicy:WebTypeAppEngingIamPolicy":
-		r, err = NewWebTypeAppEngingIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebTypeAppEngingIamPolicy{}
 	case "gcp:iap/webTypeComputeIamBinding:WebTypeComputeIamBinding":
-		r, err = NewWebTypeComputeIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebTypeComputeIamBinding{}
 	case "gcp:iap/webTypeComputeIamMember:WebTypeComputeIamMember":
-		r, err = NewWebTypeComputeIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebTypeComputeIamMember{}
 	case "gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy":
-		r, err = NewWebTypeComputeIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebTypeComputeIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

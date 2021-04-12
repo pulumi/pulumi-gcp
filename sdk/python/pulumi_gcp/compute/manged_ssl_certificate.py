@@ -5,12 +5,124 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MangedSslCertificate']
+__all__ = ['MangedSslCertificateArgs', 'MangedSslCertificate']
+
+@pulumi.input_type
+class MangedSslCertificateArgs:
+    def __init__(__self__, *,
+                 certificate_id: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 managed: Optional[pulumi.Input['MangedSslCertificateManagedArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a MangedSslCertificate resource.
+        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input['MangedSslCertificateManagedArgs'] managed: Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+               of 'MANAGED' in 'type').
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+               namespace as the managed SSL certificates.
+        :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+               Possible values: ["MANAGED"]
+        """
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if managed is not None:
+            pulumi.set(__self__, "managed", managed)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier for the resource.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "certificate_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def managed(self) -> Optional[pulumi.Input['MangedSslCertificateManagedArgs']]:
+        """
+        Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+        of 'MANAGED' in 'type').
+        """
+        return pulumi.get(self, "managed")
+
+    @managed.setter
+    def managed(self, value: Optional[pulumi.Input['MangedSslCertificateManagedArgs']]):
+        pulumi.set(self, "managed", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+        namespace as the managed SSL certificates.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+        Possible values: ["MANAGED"]
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
 
@@ -18,6 +130,7 @@ warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor o
 class MangedSslCertificate(pulumi.CustomResource):
     warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +159,38 @@ class MangedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
                Possible values: ["MANAGED"]
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[MangedSslCertificateArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a MangedSslCertificate resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param MangedSslCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MangedSslCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_id: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -5,15 +5,333 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Table']
+__all__ = ['TableArgs', 'Table']
+
+@pulumi.input_type
+class TableArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[str],
+                 table_id: pulumi.Input[str],
+                 clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
+                 expiration_time: Optional[pulumi.Input[int]] = None,
+                 external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
+                 view: Optional[pulumi.Input['TableViewArgs']] = None):
+        """
+        The set of arguments for constructing a Table resource.
+        :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[str] table_id: A unique ID for the resource.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
+               Up to four top-level columns are allowed, and should be specified in
+               descending priority order.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `=destroy` or `=update` that would delete the instance will fail.
+        :param pulumi.Input[str] description: The field description.
+        :param pulumi.Input['TableEncryptionConfigurationArgs'] encryption_configuration: Specifies how the table should be encrypted.
+               If left blank, the table will be encrypted with a Google-managed key; that process
+               is transparent to the user.  Structure is documented below.
+        :param pulumi.Input[int] expiration_time: The time when this table expires, in
+               milliseconds since the epoch. If not present, the table will persist
+               indefinitely. Expired tables will be deleted and their storage
+               reclaimed.
+        :param pulumi.Input['TableExternalDataConfigurationArgs'] external_data_configuration: Describes the data format,
+               location, and other properties of a table stored outside of BigQuery.
+               By defining these properties, the data source can then be queried as
+               if it were a standard BigQuery table. Structure is documented below.
+        :param pulumi.Input[str] friendly_name: A descriptive name for the table.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
+        :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
+               partitioning for this table. Structure is documented below.
+        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
+               for CSV and JSON formats if autodetect is not on. Schema is disallowed
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               Furthermore drift for this field cannot not be detected because BigQuery
+               only uses this schema to compute the effective schema for the table, therefore
+               any changes on the configured value will force the table to be recreated.
+               This schema is effectively only applied when creating a table from an external
+               datasource, after creation the computed schema will be stored in
+               `google_bigquery_table.schema`
+        :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
+               partitioning for this table. Structure is documented below.
+        :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "table_id", table_id)
+        if clusterings is not None:
+            pulumi.set(__self__, "clusterings", clusterings)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encryption_configuration is not None:
+            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
+        if external_data_configuration is not None:
+            pulumi.set(__self__, "external_data_configuration", external_data_configuration)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if materialized_view is not None:
+            pulumi.set(__self__, "materialized_view", materialized_view)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if range_partitioning is not None:
+            pulumi.set(__self__, "range_partitioning", range_partitioning)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if time_partitioning is not None:
+            pulumi.set(__self__, "time_partitioning", time_partitioning)
+        if view is not None:
+            pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        """
+        The dataset ID to create the table in.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> pulumi.Input[str]:
+        """
+        A unique ID for the resource.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table_id", value)
+
+    @property
+    @pulumi.getter
+    def clusterings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies column names to use for data clustering.
+        Up to four top-level columns are allowed, and should be specified in
+        descending priority order.
+        """
+        return pulumi.get(self, "clusterings")
+
+    @clusterings.setter
+    def clusterings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "clusterings", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `=destroy` or `=update` that would delete the instance will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The field description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> Optional[pulumi.Input['TableEncryptionConfigurationArgs']]:
+        """
+        Specifies how the table should be encrypted.
+        If left blank, the table will be encrypted with a Google-managed key; that process
+        is transparent to the user.  Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @encryption_configuration.setter
+    def encryption_configuration(self, value: Optional[pulumi.Input['TableEncryptionConfigurationArgs']]):
+        pulumi.set(self, "encryption_configuration", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time when this table expires, in
+        milliseconds since the epoch. If not present, the table will persist
+        indefinitely. Expired tables will be deleted and their storage
+        reclaimed.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter(name="externalDataConfiguration")
+    def external_data_configuration(self) -> Optional[pulumi.Input['TableExternalDataConfigurationArgs']]:
+        """
+        Describes the data format,
+        location, and other properties of a table stored outside of BigQuery.
+        By defining these properties, the data source can then be queried as
+        if it were a standard BigQuery table. Structure is documented below.
+        """
+        return pulumi.get(self, "external_data_configuration")
+
+    @external_data_configuration.setter
+    def external_data_configuration(self, value: Optional[pulumi.Input['TableExternalDataConfigurationArgs']]):
+        pulumi.set(self, "external_data_configuration", value)
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A descriptive name for the table.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @friendly_name.setter
+    def friendly_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of labels to assign to the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="materializedView")
+    def materialized_view(self) -> Optional[pulumi.Input['TableMaterializedViewArgs']]:
+        """
+        If specified, configures this table as a materialized view.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "materialized_view")
+
+    @materialized_view.setter
+    def materialized_view(self, value: Optional[pulumi.Input['TableMaterializedViewArgs']]):
+        pulumi.set(self, "materialized_view", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="rangePartitioning")
+    def range_partitioning(self) -> Optional[pulumi.Input['TableRangePartitioningArgs']]:
+        """
+        If specified, configures range-based
+        partitioning for this table. Structure is documented below.
+        """
+        return pulumi.get(self, "range_partitioning")
+
+    @range_partitioning.setter
+    def range_partitioning(self, value: Optional[pulumi.Input['TableRangePartitioningArgs']]):
+        pulumi.set(self, "range_partitioning", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON schema for the external table. Schema is required
+        for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        Furthermore drift for this field cannot not be detected because BigQuery
+        only uses this schema to compute the effective schema for the table, therefore
+        any changes on the configured value will force the table to be recreated.
+        This schema is effectively only applied when creating a table from an external
+        datasource, after creation the computed schema will be stored in
+        `google_bigquery_table.schema`
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="timePartitioning")
+    def time_partitioning(self) -> Optional[pulumi.Input['TableTimePartitioningArgs']]:
+        """
+        If specified, configures time-based
+        partitioning for this table. Structure is documented below.
+        """
+        return pulumi.get(self, "time_partitioning")
+
+    @time_partitioning.setter
+    def time_partitioning(self, value: Optional[pulumi.Input['TableTimePartitioningArgs']]):
+        pulumi.set(self, "time_partitioning", value)
+
+    @property
+    @pulumi.getter
+    def view(self) -> Optional[pulumi.Input['TableViewArgs']]:
+        """
+        If specified, configures this table as a view.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "view")
+
+    @view.setter
+    def view(self, value: Optional[pulumi.Input['TableViewArgs']]):
+        pulumi.set(self, "view", value)
 
 
 class Table(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -152,6 +470,115 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TableViewArgs']] view: If specified, configures this table as a view.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TableArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a table resource in a dataset for Google BigQuery. For more information see
+        [the official documentation](https://cloud.google.com/bigquery/docs/) and
+        [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+
+        > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi update` to write the field to state) in order to destroy an instance.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+            dataset_id="foo",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            })
+        default_table = gcp.bigquery.Table("defaultTable",
+            dataset_id=default_dataset.dataset_id,
+            table_id="bar",
+            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
+                type="DAY",
+            ),
+            labels={
+                "env": "default",
+            },
+            schema=\"\"\"[
+          {
+            "name": "permalink",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The Permalink"
+          },
+          {
+            "name": "state",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "State where the head office is located"
+          }
+        ]
+        \"\"\")
+        sheet = gcp.bigquery.Table("sheet",
+            dataset_id=default_dataset.dataset_id,
+            table_id="sheet",
+            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
+                autodetect=True,
+                source_format="GOOGLE_SHEETS",
+                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
+                    skip_leading_rows=1,
+                ),
+                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
+            ))
+        ```
+
+        ## Import
+
+        BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
+
+        ```sh
+         $ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TableArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TableArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
+                 expiration_time: Optional[pulumi.Input[int]] = None,
+                 external_data_configuration: Optional[pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 table_id: Optional[pulumi.Input[str]] = None,
+                 time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
+                 view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

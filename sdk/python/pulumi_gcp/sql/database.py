@@ -5,13 +5,122 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Database']
+__all__ = ['DatabaseArgs', 'Database']
+
+@pulumi.input_type
+class DatabaseArgs:
+    def __init__(__self__, *,
+                 instance: pulumi.Input[str],
+                 charset: Optional[pulumi.Input[str]] = None,
+                 collation: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Database resource.
+        :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
+               ID.
+        :param pulumi.Input[str] charset: The charset value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+               for more details and supported values. Postgres databases only support
+               a value of `UTF8` at creation time.
+        :param pulumi.Input[str] collation: The collation value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+               for more details and supported values. Postgres databases only support
+               a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
+               This does not include the project ID or instance name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "instance", instance)
+        if charset is not None:
+            pulumi.set(__self__, "charset", charset)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Input[str]:
+        """
+        The name of the Cloud SQL instance. This does not include the project
+        ID.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def charset(self) -> Optional[pulumi.Input[str]]:
+        """
+        The charset value. See MySQL's
+        [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+        and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+        for more details and supported values. Postgres databases only support
+        a value of `UTF8` at creation time.
+        """
+        return pulumi.get(self, "charset")
+
+    @charset.setter
+    def charset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "charset", value)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The collation value. See MySQL's
+        [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+        and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+        for more details and supported values. Postgres databases only support
+        a value of `en_US.UTF8` at creation time.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the database in the Cloud SQL instance.
+        This does not include the project ID or instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Database(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -86,6 +195,79 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a SQL database inside the Cloud SQL instance, hosted in
+        Google's cloud.
+
+        ## Example Usage
+        ### Sql Database Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        database = gcp.sql.Database("database", instance=instance.name)
+        ```
+
+        ## Import
+
+        Database can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 charset: Optional[pulumi.Input[str]] = None,
+                 collation: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,271 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Image']
+__all__ = ['ImageArgs', 'Image']
+
+@pulumi.input_type
+class ImageArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
+                 family: Optional[pulumi.Input[str]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
+                 source_disk: Optional[pulumi.Input[str]] = None,
+                 source_image: Optional[pulumi.Input[str]] = None,
+                 source_snapshot: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Image resource.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
+               you create the resource.
+        :param pulumi.Input[int] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can
+               create disks by specifying an image family instead of a specific
+               image name. The image family always returns its latest image that is
+               not deprecated. The name of the image family must comply with
+               RFC1035.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable images.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and
+               match the regular expression `a-z?` which means
+               the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the
+               last character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
+               Structure is documented below.
+        :param pulumi.Input[str] source_disk: The source disk to create this image based on.
+               You must provide either this property or the
+               rawDisk.source property but not both to create an image.
+        :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+               URL of one of the following:
+               * The selfLink URL
+               * This property
+               * The rawDisk.source URL
+               * The sourceDisk URL
+        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
+               In order to create an image, you must provide the full or partial URL of one of the following:
+               * The selfLink URL
+               * This property
+               * The sourceImage URL
+               * The rawDisk.source URL
+               * The sourceDisk URL
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if family is not None:
+            pulumi.set(__self__, "family", family)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if licenses is not None:
+            pulumi.set(__self__, "licenses", licenses)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if raw_disk is not None:
+            pulumi.set(__self__, "raw_disk", raw_disk)
+        if source_disk is not None:
+            pulumi.set(__self__, "source_disk", source_disk)
+        if source_image is not None:
+            pulumi.set(__self__, "source_image", source_image)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when
+        you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Size of the image when restored onto a persistent disk (in GB).
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def family(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the image family to which this image belongs. You can
+        create disks by specifying an image family instead of a specific
+        image name. The image family always returns its latest image that is
+        not deprecated. The name of the image family must comply with
+        RFC1035.
+        """
+        return pulumi.get(self, "family")
+
+    @family.setter
+    def family(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family", value)
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable images.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
+        pulumi.set(self, "guest_os_features", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels to apply to this Image.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
+
+    @licenses.setter
+    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "licenses", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the
+        last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="rawDisk")
+    def raw_disk(self) -> Optional[pulumi.Input['ImageRawDiskArgs']]:
+        """
+        The parameters of the raw disk image.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "raw_disk")
+
+    @raw_disk.setter
+    def raw_disk(self, value: Optional[pulumi.Input['ImageRawDiskArgs']]):
+        pulumi.set(self, "raw_disk", value)
+
+    @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source disk to create this image based on.
+        You must provide either this property or the
+        rawDisk.source property but not both to create an image.
+        """
+        return pulumi.get(self, "source_disk")
+
+    @source_disk.setter
+    def source_disk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_disk", value)
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+        URL of one of the following:
+        * The selfLink URL
+        * This property
+        * The rawDisk.source URL
+        * The sourceDisk URL
+        """
+        return pulumi.get(self, "source_image")
+
+    @source_image.setter
+    def source_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_image", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the source snapshot used to create this image.
+        In order to create an image, you must provide the full or partial URL of one of the following:
+        * The selfLink URL
+        * This property
+        * The sourceImage URL
+        * The rawDisk.source URL
+        * The sourceDisk URL
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @source_snapshot.setter
+    def source_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot", value)
 
 
 class Image(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -146,6 +402,113 @@ class Image(pulumi.CustomResource):
                * The rawDisk.source URL
                * The sourceDisk URL
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ImageArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents an Image resource.
+
+        Google Compute Engine uses operating system images to create the root
+        persistent disks for your instances. You specify an image when you create
+        an instance. Images contain a boot loader, an operating system, and a
+        root file system. Linux operating system images are also capable of
+        running containers on Compute Engine.
+
+        Images can be either public or custom.
+
+        Public images are provided and maintained by Google, open-source
+        communities, and third-party vendors. By default, all projects have
+        access to these images and can use them to create instances.  Custom
+        images are available only to your project. You can create a custom image
+        from root persistent disks and other images. Then, use the custom image
+        to create an instance.
+
+        To get more information about Image, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/images)
+
+        ## Example Usage
+        ### Image Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
+            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+        ))
+        ```
+        ### Image Guest Os
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            guest_os_features=[
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+            ],
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ))
+        ```
+
+        ## Import
+
+        Image can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/image:Image default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ImageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
+                 family: Optional[pulumi.Input[str]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
+                 source_disk: Optional[pulumi.Input[str]] = None,
+                 source_image: Optional[pulumi.Input[str]] = None,
+                 source_snapshot: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

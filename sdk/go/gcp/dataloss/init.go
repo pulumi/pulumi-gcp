@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate":
-		r, err = NewPreventionDeidentifyTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &PreventionDeidentifyTemplate{}
 	case "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate":
-		r, err = NewPreventionInspectTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &PreventionInspectTemplate{}
 	case "gcp:dataloss/preventionJobTrigger:PreventionJobTrigger":
-		r, err = NewPreventionJobTrigger(ctx, name, nil, pulumi.URN_(urn))
+		r = &PreventionJobTrigger{}
 	case "gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType":
-		r, err = NewPreventionStoredInfoType(ctx, name, nil, pulumi.URN_(urn))
+		r = &PreventionStoredInfoType{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

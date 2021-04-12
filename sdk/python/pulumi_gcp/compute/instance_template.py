@@ -5,15 +5,403 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceTemplate']
+__all__ = ['InstanceTemplateArgs', 'InstanceTemplate']
+
+@pulumi.input_type
+class InstanceTemplateArgs:
+    def __init__(__self__, *,
+                 disks: pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]],
+                 machine_type: pulumi.Input[str],
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
+                 confidential_instance_config: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_display: Optional[pulumi.Input[bool]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
+                 instance_description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata_startup_script: Optional[pulumi.Input[str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']] = None,
+                 service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a InstanceTemplate resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]] disks: Disks to attach to instances created from this template.
+               This can be specified multiple times for multiple disks. Structure is
+               documented below.
+        :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
+               packets with non-matching source or destination IPs. This defaults to false.
+        :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[str] instance_description: A brief description to use for instances
+               created from this template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
+               created from this template,
+        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+               within instances created from this template.
+        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
+               startup-script metadata key, mostly to match the compute_instance resource.
+               This replaces the startup-script metadata key on the created instance and
+               thus the two mechanisms are not allowed to be used simultaneously.
+        :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
+               `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+        :param pulumi.Input[str] name: The name of the instance template. If you leave
+               this blank, the provider will auto-generate a unique name.
+        :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
+               prefix. Conflicts with `name`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
+               this template. This can be specified multiple times for multiple networks.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] region: An instance template is a global resource that is not
+               bound to a zone or a region. However, you can still specify some regional
+               resources in an instance template, which restricts the template to the
+               region where that resource resides. For example, a custom `subnetwork`
+               resource is tied to a specific region. Defaults to the region of the
+               Provider if no value is given.
+        :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
+               this configuration option are detailed below.
+        :param pulumi.Input['InstanceTemplateServiceAccountArgs'] service_account: Service account to attach to the instance. Structure is documented below.
+        :param pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+               **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to attach to the instance.
+        """
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "machine_type", machine_type)
+        if can_ip_forward is not None:
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_display is not None:
+            pulumi.set(__self__, "enable_display", enable_display)
+        if guest_accelerators is not None:
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if instance_description is not None:
+            pulumi.set(__self__, "instance_description", instance_description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if metadata_startup_script is not None:
+            pulumi.set(__self__, "metadata_startup_script", metadata_startup_script)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]:
+        """
+        Disks to attach to instances created from this template.
+        This can be specified multiple times for multiple disks. Structure is
+        documented below.
+        """
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]):
+        pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[str]:
+        """
+        The machine type to create.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow sending and receiving of
+        packets with non-matching source or destination IPs. This defaults to false.
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @can_ip_forward.setter
+    def can_ip_forward(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_ip_forward", value)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']]:
+        """
+        Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @confidential_instance_config.setter
+    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']]):
+        pulumi.set(self, "confidential_instance_config", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableDisplay")
+    def enable_display(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        """
+        return pulumi.get(self, "enable_display")
+
+    @enable_display.setter
+    def enable_display(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_display", value)
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]:
+        """
+        List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @guest_accelerators.setter
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]):
+        pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter(name="instanceDescription")
+    def instance_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description to use for instances
+        created from this template.
+        """
+        return pulumi.get(self, "instance_description")
+
+    @instance_description.setter
+    def instance_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to instances
+        created from this template,
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Metadata key/value pairs to make available from
+        within instances created from this template.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="metadataStartupScript")
+    def metadata_startup_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        An alternative to using the
+        startup-script metadata key, mostly to match the compute_instance resource.
+        This replaces the startup-script metadata key on the created instance and
+        thus the two mechanisms are not allowed to be used simultaneously.
+        """
+        return pulumi.get(self, "metadata_startup_script")
+
+    @metadata_startup_script.setter
+    def metadata_startup_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_startup_script", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
+        `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance template. If you leave
+        this blank, the provider will auto-generate a unique name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name beginning with the specified
+        prefix. Conflicts with `name`.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]:
+        """
+        Networks to attach to instances created from
+        this template. This can be specified multiple times for multiple networks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        An instance template is a global resource that is not
+        bound to a zone or a region. However, you can still specify some regional
+        resources in an instance template, which restricts the template to the
+        region where that resource resides. For example, a custom `subnetwork`
+        resource is tied to a specific region. Defaults to the region of the
+        Provider if no value is given.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]:
+        """
+        The scheduling strategy to use. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']]:
+        """
+        Service account to attach to the instance. Structure is documented below.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']]:
+        """
+        Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags to attach to the instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class InstanceTemplate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -227,6 +615,190 @@ class InstanceTemplate(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to attach to the instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceTemplateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a VM instance template resource within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_account = gcp.service_account.Account("defaultAccount",
+            account_id="service-account-id",
+            display_name="Service Account")
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        foobar = gcp.compute.Disk("foobar",
+            image=my_image.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        daily_backup = gcp.compute.ResourcePolicy("dailyBackup",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
+        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
+            description="This template is used to create app server instances.",
+            tags=[
+                "foo",
+                "bar",
+            ],
+            labels={
+                "environment": "dev",
+            },
+            instance_description="description assigned to instances",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            scheduling=gcp.compute.InstanceTemplateSchedulingArgs(
+                automatic_restart=True,
+                on_host_maintenance="MIGRATE",
+            ),
+            disks=[
+                gcp.compute.InstanceTemplateDiskArgs(
+                    source_image="debian-cloud/debian-9",
+                    auto_delete=True,
+                    boot=True,
+                    resource_policies=[daily_backup.id],
+                ),
+                gcp.compute.InstanceTemplateDiskArgs(
+                    source=foobar.name,
+                    auto_delete=False,
+                    boot=False,
+                ),
+            ],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                email=default_account.email,
+                scopes=["cloud-platform"],
+            ))
+        ```
+        ## Deploying the Latest Image
+
+        A common way to use instance templates and managed instance groups is to deploy the
+        latest image in a family, usually the latest build of your application. There are two
+        ways to do this in the provider, and they have their pros and cons. The difference ends
+        up being in how "latest" is interpreted. You can either deploy the latest image available
+        when the provider runs, or you can have each instance check what the latest image is when
+        it's being created, either as part of a scaling event or being rebuilt by the instance
+        group manager.
+
+        If you're not sure, we recommend deploying the latest image available when the provider runs,
+        because this means all the instances in your group will be based on the same image, always,
+        and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
+        You can achieve this by using the `compute.Image`
+        data source, which will retrieve the latest image on every `pulumi apply`, and will update
+        the template to use that specific image:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=google_compute_image["my_image"]["self_link"],
+            )])
+        ```
+
+        To have instances update to the latest on every scaling event or instance re-creation,
+        use the family as the image for the disk, and it will use GCP's default behavior, setting
+        the image for the template to the family:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-9",
+            )],
+            machine_type="e2-medium",
+            name_prefix="instance-template-",
+            region="us-central1")
+        ```
+
+        ## Import
+
+        Instance templates can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
+        ```
+
+         [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
+
+        :param str resource_name: The name of the resource.
+        :param InstanceTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]]] = None,
+                 enable_display: Optional[pulumi.Input[bool]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]]] = None,
+                 instance_description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata_startup_script: Optional[pulumi.Input[str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']]] = None,
+                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

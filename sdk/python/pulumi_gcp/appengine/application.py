@@ -5,15 +5,146 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Application']
+__all__ = ['ApplicationArgs', 'Application']
+
+@pulumi.input_type
+class ApplicationArgs:
+    def __init__(__self__, *,
+                 location_id: pulumi.Input[str],
+                 auth_domain: Optional[pulumi.Input[str]] = None,
+                 database_type: Optional[pulumi.Input[str]] = None,
+                 feature_settings: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']] = None,
+                 iap: Optional[pulumi.Input['ApplicationIapArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 serving_status: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Application resource.
+        :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
+               to serve the app from.
+        :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
+        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+               Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+               instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+               by the provider, but will be rejected by the API.
+        :param pulumi.Input['ApplicationFeatureSettingsArgs'] feature_settings: A block of optional settings to configure specific App Engine features:
+        :param pulumi.Input['ApplicationIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[str] project: The project ID to create the application under.
+               ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
+               you may get a "Permission denied" error.
+        :param pulumi.Input[str] serving_status: The serving status of the app.
+        """
+        pulumi.set(__self__, "location_id", location_id)
+        if auth_domain is not None:
+            pulumi.set(__self__, "auth_domain", auth_domain)
+        if database_type is not None:
+            pulumi.set(__self__, "database_type", database_type)
+        if feature_settings is not None:
+            pulumi.set(__self__, "feature_settings", feature_settings)
+        if iap is not None:
+            pulumi.set(__self__, "iap", iap)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if serving_status is not None:
+            pulumi.set(__self__, "serving_status", serving_status)
+
+    @property
+    @pulumi.getter(name="locationId")
+    def location_id(self) -> pulumi.Input[str]:
+        """
+        The [location](https://cloud.google.com/appengine/docs/locations)
+        to serve the app from.
+        """
+        return pulumi.get(self, "location_id")
+
+    @location_id.setter
+    def location_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location_id", value)
+
+    @property
+    @pulumi.getter(name="authDomain")
+    def auth_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to authenticate users with when using App Engine's User API.
+        """
+        return pulumi.get(self, "auth_domain")
+
+    @auth_domain.setter
+    def auth_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_domain", value)
+
+    @property
+    @pulumi.getter(name="databaseType")
+    def database_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+        instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+        by the provider, but will be rejected by the API.
+        """
+        return pulumi.get(self, "database_type")
+
+    @database_type.setter
+    def database_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_type", value)
+
+    @property
+    @pulumi.getter(name="featureSettings")
+    def feature_settings(self) -> Optional[pulumi.Input['ApplicationFeatureSettingsArgs']]:
+        """
+        A block of optional settings to configure specific App Engine features:
+        """
+        return pulumi.get(self, "feature_settings")
+
+    @feature_settings.setter
+    def feature_settings(self, value: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']]):
+        pulumi.set(self, "feature_settings", value)
+
+    @property
+    @pulumi.getter
+    def iap(self) -> Optional[pulumi.Input['ApplicationIapArgs']]:
+        """
+        Settings for enabling Cloud Identity Aware Proxy
+        """
+        return pulumi.get(self, "iap")
+
+    @iap.setter
+    def iap(self, value: Optional[pulumi.Input['ApplicationIapArgs']]):
+        pulumi.set(self, "iap", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID to create the application under.
+        ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
+        you may get a "Permission denied" error.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="servingStatus")
+    def serving_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The serving status of the app.
+        """
+        return pulumi.get(self, "serving_status")
+
+    @serving_status.setter
+    def serving_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serving_status", value)
 
 
 class Application(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -76,6 +207,70 @@ class Application(pulumi.CustomResource):
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Allows creation and management of an App Engine application.
+
+        > App Engine applications cannot be deleted once they're created; you have to delete the
+           entire project to delete the application. This provider will report the application has been
+           successfully deleted; this is a limitation of the provider, and will go away in the future.
+           This provider is not able to delete App Engine applications.
+
+        > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="1234567")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        ```
+
+        ## Import
+
+        Applications can be imported using the ID of the project the application belongs to, e.g.
+
+        ```sh
+         $ pulumi import gcp:appengine/application:Application app your-project-id
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_domain: Optional[pulumi.Input[str]] = None,
+                 database_type: Optional[pulumi.Input[str]] = None,
+                 feature_settings: Optional[pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']]] = None,
+                 iap: Optional[pulumi.Input[pulumi.InputType['ApplicationIapArgs']]] = None,
+                 location_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 serving_status: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

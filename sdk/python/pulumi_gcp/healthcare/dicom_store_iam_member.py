@@ -5,15 +5,86 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DicomStoreIamMember']
+__all__ = ['DicomStoreIamMemberArgs', 'DicomStoreIamMember']
+
+@pulumi.input_type
+class DicomStoreIamMemberArgs:
+    def __init__(__self__, *,
+                 dicom_store_id: pulumi.Input[str],
+                 member: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 condition: Optional[pulumi.Input['DicomStoreIamMemberConditionArgs']] = None):
+        """
+        The set of arguments for constructing a DicomStoreIamMember resource.
+        :param pulumi.Input[str] dicom_store_id: The DICOM store ID, in the form
+               `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
+               `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
+               project setting will be used as a fallback.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        pulumi.set(__self__, "dicom_store_id", dicom_store_id)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter(name="dicomStoreId")
+    def dicom_store_id(self) -> pulumi.Input[str]:
+        """
+        The DICOM store ID, in the form
+        `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
+        `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
+        project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "dicom_store_id")
+
+    @dicom_store_id.setter
+    def dicom_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dicom_store_id", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: pulumi.Input[str]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['DicomStoreIamMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['DicomStoreIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
 
 
 class DicomStoreIamMember(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -110,6 +181,110 @@ class DicomStoreIamMember(pulumi.CustomResource):
                `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DicomStoreIamMemberArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
+
+        * `healthcare.DicomStoreIamPolicy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
+        * `healthcare.DicomStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the DICOM store are preserved.
+        * `healthcare.DicomStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the DICOM store are preserved.
+
+        > **Note:** `healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `healthcare.DicomStoreIamBinding` and `healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_healthcare\_dicom\_store\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicomStore",
+            dicom_store_id="your-dicom-store-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_healthcare\_dicom\_store\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicomStore",
+            dicom_store_id="your-dicom-store-id",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\_healthcare\_dicom\_store\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dicom_store = gcp.healthcare.DicomStoreIamMember("dicomStore",
+            dicom_store_id="your-dicom-store-id",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
+        ## Import
+
+        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+
+        This member resource can be imported using the `dicom_store_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer user:foo@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiers; the resource in question and the role.
+
+        This binding resource can be imported using the `dicom_store_id` and role, e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question.
+
+        This policy resource can be imported using the `dicom_store_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DicomStoreIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DicomStoreIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamMemberConditionArgs']]] = None,
+                 dicom_store_id: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

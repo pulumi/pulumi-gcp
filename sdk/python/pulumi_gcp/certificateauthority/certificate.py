@@ -5,15 +5,159 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Certificate']
+__all__ = ['CertificateArgs', 'Certificate']
+
+@pulumi.input_type
+class CertificateArgs:
+    def __init__(__self__, *,
+                 certificate_authority: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pem_csr: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
+               running `gcloud beta privateca locations list`.
+        :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+               fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[str] name: The name for this Certificate .
+        :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
+        pulumi.set(__self__, "location", location)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pem_csr is not None:
+            pulumi.set(__self__, "pem_csr", pem_csr)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> pulumi.Input[str]:
+        """
+        Certificate Authority name.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @certificate_authority.setter
+    def certificate_authority(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        Location of the CertificateAuthority. A full list of valid locations can be found by
+        running `gcloud beta privateca locations list`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['CertificateConfigArgs']]:
+        """
+        The config used to create a self-signed X.509 certificate or CSR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['CertificateConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels with user-defined metadata to apply to this resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+        fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifetime", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for this Certificate .
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pemCsr")
+    def pem_csr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        """
+        return pulumi.get(self, "pem_csr")
+
+    @pem_csr.setter
+    def pem_csr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_csr", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Certificate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -109,6 +253,103 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CertificateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+
+        > **Note:** The Certificate Authority that is referenced by this resource **must** be
+        `tier = "ENTERPRISE"`
+
+        > **Warning:** Please remember that all resources created during preview (via this provider)
+        will be deleted when CA service transitions to General Availability (GA). Relying on these
+        certificate authorities for production traffic is discouraged.
+
+        ## Example Usage
+        ### Privateca Certificate Csr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_ca = gcp.certificateauthority.Authority("test-ca",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            tier="ENTERPRISE",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                    ),
+                    common_name="my-certificate-authority",
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
+                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            disable_on_delete=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.certificateauthority.Certificate("default",
+            project="my-project-name",
+            location="us-central1",
+            certificate_authority=test_ca.certificate_authority_id,
+            lifetime="860s",
+            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Certificate can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority}}/certificates/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{certificate_authority}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{certificate_authority}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_authority: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pem_csr: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

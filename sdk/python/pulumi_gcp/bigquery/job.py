@@ -5,15 +5,176 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Job']
+__all__ = ['JobArgs', 'Job']
+
+@pulumi.input_type
+class JobArgs:
+    def __init__(__self__, *,
+                 job_id: pulumi.Input[str],
+                 copy: Optional[pulumi.Input['JobCopyArgs']] = None,
+                 extract: Optional[pulumi.Input['JobExtractArgs']] = None,
+                 job_timeout_ms: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 load: Optional[pulumi.Input['JobLoadArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 query: Optional[pulumi.Input['JobQueryArgs']] = None):
+        """
+        The set of arguments for constructing a Job resource.
+        :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
+        :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
+               Structure is documented below.
+        :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
+               Structure is documented below.
+        :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+        :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
+               Structure is documented below.
+        :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "job_id", job_id)
+        if copy is not None:
+            pulumi.set(__self__, "copy", copy)
+        if extract is not None:
+            pulumi.set(__self__, "extract", extract)
+        if job_timeout_ms is not None:
+            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if load is not None:
+            pulumi.set(__self__, "load", load)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter
+    def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
+        """
+        Copies a table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "copy")
+
+    @copy.setter
+    def copy(self, value: Optional[pulumi.Input['JobCopyArgs']]):
+        pulumi.set(self, "copy", value)
+
+    @property
+    @pulumi.getter
+    def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
+        """
+        Configures an extract job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extract")
+
+    @extract.setter
+    def extract(self, value: Optional[pulumi.Input['JobExtractArgs']]):
+        pulumi.set(self, "extract", value)
+
+    @property
+    @pulumi.getter(name="jobTimeoutMs")
+    def job_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        """
+        return pulumi.get(self, "job_timeout_ms")
+
+    @job_timeout_ms.setter
+    def job_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_timeout_ms", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels associated with this job. You can use these to organize and group your jobs.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
+        """
+        Configures a load job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "load")
+
+    @load.setter
+    def load(self, value: Optional[pulumi.Input['JobLoadArgs']]):
+        pulumi.set(self, "load", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location of the job. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
+        """
+        Configures a query job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input['JobQueryArgs']]):
+        pulumi.set(self, "query", value)
 
 
 class Job(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -238,6 +399,231 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: JobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
+        Once a BigQuery job is created, it cannot be changed or deleted.
+
+        To get more information about Job, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs)
+        * How-to Guides
+            * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
+
+        ## Example Usage
+        ### Bigquery Job Query
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.bigquery.Dataset("bar",
+            dataset_id="job_query_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
+            dataset_id=bar.dataset_id,
+            table_id="job_query_table")
+        job = gcp.bigquery.Job("job",
+            job_id="job_query",
+            labels={
+                "example-label": "example-value",
+            },
+            query=gcp.bigquery.JobQueryArgs(
+                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
+                    project_id=foo.project,
+                    dataset_id=foo.dataset_id,
+                    table_id=foo.table_id,
+                ),
+                allow_large_results=True,
+                flatten_results=True,
+                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
+                    key_result_statement="LAST",
+                ),
+            ))
+        ```
+        ### Bigquery Job Query Table Reference
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.bigquery.Dataset("bar",
+            dataset_id="job_query_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
+            dataset_id=bar.dataset_id,
+            table_id="job_query_table")
+        job = gcp.bigquery.Job("job",
+            job_id="job_query",
+            labels={
+                "example-label": "example-value",
+            },
+            query=gcp.bigquery.JobQueryArgs(
+                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
+                    table_id=foo.id,
+                ),
+                default_dataset=gcp.bigquery.JobQueryDefaultDatasetArgs(
+                    dataset_id=bar.id,
+                ),
+                allow_large_results=True,
+                flatten_results=True,
+                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
+                    key_result_statement="LAST",
+                ),
+            ))
+        ```
+        ### Bigquery Job Load
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.bigquery.Dataset("bar",
+            dataset_id="job_load_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
+            dataset_id=bar.dataset_id,
+            table_id="job_load_table")
+        job = gcp.bigquery.Job("job",
+            job_id="job_load",
+            labels={
+                "my_job": "load",
+            },
+            load=gcp.bigquery.JobLoadArgs(
+                source_uris=["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
+                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
+                    project_id=foo.project,
+                    dataset_id=foo.dataset_id,
+                    table_id=foo.table_id,
+                ),
+                skip_leading_rows=1,
+                schema_update_options=[
+                    "ALLOW_FIELD_RELAXATION",
+                    "ALLOW_FIELD_ADDITION",
+                ],
+                write_disposition="WRITE_APPEND",
+                autodetect=True,
+            ))
+        ```
+        ### Bigquery Job Extract
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source_one_dataset = gcp.bigquery.Dataset("source-oneDataset",
+            dataset_id="job_extract_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        source_one_table = gcp.bigquery.Table("source-oneTable",
+            deletion_protection=False,
+            dataset_id=source_one_dataset.dataset_id,
+            table_id="job_extract_table",
+            schema=\"\"\"[
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "post_abbr",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "date",
+            "type": "DATE",
+            "mode": "NULLABLE"
+          }
+        ]
+        \"\"\")
+        dest = gcp.storage.Bucket("dest", force_destroy=True)
+        job = gcp.bigquery.Job("job",
+            job_id="job_extract",
+            extract=gcp.bigquery.JobExtractArgs(
+                destination_uris=[dest.url.apply(lambda url: f"{url}/extract")],
+                source_table=gcp.bigquery.JobExtractSourceTableArgs(
+                    project_id=source_one_table.project,
+                    dataset_id=source_one_table.dataset_id,
+                    table_id=source_one_table.table_id,
+                ),
+                destination_format="NEWLINE_DELIMITED_JSON",
+                compression="GZIP",
+            ))
+        ```
+
+        ## Import
+
+        Job can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/job:Job default {{job_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param JobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(JobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 copy: Optional[pulumi.Input[pulumi.InputType['JobCopyArgs']]] = None,
+                 extract: Optional[pulumi.Input[pulumi.InputType['JobExtractArgs']]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 job_timeout_ms: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 load: Optional[pulumi.Input[pulumi.InputType['JobLoadArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

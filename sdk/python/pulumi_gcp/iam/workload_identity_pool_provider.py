@@ -5,15 +5,309 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkloadIdentityPoolProvider']
+__all__ = ['WorkloadIdentityPoolProviderArgs', 'WorkloadIdentityPoolProvider']
+
+@pulumi.input_type
+class WorkloadIdentityPoolProviderArgs:
+    def __init__(__self__, *,
+                 workload_identity_pool_id: pulumi.Input[str],
+                 workload_identity_pool_provider_id: pulumi.Input[str],
+                 attribute_condition: Optional[pulumi.Input[str]] = None,
+                 attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 aws: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
+        :param pulumi.Input[str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
+               value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
+               `gcp-` is reserved for use by Google, and may not be specified.
+        :param pulumi.Input[str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
+               value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
+               `gcp-` is reserved for use by Google, and may not be specified.
+        :param pulumi.Input[str] attribute_condition: [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+               plain text, to restrict what otherwise valid authentication credentials issued by the
+               provider should not be accepted.
+               The expression must output a boolean representing whether to allow the federation.
+               The following keywords may be referenced in the expressions:
+               * `assertion`: JSON representing the authentication credential issued by the provider.
+               * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
+               * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
+               The maximum length of the attribute condition expression is 4096 characters. If
+               unspecified, all valid authentication credential are accepted.
+               The following example shows how to only allow credentials with a mapped `google.groups`
+               value of `admins`:
+               ```python
+               import pulumi
+               ```
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribute_mapping: Maps attributes from authentication credentials issued by an external identity provider
+               to Google Cloud attributes, such as `subject` and `segment`.
+               Each key must be a string specifying the Google Cloud IAM attribute to map to.
+               The following keys are supported:
+               * `google.subject`: The principal IAM is authenticating. You can reference this value
+               in IAM bindings. This is also the subject that appears in Cloud Logging logs.
+               Cannot exceed 127 characters.
+               * `google.groups`: Groups the external identity belongs to. You can grant groups
+               access to resources using an IAM `principalSet` binding; access applies to all
+               members of the group.
+               You can also provide custom attributes by specifying `attribute.{custom_attribute}`,
+               where `{custom_attribute}` is the name of the custom attribute to be mapped. You can
+               define a maximum of 50 custom attributes. The maximum length of a mapped attribute key
+               is 100 characters, and the key may only contain the characters [a-z0-9_].
+               You can reference these attributes in IAM policies to define fine-grained access for a
+               workload to Google Cloud resources. For example:
+               * `google.subject`:
+               `principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}`
+               * `google.groups`:
+               `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
+               * `attribute.{custom_attribute}`:
+               `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
+               Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+               function that maps an identity provider credential to the normalized attribute specified
+               by the corresponding map key.
+               You can use the `assertion` keyword in the expression to access a JSON representation of
+               the authentication credential issued by the provider.
+               The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
+               the total size of all mapped attributes must not exceed 8KB.
+               For AWS providers, the following rules apply:
+               - If no attribute mapping is defined, the following default mapping applies:
+               ```python
+               import pulumi
+               ```
+               - If any custom attribute mappings are defined, they must include a mapping to the
+               `google.subject` attribute.
+               For OIDC providers, the following rules apply:
+               - Custom attribute mappings must be defined, and must include a mapping to the
+               `google.subject` attribute. For example, the following maps the `sub` claim of the
+               incoming credential to the `subject` attribute on a Google token.
+               ```python
+               import pulumi
+               ```
+        :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc.
+               Structure is documented below.
+        :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
+        :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
+               However, existing tokens still grant access.
+        :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input['WorkloadIdentityPoolProviderOidcArgs'] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
+        pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
+        if attribute_condition is not None:
+            pulumi.set(__self__, "attribute_condition", attribute_condition)
+        if attribute_mapping is not None:
+            pulumi.set(__self__, "attribute_mapping", attribute_mapping)
+        if aws is not None:
+            pulumi.set(__self__, "aws", aws)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="workloadIdentityPoolId")
+    def workload_identity_pool_id(self) -> pulumi.Input[str]:
+        """
+        The ID used for the pool, which is the final component of the pool resource name. This
+        value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
+        `gcp-` is reserved for use by Google, and may not be specified.
+        """
+        return pulumi.get(self, "workload_identity_pool_id")
+
+    @workload_identity_pool_id.setter
+    def workload_identity_pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workload_identity_pool_id", value)
+
+    @property
+    @pulumi.getter(name="workloadIdentityPoolProviderId")
+    def workload_identity_pool_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID for the provider, which becomes the final component of the resource name. This
+        value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
+        `gcp-` is reserved for use by Google, and may not be specified.
+        """
+        return pulumi.get(self, "workload_identity_pool_provider_id")
+
+    @workload_identity_pool_provider_id.setter
+    def workload_identity_pool_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workload_identity_pool_provider_id", value)
+
+    @property
+    @pulumi.getter(name="attributeCondition")
+    def attribute_condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+        plain text, to restrict what otherwise valid authentication credentials issued by the
+        provider should not be accepted.
+        The expression must output a boolean representing whether to allow the federation.
+        The following keywords may be referenced in the expressions:
+        * `assertion`: JSON representing the authentication credential issued by the provider.
+        * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
+        * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
+        The maximum length of the attribute condition expression is 4096 characters. If
+        unspecified, all valid authentication credential are accepted.
+        The following example shows how to only allow credentials with a mapped `google.groups`
+        value of `admins`:
+        ```python
+        import pulumi
+        ```
+        """
+        return pulumi.get(self, "attribute_condition")
+
+    @attribute_condition.setter
+    def attribute_condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attribute_condition", value)
+
+    @property
+    @pulumi.getter(name="attributeMapping")
+    def attribute_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Maps attributes from authentication credentials issued by an external identity provider
+        to Google Cloud attributes, such as `subject` and `segment`.
+        Each key must be a string specifying the Google Cloud IAM attribute to map to.
+        The following keys are supported:
+        * `google.subject`: The principal IAM is authenticating. You can reference this value
+        in IAM bindings. This is also the subject that appears in Cloud Logging logs.
+        Cannot exceed 127 characters.
+        * `google.groups`: Groups the external identity belongs to. You can grant groups
+        access to resources using an IAM `principalSet` binding; access applies to all
+        members of the group.
+        You can also provide custom attributes by specifying `attribute.{custom_attribute}`,
+        where `{custom_attribute}` is the name of the custom attribute to be mapped. You can
+        define a maximum of 50 custom attributes. The maximum length of a mapped attribute key
+        is 100 characters, and the key may only contain the characters [a-z0-9_].
+        You can reference these attributes in IAM policies to define fine-grained access for a
+        workload to Google Cloud resources. For example:
+        * `google.subject`:
+        `principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}`
+        * `google.groups`:
+        `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
+        * `attribute.{custom_attribute}`:
+        `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
+        Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+        function that maps an identity provider credential to the normalized attribute specified
+        by the corresponding map key.
+        You can use the `assertion` keyword in the expression to access a JSON representation of
+        the authentication credential issued by the provider.
+        The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
+        the total size of all mapped attributes must not exceed 8KB.
+        For AWS providers, the following rules apply:
+        - If no attribute mapping is defined, the following default mapping applies:
+        ```python
+        import pulumi
+        ```
+        - If any custom attribute mappings are defined, they must include a mapping to the
+        `google.subject` attribute.
+        For OIDC providers, the following rules apply:
+        - Custom attribute mappings must be defined, and must include a mapping to the
+        `google.subject` attribute. For example, the following maps the `sub` claim of the
+        incoming credential to the `subject` attribute on a Google token.
+        ```python
+        import pulumi
+        ```
+        """
+        return pulumi.get(self, "attribute_mapping")
+
+    @attribute_mapping.setter
+    def attribute_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "attribute_mapping", value)
+
+    @property
+    @pulumi.getter
+    def aws(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]:
+        """
+        An Amazon Web Services identity provider. Not compatible with the property oidc.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws")
+
+    @aws.setter
+    def aws(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]):
+        pulumi.set(self, "aws", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the provider. Cannot exceed 256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
+        However, existing tokens still grant access.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A display name for the provider. Cannot exceed 32 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]:
+        """
+        An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]):
+        pulumi.set(self, "oidc", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class WorkloadIdentityPoolProvider(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -227,6 +521,160 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkloadIdentityPoolProviderArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A configuration for an external identity provider.
+
+        To get more information about WorkloadIdentityPoolProvider, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+        * How-to Guides
+            * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+
+        ## Example Usage
+        ### Iam Workload Identity Pool Provider Aws Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
+                account_id="999999999999",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Iam Workload Identity Pool Provider Aws Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="AWS identity pool provider for automated test",
+            disabled=True,
+            attribute_condition="attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\"",
+            attribute_mapping={
+                "google.subject": "assertion.arn",
+                "attribute.aws_account": "assertion.account",
+                "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
+            },
+            aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
+                account_id="999999999999",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Iam Workload Identity Pool Provider Oidc Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
+                issuer_uri="https://sts.windows.net/azure-tenant-id",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Iam Workload Identity Pool Provider Oidc Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="OIDC identity pool provider for automated test",
+            disabled=True,
+            attribute_condition="\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups",
+            attribute_mapping={
+                "google.subject": "\"azure::\" + assertion.tid + \"::\" + assertion.sub",
+                "attribute.tid": "assertion.tid",
+                "attribute.managed_identity_name": \"\"\"      {
+                "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
+                "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+              }[assertion.oid]
+        \"\"\",
+            },
+            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
+                allowed_audiences=[
+                    "https://example.com/gcp-oidc-federation",
+                    "example.com/gcp-oidc-federation",
+                ],
+                issuer_uri="https://sts.windows.net/azure-tenant-id",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        WorkloadIdentityPoolProvider can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param WorkloadIdentityPoolProviderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkloadIdentityPoolProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attribute_condition: Optional[pulumi.Input[str]] = None,
+                 attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 aws: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 oidc: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
+                 workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

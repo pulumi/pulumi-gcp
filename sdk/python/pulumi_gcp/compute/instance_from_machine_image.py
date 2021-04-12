@@ -5,15 +5,424 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceFromMachineImage']
+__all__ = ['InstanceFromMachineImageArgs', 'InstanceFromMachineImage']
+
+@pulumi.input_type
+class InstanceFromMachineImageArgs:
+    def __init__(__self__, *,
+                 source_machine_image: pulumi.Input[str],
+                 allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
+                 confidential_instance_config: Optional[pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs']] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 desired_status: Optional[pulumi.Input[str]] = None,
+                 enable_display: Optional[pulumi.Input[bool]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata_startup_script: Optional[pulumi.Input[str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 resource_policies: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input['InstanceFromMachineImageSchedulingArgs']] = None,
+                 service_account: Optional[pulumi.Input['InstanceFromMachineImageServiceAccountArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs']] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a InstanceFromMachineImage resource.
+        :param pulumi.Input[str] source_machine_image: Name or self link of a machine
+               image to create the instance based on.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+               stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+        :param pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+               to create.
+        :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
+        :param pulumi.Input[str] description: A brief description of the resource.
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+               labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+               entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance.
+        :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs made available within the instance.
+        :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
+        :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform specified for the VM instance.
+        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+               self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[str] resource_policies: A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+               instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input['InstanceFromMachineImageSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
+        :param pulumi.Input['InstanceFromMachineImageServiceAccountArgs'] service_account: The service account to attach to the instance.
+        :param pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
+        :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
+               set, the provider zone is used.
+        """
+        pulumi.set(__self__, "source_machine_image", source_machine_image)
+        if allow_stopping_for_update is not None:
+            pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
+        if can_ip_forward is not None:
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if desired_status is not None:
+            pulumi.set(__self__, "desired_status", desired_status)
+        if enable_display is not None:
+            pulumi.set(__self__, "enable_display", enable_display)
+        if guest_accelerators is not None:
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if metadata_startup_script is not None:
+            pulumi.set(__self__, "metadata_startup_script", metadata_startup_script)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="sourceMachineImage")
+    def source_machine_image(self) -> pulumi.Input[str]:
+        """
+        Name or self link of a machine
+        image to create the instance based on.
+        """
+        return pulumi.get(self, "source_machine_image")
+
+    @source_machine_image.setter
+    def source_machine_image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_machine_image", value)
+
+    @property
+    @pulumi.getter(name="allowStoppingForUpdate")
+    def allow_stopping_for_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+        stopping the instance without setting this field, the update will fail.
+        """
+        return pulumi.get(self, "allow_stopping_for_update")
+
+    @allow_stopping_for_update.setter
+    def allow_stopping_for_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_stopping_for_update", value)
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @can_ip_forward.setter
+    def can_ip_forward(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_ip_forward", value)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs']]:
+        """
+        The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        to create.
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @confidential_instance_config.setter
+    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs']]):
+        pulumi.set(self, "confidential_instance_config", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether deletion protection is enabled on this instance.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="desiredStatus")
+    def desired_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        """
+        return pulumi.get(self, "desired_status")
+
+    @desired_status.setter
+    def desired_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_status", value)
+
+    @property
+    @pulumi.getter(name="enableDisplay")
+    def enable_display(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance has virtual displays enabled.
+        """
+        return pulumi.get(self, "enable_display")
+
+    @enable_display.setter
+    def enable_display(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_display", value)
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]]]:
+        """
+        List of the type and count of accelerator cards attached to the instance.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @guest_accelerators.setter
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]]]):
+        pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+        labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+        entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs assigned to the instance.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine type to create.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Metadata key/value pairs made available within the instance.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="metadataStartupScript")
+    def metadata_startup_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metadata startup scripts made available within the instance.
+        """
+        return pulumi.get(self, "metadata_startup_script")
+
+    @metadata_startup_script.setter
+    def metadata_startup_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_startup_script", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum CPU platform specified for the VM instance.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]]]:
+        """
+        The networks attached to the instance.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+        self_link nor project are provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input[str]]:
+        """
+        A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+        instance to recreate. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_policies", value)
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingArgs']]:
+        """
+        The scheduling strategy being used by the instance.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['InstanceFromMachineImageSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input['InstanceFromMachineImageServiceAccountArgs']]:
+        """
+        The service account to attach to the instance.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input['InstanceFromMachineImageServiceAccountArgs']]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs']]:
+        """
+        The shielded vm config being used by the instance.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of tags attached to the instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone that the machine should be created in. If not
+        set, the provider zone is used.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class InstanceFromMachineImage(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -106,6 +515,80 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceFromMachineImageArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a VM instance resource within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/instances)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+
+        This resource is specifically to create a compute instance from a given
+        `source_machine_image`. To create an instance without a machine image, use the
+        `compute.Instance` resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tpl = gcp.compute.InstanceFromMachineImage("tpl",
+            zone="us-central1-a",
+            source_machine_image="projects/PROJECT-ID/global/machineImages/NAME",
+            can_ip_forward=False,
+            labels={
+                "my_key": "my_value",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceFromMachineImageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceFromMachineImageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageConfidentialInstanceConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 desired_status: Optional[pulumi.Input[str]] = None,
+                 enable_display: Optional[pulumi.Input[bool]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageGuestAcceleratorArgs']]]]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata_startup_script: Optional[pulumi.Input[str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 resource_policies: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']]] = None,
+                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageServiceAccountArgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageShieldedInstanceConfigArgs']]] = None,
+                 source_machine_image: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,127 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PreventionJobTrigger']
+__all__ = ['PreventionJobTriggerArgs', 'PreventionJobTrigger']
+
+@pulumi.input_type
+class PreventionJobTriggerArgs:
+    def __init__(__self__, *,
+                 parent: pulumi.Input[str],
+                 triggers: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a PreventionJobTrigger resource.
+        :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
+               or `projects/{{project}}/locations/{{location}}`
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
+               Structure is documented below.
+        :param pulumi.Input[str] description: A description of the job trigger.
+        :param pulumi.Input[str] display_name: User set display name of the job trigger.
+        :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
+               Structure is documented below.
+        :param pulumi.Input[str] status: Whether the trigger is currently active.
+               Default value is `HEALTHY`.
+               Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        """
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "triggers", triggers)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if inspect_job is not None:
+            pulumi.set(__self__, "inspect_job", inspect_job)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The parent of the trigger, either in the format `projects/{{project}}`
+        or `projects/{{project}}/locations/{{location}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def triggers(self) -> pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]:
+        """
+        What event needs to occur for a new job to be started.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "triggers")
+
+    @triggers.setter
+    def triggers(self, value: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]):
+        pulumi.set(self, "triggers", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the job trigger.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User set display name of the job trigger.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="inspectJob")
+    def inspect_job(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']]:
+        """
+        Controls what and how to inspect for findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inspect_job")
+
+    @inspect_job.setter
+    def inspect_job(self, value: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']]):
+        pulumi.set(self, "inspect_job", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the trigger is currently active.
+        Default value is `HEALTHY`.
+        Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class PreventionJobTrigger(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -99,6 +211,95 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PreventionJobTriggerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A job trigger configuration.
+
+        To get more information about JobTrigger, see:
+
+        * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.jobTriggers)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
+
+        ## Example Usage
+        ### Dlp Job Trigger Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionJobTrigger("basic",
+            description="Description",
+            display_name="Displayname",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    save_findings=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs(
+                        output_config=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs(
+                            table=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs(
+                                dataset_id="asdf",
+                                project_id="asdf",
+                            ),
+                        ),
+                    ),
+                )],
+                inspect_template_name="fake",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )])
+        ```
+
+        ## Import
+
+        JobTrigger can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PreventionJobTriggerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PreventionJobTriggerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_job: Optional[pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

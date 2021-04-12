@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['GcpUserAccessBinding']
+__all__ = ['GcpUserAccessBindingArgs', 'GcpUserAccessBinding']
+
+@pulumi.input_type
+class GcpUserAccessBindingArgs:
+    def __init__(__self__, *,
+                 access_levels: pulumi.Input[str],
+                 group_key: pulumi.Input[str],
+                 organization_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a GcpUserAccessBinding resource.
+        :param pulumi.Input[str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
+        """
+        pulumi.set(__self__, "access_levels", access_levels)
+        pulumi.set(__self__, "group_key", group_key)
+        pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> pulumi.Input[str]:
+        """
+        Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "access_levels")
+
+    @access_levels.setter
+    def access_levels(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_levels", value)
+
+    @property
+    @pulumi.getter(name="groupKey")
+    def group_key(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        """
+        return pulumi.get(self, "group_key")
+
+    @group_key.setter
+    def group_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_key", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        """
+        Required. ID of the parent organization.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
 
 class GcpUserAccessBinding(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +97,50 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GcpUserAccessBindingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access.
+
+        To get more information about GcpUserAccessBinding, see:
+
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/organizations.gcpUserAccessBindings)
+
+        ## Example Usage
+
+        ## Import
+
+        GcpUserAccessBinding can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GcpUserAccessBindingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GcpUserAccessBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_levels: Optional[pulumi.Input[str]] = None,
+                 group_key: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

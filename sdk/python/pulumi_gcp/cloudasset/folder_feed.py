@@ -5,15 +5,179 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FolderFeed']
+__all__ = ['FolderFeedArgs', 'FolderFeed']
+
+@pulumi.input_type
+class FolderFeedArgs:
+    def __init__(__self__, *,
+                 billing_project: pulumi.Input[str],
+                 feed_id: pulumi.Input[str],
+                 feed_output_config: pulumi.Input['FolderFeedFeedOutputConfigArgs'],
+                 folder: pulumi.Input[str],
+                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 condition: Optional[pulumi.Input['FolderFeedConditionArgs']] = None,
+                 content_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FolderFeed resource.
+        :param pulumi.Input[str] billing_project: The project whose identity will be used when sending messages to the
+               destination pubsub topic. It also specifies the project for API
+               enablement check, quota, and billing.
+        :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
+        :param pulumi.Input['FolderFeedFeedOutputConfigArgs'] feed_output_config: Output configuration for asset feed destination.
+               Structure is documented below.
+        :param pulumi.Input[str] folder: The folder this feed should be created in.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
+               assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+               exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+               See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of assetNames
+               and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+               the feed. For example: "compute.googleapis.com/Disk"
+               See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+               supported asset types.
+        :param pulumi.Input['FolderFeedConditionArgs'] condition: A condition which determines whether an asset update should be published. If specified, an asset
+               will be returned only when the expression evaluates to true. When set, expression field
+               must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+               expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+               condition are optional.
+               Structure is documented below.
+        :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
+               Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+        """
+        pulumi.set(__self__, "billing_project", billing_project)
+        pulumi.set(__self__, "feed_id", feed_id)
+        pulumi.set(__self__, "feed_output_config", feed_output_config)
+        pulumi.set(__self__, "folder", folder)
+        if asset_names is not None:
+            pulumi.set(__self__, "asset_names", asset_names)
+        if asset_types is not None:
+            pulumi.set(__self__, "asset_types", asset_types)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+
+    @property
+    @pulumi.getter(name="billingProject")
+    def billing_project(self) -> pulumi.Input[str]:
+        """
+        The project whose identity will be used when sending messages to the
+        destination pubsub topic. It also specifies the project for API
+        enablement check, quota, and billing.
+        """
+        return pulumi.get(self, "billing_project")
+
+    @billing_project.setter
+    def billing_project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_project", value)
+
+    @property
+    @pulumi.getter(name="feedId")
+    def feed_id(self) -> pulumi.Input[str]:
+        """
+        This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
+        """
+        return pulumi.get(self, "feed_id")
+
+    @feed_id.setter
+    def feed_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "feed_id", value)
+
+    @property
+    @pulumi.getter(name="feedOutputConfig")
+    def feed_output_config(self) -> pulumi.Input['FolderFeedFeedOutputConfigArgs']:
+        """
+        Output configuration for asset feed destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feed_output_config")
+
+    @feed_output_config.setter
+    def feed_output_config(self, value: pulumi.Input['FolderFeedFeedOutputConfigArgs']):
+        pulumi.set(self, "feed_output_config", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> pulumi.Input[str]:
+        """
+        The folder this feed should be created in.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: pulumi.Input[str]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter(name="assetNames")
+    def asset_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the full names of the assets to receive updates. You must specify either or both of
+        assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+        exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+        See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+        """
+        return pulumi.get(self, "asset_names")
+
+    @asset_names.setter
+    def asset_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "asset_names", value)
+
+    @property
+    @pulumi.getter(name="assetTypes")
+    def asset_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of types of the assets to receive updates. You must specify either or both of assetNames
+        and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+        the feed. For example: "compute.googleapis.com/Disk"
+        See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+        supported asset types.
+        """
+        return pulumi.get(self, "asset_types")
+
+    @asset_types.setter
+    def asset_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "asset_types", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['FolderFeedConditionArgs']]:
+        """
+        A condition which determines whether an asset update should be published. If specified, an asset
+        will be returned only when the expression evaluates to true. When set, expression field
+        must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        condition are optional.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['FolderFeedConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Asset content type. If not specified, no content but the asset name and type will be returned.
+        Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
 
 
 class FolderFeed(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -78,6 +242,61 @@ class FolderFeed(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] folder: The folder this feed should be created in.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FolderFeedArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Describes a Cloud Asset Inventory feed used to to listen to asset updates.
+
+        To get more information about FolderFeed, see:
+
+        * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
+
+        ## Example Usage
+
+        ## Import
+
+        FolderFeed can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default folders/{{folder_id}}/feeds/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FolderFeedArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FolderFeedArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 billing_project: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['FolderFeedConditionArgs']]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 feed_id: Optional[pulumi.Input[str]] = None,
+                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['FolderFeedFeedOutputConfigArgs']]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

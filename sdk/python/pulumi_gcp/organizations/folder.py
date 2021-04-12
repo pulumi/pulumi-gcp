@@ -5,13 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Folder']
+__all__ = ['FolderArgs', 'Folder']
+
+@pulumi.input_type
+class FolderArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 parent: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a Folder resource.
+        :param pulumi.Input[str] display_name: The folder’s display name.
+               A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
+        :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
+               Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The folder’s display name.
+        A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The resource name of the parent Folder or Organization.
+        Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
 
 
 class Folder(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -70,6 +112,75 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FolderArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Allows management of a Google Cloud Platform folder. For more information see
+        [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-folders)
+        and
+        [API](https://cloud.google.com/resource-manager/reference/rest/v2/folders).
+
+        A folder can contain projects, other folders, or a combination of both. You can use folders to group projects under an organization in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Cloud Platform resources. Folders allows you to group these resources on a per-department basis. Folders are used to group resources that share common IAM policies.
+
+        Folders created live inside an Organization. See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+
+        The service account used to run the provider when creating a `organizations.Folder`
+        resource must have `roles/resourcemanager.folderCreator`. See the
+        [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
+        doc for more information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Top-level folder under an organization.
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        # Folder nested under another folder.
+        team_abc = gcp.organizations.Folder("team-abc",
+            display_name="Team ABC",
+            parent=department1.name)
+        ```
+
+        ## Import
+
+        Folders can be imported using the folder's id, e.g. # Both syntaxes are valid
+
+        ```sh
+         $ pulumi import gcp:organizations/folder:Folder department1 1234567
+        ```
+
+        ```sh
+         $ pulumi import gcp:organizations/folder:Folder department1 folders/1234567
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FolderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FolderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

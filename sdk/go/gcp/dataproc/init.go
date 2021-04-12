@@ -22,29 +22,30 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:dataproc/autoscalingPolicy:AutoscalingPolicy":
-		r, err = NewAutoscalingPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AutoscalingPolicy{}
 	case "gcp:dataproc/cluster:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cluster{}
 	case "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding":
-		r, err = NewClusterIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterIAMBinding{}
 	case "gcp:dataproc/clusterIAMMember:ClusterIAMMember":
-		r, err = NewClusterIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterIAMMember{}
 	case "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy":
-		r, err = NewClusterIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterIAMPolicy{}
 	case "gcp:dataproc/job:Job":
-		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &Job{}
 	case "gcp:dataproc/jobIAMBinding:JobIAMBinding":
-		r, err = NewJobIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobIAMBinding{}
 	case "gcp:dataproc/jobIAMMember:JobIAMMember":
-		r, err = NewJobIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobIAMMember{}
 	case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
-		r, err = NewJobIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobIAMPolicy{}
 	case "gcp:dataproc/metastoreService:MetastoreService":
-		r, err = NewMetastoreService(ctx, name, nil, pulumi.URN_(urn))
+		r = &MetastoreService{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

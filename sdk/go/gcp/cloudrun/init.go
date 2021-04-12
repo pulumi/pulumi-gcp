@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:cloudrun/domainMapping:DomainMapping":
-		r, err = NewDomainMapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainMapping{}
 	case "gcp:cloudrun/iamBinding:IamBinding":
-		r, err = NewIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamBinding{}
 	case "gcp:cloudrun/iamMember:IamMember":
-		r, err = NewIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamMember{}
 	case "gcp:cloudrun/iamPolicy:IamPolicy":
-		r, err = NewIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamPolicy{}
 	case "gcp:cloudrun/service:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

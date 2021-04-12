@@ -5,13 +5,56 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['DefaultObjectACL']
+__all__ = ['DefaultObjectACLArgs', 'DefaultObjectACL']
+
+@pulumi.input_type
+class DefaultObjectACLArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DefaultObjectACL resource.
+        :param pulumi.Input[str] bucket: The name of the bucket it applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`.
+               See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+               Omitting the field is the same as providing an empty list.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if role_entities is not None:
+            pulumi.set(__self__, "role_entities", role_entities)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the bucket it applies to.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="roleEntities")
+    def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of role/entity pairs in the form `ROLE:entity`.
+        See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+        Omitting the field is the same as providing an empty list.
+        """
+        return pulumi.get(self, "role_entities")
+
+    @role_entities.setter
+    def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_entities", value)
 
 
 class DefaultObjectACL(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -63,6 +106,68 @@ class DefaultObjectACL(pulumi.CustomResource):
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Omitting the field is the same as providing an empty list.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DefaultObjectACLArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
+        without managing the bucket itself.
+
+        > Note that for each object, its creator will have the `"OWNER"` role in addition
+        to the default ACL that has been defined.
+
+        For more information see
+        [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+        and
+        [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
+
+        > Want fine-grained control over default object ACLs? Use `storage.DefaultObjectAccessControl`
+        to control individual role entity pairs.
+
+        ## Example Usage
+
+        Example creating a default object ACL on a bucket with one owner, and one reader.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store_default_acl = gcp.storage.DefaultObjectACL("image-store-default-acl",
+            bucket=image_store.name,
+            role_entities=[
+                "OWNER:user-my.email@gmail.com",
+                "READER:group-mygroup",
+            ])
+        ```
+
+        ## Import
+
+        This resource does not support import.
+
+        :param str resource_name: The name of the resource.
+        :param DefaultObjectACLArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DefaultObjectACLArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

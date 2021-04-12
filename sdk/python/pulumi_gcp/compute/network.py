@@ -5,13 +5,171 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Network']
+__all__ = ['NetworkArgs', 'Network']
+
+@pulumi.input_type
+class NetworkArgs:
+    def __init__(__self__, *,
+                 auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+                 delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 routing_mode: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Network resource.
+        :param pulumi.Input[bool] auto_create_subnetworks: When set to `true`, the network is created in "auto subnet mode" and
+               it will create a subnet for each region automatically across the
+               `10.128.0.0/9` address range.
+               When set to `false`, the network is created in "custom subnet mode" so
+               the user can explicitly connect subnetwork resources.
+        :param pulumi.Input[bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+               immediately after network creation. Defaults to `false`.
+        :param pulumi.Input[str] description: An optional description of this resource. The resource must be
+               recreated to modify this field.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+               and the maximum value is 1500 bytes.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
+               network's cloud routers will only advertise routes with subnetworks
+               of this network in the same region as the router. If set to `GLOBAL`,
+               this network's cloud routers will advertise routes with all
+               subnetworks of this network, across regions.
+               Possible values are `REGIONAL` and `GLOBAL`.
+        """
+        if auto_create_subnetworks is not None:
+            pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
+        if delete_default_routes_on_create is not None:
+            pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
+
+    @property
+    @pulumi.getter(name="autoCreateSubnetworks")
+    def auto_create_subnetworks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to `true`, the network is created in "auto subnet mode" and
+        it will create a subnet for each region automatically across the
+        `10.128.0.0/9` address range.
+        When set to `false`, the network is created in "custom subnet mode" so
+        the user can explicitly connect subnetwork resources.
+        """
+        return pulumi.get(self, "auto_create_subnetworks")
+
+    @auto_create_subnetworks.setter
+    def auto_create_subnetworks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_create_subnetworks", value)
+
+    @property
+    @pulumi.getter(name="deleteDefaultRoutesOnCreate")
+    def delete_default_routes_on_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+        immediately after network creation. Defaults to `false`.
+        """
+        return pulumi.get(self, "delete_default_routes_on_create")
+
+    @delete_default_routes_on_create.setter
+    def delete_default_routes_on_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_default_routes_on_create", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. The resource must be
+        recreated to modify this field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+        and the maximum value is 1500 bytes.
+        """
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mtu", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network-wide routing mode to use. If set to `REGIONAL`, this
+        network's cloud routers will only advertise routes with subnetworks
+        of this network in the same region as the router. If set to `GLOBAL`,
+        this network's cloud routers will advertise routes with all
+        subnetworks of this network, across regions.
+        Possible values are `REGIONAL` and `GLOBAL`.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @routing_mode.setter
+    def routing_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "routing_mode", value)
 
 
 class Network(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -97,6 +255,80 @@ class Network(pulumi.CustomResource):
                subnetworks of this network, across regions.
                Possible values are `REGIONAL` and `GLOBAL`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[NetworkArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a VPC network or legacy network resource on GCP.
+
+        To get more information about Network, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+
+        ## Example Usage
+        ### Network Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork")
+        ```
+        ### Network Custom Mtu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork", mtu=1500)
+        ```
+
+        ## Import
+
+        Network can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/network:Network default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NetworkArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+                 delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 routing_mode: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

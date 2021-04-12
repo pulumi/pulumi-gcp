@@ -5,15 +5,156 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GameServerConfig']
+__all__ = ['GameServerConfigArgs', 'GameServerConfig']
+
+@pulumi.input_type
+class GameServerConfigArgs:
+    def __init__(__self__, *,
+                 config_id: pulumi.Input[str],
+                 deployment_id: pulumi.Input[str],
+                 fleet_configs: pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]],
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]]] = None):
+        """
+        The set of arguments for constructing a GameServerConfig resource.
+        :param pulumi.Input[str] config_id: A unique id for the deployment config.
+        :param pulumi.Input[str] deployment_id: A unique id for the deployment.
+        :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
+               will be only one.
+               Structure is documented below.
+        :param pulumi.Input[str] description: The description of the game server config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
+        :param pulumi.Input[str] location: Location of the Deployment.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]] scaling_configs: Optional. This contains the autoscaling settings.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "deployment_id", deployment_id)
+        pulumi.set(__self__, "fleet_configs", fleet_configs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if scaling_configs is not None:
+            pulumi.set(__self__, "scaling_configs", scaling_configs)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Input[str]:
+        """
+        A unique id for the deployment config.
+        """
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_id", value)
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> pulumi.Input[str]:
+        """
+        A unique id for the deployment.
+        """
+        return pulumi.get(self, "deployment_id")
+
+    @deployment_id.setter
+    def deployment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deployment_id", value)
+
+    @property
+    @pulumi.getter(name="fleetConfigs")
+    def fleet_configs(self) -> pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]]:
+        """
+        The fleet config contains list of fleet specs. In the Single Cloud, there
+        will be only one.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fleet_configs")
+
+    @fleet_configs.setter
+    def fleet_configs(self, value: pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]]):
+        pulumi.set(self, "fleet_configs", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the game server config.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Set of labels to group by.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the Deployment.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="scalingConfigs")
+    def scaling_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]]]:
+        """
+        Optional. This contains the autoscaling settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling_configs")
+
+    @scaling_configs.setter
+    def scaling_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]]]):
+        pulumi.set(self, "scaling_configs", value)
 
 
 class GameServerConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -137,6 +278,132 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]] scaling_configs: Optional. This contains the autoscaling settings.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GameServerConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A game server config resource. Configs are global and immutable.
+
+        To get more information about GameServerConfig, see:
+
+        * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments.configs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/game-servers/docs)
+
+        ## Example Usage
+        ### Game Service Config Basic
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
+            deployment_id="tf-test-deployment",
+            description="a deployment description")
+        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
+            config_id="tf-test-config",
+            deployment_id=default_game_server_deployment.deployment_id,
+            description="a config description",
+            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
+                name="something-unique",
+                fleet_spec=json.dumps({
+                    "replicas": 1,
+                    "scheduling": "Packed",
+                    "template": {
+                        "metadata": {
+                            "name": "tf-test-game-server-template",
+                        },
+                        "spec": {
+                            "ports": [{
+                                "name": "default",
+                                "portPolicy": "Dynamic",
+                                "containerPort": 7654,
+                                "protocol": "UDP",
+                            }],
+                            "template": {
+                                "spec": {
+                                    "containers": [{
+                                        "name": "simple-udp-server",
+                                        "image": "gcr.io/agones-images/udp-server:0.14",
+                                    }],
+                                },
+                            },
+                        },
+                    },
+                }),
+            )],
+            scaling_configs=[gcp.gameservices.GameServerConfigScalingConfigArgs(
+                name="scaling-config-name",
+                fleet_autoscaler_spec=json.dumps({
+                    "policy": {
+                        "type": "Webhook",
+                        "webhook": {
+                            "service": {
+                                "name": "autoscaler-webhook-service",
+                                "namespace": "default",
+                                "path": "scale",
+                            },
+                        },
+                    },
+                }),
+                selectors=[gcp.gameservices.GameServerConfigScalingConfigSelectorArgs(
+                    labels={
+                        "one": "two",
+                    },
+                )],
+                schedules=[gcp.gameservices.GameServerConfigScalingConfigScheduleArgs(
+                    cron_job_duration="3.500s",
+                    cron_spec="0 0 * * 0",
+                )],
+            )])
+        ```
+
+        ## Import
+
+        GameServerConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:gameservices/gameServerConfig:GameServerConfig default projects/{{project}}/locations/{{location}}/gameServerDeployments/{{deployment_id}}/configs/{{config_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:gameservices/gameServerConfig:GameServerConfig default {{project}}/{{location}}/{{deployment_id}}/{{config_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:gameservices/gameServerConfig:GameServerConfig default {{location}}/{{deployment_id}}/{{config_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GameServerConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GameServerConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

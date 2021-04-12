@@ -5,13 +5,110 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['WorkloadIdentityPool']
+__all__ = ['WorkloadIdentityPoolArgs', 'WorkloadIdentityPool']
+
+@pulumi.input_type
+class WorkloadIdentityPoolArgs:
+    def __init__(__self__, *,
+                 workload_identity_pool_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WorkloadIdentityPool resource.
+        :param pulumi.Input[str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
+               value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
+               `gcp-` is reserved for use by Google, and may not be specified.
+        :param pulumi.Input[str] description: A description of the pool. Cannot exceed 256 characters.
+        :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
+               existing tokens to access resources. If the pool is re-enabled, existing tokens grant
+               access again.
+        :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="workloadIdentityPoolId")
+    def workload_identity_pool_id(self) -> pulumi.Input[str]:
+        """
+        The ID to use for the pool, which becomes the final component of the resource name. This
+        value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
+        `gcp-` is reserved for use by Google, and may not be specified.
+        """
+        return pulumi.get(self, "workload_identity_pool_id")
+
+    @workload_identity_pool_id.setter
+    def workload_identity_pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workload_identity_pool_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the pool. Cannot exceed 256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
+        existing tokens to access resources. If the pool is re-enabled, existing tokens grant
+        access again.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A display name for the pool. Cannot exceed 32 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class WorkloadIdentityPool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -86,6 +183,85 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkloadIdentityPoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a collection of external workload identities. You can define IAM policies to
+        grant these identities access to Google Cloud resources.
+
+        To get more information about WorkloadIdentityPool, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools)
+        * How-to Guides
+            * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+
+        ## Example Usage
+        ### Iam Workload Identity Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Iam Workload Identity Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example",
+            workload_identity_pool_id="example-pool",
+            display_name="Name of pool",
+            description="Identity pool for automated test",
+            disabled=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        WorkloadIdentityPool can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param WorkloadIdentityPoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkloadIdentityPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
