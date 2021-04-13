@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
+        public readonly bool? RequirePartitionFilter;
+        /// <summary>
         /// When hive partition detection is requested,
         /// a common for all source uris must be required. The prefix must end immediately
         /// before the partition key encoding begins. For example, consider files following
@@ -40,9 +46,12 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         private TableExternalDataConfigurationHivePartitioningOptions(
             string? mode,
 
+            bool? requirePartitionFilter,
+
             string? sourceUriPrefix)
         {
             Mode = mode;
+            RequirePartitionFilter = requirePartitionFilter;
             SourceUriPrefix = sourceUriPrefix;
         }
     }

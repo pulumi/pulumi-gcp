@@ -14,12 +14,13 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class ServicePerimeterStatusEgressPolicy
     {
         /// <summary>
-        /// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+        /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServicePerimeterStatusEgressPolicyEgressFrom? EgressFrom;
         /// <summary>
-        /// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+        /// Defines the conditions on the `ApiOperation` and destination resources that
+        /// cause this `EgressPolicy` to apply.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServicePerimeterStatusEgressPolicyEgressTo? EgressTo;

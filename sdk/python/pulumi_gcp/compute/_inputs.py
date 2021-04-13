@@ -132,6 +132,7 @@ __all__ = [
     'ManagedSslCertificateManagedArgs',
     'MangedSslCertificateManagedArgs',
     'NodeGroupAutoscalingPolicyArgs',
+    'NodeGroupMaintenanceWindowArgs',
     'NodeTemplateNodeTypeFlexibilityArgs',
     'NodeTemplateServerBindingArgs',
     'OrganizationSecurityPolicyRuleMatchArgs',
@@ -8311,6 +8312,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
@@ -8330,6 +8332,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                `subnetwork` for custom subnetted networks.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
         :param pulumi.Input[str] subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
                created in. Either `network` or `subnetwork` must be provided.
@@ -8346,6 +8349,8 @@ class InstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -8421,6 +8426,18 @@ class InstanceTemplateNetworkInterfaceArgs:
     @network_ip.setter
     def network_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_ip", value)
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        """
+        return pulumi.get(self, "nic_type")
+
+    @nic_type.setter
+    def nic_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nic_type", value)
 
     @property
     @pulumi.getter
@@ -9120,6 +9137,28 @@ class NodeGroupAutoscalingPolicyArgs:
     @mode.setter
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
+
+
+@pulumi.input_type
+class NodeGroupMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 start_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] start_time: instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

@@ -462,6 +462,7 @@ class TagTemplateField(dict):
     def __init__(__self__, *,
                  field_id: str,
                  type: 'outputs.TagTemplateFieldType',
+                 description: Optional[str] = None,
                  display_name: Optional[str] = None,
                  is_required: Optional[bool] = None,
                  name: Optional[str] = None,
@@ -470,6 +471,7 @@ class TagTemplateField(dict):
         :param str field_id: The identifier for this object. Format specified above.
         :param 'TagTemplateFieldTypeArgs' type: The type of value this tag field can contain.
                Structure is documented below.
+        :param str description: A description for this field.
         :param str display_name: The display name for this template.
         :param bool is_required: Whether this is a required field. Defaults to false.
         :param str name: -
@@ -480,6 +482,8 @@ class TagTemplateField(dict):
         """
         pulumi.set(__self__, "field_id", field_id)
         pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if is_required is not None:
@@ -505,6 +509,14 @@ class TagTemplateField(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description for this field.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")

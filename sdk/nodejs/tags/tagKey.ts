@@ -5,6 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A TagKey, used to group a set of TagValues.
+ *
+ * To get more information about TagKey, see:
+ *
+ * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *
+ * ## Example Usage
+ * ### Tag Key Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const key = new gcp.tags.TagKey("key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * ```
+ *
  * ## Import
  *
  * TagKey can be imported using any of these accepted formats

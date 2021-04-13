@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
     public sealed class TagTemplateField
     {
         /// <summary>
+        /// A description for this field.
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
         /// The display name for this template.
         /// </summary>
         public readonly string? DisplayName;
@@ -44,6 +48,8 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
 
         [OutputConstructor]
         private TagTemplateField(
+            string? description,
+
             string? displayName,
 
             string fieldId,
@@ -56,6 +62,7 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
 
             Outputs.TagTemplateFieldType type)
         {
+            Description = description;
             DisplayName = displayName;
             FieldId = fieldId;
             IsRequired = isRequired;

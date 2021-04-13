@@ -1024,12 +1024,12 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                  require_ssl: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] ipv4_enabled: Whether this Cloud SQL instance should be assigned
-               a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+               a public IPV4 address. At least `ipv4_enabled` must be enabled or a
                `private_network` must be configured.
         :param pulumi.Input[str] private_network: The VPC network from which the Cloud SQL
                instance is accessible for private IP. For example, projects/myProject/global/networks/default.
                Specifying a network enables private IP.
-               Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+               At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP are enforced or not.
         """
@@ -1056,7 +1056,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     def ipv4_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether this Cloud SQL instance should be assigned
-        a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+        a public IPV4 address. At least `ipv4_enabled` must be enabled or a
         `private_network` must be configured.
         """
         return pulumi.get(self, "ipv4_enabled")
@@ -1072,7 +1072,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
         The VPC network from which the Cloud SQL
         instance is accessible for private IP. For example, projects/myProject/global/networks/default.
         Specifying a network enables private IP.
-        Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+        At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
         This setting can be updated, but it cannot be removed after it is set.
         """
         return pulumi.get(self, "private_network")

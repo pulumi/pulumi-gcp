@@ -51,6 +51,9 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  *     description: "example google_compute_node_group for Google Provider",
  *     maintenancePolicy: "RESTART_IN_PLACE",
+ *     maintenanceWindow: {
+ *         startTime: "08:00",
+ *     },
  *     size: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  *     autoscalingPolicy: {
@@ -128,6 +131,11 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly maintenancePolicy!: pulumi.Output<string | undefined>;
     /**
+     * contains properties for the timeframe of maintenance
+     * Structure is documented below.
+     */
+    public readonly maintenanceWindow!: pulumi.Output<outputs.compute.NodeGroupMaintenanceWindow | undefined>;
+    /**
      * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
@@ -170,6 +178,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodeTemplate"] = state ? state.nodeTemplate : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -187,6 +196,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -224,6 +234,11 @@ export interface NodeGroupState {
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
     readonly maintenancePolicy?: pulumi.Input<string>;
+    /**
+     * contains properties for the timeframe of maintenance
+     * Structure is documented below.
+     */
+    readonly maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
     /**
      * Name of the resource.
      */
@@ -269,6 +284,11 @@ export interface NodeGroupArgs {
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
     readonly maintenancePolicy?: pulumi.Input<string>;
+    /**
+     * contains properties for the timeframe of maintenance
+     * Structure is documented below.
+     */
+    readonly maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
     /**
      * Name of the resource.
      */

@@ -1520,6 +1520,8 @@ func (o TagFieldArrayOutput) Index(i pulumi.IntInput) TagFieldOutput {
 }
 
 type TagTemplateField struct {
+	// A description for this field.
+	Description *string `pulumi:"description"`
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
 	// The identifier for this object. Format specified above.
@@ -1550,6 +1552,8 @@ type TagTemplateFieldInput interface {
 }
 
 type TagTemplateFieldArgs struct {
+	// A description for this field.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The identifier for this object. Format specified above.
@@ -1617,6 +1621,11 @@ func (o TagTemplateFieldOutput) ToTagTemplateFieldOutput() TagTemplateFieldOutpu
 
 func (o TagTemplateFieldOutput) ToTagTemplateFieldOutputWithContext(ctx context.Context) TagTemplateFieldOutput {
 	return o
+}
+
+// A description for this field.
+func (o TagTemplateFieldOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagTemplateField) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The display name for this template.

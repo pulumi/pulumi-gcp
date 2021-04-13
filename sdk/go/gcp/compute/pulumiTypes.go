@@ -19321,6 +19321,8 @@ type InstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp *string `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+	NicType *string `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -19363,6 +19365,8 @@ type InstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -19461,6 +19465,11 @@ func (o InstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringPtrOutput
 // empty, the address will be automatically assigned.
 func (o InstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
+}
+
+// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+func (o InstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
 
 // the name of the subnetwork to attach this interface
@@ -21525,6 +21534,137 @@ func (o NodeGroupAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupMaintenanceWindow struct {
+	// instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+	StartTime string `pulumi:"startTime"`
+}
+
+// NodeGroupMaintenanceWindowInput is an input type that accepts NodeGroupMaintenanceWindowArgs and NodeGroupMaintenanceWindowOutput values.
+// You can construct a concrete instance of `NodeGroupMaintenanceWindowInput` via:
+//
+//          NodeGroupMaintenanceWindowArgs{...}
+type NodeGroupMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToNodeGroupMaintenanceWindowOutput() NodeGroupMaintenanceWindowOutput
+	ToNodeGroupMaintenanceWindowOutputWithContext(context.Context) NodeGroupMaintenanceWindowOutput
+}
+
+type NodeGroupMaintenanceWindowArgs struct {
+	// instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (NodeGroupMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupMaintenanceWindow)(nil)).Elem()
+}
+
+func (i NodeGroupMaintenanceWindowArgs) ToNodeGroupMaintenanceWindowOutput() NodeGroupMaintenanceWindowOutput {
+	return i.ToNodeGroupMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i NodeGroupMaintenanceWindowArgs) ToNodeGroupMaintenanceWindowOutputWithContext(ctx context.Context) NodeGroupMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupMaintenanceWindowOutput)
+}
+
+func (i NodeGroupMaintenanceWindowArgs) ToNodeGroupMaintenanceWindowPtrOutput() NodeGroupMaintenanceWindowPtrOutput {
+	return i.ToNodeGroupMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i NodeGroupMaintenanceWindowArgs) ToNodeGroupMaintenanceWindowPtrOutputWithContext(ctx context.Context) NodeGroupMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupMaintenanceWindowOutput).ToNodeGroupMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// NodeGroupMaintenanceWindowPtrInput is an input type that accepts NodeGroupMaintenanceWindowArgs, NodeGroupMaintenanceWindowPtr and NodeGroupMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `NodeGroupMaintenanceWindowPtrInput` via:
+//
+//          NodeGroupMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeGroupMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToNodeGroupMaintenanceWindowPtrOutput() NodeGroupMaintenanceWindowPtrOutput
+	ToNodeGroupMaintenanceWindowPtrOutputWithContext(context.Context) NodeGroupMaintenanceWindowPtrOutput
+}
+
+type nodeGroupMaintenanceWindowPtrType NodeGroupMaintenanceWindowArgs
+
+func NodeGroupMaintenanceWindowPtr(v *NodeGroupMaintenanceWindowArgs) NodeGroupMaintenanceWindowPtrInput {
+	return (*nodeGroupMaintenanceWindowPtrType)(v)
+}
+
+func (*nodeGroupMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *nodeGroupMaintenanceWindowPtrType) ToNodeGroupMaintenanceWindowPtrOutput() NodeGroupMaintenanceWindowPtrOutput {
+	return i.ToNodeGroupMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeGroupMaintenanceWindowPtrType) ToNodeGroupMaintenanceWindowPtrOutputWithContext(ctx context.Context) NodeGroupMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupMaintenanceWindowPtrOutput)
+}
+
+type NodeGroupMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupMaintenanceWindow)(nil)).Elem()
+}
+
+func (o NodeGroupMaintenanceWindowOutput) ToNodeGroupMaintenanceWindowOutput() NodeGroupMaintenanceWindowOutput {
+	return o
+}
+
+func (o NodeGroupMaintenanceWindowOutput) ToNodeGroupMaintenanceWindowOutputWithContext(ctx context.Context) NodeGroupMaintenanceWindowOutput {
+	return o
+}
+
+func (o NodeGroupMaintenanceWindowOutput) ToNodeGroupMaintenanceWindowPtrOutput() NodeGroupMaintenanceWindowPtrOutput {
+	return o.ToNodeGroupMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupMaintenanceWindowOutput) ToNodeGroupMaintenanceWindowPtrOutputWithContext(ctx context.Context) NodeGroupMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v NodeGroupMaintenanceWindow) *NodeGroupMaintenanceWindow {
+		return &v
+	}).(NodeGroupMaintenanceWindowPtrOutput)
+}
+
+// instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+func (o NodeGroupMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeGroupMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type NodeGroupMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupMaintenanceWindow)(nil)).Elem()
+}
+
+func (o NodeGroupMaintenanceWindowPtrOutput) ToNodeGroupMaintenanceWindowPtrOutput() NodeGroupMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o NodeGroupMaintenanceWindowPtrOutput) ToNodeGroupMaintenanceWindowPtrOutputWithContext(ctx context.Context) NodeGroupMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o NodeGroupMaintenanceWindowPtrOutput) Elem() NodeGroupMaintenanceWindowOutput {
+	return o.ApplyT(func(v *NodeGroupMaintenanceWindow) NodeGroupMaintenanceWindow { return *v }).(NodeGroupMaintenanceWindowOutput)
+}
+
+// instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+func (o NodeGroupMaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGroupMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -67989,6 +68129,7 @@ type GetInstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
+	NicType   string `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -68030,6 +68171,7 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	NicType   pulumi.StringInput `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -68127,6 +68269,10 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringOutput
 // empty, the address will be automatically assigned.
 func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
 
 // the name of the subnetwork to attach this interface
@@ -70628,6 +70774,8 @@ func init() {
 	pulumi.RegisterOutputType(MangedSslCertificateManagedPtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupAutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(NodeGroupAutoscalingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(NodeGroupMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateNodeTypeFlexibilityOutput{})
 	pulumi.RegisterOutputType(NodeTemplateNodeTypeFlexibilityPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateServerBindingOutput{})

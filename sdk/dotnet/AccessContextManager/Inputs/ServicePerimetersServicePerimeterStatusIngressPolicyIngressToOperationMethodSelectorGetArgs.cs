@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
     public sealed class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+        /// Value for `method` should be a valid method name for the corresponding
+        /// `serviceName` in `ApiOperation`. If `*` used as value for method,
+        /// then ALL methods and permissions are allowed.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+        /// Value for permission should be a valid Cloud IAM permission for the
+        /// corresponding `serviceName` in `ApiOperation`.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }

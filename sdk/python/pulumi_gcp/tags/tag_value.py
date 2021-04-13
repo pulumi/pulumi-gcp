@@ -78,6 +78,31 @@ class TagValue(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        A TagValue is a child of a particular TagKey. TagValues are used to group cloud resources for the purpose of controlling them using policies.
+
+        To get more information about TagValue, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+
+        ## Example Usage
+        ### Tag Value Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        ```
+
         ## Import
 
         TagValue can be imported using any of these accepted formats
@@ -104,6 +129,31 @@ class TagValue(pulumi.CustomResource):
                  args: TagValueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A TagValue is a child of a particular TagKey. TagValues are used to group cloud resources for the purpose of controlling them using policies.
+
+        To get more information about TagValue, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+
+        ## Example Usage
+        ### Tag Value Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        ```
+
         ## Import
 
         TagValue can be imported using any of these accepted formats

@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.Dataproc
     ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
     ///                     {
     ///                         BootDiskType = "pd-ssd",
-    ///                         BootDiskSizeGb = 15,
+    ///                         BootDiskSizeGb = 30,
     ///                     },
     ///                 },
     ///                 WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Dataproc
     ///                     MinCpuPlatform = "Intel Skylake",
     ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
     ///                     {
-    ///                         BootDiskSizeGb = 15,
+    ///                         BootDiskSizeGb = 30,
     ///                         NumLocalSsds = 1,
     ///                     },
     ///                 },

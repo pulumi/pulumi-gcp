@@ -5,6 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A TagValue is a child of a particular TagKey. TagValues are used to group cloud resources for the purpose of controlling them using policies.
+ *
+ * To get more information about TagValue, see:
+ *
+ * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *
+ * ## Example Usage
+ * ### Tag Value Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const key = new gcp.tags.TagKey("key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * const value = new gcp.tags.TagValue("value", {
+ *     description: "For valuename resources.",
+ *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     shortName: "valuename",
+ * });
+ * ```
+ *
  * ## Import
  *
  * TagValue can be imported using any of these accepted formats

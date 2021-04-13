@@ -21,6 +21,9 @@ class AuthorityIamMemberArgs:
                  condition: Optional[pulumi.Input['AuthorityIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a AuthorityIamMember resource.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
         pulumi.set(__self__, "member", member)
@@ -49,6 +52,11 @@ class AuthorityIamMemberArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -78,9 +86,83 @@ class AuthorityIamMember(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a AuthorityIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Certificate Authority Service CertificateAuthority. Each of these resources serves a different use case:
+
+        * `certificateauthority.AuthorityIamPolicy`: Authoritative. Sets the IAM policy for the certificateauthority and replaces any existing policy already attached.
+        * `certificateauthority.AuthorityIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the certificateauthority are preserved.
+        * `certificateauthority.AuthorityIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the certificateauthority are preserved.
+
+        > **Note:** `certificateauthority.AuthorityIamPolicy` **cannot** be used in conjunction with `certificateauthority.AuthorityIamBinding` and `certificateauthority.AuthorityIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `certificateauthority.AuthorityIamBinding` resources **can be** used in conjunction with `certificateauthority.AuthorityIamMember` resources **only if** they do not grant privilege to the same role.
+        ## google\_privateca\_certificate\_authority\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.certificateauthority.AuthorityIamPolicy("policy",
+            certificate_authority=google_privateca_certificate_authority["default"]["id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_privateca\_certificate\_authority\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.AuthorityIamBinding("binding",
+            certificate_authority=google_privateca_certificate_authority["default"]["id"],
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_privateca\_certificate\_authority\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.AuthorityIamMember("member",
+            certificate_authority=google_privateca_certificate_authority["default"]["id"],
+            role="roles/privateca.certificateManager",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} * {{project}}/{{location}}/{{certificate_authority_id}} * {{location}}/{{certificate_authority_id}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificateauthority IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authorityIamMember:AuthorityIamMember editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authorityIamMember:AuthorityIamMember editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authorityIamMember:AuthorityIamMember editor projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
@@ -89,7 +171,78 @@ class AuthorityIamMember(pulumi.CustomResource):
                  args: AuthorityIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AuthorityIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Certificate Authority Service CertificateAuthority. Each of these resources serves a different use case:
+
+        * `certificateauthority.AuthorityIamPolicy`: Authoritative. Sets the IAM policy for the certificateauthority and replaces any existing policy already attached.
+        * `certificateauthority.AuthorityIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the certificateauthority are preserved.
+        * `certificateauthority.AuthorityIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the certificateauthority are preserved.
+
+        > **Note:** `certificateauthority.AuthorityIamPolicy` **cannot** be used in conjunction with `certificateauthority.AuthorityIamBinding` and `certificateauthority.AuthorityIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `certificateauthority.AuthorityIamBinding` resources **can be** used in conjunction with `certificateauthority.AuthorityIamMember` resources **only if** they do not grant privilege to the same role.
+        ## google\_privateca\_certificate\_authority\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.certificateauthority.AuthorityIamPolicy("policy",
+            certificate_authority=google_privateca_certificate_authority["default"]["id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_privateca\_certificate\_authority\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.AuthorityIamBinding("binding",
+            certificate_authority=google_privateca_certificate_authority["default"]["id"],
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_privateca\_certificate\_authority\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.AuthorityIamMember("member",
+            certificate_authority=google_privateca_certificate_authority["default"]["id"],
+            role="roles/privateca.certificateManager",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} * {{project}}/{{location}}/{{certificate_authority_id}} * {{location}}/{{certificate_authority_id}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificateauthority IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authorityIamMember:AuthorityIamMember editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authorityIamMember:AuthorityIamMember editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:certificateauthority/authorityIamMember:AuthorityIamMember editor projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param AuthorityIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -162,6 +315,10 @@ class AuthorityIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -187,6 +344,9 @@ class AuthorityIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @property
@@ -197,6 +357,11 @@ class AuthorityIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The role that should be applied. Only one
+        `certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     def translate_output_property(self, prop):

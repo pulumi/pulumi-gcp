@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *             machineType: "e2-medium",
  *             diskConfig: {
  *                 bootDiskType: "pd-ssd",
- *                 bootDiskSizeGb: 15,
+ *                 bootDiskSizeGb: 30,
  *             },
  *         },
  *         workerConfig: {
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *             machineType: "e2-medium",
  *             minCpuPlatform: "Intel Skylake",
  *             diskConfig: {
- *                 bootDiskSizeGb: 15,
+ *                 bootDiskSizeGb: 30,
  *                 numLocalSsds: 1,
  *             },
  *         },

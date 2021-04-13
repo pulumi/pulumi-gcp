@@ -11,6 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A TagKey, used to group a set of TagValues.
+//
+// To get more information about TagKey, see:
+//
+// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+//
+// ## Example Usage
+// ### Tag Key Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/tags"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
+// 			Description: pulumi.String("For keyname resources."),
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 			ShortName:   pulumi.String("keyname"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // TagKey can be imported using any of these accepted formats

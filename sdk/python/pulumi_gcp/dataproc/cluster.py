@@ -186,7 +186,7 @@ class Cluster(pulumi.CustomResource):
                     machine_type="e2-medium",
                     disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
                         boot_disk_type="pd-ssd",
-                        boot_disk_size_gb=15,
+                        boot_disk_size_gb=30,
                     ),
                 ),
                 worker_config={
@@ -194,7 +194,7 @@ class Cluster(pulumi.CustomResource):
                     "machine_type": "e2-medium",
                     "min_cpu_platform": "Intel Skylake",
                     "diskConfig": {
-                        "boot_disk_size_gb": 15,
+                        "boot_disk_size_gb": 30,
                         "numLocalSsds": 1,
                     },
                 },
@@ -310,7 +310,7 @@ class Cluster(pulumi.CustomResource):
                     machine_type="e2-medium",
                     disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
                         boot_disk_type="pd-ssd",
-                        boot_disk_size_gb=15,
+                        boot_disk_size_gb=30,
                     ),
                 ),
                 worker_config={
@@ -318,7 +318,7 @@ class Cluster(pulumi.CustomResource):
                     "machine_type": "e2-medium",
                     "min_cpu_platform": "Intel Skylake",
                     "diskConfig": {
-                        "boot_disk_size_gb": 15,
+                        "boot_disk_size_gb": 30,
                         "numLocalSsds": 1,
                     },
                 },

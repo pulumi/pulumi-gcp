@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Sql
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>
-        /// The context needed to create this instance as a clone of another instance. When this field is set during 
+        /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, the provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
         /// </summary>
@@ -259,7 +259,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The configuration for replication. The
-        /// configuration is detailed below.
+        /// configuration is detailed below. Valid only for MySQL instances.
         /// </summary>
         [Output("replicaConfiguration")]
         public Output<Outputs.DatabaseInstanceReplicaConfiguration> ReplicaConfiguration { get; private set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The context needed to create this instance as a clone of another instance. When this field is set during 
+        /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, the provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
         /// </summary>
@@ -421,7 +421,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The configuration for replication. The
-        /// configuration is detailed below.
+        /// configuration is detailed below. Valid only for MySQL instances.
         /// </summary>
         [Input("replicaConfiguration")]
         public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration { get; set; }
@@ -456,7 +456,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The context needed to create this instance as a clone of another instance. When this field is set during 
+        /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, the provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
         /// </summary>
@@ -561,7 +561,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The configuration for replication. The
-        /// configuration is detailed below.
+        /// configuration is detailed below. Valid only for MySQL instances.
         /// </summary>
         [Input("replicaConfiguration")]
         public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration { get; set; }

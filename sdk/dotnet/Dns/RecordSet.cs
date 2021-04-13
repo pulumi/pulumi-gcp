@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Dns
         /// The time-to-live of this record set (seconds).
         /// </summary>
         [Output("ttl")]
-        public Output<int> Ttl { get; private set; } = null!;
+        public Output<int?> Ttl { get; private set; } = null!;
 
         /// <summary>
         /// The DNS record set type.
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.Dns
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("rrdatas", required: true)]
+        [Input("rrdatas")]
         private InputList<string>? _rrdatas;
 
         /// <summary>
@@ -334,8 +334,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The time-to-live of this record set (seconds).
         /// </summary>
-        [Input("ttl", required: true)]
-        public Input<int> Ttl { get; set; } = null!;
+        [Input("ttl")]
+        public Input<int>? Ttl { get; set; }
 
         /// <summary>
         /// The DNS record set type.

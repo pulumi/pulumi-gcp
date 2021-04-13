@@ -5,6 +5,84 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Three different resources help you manage your IAM policy for Certificate Authority Service CertificateAuthority. Each of these resources serves a different use case:
+ *
+ * * `gcp.certificateauthority.AuthorityIamPolicy`: Authoritative. Sets the IAM policy for the certificateauthority and replaces any existing policy already attached.
+ * * `gcp.certificateauthority.AuthorityIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the certificateauthority are preserved.
+ * * `gcp.certificateauthority.AuthorityIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the certificateauthority are preserved.
+ *
+ * > **Note:** `gcp.certificateauthority.AuthorityIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.AuthorityIamBinding` and `gcp.certificateauthority.AuthorityIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.certificateauthority.AuthorityIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.AuthorityIamMember` resources **only if** they do not grant privilege to the same role.
+ * ## google\_privateca\_certificate\_authority\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/privateca.certificateManager",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.certificateauthority.AuthorityIamPolicy("policy", {
+ *     certificateAuthority: google_privateca_certificate_authority["default"].id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_privateca\_certificate\_authority\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.certificateauthority.AuthorityIamBinding("binding", {
+ *     certificateAuthority: google_privateca_certificate_authority["default"].id,
+ *     role: "roles/privateca.certificateManager",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_privateca\_certificate\_authority\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.certificateauthority.AuthorityIamMember("member", {
+ *     certificateAuthority: google_privateca_certificate_authority["default"].id,
+ *     role: "roles/privateca.certificateManager",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} * {{project}}/{{location}}/{{certificate_authority_id}} * {{location}}/{{certificate_authority_id}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificateauthority IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:certificateauthority/authorityIamBinding:AuthorityIamBinding editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager user:jane@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:certificateauthority/authorityIamBinding:AuthorityIamBinding editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:certificateauthority/authorityIamBinding:AuthorityIamBinding editor projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ */
 export class AuthorityIamBinding extends pulumi.CustomResource {
     /**
      * Get an existing AuthorityIamBinding resource's state with the given name, ID, and optional extra
@@ -35,8 +113,16 @@ export class AuthorityIamBinding extends pulumi.CustomResource {
 
     public readonly certificateAuthority!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.certificateauthority.AuthorityIamBindingCondition | undefined>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -87,8 +173,16 @@ export class AuthorityIamBinding extends pulumi.CustomResource {
 export interface AuthorityIamBindingState {
     readonly certificateAuthority?: pulumi.Input<string>;
     readonly condition?: pulumi.Input<inputs.certificateauthority.AuthorityIamBindingCondition>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     readonly etag?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role?: pulumi.Input<string>;
 }
 
@@ -99,5 +193,10 @@ export interface AuthorityIamBindingArgs {
     readonly certificateAuthority: pulumi.Input<string>;
     readonly condition?: pulumi.Input<inputs.certificateauthority.AuthorityIamBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role: pulumi.Input<string>;
 }

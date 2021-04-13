@@ -13,14 +13,16 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
     public sealed class ServicePerimeterSpecIngressPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+        /// Defines the conditions on the source of a request causing this `IngressPolicy`
+        /// to apply.
         /// Structure is documented below.
         /// </summary>
         [Input("ingressFrom")]
         public Input<Inputs.ServicePerimeterSpecIngressPolicyIngressFromArgs>? IngressFrom { get; set; }
 
         /// <summary>
-        /// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+        /// Defines the conditions on the `ApiOperation` and request destination that cause
+        /// this `IngressPolicy` to apply.
         /// Structure is documented below.
         /// </summary>
         [Input("ingressTo")]

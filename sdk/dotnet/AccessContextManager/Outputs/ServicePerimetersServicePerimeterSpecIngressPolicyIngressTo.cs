@@ -14,12 +14,17 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo
     {
         /// <summary>
-        /// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+        /// A list of `ApiOperations` that this egress rule applies to. A request matches
+        /// if it contains an operation/service in this list.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation> Operations;
         /// <summary>
-        /// / A list of resources, currently only projects in the form `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+        /// A list of resources, currently only projects in the form
+        /// `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
+        /// if it contains a resource in this list. If * is specified for resources,
+        /// then this `EgressTo` rule will authorize access to all resources outside
+        /// the perimeter.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
 

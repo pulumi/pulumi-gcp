@@ -2995,6 +2995,7 @@ class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
 class TableExternalDataConfigurationHivePartitioningOptionsArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None,
+                 require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  source_uri_prefix: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] mode: When set, what mode of hive partitioning to use when
@@ -3005,6 +3006,9 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
                partitioning on an unsupported format will lead to an error.
                Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
                * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+        :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
+               require a partition filter that can be used for partition elimination to be
+               specified.
         :param pulumi.Input[str] source_uri_prefix: When hive partition detection is requested,
                a common for all source uris must be required. The prefix must end immediately
                before the partition key encoding begins. For example, consider files following
@@ -3016,6 +3020,8 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if require_partition_filter is not None:
+            pulumi.set(__self__, "require_partition_filter", require_partition_filter)
         if source_uri_prefix is not None:
             pulumi.set(__self__, "source_uri_prefix", source_uri_prefix)
 
@@ -3037,6 +3043,20 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
     @mode.setter
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, queries over this table
+        require a partition filter that can be used for partition elimination to be
+        specified.
+        """
+        return pulumi.get(self, "require_partition_filter")
+
+    @require_partition_filter.setter
+    def require_partition_filter(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_partition_filter", value)
 
     @property
     @pulumi.getter(name="sourceUriPrefix")

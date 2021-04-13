@@ -14,11 +14,14 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector
     {
         /// <summary>
-        /// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+        /// Value for `method` should be a valid method name for the corresponding
+        /// `serviceName` in `ApiOperation`. If `*` used as value for method,
+        /// then ALL methods and permissions are allowed.
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+        /// Value for permission should be a valid Cloud IAM permission for the
+        /// corresponding `serviceName` in `ApiOperation`.
         /// </summary>
         public readonly string? Permission;
 

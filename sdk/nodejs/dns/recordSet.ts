@@ -173,11 +173,11 @@ export class RecordSet extends pulumi.CustomResource {
      * The string data for the records in this record set
      * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
      */
-    public readonly rrdatas!: pulumi.Output<string[]>;
+    public readonly rrdatas!: pulumi.Output<string[] | undefined>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    public readonly ttl!: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number | undefined>;
     /**
      * The DNS record set type.
      */
@@ -209,12 +209,6 @@ export class RecordSet extends pulumi.CustomResource {
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
-            }
-            if ((!args || args.rrdatas === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rrdatas'");
-            }
-            if ((!args || args.ttl === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ttl'");
             }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
@@ -288,11 +282,11 @@ export interface RecordSetArgs {
      * The string data for the records in this record set
      * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
      */
-    readonly rrdatas: pulumi.Input<pulumi.Input<string>[]>;
+    readonly rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    readonly ttl: pulumi.Input<number>;
+    readonly ttl?: pulumi.Input<number>;
     /**
      * The DNS record set type.
      */

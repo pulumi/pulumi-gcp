@@ -133,6 +133,7 @@ __all__ = [
     'ManagedSslCertificateManaged',
     'MangedSslCertificateManaged',
     'NodeGroupAutoscalingPolicy',
+    'NodeGroupMaintenanceWindow',
     'NodeTemplateNodeTypeFlexibility',
     'NodeTemplateServerBinding',
     'OrganizationSecurityPolicyRuleMatch',
@@ -7075,6 +7076,7 @@ class InstanceTemplateNetworkInterface(dict):
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
+                 nic_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
@@ -7094,6 +7096,7 @@ class InstanceTemplateNetworkInterface(dict):
                `subnetwork` for custom subnetted networks.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
+        :param str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
         :param str subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
                created in. Either `network` or `subnetwork` must be provided.
@@ -7110,6 +7113,8 @@ class InstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -7165,6 +7170,14 @@ class InstanceTemplateNetworkInterface(dict):
         empty, the address will be automatically assigned.
         """
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[str]:
+        """
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        """
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter
@@ -7759,6 +7772,27 @@ class NodeGroupAutoscalingPolicy(dict):
         Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
         """
         return pulumi.get(self, "mode")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodeGroupMaintenanceWindow(dict):
+    def __init__(__self__, *,
+                 start_time: str):
+        """
+        :param str start_time: instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+        """
+        return pulumi.get(self, "start_time")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -23657,6 +23691,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
                  name: str,
                  network: str,
                  network_ip: str,
+                 nic_type: str,
                  subnetwork: str,
                  subnetwork_project: str):
         """
@@ -23686,6 +23721,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_ip", network_ip)
+        pulumi.set(__self__, "nic_type", nic_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "subnetwork_project", subnetwork_project)
 
@@ -23738,6 +23774,11 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         empty, the address will be automatically assigned.
         """
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> str:
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter

@@ -7450,6 +7450,10 @@ type TableExternalDataConfigurationHivePartitioningOptions struct {
 	//   Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
 	// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
 	Mode *string `pulumi:"mode"`
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
+	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
 	// When hive partition detection is requested,
 	// a common for all source uris must be required. The prefix must end immediately
 	// before the partition key encoding begins. For example, consider files following
@@ -7482,6 +7486,10 @@ type TableExternalDataConfigurationHivePartitioningOptionsArgs struct {
 	//   Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
 	// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
+	RequirePartitionFilter pulumi.BoolPtrInput `pulumi:"requirePartitionFilter"`
 	// When hive partition detection is requested,
 	// a common for all source uris must be required. The prefix must end immediately
 	// before the partition key encoding begins. For example, consider files following
@@ -7582,6 +7590,13 @@ func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) Mode() pulu
 	return o.ApplyT(func(v TableExternalDataConfigurationHivePartitioningOptions) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// If set to true, queries over this table
+// require a partition filter that can be used for partition elimination to be
+// specified.
+func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationHivePartitioningOptions) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
+}
+
 // When hive partition detection is requested,
 // a common for all source uris must be required. The prefix must end immediately
 // before the partition key encoding begins. For example, consider files following
@@ -7629,6 +7644,18 @@ func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) Mode() p
 		}
 		return v.Mode
 	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, queries over this table
+// require a partition filter that can be used for partition elimination to be
+// specified.
+func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationHivePartitioningOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequirePartitionFilter
+	}).(pulumi.BoolPtrOutput)
 }
 
 // When hive partition detection is requested,

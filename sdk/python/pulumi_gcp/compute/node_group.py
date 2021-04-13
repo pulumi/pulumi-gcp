@@ -20,6 +20,7 @@ class NodeGroupArgs:
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -32,6 +33,8 @@ class NodeGroupArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -45,6 +48,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "description", description)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -115,6 +120,19 @@ class NodeGroupArgs:
         pulumi.set(self, "maintenance_policy", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']]:
+        """
+        contains properties for the timeframe of maintenance
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -160,6 +178,7 @@ class NodeGroup(pulumi.CustomResource):
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -211,6 +230,9 @@ class NodeGroup(pulumi.CustomResource):
             zone="us-central1-a",
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
+            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
+                start_time="08:00",
+            ),
             size=1,
             node_template=soletenant_tmpl.id,
             autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
@@ -247,6 +269,8 @@ class NodeGroup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -303,6 +327,9 @@ class NodeGroup(pulumi.CustomResource):
             zone="us-central1-a",
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
+            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
+                start_time="08:00",
+            ),
             size=1,
             node_template=soletenant_tmpl.id,
             autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
@@ -350,6 +377,7 @@ class NodeGroup(pulumi.CustomResource):
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -378,6 +406,7 @@ class NodeGroup(pulumi.CustomResource):
             __props__['autoscaling_policy'] = autoscaling_policy
             __props__['description'] = description
             __props__['maintenance_policy'] = maintenance_policy
+            __props__['maintenance_window'] = maintenance_window
             __props__['name'] = name
             if node_template is None and not opts.urn:
                 raise TypeError("Missing required property 'node_template'")
@@ -403,6 +432,7 @@ class NodeGroup(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[str]] = None,
+            maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_template: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -422,6 +452,8 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -438,6 +470,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["maintenance_policy"] = maintenance_policy
+        __props__["maintenance_window"] = maintenance_window
         __props__["name"] = name
         __props__["node_template"] = node_template
         __props__["project"] = project
@@ -479,6 +512,15 @@ class NodeGroup(pulumi.CustomResource):
         Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         """
         return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output[Optional['outputs.NodeGroupMaintenanceWindow']]:
+        """
+        contains properties for the timeframe of maintenance
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter

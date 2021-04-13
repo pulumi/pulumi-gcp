@@ -29,7 +29,7 @@ class DatabaseInstanceArgs:
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
-        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during 
+        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, the provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -61,7 +61,7 @@ class DatabaseInstanceArgs:
                region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
                make sure you understand this.
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
-               configuration is detailed below.
+               configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
@@ -99,7 +99,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['DatabaseInstanceCloneArgs']]:
         """
-        The context needed to create this instance as a clone of another instance. When this field is set during 
+        The context needed to create this instance as a clone of another instance. When this field is set during
         resource creation, the provider will attempt to clone another instance as indicated in the context. The
         configuration is detailed below.
         """
@@ -219,7 +219,7 @@ class DatabaseInstanceArgs:
     def replica_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]:
         """
         The configuration for replication. The
-        configuration is detailed below.
+        configuration is detailed below. Valid only for MySQL instances.
         """
         return pulumi.get(self, "replica_configuration")
 
@@ -391,7 +391,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during 
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, the provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -423,7 +423,7 @@ class DatabaseInstance(pulumi.CustomResource):
                region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
                make sure you understand this.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
-               configuration is detailed below.
+               configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
@@ -643,7 +643,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during 
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, the provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
@@ -680,7 +680,7 @@ class DatabaseInstance(pulumi.CustomResource):
                region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
                make sure you understand this.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
-               configuration is detailed below.
+               configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
@@ -722,7 +722,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def clone(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceClone']]:
         """
-        The context needed to create this instance as a clone of another instance. When this field is set during 
+        The context needed to create this instance as a clone of another instance. When this field is set during
         resource creation, the provider will attempt to clone another instance as indicated in the context. The
         configuration is detailed below.
         """
@@ -848,7 +848,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def replica_configuration(self) -> pulumi.Output['outputs.DatabaseInstanceReplicaConfiguration']:
         """
         The configuration for replication. The
-        configuration is detailed below.
+        configuration is detailed below. Valid only for MySQL instances.
         """
         return pulumi.get(self, "replica_configuration")
 

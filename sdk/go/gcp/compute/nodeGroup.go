@@ -80,8 +80,11 @@ import (
 // 			Zone:              pulumi.String("us-central1-a"),
 // 			Description:       pulumi.String("example google_compute_node_group for Google Provider"),
 // 			MaintenancePolicy: pulumi.String("RESTART_IN_PLACE"),
-// 			Size:              pulumi.Int(1),
-// 			NodeTemplate:      soletenant_tmpl.ID(),
+// 			MaintenanceWindow: &compute.NodeGroupMaintenanceWindowArgs{
+// 				StartTime: pulumi.String("08:00"),
+// 			},
+// 			Size:         pulumi.Int(1),
+// 			NodeTemplate: soletenant_tmpl.ID(),
 // 			AutoscalingPolicy: &compute.NodeGroupAutoscalingPolicyArgs{
 // 				Mode:     pulumi.String("ONLY_SCALE_OUT"),
 // 				MinNodes: pulumi.Int(1),
@@ -128,6 +131,9 @@ type NodeGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrOutput `pulumi:"maintenancePolicy"`
+	// contains properties for the timeframe of maintenance
+	// Structure is documented below.
+	MaintenanceWindow NodeGroupMaintenanceWindowPtrOutput `pulumi:"maintenanceWindow"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
@@ -188,6 +194,9 @@ type nodeGroupState struct {
 	Description *string `pulumi:"description"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
+	// contains properties for the timeframe of maintenance
+	// Structure is documented below.
+	MaintenanceWindow *NodeGroupMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
@@ -214,6 +223,9 @@ type NodeGroupState struct {
 	Description pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
+	// contains properties for the timeframe of maintenance
+	// Structure is documented below.
+	MaintenanceWindow NodeGroupMaintenanceWindowPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.
@@ -242,6 +254,9 @@ type nodeGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
+	// contains properties for the timeframe of maintenance
+	// Structure is documented below.
+	MaintenanceWindow *NodeGroupMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
@@ -265,6 +280,9 @@ type NodeGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
+	// contains properties for the timeframe of maintenance
+	// Structure is documented below.
+	MaintenanceWindow NodeGroupMaintenanceWindowPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.

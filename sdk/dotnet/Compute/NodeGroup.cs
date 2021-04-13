@@ -70,6 +70,10 @@ namespace Pulumi.Gcp.Compute
     ///             Zone = "us-central1-a",
     ///             Description = "example google_compute_node_group for Google Provider",
     ///             MaintenancePolicy = "RESTART_IN_PLACE",
+    ///             MaintenanceWindow = new Gcp.Compute.Inputs.NodeGroupMaintenanceWindowArgs
+    ///             {
+    ///                 StartTime = "08:00",
+    ///             },
     ///             Size = 1,
     ///             NodeTemplate = soletenant_tmpl.Id,
     ///             AutoscalingPolicy = new Gcp.Compute.Inputs.NodeGroupAutoscalingPolicyArgs
@@ -132,6 +136,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<string?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// contains properties for the timeframe of maintenance
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenanceWindow")]
+        public Output<Outputs.NodeGroupMaintenanceWindow?> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -237,6 +248,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? MaintenancePolicy { get; set; }
 
         /// <summary>
+        /// contains properties for the timeframe of maintenance
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.NodeGroupMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
+
+        /// <summary>
         /// Name of the resource.
         /// </summary>
         [Input("name")]
@@ -299,6 +317,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<string>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// contains properties for the timeframe of maintenance
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.NodeGroupMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// Name of the resource.

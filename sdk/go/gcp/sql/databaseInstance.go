@@ -206,7 +206,7 @@ type DatabaseInstance struct {
 	// make sure you understand this.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The configuration for replication. The
-	// configuration is detailed below.
+	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -305,7 +305,7 @@ type databaseInstanceState struct {
 	// make sure you understand this.
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
-	// configuration is detailed below.
+	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -376,7 +376,7 @@ type DatabaseInstanceState struct {
 	// make sure you understand this.
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
-	// configuration is detailed below.
+	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -441,7 +441,7 @@ type databaseInstanceArgs struct {
 	// make sure you understand this.
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
-	// configuration is detailed below.
+	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -497,7 +497,7 @@ type DatabaseInstanceArgs struct {
 	// make sure you understand this.
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
-	// configuration is detailed below.
+	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.

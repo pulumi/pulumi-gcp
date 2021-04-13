@@ -10,6 +10,42 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Tags
 {
     /// <summary>
+    /// A TagValue is a child of a particular TagKey. TagValues are used to group cloud resources for the purpose of controlling them using policies.
+    /// 
+    /// To get more information about TagValue, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+    /// 
+    /// ## Example Usage
+    /// ### Tag Value Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var key = new Gcp.Tags.TagKey("key", new Gcp.Tags.TagKeyArgs
+    ///         {
+    ///             Description = "For keyname resources.",
+    ///             Parent = "organizations/123456789",
+    ///             ShortName = "keyname",
+    ///         });
+    ///         var @value = new Gcp.Tags.TagValue("value", new Gcp.Tags.TagValueArgs
+    ///         {
+    ///             Description = "For valuename resources.",
+    ///             Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///             ShortName = "valuename",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// TagValue can be imported using any of these accepted formats

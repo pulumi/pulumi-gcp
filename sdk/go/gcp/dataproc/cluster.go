@@ -76,7 +76,7 @@ import (
 // 					MachineType:  pulumi.String("e2-medium"),
 // 					DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
 // 						BootDiskType:   pulumi.String("pd-ssd"),
-// 						BootDiskSizeGb: pulumi.Int(15),
+// 						BootDiskSizeGb: pulumi.Int(30),
 // 					},
 // 				},
 // 				WorkerConfig: &dataproc.ClusterClusterConfigWorkerConfigArgs{
@@ -84,7 +84,7 @@ import (
 // 					MachineType:    pulumi.String("e2-medium"),
 // 					MinCpuPlatform: pulumi.String("Intel Skylake"),
 // 					DiskConfig: &dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs{
-// 						BootDiskSizeGb: pulumi.Int(15),
+// 						BootDiskSizeGb: pulumi.Int(30),
 // 						NumLocalSsds:   pulumi.Int(1),
 // 					},
 // 				},

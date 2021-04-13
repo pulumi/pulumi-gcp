@@ -5,25 +5,60 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./tagBinding";
 export * from "./tagKey";
+export * from "./tagKeyIamBinding";
+export * from "./tagKeyIamMember";
+export * from "./tagKeyIamPolicy";
 export * from "./tagValue";
+export * from "./tagValueIamBinding";
+export * from "./tagValueIamMember";
+export * from "./tagValueIamPolicy";
 
 // Import resources to register:
+import { TagBinding } from "./tagBinding";
 import { TagKey } from "./tagKey";
+import { TagKeyIamBinding } from "./tagKeyIamBinding";
+import { TagKeyIamMember } from "./tagKeyIamMember";
+import { TagKeyIamPolicy } from "./tagKeyIamPolicy";
 import { TagValue } from "./tagValue";
+import { TagValueIamBinding } from "./tagValueIamBinding";
+import { TagValueIamMember } from "./tagValueIamMember";
+import { TagValueIamPolicy } from "./tagValueIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:tags/tagBinding:TagBinding":
+                return new TagBinding(name, <any>undefined, { urn })
             case "gcp:tags/tagKey:TagKey":
                 return new TagKey(name, <any>undefined, { urn })
+            case "gcp:tags/tagKeyIamBinding:TagKeyIamBinding":
+                return new TagKeyIamBinding(name, <any>undefined, { urn })
+            case "gcp:tags/tagKeyIamMember:TagKeyIamMember":
+                return new TagKeyIamMember(name, <any>undefined, { urn })
+            case "gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy":
+                return new TagKeyIamPolicy(name, <any>undefined, { urn })
             case "gcp:tags/tagValue:TagValue":
                 return new TagValue(name, <any>undefined, { urn })
+            case "gcp:tags/tagValueIamBinding:TagValueIamBinding":
+                return new TagValueIamBinding(name, <any>undefined, { urn })
+            case "gcp:tags/tagValueIamMember:TagValueIamMember":
+                return new TagValueIamMember(name, <any>undefined, { urn })
+            case "gcp:tags/tagValueIamPolicy:TagValueIamPolicy":
+                return new TagValueIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "tags/tagBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "tags/tagKey", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagKeyIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagKeyIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagKeyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "tags/tagValue", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagValueIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagValueIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagValueIamPolicy", _module)

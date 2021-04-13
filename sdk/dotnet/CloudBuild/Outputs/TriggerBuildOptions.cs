@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly string? Logging;
         /// <summary>
         /// Compute Engine machine type on which to run the build.
-        /// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+        /// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
