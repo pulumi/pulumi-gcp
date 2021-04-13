@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> AuthorizedNetworks;
         /// <summary>
         /// Whether this Cloud SQL instance should be assigned
-        /// a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+        /// a public IPV4 address. At least `ipv4_enabled` must be enabled or a
         /// `private_network` must be configured.
         /// </summary>
         public readonly bool? Ipv4Enabled;
@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The VPC network from which the Cloud SQL
         /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
         /// Specifying a network enables private IP.
-        /// Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+        /// At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
         /// This setting can be updated, but it cannot be removed after it is set.
         /// </summary>
         public readonly string? PrivateNetwork;

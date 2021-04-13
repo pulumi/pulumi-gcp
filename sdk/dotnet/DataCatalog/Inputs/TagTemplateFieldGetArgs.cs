@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
     public sealed class TagTemplateFieldGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A description for this field.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The display name for this template.
         /// </summary>
         [Input("displayName")]

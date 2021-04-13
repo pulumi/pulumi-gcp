@@ -1871,6 +1871,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_apigee_envgroup":            {Tok: gcpResource(gcpApigee, "EnvGroup")},
 			"google_apigee_environment":         {Tok: gcpResource(gcpApigee, "Environment")},
 			"google_apigee_instance_attachment": {Tok: gcpResource(gcpApigee, "InstanceAttachment")},
+			"google_apigee_envgroup_attachment": {Tok: gcpResource(gcpApigee, "EnvGroupAttachment")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
@@ -1937,19 +1938,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_privateca_certificate_authority_iam_binding": {
 				Tok: gcpResource(gcpCertificateAuthority, "AuthorityIamBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "privateca_certificate_authority_iam.html.markdown ",
+					Source: "privateca_certificate_authority_iam.html.markdown",
 				},
 			},
 			"google_privateca_certificate_authority_iam_member": {
 				Tok: gcpResource(gcpCertificateAuthority, "AuthorityIamMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "privateca_certificate_authority_iam.html.markdown ",
+					Source: "privateca_certificate_authority_iam.html.markdown",
 				},
 			},
 			"google_privateca_certificate_authority_iam_policy": {
 				Tok: gcpResource(gcpCertificateAuthority, "AuthorityIamPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "privateca_certificate_authority_iam.html.markdown ",
+					Source: "privateca_certificate_authority_iam.html.markdown",
 				},
 			},
 
@@ -1966,8 +1967,45 @@ func Provider() tfbridge.ProviderInfo {
 			"google_gke_hub_membership": {Tok: gcpResource(gcpGkeHub, "Membership")},
 
 			// tags
-			"google_tags_tag_key":   {Tok: gcpResource(gcpTags, "TagKey")},
-			"google_tags_tag_value": {Tok: gcpResource(gcpTags, "TagValue")},
+			"google_tags_tag_key":     {Tok: gcpResource(gcpTags, "TagKey")},
+			"google_tags_tag_value":   {Tok: gcpResource(gcpTags, "TagValue")},
+			"google_tags_tag_binding": {Tok: gcpResource(gcpTags, "TagBinding")},
+			"google_tags_tag_key_iam_binding": {
+				Tok: gcpResource(gcpTags, "TagKeyIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "tags_tag_key_iam.html.markdown",
+				},
+			},
+			"google_tags_tag_key_iam_member": {
+				Tok: gcpResource(gcpTags, "TagKeyIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "tags_tag_key_iam.html.markdown",
+				},
+			},
+			"google_tags_tag_key_iam_policy": {
+				Tok: gcpResource(gcpTags, "TagKeyIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "tags_tag_key_iam.html.markdown",
+				},
+			},
+			"google_tags_tag_value_iam_binding": {
+				Tok: gcpResource(gcpTags, "TagValueIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "tags_tag_value_iam.html.markdown",
+				},
+			},
+			"google_tags_tag_value_iam_member": {
+				Tok: gcpResource(gcpTags, "TagValueIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "tags_tag_value_iam.html.markdown",
+				},
+			},
+			"google_tags_tag_value_iam_policy": {
+				Tok: gcpResource(gcpTags, "TagValueIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "tags_tag_value_iam.html.markdown",
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

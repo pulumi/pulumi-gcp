@@ -10,6 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Tags
 {
     /// <summary>
+    /// A TagKey, used to group a set of TagValues.
+    /// 
+    /// To get more information about TagKey, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+    /// 
+    /// ## Example Usage
+    /// ### Tag Key Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var key = new Gcp.Tags.TagKey("key", new Gcp.Tags.TagKeyArgs
+    ///         {
+    ///             Description = "For keyname resources.",
+    ///             Parent = "organizations/123456789",
+    ///             ShortName = "keyname",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// TagKey can be imported using any of these accepted formats

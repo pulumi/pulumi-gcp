@@ -15,29 +15,31 @@ class RecordSetArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 rrdatas: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 ttl: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set
-               whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
-        :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set
+               whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "rrdatas", rrdatas)
-        pulumi.set(__self__, "ttl", ttl)
         pulumi.set(__self__, "type", type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter(name="managedZone")
@@ -66,31 +68,6 @@ class RecordSetArgs:
 
     @property
     @pulumi.getter
-    def rrdatas(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The string data for the records in this record set
-        whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
-        """
-        return pulumi.get(self, "rrdatas")
-
-    @rrdatas.setter
-    def rrdatas(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "rrdatas", value)
-
-    @property
-    @pulumi.getter
-    def ttl(self) -> pulumi.Input[int]:
-        """
-        The time-to-live of this record set (seconds).
-        """
-        return pulumi.get(self, "ttl")
-
-    @ttl.setter
-    def ttl(self, value: pulumi.Input[int]):
-        pulumi.set(self, "ttl", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
         The DNS record set type.
@@ -113,6 +90,31 @@ class RecordSetArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The string data for the records in this record set
+        whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rrdatas", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time-to-live of this record set (seconds).
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
 
 
 class RecordSet(pulumi.CustomResource):
@@ -429,11 +431,7 @@ class RecordSet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['project'] = project
-            if rrdatas is None and not opts.urn:
-                raise TypeError("Missing required property 'rrdatas'")
             __props__['rrdatas'] = rrdatas
-            if ttl is None and not opts.urn:
-                raise TypeError("Missing required property 'ttl'")
             __props__['ttl'] = ttl
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -511,7 +509,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rrdatas(self) -> pulumi.Output[Sequence[str]]:
+    def rrdatas(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The string data for the records in this record set
         whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
@@ -520,7 +518,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[int]:
+    def ttl(self) -> pulumi.Output[Optional[int]]:
         """
         The time-to-live of this record set (seconds).
         """

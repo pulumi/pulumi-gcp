@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
+        [Input("requirePartitionFilter")]
+        public Input<bool>? RequirePartitionFilter { get; set; }
+
+        /// <summary>
         /// When hive partition detection is requested,
         /// a common for all source uris must be required. The prefix must end immediately
         /// before the partition key encoding begins. For example, consider files following

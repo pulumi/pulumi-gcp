@@ -3,8 +3,17 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .tag_binding import *
 from .tag_key import *
+from .tag_key_iam_binding import *
+from .tag_key_iam_member import *
+from .tag_key_iam_policy import *
 from .tag_value import *
+from .tag_value_iam_binding import *
+from .tag_value_iam_member import *
+from .tag_value_iam_policy import *
+from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi
@@ -18,16 +27,37 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp:tags/tagKey:TagKey":
+            if typ == "gcp:tags/tagBinding:TagBinding":
+                return TagBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagKey:TagKey":
                 return TagKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagKeyIamBinding:TagKeyIamBinding":
+                return TagKeyIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagKeyIamMember:TagKeyIamMember":
+                return TagKeyIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy":
+                return TagKeyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:tags/tagValue:TagValue":
                 return TagValue(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagValueIamBinding:TagValueIamBinding":
+                return TagValueIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagValueIamMember:TagValueIamMember":
+                return TagValueIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagValueIamPolicy:TagValueIamPolicy":
+                return TagValueIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "tags/tagBinding", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "tags/tagKey", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "tags/tagKeyIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "tags/tagKeyIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "tags/tagKeyIamPolicy", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "tags/tagValue", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "tags/tagValueIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "tags/tagValueIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "tags/tagValueIamPolicy", _module_instance)
 
 _register_module()

@@ -16,7 +16,9 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         private InputList<string>? _identities;
 
         /// <summary>
-        /// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this `EgressPolicy`.
+        /// Should be in the format of email address. The email address should
+        /// represent individual user or service account only.
         /// </summary>
         public InputList<string> Identities
         {
@@ -25,7 +27,9 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         }
 
         /// <summary>
-        /// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+        /// Specifies the type of identities that are allowed access to outside the
+        /// perimeter. If left unspecified, then members of `identities` field will
+        /// be allowed access.
         /// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
         /// </summary>
         [Input("identityType")]
@@ -35,7 +39,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         private InputList<Inputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceGetArgs>? _sources;
 
         /// <summary>
-        /// / Sources that this `IngressPolicy` authorizes access from.
+        /// Sources that this `IngressPolicy` authorizes access from.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceGetArgs> Sources

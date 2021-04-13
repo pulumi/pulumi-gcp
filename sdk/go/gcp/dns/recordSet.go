@@ -20,67 +20,6 @@ import (
 // will not actually remove NS records during destroy but will report that it did.
 //
 // ## Example Usage
-// ### Binding a DNS name to the ephemeral IP of a new instance:
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		frontendInstance, err := compute.NewInstance(ctx, "frontendInstance", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("g1-small"),
-// 			Zone:        pulumi.String("us-central1-b"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-// 						nil,
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
-// 			DnsName: pulumi.String("prod.mydomain.com."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "frontendRecordSet", &dns.RecordSetArgs{
-// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
-// 			}).(pulumi.StringOutput),
-// 			Type:        pulumi.String("A"),
-// 			Ttl:         pulumi.Int(300),
-// 			ManagedZone: prod.Name,
-// 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String(frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
-// 					return networkInterfaces[0].AccessConfigs[0].NatIp, nil
-// 				}).(pulumi.StringOutput)),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Adding an A record
 //
 // ```go
@@ -266,7 +205,7 @@ type RecordSet struct {
 	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
-	Ttl pulumi.IntOutput `pulumi:"ttl"`
+	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
 	// The DNS record set type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -283,12 +222,6 @@ func NewRecordSet(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.Rrdatas == nil {
-		return nil, errors.New("invalid value for required argument 'Rrdatas'")
-	}
-	if args.Ttl == nil {
-		return nil, errors.New("invalid value for required argument 'Ttl'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -367,7 +300,7 @@ type recordSetArgs struct {
 	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas []string `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
-	Ttl int `pulumi:"ttl"`
+	Ttl *int `pulumi:"ttl"`
 	// The DNS record set type.
 	Type string `pulumi:"type"`
 }
@@ -386,7 +319,7 @@ type RecordSetArgs struct {
 	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas pulumi.StringArrayInput
 	// The time-to-live of this record set (seconds).
-	Ttl pulumi.IntInput
+	Ttl pulumi.IntPtrInput
 	// The DNS record set type.
 	Type pulumi.StringInput
 }

@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// empty, the address will be automatically assigned.
         /// </summary>
         public readonly string NetworkIp;
+        public readonly string NicType;
         /// <summary>
         /// the name of the subnetwork to attach this interface
         /// to. The subnetwork must exist in the same `region` this instance will be
@@ -67,6 +68,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string networkIp,
 
+            string nicType,
+
             string subnetwork,
 
             string subnetworkProject)
@@ -76,6 +79,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Name = name;
             Network = network;
             NetworkIp = networkIp;
+            NicType = nicType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

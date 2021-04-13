@@ -219,7 +219,7 @@ class DicomStoreNotificationConfig(dict):
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -232,7 +232,7 @@ class DicomStoreNotificationConfig(dict):
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
@@ -310,7 +310,7 @@ class FhirStoreNotificationConfig(dict):
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -323,7 +323,7 @@ class FhirStoreNotificationConfig(dict):
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
@@ -529,7 +529,7 @@ class Hl7StoreNotificationConfig(dict):
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -542,7 +542,7 @@ class Hl7StoreNotificationConfig(dict):
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
@@ -561,7 +561,7 @@ class Hl7StoreNotificationConfigs(dict):
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         :param str filter: Restricts notifications sent for messages matching a filter. If this is empty, all messages
                are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -585,7 +585,7 @@ class Hl7StoreNotificationConfigs(dict):
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")

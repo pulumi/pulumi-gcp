@@ -9,15 +9,135 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for Certificate Authority Service CertificateAuthority. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.certificateauthority.AuthorityIamPolicy`: Authoritative. Sets the IAM policy for the certificateauthority and replaces any existing policy already attached.
+    /// * `gcp.certificateauthority.AuthorityIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the certificateauthority are preserved.
+    /// * `gcp.certificateauthority.AuthorityIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the certificateauthority are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.certificateauthority.AuthorityIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.AuthorityIamBinding` and `gcp.certificateauthority.AuthorityIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.certificateauthority.AuthorityIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.AuthorityIamMember` resources **only if** they do not grant privilege to the same role.
+    /// ## google\_privateca\_certificate\_authority\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/privateca.certificateManager",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.CertificateAuthority.AuthorityIamPolicy("policy", new Gcp.CertificateAuthority.AuthorityIamPolicyArgs
+    ///         {
+    ///             CertificateAuthority = google_privateca_certificate_authority.Default.Id,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_privateca\_certificate\_authority\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.CertificateAuthority.AuthorityIamBinding("binding", new Gcp.CertificateAuthority.AuthorityIamBindingArgs
+    ///         {
+    ///             CertificateAuthority = google_privateca_certificate_authority.Default.Id,
+    ///             Role = "roles/privateca.certificateManager",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_privateca\_certificate\_authority\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.CertificateAuthority.AuthorityIamMember("member", new Gcp.CertificateAuthority.AuthorityIamMemberArgs
+    ///         {
+    ///             CertificateAuthority = google_privateca_certificate_authority.Default.Id,
+    ///             Role = "roles/privateca.certificateManager",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} * {{project}}/{{location}}/{{certificate_authority_id}} * {{location}}/{{certificate_authority_id}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificateauthority IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager user:jane@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy editor projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// </summary>
     [GcpResourceType("gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy")]
     public partial class AuthorityIamPolicy : Pulumi.CustomResource
     {
         [Output("certificateAuthority")]
         public Output<string> CertificateAuthority { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The policy data generated by
+        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
@@ -70,6 +190,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("certificateAuthority", required: true)]
         public Input<string> CertificateAuthority { get; set; } = null!;
 
+        /// <summary>
+        /// The policy data generated by
+        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
@@ -83,9 +207,16 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The policy data generated by
+        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 

@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .env_group import *
+from .env_group_attachment import *
 from .environment import *
 from .instance import *
 from .instance_attachment import *
@@ -23,6 +24,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "gcp:apigee/envGroup:EnvGroup":
                 return EnvGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:apigee/envGroupAttachment:EnvGroupAttachment":
+                return EnvGroupAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:apigee/environment:Environment":
                 return Environment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:apigee/instance:Instance":
@@ -37,6 +40,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("gcp", "apigee/envGroup", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "apigee/envGroupAttachment", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "apigee/environment", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "apigee/instance", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "apigee/instanceAttachment", _module_instance)

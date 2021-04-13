@@ -2522,6 +2522,7 @@ class TableExternalDataConfigurationGoogleSheetsOptions(dict):
 class TableExternalDataConfigurationHivePartitioningOptions(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None,
+                 require_partition_filter: Optional[bool] = None,
                  source_uri_prefix: Optional[str] = None):
         """
         :param str mode: When set, what mode of hive partitioning to use when
@@ -2532,6 +2533,9 @@ class TableExternalDataConfigurationHivePartitioningOptions(dict):
                partitioning on an unsupported format will lead to an error.
                Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
                * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+        :param bool require_partition_filter: If set to true, queries over this table
+               require a partition filter that can be used for partition elimination to be
+               specified.
         :param str source_uri_prefix: When hive partition detection is requested,
                a common for all source uris must be required. The prefix must end immediately
                before the partition key encoding begins. For example, consider files following
@@ -2543,6 +2547,8 @@ class TableExternalDataConfigurationHivePartitioningOptions(dict):
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if require_partition_filter is not None:
+            pulumi.set(__self__, "require_partition_filter", require_partition_filter)
         if source_uri_prefix is not None:
             pulumi.set(__self__, "source_uri_prefix", source_uri_prefix)
 
@@ -2560,6 +2566,16 @@ class TableExternalDataConfigurationHivePartitioningOptions(dict):
         * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> Optional[bool]:
+        """
+        If set to true, queries over this table
+        require a partition filter that can be used for partition elimination to be
+        specified.
+        """
+        return pulumi.get(self, "require_partition_filter")
 
     @property
     @pulumi.getter(name="sourceUriPrefix")

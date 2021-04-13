@@ -146,7 +146,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during 
+     * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, the provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
      */
@@ -220,7 +220,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The configuration for replication. The
-     * configuration is detailed below.
+     * configuration is detailed below. Valid only for MySQL instances.
      */
     public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
@@ -318,7 +318,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
  */
 export interface DatabaseInstanceState {
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during 
+     * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, the provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
      */
@@ -392,7 +392,7 @@ export interface DatabaseInstanceState {
     readonly region?: pulumi.Input<string>;
     /**
      * The configuration for replication. The
-     * configuration is detailed below.
+     * configuration is detailed below. Valid only for MySQL instances.
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
@@ -428,7 +428,7 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during 
+     * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, the provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
      */
@@ -484,7 +484,7 @@ export interface DatabaseInstanceArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The configuration for replication. The
-     * configuration is detailed below.
+     * configuration is detailed below. Valid only for MySQL instances.
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**

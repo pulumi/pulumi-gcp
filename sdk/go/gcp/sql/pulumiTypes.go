@@ -2164,13 +2164,13 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordClientAddress() p
 type DatabaseInstanceSettingsIpConfiguration struct {
 	AuthorizedNetworks []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
-	// a public IPV4 address. Either `ipv4Enabled` must be enabled or a
+	// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
 	// `privateNetwork` must be configured.
 	Ipv4Enabled *bool `pulumi:"ipv4Enabled"`
 	// The VPC network from which the Cloud SQL
 	// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
 	// Specifying a network enables private IP.
-	// Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
+	// At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 	// This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork *string `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP are enforced or not.
@@ -2191,13 +2191,13 @@ type DatabaseInstanceSettingsIpConfigurationInput interface {
 type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	AuthorizedNetworks DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
-	// a public IPV4 address. Either `ipv4Enabled` must be enabled or a
+	// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
 	// `privateNetwork` must be configured.
 	Ipv4Enabled pulumi.BoolPtrInput `pulumi:"ipv4Enabled"`
 	// The VPC network from which the Cloud SQL
 	// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
 	// Specifying a network enables private IP.
-	// Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
+	// At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 	// This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP are enforced or not.
@@ -2287,7 +2287,7 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) AuthorizedNetworks() Data
 }
 
 // Whether this Cloud SQL instance should be assigned
-// a public IPV4 address. Either `ipv4Enabled` must be enabled or a
+// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
 // `privateNetwork` must be configured.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.Ipv4Enabled }).(pulumi.BoolPtrOutput)
@@ -2296,7 +2296,7 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) Ipv4Enabled() pulumi.Bool
 // The VPC network from which the Cloud SQL
 // instance is accessible for private IP. For example, projects/myProject/global/networks/default.
 // Specifying a network enables private IP.
-// Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
+// At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 // This setting can be updated, but it cannot be removed after it is set.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
@@ -2335,7 +2335,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() D
 }
 
 // Whether this Cloud SQL instance should be assigned
-// a public IPV4 address. Either `ipv4Enabled` must be enabled or a
+// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
 // `privateNetwork` must be configured.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *bool {
@@ -2349,7 +2349,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Ipv4Enabled() pulumi.B
 // The VPC network from which the Cloud SQL
 // instance is accessible for private IP. For example, projects/myProject/global/networks/default.
 // Specifying a network enables private IP.
-// Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
+// At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 // This setting can be updated, but it cannot be removed after it is set.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {

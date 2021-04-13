@@ -951,7 +951,7 @@ type DicomStoreNotificationConfig struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
@@ -972,7 +972,7 @@ type DicomStoreNotificationConfigArgs struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
@@ -1058,7 +1058,7 @@ func (o DicomStoreNotificationConfigOutput) ToDicomStoreNotificationConfigPtrOut
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o DicomStoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v DicomStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
@@ -1086,7 +1086,7 @@ func (o DicomStoreNotificationConfigPtrOutput) Elem() DicomStoreNotificationConf
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o DicomStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DicomStoreNotificationConfig) *string {
@@ -1414,7 +1414,7 @@ type FhirStoreNotificationConfig struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
@@ -1435,7 +1435,7 @@ type FhirStoreNotificationConfigArgs struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
@@ -1521,7 +1521,7 @@ func (o FhirStoreNotificationConfigOutput) ToFhirStoreNotificationConfigPtrOutpu
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o FhirStoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v FhirStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
@@ -1549,7 +1549,7 @@ func (o FhirStoreNotificationConfigPtrOutput) Elem() FhirStoreNotificationConfig
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o FhirStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FhirStoreNotificationConfig) *string {
@@ -2152,7 +2152,7 @@ type Hl7StoreNotificationConfig struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
@@ -2173,7 +2173,7 @@ type Hl7StoreNotificationConfigArgs struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
@@ -2259,7 +2259,7 @@ func (o Hl7StoreNotificationConfigOutput) ToHl7StoreNotificationConfigPtrOutputW
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o Hl7StoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v Hl7StoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
@@ -2287,7 +2287,7 @@ func (o Hl7StoreNotificationConfigPtrOutput) Elem() Hl7StoreNotificationConfigOu
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o Hl7StoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Hl7StoreNotificationConfig) *string {
@@ -2313,7 +2313,7 @@ type Hl7StoreNotificationConfigs struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
@@ -2344,7 +2344,7 @@ type Hl7StoreNotificationConfigsArgs struct {
 	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
@@ -2417,7 +2417,7 @@ func (o Hl7StoreNotificationConfigsOutput) Filter() pulumi.StringPtrOutput {
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o Hl7StoreNotificationConfigsOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v Hl7StoreNotificationConfigs) string { return v.PubsubTopic }).(pulumi.StringOutput)

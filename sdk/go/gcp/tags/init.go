@@ -21,10 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:tags/tagBinding:TagBinding":
+		r = &TagBinding{}
 	case "gcp:tags/tagKey:TagKey":
 		r = &TagKey{}
+	case "gcp:tags/tagKeyIamBinding:TagKeyIamBinding":
+		r = &TagKeyIamBinding{}
+	case "gcp:tags/tagKeyIamMember:TagKeyIamMember":
+		r = &TagKeyIamMember{}
+	case "gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy":
+		r = &TagKeyIamPolicy{}
 	case "gcp:tags/tagValue:TagValue":
 		r = &TagValue{}
+	case "gcp:tags/tagValueIamBinding:TagValueIamBinding":
+		r = &TagValueIamBinding{}
+	case "gcp:tags/tagValueIamMember:TagValueIamMember":
+		r = &TagValueIamMember{}
+	case "gcp:tags/tagValueIamPolicy:TagValueIamPolicy":
+		r = &TagValueIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +54,47 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"tags/tagBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"tags/tagKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"tags/tagKeyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/tagKeyIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/tagKeyIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"tags/tagValue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/tagValueIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/tagValueIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/tagValueIamPolicy",
 		&module{version},
 	)
 }

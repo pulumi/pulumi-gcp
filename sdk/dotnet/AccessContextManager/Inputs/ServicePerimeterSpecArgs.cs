@@ -36,7 +36,10 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         private InputList<Inputs.ServicePerimeterSpecEgressPolicyArgs>? _egressPolicies;
 
         /// <summary>
-        /// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+        /// List of EgressPolicies to apply to the perimeter. A perimeter may
+        /// have multiple EgressPolicies, each of which is evaluated separately.
+        /// Access is granted if any EgressPolicy grants it. Must be empty for
+        /// a perimeter bridge.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServicePerimeterSpecEgressPolicyArgs> EgressPolicies
@@ -49,7 +52,10 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         private InputList<Inputs.ServicePerimeterSpecIngressPolicyArgs>? _ingressPolicies;
 
         /// <summary>
-        /// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+        /// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+        /// have multiple `IngressPolicies`, each of which is evaluated
+        /// separately. Access is granted if any `Ingress Policy` grants it.
+        /// Must be empty for a perimeter bridge.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServicePerimeterSpecIngressPolicyArgs> IngressPolicies
@@ -62,7 +68,11 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         private InputList<string>? _resources;
 
         /// <summary>
-        /// / A list of resources, currently only projects in the form `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+        /// A list of resources, currently only projects in the form
+        /// `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
+        /// if it contains a resource in this list. If * is specified for resources,
+        /// then this `EgressTo` rule will authorize access to all resources outside
+        /// the perimeter.
         /// </summary>
         public InputList<string> Resources
         {

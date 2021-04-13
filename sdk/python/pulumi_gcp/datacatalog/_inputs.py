@@ -556,6 +556,7 @@ class TagTemplateFieldArgs:
     def __init__(__self__, *,
                  field_id: pulumi.Input[str],
                  type: pulumi.Input['TagTemplateFieldTypeArgs'],
+                 description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  is_required: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -564,6 +565,7 @@ class TagTemplateFieldArgs:
         :param pulumi.Input[str] field_id: The identifier for this object. Format specified above.
         :param pulumi.Input['TagTemplateFieldTypeArgs'] type: The type of value this tag field can contain.
                Structure is documented below.
+        :param pulumi.Input[str] description: A description for this field.
         :param pulumi.Input[str] display_name: The display name for this template.
         :param pulumi.Input[bool] is_required: Whether this is a required field. Defaults to false.
         :param pulumi.Input[str] name: -
@@ -574,6 +576,8 @@ class TagTemplateFieldArgs:
         """
         pulumi.set(__self__, "field_id", field_id)
         pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if is_required is not None:
@@ -607,6 +611,18 @@ class TagTemplateFieldArgs:
     @type.setter
     def type(self, value: pulumi.Input['TagTemplateFieldTypeArgs']):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for this field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="displayName")

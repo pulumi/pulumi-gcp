@@ -2746,13 +2746,23 @@ type ServicePerimeterSpec struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies []ServicePerimeterSpecEgressPolicy `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies []ServicePerimeterSpecIngressPolicy `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -2788,13 +2798,23 @@ type ServicePerimeterSpecArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies ServicePerimeterSpecEgressPolicyArrayInput `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies ServicePerimeterSpecIngressPolicyArrayInput `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -2898,19 +2918,29 @@ func (o ServicePerimeterSpecOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterSpecOutput) EgressPolicies() ServicePerimeterSpecEgressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []ServicePerimeterSpecEgressPolicy { return v.EgressPolicies }).(ServicePerimeterSpecEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterSpecOutput) IngressPolicies() ServicePerimeterSpecIngressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []ServicePerimeterSpecIngressPolicy { return v.IngressPolicies }).(ServicePerimeterSpecIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -2969,7 +2999,10 @@ func (o ServicePerimeterSpecPtrOutput) AccessLevels() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterSpecPtrOutput) EgressPolicies() ServicePerimeterSpecEgressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpec) []ServicePerimeterSpecEgressPolicy {
@@ -2980,7 +3013,10 @@ func (o ServicePerimeterSpecPtrOutput) EgressPolicies() ServicePerimeterSpecEgre
 	}).(ServicePerimeterSpecEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterSpecPtrOutput) IngressPolicies() ServicePerimeterSpecIngressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpec) []ServicePerimeterSpecIngressPolicy {
@@ -2991,7 +3027,11 @@ func (o ServicePerimeterSpecPtrOutput) IngressPolicies() ServicePerimeterSpecIng
 	}).(ServicePerimeterSpecIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpec) []string {
 		if v == nil {
@@ -3028,10 +3068,11 @@ func (o ServicePerimeterSpecPtrOutput) VpcAccessibleServices() ServicePerimeterS
 }
 
 type ServicePerimeterSpecEgressPolicy struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimeterSpecEgressPolicyEgressFrom `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimeterSpecEgressPolicyEgressTo `pulumi:"egressTo"`
 }
@@ -3048,10 +3089,11 @@ type ServicePerimeterSpecEgressPolicyInput interface {
 }
 
 type ServicePerimeterSpecEgressPolicyArgs struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterSpecEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimeterSpecEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
 }
@@ -3107,7 +3149,7 @@ func (o ServicePerimeterSpecEgressPolicyOutput) ToServicePerimeterSpecEgressPoli
 	return o
 }
 
-// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimeterSpecEgressPolicyOutput) EgressFrom() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicy) *ServicePerimeterSpecEgressPolicyEgressFrom {
@@ -3115,7 +3157,8 @@ func (o ServicePerimeterSpecEgressPolicyOutput) EgressFrom() ServicePerimeterSpe
 	}).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and destination resources that
+// cause this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimeterSpecEgressPolicyOutput) EgressTo() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicy) *ServicePerimeterSpecEgressPolicyEgressTo { return v.EgressTo }).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
@@ -3142,9 +3185,13 @@ func (o ServicePerimeterSpecEgressPolicyArrayOutput) Index(i pulumi.IntInput) Se
 }
 
 type ServicePerimeterSpecEgressPolicyEgressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
@@ -3161,9 +3208,13 @@ type ServicePerimeterSpecEgressPolicyEgressFromInput interface {
 }
 
 type ServicePerimeterSpecEgressPolicyEgressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
@@ -3245,12 +3296,16 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpec
 	}).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
@@ -3276,7 +3331,9 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerim
 	}).(ServicePerimeterSpecEgressPolicyEgressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -3286,7 +3343,9 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) *string {
@@ -3298,10 +3357,15 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulu
 }
 
 type ServicePerimeterSpecEgressPolicyEgressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterSpecEgressPolicyEgressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -3317,10 +3381,15 @@ type ServicePerimeterSpecEgressPolicyEgressToInput interface {
 }
 
 type ServicePerimeterSpecEgressPolicyEgressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -3401,7 +3470,8 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEg
 	}).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Operations() ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimeterSpecEgressPolicyEgressToOperation {
@@ -3409,7 +3479,11 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Operations() ServicePeri
 	}).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -3432,7 +3506,8 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimet
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) ServicePerimeterSpecEgressPolicyEgressTo { return *v }).(ServicePerimeterSpecEgressPolicyEgressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Operations() ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimeterSpecEgressPolicyEgressToOperation {
@@ -3443,7 +3518,11 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Operations() ServiceP
 	}).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) []string {
 		if v == nil {
@@ -3454,10 +3533,15 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Resources() pulumi.St
 }
 
 type ServicePerimeterSpecEgressPolicyEgressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -3473,10 +3557,15 @@ type ServicePerimeterSpecEgressPolicyEgressToOperationInput interface {
 }
 
 type ServicePerimeterSpecEgressPolicyEgressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -3531,7 +3620,10 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerime
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperation) []ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
@@ -3539,7 +3631,9 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) MethodSelectors
 	}).(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -3565,9 +3659,12 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) Index(i pu
 }
 
 type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -3583,9 +3680,12 @@ type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput interf
 }
 
 type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -3640,12 +3740,15 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) T
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string { return v.Permission }).(pulumi.StringPtrOutput)
 }
@@ -3671,10 +3774,12 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutp
 }
 
 type ServicePerimeterSpecIngressPolicy struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom *ServicePerimeterSpecIngressPolicyIngressFrom `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimeterSpecIngressPolicyIngressTo `pulumi:"ingressTo"`
 }
@@ -3691,10 +3796,12 @@ type ServicePerimeterSpecIngressPolicyInput interface {
 }
 
 type ServicePerimeterSpecIngressPolicyArgs struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom ServicePerimeterSpecIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimeterSpecIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
 }
@@ -3750,7 +3857,8 @@ func (o ServicePerimeterSpecIngressPolicyOutput) ToServicePerimeterSpecIngressPo
 	return o
 }
 
-// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Defines the conditions on the source of a request causing this `IngressPolicy`
+// to apply.
 // Structure is documented below.
 func (o ServicePerimeterSpecIngressPolicyOutput) IngressFrom() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicy) *ServicePerimeterSpecIngressPolicyIngressFrom {
@@ -3758,7 +3866,8 @@ func (o ServicePerimeterSpecIngressPolicyOutput) IngressFrom() ServicePerimeterS
 	}).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and request destination that cause
+// this `IngressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimeterSpecIngressPolicyOutput) IngressTo() ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicy) *ServicePerimeterSpecIngressPolicyIngressTo {
@@ -3787,12 +3896,16 @@ func (o ServicePerimeterSpecIngressPolicyArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources []ServicePerimeterSpecIngressPolicyIngressFromSource `pulumi:"sources"`
 }
@@ -3809,12 +3922,16 @@ type ServicePerimeterSpecIngressPolicyIngressFromInput interface {
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
 }
@@ -3896,18 +4013,22 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSp
 	}).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) Sources() ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimeterSpecIngressPolicyIngressFromSource {
@@ -3935,7 +4056,9 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePer
 	}).(ServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -3945,7 +4068,9 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) *string {
@@ -3956,7 +4081,7 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) IdentityType() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimeterSpecIngressPolicyIngressFromSource {
@@ -3968,9 +4093,21 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() Service
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFromSource struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -3986,9 +4123,21 @@ type ServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -4043,12 +4192,24 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToServicePerim
 	return o
 }
 
-// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+// An `AccessLevel` resource name that allow resources within the
+// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+// resources within the perimeter can only be accessed via Google Cloud calls
+// with request origins within the perimeter.
+// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+// If * is specified, then all IngressSources will be allowed.
 func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to ingress the perimeter.
+// Requests from these resources will be allowed to access perimeter data.
+// Currently only projects are allowed. Format `projects/{project_number}`
+// The project may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the case
+// of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -4074,10 +4235,15 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) Index(i p
 }
 
 type ServicePerimeterSpecIngressPolicyIngressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterSpecIngressPolicyIngressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -4093,10 +4259,15 @@ type ServicePerimeterSpecIngressPolicyIngressToInput interface {
 }
 
 type ServicePerimeterSpecIngressPolicyIngressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -4177,7 +4348,8 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpec
 	}).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Operations() ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimeterSpecIngressPolicyIngressToOperation {
@@ -4185,7 +4357,11 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Operations() ServicePe
 	}).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -4210,7 +4386,8 @@ func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Elem() ServicePerim
 	}).(ServicePerimeterSpecIngressPolicyIngressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Operations() ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimeterSpecIngressPolicyIngressToOperation {
@@ -4221,7 +4398,11 @@ func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Operations() Servic
 	}).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressTo) []string {
 		if v == nil {
@@ -4232,10 +4413,15 @@ func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Resources() pulumi.
 }
 
 type ServicePerimeterSpecIngressPolicyIngressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -4251,10 +4437,15 @@ type ServicePerimeterSpecIngressPolicyIngressToOperationInput interface {
 }
 
 type ServicePerimeterSpecIngressPolicyIngressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -4309,7 +4500,10 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePeri
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperation) []ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
@@ -4317,7 +4511,9 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) MethodSelecto
 	}).(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -4343,9 +4539,12 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) Index(i 
 }
 
 type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -4361,9 +4560,12 @@ type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput inte
 }
 
 type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -4418,12 +4620,15 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string { return v.Permission }).(pulumi.StringPtrOutput)
 }
@@ -4619,13 +4824,23 @@ type ServicePerimeterStatus struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies []ServicePerimeterStatusEgressPolicy `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies []ServicePerimeterStatusIngressPolicy `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -4661,13 +4876,23 @@ type ServicePerimeterStatusArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies ServicePerimeterStatusEgressPolicyArrayInput `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies ServicePerimeterStatusIngressPolicyArrayInput `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -4771,19 +4996,29 @@ func (o ServicePerimeterStatusOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterStatusOutput) EgressPolicies() ServicePerimeterStatusEgressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []ServicePerimeterStatusEgressPolicy { return v.EgressPolicies }).(ServicePerimeterStatusEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterStatusOutput) IngressPolicies() ServicePerimeterStatusIngressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []ServicePerimeterStatusIngressPolicy { return v.IngressPolicies }).(ServicePerimeterStatusIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -4842,7 +5077,10 @@ func (o ServicePerimeterStatusPtrOutput) AccessLevels() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterStatusPtrOutput) EgressPolicies() ServicePerimeterStatusEgressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatus) []ServicePerimeterStatusEgressPolicy {
@@ -4853,7 +5091,10 @@ func (o ServicePerimeterStatusPtrOutput) EgressPolicies() ServicePerimeterStatus
 	}).(ServicePerimeterStatusEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimeterStatusPtrOutput) IngressPolicies() ServicePerimeterStatusIngressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatus) []ServicePerimeterStatusIngressPolicy {
@@ -4864,7 +5105,11 @@ func (o ServicePerimeterStatusPtrOutput) IngressPolicies() ServicePerimeterStatu
 	}).(ServicePerimeterStatusIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatus) []string {
 		if v == nil {
@@ -4901,10 +5146,11 @@ func (o ServicePerimeterStatusPtrOutput) VpcAccessibleServices() ServicePerimete
 }
 
 type ServicePerimeterStatusEgressPolicy struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimeterStatusEgressPolicyEgressFrom `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimeterStatusEgressPolicyEgressTo `pulumi:"egressTo"`
 }
@@ -4921,10 +5167,11 @@ type ServicePerimeterStatusEgressPolicyInput interface {
 }
 
 type ServicePerimeterStatusEgressPolicyArgs struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterStatusEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimeterStatusEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
 }
@@ -4980,7 +5227,7 @@ func (o ServicePerimeterStatusEgressPolicyOutput) ToServicePerimeterStatusEgress
 	return o
 }
 
-// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimeterStatusEgressPolicyOutput) EgressFrom() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicy) *ServicePerimeterStatusEgressPolicyEgressFrom {
@@ -4988,7 +5235,8 @@ func (o ServicePerimeterStatusEgressPolicyOutput) EgressFrom() ServicePerimeterS
 	}).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and destination resources that
+// cause this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimeterStatusEgressPolicyOutput) EgressTo() ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicy) *ServicePerimeterStatusEgressPolicyEgressTo {
@@ -5017,9 +5265,13 @@ func (o ServicePerimeterStatusEgressPolicyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ServicePerimeterStatusEgressPolicyEgressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
@@ -5036,9 +5288,13 @@ type ServicePerimeterStatusEgressPolicyEgressFromInput interface {
 }
 
 type ServicePerimeterStatusEgressPolicyEgressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
@@ -5120,12 +5376,16 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterSt
 	}).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
@@ -5151,7 +5411,9 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePer
 	}).(ServicePerimeterStatusEgressPolicyEgressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -5161,7 +5423,9 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) *string {
@@ -5173,10 +5437,15 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pu
 }
 
 type ServicePerimeterStatusEgressPolicyEgressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterStatusEgressPolicyEgressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -5192,10 +5461,15 @@ type ServicePerimeterStatusEgressPolicyEgressToInput interface {
 }
 
 type ServicePerimeterStatusEgressPolicyEgressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -5276,7 +5550,8 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStat
 	}).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Operations() ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimeterStatusEgressPolicyEgressToOperation {
@@ -5284,7 +5559,11 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Operations() ServicePe
 	}).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -5309,7 +5588,8 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerim
 	}).(ServicePerimeterStatusEgressPolicyEgressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Operations() ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimeterStatusEgressPolicyEgressToOperation {
@@ -5320,7 +5600,11 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Operations() Servic
 	}).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) []string {
 		if v == nil {
@@ -5331,10 +5615,15 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Resources() pulumi.
 }
 
 type ServicePerimeterStatusEgressPolicyEgressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -5350,10 +5639,15 @@ type ServicePerimeterStatusEgressPolicyEgressToOperationInput interface {
 }
 
 type ServicePerimeterStatusEgressPolicyEgressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -5408,7 +5702,10 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePeri
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperation) []ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
@@ -5416,7 +5713,9 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) MethodSelecto
 	}).(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -5442,9 +5741,12 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) Index(i 
 }
 
 type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -5460,9 +5762,12 @@ type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput inte
 }
 
 type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -5517,12 +5822,15 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string { return v.Permission }).(pulumi.StringPtrOutput)
 }
@@ -5548,10 +5856,12 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOu
 }
 
 type ServicePerimeterStatusIngressPolicy struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom *ServicePerimeterStatusIngressPolicyIngressFrom `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimeterStatusIngressPolicyIngressTo `pulumi:"ingressTo"`
 }
@@ -5568,10 +5878,12 @@ type ServicePerimeterStatusIngressPolicyInput interface {
 }
 
 type ServicePerimeterStatusIngressPolicyArgs struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom ServicePerimeterStatusIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimeterStatusIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
 }
@@ -5627,7 +5939,8 @@ func (o ServicePerimeterStatusIngressPolicyOutput) ToServicePerimeterStatusIngre
 	return o
 }
 
-// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Defines the conditions on the source of a request causing this `IngressPolicy`
+// to apply.
 // Structure is documented below.
 func (o ServicePerimeterStatusIngressPolicyOutput) IngressFrom() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicy) *ServicePerimeterStatusIngressPolicyIngressFrom {
@@ -5635,7 +5948,8 @@ func (o ServicePerimeterStatusIngressPolicyOutput) IngressFrom() ServicePerimete
 	}).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and request destination that cause
+// this `IngressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimeterStatusIngressPolicyOutput) IngressTo() ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicy) *ServicePerimeterStatusIngressPolicyIngressTo {
@@ -5664,12 +5978,16 @@ func (o ServicePerimeterStatusIngressPolicyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources []ServicePerimeterStatusIngressPolicyIngressFromSource `pulumi:"sources"`
 }
@@ -5686,12 +6004,16 @@ type ServicePerimeterStatusIngressPolicyIngressFromInput interface {
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
 }
@@ -5773,18 +6095,22 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeter
 	}).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) Sources() ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimeterStatusIngressPolicyIngressFromSource {
@@ -5812,7 +6138,9 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServiceP
 	}).(ServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -5822,7 +6150,9 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pu
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) *string {
@@ -5833,7 +6163,7 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) IdentityType() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimeterStatusIngressPolicyIngressFromSource {
@@ -5845,9 +6175,21 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() Servi
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFromSource struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -5863,9 +6205,21 @@ type ServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -5920,12 +6274,24 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToServicePer
 	return o
 }
 
-// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+// An `AccessLevel` resource name that allow resources within the
+// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+// resources within the perimeter can only be accessed via Google Cloud calls
+// with request origins within the perimeter.
+// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+// If * is specified, then all IngressSources will be allowed.
 func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to ingress the perimeter.
+// Requests from these resources will be allowed to access perimeter data.
+// Currently only projects are allowed. Format `projects/{project_number}`
+// The project may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the case
+// of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -5951,10 +6317,15 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) Index(i
 }
 
 type ServicePerimeterStatusIngressPolicyIngressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimeterStatusIngressPolicyIngressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -5970,10 +6341,15 @@ type ServicePerimeterStatusIngressPolicyIngressToInput interface {
 }
 
 type ServicePerimeterStatusIngressPolicyIngressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -6054,7 +6430,8 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterSt
 	}).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Operations() ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimeterStatusIngressPolicyIngressToOperation {
@@ -6062,7 +6439,11 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Operations() Service
 	}).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -6087,7 +6468,8 @@ func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Elem() ServicePer
 	}).(ServicePerimeterStatusIngressPolicyIngressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Operations() ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimeterStatusIngressPolicyIngressToOperation {
@@ -6098,7 +6480,11 @@ func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Operations() Serv
 	}).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressTo) []string {
 		if v == nil {
@@ -6109,10 +6495,15 @@ func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Resources() pulum
 }
 
 type ServicePerimeterStatusIngressPolicyIngressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -6128,10 +6519,15 @@ type ServicePerimeterStatusIngressPolicyIngressToOperationInput interface {
 }
 
 type ServicePerimeterStatusIngressPolicyIngressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -6186,7 +6582,10 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePe
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperation) []ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
@@ -6194,7 +6593,9 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) MethodSelec
 	}).(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -6220,9 +6621,12 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) Index(
 }
 
 type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -6238,9 +6642,12 @@ type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput in
 }
 
 type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -6295,12 +6702,15 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutpu
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string {
 		return v.Permission
@@ -6772,13 +7182,23 @@ type ServicePerimetersServicePerimeterSpec struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies []ServicePerimetersServicePerimeterSpecEgressPolicy `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies []ServicePerimetersServicePerimeterSpecIngressPolicy `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -6814,13 +7234,23 @@ type ServicePerimetersServicePerimeterSpecArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -6924,7 +7354,10 @@ func (o ServicePerimetersServicePerimeterSpecOutput) AccessLevels() pulumi.Strin
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecOutput) EgressPolicies() ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecEgressPolicy {
@@ -6932,7 +7365,10 @@ func (o ServicePerimetersServicePerimeterSpecOutput) EgressPolicies() ServicePer
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecOutput) IngressPolicies() ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecIngressPolicy {
@@ -6940,7 +7376,11 @@ func (o ServicePerimetersServicePerimeterSpecOutput) IngressPolicies() ServicePe
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -6999,7 +7439,10 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) AccessLevels() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) EgressPolicies() ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecEgressPolicy {
@@ -7010,7 +7453,10 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) EgressPolicies() Service
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) IngressPolicies() ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecIngressPolicy {
@@ -7021,7 +7467,11 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) IngressPolicies() Servic
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []string {
 		if v == nil {
@@ -7058,10 +7508,11 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) VpcAccessibleServices() 
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicy struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo `pulumi:"egressTo"`
 }
@@ -7078,10 +7529,11 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyInput interface {
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyArgs struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
 }
@@ -7137,7 +7589,7 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ToServicePerime
 	return o
 }
 
-// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) EgressFrom() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicy) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
@@ -7145,7 +7597,8 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) EgressFrom() Se
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and destination resources that
+// cause this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) EgressTo() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicy) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
@@ -7174,9 +7627,13 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) Index(i pu
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
@@ -7193,9 +7650,13 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput interface 
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
@@ -7277,12 +7738,16 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToSer
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
@@ -7308,7 +7773,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) El
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -7318,7 +7785,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Id
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string {
@@ -7330,10 +7799,15 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Id
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -7349,10 +7823,15 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput interface {
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -7433,7 +7912,8 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServi
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Operations() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
@@ -7441,7 +7921,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Operati
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -7466,7 +7950,8 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Operations() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
@@ -7477,7 +7962,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Oper
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string {
 		if v == nil {
@@ -7488,10 +7977,15 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Reso
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -7507,10 +8001,15 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput int
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -7565,7 +8064,10 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
@@ -7573,7 +8075,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation) *string {
 		return v.ServiceName
@@ -7601,9 +8105,12 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayO
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -7619,9 +8126,12 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSel
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -7676,14 +8186,17 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethod
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string {
 		return v.Method
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string {
 		return v.Permission
@@ -7711,10 +8224,12 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethod
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicy struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo `pulumi:"ingressTo"`
 }
@@ -7731,10 +8246,12 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyInput interface {
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyArgs struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
 }
@@ -7790,7 +8307,8 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ToServicePerim
 	return o
 }
 
-// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Defines the conditions on the source of a request causing this `IngressPolicy`
+// to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) IngressFrom() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicy) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
@@ -7798,7 +8316,8 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) IngressFrom() 
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and request destination that cause
+// this `IngressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) IngressTo() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicy) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
@@ -7827,12 +8346,16 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) Index(i p
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources []ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource `pulumi:"sources"`
 }
@@ -7849,12 +8372,16 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput interfac
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
 }
@@ -7936,18 +8463,22 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToS
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) Sources() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
@@ -7975,7 +8506,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -7985,7 +8518,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *string {
@@ -7996,7 +8531,7 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
@@ -8008,9 +8543,21 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -8026,9 +8573,21 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput in
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -8083,14 +8642,26 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutpu
 	return o
 }
 
-// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+// An `AccessLevel` resource name that allow resources within the
+// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+// resources within the perimeter can only be accessed via Google Cloud calls
+// with request origins within the perimeter.
+// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+// If * is specified, then all IngressSources will be allowed.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource) *string {
 		return v.AccessLevel
 	}).(pulumi.StringPtrOutput)
 }
 
-// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to ingress the perimeter.
+// Requests from these resources will be allowed to access perimeter data.
+// Currently only projects are allowed. Format `projects/{project_number}`
+// The project may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the case
+// of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -8116,10 +8687,15 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -8135,10 +8711,15 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput interface 
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -8219,7 +8800,8 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToSer
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Operations() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
@@ -8227,7 +8809,11 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Opera
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -8252,7 +8838,8 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) El
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Operations() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
@@ -8263,7 +8850,11 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Op
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []string {
 		if v == nil {
@@ -8274,10 +8865,15 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Re
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -8293,10 +8889,15 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput i
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -8351,7 +8952,10 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutp
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
@@ -8359,7 +8963,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutp
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation) *string {
 		return v.ServiceName
@@ -8387,9 +8993,12 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArra
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -8405,9 +9014,12 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodS
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -8462,14 +9074,17 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMeth
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string {
 		return v.Method
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string {
 		return v.Permission
@@ -8667,13 +9282,23 @@ type ServicePerimetersServicePerimeterStatus struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies []ServicePerimetersServicePerimeterStatusEgressPolicy `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies []ServicePerimetersServicePerimeterStatusIngressPolicy `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -8709,13 +9334,23 @@ type ServicePerimetersServicePerimeterStatusArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// List of EgressPolicies to apply to the perimeter. A perimeter may
+	// have multiple EgressPolicies, each of which is evaluated separately.
+	// Access is granted if any EgressPolicy grants it. Must be empty for
+	// a perimeter bridge.
 	// Structure is documented below.
 	EgressPolicies ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput `pulumi:"egressPolicies"`
-	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+	// have multiple `IngressPolicies`, each of which is evaluated
+	// separately. Access is granted if any `Ingress Policy` grants it.
+	// Must be empty for a perimeter bridge.
 	// Structure is documented below.
 	IngressPolicies ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput `pulumi:"ingressPolicies"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -8819,7 +9454,10 @@ func (o ServicePerimetersServicePerimeterStatusOutput) AccessLevels() pulumi.Str
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusOutput) EgressPolicies() ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusEgressPolicy {
@@ -8827,7 +9465,10 @@ func (o ServicePerimetersServicePerimeterStatusOutput) EgressPolicies() ServiceP
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusOutput) IngressPolicies() ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusIngressPolicy {
@@ -8835,7 +9476,11 @@ func (o ServicePerimetersServicePerimeterStatusOutput) IngressPolicies() Service
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -8894,7 +9539,10 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) AccessLevels() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// List of EgressPolicies to apply to the perimeter. A perimeter may
+// have multiple EgressPolicies, each of which is evaluated separately.
+// Access is granted if any EgressPolicy grants it. Must be empty for
+// a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) EgressPolicies() ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusEgressPolicy {
@@ -8905,7 +9553,10 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) EgressPolicies() Servi
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput)
 }
 
-// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// List of `IngressPolicies` to apply to the perimeter. A perimeter may
+// have multiple `IngressPolicies`, each of which is evaluated
+// separately. Access is granted if any `Ingress Policy` grants it.
+// Must be empty for a perimeter bridge.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) IngressPolicies() ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusIngressPolicy {
@@ -8916,7 +9567,11 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) IngressPolicies() Serv
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []string {
 		if v == nil {
@@ -8953,10 +9608,11 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) VpcAccessibleServices(
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicy struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo `pulumi:"egressTo"`
 }
@@ -8973,10 +9629,11 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyInput interface {
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyArgs struct {
-	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
-	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and destination resources that
+	// cause this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressTo ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
 }
@@ -9032,7 +9689,7 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ToServicePeri
 	return o
 }
 
-// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) EgressFrom() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicy) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
@@ -9040,7 +9697,8 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) EgressFrom() 
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and destination resources that
+// cause this `EgressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) EgressTo() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicy) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
@@ -9069,9 +9727,13 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) Index(i 
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
@@ -9088,9 +9750,13 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput interfac
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
@@ -9172,12 +9838,16 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToS
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
@@ -9203,7 +9873,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -9213,7 +9885,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string {
@@ -9225,10 +9899,15 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -9244,10 +9923,15 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput interface 
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -9328,7 +10012,8 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToSer
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Operations() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
@@ -9336,7 +10021,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Opera
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -9361,7 +10050,8 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) El
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Operations() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
@@ -9372,7 +10062,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Op
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string {
 		if v == nil {
@@ -9383,10 +10077,15 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Re
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -9402,10 +10101,15 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput i
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -9460,7 +10164,10 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutp
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
@@ -9468,7 +10175,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutp
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation) *string {
 		return v.ServiceName
@@ -9496,9 +10205,12 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArra
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -9514,9 +10226,12 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodS
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -9571,14 +10286,17 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMeth
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string {
 		return v.Method
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string {
 		return v.Permission
@@ -9606,10 +10324,12 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMeth
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicy struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo `pulumi:"ingressTo"`
 }
@@ -9626,10 +10346,12 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyInput interface {
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyArgs struct {
-	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Defines the conditions on the source of a request causing this `IngressPolicy`
+	// to apply.
 	// Structure is documented below.
 	IngressFrom ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
-	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Defines the conditions on the `ApiOperation` and request destination that cause
+	// this `IngressPolicy` to apply.
 	// Structure is documented below.
 	IngressTo ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
 }
@@ -9685,7 +10407,8 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ToServicePer
 	return o
 }
 
-// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Defines the conditions on the source of a request causing this `IngressPolicy`
+// to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) IngressFrom() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicy) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
@@ -9693,7 +10416,8 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) IngressFrom(
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Defines the conditions on the `ApiOperation` and request destination that cause
+// this `IngressPolicy` to apply.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) IngressTo() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicy) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
@@ -9722,12 +10446,16 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) Index(i
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources []ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource `pulumi:"sources"`
 }
@@ -9744,12 +10472,16 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput interf
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs struct {
-	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Specifies the type of identities that are allowed access to outside the
+	// perimeter. If left unspecified, then members of `identities` field will
+	// be allowed access.
 	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
-	// / Sources that this `IngressPolicy` authorizes access from.
+	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
 	Sources ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
 }
@@ -9831,18 +10563,22 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) T
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) Sources() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
@@ -9870,7 +10606,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
-// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -9880,7 +10618,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Specifies the type of identities that are allowed access to outside the
+// perimeter. If left unspecified, then members of `identities` field will
+// be allowed access.
 // Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *string {
@@ -9891,7 +10631,7 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Sources that this `IngressPolicy` authorizes access from.
+// Sources that this `IngressPolicy` authorizes access from.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
@@ -9903,9 +10643,21 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -9921,9 +10673,21 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput 
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
-	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	// An `AccessLevel` resource name that allow resources within the
+	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+	// resources within the perimeter can only be accessed via Google Cloud calls
+	// with request origins within the perimeter.
+	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter.
+	// Requests from these resources will be allowed to access perimeter data.
+	// Currently only projects are allowed. Format `projects/{project_number}`
+	// The project may be in any Google Cloud organization, not just the
+	// organization that the perimeter is defined in. `*` is not allowed, the case
+	// of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -9978,14 +10742,26 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOut
 	return o
 }
 
-// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+// An `AccessLevel` resource name that allow resources within the
+// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+// resources within the perimeter can only be accessed via Google Cloud calls
+// with request origins within the perimeter.
+// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+// If * is specified, then all IngressSources will be allowed.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource) *string {
 		return v.AccessLevel
 	}).(pulumi.StringPtrOutput)
 }
 
-// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to ingress the perimeter.
+// Requests from these resources will be allowed to access perimeter data.
+// Currently only projects are allowed. Format `projects/{project_number}`
+// The project may be in any Google Cloud organization, not just the
+// organization that the perimeter is defined in. `*` is not allowed, the case
+// of allowing all Google Cloud resources only is not supported.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource) *string {
 		return v.Resource
@@ -10013,10 +10789,15 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArr
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -10032,10 +10813,15 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput interfac
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs struct {
-	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of `ApiOperations` that this egress rule applies to. A request matches
+	// if it contains an operation/service in this list.
 	// Structure is documented below.
 	Operations ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
-	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form
+	// `projects/<projectnumber>`, that match this to stanza. A request matches
+	// if it contains a resource in this list. If * is specified for resources,
+	// then this `EgressTo` rule will authorize access to all resources outside
+	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -10116,7 +10902,8 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToS
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Operations() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
@@ -10124,7 +10911,11 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Ope
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -10149,7 +10940,8 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) 
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput)
 }
 
-// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of `ApiOperations` that this egress rule applies to. A request matches
+// if it contains an operation/service in this list.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Operations() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
@@ -10160,7 +10952,11 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) 
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form
+// `projects/<projectnumber>`, that match this to stanza. A request matches
+// if it contains a resource in this list. If * is specified for resources,
+// then this `EgressTo` rule will authorize access to all resources outside
+// the perimeter.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []string {
 		if v == nil {
@@ -10171,10 +10967,15 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) 
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -10190,10 +10991,15 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs struct {
-	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// API methods or permissions to allow. Method or permission must belong
+	// to the service specified by `serviceName` field. A single MethodSelector
+	// entry with `*` specified for the `method` field will allow all methods
+	// AND permissions for the service specified in `serviceName`.
 	// Structure is documented below.
 	MethodSelectors ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
-	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	// The name of the API whose methods or permissions the `IngressPolicy` or
+	// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+	// field set to `*` will allow all methods AND permissions for all services.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -10248,7 +11054,10 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOu
 	return o
 }
 
-// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// API methods or permissions to allow. Method or permission must belong
+// to the service specified by `serviceName` field. A single MethodSelector
+// entry with `*` specified for the `method` field will allow all methods
+// AND permissions for the service specified in `serviceName`.
 // Structure is documented below.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
@@ -10256,7 +11065,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOu
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+// The name of the API whose methods or permissions the `IngressPolicy` or
+// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+// field set to `*` will allow all methods AND permissions for all services.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation) *string {
 		return v.ServiceName
@@ -10284,9 +11095,12 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationAr
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method *string `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -10302,9 +11116,12 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMetho
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs struct {
-	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	// Value for `method` should be a valid method name for the corresponding
+	// `serviceName` in `ApiOperation`. If `*` used as value for method,
+	// then ALL methods and permissions are allowed.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	// Value for permission should be a valid Cloud IAM permission for the
+	// corresponding `serviceName` in `ApiOperation`.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -10359,14 +11176,17 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMe
 	return o
 }
 
-// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+// Value for `method` should be a valid method name for the corresponding
+// `serviceName` in `ApiOperation`. If `*` used as value for method,
+// then ALL methods and permissions are allowed.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string {
 		return v.Method
 	}).(pulumi.StringPtrOutput)
 }
 
-// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+// Value for permission should be a valid Cloud IAM permission for the
+// corresponding `serviceName` in `ApiOperation`.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string {
 		return v.Permission

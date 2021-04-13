@@ -11,12 +11,137 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Certificate Authority Service CertificateAuthority. Each of these resources serves a different use case:
+//
+// * `certificateauthority.AuthorityIamPolicy`: Authoritative. Sets the IAM policy for the certificateauthority and replaces any existing policy already attached.
+// * `certificateauthority.AuthorityIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the certificateauthority are preserved.
+// * `certificateauthority.AuthorityIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the certificateauthority are preserved.
+//
+// > **Note:** `certificateauthority.AuthorityIamPolicy` **cannot** be used in conjunction with `certificateauthority.AuthorityIamBinding` and `certificateauthority.AuthorityIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `certificateauthority.AuthorityIamBinding` resources **can be** used in conjunction with `certificateauthority.AuthorityIamMember` resources **only if** they do not grant privilege to the same role.
+// ## google\_privateca\_certificate\_authority\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/privateca.certificateManager",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificateauthority.NewAuthorityIamPolicy(ctx, "policy", &certificateauthority.AuthorityIamPolicyArgs{
+// 			CertificateAuthority: pulumi.Any(google_privateca_certificate_authority.Default.Id),
+// 			PolicyData:           pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_privateca\_certificate\_authority\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := certificateauthority.NewAuthorityIamBinding(ctx, "binding", &certificateauthority.AuthorityIamBindingArgs{
+// 			CertificateAuthority: pulumi.Any(google_privateca_certificate_authority.Default.Id),
+// 			Role:                 pulumi.String("roles/privateca.certificateManager"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_privateca\_certificate\_authority\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := certificateauthority.NewAuthorityIamMember(ctx, "member", &certificateauthority.AuthorityIamMemberArgs{
+// 			CertificateAuthority: pulumi.Any(google_privateca_certificate_authority.Default.Id),
+// 			Role:                 pulumi.String("roles/privateca.certificateManager"),
+// 			Member:               pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} * {{project}}/{{location}}/{{certificate_authority_id}} * {{location}}/{{certificate_authority_id}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificateauthority IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy editor "projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}} roles/privateca.certificateManager"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy editor projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type AuthorityIamPolicy struct {
 	pulumi.CustomResourceState
 
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
-	Etag                 pulumi.StringOutput `pulumi:"etag"`
-	PolicyData           pulumi.StringOutput `pulumi:"policyData"`
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 }
 
 // NewAuthorityIamPolicy registers a new resource with the given unique name, arguments, and options.
@@ -55,14 +180,20 @@ func GetAuthorityIamPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AuthorityIamPolicy resources.
 type authorityIamPolicyState struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
-	Etag                 *string `pulumi:"etag"`
-	PolicyData           *string `pulumi:"policyData"`
+	// (Computed) The etag of the IAM policy.
+	Etag *string `pulumi:"etag"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData *string `pulumi:"policyData"`
 }
 
 type AuthorityIamPolicyState struct {
 	CertificateAuthority pulumi.StringPtrInput
-	Etag                 pulumi.StringPtrInput
-	PolicyData           pulumi.StringPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringPtrInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData pulumi.StringPtrInput
 }
 
 func (AuthorityIamPolicyState) ElementType() reflect.Type {
@@ -71,13 +202,17 @@ func (AuthorityIamPolicyState) ElementType() reflect.Type {
 
 type authorityIamPolicyArgs struct {
 	CertificateAuthority string `pulumi:"certificateAuthority"`
-	PolicyData           string `pulumi:"policyData"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData string `pulumi:"policyData"`
 }
 
 // The set of arguments for constructing a AuthorityIamPolicy resource.
 type AuthorityIamPolicyArgs struct {
 	CertificateAuthority pulumi.StringInput
-	PolicyData           pulumi.StringInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData pulumi.StringInput
 }
 
 func (AuthorityIamPolicyArgs) ElementType() reflect.Type {

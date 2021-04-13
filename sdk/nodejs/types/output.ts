@@ -395,17 +395,27 @@ export namespace accesscontextmanager {
          */
         accessLevels?: string[];
         /**
-         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * List of EgressPolicies to apply to the perimeter. A perimeter may
+         * have multiple EgressPolicies, each of which is evaluated separately.
+         * Access is granted if any EgressPolicy grants it. Must be empty for
+         * a perimeter bridge.
          * Structure is documented below.
          */
         egressPolicies?: outputs.accesscontextmanager.ServicePerimeterSpecEgressPolicy[];
         /**
-         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * List of `IngressPolicies` to apply to the perimeter. A perimeter may
+         * have multiple `IngressPolicies`, each of which is evaluated
+         * separately. Access is granted if any `Ingress Policy` grants it.
+         * Must be empty for a perimeter bridge.
          * Structure is documented below.
          */
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicy[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
         /**
@@ -426,12 +436,13 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecEgressPolicy {
         /**
-         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressFrom?: outputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and destination resources that
+         * cause this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressTo?: outputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressTo;
@@ -439,11 +450,15 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
@@ -451,47 +466,62 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecEgressPolicyEgressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimeterSpecEgressPolicyEgressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
 
     export interface ServicePerimeterSpecIngressPolicy {
         /**
-         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Defines the conditions on the source of a request causing this `IngressPolicy`
+         * to apply.
          * Structure is documented below.
          */
         ingressFrom?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and request destination that cause
+         * this `IngressPolicy` to apply.
          * Structure is documented below.
          */
         ingressTo?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressTo;
@@ -499,16 +529,20 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
-         * / Sources that this `IngressPolicy` authorizes access from.
+         * Sources that this `IngressPolicy` authorizes access from.
          * Structure is documented below.
          */
         sources?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressFromSource[];
@@ -516,46 +550,71 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecIngressPolicyIngressFromSource {
         /**
-         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         * An `AccessLevel` resource name that allow resources within the
+         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+         * resources within the perimeter can only be accessed via Google Cloud calls
+         * with request origins within the perimeter.
+         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+         * If * is specified, then all IngressSources will be allowed.
          */
         accessLevel?: string;
         /**
-         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to ingress the perimeter.
+         * Requests from these resources will be allowed to access perimeter data.
+         * Currently only projects are allowed. Format `projects/{project_number}`
+         * The project may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the case
+         * of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
 
     export interface ServicePerimeterSpecIngressPolicyIngressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimeterSpecIngressPolicyIngressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
@@ -587,17 +646,27 @@ export namespace accesscontextmanager {
          */
         accessLevels?: string[];
         /**
-         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * List of EgressPolicies to apply to the perimeter. A perimeter may
+         * have multiple EgressPolicies, each of which is evaluated separately.
+         * Access is granted if any EgressPolicy grants it. Must be empty for
+         * a perimeter bridge.
          * Structure is documented below.
          */
         egressPolicies?: outputs.accesscontextmanager.ServicePerimeterStatusEgressPolicy[];
         /**
-         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * List of `IngressPolicies` to apply to the perimeter. A perimeter may
+         * have multiple `IngressPolicies`, each of which is evaluated
+         * separately. Access is granted if any `Ingress Policy` grants it.
+         * Must be empty for a perimeter bridge.
          * Structure is documented below.
          */
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicy[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
         /**
@@ -618,12 +687,13 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusEgressPolicy {
         /**
-         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressFrom?: outputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and destination resources that
+         * cause this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressTo?: outputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressTo;
@@ -631,11 +701,15 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
@@ -643,47 +717,62 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusEgressPolicyEgressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimeterStatusEgressPolicyEgressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
 
     export interface ServicePerimeterStatusIngressPolicy {
         /**
-         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Defines the conditions on the source of a request causing this `IngressPolicy`
+         * to apply.
          * Structure is documented below.
          */
         ingressFrom?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and request destination that cause
+         * this `IngressPolicy` to apply.
          * Structure is documented below.
          */
         ingressTo?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressTo;
@@ -691,16 +780,20 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
-         * / Sources that this `IngressPolicy` authorizes access from.
+         * Sources that this `IngressPolicy` authorizes access from.
          * Structure is documented below.
          */
         sources?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSource[];
@@ -708,46 +801,71 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusIngressPolicyIngressFromSource {
         /**
-         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         * An `AccessLevel` resource name that allow resources within the
+         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+         * resources within the perimeter can only be accessed via Google Cloud calls
+         * with request origins within the perimeter.
+         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+         * If * is specified, then all IngressSources will be allowed.
          */
         accessLevel?: string;
         /**
-         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to ingress the perimeter.
+         * Requests from these resources will be allowed to access perimeter data.
+         * Currently only projects are allowed. Format `projects/{project_number}`
+         * The project may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the case
+         * of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
 
     export interface ServicePerimeterStatusIngressPolicyIngressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimeterStatusIngressPolicyIngressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
@@ -853,17 +971,27 @@ export namespace accesscontextmanager {
          */
         accessLevels?: string[];
         /**
-         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * List of EgressPolicies to apply to the perimeter. A perimeter may
+         * have multiple EgressPolicies, each of which is evaluated separately.
+         * Access is granted if any EgressPolicy grants it. Must be empty for
+         * a perimeter bridge.
          * Structure is documented below.
          */
         egressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicy[];
         /**
-         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * List of `IngressPolicies` to apply to the perimeter. A perimeter may
+         * have multiple `IngressPolicies`, each of which is evaluated
+         * separately. Access is granted if any `Ingress Policy` grants it.
+         * Must be empty for a perimeter bridge.
          * Structure is documented below.
          */
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicy[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
         /**
@@ -884,12 +1012,13 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicy {
         /**
-         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressFrom?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and destination resources that
+         * cause this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressTo?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo;
@@ -897,11 +1026,15 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
@@ -909,47 +1042,62 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicy {
         /**
-         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Defines the conditions on the source of a request causing this `IngressPolicy`
+         * to apply.
          * Structure is documented below.
          */
         ingressFrom?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and request destination that cause
+         * this `IngressPolicy` to apply.
          * Structure is documented below.
          */
         ingressTo?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo;
@@ -957,16 +1105,20 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
-         * / Sources that this `IngressPolicy` authorizes access from.
+         * Sources that this `IngressPolicy` authorizes access from.
          * Structure is documented below.
          */
         sources?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource[];
@@ -974,46 +1126,71 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
         /**
-         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         * An `AccessLevel` resource name that allow resources within the
+         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+         * resources within the perimeter can only be accessed via Google Cloud calls
+         * with request origins within the perimeter.
+         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+         * If * is specified, then all IngressSources will be allowed.
          */
         accessLevel?: string;
         /**
-         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to ingress the perimeter.
+         * Requests from these resources will be allowed to access perimeter data.
+         * Currently only projects are allowed. Format `projects/{project_number}`
+         * The project may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the case
+         * of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
@@ -1045,17 +1222,27 @@ export namespace accesscontextmanager {
          */
         accessLevels?: string[];
         /**
-         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * List of EgressPolicies to apply to the perimeter. A perimeter may
+         * have multiple EgressPolicies, each of which is evaluated separately.
+         * Access is granted if any EgressPolicy grants it. Must be empty for
+         * a perimeter bridge.
          * Structure is documented below.
          */
         egressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicy[];
         /**
-         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * List of `IngressPolicies` to apply to the perimeter. A perimeter may
+         * have multiple `IngressPolicies`, each of which is evaluated
+         * separately. Access is granted if any `Ingress Policy` grants it.
+         * Must be empty for a perimeter bridge.
          * Structure is documented below.
          */
         ingressPolicies?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicy[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
         /**
@@ -1076,12 +1263,13 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicy {
         /**
-         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressFrom?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and destination resources that
+         * cause this `EgressPolicy` to apply.
          * Structure is documented below.
          */
         egressTo?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo;
@@ -1089,11 +1277,15 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
@@ -1101,47 +1293,62 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicy {
         /**
-         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Defines the conditions on the source of a request causing this `IngressPolicy`
+         * to apply.
          * Structure is documented below.
          */
         ingressFrom?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom;
         /**
-         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Defines the conditions on the `ApiOperation` and request destination that cause
+         * this `IngressPolicy` to apply.
          * Structure is documented below.
          */
         ingressTo?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo;
@@ -1149,16 +1356,20 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
-         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
-         * / Sources that this `IngressPolicy` authorizes access from.
+         * Sources that this `IngressPolicy` authorizes access from.
          * Structure is documented below.
          */
         sources?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource[];
@@ -1166,46 +1377,71 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
         /**
-         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         * An `AccessLevel` resource name that allow resources within the
+         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+         * resources within the perimeter can only be accessed via Google Cloud calls
+         * with request origins within the perimeter.
+         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+         * If * is specified, then all IngressSources will be allowed.
          */
         accessLevel?: string;
         /**
-         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         * A Google Cloud resource that is allowed to ingress the perimeter.
+         * Requests from these resources will be allowed to access perimeter data.
+         * Currently only projects are allowed. Format `projects/{project_number}`
+         * The project may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the case
+         * of allowing all Google Cloud resources only is not supported.
          */
         resource?: string;
     }
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
         /**
-         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
          * Structure is documented below.
          */
         operations?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation[];
         /**
-         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
          */
         resources?: string[];
     }
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
         /**
-         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
          * Structure is documented below.
          */
         methodSelectors?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector[];
         /**
-         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
          */
         serviceName?: string;
     }
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
         /**
-         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
          */
         method?: string;
         /**
-         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
          */
         permission?: string;
     }
@@ -2993,6 +3229,12 @@ export namespace bigquery {
          */
         mode?: string;
         /**
+         * If set to true, queries over this table
+         * require a partition filter that can be used for partition elimination to be
+         * specified.
+         */
+        requirePartitionFilter?: boolean;
+        /**
          * When hive partition detection is requested,
          * a common for all source uris must be required. The prefix must end immediately
          * before the partition key encoding begins. For example, consider files following
@@ -4159,7 +4401,7 @@ export namespace cloudbuild {
         logging?: string;
         /**
          * Compute Engine machine type on which to run the build.
-         * Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+         * Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
          */
         machineType?: string;
         /**
@@ -7612,6 +7854,7 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp: string;
+        nicType: string;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
@@ -8974,6 +9217,10 @@ export namespace compute {
          */
         networkIp?: string;
         /**
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+         */
+        nicType?: string;
+        /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
          * created in. Either `network` or `subnetwork` must be provided.
@@ -9180,6 +9427,13 @@ export namespace compute {
          * Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
          */
         mode: string;
+    }
+
+    export interface NodeGroupMaintenanceWindow {
+        /**
+         * instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+         */
+        startTime: string;
     }
 
     export interface NodeTemplateNodeTypeFlexibility {
@@ -16013,6 +16267,10 @@ export namespace datacatalog {
 
     export interface TagTemplateField {
         /**
+         * A description for this field.
+         */
+        description?: string;
+        /**
          * The display name for this template.
          */
         displayName?: string;
@@ -18740,7 +18998,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: string;
@@ -18764,7 +19022,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: string;
@@ -18836,7 +19094,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: string;
@@ -18860,7 +19118,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: string;
@@ -23186,7 +23444,7 @@ export namespace sql {
         authorizedNetworks?: outputs.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork[];
         /**
          * Whether this Cloud SQL instance should be assigned
-         * a public IPV4 address. Either `ipv4Enabled` must be enabled or a
+         * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
          * `privateNetwork` must be configured.
          */
         ipv4Enabled?: boolean;
@@ -23194,7 +23452,7 @@ export namespace sql {
          * The VPC network from which the Cloud SQL
          * instance is accessible for private IP. For example, projects/myProject/global/networks/default.
          * Specifying a network enables private IP.
-         * Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
+         * At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
          * This setting can be updated, but it cannot be removed after it is set.
          */
         privateNetwork?: string;
@@ -23859,6 +24117,32 @@ export namespace storage {
          * Whether overwriting objects that already exist in the sink is allowed.
          */
         overwriteObjectsAlreadyExistingInSink?: boolean;
+    }
+}
+
+export namespace tags {
+    export interface TagKeyIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TagKeyIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TagValueIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TagValueIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 }
 
