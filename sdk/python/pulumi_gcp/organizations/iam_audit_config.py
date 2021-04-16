@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -65,6 +65,78 @@ class IamAuditConfigArgs:
         pulumi.set(self, "service", value)
 
 
+@pulumi.input_type
+class _IamAuditConfigState:
+    def __init__(__self__, *,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering IamAuditConfig resources.
+        :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[str] etag: The etag of iam policy
+        :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        """
+        if audit_log_configs is not None:
+            pulumi.set(__self__, "audit_log_configs", audit_log_configs)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="auditLogConfigs")
+    def audit_log_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]]:
+        """
+        The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        """
+        return pulumi.get(self, "audit_log_configs")
+
+    @audit_log_configs.setter
+    def audit_log_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]]):
+        pulumi.set(self, "audit_log_configs", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The etag of iam policy
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The numeric ID of the organization in which you want to manage the audit logging config.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
 class IamAuditConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -73,9 +145,7 @@ class IamAuditConfig(pulumi.CustomResource):
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
 
@@ -158,15 +228,7 @@ class IamAuditConfig(pulumi.CustomResource):
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -176,18 +238,18 @@ class IamAuditConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IamAuditConfigArgs.__new__(IamAuditConfigArgs)
 
             if audit_log_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'audit_log_configs'")
-            __props__['audit_log_configs'] = audit_log_configs
+            __props__.__dict__["audit_log_configs"] = audit_log_configs
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
-            __props__['org_id'] = org_id
+            __props__.__dict__["org_id"] = org_id
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
-            __props__['service'] = service
-            __props__['etag'] = None
+            __props__.__dict__["service"] = service
+            __props__.__dict__["etag"] = None
         super(IamAuditConfig, __self__).__init__(
             'gcp:organizations/iamAuditConfig:IamAuditConfig',
             resource_name,
@@ -216,12 +278,12 @@ class IamAuditConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IamAuditConfigState.__new__(_IamAuditConfigState)
 
-        __props__["audit_log_configs"] = audit_log_configs
-        __props__["etag"] = etag
-        __props__["org_id"] = org_id
-        __props__["service"] = service
+        __props__.__dict__["audit_log_configs"] = audit_log_configs
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["service"] = service
         return IamAuditConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -255,10 +317,4 @@ class IamAuditConfig(pulumi.CustomResource):
         Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SharedVPCHostProjectArgs', 'SharedVPCHostProject']
 
@@ -33,15 +33,37 @@ class SharedVPCHostProjectArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _SharedVPCHostProjectState:
+    def __init__(__self__, *,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SharedVPCHostProject resources.
+        :param pulumi.Input[str] project: The ID of the project that will serve as a Shared VPC host project
+        """
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that will serve as a Shared VPC host project
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
 class SharedVPCHostProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Enables the Google Compute Engine
         [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
@@ -138,15 +160,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -156,11 +170,11 @@ class SharedVPCHostProject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SharedVPCHostProjectArgs.__new__(SharedVPCHostProjectArgs)
 
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
         super(SharedVPCHostProject, __self__).__init__(
             'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
             resource_name,
@@ -183,9 +197,9 @@ class SharedVPCHostProject(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SharedVPCHostProjectState.__new__(_SharedVPCHostProjectState)
 
-        __props__["project"] = project
+        __props__.__dict__["project"] = project
         return SharedVPCHostProject(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -195,10 +209,4 @@ class SharedVPCHostProject(pulumi.CustomResource):
         The ID of the project that will serve as a Shared VPC host project
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

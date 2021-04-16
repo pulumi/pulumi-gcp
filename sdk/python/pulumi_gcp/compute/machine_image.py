@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -127,6 +127,154 @@ class MachineImageArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _MachineImageState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 guest_flush: Optional[pulumi.Input[bool]] = None,
+                 machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 source_instance: Optional[pulumi.Input[str]] = None,
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering MachineImage resources.
+        :param pulumi.Input[str] description: A text description of the resource.
+        :param pulumi.Input[bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+               Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input['MachineImageMachineImageEncryptionKeyArgs'] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
+               After you encrypt a machine image with a customer-supplied key, you must
+               provide the same key if you use the machine image later (e.g. to create a
+               instance from the image)
+               Structure is documented below.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if guest_flush is not None:
+            pulumi.set(__self__, "guest_flush", guest_flush)
+        if machine_image_encryption_key is not None:
+            pulumi.set(__self__, "machine_image_encryption_key", machine_image_encryption_key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if source_instance is not None:
+            pulumi.set(__self__, "source_instance", source_instance)
+        if storage_locations is not None:
+            pulumi.set(__self__, "storage_locations", storage_locations)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A text description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+        Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        """
+        return pulumi.get(self, "guest_flush")
+
+    @guest_flush.setter
+    def guest_flush(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "guest_flush", value)
+
+    @property
+    @pulumi.getter(name="machineImageEncryptionKey")
+    def machine_image_encryption_key(self) -> Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']]:
+        """
+        Encrypts the machine image using a customer-supplied encryption key.
+        After you encrypt a machine image with a customer-supplied key, you must
+        provide the same key if you use the machine image later (e.g. to create a
+        instance from the image)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_image_encryption_key")
+
+    @machine_image_encryption_key.setter
+    def machine_image_encryption_key(self, value: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']]):
+        pulumi.set(self, "machine_image_encryption_key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="sourceInstance")
+    def source_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+        """
+        return pulumi.get(self, "source_instance")
+
+    @source_instance.setter
+    def source_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance", value)
+
+    @property
+    @pulumi.getter(name="storageLocations")
+    def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+        """
+        return pulumi.get(self, "storage_locations")
+
+    @storage_locations.setter
+    def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storage_locations", value)
+
+
 class MachineImage(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -138,9 +286,7 @@ class MachineImage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents a Machine Image resource. Machine images store all the configuration,
         metadata, permissions, and data from one or more disks required to create a
@@ -281,15 +427,7 @@ class MachineImage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -299,18 +437,18 @@ class MachineImage(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MachineImageArgs.__new__(MachineImageArgs)
 
-            __props__['description'] = description
-            __props__['guest_flush'] = guest_flush
-            __props__['machine_image_encryption_key'] = machine_image_encryption_key
-            __props__['name'] = name
-            __props__['project'] = project
+            __props__.__dict__["description"] = description
+            __props__.__dict__["guest_flush"] = guest_flush
+            __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
             if source_instance is None and not opts.urn:
                 raise TypeError("Missing required property 'source_instance'")
-            __props__['source_instance'] = source_instance
-            __props__['self_link'] = None
-            __props__['storage_locations'] = None
+            __props__.__dict__["source_instance"] = source_instance
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["storage_locations"] = None
         super(MachineImage, __self__).__init__(
             'gcp:compute/machineImage:MachineImage',
             resource_name,
@@ -353,16 +491,16 @@ class MachineImage(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MachineImageState.__new__(_MachineImageState)
 
-        __props__["description"] = description
-        __props__["guest_flush"] = guest_flush
-        __props__["machine_image_encryption_key"] = machine_image_encryption_key
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["self_link"] = self_link
-        __props__["source_instance"] = source_instance
-        __props__["storage_locations"] = storage_locations
+        __props__.__dict__["description"] = description
+        __props__.__dict__["guest_flush"] = guest_flush
+        __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["source_instance"] = source_instance
+        __props__.__dict__["storage_locations"] = storage_locations
         return MachineImage(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -434,10 +572,4 @@ class MachineImage(pulumi.CustomResource):
         The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         """
         return pulumi.get(self, "storage_locations")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

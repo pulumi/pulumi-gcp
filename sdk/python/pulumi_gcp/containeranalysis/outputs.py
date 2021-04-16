@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -50,12 +50,26 @@ class NoteAttestationAuthority(dict):
         """
         return pulumi.get(self, "hint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NoteAttestationAuthorityHint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "humanReadableName":
+            suggest = "human_readable_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NoteAttestationAuthorityHint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NoteAttestationAuthorityHint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NoteAttestationAuthorityHint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  human_readable_name: str):
         """
@@ -72,9 +86,6 @@ class NoteAttestationAuthorityHint(dict):
         example "qa".
         """
         return pulumi.get(self, "human_readable_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -106,12 +117,26 @@ class NoteRelatedUrl(dict):
         """
         return pulumi.get(self, "label")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OccurenceAttestation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serializedPayload":
+            suggest = "serialized_payload"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OccurenceAttestation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OccurenceAttestation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OccurenceAttestation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  serialized_payload: str,
                  signatures: Sequence['outputs.OccurenceAttestationSignature']):
@@ -150,12 +175,26 @@ class OccurenceAttestation(dict):
         """
         return pulumi.get(self, "signatures")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OccurenceAttestationSignature(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeyId":
+            suggest = "public_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OccurenceAttestationSignature. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OccurenceAttestationSignature.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OccurenceAttestationSignature.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key_id: str,
                  signature: Optional[str] = None):
@@ -212,8 +251,5 @@ class OccurenceAttestationSignature(dict):
         unambiguously computed to derive the payload.
         """
         return pulumi.get(self, "signature")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

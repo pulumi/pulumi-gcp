@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -61,6 +61,74 @@ class IamAuditConfigArgs:
         pulumi.set(self, "service", value)
 
 
+@pulumi.input_type
+class _IamAuditConfigState:
+    def __init__(__self__, *,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering IamAuditConfig resources.
+        :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission. This can be specified multiple times.
+        :param pulumi.Input[str] etag: The etag of iam policy
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging. The special value allServices covers all services.
+        """
+        if audit_log_configs is not None:
+            pulumi.set(__self__, "audit_log_configs", audit_log_configs)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="auditLogConfigs")
+    def audit_log_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]]:
+        """
+        The configuration for logging of each type of permission. This can be specified multiple times.
+        """
+        return pulumi.get(self, "audit_log_configs")
+
+    @audit_log_configs.setter
+    def audit_log_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]]):
+        pulumi.set(self, "audit_log_configs", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The etag of iam policy
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service which will be enabled for audit logging. The special value allServices covers all services.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
 class IamAuditConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -69,9 +137,7 @@ class IamAuditConfig(pulumi.CustomResource):
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create a IamAuditConfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -105,15 +171,7 @@ class IamAuditConfig(pulumi.CustomResource):
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -123,18 +181,18 @@ class IamAuditConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IamAuditConfigArgs.__new__(IamAuditConfigArgs)
 
             if audit_log_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'audit_log_configs'")
-            __props__['audit_log_configs'] = audit_log_configs
+            __props__.__dict__["audit_log_configs"] = audit_log_configs
             if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")
-            __props__['folder'] = folder
+            __props__.__dict__["folder"] = folder
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
-            __props__['service'] = service
-            __props__['etag'] = None
+            __props__.__dict__["service"] = service
+            __props__.__dict__["etag"] = None
         super(IamAuditConfig, __self__).__init__(
             'gcp:folder/iamAuditConfig:IamAuditConfig',
             resource_name,
@@ -162,12 +220,12 @@ class IamAuditConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IamAuditConfigState.__new__(_IamAuditConfigState)
 
-        __props__["audit_log_configs"] = audit_log_configs
-        __props__["etag"] = etag
-        __props__["folder"] = folder
-        __props__["service"] = service
+        __props__.__dict__["audit_log_configs"] = audit_log_configs
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["folder"] = folder
+        __props__.__dict__["service"] = service
         return IamAuditConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -198,10 +256,4 @@ class IamAuditConfig(pulumi.CustomResource):
         Service which will be enabled for audit logging. The special value allServices covers all services.
         """
         return pulumi.get(self, "service")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

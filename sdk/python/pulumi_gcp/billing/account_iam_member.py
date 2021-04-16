@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -65,6 +65,74 @@ class AccountIamMemberArgs:
         pulumi.set(self, "condition", value)
 
 
+@pulumi.input_type
+class _AccountIamMemberState:
+    def __init__(__self__, *,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input['AccountIamMemberConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccountIamMember resources.
+        """
+        if billing_account_id is not None:
+            pulumi.set(__self__, "billing_account_id", billing_account_id)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "billing_account_id")
+
+    @billing_account_id.setter
+    def billing_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_account_id", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['AccountIamMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['AccountIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
 class AccountIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -74,9 +142,7 @@ class AccountIamMember(pulumi.CustomResource):
                  condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create a AccountIamMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -109,15 +175,7 @@ class AccountIamMember(pulumi.CustomResource):
                  condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -127,19 +185,19 @@ class AccountIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountIamMemberArgs.__new__(AccountIamMemberArgs)
 
             if billing_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account_id'")
-            __props__['billing_account_id'] = billing_account_id
-            __props__['condition'] = condition
+            __props__.__dict__["billing_account_id"] = billing_account_id
+            __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
+            __props__.__dict__["member"] = member
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(AccountIamMember, __self__).__init__(
             'gcp:billing/accountIamMember:AccountIamMember',
             resource_name,
@@ -165,13 +223,13 @@ class AccountIamMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountIamMemberState.__new__(_AccountIamMemberState)
 
-        __props__["billing_account_id"] = billing_account_id
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["member"] = member
-        __props__["role"] = role
+        __props__.__dict__["billing_account_id"] = billing_account_id
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["member"] = member
+        __props__.__dict__["role"] = role
         return AccountIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -198,10 +256,4 @@ class AccountIamMember(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -224,6 +224,256 @@ class NodeArgs:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.input_type
+class _NodeState:
+    def __init__(__self__, *,
+                 accelerator_type: Optional[pulumi.Input[str]] = None,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 tensorflow_version: Optional[pulumi.Input[str]] = None,
+                 use_service_networking: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Node resources.
+        :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
+        :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP
+               address. This CIDR block must be a /29 block; the Compute Engine
+               networks API forbids a smaller block, and using a larger block would
+               be wasteful (a node can only consume one IP address).
+               Errors will occur if the CIDR block has already been used for a
+               currently existing TPU node, the CIDR block conflicts with any
+               subnetworks in the user's provided network, or the provided network
+               is peered with another network that is using that CIDR block.
+        :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[str] name: The immutable name of the TPU.
+        :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a
+               preexisting Compute Engine network inside of the project on which
+               this API has been activated. If none is provided, "default" will be
+               used.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
+               node first reach out to the first (index 0) entry.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['NodeSchedulingConfigArgs'] scheduling_config: Sets the scheduling options for this TPU instance.
+               Structure is documented below.
+        :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
+               Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
+        :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
+               The VPC Peering should be set up before provisioning the node. If this field is set,
+               cidr_block field should not be specified. If the network that you want to peer the
+               TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+        :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
+        """
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_endpoints is not None:
+            pulumi.set(__self__, "network_endpoints", network_endpoints)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if scheduling_config is not None:
+            pulumi.set(__self__, "scheduling_config", scheduling_config)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if tensorflow_version is not None:
+            pulumi.set(__self__, "tensorflow_version", tensorflow_version)
+        if use_service_networking is not None:
+            pulumi.set(__self__, "use_service_networking", use_service_networking)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of hardware accelerators associated with this node.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR block that the TPU node will use when selecting an IP
+        address. This CIDR block must be a /29 block; the Compute Engine
+        networks API forbids a smaller block, and using a larger block would
+        be wasteful (a node can only consume one IP address).
+        Errors will occur if the CIDR block has already been used for a
+        currently existing TPU node, the CIDR block conflicts with any
+        subnetworks in the user's provided network, or the provided network
+        is peered with another network that is using that CIDR block.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-supplied description of the TPU. Maximum of 512 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The immutable name of the TPU.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a network to peer the TPU node to. It must be a
+        preexisting Compute Engine network inside of the project on which
+        this API has been activated. If none is provided, "default" will be
+        used.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkEndpoints")
+    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]]:
+        """
+        The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
+        node first reach out to the first (index 0) entry.
+        """
+        return pulumi.get(self, "network_endpoints")
+
+    @network_endpoints.setter
+    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]]):
+        pulumi.set(self, "network_endpoints", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="schedulingConfig")
+    def scheduling_config(self) -> Optional[pulumi.Input['NodeSchedulingConfigArgs']]:
+        """
+        Sets the scheduling options for this TPU instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduling_config")
+
+    @scheduling_config.setter
+    def scheduling_config(self, value: Optional[pulumi.Input['NodeSchedulingConfigArgs']]):
+        pulumi.set(self, "scheduling_config", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
+        Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="tensorflowVersion")
+    def tensorflow_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of Tensorflow running in the Node.
+        """
+        return pulumi.get(self, "tensorflow_version")
+
+    @tensorflow_version.setter
+    def tensorflow_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tensorflow_version", value)
+
+    @property
+    @pulumi.getter(name="useServiceNetworking")
+    def use_service_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the VPC peering for the node is set up through Service Networking API.
+        The VPC Peering should be set up before provisioning the node. If this field is set,
+        cidr_block field should not be specified. If the network that you want to peer the
+        TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+        """
+        return pulumi.get(self, "use_service_networking")
+
+    @use_service_networking.setter
+    def use_service_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_service_networking", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GCP location for the TPU. If it is not provided, the provider zone is used.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 class Node(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -240,9 +490,7 @@ class Node(pulumi.CustomResource):
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Cloud TPU instance.
 
@@ -392,15 +640,7 @@ class Node(pulumi.CustomResource):
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -410,25 +650,25 @@ class Node(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NodeArgs.__new__(NodeArgs)
 
             if accelerator_type is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_type'")
-            __props__['accelerator_type'] = accelerator_type
-            __props__['cidr_block'] = cidr_block
-            __props__['description'] = description
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['network'] = network
-            __props__['project'] = project
-            __props__['scheduling_config'] = scheduling_config
+            __props__.__dict__["accelerator_type"] = accelerator_type
+            __props__.__dict__["cidr_block"] = cidr_block
+            __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
+            __props__.__dict__["project"] = project
+            __props__.__dict__["scheduling_config"] = scheduling_config
             if tensorflow_version is None and not opts.urn:
                 raise TypeError("Missing required property 'tensorflow_version'")
-            __props__['tensorflow_version'] = tensorflow_version
-            __props__['use_service_networking'] = use_service_networking
-            __props__['zone'] = zone
-            __props__['network_endpoints'] = None
-            __props__['service_account'] = None
+            __props__.__dict__["tensorflow_version"] = tensorflow_version
+            __props__.__dict__["use_service_networking"] = use_service_networking
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["network_endpoints"] = None
+            __props__.__dict__["service_account"] = None
         super(Node, __self__).__init__(
             'gcp:tpu/node:Node',
             resource_name,
@@ -492,21 +732,21 @@ class Node(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NodeState.__new__(_NodeState)
 
-        __props__["accelerator_type"] = accelerator_type
-        __props__["cidr_block"] = cidr_block
-        __props__["description"] = description
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["network"] = network
-        __props__["network_endpoints"] = network_endpoints
-        __props__["project"] = project
-        __props__["scheduling_config"] = scheduling_config
-        __props__["service_account"] = service_account
-        __props__["tensorflow_version"] = tensorflow_version
-        __props__["use_service_networking"] = use_service_networking
-        __props__["zone"] = zone
+        __props__.__dict__["accelerator_type"] = accelerator_type
+        __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["description"] = description
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
+        __props__.__dict__["network_endpoints"] = network_endpoints
+        __props__.__dict__["project"] = project
+        __props__.__dict__["scheduling_config"] = scheduling_config
+        __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["tensorflow_version"] = tensorflow_version
+        __props__.__dict__["use_service_networking"] = use_service_networking
+        __props__.__dict__["zone"] = zone
         return Node(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -629,10 +869,4 @@ class Node(pulumi.CustomResource):
         The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

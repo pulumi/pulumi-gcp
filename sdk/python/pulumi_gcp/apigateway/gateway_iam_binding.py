@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -113,6 +113,126 @@ class GatewayIamBindingArgs:
         pulumi.set(self, "region", value)
 
 
+@pulumi.input_type
+class _GatewayIamBindingState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['GatewayIamBindingConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 gateway: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering GatewayIamBinding resources.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] region: The region of the gateway for the API.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `apigateway.GatewayIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['GatewayIamBindingConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['GatewayIamBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the gateway for the API.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `apigateway.GatewayIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
 class GatewayIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -124,9 +244,7 @@ class GatewayIamBinding(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
 
@@ -326,15 +444,7 @@ class GatewayIamBinding(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -344,21 +454,21 @@ class GatewayIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GatewayIamBindingArgs.__new__(GatewayIamBindingArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if gateway is None and not opts.urn:
                 raise TypeError("Missing required property 'gateway'")
-            __props__['gateway'] = gateway
+            __props__.__dict__["gateway"] = gateway
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
-            __props__['members'] = members
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["members"] = members
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(GatewayIamBinding, __self__).__init__(
             'gcp:apigateway/gatewayIamBinding:GatewayIamBinding',
             resource_name,
@@ -396,15 +506,15 @@ class GatewayIamBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GatewayIamBindingState.__new__(_GatewayIamBindingState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["gateway"] = gateway
-        __props__["members"] = members
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["role"] = role
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["gateway"] = gateway
+        __props__.__dict__["members"] = members
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["role"] = role
         return GatewayIamBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -459,10 +569,4 @@ class GatewayIamBinding(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

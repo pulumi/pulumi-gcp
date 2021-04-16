@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SSLCertificateArgs', 'SSLCertificate']
 
@@ -136,6 +136,182 @@ class SSLCertificateArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _SSLCertificateState:
+    def __init__(__self__, *,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 certificate_id: Optional[pulumi.Input[int]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SSLCertificate resources.
+        :param pulumi.Input[str] certificate: The certificate in PEM format.
+               The certificate chain must be no greater than 5 certs long.
+               The chain must include at least one intermediate cert.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
+               specified prefix. Conflicts with `name`.
+        :param pulumi.Input[str] private_key: The write-only private key in PEM format.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        """
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate in PEM format.
+        The certificate chain must be no greater than 5 certs long.
+        The chain must include at least one intermediate cert.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier for the resource.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "certificate_id", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name beginning with the
+        specified prefix. Conflicts with `name`.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The write-only private key in PEM format.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+
 class SSLCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -147,9 +323,7 @@ class SSLCertificate(pulumi.CustomResource):
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An SslCertificate resource, used for HTTPS load balancing. This resource
         provides a mechanism to upload an SSL key and certificate to
@@ -372,15 +546,7 @@ class SSLCertificate(pulumi.CustomResource):
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,21 +556,21 @@ class SSLCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SSLCertificateArgs.__new__(SSLCertificateArgs)
 
             if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
-            __props__['certificate'] = certificate
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__.__dict__["certificate"] = certificate
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["name_prefix"] = name_prefix
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__['private_key'] = private_key
-            __props__['project'] = project
-            __props__['certificate_id'] = None
-            __props__['creation_timestamp'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["project"] = project
+            __props__.__dict__["certificate_id"] = None
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["self_link"] = None
         super(SSLCertificate, __self__).__init__(
             'gcp:compute/sSLCertificate:SSLCertificate',
             resource_name,
@@ -455,17 +621,17 @@ class SSLCertificate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SSLCertificateState.__new__(_SSLCertificateState)
 
-        __props__["certificate"] = certificate
-        __props__["certificate_id"] = certificate_id
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["name_prefix"] = name_prefix
-        __props__["private_key"] = private_key
-        __props__["project"] = project
-        __props__["self_link"] = self_link
+        __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["certificate_id"] = certificate_id
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["name_prefix"] = name_prefix
+        __props__.__dict__["private_key"] = private_key
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
         return SSLCertificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -551,10 +717,4 @@ class SSLCertificate(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

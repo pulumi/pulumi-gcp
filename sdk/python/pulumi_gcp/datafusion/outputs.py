@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'InstanceNetworkConfig',
@@ -14,6 +14,23 @@ __all__ = [
 
 @pulumi.output_type
 class InstanceNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAllocation":
+            suggest = "ip_allocation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_allocation: str,
                  network: str):
@@ -45,8 +62,5 @@ class InstanceNetworkConfig(dict):
         project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
         """
         return pulumi.get(self, "network")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

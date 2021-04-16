@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -184,6 +184,180 @@ class MetricArgs:
         pulumi.set(self, "value_extractor", value)
 
 
+@pulumi.input_type
+class _MetricState:
+    def __init__(__self__, *,
+                 bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metric_descriptor: Optional[pulumi.Input['MetricMetricDescriptorArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 value_extractor: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Metric resources.
+        :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
+               describes the bucket boundaries used to create a histogram of the extracted values.
+               Structure is documented below.
+        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
+               description is 8000 characters.
+        :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+               is used to match log entries.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
+               entry field and assign as the label value. Each label key specified in the LabelDescriptor must
+               have an associated extractor expression in this map. The syntax of the extractor expression is
+               the same as for the valueExtractor field.
+        :param pulumi.Input['MetricMetricDescriptorArgs'] metric_descriptor: The metric descriptor associated with the logs-based metric.
+               Structure is documented below.
+        :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+               Metric identifiers are limited to 100 characters and can include only the following
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+               character (/) denotes a hierarchy of name pieces, and it cannot be the first character
+               of the name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] value_extractor: A valueExtractor is required when using a distribution logs-based metric to extract the values to
+               record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
+               REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
+               the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
+               (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+               log entry field. The value of the field is converted to a string before applying the regex. It is an
+               error to specify a regex that does not include exactly one capture group.
+        """
+        if bucket_options is not None:
+            pulumi.set(__self__, "bucket_options", bucket_options)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if label_extractors is not None:
+            pulumi.set(__self__, "label_extractors", label_extractors)
+        if metric_descriptor is not None:
+            pulumi.set(__self__, "metric_descriptor", metric_descriptor)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if value_extractor is not None:
+            pulumi.set(__self__, "value_extractor", value_extractor)
+
+    @property
+    @pulumi.getter(name="bucketOptions")
+    def bucket_options(self) -> Optional[pulumi.Input['MetricBucketOptionsArgs']]:
+        """
+        The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
+        describes the bucket boundaries used to create a histogram of the extracted values.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bucket_options")
+
+    @bucket_options.setter
+    def bucket_options(self, value: Optional[pulumi.Input['MetricBucketOptionsArgs']]):
+        pulumi.set(self, "bucket_options", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of this metric, which is used in documentation. The maximum length of the
+        description is 8000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        is used to match log entries.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="labelExtractors")
+    def label_extractors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map from a label key string to an extractor expression which is used to extract data from a log
+        entry field and assign as the label value. Each label key specified in the LabelDescriptor must
+        have an associated extractor expression in this map. The syntax of the extractor expression is
+        the same as for the valueExtractor field.
+        """
+        return pulumi.get(self, "label_extractors")
+
+    @label_extractors.setter
+    def label_extractors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "label_extractors", value)
+
+    @property
+    @pulumi.getter(name="metricDescriptor")
+    def metric_descriptor(self) -> Optional[pulumi.Input['MetricMetricDescriptorArgs']]:
+        """
+        The metric descriptor associated with the logs-based metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metric_descriptor")
+
+    @metric_descriptor.setter
+    def metric_descriptor(self, value: Optional[pulumi.Input['MetricMetricDescriptorArgs']]):
+        pulumi.set(self, "metric_descriptor", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+        Metric identifiers are limited to 100 characters and can include only the following
+        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+        character (/) denotes a hierarchy of name pieces, and it cannot be the first character
+        of the name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="valueExtractor")
+    def value_extractor(self) -> Optional[pulumi.Input[str]]:
+        """
+        A valueExtractor is required when using a distribution logs-based metric to extract the values to
+        record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
+        REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
+        the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
+        (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        log entry field. The value of the field is converted to a string before applying the regex. It is an
+        error to specify a regex that does not include exactly one capture group.
+        """
+        return pulumi.get(self, "value_extractor")
+
+    @value_extractor.setter
+    def value_extractor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_extractor", value)
+
+
 class Metric(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -197,9 +371,7 @@ class Metric(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_extractor: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Logs-based metric can also be used to extract values from logs and create a a distribution
         of the values. The distribution records the statistics of the extracted values along with
@@ -455,15 +627,7 @@ class Metric(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_extractor: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -473,20 +637,20 @@ class Metric(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MetricArgs.__new__(MetricArgs)
 
-            __props__['bucket_options'] = bucket_options
-            __props__['description'] = description
+            __props__.__dict__["bucket_options"] = bucket_options
+            __props__.__dict__["description"] = description
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
-            __props__['filter'] = filter
-            __props__['label_extractors'] = label_extractors
+            __props__.__dict__["filter"] = filter
+            __props__.__dict__["label_extractors"] = label_extractors
             if metric_descriptor is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_descriptor'")
-            __props__['metric_descriptor'] = metric_descriptor
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['value_extractor'] = value_extractor
+            __props__.__dict__["metric_descriptor"] = metric_descriptor
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["value_extractor"] = value_extractor
         super(Metric, __self__).__init__(
             'gcp:logging/metric:Metric',
             resource_name,
@@ -542,16 +706,16 @@ class Metric(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MetricState.__new__(_MetricState)
 
-        __props__["bucket_options"] = bucket_options
-        __props__["description"] = description
-        __props__["filter"] = filter
-        __props__["label_extractors"] = label_extractors
-        __props__["metric_descriptor"] = metric_descriptor
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["value_extractor"] = value_extractor
+        __props__.__dict__["bucket_options"] = bucket_options
+        __props__.__dict__["description"] = description
+        __props__.__dict__["filter"] = filter
+        __props__.__dict__["label_extractors"] = label_extractors
+        __props__.__dict__["metric_descriptor"] = metric_descriptor
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["value_extractor"] = value_extractor
         return Metric(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -636,10 +800,4 @@ class Metric(pulumi.CustomResource):
         error to specify a regex that does not include exactly one capture group.
         """
         return pulumi.get(self, "value_extractor")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -9,23 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
-
-    public sealed class ServiceStatusConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("message")]
-        public Input<string>? Message { get; set; }
-
-        [Input("reason")]
-        public Input<string>? Reason { get; set; }
-
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public ServiceStatusConditionArgs()
-        {
-        }
-    }
 }

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,27 @@ __all__ = [
 
 @pulumi.output_type
 class AttestorAttestationAuthorityNote(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noteReference":
+            suggest = "note_reference"
+        elif key == "delegationServiceAccountEmail":
+            suggest = "delegation_service_account_email"
+        elif key == "publicKeys":
+            suggest = "public_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttestorAttestationAuthorityNote. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttestorAttestationAuthorityNote.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttestorAttestationAuthorityNote.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  note_reference: str,
                  delegation_service_account_email: Optional[str] = None,
@@ -105,12 +126,28 @@ class AttestorAttestationAuthorityNote(dict):
         """
         return pulumi.get(self, "public_keys")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttestorAttestationAuthorityNotePublicKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asciiArmoredPgpPublicKey":
+            suggest = "ascii_armored_pgp_public_key"
+        elif key == "pkixPublicKey":
+            suggest = "pkix_public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttestorAttestationAuthorityNotePublicKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttestorAttestationAuthorityNotePublicKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttestorAttestationAuthorityNotePublicKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ascii_armored_pgp_public_key: Optional[str] = None,
                  comment: Optional[str] = None,
@@ -199,12 +236,28 @@ class AttestorAttestationAuthorityNotePublicKey(dict):
         """
         return pulumi.get(self, "pkix_public_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeyPem":
+            suggest = "public_key_pem"
+        elif key == "signatureAlgorithm":
+            suggest = "signature_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttestorAttestationAuthorityNotePublicKeyPkixPublicKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key_pem: Optional[str] = None,
                  signature_algorithm: Optional[str] = None):
@@ -243,9 +296,6 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
         """
         return pulumi.get(self, "signature_algorithm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttestorIamBindingCondition(dict):
@@ -272,9 +322,6 @@ class AttestorIamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -303,12 +350,26 @@ class AttestorIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyAdmissionWhitelistPattern(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namePattern":
+            suggest = "name_pattern"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAdmissionWhitelistPattern. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAdmissionWhitelistPattern.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAdmissionWhitelistPattern.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name_pattern: str):
         """
@@ -330,12 +391,30 @@ class PolicyAdmissionWhitelistPattern(dict):
         """
         return pulumi.get(self, "name_pattern")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyClusterAdmissionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enforcementMode":
+            suggest = "enforcement_mode"
+        elif key == "evaluationMode":
+            suggest = "evaluation_mode"
+        elif key == "requireAttestationsBies":
+            suggest = "require_attestations_bies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyClusterAdmissionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyClusterAdmissionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyClusterAdmissionRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster: str,
                  enforcement_mode: str,
@@ -403,12 +482,30 @@ class PolicyClusterAdmissionRule(dict):
         """
         return pulumi.get(self, "require_attestations_bies")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyDefaultAdmissionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enforcementMode":
+            suggest = "enforcement_mode"
+        elif key == "evaluationMode":
+            suggest = "evaluation_mode"
+        elif key == "requireAttestationsBies":
+            suggest = "require_attestations_bies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyDefaultAdmissionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyDefaultAdmissionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyDefaultAdmissionRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enforcement_mode: str,
                  evaluation_mode: str,
@@ -464,8 +561,5 @@ class PolicyDefaultAdmissionRule(dict):
         specifies REQUIRE_ATTESTATION, otherwise it must be empty.
         """
         return pulumi.get(self, "require_attestations_bies")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

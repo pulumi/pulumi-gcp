@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SubAccountArgs', 'SubAccount']
 
@@ -70,6 +70,116 @@ class SubAccountArgs:
         pulumi.set(self, "deletion_policy", value)
 
 
+@pulumi.input_type
+class _SubAccountState:
+    def __init__(__self__, *,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 master_billing_account: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 open: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering SubAccount resources.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
+               will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+               Default is "".
+        :param pulumi.Input[str] display_name: The display name of the billing account.
+        :param pulumi.Input[str] master_billing_account: The name of the master billing account that the subaccount
+               will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
+        :param pulumi.Input[str] name: The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
+        :param pulumi.Input[bool] open: `true` if the billing account is open, `false` if the billing account is closed.
+        """
+        if billing_account_id is not None:
+            pulumi.set(__self__, "billing_account_id", billing_account_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if master_billing_account is not None:
+            pulumi.set(__self__, "master_billing_account", master_billing_account)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if open is not None:
+            pulumi.set(__self__, "open", open)
+
+    @property
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing account id.
+        """
+        return pulumi.get(self, "billing_account_id")
+
+    @billing_account_id.setter
+    def billing_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_account_id", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set to "RENAME_ON_DESTROY" the billing account display_name
+        will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        Default is "".
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the billing account.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="masterBillingAccount")
+    def master_billing_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the master billing account that the subaccount
+        will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
+        """
+        return pulumi.get(self, "master_billing_account")
+
+    @master_billing_account.setter
+    def master_billing_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_billing_account", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def open(self) -> Optional[pulumi.Input[bool]]:
+        """
+        `true` if the billing account is open, `false` if the billing account is closed.
+        """
+        return pulumi.get(self, "open")
+
+    @open.setter
+    def open(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "open", value)
+
+
 class SubAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -78,9 +188,7 @@ class SubAccount(pulumi.CustomResource):
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows creation and management of a Google Cloud Billing Subaccount.
 
@@ -158,15 +266,7 @@ class SubAccount(pulumi.CustomResource):
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -176,18 +276,18 @@ class SubAccount(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SubAccountArgs.__new__(SubAccountArgs)
 
-            __props__['deletion_policy'] = deletion_policy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
+            __props__.__dict__["display_name"] = display_name
             if master_billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'master_billing_account'")
-            __props__['master_billing_account'] = master_billing_account
-            __props__['billing_account_id'] = None
-            __props__['name'] = None
-            __props__['open'] = None
+            __props__.__dict__["master_billing_account"] = master_billing_account
+            __props__.__dict__["billing_account_id"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["open"] = None
         super(SubAccount, __self__).__init__(
             'gcp:billing/subAccount:SubAccount',
             resource_name,
@@ -223,14 +323,14 @@ class SubAccount(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SubAccountState.__new__(_SubAccountState)
 
-        __props__["billing_account_id"] = billing_account_id
-        __props__["deletion_policy"] = deletion_policy
-        __props__["display_name"] = display_name
-        __props__["master_billing_account"] = master_billing_account
-        __props__["name"] = name
-        __props__["open"] = open
+        __props__.__dict__["billing_account_id"] = billing_account_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["master_billing_account"] = master_billing_account
+        __props__.__dict__["name"] = name
+        __props__.__dict__["open"] = open
         return SubAccount(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -283,10 +383,4 @@ class SubAccount(pulumi.CustomResource):
         `true` if the billing account is open, `false` if the billing account is closed.
         """
         return pulumi.get(self, "open")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

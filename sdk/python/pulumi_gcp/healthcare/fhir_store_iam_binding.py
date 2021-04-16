@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -83,6 +83,96 @@ class FhirStoreIamBindingArgs:
         pulumi.set(self, "condition", value)
 
 
+@pulumi.input_type
+class _FhirStoreIamBindingState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 fhir_store_id: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FhirStoreIamBinding resources.
+        :param pulumi.Input[str] etag: (Computed) The etag of the FHIR store's IAM policy.
+        :param pulumi.Input[str] fhir_store_id: The FHIR store ID, in the form
+               `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
+               `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
+               project setting will be used as a fallback.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if fhir_store_id is not None:
+            pulumi.set(__self__, "fhir_store_id", fhir_store_id)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the FHIR store's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="fhirStoreId")
+    def fhir_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FHIR store ID, in the form
+        `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
+        `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
+        project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "fhir_store_id")
+
+    @fhir_store_id.setter
+    def fhir_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fhir_store_id", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
 class FhirStoreIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -92,9 +182,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
 
@@ -282,15 +370,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -300,19 +380,19 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FhirStoreIamBindingArgs.__new__(FhirStoreIamBindingArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if fhir_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_store_id'")
-            __props__['fhir_store_id'] = fhir_store_id
+            __props__.__dict__["fhir_store_id"] = fhir_store_id
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
-            __props__['members'] = members
+            __props__.__dict__["members"] = members
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(FhirStoreIamBinding, __self__).__init__(
             'gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding',
             resource_name,
@@ -346,13 +426,13 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FhirStoreIamBindingState.__new__(_FhirStoreIamBindingState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["fhir_store_id"] = fhir_store_id
-        __props__["members"] = members
-        __props__["role"] = role
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["fhir_store_id"] = fhir_store_id
+        __props__.__dict__["members"] = members
+        __props__.__dict__["role"] = role
         return FhirStoreIamBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -393,10 +473,4 @@ class FhirStoreIamBinding(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

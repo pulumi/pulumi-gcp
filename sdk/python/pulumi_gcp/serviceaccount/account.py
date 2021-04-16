@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
 
@@ -93,6 +93,142 @@ class AccountArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _AccountState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 unique_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Account resources.
+        :param pulumi.Input[str] account_id: The account id that is used to generate the service
+               account email address and a stable unique id. It is unique within a project,
+               must be 6-30 characters long, and match the regular expression `a-z`
+               to comply with RFC1035. Changing this forces a new service account to be created.
+        :param pulumi.Input[str] description: A text description of the service account.
+               Must be less than or equal to 256 UTF-8 bytes.
+        :param pulumi.Input[str] display_name: The display name for the service account.
+               Can be updated without creating a new resource.
+        :param pulumi.Input[str] email: The e-mail address of the service account. This value
+               should be referenced from any `organizations.getIAMPolicy` data sources
+               that would grant the service account privileges.
+        :param pulumi.Input[str] name: The fully-qualified name of the service account.
+        :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
+               Defaults to the provider project configuration.
+        :param pulumi.Input[str] unique_id: The unique id of the service account.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if unique_id is not None:
+            pulumi.set(__self__, "unique_id", unique_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account id that is used to generate the service
+        account email address and a stable unique id. It is unique within a project,
+        must be 6-30 characters long, and match the regular expression `a-z`
+        to comply with RFC1035. Changing this forces a new service account to be created.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A text description of the service account.
+        Must be less than or equal to 256 UTF-8 bytes.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name for the service account.
+        Can be updated without creating a new resource.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The e-mail address of the service account. This value
+        should be referenced from any `organizations.getIAMPolicy` data sources
+        that would grant the service account privileges.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified name of the service account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that the service account will be created in.
+        Defaults to the provider project configuration.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="uniqueId")
+    def unique_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique id of the service account.
+        """
+        return pulumi.get(self, "unique_id")
+
+    @unique_id.setter
+    def unique_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unique_id", value)
+
+
 class Account(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -102,9 +238,7 @@ class Account(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows management of a Google Cloud service account.
 
@@ -211,15 +345,7 @@ class Account(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,17 +355,17 @@ class Account(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountArgs.__new__(AccountArgs)
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
-            __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['project'] = project
-            __props__['email'] = None
-            __props__['name'] = None
-            __props__['unique_id'] = None
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["email"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["unique_id"] = None
         super(Account, __self__).__init__(
             'gcp:serviceAccount/account:Account',
             resource_name,
@@ -282,15 +408,15 @@ class Account(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountState.__new__(_AccountState)
 
-        __props__["account_id"] = account_id
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["email"] = email
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["unique_id"] = unique_id
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["email"] = email
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["unique_id"] = unique_id
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -356,10 +482,4 @@ class Account(pulumi.CustomResource):
         The unique id of the service account.
         """
         return pulumi.get(self, "unique_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

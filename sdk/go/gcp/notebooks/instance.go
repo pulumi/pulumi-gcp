@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Cloud AI Platform Notebook instance.
@@ -30,8 +30,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/notebooks"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -57,8 +57,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/notebooks"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -87,8 +87,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/notebooks"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -119,9 +119,9 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/notebooks"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -148,9 +148,9 @@ import (
 // 				Project:     pulumi.String("deeplearning-platform-release"),
 // 				ImageFamily: pulumi.String("tf-latest-cpu"),
 // 			},
-// 			InstanceOwners: pulumi.String(pulumi.String{
+// 			InstanceOwners: pulumi.StringArray{
 // 				pulumi.String("admin@hashicorptest.com"),
-// 			}),
+// 			},
 // 			ServiceAccount:   pulumi.String("emailAddress:my@service-account.com"),
 // 			InstallGpuDriver: pulumi.Bool(true),
 // 			BootDiskType:     pulumi.String("PD_SSD"),
@@ -229,7 +229,7 @@ type Instance struct {
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
-	InstanceOwners pulumi.StringPtrOutput `pulumi:"instanceOwners"`
+	InstanceOwners pulumi.StringArrayOutput `pulumi:"instanceOwners"`
 	// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
 	// Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
@@ -367,7 +367,7 @@ type instanceState struct {
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
-	InstanceOwners *string `pulumi:"instanceOwners"`
+	InstanceOwners []string `pulumi:"instanceOwners"`
 	// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
 	// Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
 	KmsKey *string `pulumi:"kmsKey"`
@@ -471,7 +471,7 @@ type InstanceState struct {
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
-	InstanceOwners pulumi.StringPtrInput
+	InstanceOwners pulumi.StringArrayInput
 	// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
 	// Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
 	KmsKey pulumi.StringPtrInput
@@ -579,7 +579,7 @@ type instanceArgs struct {
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
-	InstanceOwners *string `pulumi:"instanceOwners"`
+	InstanceOwners []string `pulumi:"instanceOwners"`
 	// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
 	// Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
 	KmsKey *string `pulumi:"kmsKey"`
@@ -680,7 +680,7 @@ type InstanceArgs struct {
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
-	InstanceOwners pulumi.StringPtrInput
+	InstanceOwners pulumi.StringArrayInput
 	// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
 	// Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
 	KmsKey pulumi.StringPtrInput

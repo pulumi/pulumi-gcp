@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -235,6 +235,278 @@ class JobArgs:
         pulumi.set(self, "sparksql_config", value)
 
 
+@pulumi.input_type
+class _JobState:
+    def __init__(__self__, *,
+                 driver_controls_files_uri: Optional[pulumi.Input[str]] = None,
+                 driver_output_resource_uri: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
+                 hadoop_config: Optional[pulumi.Input['JobHadoopConfigArgs']] = None,
+                 hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pig_config: Optional[pulumi.Input['JobPigConfigArgs']] = None,
+                 placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pyspark_config: Optional[pulumi.Input['JobPysparkConfigArgs']] = None,
+                 reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
+                 spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
+                 sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering Job resources.
+        :param pulumi.Input[str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        :param pulumi.Input[str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
+        :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
+               Dataproc. Setting this to true, and calling destroy, will ensure that the
+               job is first cancelled before issuing the delete.
+        :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: The config of Hadoop job
+        :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
+        :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
+        :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
+        :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
+               subsequently run against. If it is not provided, the provider project is used.
+        :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: The config of pySpark job.
+        :param pulumi.Input['JobReferenceArgs'] reference: The reference of the job
+        :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
+               for this job to be submitted to. If not specified, defaults to `global`.
+        :param pulumi.Input['JobSchedulingArgs'] scheduling: Optional. Job scheduling configuration.
+        :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
+        :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of the job.
+        """
+        if driver_controls_files_uri is not None:
+            pulumi.set(__self__, "driver_controls_files_uri", driver_controls_files_uri)
+        if driver_output_resource_uri is not None:
+            pulumi.set(__self__, "driver_output_resource_uri", driver_output_resource_uri)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
+        if hadoop_config is not None:
+            pulumi.set(__self__, "hadoop_config", hadoop_config)
+        if hive_config is not None:
+            pulumi.set(__self__, "hive_config", hive_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if pig_config is not None:
+            pulumi.set(__self__, "pig_config", pig_config)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if pyspark_config is not None:
+            pulumi.set(__self__, "pyspark_config", pyspark_config)
+        if reference is not None:
+            pulumi.set(__self__, "reference", reference)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
+        if spark_config is not None:
+            pulumi.set(__self__, "spark_config", spark_config)
+        if sparksql_config is not None:
+            pulumi.set(__self__, "sparksql_config", sparksql_config)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="driverControlsFilesUri")
+    def driver_controls_files_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        """
+        return pulumi.get(self, "driver_controls_files_uri")
+
+    @driver_controls_files_uri.setter
+    def driver_controls_files_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "driver_controls_files_uri", value)
+
+    @property
+    @pulumi.getter(name="driverOutputResourceUri")
+    def driver_output_resource_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        A URI pointing to the location of the stdout of the job's driver program.
+        """
+        return pulumi.get(self, "driver_output_resource_uri")
+
+    @driver_output_resource_uri.setter
+    def driver_output_resource_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "driver_output_resource_uri", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        By default, you can only delete inactive jobs within
+        Dataproc. Setting this to true, and calling destroy, will ensure that the
+        job is first cancelled before issuing the delete.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="hadoopConfig")
+    def hadoop_config(self) -> Optional[pulumi.Input['JobHadoopConfigArgs']]:
+        """
+        The config of Hadoop job
+        """
+        return pulumi.get(self, "hadoop_config")
+
+    @hadoop_config.setter
+    def hadoop_config(self, value: Optional[pulumi.Input['JobHadoopConfigArgs']]):
+        pulumi.set(self, "hadoop_config", value)
+
+    @property
+    @pulumi.getter(name="hiveConfig")
+    def hive_config(self) -> Optional[pulumi.Input['JobHiveConfigArgs']]:
+        """
+        The config of hive job
+        """
+        return pulumi.get(self, "hive_config")
+
+    @hive_config.setter
+    def hive_config(self, value: Optional[pulumi.Input['JobHiveConfigArgs']]):
+        pulumi.set(self, "hive_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The list of labels (key/value pairs) to add to the job.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="pigConfig")
+    def pig_config(self) -> Optional[pulumi.Input['JobPigConfigArgs']]:
+        """
+        The config of pag job.
+        """
+        return pulumi.get(self, "pig_config")
+
+    @pig_config.setter
+    def pig_config(self, value: Optional[pulumi.Input['JobPigConfigArgs']]):
+        pulumi.set(self, "pig_config", value)
+
+    @property
+    @pulumi.getter
+    def placement(self) -> Optional[pulumi.Input['JobPlacementArgs']]:
+        """
+        The config of job placement.
+        """
+        return pulumi.get(self, "placement")
+
+    @placement.setter
+    def placement(self, value: Optional[pulumi.Input['JobPlacementArgs']]):
+        pulumi.set(self, "placement", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the `cluster` can be found and jobs
+        subsequently run against. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pysparkConfig")
+    def pyspark_config(self) -> Optional[pulumi.Input['JobPysparkConfigArgs']]:
+        """
+        The config of pySpark job.
+        """
+        return pulumi.get(self, "pyspark_config")
+
+    @pyspark_config.setter
+    def pyspark_config(self, value: Optional[pulumi.Input['JobPysparkConfigArgs']]):
+        pulumi.set(self, "pyspark_config", value)
+
+    @property
+    @pulumi.getter
+    def reference(self) -> Optional[pulumi.Input['JobReferenceArgs']]:
+        """
+        The reference of the job
+        """
+        return pulumi.get(self, "reference")
+
+    @reference.setter
+    def reference(self, value: Optional[pulumi.Input['JobReferenceArgs']]):
+        pulumi.set(self, "reference", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Dataproc region. This essentially determines which clusters are available
+        for this job to be submitted to. If not specified, defaults to `global`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['JobSchedulingArgs']]:
+        """
+        Optional. Job scheduling configuration.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['JobSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
+    @pulumi.getter(name="sparkConfig")
+    def spark_config(self) -> Optional[pulumi.Input['JobSparkConfigArgs']]:
+        """
+        The config of the Spark job.
+        """
+        return pulumi.get(self, "spark_config")
+
+    @spark_config.setter
+    def spark_config(self, value: Optional[pulumi.Input['JobSparkConfigArgs']]):
+        pulumi.set(self, "spark_config", value)
+
+    @property
+    @pulumi.getter(name="sparksqlConfig")
+    def sparksql_config(self) -> Optional[pulumi.Input['JobSparksqlConfigArgs']]:
+        """
+        The config of SparkSql job
+        """
+        return pulumi.get(self, "sparksql_config")
+
+    @sparksql_config.setter
+    def sparksql_config(self, value: Optional[pulumi.Input['JobSparksqlConfigArgs']]):
+        pulumi.set(self, "sparksql_config", value)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]:
+        """
+        The status of the job.
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+
 class Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -253,9 +525,7 @@ class Job(pulumi.CustomResource):
                  scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
                  spark_config: Optional[pulumi.Input[pulumi.InputType['JobSparkConfigArgs']]] = None,
                  sparksql_config: Optional[pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages a job resource within a Dataproc cluster within GCE. For more information see
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
@@ -418,15 +688,7 @@ class Job(pulumi.CustomResource):
                  scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
                  spark_config: Optional[pulumi.Input[pulumi.InputType['JobSparkConfigArgs']]] = None,
                  sparksql_config: Optional[pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -436,26 +698,26 @@ class Job(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = JobArgs.__new__(JobArgs)
 
-            __props__['force_delete'] = force_delete
-            __props__['hadoop_config'] = hadoop_config
-            __props__['hive_config'] = hive_config
-            __props__['labels'] = labels
-            __props__['pig_config'] = pig_config
+            __props__.__dict__["force_delete"] = force_delete
+            __props__.__dict__["hadoop_config"] = hadoop_config
+            __props__.__dict__["hive_config"] = hive_config
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["pig_config"] = pig_config
             if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
-            __props__['placement'] = placement
-            __props__['project'] = project
-            __props__['pyspark_config'] = pyspark_config
-            __props__['reference'] = reference
-            __props__['region'] = region
-            __props__['scheduling'] = scheduling
-            __props__['spark_config'] = spark_config
-            __props__['sparksql_config'] = sparksql_config
-            __props__['driver_controls_files_uri'] = None
-            __props__['driver_output_resource_uri'] = None
-            __props__['statuses'] = None
+            __props__.__dict__["placement"] = placement
+            __props__.__dict__["project"] = project
+            __props__.__dict__["pyspark_config"] = pyspark_config
+            __props__.__dict__["reference"] = reference
+            __props__.__dict__["region"] = region
+            __props__.__dict__["scheduling"] = scheduling
+            __props__.__dict__["spark_config"] = spark_config
+            __props__.__dict__["sparksql_config"] = sparksql_config
+            __props__.__dict__["driver_controls_files_uri"] = None
+            __props__.__dict__["driver_output_resource_uri"] = None
+            __props__.__dict__["statuses"] = None
         super(Job, __self__).__init__(
             'gcp:dataproc/job:Job',
             resource_name,
@@ -512,24 +774,24 @@ class Job(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _JobState.__new__(_JobState)
 
-        __props__["driver_controls_files_uri"] = driver_controls_files_uri
-        __props__["driver_output_resource_uri"] = driver_output_resource_uri
-        __props__["force_delete"] = force_delete
-        __props__["hadoop_config"] = hadoop_config
-        __props__["hive_config"] = hive_config
-        __props__["labels"] = labels
-        __props__["pig_config"] = pig_config
-        __props__["placement"] = placement
-        __props__["project"] = project
-        __props__["pyspark_config"] = pyspark_config
-        __props__["reference"] = reference
-        __props__["region"] = region
-        __props__["scheduling"] = scheduling
-        __props__["spark_config"] = spark_config
-        __props__["sparksql_config"] = sparksql_config
-        __props__["statuses"] = statuses
+        __props__.__dict__["driver_controls_files_uri"] = driver_controls_files_uri
+        __props__.__dict__["driver_output_resource_uri"] = driver_output_resource_uri
+        __props__.__dict__["force_delete"] = force_delete
+        __props__.__dict__["hadoop_config"] = hadoop_config
+        __props__.__dict__["hive_config"] = hive_config
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["pig_config"] = pig_config
+        __props__.__dict__["placement"] = placement
+        __props__.__dict__["project"] = project
+        __props__.__dict__["pyspark_config"] = pyspark_config
+        __props__.__dict__["reference"] = reference
+        __props__.__dict__["region"] = region
+        __props__.__dict__["scheduling"] = scheduling
+        __props__.__dict__["spark_config"] = spark_config
+        __props__.__dict__["sparksql_config"] = sparksql_config
+        __props__.__dict__["statuses"] = statuses
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -663,10 +925,4 @@ class Job(pulumi.CustomResource):
         The status of the job.
         """
         return pulumi.get(self, "statuses")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

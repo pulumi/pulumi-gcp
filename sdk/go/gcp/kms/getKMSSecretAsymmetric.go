@@ -4,7 +4,7 @@
 package kms
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BackendBucketSignedUrlKeyArgs', 'BackendBucketSignedUrlKey']
 
@@ -86,6 +86,84 @@ class BackendBucketSignedUrlKeyArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _BackendBucketSignedUrlKeyState:
+    def __init__(__self__, *,
+                 backend_bucket: Optional[pulumi.Input[str]] = None,
+                 key_value: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BackendBucketSignedUrlKey resources.
+        :param pulumi.Input[str] backend_bucket: The backend bucket this signed URL key belongs.
+        :param pulumi.Input[str] key_value: 128-bit key value used for signing the URL. The key value must be a
+               valid RFC 4648 Section 5 base64url encoded string.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] name: Name of the signed URL key.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if backend_bucket is not None:
+            pulumi.set(__self__, "backend_bucket", backend_bucket)
+        if key_value is not None:
+            pulumi.set(__self__, "key_value", key_value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="backendBucket")
+    def backend_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backend bucket this signed URL key belongs.
+        """
+        return pulumi.get(self, "backend_bucket")
+
+    @backend_bucket.setter
+    def backend_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backend_bucket", value)
+
+    @property
+    @pulumi.getter(name="keyValue")
+    def key_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        128-bit key value used for signing the URL. The key value must be a
+        valid RFC 4648 Section 5 base64url encoded string.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "key_value")
+
+    @key_value.setter
+    def key_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the signed URL key.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
 class BackendBucketSignedUrlKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -95,9 +173,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
                  key_value: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A key for signing Cloud CDN signed URLs for BackendBuckets.
 
@@ -203,15 +279,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
                  key_value: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -221,16 +289,16 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BackendBucketSignedUrlKeyArgs.__new__(BackendBucketSignedUrlKeyArgs)
 
             if backend_bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'backend_bucket'")
-            __props__['backend_bucket'] = backend_bucket
+            __props__.__dict__["backend_bucket"] = backend_bucket
             if key_value is None and not opts.urn:
                 raise TypeError("Missing required property 'key_value'")
-            __props__['key_value'] = key_value
-            __props__['name'] = name
-            __props__['project'] = project
+            __props__.__dict__["key_value"] = key_value
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
         super(BackendBucketSignedUrlKey, __self__).__init__(
             'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
             resource_name,
@@ -262,12 +330,12 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BackendBucketSignedUrlKeyState.__new__(_BackendBucketSignedUrlKeyState)
 
-        __props__["backend_bucket"] = backend_bucket
-        __props__["key_value"] = key_value
-        __props__["name"] = name
-        __props__["project"] = project
+        __props__.__dict__["backend_bucket"] = backend_bucket
+        __props__.__dict__["key_value"] = key_value
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
         return BackendBucketSignedUrlKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -304,10 +372,4 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

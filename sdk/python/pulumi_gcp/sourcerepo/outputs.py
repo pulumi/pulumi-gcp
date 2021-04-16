@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'RepositoryIamBindingCondition',
@@ -40,9 +40,6 @@ class RepositoryIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RepositoryIamMemberCondition(dict):
@@ -70,12 +67,28 @@ class RepositoryIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RepositoryPubsubConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageFormat":
+            suggest = "message_format"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryPubsubConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryPubsubConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryPubsubConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_format: str,
                  topic: str,
@@ -125,8 +138,5 @@ class RepositoryPubsubConfig(dict):
         If unspecified, it defaults to the compute engine default service account.
         """
         return pulumi.get(self, "service_account_email")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

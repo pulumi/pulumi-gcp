@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -156,6 +156,186 @@ class InstanceArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: A description of the instance.
+        :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
+               single file share is supported.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: VPC networks to which the instance is connected. For this version,
+               only a single network is supported.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] tier: The service tier of the instance.
+               Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if file_shares is not None:
+            pulumi.set(__self__, "file_shares", file_shares)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the instance.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="fileShares")
+    def file_shares(self) -> Optional[pulumi.Input['InstanceFileSharesArgs']]:
+        """
+        File system shares on the instance. For this version, only a
+        single file share is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_shares")
+
+    @file_shares.setter
+    def file_shares(self, value: Optional[pulumi.Input['InstanceFileSharesArgs']]):
+        pulumi.set(self, "file_shares", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user-provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the fileshare (16 characters or less)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+        """
+        VPC networks to which the instance is connected. For this version,
+        only a single network is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service tier of the instance.
+        Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Filestore zone of the instance.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -169,9 +349,7 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Google Cloud Filestore instance.
 
@@ -386,15 +564,7 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -404,26 +574,26 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
-            __props__['file_shares'] = file_shares
-            __props__['labels'] = labels
-            __props__['name'] = name
+            __props__.__dict__["file_shares"] = file_shares
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
             if networks is None and not opts.urn:
                 raise TypeError("Missing required property 'networks'")
-            __props__['networks'] = networks
-            __props__['project'] = project
+            __props__.__dict__["networks"] = networks
+            __props__.__dict__["project"] = project
             if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")
-            __props__['tier'] = tier
+            __props__.__dict__["tier"] = tier
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
-            __props__['zone'] = zone
-            __props__['create_time'] = None
-            __props__['etag'] = None
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["etag"] = None
         super(Instance, __self__).__init__(
             'gcp:filestore/instance:Instance',
             resource_name,
@@ -470,18 +640,18 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["create_time"] = create_time
-        __props__["description"] = description
-        __props__["etag"] = etag
-        __props__["file_shares"] = file_shares
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["networks"] = networks
-        __props__["project"] = project
-        __props__["tier"] = tier
-        __props__["zone"] = zone
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["file_shares"] = file_shares
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["networks"] = networks
+        __props__.__dict__["project"] = project
+        __props__.__dict__["tier"] = tier
+        __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -569,10 +739,4 @@ class Instance(pulumi.CustomResource):
         The name of the Filestore zone of the instance.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

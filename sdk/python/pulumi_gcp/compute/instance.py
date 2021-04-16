@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -499,6 +499,608 @@ class InstanceArgs:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
+                 attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
+                 boot_disk: Optional[pulumi.Input['InstanceBootDiskArgs']] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
+                 confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']] = None,
+                 cpu_platform: Optional[pulumi.Input[str]] = None,
+                 current_status: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 desired_status: Optional[pulumi.Input[str]] = None,
+                 enable_display: Optional[pulumi.Input[bool]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 label_fingerprint: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata_fingerprint: Optional[pulumi.Input[str]] = None,
+                 metadata_startup_script: Optional[pulumi.Input[str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 resource_policies: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input['InstanceSchedulingArgs']] = None,
+                 scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input['InstanceServiceAccountArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags_fingerprint: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+               If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
+               Structure is documented below.
+        :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
+               packets with non-matching source or destination IPs.
+               This defaults to false.
+        :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
+        :param pulumi.Input[str] current_status: Current status of the instance.
+        :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
+               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either
+               `"RUNNING"` or `"TERMINATED"`.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+               Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+               The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
+        :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
+               within the instance. Ssh keys attached in the Cloud Console will be removed.
+               Add them to your config in order to keep them attached to your instance.
+        :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
+        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
+               startup-script metadata key, except this one forces the instance to be
+               recreated (thus re-running the script) if it is changed. This replaces the
+               startup-script metadata key on the created instance and thus the two
+               mechanisms are not allowed to be used simultaneously.  Users are free to use
+               either mechanism - the only distinction is that this separate attribute
+               willl cause a recreate on modification.  On import, `metadata_startup_script`
+               will be set, but `metadata.startup-script` will not - if you choose to use the
+               other mechanism, you will see a diff immediately after import, which will cause a
+               destroy/recreate operation.  You may want to modify your state file manually
+               using `pulumi stack` commands, depending on your use case.
+        :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
+               `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
+               be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input['InstanceSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
+               this configuration option are detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]] scratch_disks: Scratch disks to attach to the instance. This can be
+               specified multiple times for multiple scratch disks. Structure is documented below.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['InstanceServiceAccountArgs'] service_account: Service account to attach to the instance.
+               Structure is documented below.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        :param pulumi.Input['InstanceShieldedInstanceConfigArgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+               **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
+        :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input[str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
+        """
+        if allow_stopping_for_update is not None:
+            pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
+        if attached_disks is not None:
+            pulumi.set(__self__, "attached_disks", attached_disks)
+        if boot_disk is not None:
+            pulumi.set(__self__, "boot_disk", boot_disk)
+        if can_ip_forward is not None:
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        if cpu_platform is not None:
+            pulumi.set(__self__, "cpu_platform", cpu_platform)
+        if current_status is not None:
+            pulumi.set(__self__, "current_status", current_status)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if desired_status is not None:
+            pulumi.set(__self__, "desired_status", desired_status)
+        if enable_display is not None:
+            pulumi.set(__self__, "enable_display", enable_display)
+        if guest_accelerators is not None:
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if label_fingerprint is not None:
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if metadata_fingerprint is not None:
+            pulumi.set(__self__, "metadata_fingerprint", metadata_fingerprint)
+        if metadata_startup_script is not None:
+            pulumi.set(__self__, "metadata_startup_script", metadata_startup_script)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
+        if scratch_disks is not None:
+            pulumi.set(__self__, "scratch_disks", scratch_disks)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tags_fingerprint is not None:
+            pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="allowStoppingForUpdate")
+    def allow_stopping_for_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows this prvider to stop the instance to update its properties.
+        If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        """
+        return pulumi.get(self, "allow_stopping_for_update")
+
+    @allow_stopping_for_update.setter
+    def allow_stopping_for_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_stopping_for_update", value)
+
+    @property
+    @pulumi.getter(name="attachedDisks")
+    def attached_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]]:
+        """
+        Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disks")
+
+    @attached_disks.setter
+    def attached_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]]):
+        pulumi.set(self, "attached_disks", value)
+
+    @property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> Optional[pulumi.Input['InstanceBootDiskArgs']]:
+        """
+        The boot disk for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @boot_disk.setter
+    def boot_disk(self, value: Optional[pulumi.Input['InstanceBootDiskArgs']]):
+        pulumi.set(self, "boot_disk", value)
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow sending and receiving of
+        packets with non-matching source or destination IPs.
+        This defaults to false.
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @can_ip_forward.setter
+    def can_ip_forward(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_ip_forward", value)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']]:
+        """
+        Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @confidential_instance_config.setter
+    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']]):
+        pulumi.set(self, "confidential_instance_config", value)
+
+    @property
+    @pulumi.getter(name="cpuPlatform")
+    def cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU platform used by this instance.
+        """
+        return pulumi.get(self, "cpu_platform")
+
+    @cpu_platform.setter
+    def cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_platform", value)
+
+    @property
+    @pulumi.getter(name="currentStatus")
+    def current_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current status of the instance.
+        """
+        return pulumi.get(self, "current_status")
+
+    @current_status.setter
+    def current_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_status", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable deletion protection on this instance. Defaults to false.
+        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="desiredStatus")
+    def desired_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired status of the instance. Either
+        `"RUNNING"` or `"TERMINATED"`.
+        """
+        return pulumi.get(self, "desired_status")
+
+    @desired_status.setter
+    def desired_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_status", value)
+
+    @property
+    @pulumi.getter(name="enableDisplay")
+    def enable_display(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        return pulumi.get(self, "enable_display")
+
+    @enable_display.setter
+    def enable_display(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_display", value)
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]:
+        """
+        List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @guest_accelerators.setter
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]):
+        pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+        Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+        The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The server-assigned unique identifier of this instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique fingerprint of the labels.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @label_fingerprint.setter
+    def label_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label_fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of key/value label pairs to assign to the instance.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine type to create.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Metadata key/value pairs to make available from
+        within the instance. Ssh keys attached in the Cloud Console will be removed.
+        Add them to your config in order to keep them attached to your instance.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="metadataFingerprint")
+    def metadata_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique fingerprint of the metadata.
+        """
+        return pulumi.get(self, "metadata_fingerprint")
+
+    @metadata_fingerprint.setter
+    def metadata_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_fingerprint", value)
+
+    @property
+    @pulumi.getter(name="metadataStartupScript")
+    def metadata_startup_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        An alternative to using the
+        startup-script metadata key, except this one forces the instance to be
+        recreated (thus re-running the script) if it is changed. This replaces the
+        startup-script metadata key on the created instance and thus the two
+        mechanisms are not allowed to be used simultaneously.  Users are free to use
+        either mechanism - the only distinction is that this separate attribute
+        willl cause a recreate on modification.  On import, `metadata_startup_script`
+        will be set, but `metadata.startup-script` will not - if you choose to use the
+        other mechanism, you will see a diff immediately after import, which will cause a
+        destroy/recreate operation.  You may want to modify your state file manually
+        using `pulumi stack` commands, depending on your use case.
+        """
+        return pulumi.get(self, "metadata_startup_script")
+
+    @metadata_startup_script.setter
+    def metadata_startup_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_startup_script", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
+        `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]]:
+        """
+        Networks to attach to the instance. This can
+        be specified multiple times. Structure is documented below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input[str]]:
+        """
+        -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_policies", value)
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['InstanceSchedulingArgs']]:
+        """
+        The scheduling strategy to use. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['InstanceSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
+    @pulumi.getter(name="scratchDisks")
+    def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]]:
+        """
+        Scratch disks to attach to the instance. This can be
+        specified multiple times for multiple scratch disks. Structure is documented below.
+        """
+        return pulumi.get(self, "scratch_disks")
+
+    @scratch_disks.setter
+    def scratch_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]]):
+        pulumi.set(self, "scratch_disks", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input['InstanceServiceAccountArgs']]:
+        """
+        Service account to attach to the instance.
+        Structure is documented below.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input['InstanceServiceAccountArgs']]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]:
+        """
+        Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of network tags to attach to the instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tagsFingerprint")
+    def tags_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique fingerprint of the tags.
+        """
+        return pulumi.get(self, "tags_fingerprint")
+
+    @tags_fingerprint.setter
+    def tags_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tags_fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone that the machine should be created in. If it is not provided, the provider zone is used.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -530,9 +1132,7 @@ class Instance(pulumi.CustomResource):
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -766,15 +1366,7 @@ class Instance(pulumi.CustomResource):
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -784,47 +1376,47 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['allow_stopping_for_update'] = allow_stopping_for_update
-            __props__['attached_disks'] = attached_disks
+            __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
+            __props__.__dict__["attached_disks"] = attached_disks
             if boot_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'boot_disk'")
-            __props__['boot_disk'] = boot_disk
-            __props__['can_ip_forward'] = can_ip_forward
-            __props__['confidential_instance_config'] = confidential_instance_config
-            __props__['deletion_protection'] = deletion_protection
-            __props__['description'] = description
-            __props__['desired_status'] = desired_status
-            __props__['enable_display'] = enable_display
-            __props__['guest_accelerators'] = guest_accelerators
-            __props__['hostname'] = hostname
-            __props__['labels'] = labels
+            __props__.__dict__["boot_disk"] = boot_disk
+            __props__.__dict__["can_ip_forward"] = can_ip_forward
+            __props__.__dict__["confidential_instance_config"] = confidential_instance_config
+            __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["description"] = description
+            __props__.__dict__["desired_status"] = desired_status
+            __props__.__dict__["enable_display"] = enable_display
+            __props__.__dict__["guest_accelerators"] = guest_accelerators
+            __props__.__dict__["hostname"] = hostname
+            __props__.__dict__["labels"] = labels
             if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
-            __props__['machine_type'] = machine_type
-            __props__['metadata'] = metadata
-            __props__['metadata_startup_script'] = metadata_startup_script
-            __props__['min_cpu_platform'] = min_cpu_platform
-            __props__['name'] = name
+            __props__.__dict__["machine_type"] = machine_type
+            __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["metadata_startup_script"] = metadata_startup_script
+            __props__.__dict__["min_cpu_platform"] = min_cpu_platform
+            __props__.__dict__["name"] = name
             if network_interfaces is None and not opts.urn:
                 raise TypeError("Missing required property 'network_interfaces'")
-            __props__['network_interfaces'] = network_interfaces
-            __props__['project'] = project
-            __props__['resource_policies'] = resource_policies
-            __props__['scheduling'] = scheduling
-            __props__['scratch_disks'] = scratch_disks
-            __props__['service_account'] = service_account
-            __props__['shielded_instance_config'] = shielded_instance_config
-            __props__['tags'] = tags
-            __props__['zone'] = zone
-            __props__['cpu_platform'] = None
-            __props__['current_status'] = None
-            __props__['instance_id'] = None
-            __props__['label_fingerprint'] = None
-            __props__['metadata_fingerprint'] = None
-            __props__['self_link'] = None
-            __props__['tags_fingerprint'] = None
+            __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["project"] = project
+            __props__.__dict__["resource_policies"] = resource_policies
+            __props__.__dict__["scheduling"] = scheduling
+            __props__.__dict__["scratch_disks"] = scratch_disks
+            __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["shielded_instance_config"] = shielded_instance_config
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["cpu_platform"] = None
+            __props__.__dict__["current_status"] = None
+            __props__.__dict__["instance_id"] = None
+            __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["metadata_fingerprint"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["tags_fingerprint"] = None
         super(Instance, __self__).__init__(
             'gcp:compute/instance:Instance',
             resource_name,
@@ -944,41 +1536,41 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["allow_stopping_for_update"] = allow_stopping_for_update
-        __props__["attached_disks"] = attached_disks
-        __props__["boot_disk"] = boot_disk
-        __props__["can_ip_forward"] = can_ip_forward
-        __props__["confidential_instance_config"] = confidential_instance_config
-        __props__["cpu_platform"] = cpu_platform
-        __props__["current_status"] = current_status
-        __props__["deletion_protection"] = deletion_protection
-        __props__["description"] = description
-        __props__["desired_status"] = desired_status
-        __props__["enable_display"] = enable_display
-        __props__["guest_accelerators"] = guest_accelerators
-        __props__["hostname"] = hostname
-        __props__["instance_id"] = instance_id
-        __props__["label_fingerprint"] = label_fingerprint
-        __props__["labels"] = labels
-        __props__["machine_type"] = machine_type
-        __props__["metadata"] = metadata
-        __props__["metadata_fingerprint"] = metadata_fingerprint
-        __props__["metadata_startup_script"] = metadata_startup_script
-        __props__["min_cpu_platform"] = min_cpu_platform
-        __props__["name"] = name
-        __props__["network_interfaces"] = network_interfaces
-        __props__["project"] = project
-        __props__["resource_policies"] = resource_policies
-        __props__["scheduling"] = scheduling
-        __props__["scratch_disks"] = scratch_disks
-        __props__["self_link"] = self_link
-        __props__["service_account"] = service_account
-        __props__["shielded_instance_config"] = shielded_instance_config
-        __props__["tags"] = tags
-        __props__["tags_fingerprint"] = tags_fingerprint
-        __props__["zone"] = zone
+        __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
+        __props__.__dict__["attached_disks"] = attached_disks
+        __props__.__dict__["boot_disk"] = boot_disk
+        __props__.__dict__["can_ip_forward"] = can_ip_forward
+        __props__.__dict__["confidential_instance_config"] = confidential_instance_config
+        __props__.__dict__["cpu_platform"] = cpu_platform
+        __props__.__dict__["current_status"] = current_status
+        __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["description"] = description
+        __props__.__dict__["desired_status"] = desired_status
+        __props__.__dict__["enable_display"] = enable_display
+        __props__.__dict__["guest_accelerators"] = guest_accelerators
+        __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["label_fingerprint"] = label_fingerprint
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["machine_type"] = machine_type
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["metadata_fingerprint"] = metadata_fingerprint
+        __props__.__dict__["metadata_startup_script"] = metadata_startup_script
+        __props__.__dict__["min_cpu_platform"] = min_cpu_platform
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["project"] = project
+        __props__.__dict__["resource_policies"] = resource_policies
+        __props__.__dict__["scheduling"] = scheduling
+        __props__.__dict__["scratch_disks"] = scratch_disks
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["shielded_instance_config"] = shielded_instance_config
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["tags_fingerprint"] = tags_fingerprint
+        __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1277,10 +1869,4 @@ class Instance(pulumi.CustomResource):
         The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

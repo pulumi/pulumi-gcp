@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -337,6 +337,452 @@ class InstanceArgs:
         pulumi.set(self, "transit_encryption_mode", value)
 
 
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 alternative_location_id: Optional[pulumi.Input[str]] = None,
+                 auth_enabled: Optional[pulumi.Input[bool]] = None,
+                 auth_string: Optional[pulumi.Input[str]] = None,
+                 authorized_network: Optional[pulumi.Input[str]] = None,
+                 connect_mode: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 current_location_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location_id: Optional[pulumi.Input[str]] = None,
+                 memory_size_gb: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 persistence_iam_identity: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 redis_version: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 reserved_ip_range: Optional[pulumi.Input[str]] = None,
+                 server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 transit_encryption_mode: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance
+               against zonal failures by provisioning it across two zones.
+               If provided, it must be a different zone from the one provided in
+               [locationId].
+        :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the
+               instance. If set to "true" AUTH is enabled on the instance.
+               Default value is "false" meaning AUTH is disabled.
+        :param pulumi.Input[str] auth_string: AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+        :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the
+               instance is connected. If left unspecified, the default network
+               will be used.
+        :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
+               Default value is `DIRECT_PEERING`.
+               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
+               [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
+               [alternativeLocationId] and can change after a failover event.
+        :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
+        :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
+               the service will choose a zone for the instance. For STANDARD_HA tier,
+               instances will be created across two zones for protection against
+               zonal failures. If [alternativeLocationId] is also provided, it must
+               be different from [locationId].
+        :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
+        :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+               "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+               operation.
+        :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
+               Please check Memorystore documentation for the list of supported parameters:
+               https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
+               version will be used. Currently, the supported values are:
+               - REDIS_5_0 for Redis 5.0 compatibility
+               - REDIS_4_0 for Redis 4.0 compatibility
+               - REDIS_3_2 for Redis 3.2 compatibility
+        :param pulumi.Input[str] region: The name of the Redis region of the instance.
+        :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
+               instance. If not provided, the service will choose an unused /29
+               block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+               unique and non-overlapping with existing subnets in an authorized
+               network.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]] server_ca_certs: List of server CA certificates for the instance.
+        :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
+               - BASIC: standalone instance
+               - STANDARD_HA: highly available primary/replica instances
+               Default value is `BASIC`.
+               Possible values are `BASIC` and `STANDARD_HA`.
+        :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+               Default value is `DISABLED`.
+               Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        """
+        if alternative_location_id is not None:
+            pulumi.set(__self__, "alternative_location_id", alternative_location_id)
+        if auth_enabled is not None:
+            pulumi.set(__self__, "auth_enabled", auth_enabled)
+        if auth_string is not None:
+            pulumi.set(__self__, "auth_string", auth_string)
+        if authorized_network is not None:
+            pulumi.set(__self__, "authorized_network", authorized_network)
+        if connect_mode is not None:
+            pulumi.set(__self__, "connect_mode", connect_mode)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if current_location_id is not None:
+            pulumi.set(__self__, "current_location_id", current_location_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if location_id is not None:
+            pulumi.set(__self__, "location_id", location_id)
+        if memory_size_gb is not None:
+            pulumi.set(__self__, "memory_size_gb", memory_size_gb)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if persistence_iam_identity is not None:
+            pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if redis_configs is not None:
+            pulumi.set(__self__, "redis_configs", redis_configs)
+        if redis_version is not None:
+            pulumi.set(__self__, "redis_version", redis_version)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if reserved_ip_range is not None:
+            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+        if server_ca_certs is not None:
+            pulumi.set(__self__, "server_ca_certs", server_ca_certs)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
+        if transit_encryption_mode is not None:
+            pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
+
+    @property
+    @pulumi.getter(name="alternativeLocationId")
+    def alternative_location_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only applicable to STANDARD_HA tier which protects the instance
+        against zonal failures by provisioning it across two zones.
+        If provided, it must be a different zone from the one provided in
+        [locationId].
+        """
+        return pulumi.get(self, "alternative_location_id")
+
+    @alternative_location_id.setter
+    def alternative_location_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alternative_location_id", value)
+
+    @property
+    @pulumi.getter(name="authEnabled")
+    def auth_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates whether OSS Redis AUTH is enabled for the
+        instance. If set to "true" AUTH is enabled on the instance.
+        Default value is "false" meaning AUTH is disabled.
+        """
+        return pulumi.get(self, "auth_enabled")
+
+    @auth_enabled.setter
+    def auth_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auth_enabled", value)
+
+    @property
+    @pulumi.getter(name="authString")
+    def auth_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+        """
+        return pulumi.get(self, "auth_string")
+
+    @auth_string.setter
+    def auth_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_string", value)
+
+    @property
+    @pulumi.getter(name="authorizedNetwork")
+    def authorized_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full name of the Google Compute Engine network to which the
+        instance is connected. If left unspecified, the default network
+        will be used.
+        """
+        return pulumi.get(self, "authorized_network")
+
+    @authorized_network.setter
+    def authorized_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorized_network", value)
+
+    @property
+    @pulumi.getter(name="connectMode")
+    def connect_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The connection mode of the Redis instance.
+        Default value is `DIRECT_PEERING`.
+        Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        """
+        return pulumi.get(self, "connect_mode")
+
+    @connect_mode.setter
+    def connect_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connect_mode", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="currentLocationId")
+    def current_location_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
+        [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
+        [alternativeLocationId] and can change after a failover event.
+        """
+        return pulumi.get(self, "current_location_id")
+
+    @current_location_id.setter
+    def current_location_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_location_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        An arbitrary and optional user-provided name for the instance.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="locationId")
+    def location_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone where the instance will be provisioned. If not provided,
+        the service will choose a zone for the instance. For STANDARD_HA tier,
+        instances will be created across two zones for protection against
+        zonal failures. If [alternativeLocationId] is also provided, it must
+        be different from [locationId].
+        """
+        return pulumi.get(self, "location_id")
+
+    @location_id.setter
+    def location_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location_id", value)
+
+    @property
+    @pulumi.getter(name="memorySizeGb")
+    def memory_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Redis memory size in GiB.
+        """
+        return pulumi.get(self, "memory_size_gb")
+
+    @memory_size_gb.setter
+    def memory_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the instance or a fully qualified identifier for the instance.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="persistenceIamIdentity")
+    def persistence_iam_identity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+        "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+        operation.
+        """
+        return pulumi.get(self, "persistence_iam_identity")
+
+    @persistence_iam_identity.setter
+    def persistence_iam_identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "persistence_iam_identity", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port number of the exposed Redis endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="redisConfigs")
+    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Redis configuration parameters, according to http://redis.io/topics/config.
+        Please check Memorystore documentation for the list of supported parameters:
+        https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        """
+        return pulumi.get(self, "redis_configs")
+
+    @redis_configs.setter
+    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_configs", value)
+
+    @property
+    @pulumi.getter(name="redisVersion")
+    def redis_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of Redis software. If not provided, latest supported
+        version will be used. Currently, the supported values are:
+        - REDIS_5_0 for Redis 5.0 compatibility
+        - REDIS_4_0 for Redis 4.0 compatibility
+        - REDIS_3_2 for Redis 3.2 compatibility
+        """
+        return pulumi.get(self, "redis_version")
+
+    @redis_version.setter
+    def redis_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redis_version", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Redis region of the instance.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR range of internal addresses that are reserved for this
+        instance. If not provided, the service will choose an unused /29
+        block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+        unique and non-overlapping with existing subnets in an authorized
+        network.
+        """
+        return pulumi.get(self, "reserved_ip_range")
+
+    @reserved_ip_range.setter
+    def reserved_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_ip_range", value)
+
+    @property
+    @pulumi.getter(name="serverCaCerts")
+    def server_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]:
+        """
+        List of server CA certificates for the instance.
+        """
+        return pulumi.get(self, "server_ca_certs")
+
+    @server_ca_certs.setter
+    def server_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]):
+        pulumi.set(self, "server_ca_certs", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service tier of the instance. Must be one of these values:
+        - BASIC: standalone instance
+        - STANDARD_HA: highly available primary/replica instances
+        Default value is `BASIC`.
+        Possible values are `BASIC` and `STANDARD_HA`.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
+    @property
+    @pulumi.getter(name="transitEncryptionMode")
+    def transit_encryption_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        Default value is `DISABLED`.
+        Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        """
+        return pulumi.get(self, "transit_encryption_mode")
+
+    @transit_encryption_mode.setter
+    def transit_encryption_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_encryption_mode", value)
+
+
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -358,9 +804,7 @@ class Instance(pulumi.CustomResource):
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Google Cloud Redis instance.
 
@@ -622,15 +1066,7 @@ class Instance(pulumi.CustomResource):
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -640,33 +1076,33 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['alternative_location_id'] = alternative_location_id
-            __props__['auth_enabled'] = auth_enabled
-            __props__['authorized_network'] = authorized_network
-            __props__['connect_mode'] = connect_mode
-            __props__['display_name'] = display_name
-            __props__['labels'] = labels
-            __props__['location_id'] = location_id
+            __props__.__dict__["alternative_location_id"] = alternative_location_id
+            __props__.__dict__["auth_enabled"] = auth_enabled
+            __props__.__dict__["authorized_network"] = authorized_network
+            __props__.__dict__["connect_mode"] = connect_mode
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["location_id"] = location_id
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
-            __props__['memory_size_gb'] = memory_size_gb
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['redis_configs'] = redis_configs
-            __props__['redis_version'] = redis_version
-            __props__['region'] = region
-            __props__['reserved_ip_range'] = reserved_ip_range
-            __props__['tier'] = tier
-            __props__['transit_encryption_mode'] = transit_encryption_mode
-            __props__['auth_string'] = None
-            __props__['create_time'] = None
-            __props__['current_location_id'] = None
-            __props__['host'] = None
-            __props__['persistence_iam_identity'] = None
-            __props__['port'] = None
-            __props__['server_ca_certs'] = None
+            __props__.__dict__["memory_size_gb"] = memory_size_gb
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["redis_configs"] = redis_configs
+            __props__.__dict__["redis_version"] = redis_version
+            __props__.__dict__["region"] = region
+            __props__.__dict__["reserved_ip_range"] = reserved_ip_range
+            __props__.__dict__["tier"] = tier
+            __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
+            __props__.__dict__["auth_string"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["current_location_id"] = None
+            __props__.__dict__["host"] = None
+            __props__.__dict__["persistence_iam_identity"] = None
+            __props__.__dict__["port"] = None
+            __props__.__dict__["server_ca_certs"] = None
         super(Instance, __self__).__init__(
             'gcp:redis/instance:Instance',
             resource_name,
@@ -768,31 +1204,31 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["alternative_location_id"] = alternative_location_id
-        __props__["auth_enabled"] = auth_enabled
-        __props__["auth_string"] = auth_string
-        __props__["authorized_network"] = authorized_network
-        __props__["connect_mode"] = connect_mode
-        __props__["create_time"] = create_time
-        __props__["current_location_id"] = current_location_id
-        __props__["display_name"] = display_name
-        __props__["host"] = host
-        __props__["labels"] = labels
-        __props__["location_id"] = location_id
-        __props__["memory_size_gb"] = memory_size_gb
-        __props__["name"] = name
-        __props__["persistence_iam_identity"] = persistence_iam_identity
-        __props__["port"] = port
-        __props__["project"] = project
-        __props__["redis_configs"] = redis_configs
-        __props__["redis_version"] = redis_version
-        __props__["region"] = region
-        __props__["reserved_ip_range"] = reserved_ip_range
-        __props__["server_ca_certs"] = server_ca_certs
-        __props__["tier"] = tier
-        __props__["transit_encryption_mode"] = transit_encryption_mode
+        __props__.__dict__["alternative_location_id"] = alternative_location_id
+        __props__.__dict__["auth_enabled"] = auth_enabled
+        __props__.__dict__["auth_string"] = auth_string
+        __props__.__dict__["authorized_network"] = authorized_network
+        __props__.__dict__["connect_mode"] = connect_mode
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["current_location_id"] = current_location_id
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["host"] = host
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["location_id"] = location_id
+        __props__.__dict__["memory_size_gb"] = memory_size_gb
+        __props__.__dict__["name"] = name
+        __props__.__dict__["persistence_iam_identity"] = persistence_iam_identity
+        __props__.__dict__["port"] = port
+        __props__.__dict__["project"] = project
+        __props__.__dict__["redis_configs"] = redis_configs
+        __props__.__dict__["redis_version"] = redis_version
+        __props__.__dict__["region"] = region
+        __props__.__dict__["reserved_ip_range"] = reserved_ip_range
+        __props__.__dict__["server_ca_certs"] = server_ca_certs
+        __props__.__dict__["tier"] = tier
+        __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1013,10 +1449,4 @@ class Instance(pulumi.CustomResource):
         Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
         return pulumi.get(self, "transit_encryption_mode")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -113,6 +113,158 @@ class GroupArgs:
         pulumi.set(self, "display_name", value)
 
 
+@pulumi.input_type
+class _GroupState:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 group_key: Optional[pulumi.Input['GroupGroupKeyArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[str] create_time: The time when the Group was created.
+        :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
+               Must not be longer than 4,096 characters.
+        :param pulumi.Input[str] display_name: The display name of the Group.
+        :param pulumi.Input['GroupGroupKeyArgs'] group_key: EntityKey of the Group.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels that apply to the Group.
+               Must not contain more than one entry. Must contain the entry
+               'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+               'system/groups/external': '' if the Group is an external-identity-mapped group.
+        :param pulumi.Input[str] name: Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        :param pulumi.Input[str] parent: The resource name of the entity under which this Group resides in the
+               Cloud Identity resource hierarchy.
+               Must be of the form identitysources/{identity_source_id} for external-identity-mapped
+               groups or customers/{customer_id} for Google Groups.
+        :param pulumi.Input[str] update_time: The time when the Group was last updated.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if group_key is not None:
+            pulumi.set(__self__, "group_key", group_key)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the Group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An extended description to help users determine the purpose of a Group.
+        Must not be longer than 4,096 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the Group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="groupKey")
+    def group_key(self) -> Optional[pulumi.Input['GroupGroupKeyArgs']]:
+        """
+        EntityKey of the Group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "group_key")
+
+    @group_key.setter
+    def group_key(self, value: Optional[pulumi.Input['GroupGroupKeyArgs']]):
+        pulumi.set(self, "group_key", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels that apply to the Group.
+        Must not contain more than one entry. Must contain the entry
+        'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+        'system/groups/external': '' if the Group is an external-identity-mapped group.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the entity under which this Group resides in the
+        Cloud Identity resource hierarchy.
+        Must be of the form identitysources/{identity_source_id} for external-identity-mapped
+        groups or customers/{customer_id} for Google Groups.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the Group was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
 class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -123,9 +275,7 @@ class Group(pulumi.CustomResource):
                  group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Cloud Identity resource representing a Group.
 
@@ -250,15 +400,7 @@ class Group(pulumi.CustomResource):
                  group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -268,22 +410,22 @@ class Group(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupArgs.__new__(GroupArgs)
 
-            __props__['description'] = description
-            __props__['display_name'] = display_name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
             if group_key is None and not opts.urn:
                 raise TypeError("Missing required property 'group_key'")
-            __props__['group_key'] = group_key
+            __props__.__dict__["group_key"] = group_key
             if labels is None and not opts.urn:
                 raise TypeError("Missing required property 'labels'")
-            __props__['labels'] = labels
+            __props__.__dict__["labels"] = labels
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["parent"] = parent
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["update_time"] = None
         super(Group, __self__).__init__(
             'gcp:cloudidentity/group:Group',
             resource_name,
@@ -328,16 +470,16 @@ class Group(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GroupState.__new__(_GroupState)
 
-        __props__["create_time"] = create_time
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["group_key"] = group_key
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["parent"] = parent
-        __props__["update_time"] = update_time
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["group_key"] = group_key
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
+        __props__.__dict__["update_time"] = update_time
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -411,10 +553,4 @@ class Group(pulumi.CustomResource):
         The time when the Group was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

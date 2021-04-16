@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a TargetSslProxy resource, which is used by one or more
@@ -70,7 +70,7 @@ type TargetSSLProxy struct {
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one
 	// SSL certificate must be specified.
-	SslCertificates pulumi.StringOutput `pulumi:"sslCertificates"`
+	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
 	// resource will not have any SSL policy configured.
@@ -141,7 +141,7 @@ type targetSSLProxyState struct {
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one
 	// SSL certificate must be specified.
-	SslCertificates *string `pulumi:"sslCertificates"`
+	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
 	// resource will not have any SSL policy configured.
@@ -178,7 +178,7 @@ type TargetSSLProxyState struct {
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one
 	// SSL certificate must be specified.
-	SslCertificates pulumi.StringPtrInput
+	SslCertificates pulumi.StringArrayInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
 	// resource will not have any SSL policy configured.
@@ -213,7 +213,7 @@ type targetSSLProxyArgs struct {
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one
 	// SSL certificate must be specified.
-	SslCertificates string `pulumi:"sslCertificates"`
+	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
 	// resource will not have any SSL policy configured.
@@ -245,7 +245,7 @@ type TargetSSLProxyArgs struct {
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one
 	// SSL certificate must be specified.
-	SslCertificates pulumi.StringInput
+	SslCertificates pulumi.StringArrayInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
 	// resource will not have any SSL policy configured.

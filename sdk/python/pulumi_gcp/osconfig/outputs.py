@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -70,6 +70,27 @@ __all__ = [
 
 @pulumi.output_type
 class GuestPoliciesAssignment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupLabels":
+            suggest = "group_labels"
+        elif key == "instanceNamePrefixes":
+            suggest = "instance_name_prefixes"
+        elif key == "osTypes":
+            suggest = "os_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesAssignment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesAssignment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesAssignment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  group_labels: Optional[Sequence['outputs.GuestPoliciesAssignmentGroupLabel']] = None,
                  instance_name_prefixes: Optional[Sequence[str]] = None,
@@ -158,9 +179,6 @@ class GuestPoliciesAssignment(dict):
         """
         return pulumi.get(self, "zones")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesAssignmentGroupLabel(dict):
@@ -179,12 +197,30 @@ class GuestPoliciesAssignmentGroupLabel(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesAssignmentOsType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osArchitecture":
+            suggest = "os_architecture"
+        elif key == "osShortName":
+            suggest = "os_short_name"
+        elif key == "osVersion":
+            suggest = "os_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesAssignmentOsType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesAssignmentOsType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesAssignmentOsType.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  os_architecture: Optional[str] = None,
                  os_short_name: Optional[str] = None,
@@ -225,12 +261,26 @@ class GuestPoliciesAssignmentOsType(dict):
         """
         return pulumi.get(self, "os_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesPackage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "desiredState":
+            suggest = "desired_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesPackage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesPackage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesPackage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  desired_state: Optional[str] = None,
@@ -300,9 +350,6 @@ class GuestPoliciesPackage(dict):
         """
         return pulumi.get(self, "manager")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesPackageRepository(dict):
@@ -366,12 +413,28 @@ class GuestPoliciesPackageRepository(dict):
         """
         return pulumi.get(self, "zypper")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesPackageRepositoryApt(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveType":
+            suggest = "archive_type"
+        elif key == "gpgKey":
+            suggest = "gpg_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesPackageRepositoryApt. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesPackageRepositoryApt.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesPackageRepositoryApt.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  components: Sequence[str],
                  distribution: str,
@@ -439,9 +502,6 @@ class GuestPoliciesPackageRepositoryApt(dict):
         """
         return pulumi.get(self, "gpg_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesPackageRepositoryGoo(dict):
@@ -477,12 +537,30 @@ class GuestPoliciesPackageRepositoryGoo(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesPackageRepositoryYum(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseUrl":
+            suggest = "base_url"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "gpgKeys":
+            suggest = "gpg_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesPackageRepositoryYum. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesPackageRepositoryYum.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesPackageRepositoryYum.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_url: str,
                  id: str,
@@ -534,13 +612,31 @@ class GuestPoliciesPackageRepositoryYum(dict):
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class GuestPoliciesPackageRepositoryZypper(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseUrl":
+            suggest = "base_url"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "gpgKeys":
+            suggest = "gpg_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesPackageRepositoryZypper. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesPackageRepositoryZypper.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesPackageRepositoryZypper.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_url: str,
                  id: str,
@@ -593,12 +689,30 @@ class GuestPoliciesPackageRepositoryZypper(dict):
         """
         return pulumi.get(self, "gpg_keys")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "desiredState":
+            suggest = "desired_state"
+        elif key == "installSteps":
+            suggest = "install_steps"
+        elif key == "updateSteps":
+            suggest = "update_steps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipe.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  artifacts: Optional[Sequence['outputs.GuestPoliciesRecipeArtifact']] = None,
@@ -702,12 +816,26 @@ class GuestPoliciesRecipe(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeArtifact(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowInsecure":
+            suggest = "allow_insecure"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeArtifact. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeArtifact.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeArtifact.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  allow_insecure: Optional[bool] = None,
@@ -769,9 +897,6 @@ class GuestPoliciesRecipeArtifact(dict):
         """
         return pulumi.get(self, "remote")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeArtifactGcs(dict):
@@ -821,12 +946,26 @@ class GuestPoliciesRecipeArtifactGcs(dict):
         """
         return pulumi.get(self, "object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeArtifactRemote(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkSum":
+            suggest = "check_sum"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeArtifactRemote. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeArtifactRemote.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeArtifactRemote.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  check_sum: Optional[str] = None,
                  uri: Optional[str] = None):
@@ -859,12 +998,38 @@ class GuestPoliciesRecipeArtifactRemote(dict):
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStep(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveExtraction":
+            suggest = "archive_extraction"
+        elif key == "dpkgInstallation":
+            suggest = "dpkg_installation"
+        elif key == "fileCopy":
+            suggest = "file_copy"
+        elif key == "fileExec":
+            suggest = "file_exec"
+        elif key == "msiInstallation":
+            suggest = "msi_installation"
+        elif key == "rpmInstallation":
+            suggest = "rpm_installation"
+        elif key == "scriptRun":
+            suggest = "script_run"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStep. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStep.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStep.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  archive_extraction: Optional['outputs.GuestPoliciesRecipeInstallStepArchiveExtraction'] = None,
                  dpkg_installation: Optional['outputs.GuestPoliciesRecipeInstallStepDpkgInstallation'] = None,
@@ -967,12 +1132,26 @@ class GuestPoliciesRecipeInstallStep(dict):
         """
         return pulumi.get(self, "script_run")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStepArchiveExtraction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStepArchiveExtraction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStepArchiveExtraction.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str,
                  type: str,
@@ -1013,12 +1192,26 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
         """
         return pulumi.get(self, "destination")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStepDpkgInstallation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStepDpkgInstallation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStepDpkgInstallation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStepDpkgInstallation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str):
         """
@@ -1034,12 +1227,26 @@ class GuestPoliciesRecipeInstallStepDpkgInstallation(dict):
         """
         return pulumi.get(self, "artifact_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStepFileCopy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStepFileCopy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStepFileCopy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStepFileCopy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str,
                  destination: str,
@@ -1102,12 +1309,30 @@ class GuestPoliciesRecipeInstallStepFileCopy(dict):
         """
         return pulumi.get(self, "permissions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStepFileExec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedExitCodes":
+            suggest = "allowed_exit_codes"
+        elif key == "artifactId":
+            suggest = "artifact_id"
+        elif key == "localPath":
+            suggest = "local_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStepFileExec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStepFileExec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStepFileExec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_exit_codes: Optional[str] = None,
                  args: Optional[Sequence[str]] = None,
@@ -1160,12 +1385,28 @@ class GuestPoliciesRecipeInstallStepFileExec(dict):
         """
         return pulumi.get(self, "local_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStepMsiInstallation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+        elif key == "allowedExitCodes":
+            suggest = "allowed_exit_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStepMsiInstallation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStepMsiInstallation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStepMsiInstallation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str,
                  allowed_exit_codes: Optional[Sequence[int]] = None,
@@ -1205,12 +1446,26 @@ class GuestPoliciesRecipeInstallStepMsiInstallation(dict):
         """
         return pulumi.get(self, "flags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStepRpmInstallation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStepRpmInstallation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStepRpmInstallation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStepRpmInstallation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str):
         """
@@ -1226,12 +1481,26 @@ class GuestPoliciesRecipeInstallStepRpmInstallation(dict):
         """
         return pulumi.get(self, "artifact_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeInstallStepScriptRun(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedExitCodes":
+            suggest = "allowed_exit_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeInstallStepScriptRun. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeInstallStepScriptRun.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeInstallStepScriptRun.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  script: str,
                  allowed_exit_codes: Optional[Sequence[int]] = None,
@@ -1275,12 +1544,38 @@ class GuestPoliciesRecipeInstallStepScriptRun(dict):
         """
         return pulumi.get(self, "interpreter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStep(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveExtraction":
+            suggest = "archive_extraction"
+        elif key == "dpkgInstallation":
+            suggest = "dpkg_installation"
+        elif key == "fileCopy":
+            suggest = "file_copy"
+        elif key == "fileExec":
+            suggest = "file_exec"
+        elif key == "msiInstallation":
+            suggest = "msi_installation"
+        elif key == "rpmInstallation":
+            suggest = "rpm_installation"
+        elif key == "scriptRun":
+            suggest = "script_run"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStep. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStep.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStep.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  archive_extraction: Optional['outputs.GuestPoliciesRecipeUpdateStepArchiveExtraction'] = None,
                  dpkg_installation: Optional['outputs.GuestPoliciesRecipeUpdateStepDpkgInstallation'] = None,
@@ -1383,12 +1678,26 @@ class GuestPoliciesRecipeUpdateStep(dict):
         """
         return pulumi.get(self, "script_run")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStepArchiveExtraction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStepArchiveExtraction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStepArchiveExtraction.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str,
                  type: str,
@@ -1429,12 +1738,26 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
         """
         return pulumi.get(self, "destination")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStepDpkgInstallation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStepDpkgInstallation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStepDpkgInstallation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStepDpkgInstallation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str):
         """
@@ -1450,12 +1773,26 @@ class GuestPoliciesRecipeUpdateStepDpkgInstallation(dict):
         """
         return pulumi.get(self, "artifact_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStepFileCopy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStepFileCopy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStepFileCopy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStepFileCopy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str,
                  destination: str,
@@ -1518,12 +1855,30 @@ class GuestPoliciesRecipeUpdateStepFileCopy(dict):
         """
         return pulumi.get(self, "permissions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStepFileExec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedExitCodes":
+            suggest = "allowed_exit_codes"
+        elif key == "artifactId":
+            suggest = "artifact_id"
+        elif key == "localPath":
+            suggest = "local_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStepFileExec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStepFileExec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStepFileExec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_exit_codes: Optional[Sequence[int]] = None,
                  args: Optional[Sequence[str]] = None,
@@ -1576,12 +1931,28 @@ class GuestPoliciesRecipeUpdateStepFileExec(dict):
         """
         return pulumi.get(self, "local_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStepMsiInstallation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+        elif key == "allowedExitCodes":
+            suggest = "allowed_exit_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStepMsiInstallation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStepMsiInstallation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStepMsiInstallation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str,
                  allowed_exit_codes: Optional[Sequence[int]] = None,
@@ -1621,12 +1992,26 @@ class GuestPoliciesRecipeUpdateStepMsiInstallation(dict):
         """
         return pulumi.get(self, "flags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStepRpmInstallation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStepRpmInstallation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStepRpmInstallation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStepRpmInstallation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_id: str):
         """
@@ -1642,12 +2027,26 @@ class GuestPoliciesRecipeUpdateStepRpmInstallation(dict):
         """
         return pulumi.get(self, "artifact_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestPoliciesRecipeUpdateStepScriptRun(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedExitCodes":
+            suggest = "allowed_exit_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestPoliciesRecipeUpdateStepScriptRun. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestPoliciesRecipeUpdateStepScriptRun.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestPoliciesRecipeUpdateStepScriptRun.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  script: str,
                  allowed_exit_codes: Optional[Sequence[int]] = None,
@@ -1691,12 +2090,28 @@ class GuestPoliciesRecipeUpdateStepScriptRun(dict):
         """
         return pulumi.get(self, "interpreter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentInstanceFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupLabels":
+            suggest = "group_labels"
+        elif key == "instanceNamePrefixes":
+            suggest = "instance_name_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentInstanceFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentInstanceFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentInstanceFilter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  all: Optional[bool] = None,
                  group_labels: Optional[Sequence['outputs.PatchDeploymentInstanceFilterGroupLabel']] = None,
@@ -1769,9 +2184,6 @@ class PatchDeploymentInstanceFilter(dict):
         """
         return pulumi.get(self, "zones")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentInstanceFilterGroupLabel(dict):
@@ -1790,12 +2202,26 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentOneTimeSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executeTime":
+            suggest = "execute_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentOneTimeSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentOneTimeSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentOneTimeSchedule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  execute_time: str):
         """
@@ -1813,12 +2239,32 @@ class PatchDeploymentOneTimeSchedule(dict):
         """
         return pulumi.get(self, "execute_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postStep":
+            suggest = "post_step"
+        elif key == "preStep":
+            suggest = "pre_step"
+        elif key == "rebootConfig":
+            suggest = "reboot_config"
+        elif key == "windowsUpdate":
+            suggest = "windows_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  apt: Optional['outputs.PatchDeploymentPatchConfigApt'] = None,
                  goo: Optional['outputs.PatchDeploymentPatchConfigGoo'] = None,
@@ -1935,12 +2381,26 @@ class PatchDeploymentPatchConfig(dict):
         """
         return pulumi.get(self, "zypper")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigApt(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePackages":
+            suggest = "exclusive_packages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigApt. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigApt.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigApt.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  excludes: Optional[Sequence[str]] = None,
                  exclusive_packages: Optional[Sequence[str]] = None,
@@ -1987,9 +2447,6 @@ class PatchDeploymentPatchConfigApt(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigGoo(dict):
@@ -2008,12 +2465,28 @@ class PatchDeploymentPatchConfigGoo(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPostStep(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linuxExecStepConfig":
+            suggest = "linux_exec_step_config"
+        elif key == "windowsExecStepConfig":
+            suggest = "windows_exec_step_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPostStep. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPostStep.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPostStep.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfig'] = None,
                  windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfig'] = None):
@@ -2046,12 +2519,30 @@ class PatchDeploymentPatchConfigPostStep(dict):
         """
         return pulumi.get(self, "windows_exec_step_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedSuccessCodes":
+            suggest = "allowed_success_codes"
+        elif key == "gcsObject":
+            suggest = "gcs_object"
+        elif key == "localPath":
+            suggest = "local_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPostStepLinuxExecStepConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_success_codes: Optional[Sequence[int]] = None,
                  gcs_object: Optional['outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject'] = None,
@@ -2110,12 +2601,26 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
         """
         return pulumi.get(self, "local_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generationNumber":
+            suggest = "generation_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket: str,
                  generation_number: str,
@@ -2153,12 +2658,30 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(dict):
         """
         return pulumi.get(self, "object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedSuccessCodes":
+            suggest = "allowed_success_codes"
+        elif key == "gcsObject":
+            suggest = "gcs_object"
+        elif key == "localPath":
+            suggest = "local_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPostStepWindowsExecStepConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPostStepWindowsExecStepConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPostStepWindowsExecStepConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_success_codes: Optional[Sequence[int]] = None,
                  gcs_object: Optional['outputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject'] = None,
@@ -2217,12 +2740,26 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
         """
         return pulumi.get(self, "local_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generationNumber":
+            suggest = "generation_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket: str,
                  generation_number: str,
@@ -2260,12 +2797,28 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject(dict):
         """
         return pulumi.get(self, "object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPreStep(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linuxExecStepConfig":
+            suggest = "linux_exec_step_config"
+        elif key == "windowsExecStepConfig":
+            suggest = "windows_exec_step_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPreStep. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPreStep.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPreStep.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfig'] = None,
                  windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfig'] = None):
@@ -2298,12 +2851,30 @@ class PatchDeploymentPatchConfigPreStep(dict):
         """
         return pulumi.get(self, "windows_exec_step_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedSuccessCodes":
+            suggest = "allowed_success_codes"
+        elif key == "gcsObject":
+            suggest = "gcs_object"
+        elif key == "localPath":
+            suggest = "local_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPreStepLinuxExecStepConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPreStepLinuxExecStepConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPreStepLinuxExecStepConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_success_codes: Optional[Sequence[int]] = None,
                  gcs_object: Optional['outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject'] = None,
@@ -2362,12 +2933,26 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
         """
         return pulumi.get(self, "local_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generationNumber":
+            suggest = "generation_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket: str,
                  generation_number: str,
@@ -2405,12 +2990,30 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject(dict):
         """
         return pulumi.get(self, "object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedSuccessCodes":
+            suggest = "allowed_success_codes"
+        elif key == "gcsObject":
+            suggest = "gcs_object"
+        elif key == "localPath":
+            suggest = "local_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPreStepWindowsExecStepConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPreStepWindowsExecStepConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPreStepWindowsExecStepConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_success_codes: Optional[Sequence[int]] = None,
                  gcs_object: Optional['outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject'] = None,
@@ -2469,12 +3072,26 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
         """
         return pulumi.get(self, "local_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generationNumber":
+            suggest = "generation_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket: str,
                  generation_number: str,
@@ -2512,12 +3129,26 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(dict):
         """
         return pulumi.get(self, "object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigWindowsUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePatches":
+            suggest = "exclusive_patches"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigWindowsUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigWindowsUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigWindowsUpdate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  classifications: Optional[Sequence[str]] = None,
                  excludes: Optional[Sequence[str]] = None,
@@ -2562,12 +3193,26 @@ class PatchDeploymentPatchConfigWindowsUpdate(dict):
         """
         return pulumi.get(self, "exclusive_patches")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigYum(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePackages":
+            suggest = "exclusive_packages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigYum. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigYum.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigYum.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  excludes: Optional[Sequence[str]] = None,
                  exclusive_packages: Optional[Sequence[str]] = None,
@@ -2624,12 +3269,30 @@ class PatchDeploymentPatchConfigYum(dict):
         """
         return pulumi.get(self, "security")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentPatchConfigZypper(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePatches":
+            suggest = "exclusive_patches"
+        elif key == "withOptional":
+            suggest = "with_optional"
+        elif key == "withUpdate":
+            suggest = "with_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentPatchConfigZypper. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentPatchConfigZypper.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentPatchConfigZypper.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categories: Optional[Sequence[str]] = None,
                  excludes: Optional[Sequence[str]] = None,
@@ -2708,12 +3371,36 @@ class PatchDeploymentPatchConfigZypper(dict):
         """
         return pulumi.get(self, "with_update")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentRecurringSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeOfDay":
+            suggest = "time_of_day"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "lastExecuteTime":
+            suggest = "last_execute_time"
+        elif key == "nextExecuteTime":
+            suggest = "next_execute_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentRecurringSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentRecurringSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentRecurringSchedule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  time_of_day: 'outputs.PatchDeploymentRecurringScheduleTimeOfDay',
                  time_zone: 'outputs.PatchDeploymentRecurringScheduleTimeZone',
@@ -2834,12 +3521,28 @@ class PatchDeploymentRecurringSchedule(dict):
         """
         return pulumi.get(self, "weekly")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentRecurringScheduleMonthly(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "monthDay":
+            suggest = "month_day"
+        elif key == "weekDayOfMonth":
+            suggest = "week_day_of_month"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentRecurringScheduleMonthly. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentRecurringScheduleMonthly.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentRecurringScheduleMonthly.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  month_day: Optional[int] = None,
                  week_day_of_month: Optional['outputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth'] = None):
@@ -2874,12 +3577,28 @@ class PatchDeploymentRecurringScheduleMonthly(dict):
         """
         return pulumi.get(self, "week_day_of_month")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "weekOrdinal":
+            suggest = "week_ordinal"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day_of_week: str,
                  week_ordinal: int):
@@ -2907,9 +3626,6 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
         Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         return pulumi.get(self, "week_ordinal")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2968,9 +3684,6 @@ class PatchDeploymentRecurringScheduleTimeOfDay(dict):
         """
         return pulumi.get(self, "seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentRecurringScheduleTimeZone(dict):
@@ -3001,12 +3714,26 @@ class PatchDeploymentRecurringScheduleTimeZone(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentRecurringScheduleWeekly(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentRecurringScheduleWeekly. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentRecurringScheduleWeekly.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentRecurringScheduleWeekly.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day_of_week: str):
         """
@@ -3024,12 +3751,26 @@ class PatchDeploymentRecurringScheduleWeekly(dict):
         """
         return pulumi.get(self, "day_of_week")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentRollout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disruptionBudget":
+            suggest = "disruption_budget"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentRollout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchDeploymentRollout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchDeploymentRollout.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disruption_budget: 'outputs.PatchDeploymentRolloutDisruptionBudget',
                  mode: str):
@@ -3068,9 +3809,6 @@ class PatchDeploymentRollout(dict):
         """
         return pulumi.get(self, "mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchDeploymentRolloutDisruptionBudget(dict):
@@ -3101,8 +3839,5 @@ class PatchDeploymentRolloutDisruptionBudget(dict):
         Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
         """
         return pulumi.get(self, "percentage")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

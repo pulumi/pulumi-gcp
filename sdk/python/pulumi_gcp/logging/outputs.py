@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -28,6 +28,23 @@ __all__ = [
 
 @pulumi.output_type
 class BillingAccountSinkBigqueryOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usePartitionedTables":
+            suggest = "use_partitioned_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BillingAccountSinkBigqueryOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BillingAccountSinkBigqueryOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BillingAccountSinkBigqueryOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  use_partitioned_tables: bool):
         """
@@ -48,9 +65,6 @@ class BillingAccountSinkBigqueryOptions(dict):
         has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         return pulumi.get(self, "use_partitioned_tables")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -107,12 +121,26 @@ class BillingAccountSinkExclusion(dict):
         """
         return pulumi.get(self, "disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FolderSinkBigqueryOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usePartitionedTables":
+            suggest = "use_partitioned_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderSinkBigqueryOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderSinkBigqueryOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderSinkBigqueryOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  use_partitioned_tables: bool):
         """
@@ -133,9 +161,6 @@ class FolderSinkBigqueryOptions(dict):
         has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         return pulumi.get(self, "use_partitioned_tables")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -192,12 +217,30 @@ class FolderSinkExclusion(dict):
         """
         return pulumi.get(self, "disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricBucketOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "explicitBuckets":
+            suggest = "explicit_buckets"
+        elif key == "exponentialBuckets":
+            suggest = "exponential_buckets"
+        elif key == "linearBuckets":
+            suggest = "linear_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricBucketOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricBucketOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricBucketOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  explicit_buckets: Optional['outputs.MetricBucketOptionsExplicitBuckets'] = None,
                  exponential_buckets: Optional['outputs.MetricBucketOptionsExponentialBuckets'] = None,
@@ -248,9 +291,6 @@ class MetricBucketOptions(dict):
         """
         return pulumi.get(self, "linear_buckets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricBucketOptionsExplicitBuckets(dict):
@@ -269,12 +309,28 @@ class MetricBucketOptionsExplicitBuckets(dict):
         """
         return pulumi.get(self, "bounds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricBucketOptionsExponentialBuckets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "growthFactor":
+            suggest = "growth_factor"
+        elif key == "numFiniteBuckets":
+            suggest = "num_finite_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricBucketOptionsExponentialBuckets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricBucketOptionsExponentialBuckets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricBucketOptionsExponentialBuckets.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  growth_factor: Optional[float] = None,
                  num_finite_buckets: Optional[int] = None,
@@ -315,12 +371,26 @@ class MetricBucketOptionsExponentialBuckets(dict):
         """
         return pulumi.get(self, "scale")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricBucketOptionsLinearBuckets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numFiniteBuckets":
+            suggest = "num_finite_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricBucketOptionsLinearBuckets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricBucketOptionsLinearBuckets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricBucketOptionsLinearBuckets.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_finite_buckets: Optional[int] = None,
                  offset: Optional[float] = None,
@@ -361,12 +431,30 @@ class MetricBucketOptionsLinearBuckets(dict):
         """
         return pulumi.get(self, "width")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricMetricDescriptor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricKind":
+            suggest = "metric_kind"
+        elif key == "valueType":
+            suggest = "value_type"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricMetricDescriptor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricMetricDescriptor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricMetricDescriptor.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  metric_kind: str,
                  value_type: str,
@@ -455,12 +543,26 @@ class MetricMetricDescriptor(dict):
         """
         return pulumi.get(self, "unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricMetricDescriptorLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricMetricDescriptorLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricMetricDescriptorLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricMetricDescriptorLabel.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key: str,
                  description: Optional[str] = None,
@@ -506,12 +608,26 @@ class MetricMetricDescriptorLabel(dict):
         """
         return pulumi.get(self, "value_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrganizationSinkBigqueryOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usePartitionedTables":
+            suggest = "use_partitioned_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationSinkBigqueryOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationSinkBigqueryOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationSinkBigqueryOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  use_partitioned_tables: bool):
         """
@@ -532,9 +648,6 @@ class OrganizationSinkBigqueryOptions(dict):
         has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         return pulumi.get(self, "use_partitioned_tables")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -591,12 +704,26 @@ class OrganizationSinkExclusion(dict):
         """
         return pulumi.get(self, "disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ProjectSinkBigqueryOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usePartitionedTables":
+            suggest = "use_partitioned_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectSinkBigqueryOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectSinkBigqueryOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectSinkBigqueryOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  use_partitioned_tables: bool):
         """
@@ -617,9 +744,6 @@ class ProjectSinkBigqueryOptions(dict):
         has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         return pulumi.get(self, "use_partitioned_tables")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -675,8 +799,5 @@ class ProjectSinkExclusion(dict):
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

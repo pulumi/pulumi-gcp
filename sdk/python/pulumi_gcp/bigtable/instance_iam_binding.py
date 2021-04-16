@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -95,6 +95,108 @@ class InstanceIamBindingArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _InstanceIamBindingState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['InstanceIamBindingConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceIamBinding resources.
+        :param pulumi.Input[str] etag: (Computed) The etag of the instances's IAM policy.
+        :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
+        :param pulumi.Input[str] project: The project in which the instance belongs. If it
+               is not provided, a default will be supplied.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['InstanceIamBindingConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['InstanceIamBindingConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the instances's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or relative resource id of the instance to manage IAM policies for.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, a default will be supplied.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
 class InstanceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -105,9 +207,7 @@ class InstanceIamBinding(pulumi.CustomResource):
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
 
@@ -285,15 +385,7 @@ class InstanceIamBinding(pulumi.CustomResource):
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,20 +395,20 @@ class InstanceIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceIamBindingArgs.__new__(InstanceIamBindingArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
-            __props__['instance'] = instance
+            __props__.__dict__["instance"] = instance
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
-            __props__['members'] = members
-            __props__['project'] = project
+            __props__.__dict__["members"] = members
+            __props__.__dict__["project"] = project
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(InstanceIamBinding, __self__).__init__(
             'gcp:bigtable/instanceIamBinding:InstanceIamBinding',
             resource_name,
@@ -350,14 +442,14 @@ class InstanceIamBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceIamBindingState.__new__(_InstanceIamBindingState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["instance"] = instance
-        __props__["members"] = members
-        __props__["project"] = project
-        __props__["role"] = role
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["instance"] = instance
+        __props__.__dict__["members"] = members
+        __props__.__dict__["project"] = project
+        __props__.__dict__["role"] = role
         return InstanceIamBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -404,10 +496,4 @@ class InstanceIamBinding(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

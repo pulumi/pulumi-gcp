@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -183,6 +183,178 @@ class AccessLevelConditionArgs:
         pulumi.set(self, "required_access_levels", value)
 
 
+@pulumi.input_type
+class _AccessLevelConditionState:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
+                 ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 negate: Optional[pulumi.Input[bool]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering AccessLevelCondition resources.
+        :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
+        :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+               the Condition to be true. If not specified, all devices are
+               allowed.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_subnetworks: A list of CIDR block IP subnetwork specification. May be IPv4
+               or IPv6.
+               Note that for a CIDR IP address block, the specified IP address
+               portion must be properly truncated (i.e. all the host bits must
+               be zero) or the input is considered malformed. For example,
+               "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+               for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+               is not. The originating IP of a request must be in one of the
+               listed subnets in order for this Condition to be true.
+               If empty, all IP addresses are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An allowed list of members (users, service accounts).
+               Using groups is not supported yet.
+               The signed-in user originating the request must be a part of one
+               of the provided members. If not specified, a request may come
+               from any user (logged in/not logged in, not present in any
+               groups, etc.).
+               Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+        :param pulumi.Input[bool] negate: Whether to negate the Condition. If true, the Condition becomes
+               a NAND over its non-empty fields, each field must be false for
+               the Condition overall to be satisfied. Defaults to false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: The request must originate from one of the provided
+               countries/regions.
+               Format: A valid ISO 3166-1 alpha-2 code.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] required_access_levels: A list of other access levels defined in the same Policy,
+               referenced by resource name. Referencing an AccessLevel which
+               does not exist is an error. All access levels listed must be
+               granted for the Condition to be true.
+               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if device_policy is not None:
+            pulumi.set(__self__, "device_policy", device_policy)
+        if ip_subnetworks is not None:
+            pulumi.set(__self__, "ip_subnetworks", ip_subnetworks)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if negate is not None:
+            pulumi.set(__self__, "negate", negate)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+        if required_access_levels is not None:
+            pulumi.set(__self__, "required_access_levels", required_access_levels)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Access Level to add this condition to.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="devicePolicy")
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]:
+        """
+        Device specific restrictions, all restrictions must hold for
+        the Condition to be true. If not specified, all devices are
+        allowed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "device_policy")
+
+    @device_policy.setter
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]):
+        pulumi.set(self, "device_policy", value)
+
+    @property
+    @pulumi.getter(name="ipSubnetworks")
+    def ip_subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of CIDR block IP subnetwork specification. May be IPv4
+        or IPv6.
+        Note that for a CIDR IP address block, the specified IP address
+        portion must be properly truncated (i.e. all the host bits must
+        be zero) or the input is considered malformed. For example,
+        "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+        for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+        is not. The originating IP of a request must be in one of the
+        listed subnets in order for this Condition to be true.
+        If empty, all IP addresses are allowed.
+        """
+        return pulumi.get(self, "ip_subnetworks")
+
+    @ip_subnetworks.setter
+    def ip_subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_subnetworks", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An allowed list of members (users, service accounts).
+        Using groups is not supported yet.
+        The signed-in user originating the request must be a part of one
+        of the provided members. If not specified, a request may come
+        from any user (logged in/not logged in, not present in any
+        groups, etc.).
+        Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def negate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to negate the Condition. If true, the Condition becomes
+        a NAND over its non-empty fields, each field must be false for
+        the Condition overall to be satisfied. Defaults to false.
+        """
+        return pulumi.get(self, "negate")
+
+    @negate.setter
+    def negate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negate", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The request must originate from one of the provided
+        countries/regions.
+        Format: A valid ISO 3166-1 alpha-2 code.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter(name="requiredAccessLevels")
+    def required_access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of other access levels defined in the same Policy,
+        referenced by resource name. Referencing an AccessLevel which
+        does not exist is an error. All access levels listed must be
+        granted for the Condition to be true.
+        Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        """
+        return pulumi.get(self, "required_access_levels")
+
+    @required_access_levels.setter
+    def required_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "required_access_levels", value)
+
+
 class AccessLevelCondition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -195,9 +367,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows configuring a single access level condition to be appended to an access level's conditions.
         This resource is intended to be used in cases where it is not possible to compile a full list
@@ -318,15 +488,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,17 +498,17 @@ class AccessLevelCondition(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessLevelConditionArgs.__new__(AccessLevelConditionArgs)
 
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
-            __props__['access_level'] = access_level
-            __props__['device_policy'] = device_policy
-            __props__['ip_subnetworks'] = ip_subnetworks
-            __props__['members'] = members
-            __props__['negate'] = negate
-            __props__['regions'] = regions
-            __props__['required_access_levels'] = required_access_levels
+            __props__.__dict__["access_level"] = access_level
+            __props__.__dict__["device_policy"] = device_policy
+            __props__.__dict__["ip_subnetworks"] = ip_subnetworks
+            __props__.__dict__["members"] = members
+            __props__.__dict__["negate"] = negate
+            __props__.__dict__["regions"] = regions
+            __props__.__dict__["required_access_levels"] = required_access_levels
         super(AccessLevelCondition, __self__).__init__(
             'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
             resource_name,
@@ -407,15 +569,15 @@ class AccessLevelCondition(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessLevelConditionState.__new__(_AccessLevelConditionState)
 
-        __props__["access_level"] = access_level
-        __props__["device_policy"] = device_policy
-        __props__["ip_subnetworks"] = ip_subnetworks
-        __props__["members"] = members
-        __props__["negate"] = negate
-        __props__["regions"] = regions
-        __props__["required_access_levels"] = required_access_levels
+        __props__.__dict__["access_level"] = access_level
+        __props__.__dict__["device_policy"] = device_policy
+        __props__.__dict__["ip_subnetworks"] = ip_subnetworks
+        __props__.__dict__["members"] = members
+        __props__.__dict__["negate"] = negate
+        __props__.__dict__["regions"] = regions
+        __props__.__dict__["required_access_levels"] = required_access_levels
         return AccessLevelCondition(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -499,10 +661,4 @@ class AccessLevelCondition(pulumi.CustomResource):
         Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
         return pulumi.get(self, "required_access_levels")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

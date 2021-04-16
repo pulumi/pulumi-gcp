@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['NetworkEndpointArgs', 'NetworkEndpoint']
 
@@ -120,6 +120,120 @@ class NetworkEndpointArgs:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.input_type
+class _NetworkEndpointState:
+    def __init__(__self__, *,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_group: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering NetworkEndpoint resources.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORT.
+               The instance must be in the same zone of network endpoint group.
+        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong
+               to a VM in GCE (either the primary IP or as part of an aliased IP
+               range).
+        :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
+        :param pulumi.Input[int] port: Port number of network endpoint.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if network_endpoint_group is not None:
+            pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for a specific VM instance that the IP address belongs to.
+        This is required for network endpoints of type GCE_VM_IP_PORT.
+        The instance must be in the same zone of network endpoint group.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 address of network endpoint. The IP address must belong
+        to a VM in GCE (either the primary IP or as part of an aliased IP
+        range).
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="networkEndpointGroup")
+    def network_endpoint_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network endpoint group this endpoint is part of.
+        """
+        return pulumi.get(self, "network_endpoint_group")
+
+    @network_endpoint_group.setter
+    def network_endpoint_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_endpoint_group", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number of network endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone where the containing network endpoint group is located.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 class NetworkEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -131,9 +245,7 @@ class NetworkEndpoint(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Network endpoint represents a IP address and port combination that is
         part of a specific network endpoint group (NEG). NEGs are zonal
@@ -315,15 +427,7 @@ class NetworkEndpoint(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -333,22 +437,22 @@ class NetworkEndpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NetworkEndpointArgs.__new__(NetworkEndpointArgs)
 
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
-            __props__['instance'] = instance
+            __props__.__dict__["instance"] = instance
             if ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_address'")
-            __props__['ip_address'] = ip_address
+            __props__.__dict__["ip_address"] = ip_address
             if network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_group'")
-            __props__['network_endpoint_group'] = network_endpoint_group
+            __props__.__dict__["network_endpoint_group"] = network_endpoint_group
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
-            __props__['port'] = port
-            __props__['project'] = project
-            __props__['zone'] = zone
+            __props__.__dict__["port"] = port
+            __props__.__dict__["project"] = project
+            __props__.__dict__["zone"] = zone
         super(NetworkEndpoint, __self__).__init__(
             'gcp:compute/networkEndpoint:NetworkEndpoint',
             resource_name,
@@ -386,14 +490,14 @@ class NetworkEndpoint(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NetworkEndpointState.__new__(_NetworkEndpointState)
 
-        __props__["instance"] = instance
-        __props__["ip_address"] = ip_address
-        __props__["network_endpoint_group"] = network_endpoint_group
-        __props__["port"] = port
-        __props__["project"] = project
-        __props__["zone"] = zone
+        __props__.__dict__["instance"] = instance
+        __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["network_endpoint_group"] = network_endpoint_group
+        __props__.__dict__["port"] = port
+        __props__.__dict__["project"] = project
+        __props__.__dict__["zone"] = zone
         return NetworkEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -448,10 +552,4 @@ class NetworkEndpoint(pulumi.CustomResource):
         Zone where the containing network endpoint group is located.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

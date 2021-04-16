@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RegistryArgs', 'Registry']
 
@@ -50,6 +50,62 @@ class RegistryArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _RegistryState:
+    def __init__(__self__, *,
+                 bucket_self_link: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Registry resources.
+        :param pulumi.Input[str] bucket_self_link: The URI of the created resource.
+        :param pulumi.Input[str] location: The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        """
+        if bucket_self_link is not None:
+            pulumi.set(__self__, "bucket_self_link", bucket_self_link)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="bucketSelfLink")
+    def bucket_self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "bucket_self_link")
+
+    @bucket_self_link.setter
+    def bucket_self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_self_link", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
 class Registry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -57,9 +113,7 @@ class Registry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Ensures that the Google Cloud Storage bucket that backs Google Container Registry exists. Creating this resource will create the backing bucket if it does not exist, or do nothing if the bucket already exists. Destroying this resource does *NOT* destroy the backing bucket. For more information see [the official documentation](https://cloud.google.com/container-registry/docs/overview)
 
@@ -158,15 +212,7 @@ class Registry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -176,11 +222,11 @@ class Registry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegistryArgs.__new__(RegistryArgs)
 
-            __props__['location'] = location
-            __props__['project'] = project
-            __props__['bucket_self_link'] = None
+            __props__.__dict__["location"] = location
+            __props__.__dict__["project"] = project
+            __props__.__dict__["bucket_self_link"] = None
         super(Registry, __self__).__init__(
             'gcp:container/registry:Registry',
             resource_name,
@@ -207,11 +253,11 @@ class Registry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RegistryState.__new__(_RegistryState)
 
-        __props__["bucket_self_link"] = bucket_self_link
-        __props__["location"] = location
-        __props__["project"] = project
+        __props__.__dict__["bucket_self_link"] = bucket_self_link
+        __props__.__dict__["location"] = location
+        __props__.__dict__["project"] = project
         return Registry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -237,10 +283,4 @@ class Registry(pulumi.CustomResource):
         The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

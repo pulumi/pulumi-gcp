@@ -9,14 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
-
-    public sealed class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs : Pulumi.ResourceArgs
-    {
-        [Input("keyUsageOptions")]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs>? KeyUsageOptions { get; set; }
-
-        public CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs()
-        {
-        }
-    }
 }

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -103,6 +103,116 @@ class DomainMappingArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _DomainMappingState:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input['DomainMappingMetadataArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering DomainMapping resources.
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
+        :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
+               Structure is documented below.
+        :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]] statuses: The current status of the DomainMapping.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the cloud run instance. eg us-central1
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArgs']]:
+        """
+        Metadata associated with this DomainMapping.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['DomainMappingMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name should be a verified domain
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['DomainMappingSpecArgs']]:
+        """
+        The spec for this DomainMapping.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['DomainMappingSpecArgs']]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]]:
+        """
+        The current status of the DomainMapping.
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+
 class DomainMapping(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -113,9 +223,7 @@ class DomainMapping(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Resource to hold the state and status of a user's domain mapping.
 
@@ -261,15 +369,7 @@ class DomainMapping(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -279,20 +379,20 @@ class DomainMapping(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DomainMappingArgs.__new__(DomainMappingArgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
-            __props__['location'] = location
+            __props__.__dict__["location"] = location
             if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")
-            __props__['metadata'] = metadata
-            __props__['name'] = name
-            __props__['project'] = project
+            __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
-            __props__['spec'] = spec
-            __props__['statuses'] = None
+            __props__.__dict__["spec"] = spec
+            __props__.__dict__["statuses"] = None
         super(DomainMapping, __self__).__init__(
             'gcp:cloudrun/domainMapping:DomainMapping',
             resource_name,
@@ -328,14 +428,14 @@ class DomainMapping(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DomainMappingState.__new__(_DomainMappingState)
 
-        __props__["location"] = location
-        __props__["metadata"] = metadata
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["spec"] = spec
-        __props__["statuses"] = statuses
+        __props__.__dict__["location"] = location
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["spec"] = spec
+        __props__.__dict__["statuses"] = statuses
         return DomainMapping(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -388,10 +488,4 @@ class DomainMapping(pulumi.CustomResource):
         The current status of the DomainMapping.
         """
         return pulumi.get(self, "statuses")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

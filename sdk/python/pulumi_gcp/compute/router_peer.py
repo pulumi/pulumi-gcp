@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -238,6 +238,274 @@ class RouterPeerArgs:
         pulumi.set(self, "region", value)
 
 
+@pulumi.input_type
+class _RouterPeerState:
+    def __init__(__self__, *,
+                 advertise_mode: Optional[pulumi.Input[str]] = None,
+                 advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
+                 advertised_route_priority: Optional[pulumi.Input[int]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 management_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 peer_asn: Optional[pulumi.Input[int]] = None,
+                 peer_ip_address: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RouterPeer resources.
+        :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
+               Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+               Default value is `DEFAULT`.
+               Possible values are `DEFAULT` and `CUSTOM`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
+               mode, which can take one of the following options:
+               * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
+               * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
+               * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+               custom mode. This field can only be populated if advertiseMode
+               is `CUSTOM` and is advertised to all peers of the router. These IP
+               ranges will be advertised in addition to any specified groups.
+               Leave this field blank to advertise no custom IP ranges.
+               Structure is documented below.
+        :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
+               Where there is more than one matching route of maximum
+               length, the routes with the lowest priority value win.
+        :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
+        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
+               you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
+               specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
+               of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+        :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
+               and comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?` which
+               means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
+               Each BGP interface may use a different value.
+        :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
+               Only IPv4 is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
+        """
+        if advertise_mode is not None:
+            pulumi.set(__self__, "advertise_mode", advertise_mode)
+        if advertised_groups is not None:
+            pulumi.set(__self__, "advertised_groups", advertised_groups)
+        if advertised_ip_ranges is not None:
+            pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
+        if advertised_route_priority is not None:
+            pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if management_type is not None:
+            pulumi.set(__self__, "management_type", management_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if peer_asn is not None:
+            pulumi.set(__self__, "peer_asn", peer_asn)
+        if peer_ip_address is not None:
+            pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if router is not None:
+            pulumi.set(__self__, "router", router)
+
+    @property
+    @pulumi.getter(name="advertiseMode")
+    def advertise_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-specified flag to indicate which mode to use for advertisement.
+        Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+        Default value is `DEFAULT`.
+        Possible values are `DEFAULT` and `CUSTOM`.
+        """
+        return pulumi.get(self, "advertise_mode")
+
+    @advertise_mode.setter
+    def advertise_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "advertise_mode", value)
+
+    @property
+    @pulumi.getter(name="advertisedGroups")
+    def advertised_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        User-specified list of prefix groups to advertise in custom
+        mode, which can take one of the following options:
+        * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
+        * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
+        * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
+        """
+        return pulumi.get(self, "advertised_groups")
+
+    @advertised_groups.setter
+    def advertised_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "advertised_groups", value)
+
+    @property
+    @pulumi.getter(name="advertisedIpRanges")
+    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]:
+        """
+        User-specified list of individual IP ranges to advertise in
+        custom mode. This field can only be populated if advertiseMode
+        is `CUSTOM` and is advertised to all peers of the router. These IP
+        ranges will be advertised in addition to any specified groups.
+        Leave this field blank to advertise no custom IP ranges.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advertised_ip_ranges")
+
+    @advertised_ip_ranges.setter
+    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]):
+        pulumi.set(self, "advertised_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="advertisedRoutePriority")
+    def advertised_route_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of routes advertised to this BGP peer.
+        Where there is more than one matching route of maximum
+        length, the routes with the lowest priority value win.
+        """
+        return pulumi.get(self, "advertised_route_priority")
+
+    @advertised_route_priority.setter
+    def advertised_route_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "advertised_route_priority", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the interface the BGP peer is associated with.
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="managementType")
+    def management_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
+        you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
+        specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
+        of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+        """
+        return pulumi.get(self, "management_type")
+
+    @management_type.setter
+    def management_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "management_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of this BGP peer. The name must be 1-63 characters long,
+        and comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?` which
+        means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="peerAsn")
+    def peer_asn(self) -> Optional[pulumi.Input[int]]:
+        """
+        Peer BGP Autonomous System Number (ASN).
+        Each BGP interface may use a different value.
+        """
+        return pulumi.get(self, "peer_asn")
+
+    @peer_asn.setter
+    def peer_asn(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "peer_asn", value)
+
+    @property
+    @pulumi.getter(name="peerIpAddress")
+    def peer_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the BGP interface outside Google Cloud Platform.
+        Only IPv4 is supported.
+        """
+        return pulumi.get(self, "peer_ip_address")
+
+    @peer_ip_address.setter
+    def peer_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_ip_address", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region where the router and BgpPeer reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def router(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Cloud Router in which this BgpPeer will be configured.
+        """
+        return pulumi.get(self, "router")
+
+    @router.setter
+    def router(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router", value)
+
+
 class RouterPeer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -254,9 +522,7 @@ class RouterPeer(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         BGP information that must be configured into the routing stack to
         establish BGP peering. This information must specify the peer ASN
@@ -422,15 +688,7 @@ class RouterPeer(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,29 +698,29 @@ class RouterPeer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouterPeerArgs.__new__(RouterPeerArgs)
 
-            __props__['advertise_mode'] = advertise_mode
-            __props__['advertised_groups'] = advertised_groups
-            __props__['advertised_ip_ranges'] = advertised_ip_ranges
-            __props__['advertised_route_priority'] = advertised_route_priority
+            __props__.__dict__["advertise_mode"] = advertise_mode
+            __props__.__dict__["advertised_groups"] = advertised_groups
+            __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
+            __props__.__dict__["advertised_route_priority"] = advertised_route_priority
             if interface is None and not opts.urn:
                 raise TypeError("Missing required property 'interface'")
-            __props__['interface'] = interface
-            __props__['name'] = name
+            __props__.__dict__["interface"] = interface
+            __props__.__dict__["name"] = name
             if peer_asn is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_asn'")
-            __props__['peer_asn'] = peer_asn
+            __props__.__dict__["peer_asn"] = peer_asn
             if peer_ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_ip_address'")
-            __props__['peer_ip_address'] = peer_ip_address
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["peer_ip_address"] = peer_ip_address
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
-            __props__['router'] = router
-            __props__['ip_address'] = None
-            __props__['management_type'] = None
+            __props__.__dict__["router"] = router
+            __props__.__dict__["ip_address"] = None
+            __props__.__dict__["management_type"] = None
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
             resource_name,
@@ -535,21 +793,21 @@ class RouterPeer(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouterPeerState.__new__(_RouterPeerState)
 
-        __props__["advertise_mode"] = advertise_mode
-        __props__["advertised_groups"] = advertised_groups
-        __props__["advertised_ip_ranges"] = advertised_ip_ranges
-        __props__["advertised_route_priority"] = advertised_route_priority
-        __props__["interface"] = interface
-        __props__["ip_address"] = ip_address
-        __props__["management_type"] = management_type
-        __props__["name"] = name
-        __props__["peer_asn"] = peer_asn
-        __props__["peer_ip_address"] = peer_ip_address
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["router"] = router
+        __props__.__dict__["advertise_mode"] = advertise_mode
+        __props__.__dict__["advertised_groups"] = advertised_groups
+        __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
+        __props__.__dict__["advertised_route_priority"] = advertised_route_priority
+        __props__.__dict__["interface"] = interface
+        __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["management_type"] = management_type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["peer_asn"] = peer_asn
+        __props__.__dict__["peer_ip_address"] = peer_ip_address
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["router"] = router
         return RouterPeer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -681,10 +939,4 @@ class RouterPeer(pulumi.CustomResource):
         The name of the Cloud Router in which this BgpPeer will be configured.
         """
         return pulumi.get(self, "router")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

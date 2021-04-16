@@ -135,7 +135,7 @@ export class TargetSSLProxy extends pulumi.CustomResource {
      * connections between users and the load balancer. At least one
      * SSL certificate must be specified.
      */
-    public readonly sslCertificates!: pulumi.Output<string>;
+    public readonly sslCertificates!: pulumi.Output<string[]>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetSslProxy resource. If not set, the TargetSslProxy
@@ -243,7 +243,7 @@ export interface TargetSSLProxyState {
      * connections between users and the load balancer. At least one
      * SSL certificate must be specified.
      */
-    readonly sslCertificates?: pulumi.Input<string>;
+    readonly sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetSslProxy resource. If not set, the TargetSslProxy
@@ -291,7 +291,7 @@ export interface TargetSSLProxyArgs {
      * connections between users and the load balancer. At least one
      * SSL certificate must be specified.
      */
-    readonly sslCertificates: pulumi.Input<string>;
+    readonly sslCertificates: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetSslProxy resource. If not set, the TargetSslProxy

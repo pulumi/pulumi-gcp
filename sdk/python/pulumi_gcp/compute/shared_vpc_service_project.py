@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SharedVPCServiceProjectArgs', 'SharedVPCServiceProject']
 
@@ -48,6 +48,46 @@ class SharedVPCServiceProjectArgs:
         pulumi.set(self, "service_project", value)
 
 
+@pulumi.input_type
+class _SharedVPCServiceProjectState:
+    def __init__(__self__, *,
+                 host_project: Optional[pulumi.Input[str]] = None,
+                 service_project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SharedVPCServiceProject resources.
+        :param pulumi.Input[str] host_project: The ID of a host project to associate.
+        :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
+        """
+        if host_project is not None:
+            pulumi.set(__self__, "host_project", host_project)
+        if service_project is not None:
+            pulumi.set(__self__, "service_project", service_project)
+
+    @property
+    @pulumi.getter(name="hostProject")
+    def host_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a host project to associate.
+        """
+        return pulumi.get(self, "host_project")
+
+    @host_project.setter
+    def host_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_project", value)
+
+    @property
+    @pulumi.getter(name="serviceProject")
+    def service_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that will serve as a Shared VPC service project.
+        """
+        return pulumi.get(self, "service_project")
+
+    @service_project.setter
+    def service_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_project", value)
+
+
 class SharedVPCServiceProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -55,9 +95,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host_project: Optional[pulumi.Input[str]] = None,
                  service_project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Enables the Google Compute Engine
         [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
@@ -154,15 +192,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host_project: Optional[pulumi.Input[str]] = None,
                  service_project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -172,14 +202,14 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SharedVPCServiceProjectArgs.__new__(SharedVPCServiceProjectArgs)
 
             if host_project is None and not opts.urn:
                 raise TypeError("Missing required property 'host_project'")
-            __props__['host_project'] = host_project
+            __props__.__dict__["host_project"] = host_project
             if service_project is None and not opts.urn:
                 raise TypeError("Missing required property 'service_project'")
-            __props__['service_project'] = service_project
+            __props__.__dict__["service_project"] = service_project
         super(SharedVPCServiceProject, __self__).__init__(
             'gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject',
             resource_name,
@@ -204,10 +234,10 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SharedVPCServiceProjectState.__new__(_SharedVPCServiceProjectState)
 
-        __props__["host_project"] = host_project
-        __props__["service_project"] = service_project
+        __props__.__dict__["host_project"] = host_project
+        __props__.__dict__["service_project"] = service_project
         return SharedVPCServiceProject(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -225,10 +255,4 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         The ID of the project that will serve as a Shared VPC service project.
         """
         return pulumi.get(self, "service_project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

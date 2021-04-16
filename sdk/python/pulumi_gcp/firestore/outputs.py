@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'IndexField',
@@ -14,6 +14,25 @@ __all__ = [
 
 @pulumi.output_type
 class IndexField(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrayConfig":
+            suggest = "array_config"
+        elif key == "fieldPath":
+            suggest = "field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexField. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexField.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexField.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  array_config: Optional[str] = None,
                  field_path: Optional[str] = None,
@@ -61,8 +80,5 @@ class IndexField(dict):
         Possible values are `ASCENDING` and `DESCENDING`.
         """
         return pulumi.get(self, "order")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

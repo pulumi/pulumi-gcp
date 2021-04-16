@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['EnvGroupArgs', 'EnvGroup']
 
@@ -67,6 +67,64 @@ class EnvGroupArgs:
         pulumi.set(self, "name", value)
 
 
+@pulumi.input_type
+class _EnvGroupState:
+    def __init__(__self__, *,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering EnvGroup resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Hostnames of the environment group.
+        :param pulumi.Input[str] name: The resource ID of the environment group.
+        :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment group,
+               in the format `organizations/{{org_name}}`.
+        """
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Hostnames of the environment group.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hostnames", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the environment group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Apigee Organization associated with the Apigee environment group,
+        in the format `organizations/{{org_name}}`.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
+
+
 class EnvGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -75,9 +133,7 @@ class EnvGroup(pulumi.CustomResource):
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An `Environment group` in Apigee.
 
@@ -155,15 +211,7 @@ class EnvGroup(pulumi.CustomResource):
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -173,13 +221,13 @@ class EnvGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EnvGroupArgs.__new__(EnvGroupArgs)
 
-            __props__['hostnames'] = hostnames
-            __props__['name'] = name
+            __props__.__dict__["hostnames"] = hostnames
+            __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
-            __props__['org_id'] = org_id
+            __props__.__dict__["org_id"] = org_id
         super(EnvGroup, __self__).__init__(
             'gcp:apigee/envGroup:EnvGroup',
             resource_name,
@@ -207,11 +255,11 @@ class EnvGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EnvGroupState.__new__(_EnvGroupState)
 
-        __props__["hostnames"] = hostnames
-        __props__["name"] = name
-        __props__["org_id"] = org_id
+        __props__.__dict__["hostnames"] = hostnames
+        __props__.__dict__["name"] = name
+        __props__.__dict__["org_id"] = org_id
         return EnvGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -238,10 +286,4 @@ class EnvGroup(pulumi.CustomResource):
         in the format `organizations/{{org_name}}`.
         """
         return pulumi.get(self, "org_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ProjectMetadataItemArgs', 'ProjectMetadataItem']
 
@@ -66,6 +66,64 @@ class ProjectMetadataItemArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _ProjectMetadataItemState:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ProjectMetadataItem resources.
+        :param pulumi.Input[str] key: The metadata key to set.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] value: The value to set for the given metadata key.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The metadata key to set.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value to set for the given metadata key.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
 class ProjectMetadataItem(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -74,9 +132,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
                  key: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages a single key/value pair on metadata common to all instances for
         a project in GCE. Using `compute.ProjectMetadataItem` lets you
@@ -158,15 +214,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
                  key: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -176,15 +224,15 @@ class ProjectMetadataItem(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectMetadataItemArgs.__new__(ProjectMetadataItemArgs)
 
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
-            __props__['project'] = project
+            __props__.__dict__["key"] = key
+            __props__.__dict__["project"] = project
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
+            __props__.__dict__["value"] = value
         super(ProjectMetadataItem, __self__).__init__(
             'gcp:compute/projectMetadataItem:ProjectMetadataItem',
             resource_name,
@@ -212,11 +260,11 @@ class ProjectMetadataItem(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectMetadataItemState.__new__(_ProjectMetadataItemState)
 
-        __props__["key"] = key
-        __props__["project"] = project
-        __props__["value"] = value
+        __props__.__dict__["key"] = key
+        __props__.__dict__["project"] = project
+        __props__.__dict__["value"] = value
         return ProjectMetadataItem(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -243,10 +291,4 @@ class ProjectMetadataItem(pulumi.CustomResource):
         The value to set for the given metadata key.
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -146,6 +146,39 @@ __all__ = [
 
 @pulumi.output_type
 class ClusterAddonsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudrunConfig":
+            suggest = "cloudrun_config"
+        elif key == "configConnectorConfig":
+            suggest = "config_connector_config"
+        elif key == "dnsCacheConfig":
+            suggest = "dns_cache_config"
+        elif key == "gcePersistentDiskCsiDriverConfig":
+            suggest = "gce_persistent_disk_csi_driver_config"
+        elif key == "horizontalPodAutoscaling":
+            suggest = "horizontal_pod_autoscaling"
+        elif key == "httpLoadBalancing":
+            suggest = "http_load_balancing"
+        elif key == "istioConfig":
+            suggest = "istio_config"
+        elif key == "kalmConfig":
+            suggest = "kalm_config"
+        elif key == "networkPolicyConfig":
+            suggest = "network_policy_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAddonsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAddonsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAddonsConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloudrun_config: Optional['outputs.ClusterAddonsConfigCloudrunConfig'] = None,
                  config_connector_config: Optional['outputs.ClusterAddonsConfigConfigConnectorConfig'] = None,
@@ -294,12 +327,26 @@ class ClusterAddonsConfig(dict):
         """
         return pulumi.get(self, "network_policy_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterAddonsConfigCloudrunConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loadBalancerType":
+            suggest = "load_balancer_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAddonsConfigCloudrunConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAddonsConfigCloudrunConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAddonsConfigCloudrunConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disabled: bool,
                  load_balancer_type: Optional[str] = None):
@@ -331,9 +378,6 @@ class ClusterAddonsConfigCloudrunConfig(dict):
         """
         return pulumi.get(self, "load_balancer_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterAddonsConfigConfigConnectorConfig(dict):
@@ -353,9 +397,6 @@ class ClusterAddonsConfigConfigConnectorConfig(dict):
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -377,9 +418,6 @@ class ClusterAddonsConfigDnsCacheConfig(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
@@ -399,9 +437,6 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -423,9 +458,6 @@ class ClusterAddonsConfigHorizontalPodAutoscaling(dict):
         """
         return pulumi.get(self, "disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterAddonsConfigHttpLoadBalancing(dict):
@@ -445,9 +477,6 @@ class ClusterAddonsConfigHttpLoadBalancing(dict):
         cluster. It is disabled by default. Set `disabled = false` to enable.
         """
         return pulumi.get(self, "disabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -481,9 +510,6 @@ class ClusterAddonsConfigIstioConfig(dict):
         """
         return pulumi.get(self, "auth")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterAddonsConfigKalmConfig(dict):
@@ -503,9 +529,6 @@ class ClusterAddonsConfigKalmConfig(dict):
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -527,12 +550,26 @@ class ClusterAddonsConfigNetworkPolicyConfig(dict):
         """
         return pulumi.get(self, "disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterAuthenticatorGroupsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "securityGroup":
+            suggest = "security_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAuthenticatorGroupsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAuthenticatorGroupsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAuthenticatorGroupsConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  security_group: str):
         """
@@ -548,12 +585,30 @@ class ClusterAuthenticatorGroupsConfig(dict):
         """
         return pulumi.get(self, "security_group")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterClusterAutoscaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoProvisioningDefaults":
+            suggest = "auto_provisioning_defaults"
+        elif key == "autoscalingProfile":
+            suggest = "autoscaling_profile"
+        elif key == "resourceLimits":
+            suggest = "resource_limits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAutoscaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAutoscaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAutoscaling.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: bool,
                  auto_provisioning_defaults: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaults'] = None,
@@ -621,12 +676,30 @@ class ClusterClusterAutoscaling(dict):
         """
         return pulumi.get(self, "resource_limits")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "oauthScopes":
+            suggest = "oauth_scopes"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAutoscalingAutoProvisioningDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaults.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  min_cpu_platform: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
@@ -681,12 +754,26 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         """
         return pulumi.get(self, "service_account")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterClusterAutoscalingResourceLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAutoscalingResourceLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAutoscalingResourceLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAutoscalingResourceLimit.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_type: str,
                  maximum: Optional[int] = None,
@@ -730,9 +817,6 @@ class ClusterClusterAutoscalingResourceLimit(dict):
         """
         return pulumi.get(self, "minimum")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterClusterTelemetry(dict):
@@ -750,9 +834,6 @@ class ClusterClusterTelemetry(dict):
         The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -774,12 +855,26 @@ class ClusterConfidentialNodes(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterDatabaseEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyName":
+            suggest = "key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDatabaseEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDatabaseEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDatabaseEncryption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  state: str,
                  key_name: Optional[str] = None):
@@ -807,9 +902,6 @@ class ClusterDatabaseEncryption(dict):
         """
         return pulumi.get(self, "key_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterDefaultSnatStatus(dict):
@@ -830,12 +922,32 @@ class ClusterDefaultSnatStatus(dict):
         """
         return pulumi.get(self, "disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterIpAllocationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterIpv4CidrBlock":
+            suggest = "cluster_ipv4_cidr_block"
+        elif key == "clusterSecondaryRangeName":
+            suggest = "cluster_secondary_range_name"
+        elif key == "servicesIpv4CidrBlock":
+            suggest = "services_ipv4_cidr_block"
+        elif key == "servicesSecondaryRangeName":
+            suggest = "services_secondary_range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterIpAllocationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterIpAllocationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterIpAllocationPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: Optional[str] = None,
                  cluster_secondary_range_name: Optional[str] = None,
@@ -914,12 +1026,30 @@ class ClusterIpAllocationPolicy(dict):
         """
         return pulumi.get(self, "services_secondary_range_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dailyMaintenanceWindow":
+            suggest = "daily_maintenance_window"
+        elif key == "maintenanceExclusions":
+            suggest = "maintenance_exclusions"
+        elif key == "recurringWindow":
+            suggest = "recurring_window"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  daily_maintenance_window: Optional['outputs.ClusterMaintenancePolicyDailyMaintenanceWindow'] = None,
                  maintenance_exclusions: Optional[Sequence['outputs.ClusterMaintenancePolicyMaintenanceExclusion']] = None,
@@ -964,12 +1094,26 @@ class ClusterMaintenancePolicy(dict):
         """
         return pulumi.get(self, "recurring_window")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicyDailyMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenancePolicyDailyMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenancePolicyDailyMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  start_time: str,
                  duration: Optional[str] = None):
@@ -987,12 +1131,30 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
     def duration(self) -> Optional[str]:
         return pulumi.get(self, "duration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMaintenancePolicyMaintenanceExclusion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "exclusionName":
+            suggest = "exclusion_name"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicyMaintenanceExclusion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenancePolicyMaintenanceExclusion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenancePolicyMaintenanceExclusion.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  exclusion_name: str,
@@ -1016,12 +1178,28 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
     def start_time(self) -> str:
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMaintenancePolicyRecurringWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicyRecurringWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenancePolicyRecurringWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenancePolicyRecurringWindow.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  recurrence: str,
@@ -1045,12 +1223,32 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
     def start_time(self) -> str:
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMasterAuth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientCertificateConfig":
+            suggest = "client_certificate_config"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "clusterCaCertificate":
+            suggest = "cluster_ca_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMasterAuth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMasterAuth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMasterAuth.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_certificate: Optional[str] = None,
                  client_certificate_config: Optional['outputs.ClusterMasterAuthClientCertificateConfig'] = None,
@@ -1119,12 +1317,26 @@ class ClusterMasterAuth(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMasterAuthClientCertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issueClientCertificate":
+            suggest = "issue_client_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMasterAuthClientCertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMasterAuthClientCertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMasterAuthClientCertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  issue_client_certificate: bool):
         pulumi.set(__self__, "issue_client_certificate", issue_client_certificate)
@@ -1134,12 +1346,26 @@ class ClusterMasterAuthClientCertificateConfig(dict):
     def issue_client_certificate(self) -> bool:
         return pulumi.get(self, "issue_client_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMasterAuthorizedNetworksConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlocks":
+            suggest = "cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMasterAuthorizedNetworksConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMasterAuthorizedNetworksConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMasterAuthorizedNetworksConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cidr_blocks: Optional[Sequence['outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock']] = None):
         """
@@ -1158,12 +1384,28 @@ class ClusterMasterAuthorizedNetworksConfig(dict):
         """
         return pulumi.get(self, "cidr_blocks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMasterAuthorizedNetworksConfigCidrBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlock":
+            suggest = "cidr_block"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMasterAuthorizedNetworksConfigCidrBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMasterAuthorizedNetworksConfigCidrBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMasterAuthorizedNetworksConfigCidrBlock.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cidr_block: str,
                  display_name: Optional[str] = None):
@@ -1192,9 +1434,6 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock(dict):
         Field for users to identify CIDR blocks.
         """
         return pulumi.get(self, "display_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1228,12 +1467,56 @@ class ClusterNetworkPolicy(dict):
         """
         return pulumi.get(self, "provider")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskKmsKey":
+            suggest = "boot_disk_kms_key"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "ephemeralStorageConfig":
+            suggest = "ephemeral_storage_config"
+        elif key == "guestAccelerators":
+            suggest = "guest_accelerators"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "kubeletConfig":
+            suggest = "kubelet_config"
+        elif key == "linuxNodeConfig":
+            suggest = "linux_node_config"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "oauthScopes":
+            suggest = "oauth_scopes"
+        elif key == "sandboxConfig":
+            suggest = "sandbox_config"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+        elif key == "workloadMetadataConfig":
+            suggest = "workload_metadata_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boot_disk_kms_key: Optional[str] = None,
                  disk_size_gb: Optional[int] = None,
@@ -1556,12 +1839,26 @@ class ClusterNodeConfig(dict):
         """
         return pulumi.get(self, "workload_metadata_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodeConfigEphemeralStorageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigEphemeralStorageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  local_ssd_count: int):
         """
@@ -1576,9 +1873,6 @@ class ClusterNodeConfigEphemeralStorageConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1609,12 +1903,30 @@ class ClusterNodeConfigGuestAccelerator(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodeConfigKubeletConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuManagerPolicy":
+            suggest = "cpu_manager_policy"
+        elif key == "cpuCfsQuota":
+            suggest = "cpu_cfs_quota"
+        elif key == "cpuCfsQuotaPeriod":
+            suggest = "cpu_cfs_quota_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigKubeletConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigKubeletConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigKubeletConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu_manager_policy: str,
                  cpu_cfs_quota: Optional[bool] = None,
@@ -1666,9 +1978,6 @@ class ClusterNodeConfigKubeletConfig(dict):
         """
         return pulumi.get(self, "cpu_cfs_quota_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodeConfigLinuxNodeConfig(dict):
@@ -1691,12 +2000,26 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         """
         return pulumi.get(self, "sysctls")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodeConfigSandboxConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sandboxType":
+            suggest = "sandbox_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigSandboxConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigSandboxConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigSandboxConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sandbox_type: str):
         """
@@ -1714,12 +2037,28 @@ class ClusterNodeConfigSandboxConfig(dict):
         """
         return pulumi.get(self, "sandbox_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodeConfigShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[bool] = None,
                  enable_secure_boot: Optional[bool] = None):
@@ -1747,9 +2086,6 @@ class ClusterNodeConfigShieldedInstanceConfig(dict):
         Defines if the instance has Secure Boot enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1791,12 +2127,26 @@ class ClusterNodeConfigTaint(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodeConfigWorkloadMetadataConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeMetadata":
+            suggest = "node_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigWorkloadMetadataConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigWorkloadMetadataConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigWorkloadMetadataConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  node_metadata: str):
         """
@@ -1822,12 +2172,40 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
         """
         return pulumi.get(self, "node_metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialNodeCount":
+            suggest = "initial_node_count"
+        elif key == "instanceGroupUrls":
+            suggest = "instance_group_urls"
+        elif key == "maxPodsPerNode":
+            suggest = "max_pods_per_node"
+        elif key == "namePrefix":
+            suggest = "name_prefix"
+        elif key == "nodeConfig":
+            suggest = "node_config"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "nodeLocations":
+            suggest = "node_locations"
+        elif key == "upgradeSettings":
+            suggest = "upgrade_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePool.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autoscaling: Optional['outputs.ClusterNodePoolAutoscaling'] = None,
                  initial_node_count: Optional[int] = None,
@@ -1976,12 +2354,28 @@ class ClusterNodePool(dict):
     def version(self) -> Optional[str]:
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolAutoscaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodeCount":
+            suggest = "max_node_count"
+        elif key == "minNodeCount":
+            suggest = "min_node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolAutoscaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolAutoscaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolAutoscaling.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_node_count: int,
                  min_node_count: int):
@@ -1998,12 +2392,28 @@ class ClusterNodePoolAutoscaling(dict):
     def min_node_count(self) -> int:
         return pulumi.get(self, "min_node_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolManagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRepair":
+            suggest = "auto_repair"
+        elif key == "autoUpgrade":
+            suggest = "auto_upgrade"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolManagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolManagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolManagement.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_repair: Optional[bool] = None,
                  auto_upgrade: Optional[bool] = None):
@@ -2022,12 +2432,56 @@ class ClusterNodePoolManagement(dict):
     def auto_upgrade(self) -> Optional[bool]:
         return pulumi.get(self, "auto_upgrade")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskKmsKey":
+            suggest = "boot_disk_kms_key"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "ephemeralStorageConfig":
+            suggest = "ephemeral_storage_config"
+        elif key == "guestAccelerators":
+            suggest = "guest_accelerators"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "kubeletConfig":
+            suggest = "kubelet_config"
+        elif key == "linuxNodeConfig":
+            suggest = "linux_node_config"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "oauthScopes":
+            suggest = "oauth_scopes"
+        elif key == "sandboxConfig":
+            suggest = "sandbox_config"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+        elif key == "workloadMetadataConfig":
+            suggest = "workload_metadata_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boot_disk_kms_key: Optional[str] = None,
                  disk_size_gb: Optional[int] = None,
@@ -2350,12 +2804,26 @@ class ClusterNodePoolNodeConfig(dict):
         """
         return pulumi.get(self, "workload_metadata_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigEphemeralStorageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  local_ssd_count: int):
         """
@@ -2370,9 +2838,6 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2403,12 +2868,30 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigKubeletConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuManagerPolicy":
+            suggest = "cpu_manager_policy"
+        elif key == "cpuCfsQuota":
+            suggest = "cpu_cfs_quota"
+        elif key == "cpuCfsQuotaPeriod":
+            suggest = "cpu_cfs_quota_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigKubeletConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu_manager_policy: str,
                  cpu_cfs_quota: Optional[bool] = None,
@@ -2460,9 +2943,6 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         """
         return pulumi.get(self, "cpu_cfs_quota_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
@@ -2485,12 +2965,26 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         """
         return pulumi.get(self, "sysctls")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigSandboxConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sandboxType":
+            suggest = "sandbox_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigSandboxConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigSandboxConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigSandboxConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sandbox_type: str):
         """
@@ -2508,12 +3002,28 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
         """
         return pulumi.get(self, "sandbox_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[bool] = None,
                  enable_secure_boot: Optional[bool] = None):
@@ -2541,9 +3051,6 @@ class ClusterNodePoolNodeConfigShieldedInstanceConfig(dict):
         Defines if the instance has Secure Boot enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2585,12 +3092,26 @@ class ClusterNodePoolNodeConfigTaint(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeMetadata":
+            suggest = "node_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigWorkloadMetadataConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  node_metadata: str):
         """
@@ -2616,12 +3137,28 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
         """
         return pulumi.get(self, "node_metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNodePoolUpgradeSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxSurge":
+            suggest = "max_surge"
+        elif key == "maxUnavailable":
+            suggest = "max_unavailable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolUpgradeSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolUpgradeSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolUpgradeSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_surge: int,
                  max_unavailable: int):
@@ -2638,9 +3175,6 @@ class ClusterNodePoolUpgradeSettings(dict):
     def max_unavailable(self) -> int:
         return pulumi.get(self, "max_unavailable")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterNotificationConfig(dict):
@@ -2652,9 +3186,6 @@ class ClusterNotificationConfig(dict):
     @pulumi.getter
     def pubsub(self) -> 'outputs.ClusterNotificationConfigPubsub':
         return pulumi.get(self, "pubsub")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2684,9 +3215,6 @@ class ClusterNotificationConfigPubsub(dict):
     def topic(self) -> Optional[str]:
         return pulumi.get(self, "topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterPodSecurityPolicyConfig(dict):
@@ -2707,12 +3235,38 @@ class ClusterPodSecurityPolicyConfig(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterPrivateClusterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enablePrivateEndpoint":
+            suggest = "enable_private_endpoint"
+        elif key == "enablePrivateNodes":
+            suggest = "enable_private_nodes"
+        elif key == "masterGlobalAccessConfig":
+            suggest = "master_global_access_config"
+        elif key == "masterIpv4CidrBlock":
+            suggest = "master_ipv4_cidr_block"
+        elif key == "peeringName":
+            suggest = "peering_name"
+        elif key == "privateEndpoint":
+            suggest = "private_endpoint"
+        elif key == "publicEndpoint":
+            suggest = "public_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPrivateClusterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPrivateClusterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPrivateClusterConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_private_endpoint: bool,
                  enable_private_nodes: Optional[bool] = None,
@@ -2828,9 +3382,6 @@ class ClusterPrivateClusterConfig(dict):
         """
         return pulumi.get(self, "public_endpoint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterPrivateClusterConfigMasterGlobalAccessConfig(dict):
@@ -2850,9 +3401,6 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfig(dict):
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2882,12 +3430,30 @@ class ClusterReleaseChannel(dict):
         """
         return pulumi.get(self, "channel")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterResourceUsageExportConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryDestination":
+            suggest = "bigquery_destination"
+        elif key == "enableNetworkEgressMetering":
+            suggest = "enable_network_egress_metering"
+        elif key == "enableResourceConsumptionMetering":
+            suggest = "enable_resource_consumption_metering"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterResourceUsageExportConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterResourceUsageExportConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterResourceUsageExportConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bigquery_destination: 'outputs.ClusterResourceUsageExportConfigBigqueryDestination',
                  enable_network_egress_metering: Optional[bool] = None,
@@ -2937,12 +3503,26 @@ class ClusterResourceUsageExportConfig(dict):
         """
         return pulumi.get(self, "enable_resource_consumption_metering")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterResourceUsageExportConfigBigqueryDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterResourceUsageExportConfigBigqueryDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterResourceUsageExportConfigBigqueryDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterResourceUsageExportConfigBigqueryDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str):
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -2951,9 +3531,6 @@ class ClusterResourceUsageExportConfigBigqueryDestination(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         return pulumi.get(self, "dataset_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2975,12 +3552,26 @@ class ClusterVerticalPodAutoscaling(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterWorkloadIdentityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityNamespace":
+            suggest = "identity_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterWorkloadIdentityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterWorkloadIdentityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterWorkloadIdentityConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_namespace: str):
         """
@@ -2996,12 +3587,28 @@ class ClusterWorkloadIdentityConfig(dict):
         """
         return pulumi.get(self, "identity_namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolAutoscaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodeCount":
+            suggest = "max_node_count"
+        elif key == "minNodeCount":
+            suggest = "min_node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolAutoscaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolAutoscaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolAutoscaling.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_node_count: int,
                  min_node_count: int):
@@ -3030,12 +3637,28 @@ class NodePoolAutoscaling(dict):
         """
         return pulumi.get(self, "min_node_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolManagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRepair":
+            suggest = "auto_repair"
+        elif key == "autoUpgrade":
+            suggest = "auto_upgrade"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolManagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolManagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolManagement.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_repair: Optional[bool] = None,
                  auto_upgrade: Optional[bool] = None):
@@ -3064,12 +3687,56 @@ class NodePoolManagement(dict):
         """
         return pulumi.get(self, "auto_upgrade")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskKmsKey":
+            suggest = "boot_disk_kms_key"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "ephemeralStorageConfig":
+            suggest = "ephemeral_storage_config"
+        elif key == "guestAccelerators":
+            suggest = "guest_accelerators"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "kubeletConfig":
+            suggest = "kubelet_config"
+        elif key == "linuxNodeConfig":
+            suggest = "linux_node_config"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "oauthScopes":
+            suggest = "oauth_scopes"
+        elif key == "sandboxConfig":
+            suggest = "sandbox_config"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+        elif key == "workloadMetadataConfig":
+            suggest = "workload_metadata_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boot_disk_kms_key: Optional[str] = None,
                  disk_size_gb: Optional[int] = None,
@@ -3240,12 +3907,26 @@ class NodePoolNodeConfig(dict):
     def workload_metadata_config(self) -> Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig']:
         return pulumi.get(self, "workload_metadata_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolNodeConfigEphemeralStorageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigEphemeralStorageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -3254,9 +3935,6 @@ class NodePoolNodeConfigEphemeralStorageConfig(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         return pulumi.get(self, "local_ssd_count")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3277,12 +3955,30 @@ class NodePoolNodeConfigGuestAccelerator(dict):
     def type(self) -> str:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolNodeConfigKubeletConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuManagerPolicy":
+            suggest = "cpu_manager_policy"
+        elif key == "cpuCfsQuota":
+            suggest = "cpu_cfs_quota"
+        elif key == "cpuCfsQuotaPeriod":
+            suggest = "cpu_cfs_quota_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigKubeletConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigKubeletConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigKubeletConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu_manager_policy: str,
                  cpu_cfs_quota: Optional[bool] = None,
@@ -3308,9 +4004,6 @@ class NodePoolNodeConfigKubeletConfig(dict):
     def cpu_cfs_quota_period(self) -> Optional[str]:
         return pulumi.get(self, "cpu_cfs_quota_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolNodeConfigLinuxNodeConfig(dict):
@@ -3323,12 +4016,26 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
     def sysctls(self) -> Mapping[str, str]:
         return pulumi.get(self, "sysctls")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolNodeConfigSandboxConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sandboxType":
+            suggest = "sandbox_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigSandboxConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigSandboxConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigSandboxConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sandbox_type: str):
         pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -3338,12 +4045,28 @@ class NodePoolNodeConfigSandboxConfig(dict):
     def sandbox_type(self) -> str:
         return pulumi.get(self, "sandbox_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolNodeConfigShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[bool] = None,
                  enable_secure_boot: Optional[bool] = None):
@@ -3361,9 +4084,6 @@ class NodePoolNodeConfigShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[bool]:
         return pulumi.get(self, "enable_secure_boot")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3391,12 +4111,26 @@ class NodePoolNodeConfigTaint(dict):
     def value(self) -> str:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolNodeConfigWorkloadMetadataConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeMetadata":
+            suggest = "node_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigWorkloadMetadataConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  node_metadata: str):
         pulumi.set(__self__, "node_metadata", node_metadata)
@@ -3406,12 +4140,28 @@ class NodePoolNodeConfigWorkloadMetadataConfig(dict):
     def node_metadata(self) -> str:
         return pulumi.get(self, "node_metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodePoolUpgradeSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxSurge":
+            suggest = "max_surge"
+        elif key == "maxUnavailable":
+            suggest = "max_unavailable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolUpgradeSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolUpgradeSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolUpgradeSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_surge: int,
                  max_unavailable: int):
@@ -3445,9 +4195,6 @@ class NodePoolUpgradeSettings(dict):
         parallel. Can be set to 0 or greater.
         """
         return pulumi.get(self, "max_unavailable")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

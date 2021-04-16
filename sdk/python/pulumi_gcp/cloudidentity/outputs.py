@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -71,9 +71,6 @@ class GroupGroupKey(dict):
         """
         return pulumi.get(self, "namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GroupMembershipMemberKey(dict):
@@ -123,9 +120,6 @@ class GroupMembershipMemberKey(dict):
         and must be in the form of `identitysources/{identity_source_id}`.
         """
         return pulumi.get(self, "namespace")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -177,9 +171,6 @@ class GroupMembershipPreferredMemberKey(dict):
         """
         return pulumi.get(self, "namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GroupMembershipRole(dict):
@@ -199,9 +190,6 @@ class GroupMembershipRole(dict):
         Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

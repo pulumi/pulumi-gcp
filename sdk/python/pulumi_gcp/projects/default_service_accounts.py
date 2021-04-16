@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DefaultServiceAccountsArgs', 'DefaultServiceAccounts']
 
@@ -70,6 +70,84 @@ class DefaultServiceAccountsArgs:
         pulumi.set(self, "restore_policy", value)
 
 
+@pulumi.input_type
+class _DefaultServiceAccountsState:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 restore_policy: Optional[pulumi.Input[str]] = None,
+                 service_accounts: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering DefaultServiceAccounts resources.
+        :param pulumi.Input[str] action: The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
+        :param pulumi.Input[str] project: The project ID where service accounts are created.
+        :param pulumi.Input[str] restore_policy: The action to be performed in the default service accounts on the resource destroy.
+               Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+               If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+               If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
+        :param pulumi.Input[Mapping[str, Any]] service_accounts: The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if restore_policy is not None:
+            pulumi.set(__self__, "restore_policy", restore_policy)
+        if service_accounts is not None:
+            pulumi.set(__self__, "service_accounts", service_accounts)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID where service accounts are created.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="restorePolicy")
+    def restore_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to be performed in the default service accounts on the resource destroy.
+        Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+        If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+        If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
+        """
+        return pulumi.get(self, "restore_policy")
+
+    @restore_policy.setter
+    def restore_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restore_policy", value)
+
+    @property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
+        """
+        return pulumi.get(self, "service_accounts")
+
+    @service_accounts.setter
+    def service_accounts(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "service_accounts", value)
+
+
 class DefaultServiceAccounts(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -78,9 +156,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_policy: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows management of Google Cloud Platform project default service accounts.
 
@@ -200,15 +276,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_policy: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -218,16 +286,16 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DefaultServiceAccountsArgs.__new__(DefaultServiceAccountsArgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
-            __props__['action'] = action
+            __props__.__dict__["action"] = action
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            __props__['restore_policy'] = restore_policy
-            __props__['service_accounts'] = None
+            __props__.__dict__["project"] = project
+            __props__.__dict__["restore_policy"] = restore_policy
+            __props__.__dict__["service_accounts"] = None
         super(DefaultServiceAccounts, __self__).__init__(
             'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
             resource_name,
@@ -259,12 +327,12 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DefaultServiceAccountsState.__new__(_DefaultServiceAccountsState)
 
-        __props__["action"] = action
-        __props__["project"] = project
-        __props__["restore_policy"] = restore_policy
-        __props__["service_accounts"] = service_accounts
+        __props__.__dict__["action"] = action
+        __props__.__dict__["project"] = project
+        __props__.__dict__["restore_policy"] = restore_policy
+        __props__.__dict__["service_accounts"] = service_accounts
         return DefaultServiceAccounts(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -301,10 +369,4 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
         """
         return pulumi.get(self, "service_accounts")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

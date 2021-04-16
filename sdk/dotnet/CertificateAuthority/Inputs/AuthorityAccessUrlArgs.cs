@@ -9,17 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
-
-    public sealed class AuthorityAccessUrlArgs : Pulumi.ResourceArgs
-    {
-        [Input("caCertificateAccessUrl")]
-        public Input<string>? CaCertificateAccessUrl { get; set; }
-
-        [Input("crlAccessUrl")]
-        public Input<string>? CrlAccessUrl { get; set; }
-
-        public AuthorityAccessUrlArgs()
-        {
-        }
-    }
 }

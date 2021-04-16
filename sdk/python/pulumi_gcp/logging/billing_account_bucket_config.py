@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BillingAccountBucketConfigArgs', 'BillingAccountBucketConfig']
 
@@ -95,6 +95,126 @@ class BillingAccountBucketConfigArgs:
         pulumi.set(self, "retention_days", value)
 
 
+@pulumi.input_type
+class _BillingAccountBucketConfigState:
+    def __init__(__self__, *,
+                 billing_account: Optional[pulumi.Input[str]] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 lifecycle_state: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering BillingAccountBucketConfig resources.
+        :param pulumi.Input[str] billing_account: The parent resource that contains the logging bucket.
+        :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
+        :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
+        :param pulumi.Input[str] location: The location of the bucket.
+        :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+        :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
+        """
+        if billing_account is not None:
+            pulumi.set(__self__, "billing_account", billing_account)
+        if bucket_id is not None:
+            pulumi.set(__self__, "bucket_id", bucket_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if lifecycle_state is not None:
+            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+
+    @property
+    @pulumi.getter(name="billingAccount")
+    def billing_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parent resource that contains the logging bucket.
+        """
+        return pulumi.get(self, "billing_account")
+
+    @billing_account.setter
+    def billing_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_account", value)
+
+    @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
+        """
+        return pulumi.get(self, "bucket_id")
+
+    @bucket_id.setter
+    def bucket_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes this bucket.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @lifecycle_state.setter
+    def lifecycle_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifecycle_state", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the bucket.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_days", value)
+
+
 class BillingAccountBucketConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -105,9 +225,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages a billing account level logging bucket config. For more information see
         [the official logging documentation](https://cloud.google.com/logging/docs/) and
@@ -200,15 +318,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -218,21 +328,21 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BillingAccountBucketConfigArgs.__new__(BillingAccountBucketConfigArgs)
 
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")
-            __props__['billing_account'] = billing_account
+            __props__.__dict__["billing_account"] = billing_account
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
-            __props__['bucket_id'] = bucket_id
-            __props__['description'] = description
+            __props__.__dict__["bucket_id"] = bucket_id
+            __props__.__dict__["description"] = description
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
-            __props__['location'] = location
-            __props__['retention_days'] = retention_days
-            __props__['lifecycle_state'] = None
-            __props__['name'] = None
+            __props__.__dict__["location"] = location
+            __props__.__dict__["retention_days"] = retention_days
+            __props__.__dict__["lifecycle_state"] = None
+            __props__.__dict__["name"] = None
         super(BillingAccountBucketConfig, __self__).__init__(
             'gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig',
             resource_name,
@@ -267,15 +377,15 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BillingAccountBucketConfigState.__new__(_BillingAccountBucketConfigState)
 
-        __props__["billing_account"] = billing_account
-        __props__["bucket_id"] = bucket_id
-        __props__["description"] = description
-        __props__["lifecycle_state"] = lifecycle_state
-        __props__["location"] = location
-        __props__["name"] = name
-        __props__["retention_days"] = retention_days
+        __props__.__dict__["billing_account"] = billing_account
+        __props__.__dict__["bucket_id"] = bucket_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["lifecycle_state"] = lifecycle_state
+        __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
+        __props__.__dict__["retention_days"] = retention_days
         return BillingAccountBucketConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -333,10 +443,4 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
         return pulumi.get(self, "retention_days")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SourceRepresentationInstanceArgs', 'SourceRepresentationInstance']
 
@@ -120,6 +120,118 @@ class SourceRepresentationInstanceArgs:
         pulumi.set(self, "region", value)
 
 
+@pulumi.input_type
+class _SourceRepresentationInstanceState:
+    def __init__(__self__, *,
+                 database_version: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SourceRepresentationInstance resources.
+        :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
+               Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+        :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
+        :param pulumi.Input[int] port: The externally accessible port for the source database server.
+               Defaults to 3306.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Region in which the created instance should reside.
+               If it is not provided, the provider region is used.
+        """
+        if database_version is not None:
+            pulumi.set(__self__, "database_version", database_version)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MySQL version running on your source database server.
+        Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        """
+        return pulumi.get(self, "database_version")
+
+    @database_version.setter
+    def database_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_version", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The externally accessible IPv4 address for the source database server.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the source representation instance. Use any valid Cloud SQL instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The externally accessible port for the source database server.
+        Defaults to 3306.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region in which the created instance should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
 class SourceRepresentationInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -131,9 +243,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A source representation instance is a Cloud SQL instance that represents
         the source database server to the Cloud SQL replica. It is visible in the
@@ -248,15 +358,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -266,18 +368,18 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SourceRepresentationInstanceArgs.__new__(SourceRepresentationInstanceArgs)
 
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
-            __props__['database_version'] = database_version
+            __props__.__dict__["database_version"] = database_version
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
-            __props__['host'] = host
-            __props__['name'] = name
-            __props__['port'] = port
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["host"] = host
+            __props__.__dict__["name"] = name
+            __props__.__dict__["port"] = port
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
         super(SourceRepresentationInstance, __self__).__init__(
             'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
             resource_name,
@@ -314,14 +416,14 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SourceRepresentationInstanceState.__new__(_SourceRepresentationInstanceState)
 
-        __props__["database_version"] = database_version
-        __props__["host"] = host
-        __props__["name"] = name
-        __props__["port"] = port
-        __props__["project"] = project
-        __props__["region"] = region
+        __props__.__dict__["database_version"] = database_version
+        __props__.__dict__["host"] = host
+        __props__.__dict__["name"] = name
+        __props__.__dict__["port"] = port
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
         return SourceRepresentationInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -375,10 +477,4 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

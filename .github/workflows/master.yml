@@ -14,6 +14,7 @@ env:
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TRAVIS_OS_NAME: linux
+  VERSION_PREFIX: 5.0.0
 jobs:
   build_sdk:
     name: build_sdk
@@ -39,6 +40,9 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
+      with:
+        pulumi-version: 3.0.0-rc.1
+    - run: pulumi version
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
@@ -121,6 +125,9 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
+      with:
+        pulumi-version: 3.0.0-rc.1
+    - run: pulumi version
     - name: Build tfgen & provider binaries
       run: make provider
     - name: Tar provider binaries
@@ -175,6 +182,9 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
+      with:
+        pulumi-version: 3.0.0-rc.1
+    - run: pulumi version
     - name: Set PreRelease Version
       run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)"
         >> $GITHUB_ENV
@@ -207,6 +217,9 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
+      with:
+        pulumi-version: 3.0.0-rc.1
+    - run: pulumi version
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
@@ -276,6 +289,9 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
+      with:
+        pulumi-version: 3.0.0-rc.1
+    - run: pulumi version
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
@@ -356,6 +372,7 @@ name: master
   push:
     branches:
     - master
+    - "feature-**"
     paths-ignore:
     - CHANGELOG.md
     tags-ignore:

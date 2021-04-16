@@ -2,7 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
+  Node SDK performance, general availability of Automation API, and more.  
+  **PLEASE NOTE THE FOLLOWING BREAKING CHANGES:**
+  * `gcp.notebooks.Instance` now supports multiple `instanceOwners`. 
+  * `gcp.compute.TargetSSLProxy` now supports multiple `sslCertificates`. 
 
 ---
 

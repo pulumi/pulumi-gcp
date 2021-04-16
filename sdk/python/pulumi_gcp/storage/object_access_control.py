@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -98,6 +98,176 @@ class ObjectAccessControlArgs:
         pulumi.set(self, "role", value)
 
 
+@pulumi.input_type
+class _ObjectAccessControlState:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 entity: Optional[pulumi.Input[str]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
+                 generation: Optional[pulumi.Input[int]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 project_teams: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlProjectTeamArgs']]]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ObjectAccessControl resources.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] domain: The domain associated with the entity.
+        :param pulumi.Input[str] email: The email address associated with the entity.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms:
+               * user-{{userId}}
+               * user-{{email}} (such as "user-liz@example.com")
+               * group-{{groupId}}
+               * group-{{email}} (such as "group-example@googlegroups.com")
+               * domain-{{domain}} (such as "domain-example.com")
+               * project-team-{{projectId}}
+               * allUsers
+               * allAuthenticatedUsers
+        :param pulumi.Input[str] entity_id: The ID for the entity
+        :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
+        :param pulumi.Input[str] object: The name of the object to apply the access control to.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlProjectTeamArgs']]] project_teams: The project team associated with the entity
+        :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER` and `READER`.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if entity is not None:
+            pulumi.set(__self__, "entity", entity)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if object is not None:
+            pulumi.set(__self__, "object", object)
+        if project_teams is not None:
+            pulumi.set(__self__, "project_teams", project_teams)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain associated with the entity.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address associated with the entity.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entity holding the permission, in one of the following forms:
+        * user-{{userId}}
+        * user-{{email}} (such as "user-liz@example.com")
+        * group-{{groupId}}
+        * group-{{email}} (such as "group-example@googlegroups.com")
+        * domain-{{domain}} (such as "domain-example.com")
+        * project-team-{{projectId}}
+        * allUsers
+        * allAuthenticatedUsers
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID for the entity
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        The content generation of the object, if applied to an object.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the object to apply the access control to.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter(name="projectTeams")
+    def project_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlProjectTeamArgs']]]]:
+        """
+        The project team associated with the entity
+        """
+        return pulumi.get(self, "project_teams")
+
+    @project_teams.setter
+    def project_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlProjectTeamArgs']]]]):
+        pulumi.set(self, "project_teams", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access permission for the entity.
+        Possible values are `OWNER` and `READER`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
 class ObjectAccessControl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -107,9 +277,7 @@ class ObjectAccessControl(pulumi.CustomResource):
                  entity: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         The ObjectAccessControls resources represent the Access Control Lists
         (ACLs) for objects within Google Cloud Storage. ACLs let you specify
@@ -243,15 +411,7 @@ class ObjectAccessControl(pulumi.CustomResource):
                  entity: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -261,25 +421,25 @@ class ObjectAccessControl(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ObjectAccessControlArgs.__new__(ObjectAccessControlArgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
+            __props__.__dict__["bucket"] = bucket
             if entity is None and not opts.urn:
                 raise TypeError("Missing required property 'entity'")
-            __props__['entity'] = entity
+            __props__.__dict__["entity"] = entity
             if object is None and not opts.urn:
                 raise TypeError("Missing required property 'object'")
-            __props__['object'] = object
+            __props__.__dict__["object"] = object
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['domain'] = None
-            __props__['email'] = None
-            __props__['entity_id'] = None
-            __props__['generation'] = None
-            __props__['project_teams'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["domain"] = None
+            __props__.__dict__["email"] = None
+            __props__.__dict__["entity_id"] = None
+            __props__.__dict__["generation"] = None
+            __props__.__dict__["project_teams"] = None
         super(ObjectAccessControl, __self__).__init__(
             'gcp:storage/objectAccessControl:ObjectAccessControl',
             resource_name,
@@ -327,17 +487,17 @@ class ObjectAccessControl(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ObjectAccessControlState.__new__(_ObjectAccessControlState)
 
-        __props__["bucket"] = bucket
-        __props__["domain"] = domain
-        __props__["email"] = email
-        __props__["entity"] = entity
-        __props__["entity_id"] = entity_id
-        __props__["generation"] = generation
-        __props__["object"] = object
-        __props__["project_teams"] = project_teams
-        __props__["role"] = role
+        __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["domain"] = domain
+        __props__.__dict__["email"] = email
+        __props__.__dict__["entity"] = entity
+        __props__.__dict__["entity_id"] = entity_id
+        __props__.__dict__["generation"] = generation
+        __props__.__dict__["object"] = object
+        __props__.__dict__["project_teams"] = project_teams
+        __props__.__dict__["role"] = role
         return ObjectAccessControl(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -420,10 +580,4 @@ class ObjectAccessControl(pulumi.CustomResource):
         Possible values are `OWNER` and `READER`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

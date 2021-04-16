@@ -9,31 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
-
-    public sealed class ServiceStatusArgs : Pulumi.ResourceArgs
-    {
-        [Input("conditions")]
-        private InputList<Inputs.ServiceStatusConditionArgs>? _conditions;
-        public InputList<Inputs.ServiceStatusConditionArgs> Conditions
-        {
-            get => _conditions ?? (_conditions = new InputList<Inputs.ServiceStatusConditionArgs>());
-            set => _conditions = value;
-        }
-
-        [Input("latestCreatedRevisionName")]
-        public Input<string>? LatestCreatedRevisionName { get; set; }
-
-        [Input("latestReadyRevisionName")]
-        public Input<string>? LatestReadyRevisionName { get; set; }
-
-        [Input("observedGeneration")]
-        public Input<int>? ObservedGeneration { get; set; }
-
-        [Input("url")]
-        public Input<string>? Url { get; set; }
-
-        public ServiceStatusArgs()
-        {
-        }
-    }
 }

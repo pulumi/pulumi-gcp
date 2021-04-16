@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -169,6 +169,212 @@ class NoteArgs:
         pulumi.set(self, "short_description", value)
 
 
+@pulumi.input_type
+class _NoteState:
+    def __init__(__self__, *,
+                 attestation_authority: Optional[pulumi.Input['NoteAttestationAuthorityArgs']] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 long_description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
+                 short_description: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Note resources.
+        :param pulumi.Input['NoteAttestationAuthorityArgs'] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+               For example, an organization might have one AttestationAuthority for
+               "QA" and one for "build". This Note is intended to act strictly as a
+               grouping mechanism for the attached Occurrences (Attestations). This
+               grouping mechanism also provides a security boundary, since IAM ACLs
+               gate the ability for a principle to attach an Occurrence to a given
+               Note. It also provides a single point of lookup to find all attached
+               Attestation Occurrences, even if they don't all live in the same
+               project.
+               Structure is documented below.
+        :param pulumi.Input[str] create_time: The time this note was created.
+        :param pulumi.Input[str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
+        :param pulumi.Input[str] kind: The type of analysis this note describes
+        :param pulumi.Input[str] long_description: A detailed description of the note
+        :param pulumi.Input[str] name: The name of the note.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
+        :param pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
+        :param pulumi.Input[str] short_description: A one sentence description of the note.
+        :param pulumi.Input[str] update_time: The time this note was last updated.
+        """
+        if attestation_authority is not None:
+            pulumi.set(__self__, "attestation_authority", attestation_authority)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if long_description is not None:
+            pulumi.set(__self__, "long_description", long_description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if related_note_names is not None:
+            pulumi.set(__self__, "related_note_names", related_note_names)
+        if related_urls is not None:
+            pulumi.set(__self__, "related_urls", related_urls)
+        if short_description is not None:
+            pulumi.set(__self__, "short_description", short_description)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="attestationAuthority")
+    def attestation_authority(self) -> Optional[pulumi.Input['NoteAttestationAuthorityArgs']]:
+        """
+        Note kind that represents a logical attestation "role" or "authority".
+        For example, an organization might have one AttestationAuthority for
+        "QA" and one for "build". This Note is intended to act strictly as a
+        grouping mechanism for the attached Occurrences (Attestations). This
+        grouping mechanism also provides a security boundary, since IAM ACLs
+        gate the ability for a principle to attach an Occurrence to a given
+        Note. It also provides a single point of lookup to find all attached
+        Attestation Occurrences, even if they don't all live in the same
+        project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attestation_authority")
+
+    @attestation_authority.setter
+    def attestation_authority(self, value: Optional[pulumi.Input['NoteAttestationAuthorityArgs']]):
+        pulumi.set(self, "attestation_authority", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time this note was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time of expiration for this note. Leave empty if note does not expire.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of analysis this note describes
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="longDescription")
+    def long_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A detailed description of the note
+        """
+        return pulumi.get(self, "long_description")
+
+    @long_description.setter
+    def long_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the note.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="relatedNoteNames")
+    def related_note_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of other notes related to this note.
+        """
+        return pulumi.get(self, "related_note_names")
+
+    @related_note_names.setter
+    def related_note_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "related_note_names", value)
+
+    @property
+    @pulumi.getter(name="relatedUrls")
+    def related_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
+        """
+        URLs associated with this note and related metadata.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "related_urls")
+
+    @related_urls.setter
+    def related_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]):
+        pulumi.set(self, "related_urls", value)
+
+    @property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A one sentence description of the note.
+        """
+        return pulumi.get(self, "short_description")
+
+    @short_description.setter
+    def short_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_description", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time this note was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
 class Note(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -182,9 +388,7 @@ class Note(pulumi.CustomResource):
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Container Analysis note is a high-level piece of metadata that
         describes a type of analysis that can be done for a resource.
@@ -368,15 +572,7 @@ class Note(pulumi.CustomResource):
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,21 +582,21 @@ class Note(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NoteArgs.__new__(NoteArgs)
 
             if attestation_authority is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority'")
-            __props__['attestation_authority'] = attestation_authority
-            __props__['expiration_time'] = expiration_time
-            __props__['long_description'] = long_description
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['related_note_names'] = related_note_names
-            __props__['related_urls'] = related_urls
-            __props__['short_description'] = short_description
-            __props__['create_time'] = None
-            __props__['kind'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["attestation_authority"] = attestation_authority
+            __props__.__dict__["expiration_time"] = expiration_time
+            __props__.__dict__["long_description"] = long_description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["related_note_names"] = related_note_names
+            __props__.__dict__["related_urls"] = related_urls
+            __props__.__dict__["short_description"] = short_description
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["update_time"] = None
         super(Note, __self__).__init__(
             'gcp:containeranalysis/note:Note',
             resource_name,
@@ -454,19 +650,19 @@ class Note(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NoteState.__new__(_NoteState)
 
-        __props__["attestation_authority"] = attestation_authority
-        __props__["create_time"] = create_time
-        __props__["expiration_time"] = expiration_time
-        __props__["kind"] = kind
-        __props__["long_description"] = long_description
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["related_note_names"] = related_note_names
-        __props__["related_urls"] = related_urls
-        __props__["short_description"] = short_description
-        __props__["update_time"] = update_time
+        __props__.__dict__["attestation_authority"] = attestation_authority
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["expiration_time"] = expiration_time
+        __props__.__dict__["kind"] = kind
+        __props__.__dict__["long_description"] = long_description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["related_note_names"] = related_note_names
+        __props__.__dict__["related_urls"] = related_urls
+        __props__.__dict__["short_description"] = short_description
+        __props__.__dict__["update_time"] = update_time
         return Note(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -567,10 +763,4 @@ class Note(pulumi.CustomResource):
         The time this note was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

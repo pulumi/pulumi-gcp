@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -156,6 +156,184 @@ class ApiConfigArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _ApiConfigState:
+    def __init__(__self__, *,
+                 api: Optional[pulumi.Input[str]] = None,
+                 api_config_id: Optional[pulumi.Input[str]] = None,
+                 api_config_id_prefix: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_config_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ApiConfig resources.
+        :param pulumi.Input[str] api: The API to attach the config to.
+        :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
+        :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
+               specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+        :param pulumi.Input[str] display_name: A user-visible name for the API.
+        :param pulumi.Input['ApiConfigGatewayConfigArgs'] gateway_config: Immutable. Gateway specific configuration.
+               If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[str] name: The resource name of the API Config.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]] openapi_documents: An OpenAPI Specification Document describing an API.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if api_config_id is not None:
+            pulumi.set(__self__, "api_config_id", api_config_id)
+        if api_config_id_prefix is not None:
+            pulumi.set(__self__, "api_config_id_prefix", api_config_id_prefix)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if gateway_config is not None:
+            pulumi.set(__self__, "gateway_config", gateway_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if openapi_documents is not None:
+            pulumi.set(__self__, "openapi_documents", openapi_documents)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if service_config_id is not None:
+            pulumi.set(__self__, "service_config_id", service_config_id)
+
+    @property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API to attach the config to.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api", value)
+
+    @property
+    @pulumi.getter(name="apiConfigId")
+    def api_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
+        """
+        return pulumi.get(self, "api_config_id")
+
+    @api_config_id.setter
+    def api_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_config_id", value)
+
+    @property
+    @pulumi.getter(name="apiConfigIdPrefix")
+    def api_config_id_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name beginning with the
+        specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+        """
+        return pulumi.get(self, "api_config_id_prefix")
+
+    @api_config_id_prefix.setter
+    def api_config_id_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_config_id_prefix", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-visible name for the API.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gatewayConfig")
+    def gateway_config(self) -> Optional[pulumi.Input['ApiConfigGatewayConfigArgs']]:
+        """
+        Immutable. Gateway specific configuration.
+        If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_config")
+
+    @gateway_config.setter
+    def gateway_config(self, value: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']]):
+        pulumi.set(self, "gateway_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user-provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the API Config.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="openapiDocuments")
+    def openapi_documents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]]:
+        """
+        An OpenAPI Specification Document describing an API.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "openapi_documents")
+
+    @openapi_documents.setter
+    def openapi_documents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]]):
+        pulumi.set(self, "openapi_documents", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceConfigId")
+    def service_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        """
+        return pulumi.get(self, "service_config_id")
+
+    @service_config_id.setter
+    def service_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_config_id", value)
+
+
 class ApiConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -169,9 +347,7 @@ class ApiConfig(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An API Configuration is an association of an API Controller Config and a Gateway Config
 
@@ -271,15 +447,7 @@ class ApiConfig(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -289,22 +457,22 @@ class ApiConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApiConfigArgs.__new__(ApiConfigArgs)
 
             if api is None and not opts.urn:
                 raise TypeError("Missing required property 'api'")
-            __props__['api'] = api
-            __props__['api_config_id'] = api_config_id
-            __props__['api_config_id_prefix'] = api_config_id_prefix
-            __props__['display_name'] = display_name
-            __props__['gateway_config'] = gateway_config
-            __props__['labels'] = labels
+            __props__.__dict__["api"] = api
+            __props__.__dict__["api_config_id"] = api_config_id
+            __props__.__dict__["api_config_id_prefix"] = api_config_id_prefix
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["gateway_config"] = gateway_config
+            __props__.__dict__["labels"] = labels
             if openapi_documents is None and not opts.urn:
                 raise TypeError("Missing required property 'openapi_documents'")
-            __props__['openapi_documents'] = openapi_documents
-            __props__['project'] = project
-            __props__['name'] = None
-            __props__['service_config_id'] = None
+            __props__.__dict__["openapi_documents"] = openapi_documents
+            __props__.__dict__["project"] = project
+            __props__.__dict__["name"] = None
+            __props__.__dict__["service_config_id"] = None
         super(ApiConfig, __self__).__init__(
             'gcp:apigateway/apiConfig:ApiConfig',
             resource_name,
@@ -350,18 +518,18 @@ class ApiConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApiConfigState.__new__(_ApiConfigState)
 
-        __props__["api"] = api
-        __props__["api_config_id"] = api_config_id
-        __props__["api_config_id_prefix"] = api_config_id_prefix
-        __props__["display_name"] = display_name
-        __props__["gateway_config"] = gateway_config
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["openapi_documents"] = openapi_documents
-        __props__["project"] = project
-        __props__["service_config_id"] = service_config_id
+        __props__.__dict__["api"] = api
+        __props__.__dict__["api_config_id"] = api_config_id
+        __props__.__dict__["api_config_id_prefix"] = api_config_id_prefix
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["gateway_config"] = gateway_config
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["openapi_documents"] = openapi_documents
+        __props__.__dict__["project"] = project
+        __props__.__dict__["service_config_id"] = service_config_id
         return ApiConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -448,10 +616,4 @@ class ApiConfig(pulumi.CustomResource):
         The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
         """
         return pulumi.get(self, "service_config_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

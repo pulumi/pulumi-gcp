@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'WorkloadIdentityPoolProviderAws',
@@ -18,6 +18,23 @@ __all__ = [
 
 @pulumi.output_type
 class WorkloadIdentityPoolProviderAws(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountId":
+            suggest = "account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolProviderAws. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolProviderAws.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolProviderAws.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_id: str):
         """
@@ -33,12 +50,28 @@ class WorkloadIdentityPoolProviderAws(dict):
         """
         return pulumi.get(self, "account_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkloadIdentityPoolProviderOidc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issuerUri":
+            suggest = "issuer_uri"
+        elif key == "allowedAudiences":
+            suggest = "allowed_audiences"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolProviderOidc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolProviderOidc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolProviderOidc.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  issuer_uri: str,
                  allowed_audiences: Optional[Sequence[str]] = None):
@@ -83,9 +116,6 @@ class WorkloadIdentityPoolProviderOidc(dict):
         ```
         """
         return pulumi.get(self, "allowed_audiences")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -48,6 +48,25 @@ __all__ = [
 
 @pulumi.output_type
 class AuthorityAccessUrl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificateAccessUrl":
+            suggest = "ca_certificate_access_url"
+        elif key == "crlAccessUrl":
+            suggest = "crl_access_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityAccessUrl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityAccessUrl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityAccessUrl.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ca_certificate_access_url: Optional[str] = None,
                  crl_access_url: Optional[str] = None):
@@ -66,12 +85,28 @@ class AuthorityAccessUrl(dict):
     def crl_access_url(self) -> Optional[str]:
         return pulumi.get(self, "crl_access_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reusableConfig":
+            suggest = "reusable_config"
+        elif key == "subjectConfig":
+            suggest = "subject_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reusable_config: 'outputs.AuthorityConfigReusableConfig',
                  subject_config: 'outputs.AuthorityConfigSubjectConfig'):
@@ -106,12 +141,26 @@ class AuthorityConfig(dict):
         """
         return pulumi.get(self, "subject_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityConfigReusableConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reusableConfig":
+            suggest = "reusable_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityConfigReusableConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityConfigReusableConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityConfigReusableConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reusable_config: str):
         """
@@ -133,12 +182,28 @@ class AuthorityConfigReusableConfig(dict):
         """
         return pulumi.get(self, "reusable_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityConfigSubjectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commonName":
+            suggest = "common_name"
+        elif key == "subjectAltName":
+            suggest = "subject_alt_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityConfigSubjectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityConfigSubjectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityConfigSubjectConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  common_name: str,
                  subject: 'outputs.AuthorityConfigSubjectConfigSubject',
@@ -181,12 +246,32 @@ class AuthorityConfigSubjectConfig(dict):
         """
         return pulumi.get(self, "subject_alt_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityConfigSubjectConfigSubject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countryCode":
+            suggest = "country_code"
+        elif key == "organizationalUnit":
+            suggest = "organizational_unit"
+        elif key == "postalCode":
+            suggest = "postal_code"
+        elif key == "streetAddress":
+            suggest = "street_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityConfigSubjectConfigSubject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityConfigSubjectConfigSubject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityConfigSubjectConfigSubject.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  organization: str,
                  country_code: Optional[str] = None,
@@ -274,12 +359,30 @@ class AuthorityConfigSubjectConfigSubject(dict):
         """
         return pulumi.get(self, "street_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityConfigSubjectConfigSubjectAltName(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsNames":
+            suggest = "dns_names"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+        elif key == "ipAddresses":
+            suggest = "ip_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityConfigSubjectConfigSubjectAltName. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityConfigSubjectConfigSubjectAltName.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityConfigSubjectConfigSubjectAltName.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dns_names: Optional[Sequence[str]] = None,
                  email_addresses: Optional[Sequence[str]] = None,
@@ -332,9 +435,6 @@ class AuthorityConfigSubjectConfigSubjectAltName(dict):
         """
         return pulumi.get(self, "uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityIamBindingCondition(dict):
@@ -361,9 +461,6 @@ class AuthorityIamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -392,12 +489,28 @@ class AuthorityIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityIssuingOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeCaCertUrl":
+            suggest = "include_ca_cert_url"
+        elif key == "includeCrlAccessUrl":
+            suggest = "include_crl_access_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityIssuingOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityIssuingOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityIssuingOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  include_ca_cert_url: Optional[bool] = None,
                  include_crl_access_url: Optional[bool] = None):
@@ -432,12 +545,26 @@ class AuthorityIssuingOptions(dict):
         """
         return pulumi.get(self, "include_crl_access_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorityKeySpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudKmsKeyVersion":
+            suggest = "cloud_kms_key_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityKeySpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityKeySpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityKeySpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: Optional[str] = None,
                  cloud_kms_key_version: Optional[str] = None):
@@ -472,12 +599,40 @@ class AuthorityKeySpec(dict):
         """
         return pulumi.get(self, "cloud_kms_key_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescription(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+        elif key == "aiaIssuingCertificateUrls":
+            suggest = "aia_issuing_certificate_urls"
+        elif key == "authorityKeyId":
+            suggest = "authority_key_id"
+        elif key == "certFingerprint":
+            suggest = "cert_fingerprint"
+        elif key == "configValues":
+            suggest = "config_values"
+        elif key == "crlDistributionPoints":
+            suggest = "crl_distribution_points"
+        elif key == "subjectDescription":
+            suggest = "subject_description"
+        elif key == "subjectKeyId":
+            suggest = "subject_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescription. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescription.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescription.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key: 'outputs.CertificateCertificateDescriptionPublicKey',
                  aia_issuing_certificate_urls: Optional[Sequence[str]] = None,
@@ -551,12 +706,26 @@ class CertificateCertificateDescription(dict):
     def subject_key_id(self) -> Optional['outputs.CertificateCertificateDescriptionSubjectKeyId']:
         return pulumi.get(self, "subject_key_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionAuthorityKeyId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionAuthorityKeyId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionAuthorityKeyId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionAuthorityKeyId.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
         if key_id is not None:
@@ -567,12 +736,26 @@ class CertificateCertificateDescriptionAuthorityKeyId(dict):
     def key_id(self) -> Optional[str]:
         return pulumi.get(self, "key_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionCertFingerprint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sha256Hash":
+            suggest = "sha256_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionCertFingerprint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionCertFingerprint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionCertFingerprint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sha256_hash: Optional[str] = None):
         if sha256_hash is not None:
@@ -583,12 +766,26 @@ class CertificateCertificateDescriptionCertFingerprint(dict):
     def sha256_hash(self) -> Optional[str]:
         return pulumi.get(self, "sha256_hash")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionConfigValues(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyUsage":
+            suggest = "key_usage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValues. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionConfigValues.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionConfigValues.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_usage: Optional['outputs.CertificateCertificateDescriptionConfigValuesKeyUsage'] = None):
         if key_usage is not None:
@@ -599,12 +796,30 @@ class CertificateCertificateDescriptionConfigValues(dict):
     def key_usage(self) -> Optional['outputs.CertificateCertificateDescriptionConfigValuesKeyUsage']:
         return pulumi.get(self, "key_usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionConfigValuesKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "unknownExtendedKeyUsages":
+            suggest = "unknown_extended_key_usages"
+        elif key == "baseKeyUsage":
+            suggest = "base_key_usage"
+        elif key == "extendedKeyUsage":
+            suggest = "extended_key_usage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValuesKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  unknown_extended_key_usages: Sequence['outputs.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage'],
                  base_key_usage: Optional['outputs.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage'] = None,
@@ -630,12 +845,26 @@ class CertificateCertificateDescriptionConfigValuesKeyUsage(dict):
     def extended_key_usage(self) -> Optional['outputs.CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage']:
         return pulumi.get(self, "extended_key_usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyUsageOptions":
+            suggest = "key_usage_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_usage_options: Optional['outputs.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions'] = None):
         if key_usage_options is not None:
@@ -646,12 +875,42 @@ class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage(dict):
     def key_usage_options(self) -> Optional['outputs.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions']:
         return pulumi.get(self, "key_usage_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certSign":
+            suggest = "cert_sign"
+        elif key == "contentCommitment":
+            suggest = "content_commitment"
+        elif key == "crlSign":
+            suggest = "crl_sign"
+        elif key == "dataEncipherment":
+            suggest = "data_encipherment"
+        elif key == "decipherOnly":
+            suggest = "decipher_only"
+        elif key == "digitalSignature":
+            suggest = "digital_signature"
+        elif key == "encipherOnly":
+            suggest = "encipher_only"
+        elif key == "keyAgreement":
+            suggest = "key_agreement"
+        elif key == "keyEncipherment":
+            suggest = "key_encipherment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert_sign: Optional[bool] = None,
                  content_commitment: Optional[bool] = None,
@@ -726,12 +985,36 @@ class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageO
     def key_encipherment(self) -> Optional[bool]:
         return pulumi.get(self, "key_encipherment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientAuth":
+            suggest = "client_auth"
+        elif key == "codeSigning":
+            suggest = "code_signing"
+        elif key == "emailProtection":
+            suggest = "email_protection"
+        elif key == "ocspSigning":
+            suggest = "ocsp_signing"
+        elif key == "serverAuth":
+            suggest = "server_auth"
+        elif key == "timeStamping":
+            suggest = "time_stamping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_auth: Optional[bool] = None,
                  code_signing: Optional[bool] = None,
@@ -782,12 +1065,26 @@ class CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage(dict
     def time_stamping(self) -> Optional[bool]:
         return pulumi.get(self, "time_stamping")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "obectId":
+            suggest = "obect_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  obect_id: 'outputs.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId'):
         pulumi.set(__self__, "obect_id", obect_id)
@@ -797,12 +1094,26 @@ class CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsa
     def obect_id(self) -> 'outputs.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId':
         return pulumi.get(self, "obect_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPaths":
+            suggest = "object_id_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
         pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -811,9 +1122,6 @@ class CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsa
     @pulumi.getter(name="objectIdPaths")
     def object_id_paths(self) -> Sequence[int]:
         return pulumi.get(self, "object_id_paths")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -847,12 +1155,34 @@ class CertificateCertificateDescriptionPublicKey(dict):
         """
         return pulumi.get(self, "key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionSubjectDescription(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commonName":
+            suggest = "common_name"
+        elif key == "hexSerialNumber":
+            suggest = "hex_serial_number"
+        elif key == "notAfterTime":
+            suggest = "not_after_time"
+        elif key == "notBeforeTime":
+            suggest = "not_before_time"
+        elif key == "subjectAltName":
+            suggest = "subject_alt_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionSubjectDescription. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionSubjectDescription.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionSubjectDescription.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  common_name: Optional[str] = None,
                  hex_serial_number: Optional[str] = None,
@@ -937,12 +1267,32 @@ class CertificateCertificateDescriptionSubjectDescription(dict):
         """
         return pulumi.get(self, "subject_alt_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionSubjectDescriptionSubject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countryCode":
+            suggest = "country_code"
+        elif key == "organizationalUnit":
+            suggest = "organizational_unit"
+        elif key == "postalCode":
+            suggest = "postal_code"
+        elif key == "streetAddress":
+            suggest = "street_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionSubjectDescriptionSubject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubject.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  country_code: Optional[str] = None,
                  locality: Optional[str] = None,
@@ -1031,12 +1381,32 @@ class CertificateCertificateDescriptionSubjectDescriptionSubject(dict):
         """
         return pulumi.get(self, "street_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customSans":
+            suggest = "custom_sans"
+        elif key == "dnsNames":
+            suggest = "dns_names"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+        elif key == "ipAddresses":
+            suggest = "ip_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionSubjectDescriptionSubjectAltName. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubjectAltName.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubjectAltName.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_sans: Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan'],
                  dns_names: Optional[Sequence[str]] = None,
@@ -1096,12 +1466,26 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
         """
         return pulumi.get(self, "uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "obectId":
+            suggest = "obect_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  critical: bool,
                  obect_id: 'outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId',
@@ -1126,12 +1510,26 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPaths":
+            suggest = "object_id_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
         pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -1141,12 +1539,26 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     def object_id_paths(self) -> Sequence[int]:
         return pulumi.get(self, "object_id_paths")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateCertificateDescriptionSubjectKeyId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionSubjectKeyId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateCertificateDescriptionSubjectKeyId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateCertificateDescriptionSubjectKeyId.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
         if key_id is not None:
@@ -1157,12 +1569,30 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
     def key_id(self) -> Optional[str]:
         return pulumi.get(self, "key_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+        elif key == "reusableConfig":
+            suggest = "reusable_config"
+        elif key == "subjectConfig":
+            suggest = "subject_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key: 'outputs.CertificateConfigPublicKey',
                  reusable_config: 'outputs.CertificateConfigReusableConfig',
@@ -1206,9 +1636,6 @@ class CertificateConfig(dict):
         """
         return pulumi.get(self, "subject_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfigPublicKey(dict):
@@ -1241,12 +1668,26 @@ class CertificateConfigPublicKey(dict):
         """
         return pulumi.get(self, "key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfigReusableConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reusableConfig":
+            suggest = "reusable_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigReusableConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfigReusableConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfigReusableConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reusable_config: str):
         """
@@ -1264,12 +1705,28 @@ class CertificateConfigReusableConfig(dict):
         """
         return pulumi.get(self, "reusable_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfigSubjectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commonName":
+            suggest = "common_name"
+        elif key == "subjectAltName":
+            suggest = "subject_alt_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigSubjectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfigSubjectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfigSubjectConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  common_name: str,
                  subject: 'outputs.CertificateConfigSubjectConfigSubject',
@@ -1312,12 +1769,32 @@ class CertificateConfigSubjectConfig(dict):
         """
         return pulumi.get(self, "subject_alt_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfigSubjectConfigSubject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countryCode":
+            suggest = "country_code"
+        elif key == "organizationalUnit":
+            suggest = "organizational_unit"
+        elif key == "postalCode":
+            suggest = "postal_code"
+        elif key == "streetAddress":
+            suggest = "street_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigSubjectConfigSubject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfigSubjectConfigSubject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfigSubjectConfigSubject.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  organization: str,
                  country_code: Optional[str] = None,
@@ -1405,12 +1882,30 @@ class CertificateConfigSubjectConfigSubject(dict):
         """
         return pulumi.get(self, "street_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfigSubjectConfigSubjectAltName(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsNames":
+            suggest = "dns_names"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+        elif key == "ipAddresses":
+            suggest = "ip_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigSubjectConfigSubjectAltName. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfigSubjectConfigSubjectAltName.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfigSubjectConfigSubjectAltName.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dns_names: Optional[Sequence[str]] = None,
                  email_addresses: Optional[Sequence[str]] = None,
@@ -1463,12 +1958,28 @@ class CertificateConfigSubjectConfigSubjectAltName(dict):
         """
         return pulumi.get(self, "uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateRevocationDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "revocationState":
+            suggest = "revocation_state"
+        elif key == "revocationTime":
+            suggest = "revocation_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateRevocationDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateRevocationDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateRevocationDetail.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  revocation_state: Optional[str] = None,
                  revocation_time: Optional[str] = None):
@@ -1486,8 +1997,5 @@ class CertificateRevocationDetail(dict):
     @pulumi.getter(name="revocationTime")
     def revocation_time(self) -> Optional[str]:
         return pulumi.get(self, "revocation_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

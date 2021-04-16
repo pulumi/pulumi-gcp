@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
 
@@ -179,6 +179,192 @@ class ProjectArgs:
         pulumi.set(self, "skip_delete", value)
 
 
+@pulumi.input_type
+class _ProjectState:
+    def __init__(__self__, *,
+                 auto_create_network: Optional[pulumi.Input[bool]] = None,
+                 billing_account: Optional[pulumi.Input[str]] = None,
+                 folder_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 number: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 skip_delete: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically.  Default `true`.
+               If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
+               will still need to have 1 network slot available to create the project successfully, even if
+               you set `auto_create_network` to `false`, since the network will exist momentarily.
+        :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
+               belongs to. The user or service account performing this operation with the provider
+               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+               See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+               for more details.
+        :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
+               created under. Only one of `org_id` or `folder_id` may be
+               specified. If the `folder_id` is specified, then the project is
+               created under the specified folder. Changing this forces the
+               project to be migrated to the newly specified folder.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+        :param pulumi.Input[str] name: The display name of the project.
+        :param pulumi.Input[str] number: The numeric identifier of the project.
+        :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
+               Changing this forces a new project to be created.  Only one of
+               `org_id` or `folder_id` may be specified. If the `org_id` is
+               specified then the project is created at the top level. Changing
+               this forces the project to be migrated to the newly specified
+               organization.
+        :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
+        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
+               without deleting the Project via the Google API.
+        """
+        if auto_create_network is not None:
+            pulumi.set(__self__, "auto_create_network", auto_create_network)
+        if billing_account is not None:
+            pulumi.set(__self__, "billing_account", billing_account)
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if number is not None:
+            pulumi.set(__self__, "number", number)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if skip_delete is not None:
+            pulumi.set(__self__, "skip_delete", skip_delete)
+
+    @property
+    @pulumi.getter(name="autoCreateNetwork")
+    def auto_create_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create the 'default' network automatically.  Default `true`.
+        If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
+        will still need to have 1 network slot available to create the project successfully, even if
+        you set `auto_create_network` to `false`, since the network will exist momentarily.
+        """
+        return pulumi.get(self, "auto_create_network")
+
+    @auto_create_network.setter
+    def auto_create_network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_create_network", value)
+
+    @property
+    @pulumi.getter(name="billingAccount")
+    def billing_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The alphanumeric ID of the billing account this project
+        belongs to. The user or service account performing this operation with the provider
+        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+        for more details.
+        """
+        return pulumi.get(self, "billing_account")
+
+    @billing_account.setter
+    def billing_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_account", value)
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The numeric ID of the folder this project should be
+        created under. Only one of `org_id` or `folder_id` may be
+        specified. If the `folder_id` is specified, then the project is
+        created under the specified folder. Changing this forces the
+        project to be migrated to the newly specified folder.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @folder_id.setter
+    def folder_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to the project.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the project.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The numeric identifier of the project.
+        """
+        return pulumi.get(self, "number")
+
+    @number.setter
+    def number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "number", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The numeric ID of the organization this project belongs to.
+        Changing this forces a new project to be created.  Only one of
+        `org_id` or `folder_id` may be specified. If the `org_id` is
+        specified then the project is created at the top level. Changing
+        this forces the project to be migrated to the newly specified
+        organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID. Changing this forces a new project to be created.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="skipDelete")
+    def skip_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the resource can be deleted
+        without deleting the Project via the Google API.
+        """
+        return pulumi.get(self, "skip_delete")
+
+    @skip_delete.setter
+    def skip_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_delete", value)
+
+
 class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -192,9 +378,7 @@ class Project(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  skip_delete: Optional[pulumi.Input[bool]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows creation and management of a Google Cloud Platform project.
 
@@ -356,15 +540,7 @@ class Project(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  skip_delete: Optional[pulumi.Input[bool]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -374,19 +550,19 @@ class Project(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__['auto_create_network'] = auto_create_network
-            __props__['billing_account'] = billing_account
-            __props__['folder_id'] = folder_id
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['org_id'] = org_id
+            __props__.__dict__["auto_create_network"] = auto_create_network
+            __props__.__dict__["billing_account"] = billing_account
+            __props__.__dict__["folder_id"] = folder_id
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["org_id"] = org_id
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
-            __props__['skip_delete'] = skip_delete
-            __props__['number'] = None
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["skip_delete"] = skip_delete
+            __props__.__dict__["number"] = None
         super(Project, __self__).__init__(
             'gcp:organizations/project:Project',
             resource_name,
@@ -442,17 +618,17 @@ class Project(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectState.__new__(_ProjectState)
 
-        __props__["auto_create_network"] = auto_create_network
-        __props__["billing_account"] = billing_account
-        __props__["folder_id"] = folder_id
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["number"] = number
-        __props__["org_id"] = org_id
-        __props__["project_id"] = project_id
-        __props__["skip_delete"] = skip_delete
+        __props__.__dict__["auto_create_network"] = auto_create_network
+        __props__.__dict__["billing_account"] = billing_account
+        __props__.__dict__["folder_id"] = folder_id
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["number"] = number
+        __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["skip_delete"] = skip_delete
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -543,10 +719,4 @@ class Project(pulumi.CustomResource):
         without deleting the Project via the Google API.
         """
         return pulumi.get(self, "skip_delete")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -126,6 +126,122 @@ class AccessLevelArgs:
         pulumi.set(self, "name", value)
 
 
+@pulumi.input_type
+class _AccessLevelState:
+    def __init__(__self__, *,
+                 basic: Optional[pulumi.Input['AccessLevelBasicArgs']] = None,
+                 custom: Optional[pulumi.Input['AccessLevelCustomArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessLevel resources.
+        :param pulumi.Input['AccessLevelBasicArgs'] basic: A set of predefined conditions for the access level and a combining function.
+               Structure is documented below.
+        :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+               See CEL spec at: https://github.com/google/cel-spec.
+               Structure is documented below.
+        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
+               with a letter and only include alphanumeric and '_'.
+               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
+               Format: accessPolicies/{policy_id}
+        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+        """
+        if basic is not None:
+            pulumi.set(__self__, "basic", basic)
+        if custom is not None:
+            pulumi.set(__self__, "custom", custom)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def basic(self) -> Optional[pulumi.Input['AccessLevelBasicArgs']]:
+        """
+        A set of predefined conditions for the access level and a combining function.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "basic")
+
+    @basic.setter
+    def basic(self, value: Optional[pulumi.Input['AccessLevelBasicArgs']]):
+        pulumi.set(self, "basic", value)
+
+    @property
+    @pulumi.getter
+    def custom(self) -> Optional[pulumi.Input['AccessLevelCustomArgs']]:
+        """
+        Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        See CEL spec at: https://github.com/google/cel-spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom")
+
+    @custom.setter
+    def custom(self, value: Optional[pulumi.Input['AccessLevelCustomArgs']]):
+        pulumi.set(self, "custom", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the expression
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name for the Access Level. The short_name component must begin
+        with a letter and only include alphanumeric and '_'.
+        Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AccessPolicy this AccessLevel lives in.
+        Format: accessPolicies/{policy_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
 class AccessLevel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -137,9 +253,7 @@ class AccessLevel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An AccessLevel is a label that can be applied to requests to GCP services,
         along with a list of requirements necessary for the label to be applied.
@@ -290,15 +404,7 @@ class AccessLevel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,18 +414,18 @@ class AccessLevel(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessLevelArgs.__new__(AccessLevelArgs)
 
-            __props__['basic'] = basic
-            __props__['custom'] = custom
-            __props__['description'] = description
-            __props__['name'] = name
+            __props__.__dict__["basic"] = basic
+            __props__.__dict__["custom"] = custom
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            __props__.__dict__["parent"] = parent
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
-            __props__['title'] = title
+            __props__.__dict__["title"] = title
         super(AccessLevel, __self__).__init__(
             'gcp:accesscontextmanager/accessLevel:AccessLevel',
             resource_name,
@@ -358,14 +464,14 @@ class AccessLevel(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessLevelState.__new__(_AccessLevelState)
 
-        __props__["basic"] = basic
-        __props__["custom"] = custom
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["parent"] = parent
-        __props__["title"] = title
+        __props__.__dict__["basic"] = basic
+        __props__.__dict__["custom"] = custom
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
+        __props__.__dict__["title"] = title
         return AccessLevel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -421,10 +527,4 @@ class AccessLevel(pulumi.CustomResource):
         Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -173,6 +173,216 @@ class JobArgs:
         pulumi.set(self, "query", value)
 
 
+@pulumi.input_type
+class _JobState:
+    def __init__(__self__, *,
+                 copy: Optional[pulumi.Input['JobCopyArgs']] = None,
+                 extract: Optional[pulumi.Input['JobExtractArgs']] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 job_timeout_ms: Optional[pulumi.Input[str]] = None,
+                 job_type: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 load: Optional[pulumi.Input['JobLoadArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 query: Optional[pulumi.Input['JobQueryArgs']] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
+                 user_email: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Job resources.
+        :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
+               Structure is documented below.
+        :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
+               Structure is documented below.
+        :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
+        :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        :param pulumi.Input[str] job_type: The type of the job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+        :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
+               Structure is documented below.
+        :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        :param pulumi.Input[str] user_email: Email address of the user who ran the job.
+        """
+        if copy is not None:
+            pulumi.set(__self__, "copy", copy)
+        if extract is not None:
+            pulumi.set(__self__, "extract", extract)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if job_timeout_ms is not None:
+            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
+        if job_type is not None:
+            pulumi.set(__self__, "job_type", job_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if load is not None:
+            pulumi.set(__self__, "load", load)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+        if user_email is not None:
+            pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter
+    def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
+        """
+        Copies a table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "copy")
+
+    @copy.setter
+    def copy(self, value: Optional[pulumi.Input['JobCopyArgs']]):
+        pulumi.set(self, "copy", value)
+
+    @property
+    @pulumi.getter
+    def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
+        """
+        Configures an extract job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extract")
+
+    @extract.setter
+    def extract(self, value: Optional[pulumi.Input['JobExtractArgs']]):
+        pulumi.set(self, "extract", value)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter(name="jobTimeoutMs")
+    def job_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        """
+        return pulumi.get(self, "job_timeout_ms")
+
+    @job_timeout_ms.setter
+    def job_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_timeout_ms", value)
+
+    @property
+    @pulumi.getter(name="jobType")
+    def job_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the job.
+        """
+        return pulumi.get(self, "job_type")
+
+    @job_type.setter
+    def job_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_type", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels associated with this job. You can use these to organize and group your jobs.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
+        """
+        Configures a load job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "load")
+
+    @load.setter
+    def load(self, value: Optional[pulumi.Input['JobLoadArgs']]):
+        pulumi.set(self, "load", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location of the job. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
+        """
+        Configures a query job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input['JobQueryArgs']]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]:
+        """
+        The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the user who ran the job.
+        """
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_email", value)
+
+
 class Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -187,9 +397,7 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
         Once a BigQuery job is created, it cannot be changed or deleted.
@@ -621,15 +829,7 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -639,22 +839,22 @@ class Job(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = JobArgs.__new__(JobArgs)
 
-            __props__['copy'] = copy
-            __props__['extract'] = extract
+            __props__.__dict__["copy"] = copy
+            __props__.__dict__["extract"] = extract
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
-            __props__['job_id'] = job_id
-            __props__['job_timeout_ms'] = job_timeout_ms
-            __props__['labels'] = labels
-            __props__['load'] = load
-            __props__['location'] = location
-            __props__['project'] = project
-            __props__['query'] = query
-            __props__['job_type'] = None
-            __props__['statuses'] = None
-            __props__['user_email'] = None
+            __props__.__dict__["job_id"] = job_id
+            __props__.__dict__["job_timeout_ms"] = job_timeout_ms
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["load"] = load
+            __props__.__dict__["location"] = location
+            __props__.__dict__["project"] = project
+            __props__.__dict__["query"] = query
+            __props__.__dict__["job_type"] = None
+            __props__.__dict__["statuses"] = None
+            __props__.__dict__["user_email"] = None
         super(Job, __self__).__init__(
             'gcp:bigquery/job:Job',
             resource_name,
@@ -704,20 +904,20 @@ class Job(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _JobState.__new__(_JobState)
 
-        __props__["copy"] = copy
-        __props__["extract"] = extract
-        __props__["job_id"] = job_id
-        __props__["job_timeout_ms"] = job_timeout_ms
-        __props__["job_type"] = job_type
-        __props__["labels"] = labels
-        __props__["load"] = load
-        __props__["location"] = location
-        __props__["project"] = project
-        __props__["query"] = query
-        __props__["statuses"] = statuses
-        __props__["user_email"] = user_email
+        __props__.__dict__["copy"] = copy
+        __props__.__dict__["extract"] = extract
+        __props__.__dict__["job_id"] = job_id
+        __props__.__dict__["job_timeout_ms"] = job_timeout_ms
+        __props__.__dict__["job_type"] = job_type
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["load"] = load
+        __props__.__dict__["location"] = location
+        __props__.__dict__["project"] = project
+        __props__.__dict__["query"] = query
+        __props__.__dict__["statuses"] = statuses
+        __props__.__dict__["user_email"] = user_email
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -820,10 +1020,4 @@ class Job(pulumi.CustomResource):
         Email address of the user who ran the job.
         """
         return pulumi.get(self, "user_email")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

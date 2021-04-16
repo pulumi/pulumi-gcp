@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A TagBinding represents a connection between a TagValue and a cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
@@ -28,9 +28,9 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/tags"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/tags"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

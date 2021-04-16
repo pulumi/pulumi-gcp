@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -114,6 +114,142 @@ class PolicyArgs:
         pulumi.set(self, "version", value)
 
 
+@pulumi.input_type
+class _PolicyState:
+    def __init__(__self__, *,
+                 boolean_policy: Optional[pulumi.Input['PolicyBooleanPolicyArgs']] = None,
+                 constraint: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 list_policy: Optional[pulumi.Input['PolicyListPolicyArgs']] = None,
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 restore_policy: Optional[pulumi.Input['PolicyRestorePolicyArgs']] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering Policy resources.
+        :param pulumi.Input['PolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        :param pulumi.Input[str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
+        :param pulumi.Input['PolicyListPolicyArgs'] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
+        :param pulumi.Input['PolicyRestorePolicyArgs'] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
+        :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
+        :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
+        """
+        if boolean_policy is not None:
+            pulumi.set(__self__, "boolean_policy", boolean_policy)
+        if constraint is not None:
+            pulumi.set(__self__, "constraint", constraint)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if list_policy is not None:
+            pulumi.set(__self__, "list_policy", list_policy)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if restore_policy is not None:
+            pulumi.set(__self__, "restore_policy", restore_policy)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="booleanPolicy")
+    def boolean_policy(self) -> Optional[pulumi.Input['PolicyBooleanPolicyArgs']]:
+        """
+        A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        """
+        return pulumi.get(self, "boolean_policy")
+
+    @boolean_policy.setter
+    def boolean_policy(self, value: Optional[pulumi.Input['PolicyBooleanPolicyArgs']]):
+        pulumi.set(self, "boolean_policy", value)
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        """
+        return pulumi.get(self, "constraint")
+
+    @constraint.setter
+    def constraint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "constraint", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="listPolicy")
+    def list_policy(self) -> Optional[pulumi.Input['PolicyListPolicyArgs']]:
+        """
+        A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        """
+        return pulumi.get(self, "list_policy")
+
+    @list_policy.setter
+    def list_policy(self, value: Optional[pulumi.Input['PolicyListPolicyArgs']]):
+        pulumi.set(self, "list_policy", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The numeric ID of the organization to set the policy for.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="restorePolicy")
+    def restore_policy(self) -> Optional[pulumi.Input['PolicyRestorePolicyArgs']]:
+        """
+        A restore policy is a constraint to restore the default policy. Structure is documented below.
+        """
+        return pulumi.get(self, "restore_policy")
+
+    @restore_policy.setter
+    def restore_policy(self, value: Optional[pulumi.Input['PolicyRestorePolicyArgs']]):
+        pulumi.set(self, "restore_policy", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        Version of the Policy. Default version is 0.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
+
+
 class Policy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -125,9 +261,7 @@ class Policy(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  restore_policy: Optional[pulumi.Input[pulumi.InputType['PolicyRestorePolicyArgs']]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows management of Organization policies for a Google Organization. For more information see
         [the official
@@ -322,15 +456,7 @@ class Policy(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  restore_policy: Optional[pulumi.Input[pulumi.InputType['PolicyRestorePolicyArgs']]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -340,20 +466,20 @@ class Policy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PolicyArgs.__new__(PolicyArgs)
 
-            __props__['boolean_policy'] = boolean_policy
+            __props__.__dict__["boolean_policy"] = boolean_policy
             if constraint is None and not opts.urn:
                 raise TypeError("Missing required property 'constraint'")
-            __props__['constraint'] = constraint
-            __props__['list_policy'] = list_policy
+            __props__.__dict__["constraint"] = constraint
+            __props__.__dict__["list_policy"] = list_policy
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
-            __props__['org_id'] = org_id
-            __props__['restore_policy'] = restore_policy
-            __props__['version'] = version
-            __props__['etag'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["restore_policy"] = restore_policy
+            __props__.__dict__["version"] = version
+            __props__.__dict__["etag"] = None
+            __props__.__dict__["update_time"] = None
         super(Policy, __self__).__init__(
             'gcp:organizations/policy:Policy',
             resource_name,
@@ -390,16 +516,16 @@ class Policy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PolicyState.__new__(_PolicyState)
 
-        __props__["boolean_policy"] = boolean_policy
-        __props__["constraint"] = constraint
-        __props__["etag"] = etag
-        __props__["list_policy"] = list_policy
-        __props__["org_id"] = org_id
-        __props__["restore_policy"] = restore_policy
-        __props__["update_time"] = update_time
-        __props__["version"] = version
+        __props__.__dict__["boolean_policy"] = boolean_policy
+        __props__.__dict__["constraint"] = constraint
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["list_policy"] = list_policy
+        __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["restore_policy"] = restore_policy
+        __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["version"] = version
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -465,10 +591,4 @@ class Policy(pulumi.CustomResource):
         Version of the Policy. Default version is 0.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

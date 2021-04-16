@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -134,6 +134,194 @@ class ReservationArgs:
         pulumi.set(self, "specific_reservation_required", value)
 
 
+@pulumi.input_type
+class _ReservationState:
+    def __init__(__self__, *,
+                 commitment: Optional[pulumi.Input[str]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 specific_reservation: Optional[pulumi.Input['ReservationSpecificReservationArgs']] = None,
+                 specific_reservation_required: Optional[pulumi.Input[bool]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Reservation resources.
+        :param pulumi.Input[str] commitment: Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['ReservationSpecificReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
+               Structure is documented below.
+        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
+               consume this reservation. Otherwise, it can be consumed by VMs with
+               affinity for any reservation. Defaults to false.
+        :param pulumi.Input[str] status: The status of the reservation.
+        :param pulumi.Input[str] zone: The zone where the reservation is made.
+        """
+        if commitment is not None:
+            pulumi.set(__self__, "commitment", commitment)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if specific_reservation is not None:
+            pulumi.set(__self__, "specific_reservation", specific_reservation)
+        if specific_reservation_required is not None:
+            pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def commitment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        """
+        return pulumi.get(self, "commitment")
+
+    @commitment.setter
+    def commitment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commitment", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> Optional[pulumi.Input['ReservationSpecificReservationArgs']]:
+        """
+        Reservation for instances with specific machine shapes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "specific_reservation")
+
+    @specific_reservation.setter
+    def specific_reservation(self, value: Optional[pulumi.Input['ReservationSpecificReservationArgs']]):
+        pulumi.set(self, "specific_reservation", value)
+
+    @property
+    @pulumi.getter(name="specificReservationRequired")
+    def specific_reservation_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, only VMs that target this reservation by name can
+        consume this reservation. Otherwise, it can be consumed by VMs with
+        affinity for any reservation. Defaults to false.
+        """
+        return pulumi.get(self, "specific_reservation_required")
+
+    @specific_reservation_required.setter
+    def specific_reservation_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "specific_reservation_required", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the reservation.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone where the reservation is made.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 class Reservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -145,9 +333,7 @@ class Reservation(pulumi.CustomResource):
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents a reservation resource. A reservation ensures that capacity is
         held in a specific zone even if the reserved VMs are not running.
@@ -302,15 +488,7 @@ class Reservation(pulumi.CustomResource):
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -320,22 +498,22 @@ class Reservation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ReservationArgs.__new__(ReservationArgs)
 
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['project'] = project
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
             if specific_reservation is None and not opts.urn:
                 raise TypeError("Missing required property 'specific_reservation'")
-            __props__['specific_reservation'] = specific_reservation
-            __props__['specific_reservation_required'] = specific_reservation_required
+            __props__.__dict__["specific_reservation"] = specific_reservation
+            __props__.__dict__["specific_reservation_required"] = specific_reservation_required
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
-            __props__['zone'] = zone
-            __props__['commitment'] = None
-            __props__['creation_timestamp'] = None
-            __props__['self_link'] = None
-            __props__['status'] = None
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["commitment"] = None
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["status"] = None
         super(Reservation, __self__).__init__(
             'gcp:compute/reservation:Reservation',
             resource_name,
@@ -386,18 +564,18 @@ class Reservation(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ReservationState.__new__(_ReservationState)
 
-        __props__["commitment"] = commitment
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["self_link"] = self_link
-        __props__["specific_reservation"] = specific_reservation
-        __props__["specific_reservation_required"] = specific_reservation_required
-        __props__["status"] = status
-        __props__["zone"] = zone
+        __props__.__dict__["commitment"] = commitment
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["specific_reservation"] = specific_reservation
+        __props__.__dict__["specific_reservation_required"] = specific_reservation_required
+        __props__.__dict__["status"] = status
+        __props__.__dict__["zone"] = zone
         return Reservation(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -489,10 +667,4 @@ class Reservation(pulumi.CustomResource):
         The zone where the reservation is made.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

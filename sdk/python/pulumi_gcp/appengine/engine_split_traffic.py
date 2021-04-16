@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -86,6 +86,82 @@ class EngineSplitTrafficArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _EngineSplitTrafficState:
+    def __init__(__self__, *,
+                 migrate_traffic: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None):
+        """
+        Input properties used for looking up and filtering EngineSplitTraffic resources.
+        :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] service: The name of the service these settings apply to.
+        :param pulumi.Input['EngineSplitTrafficSplitArgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+               Structure is documented below.
+        """
+        if migrate_traffic is not None:
+            pulumi.set(__self__, "migrate_traffic", migrate_traffic)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if split is not None:
+            pulumi.set(__self__, "split", split)
+
+    @property
+    @pulumi.getter(name="migrateTraffic")
+    def migrate_traffic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true traffic will be migrated to this version.
+        """
+        return pulumi.get(self, "migrate_traffic")
+
+    @migrate_traffic.setter
+    def migrate_traffic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "migrate_traffic", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the service these settings apply to.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def split(self) -> Optional[pulumi.Input['EngineSplitTrafficSplitArgs']]:
+        """
+        Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "split")
+
+    @split.setter
+    def split(self, value: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']]):
+        pulumi.set(self, "split", value)
+
+
 class EngineSplitTraffic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -95,9 +171,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
 
@@ -288,15 +362,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  split: Optional[pulumi.Input[pulumi.InputType['EngineSplitTrafficSplitArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -306,16 +372,16 @@ class EngineSplitTraffic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EngineSplitTrafficArgs.__new__(EngineSplitTrafficArgs)
 
-            __props__['migrate_traffic'] = migrate_traffic
-            __props__['project'] = project
+            __props__.__dict__["migrate_traffic"] = migrate_traffic
+            __props__.__dict__["project"] = project
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
-            __props__['service'] = service
+            __props__.__dict__["service"] = service
             if split is None and not opts.urn:
                 raise TypeError("Missing required property 'split'")
-            __props__['split'] = split
+            __props__.__dict__["split"] = split
         super(EngineSplitTraffic, __self__).__init__(
             'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
             resource_name,
@@ -346,12 +412,12 @@ class EngineSplitTraffic(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EngineSplitTrafficState.__new__(_EngineSplitTrafficState)
 
-        __props__["migrate_traffic"] = migrate_traffic
-        __props__["project"] = project
-        __props__["service"] = service
-        __props__["split"] = split
+        __props__.__dict__["migrate_traffic"] = migrate_traffic
+        __props__.__dict__["project"] = project
+        __props__.__dict__["service"] = service
+        __props__.__dict__["split"] = split
         return EngineSplitTraffic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -387,10 +453,4 @@ class EngineSplitTraffic(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "split")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

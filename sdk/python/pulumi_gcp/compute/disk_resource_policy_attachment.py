@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DiskResourcePolicyAttachmentArgs', 'DiskResourcePolicyAttachment']
 
@@ -85,6 +85,82 @@ class DiskResourcePolicyAttachmentArgs:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.input_type
+class _DiskResourcePolicyAttachmentState:
+    def __init__(__self__, *,
+                 disk: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DiskResourcePolicyAttachment resources.
+        :param pulumi.Input[str] disk: The name of the disk in which the resource policies are attached to.
+        :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot
+               creation. Do not specify the self link.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
+        """
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the disk in which the resource policies are attached to.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource policy to be attached to the disk for scheduling snapshot
+        creation. Do not specify the self link.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the zone where the disk resides.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 class DiskResourcePolicyAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -94,9 +170,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Adds existing resource policies to a disk. You can only add one policy
         which will be applied to this disk for scheduling snapshot creation.
@@ -241,15 +315,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -259,14 +325,14 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DiskResourcePolicyAttachmentArgs.__new__(DiskResourcePolicyAttachmentArgs)
 
             if disk is None and not opts.urn:
                 raise TypeError("Missing required property 'disk'")
-            __props__['disk'] = disk
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['zone'] = zone
+            __props__.__dict__["disk"] = disk
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["zone"] = zone
         super(DiskResourcePolicyAttachment, __self__).__init__(
             'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
             resource_name,
@@ -297,12 +363,12 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DiskResourcePolicyAttachmentState.__new__(_DiskResourcePolicyAttachmentState)
 
-        __props__["disk"] = disk
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["zone"] = zone
+        __props__.__dict__["disk"] = disk
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["zone"] = zone
         return DiskResourcePolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -338,10 +404,4 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         A reference to the zone where the disk resides.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

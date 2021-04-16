@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -221,6 +221,258 @@ class MetricDescriptorArgs:
         pulumi.set(self, "unit", value)
 
 
+@pulumi.input_type
+class _MetricDescriptorState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]]] = None,
+                 launch_stage: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input['MetricDescriptorMetadataArgs']] = None,
+                 metric_kind: Optional[pulumi.Input[str]] = None,
+                 monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[str]] = None,
+                 value_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering MetricDescriptor resources.
+        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+        :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+               Structure is documented below.
+        :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
+               Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        :param pulumi.Input['MetricDescriptorMetadataArgs'] metadata: Metadata which can be used to guide usage of the metric.
+               Structure is documented below.
+        :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+               Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
+               is associated with this metric type can only be associated with one of the monitored resource types listed here. This
+               field allows time series to be associated with the intersection of this metric type and the monitored resource types in
+               this list.
+        :param pulumi.Input[str] name: The resource name of the metric descriptor.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
+        :param pulumi.Input[str] unit: The units in which the metric value is reported. It is only applicable if the
+               valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
+               the stored metric values.
+               Different systems may scale the values to be more easily displayed (so a value of
+               0.02KBy might be displayed as 20By, and a value of 3523KBy might be displayed as
+               3.5MBy). However, if the unit is KBy, then the value of the metric is always in
+               thousands of bytes, no matter how it may be displayed.
+               If you want a custom metric to record the exact number of CPU-seconds used by a job,
+               you can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently
+               1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as
+               12005.
+               Alternatively, if you want a custom metric to record data in a more granular way, you
+               can create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value
+               12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
+               The supported units are a subset of The Unified Code for Units of Measure standard.
+               More info can be found in the API documentation
+               (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
+               Default value is `STRING`.
+               Possible values are `STRING`, `BOOL`, and `INT64`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if launch_stage is not None:
+            pulumi.set(__self__, "launch_stage", launch_stage)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if metric_kind is not None:
+            pulumi.set(__self__, "metric_kind", metric_kind)
+        if monitored_resource_types is not None:
+            pulumi.set(__self__, "monitored_resource_types", monitored_resource_types)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if value_type is not None:
+            pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable description for the label.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]]]:
+        """
+        The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="launchStage")
+    def launch_stage(self) -> Optional[pulumi.Input[str]]:
+        """
+        The launch stage of the metric definition.
+        Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        """
+        return pulumi.get(self, "launch_stage")
+
+    @launch_stage.setter
+    def launch_stage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "launch_stage", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['MetricDescriptorMetadataArgs']]:
+        """
+        Metadata which can be used to guide usage of the metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['MetricDescriptorMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="metricKind")
+    def metric_kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+        Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+        """
+        return pulumi.get(self, "metric_kind")
+
+    @metric_kind.setter
+    def metric_kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_kind", value)
+
+    @property
+    @pulumi.getter(name="monitoredResourceTypes")
+    def monitored_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
+        is associated with this metric type can only be associated with one of the monitored resource types listed here. This
+        field allows time series to be associated with the intersection of this metric type and the monitored resource types in
+        this list.
+        """
+        return pulumi.get(self, "monitored_resource_types")
+
+    @monitored_resource_types.setter
+    def monitored_resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "monitored_resource_types", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the metric descriptor.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The units in which the metric value is reported. It is only applicable if the
+        valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
+        the stored metric values.
+        Different systems may scale the values to be more easily displayed (so a value of
+        0.02KBy might be displayed as 20By, and a value of 3523KBy might be displayed as
+        3.5MBy). However, if the unit is KBy, then the value of the metric is always in
+        thousands of bytes, no matter how it may be displayed.
+        If you want a custom metric to record the exact number of CPU-seconds used by a job,
+        you can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently
+        1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as
+        12005.
+        Alternatively, if you want a custom metric to record data in a more granular way, you
+        can create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value
+        12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
+        The supported units are a subset of The Unified Code for Units of Measure standard.
+        More info can be found in the API documentation
+        (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        """
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of data that can be assigned to the label.
+        Default value is `STRING`.
+        Possible values are `STRING`, `BOOL`, and `INT64`.
+        """
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_type", value)
+
+
 class MetricDescriptor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -236,9 +488,7 @@ class MetricDescriptor(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
 
@@ -442,15 +692,7 @@ class MetricDescriptor(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -460,30 +702,30 @@ class MetricDescriptor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MetricDescriptorArgs.__new__(MetricDescriptorArgs)
 
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['labels'] = labels
-            __props__['launch_stage'] = launch_stage
-            __props__['metadata'] = metadata
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["launch_stage"] = launch_stage
+            __props__.__dict__["metadata"] = metadata
             if metric_kind is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_kind'")
-            __props__['metric_kind'] = metric_kind
-            __props__['project'] = project
+            __props__.__dict__["metric_kind"] = metric_kind
+            __props__.__dict__["project"] = project
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
-            __props__['unit'] = unit
+            __props__.__dict__["type"] = type
+            __props__.__dict__["unit"] = unit
             if value_type is None and not opts.urn:
                 raise TypeError("Missing required property 'value_type'")
-            __props__['value_type'] = value_type
-            __props__['monitored_resource_types'] = None
-            __props__['name'] = None
+            __props__.__dict__["value_type"] = value_type
+            __props__.__dict__["monitored_resource_types"] = None
+            __props__.__dict__["name"] = None
         super(MetricDescriptor, __self__).__init__(
             'gcp:monitoring/metricDescriptor:MetricDescriptor',
             resource_name,
@@ -554,20 +796,20 @@ class MetricDescriptor(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MetricDescriptorState.__new__(_MetricDescriptorState)
 
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["labels"] = labels
-        __props__["launch_stage"] = launch_stage
-        __props__["metadata"] = metadata
-        __props__["metric_kind"] = metric_kind
-        __props__["monitored_resource_types"] = monitored_resource_types
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["type"] = type
-        __props__["unit"] = unit
-        __props__["value_type"] = value_type
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["launch_stage"] = launch_stage
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["metric_kind"] = metric_kind
+        __props__.__dict__["monitored_resource_types"] = monitored_resource_types
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["type"] = type
+        __props__.__dict__["unit"] = unit
+        __props__.__dict__["value_type"] = value_type
         return MetricDescriptor(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -691,10 +933,4 @@ class MetricDescriptor(pulumi.CustomResource):
         Possible values are `STRING`, `BOOL`, and `INT64`.
         """
         return pulumi.get(self, "value_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['EnvironmentArgs', 'Environment']
 
@@ -83,6 +83,80 @@ class EnvironmentArgs:
         pulumi.set(self, "name", value)
 
 
+@pulumi.input_type
+class _EnvironmentState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Environment resources.
+        :param pulumi.Input[str] description: Description of the environment.
+        :param pulumi.Input[str] display_name: Display name of the environment.
+        :param pulumi.Input[str] name: The resource ID of the environment.
+        :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
+               in the format `organizations/{{org_name}}`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the environment.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the environment.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the environment.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Apigee Organization associated with the Apigee environment,
+        in the format `organizations/{{org_name}}`.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
+
+
 class Environment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -92,9 +166,7 @@ class Environment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An `Environment` in Apigee.
 
@@ -174,15 +246,7 @@ class Environment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -192,14 +256,14 @@ class Environment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
-            __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['name'] = name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
-            __props__['org_id'] = org_id
+            __props__.__dict__["org_id"] = org_id
         super(Environment, __self__).__init__(
             'gcp:apigee/environment:Environment',
             resource_name,
@@ -229,12 +293,12 @@ class Environment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EnvironmentState.__new__(_EnvironmentState)
 
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["name"] = name
-        __props__["org_id"] = org_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["org_id"] = org_id
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -269,10 +333,4 @@ class Environment(pulumi.CustomResource):
         in the format `organizations/{{org_name}}`.
         """
         return pulumi.get(self, "org_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

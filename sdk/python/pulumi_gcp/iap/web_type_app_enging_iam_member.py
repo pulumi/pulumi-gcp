@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -101,6 +101,114 @@ class WebTypeAppEngingIamMemberArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _WebTypeAppEngingIamMemberState:
+    def __init__(__self__, *,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input['WebTypeAppEngingIamMemberConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WebTypeAppEngingIamMember resources.
+        :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input['WebTypeAppEngingIamMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['WebTypeAppEngingIamMemberConditionArgs']]:
+        """
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['WebTypeAppEngingIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
 class WebTypeAppEngingIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -111,9 +219,7 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeAppEngine. Each of these resources serves a different use case:
 
@@ -415,15 +521,7 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,20 +531,20 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WebTypeAppEngingIamMemberArgs.__new__(WebTypeAppEngingIamMemberArgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
-            __props__['app_id'] = app_id
-            __props__['condition'] = condition
+            __props__.__dict__["app_id"] = app_id
+            __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
-            __props__['project'] = project
+            __props__.__dict__["member"] = member
+            __props__.__dict__["project"] = project
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(WebTypeAppEngingIamMember, __self__).__init__(
             'gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember',
             resource_name,
@@ -482,14 +580,14 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WebTypeAppEngingIamMemberState.__new__(_WebTypeAppEngingIamMemberState)
 
-        __props__["app_id"] = app_id
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["member"] = member
-        __props__["project"] = project
-        __props__["role"] = role
+        __props__.__dict__["app_id"] = app_id
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["member"] = member
+        __props__.__dict__["project"] = project
+        __props__.__dict__["role"] = role
         return WebTypeAppEngingIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -540,10 +638,4 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

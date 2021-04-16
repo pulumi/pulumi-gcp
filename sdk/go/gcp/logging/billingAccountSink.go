@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
@@ -28,10 +28,10 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -86,7 +86,7 @@ type BillingAccountSink struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -158,7 +158,7 @@ type billingAccountSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -196,7 +196,7 @@ type BillingAccountSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -238,7 +238,7 @@ type billingAccountSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -274,7 +274,7 @@ type BillingAccountSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {

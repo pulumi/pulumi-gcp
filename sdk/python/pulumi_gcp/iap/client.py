@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ClientArgs', 'Client']
 
@@ -52,6 +52,82 @@ class ClientArgs:
         pulumi.set(self, "display_name", value)
 
 
+@pulumi.input_type
+class _ClientState:
+    def __init__(__self__, *,
+                 brand: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Client resources.
+        :param pulumi.Input[str] brand: Identifier of the brand to which this client
+               is attached to. The format is
+               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
+        :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
+        :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
+        """
+        if brand is not None:
+            pulumi.set(__self__, "brand", brand)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter
+    def brand(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the brand to which this client
+        is attached to. The format is
+        `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        """
+        return pulumi.get(self, "brand")
+
+    @brand.setter
+    def brand(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "brand", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Unique identifier of the OAuth client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-friendly name given to the OAuth client.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Client secret of the OAuth client.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+
 class Client(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -59,9 +135,7 @@ class Client(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  brand: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Contains the data that describes an Identity Aware Proxy owned client.
 
@@ -152,15 +226,7 @@ class Client(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  brand: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -170,16 +236,16 @@ class Client(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClientArgs.__new__(ClientArgs)
 
             if brand is None and not opts.urn:
                 raise TypeError("Missing required property 'brand'")
-            __props__['brand'] = brand
+            __props__.__dict__["brand"] = brand
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['client_id'] = None
-            __props__['secret'] = None
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["client_id"] = None
+            __props__.__dict__["secret"] = None
         super(Client, __self__).__init__(
             'gcp:iap/client:Client',
             resource_name,
@@ -210,12 +276,12 @@ class Client(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClientState.__new__(_ClientState)
 
-        __props__["brand"] = brand
-        __props__["client_id"] = client_id
-        __props__["display_name"] = display_name
-        __props__["secret"] = secret
+        __props__.__dict__["brand"] = brand
+        __props__.__dict__["client_id"] = client_id
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["secret"] = secret
         return Client(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -251,10 +317,4 @@ class Client(pulumi.CustomResource):
         Output only. Client secret of the OAuth client.
         """
         return pulumi.get(self, "secret")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -112,6 +112,124 @@ class EntityTypeArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _EntityTypeState:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering EntityType resources.
+        :param pulumi.Input[str] display_name: The name of this entity type to be displayed on the console.
+        :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
+        :param pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
+               Structure is documented below.
+        :param pulumi.Input[str] kind: Indicates the kind of entity type.
+               * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
+               * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
+               types can contain references to other entity types (with or without aliases).
+               * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+               Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+        :param pulumi.Input[str] name: The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enable_fuzzy_extraction is not None:
+            pulumi.set(__self__, "enable_fuzzy_extraction", enable_fuzzy_extraction)
+        if entities is not None:
+            pulumi.set(__self__, "entities", entities)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this entity type to be displayed on the console.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="enableFuzzyExtraction")
+    def enable_fuzzy_extraction(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables fuzzy entity extraction during classification.
+        """
+        return pulumi.get(self, "enable_fuzzy_extraction")
+
+    @enable_fuzzy_extraction.setter
+    def enable_fuzzy_extraction(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_fuzzy_extraction", value)
+
+    @property
+    @pulumi.getter
+    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]:
+        """
+        The collection of entity entries associated with the entity type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entities")
+
+    @entities.setter
+    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]):
+        pulumi.set(self, "entities", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the kind of entity type.
+        * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
+        * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
+        types can contain references to other entity types (with or without aliases).
+        * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+        Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
 class EntityType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -122,9 +240,7 @@ class EntityType(pulumi.CustomResource):
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityTypeEntityArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents an entity type. Entity types serve as a tool for extracting parameter values from natural language queries.
 
@@ -266,15 +382,7 @@ class EntityType(pulumi.CustomResource):
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityTypeEntityArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,18 +392,18 @@ class EntityType(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EntityTypeArgs.__new__(EntityTypeArgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['enable_fuzzy_extraction'] = enable_fuzzy_extraction
-            __props__['entities'] = entities
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enable_fuzzy_extraction"] = enable_fuzzy_extraction
+            __props__.__dict__["entities"] = entities
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
-            __props__['kind'] = kind
-            __props__['project'] = project
-            __props__['name'] = None
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["project"] = project
+            __props__.__dict__["name"] = None
         super(EntityType, __self__).__init__(
             'gcp:diagflow/entityType:EntityType',
             resource_name,
@@ -335,14 +443,14 @@ class EntityType(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EntityTypeState.__new__(_EntityTypeState)
 
-        __props__["display_name"] = display_name
-        __props__["enable_fuzzy_extraction"] = enable_fuzzy_extraction
-        __props__["entities"] = entities
-        __props__["kind"] = kind
-        __props__["name"] = name
-        __props__["project"] = project
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["enable_fuzzy_extraction"] = enable_fuzzy_extraction
+        __props__.__dict__["entities"] = entities
+        __props__.__dict__["kind"] = kind
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
         return EntityType(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -399,10 +507,4 @@ class EntityType(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

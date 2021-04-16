@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['EndpointArgs', 'Endpoint']
 
@@ -106,6 +106,120 @@ class EndpointArgs:
         pulumi.set(self, "port", value)
 
 
+@pulumi.input_type
+class _EndpointState:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 endpoint_id: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Endpoint resources.
+        :param pulumi.Input[str] address: IPv4 or IPv6 address of the endpoint.
+        :param pulumi.Input[str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
+               lowercase letters or the hyphen character.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for the endpoint. This data can be consumed
+               by service clients. The entire metadata dictionary may contain
+               up to 512 characters, spread across all key-value pairs.
+               Metadata that goes beyond any these limits will be rejected.
+        :param pulumi.Input[str] name: The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
+               range of [0, 65535]. If unspecified, the default is 0.
+        :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if endpoint_id is not None:
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 or IPv6 address of the endpoint.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Resource ID must be 1-63 characters long, including digits,
+        lowercase letters or the hyphen character.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @endpoint_id.setter
+    def endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_id", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Metadata for the endpoint. This data can be consumed
+        by service clients. The entire metadata dictionary may contain
+        up to 512 characters, spread across all key-value pairs.
+        Metadata that goes beyond any these limits will be rejected.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port that the endpoint is running on, must be in the
+        range of [0, 65535]. If unspecified, the default is 0.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the service that this endpoint provides.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
 class Endpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -116,9 +230,7 @@ class Endpoint(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An individual endpoint that provides a service.
 
@@ -262,15 +374,7 @@ class Endpoint(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -280,18 +384,18 @@ class Endpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EndpointArgs.__new__(EndpointArgs)
 
-            __props__['address'] = address
+            __props__.__dict__["address"] = address
             if endpoint_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_id'")
-            __props__['endpoint_id'] = endpoint_id
-            __props__['metadata'] = metadata
-            __props__['port'] = port
+            __props__.__dict__["endpoint_id"] = endpoint_id
+            __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["port"] = port
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
-            __props__['service'] = service
-            __props__['name'] = None
+            __props__.__dict__["service"] = service
+            __props__.__dict__["name"] = None
         super(Endpoint, __self__).__init__(
             'gcp:servicedirectory/endpoint:Endpoint',
             resource_name,
@@ -329,14 +433,14 @@ class Endpoint(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EndpointState.__new__(_EndpointState)
 
-        __props__["address"] = address
-        __props__["endpoint_id"] = endpoint_id
-        __props__["metadata"] = metadata
-        __props__["name"] = name
-        __props__["port"] = port
-        __props__["service"] = service
+        __props__.__dict__["address"] = address
+        __props__.__dict__["endpoint_id"] = endpoint_id
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["name"] = name
+        __props__.__dict__["port"] = port
+        __props__.__dict__["service"] = service
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -391,10 +495,4 @@ class Endpoint(pulumi.CustomResource):
         The resource name of the service that this endpoint provides.
         """
         return pulumi.get(self, "service")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

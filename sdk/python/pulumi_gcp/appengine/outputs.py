@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -57,6 +57,23 @@ __all__ = [
 
 @pulumi.output_type
 class ApplicationFeatureSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "splitHealthChecks":
+            suggest = "split_health_checks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationFeatureSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationFeatureSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationFeatureSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  split_health_checks: bool):
         """
@@ -74,12 +91,30 @@ class ApplicationFeatureSettings(dict):
         """
         return pulumi.get(self, "split_health_checks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApplicationIap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2ClientId":
+            suggest = "oauth2_client_id"
+        elif key == "oauth2ClientSecret":
+            suggest = "oauth2_client_secret"
+        elif key == "oauth2ClientSecretSha256":
+            suggest = "oauth2_client_secret_sha256"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationIap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationIap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationIap.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  oauth2_client_id: str,
                  oauth2_client_secret: str,
@@ -134,9 +169,6 @@ class ApplicationIap(dict):
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApplicationUrlDispatchRule(dict):
@@ -165,9 +197,6 @@ class ApplicationUrlDispatchRule(dict):
     @pulumi.getter
     def service(self) -> Optional[str]:
         return pulumi.get(self, "service")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -216,9 +245,6 @@ class ApplicationUrlDispatchRulesDispatchRule(dict):
         """
         return pulumi.get(self, "domain")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainMappingResourceRecord(dict):
@@ -248,12 +274,30 @@ class DomainMappingResourceRecord(dict):
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainMappingSslSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sslManagementType":
+            suggest = "ssl_management_type"
+        elif key == "certificateId":
+            suggest = "certificate_id"
+        elif key == "pendingManagedCertificateId":
+            suggest = "pending_managed_certificate_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainMappingSslSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainMappingSslSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainMappingSslSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ssl_management_type: str,
                  certificate_id: Optional[str] = None,
@@ -317,12 +361,26 @@ class DomainMappingSslSettings(dict):
         """
         return pulumi.get(self, "pending_managed_certificate_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EngineSplitTrafficSplit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shardBy":
+            suggest = "shard_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EngineSplitTrafficSplit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EngineSplitTrafficSplit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EngineSplitTrafficSplit.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allocations: Mapping[str, str],
                  shard_by: Optional[str] = None):
@@ -352,12 +410,28 @@ class EngineSplitTrafficSplit(dict):
         """
         return pulumi.get(self, "shard_by")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionApiConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authFailAction":
+            suggest = "auth_fail_action"
+        elif key == "securityLevel":
+            suggest = "security_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionApiConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionApiConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionApiConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  script: str,
                  auth_fail_action: Optional[str] = None,
@@ -431,12 +505,48 @@ class FlexibleAppVersionApiConfig(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionAutomaticScaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuUtilization":
+            suggest = "cpu_utilization"
+        elif key == "coolDownPeriod":
+            suggest = "cool_down_period"
+        elif key == "diskUtilization":
+            suggest = "disk_utilization"
+        elif key == "maxConcurrentRequests":
+            suggest = "max_concurrent_requests"
+        elif key == "maxIdleInstances":
+            suggest = "max_idle_instances"
+        elif key == "maxPendingLatency":
+            suggest = "max_pending_latency"
+        elif key == "maxTotalInstances":
+            suggest = "max_total_instances"
+        elif key == "minIdleInstances":
+            suggest = "min_idle_instances"
+        elif key == "minPendingLatency":
+            suggest = "min_pending_latency"
+        elif key == "minTotalInstances":
+            suggest = "min_total_instances"
+        elif key == "networkUtilization":
+            suggest = "network_utilization"
+        elif key == "requestUtilization":
+            suggest = "request_utilization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionAutomaticScaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionAutomaticScaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionAutomaticScaling.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu_utilization: 'outputs.FlexibleAppVersionAutomaticScalingCpuUtilization',
                  cool_down_period: Optional[str] = None,
@@ -598,12 +708,28 @@ class FlexibleAppVersionAutomaticScaling(dict):
         """
         return pulumi.get(self, "request_utilization")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionAutomaticScalingCpuUtilization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUtilization":
+            suggest = "target_utilization"
+        elif key == "aggregationWindowLength":
+            suggest = "aggregation_window_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionAutomaticScalingCpuUtilization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionAutomaticScalingCpuUtilization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionAutomaticScalingCpuUtilization.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_utilization: float,
                  aggregation_window_length: Optional[str] = None):
@@ -631,12 +757,32 @@ class FlexibleAppVersionAutomaticScalingCpuUtilization(dict):
         """
         return pulumi.get(self, "aggregation_window_length")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionAutomaticScalingDiskUtilization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetReadBytesPerSecond":
+            suggest = "target_read_bytes_per_second"
+        elif key == "targetReadOpsPerSecond":
+            suggest = "target_read_ops_per_second"
+        elif key == "targetWriteBytesPerSecond":
+            suggest = "target_write_bytes_per_second"
+        elif key == "targetWriteOpsPerSecond":
+            suggest = "target_write_ops_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionAutomaticScalingDiskUtilization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionAutomaticScalingDiskUtilization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionAutomaticScalingDiskUtilization.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_read_bytes_per_second: Optional[int] = None,
                  target_read_ops_per_second: Optional[int] = None,
@@ -689,12 +835,32 @@ class FlexibleAppVersionAutomaticScalingDiskUtilization(dict):
         """
         return pulumi.get(self, "target_write_ops_per_second")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionAutomaticScalingNetworkUtilization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetReceivedBytesPerSecond":
+            suggest = "target_received_bytes_per_second"
+        elif key == "targetReceivedPacketsPerSecond":
+            suggest = "target_received_packets_per_second"
+        elif key == "targetSentBytesPerSecond":
+            suggest = "target_sent_bytes_per_second"
+        elif key == "targetSentPacketsPerSecond":
+            suggest = "target_sent_packets_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionAutomaticScalingNetworkUtilization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionAutomaticScalingNetworkUtilization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionAutomaticScalingNetworkUtilization.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_received_bytes_per_second: Optional[int] = None,
                  target_received_packets_per_second: Optional[int] = None,
@@ -747,12 +913,28 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilization(dict):
         """
         return pulumi.get(self, "target_sent_packets_per_second")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionAutomaticScalingRequestUtilization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetConcurrentRequests":
+            suggest = "target_concurrent_requests"
+        elif key == "targetRequestCountPerSecond":
+            suggest = "target_request_count_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionAutomaticScalingRequestUtilization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionAutomaticScalingRequestUtilization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionAutomaticScalingRequestUtilization.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_concurrent_requests: Optional[float] = None,
                  target_request_count_per_second: Optional[str] = None):
@@ -781,12 +963,26 @@ class FlexibleAppVersionAutomaticScalingRequestUtilization(dict):
         """
         return pulumi.get(self, "target_request_count_per_second")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudBuildOptions":
+            suggest = "cloud_build_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionDeployment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_build_options: Optional['outputs.FlexibleAppVersionDeploymentCloudBuildOptions'] = None,
                  container: Optional['outputs.FlexibleAppVersionDeploymentContainer'] = None,
@@ -849,12 +1045,28 @@ class FlexibleAppVersionDeployment(dict):
         """
         return pulumi.get(self, "zip")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionDeploymentCloudBuildOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appYamlPath":
+            suggest = "app_yaml_path"
+        elif key == "cloudBuildTimeout":
+            suggest = "cloud_build_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionDeploymentCloudBuildOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionDeploymentCloudBuildOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionDeploymentCloudBuildOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_yaml_path: str,
                  cloud_build_timeout: Optional[str] = None):
@@ -884,9 +1096,6 @@ class FlexibleAppVersionDeploymentCloudBuildOptions(dict):
         """
         return pulumi.get(self, "cloud_build_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionDeploymentContainer(dict):
@@ -907,12 +1116,28 @@ class FlexibleAppVersionDeploymentContainer(dict):
         """
         return pulumi.get(self, "image")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionDeploymentFile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceUrl":
+            suggest = "source_url"
+        elif key == "sha1Sum":
+            suggest = "sha1_sum"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionDeploymentFile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionDeploymentFile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionDeploymentFile.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  source_url: str,
@@ -951,12 +1176,28 @@ class FlexibleAppVersionDeploymentFile(dict):
         """
         return pulumi.get(self, "sha1_sum")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionDeploymentZip(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceUrl":
+            suggest = "source_url"
+        elif key == "filesCount":
+            suggest = "files_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionDeploymentZip. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionDeploymentZip.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionDeploymentZip.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_url: str,
                  files_count: Optional[int] = None):
@@ -984,12 +1225,30 @@ class FlexibleAppVersionDeploymentZip(dict):
         """
         return pulumi.get(self, "files_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionEndpointsApiService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configId":
+            suggest = "config_id"
+        elif key == "disableTraceSampling":
+            suggest = "disable_trace_sampling"
+        elif key == "rolloutStrategy":
+            suggest = "rollout_strategy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionEndpointsApiService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionEndpointsApiService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionEndpointsApiService.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  config_id: Optional[str] = None,
@@ -1055,9 +1314,6 @@ class FlexibleAppVersionEndpointsApiService(dict):
         """
         return pulumi.get(self, "rollout_strategy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionEntrypoint(dict):
@@ -1076,12 +1332,34 @@ class FlexibleAppVersionEntrypoint(dict):
         """
         return pulumi.get(self, "shell")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionHandler(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authFailAction":
+            suggest = "auth_fail_action"
+        elif key == "redirectHttpResponseCode":
+            suggest = "redirect_http_response_code"
+        elif key == "securityLevel":
+            suggest = "security_level"
+        elif key == "staticFiles":
+            suggest = "static_files"
+        elif key == "urlRegex":
+            suggest = "url_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionHandler. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionHandler.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionHandler.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auth_fail_action: Optional[str] = None,
                  login: Optional[str] = None,
@@ -1188,12 +1466,26 @@ class FlexibleAppVersionHandler(dict):
         """
         return pulumi.get(self, "url_regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionHandlerScript(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scriptPath":
+            suggest = "script_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionHandlerScript. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionHandlerScript.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionHandlerScript.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  script_path: str):
         """
@@ -1209,12 +1501,34 @@ class FlexibleAppVersionHandlerScript(dict):
         """
         return pulumi.get(self, "script_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionHandlerStaticFiles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationReadable":
+            suggest = "application_readable"
+        elif key == "httpHeaders":
+            suggest = "http_headers"
+        elif key == "mimeType":
+            suggest = "mime_type"
+        elif key == "requireMatchingFile":
+            suggest = "require_matching_file"
+        elif key == "uploadPathRegex":
+            suggest = "upload_path_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionHandlerStaticFiles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionHandlerStaticFiles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionHandlerStaticFiles.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  application_readable: Optional[bool] = None,
                  expiration: Optional[str] = None,
@@ -1317,12 +1631,32 @@ class FlexibleAppVersionHandlerStaticFiles(dict):
         """
         return pulumi.get(self, "upload_path_regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionLivenessCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkInterval":
+            suggest = "check_interval"
+        elif key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "initialDelay":
+            suggest = "initial_delay"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionLivenessCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionLivenessCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionLivenessCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  path: str,
                  check_interval: Optional[str] = None,
@@ -1412,9 +1746,6 @@ class FlexibleAppVersionLivenessCheck(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionManualScaling(dict):
@@ -1437,12 +1768,30 @@ class FlexibleAppVersionManualScaling(dict):
         """
         return pulumi.get(self, "instances")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardedPorts":
+            suggest = "forwarded_ports"
+        elif key == "instanceTag":
+            suggest = "instance_tag"
+        elif key == "sessionAffinity":
+            suggest = "session_affinity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  forwarded_ports: Optional[Sequence[str]] = None,
@@ -1514,12 +1863,32 @@ class FlexibleAppVersionNetwork(dict):
         """
         return pulumi.get(self, "subnetwork")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionReadinessCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appStartTimeout":
+            suggest = "app_start_timeout"
+        elif key == "checkInterval":
+            suggest = "check_interval"
+        elif key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionReadinessCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionReadinessCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionReadinessCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  path: str,
                  app_start_timeout: Optional[str] = None,
@@ -1611,12 +1980,28 @@ class FlexibleAppVersionReadinessCheck(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskGb":
+            suggest = "disk_gb"
+        elif key == "memoryGb":
+            suggest = "memory_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionResources.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu: Optional[int] = None,
                  disk_gb: Optional[int] = None,
@@ -1671,12 +2056,28 @@ class FlexibleAppVersionResources(dict):
         """
         return pulumi.get(self, "volumes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionResourcesVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlexibleAppVersionResourcesVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlexibleAppVersionResourcesVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlexibleAppVersionResourcesVolume.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  size_gb: int,
@@ -1714,9 +2115,6 @@ class FlexibleAppVersionResourcesVolume(dict):
         """
         return pulumi.get(self, "volume_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlexibleAppVersionVpcAccessConnector(dict):
@@ -1735,12 +2133,36 @@ class FlexibleAppVersionVpcAccessConnector(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionAutomaticScaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxConcurrentRequests":
+            suggest = "max_concurrent_requests"
+        elif key == "maxIdleInstances":
+            suggest = "max_idle_instances"
+        elif key == "maxPendingLatency":
+            suggest = "max_pending_latency"
+        elif key == "minIdleInstances":
+            suggest = "min_idle_instances"
+        elif key == "minPendingLatency":
+            suggest = "min_pending_latency"
+        elif key == "standardSchedulerSettings":
+            suggest = "standard_scheduler_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionAutomaticScaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionAutomaticScaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionAutomaticScaling.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_concurrent_requests: Optional[int] = None,
                  max_idle_instances: Optional[int] = None,
@@ -1825,12 +2247,32 @@ class StandardAppVersionAutomaticScaling(dict):
         """
         return pulumi.get(self, "standard_scheduler_settings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionAutomaticScalingStandardSchedulerSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInstances":
+            suggest = "max_instances"
+        elif key == "minInstances":
+            suggest = "min_instances"
+        elif key == "targetCpuUtilization":
+            suggest = "target_cpu_utilization"
+        elif key == "targetThroughputUtilization":
+            suggest = "target_throughput_utilization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionAutomaticScalingStandardSchedulerSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionAutomaticScalingStandardSchedulerSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionAutomaticScalingStandardSchedulerSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_instances: Optional[int] = None,
                  min_instances: Optional[int] = None,
@@ -1883,12 +2325,28 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettings(dict):
         """
         return pulumi.get(self, "target_throughput_utilization")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionBasicScaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInstances":
+            suggest = "max_instances"
+        elif key == "idleTimeout":
+            suggest = "idle_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionBasicScaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionBasicScaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionBasicScaling.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_instances: int,
                  idle_timeout: Optional[str] = None):
@@ -1917,9 +2375,6 @@ class StandardAppVersionBasicScaling(dict):
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
         """
         return pulumi.get(self, "idle_timeout")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1958,12 +2413,28 @@ class StandardAppVersionDeployment(dict):
         """
         return pulumi.get(self, "zip")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionDeploymentFile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceUrl":
+            suggest = "source_url"
+        elif key == "sha1Sum":
+            suggest = "sha1_sum"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionDeploymentFile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionDeploymentFile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionDeploymentFile.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  source_url: str,
@@ -2002,12 +2473,28 @@ class StandardAppVersionDeploymentFile(dict):
         """
         return pulumi.get(self, "sha1_sum")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionDeploymentZip(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceUrl":
+            suggest = "source_url"
+        elif key == "filesCount":
+            suggest = "files_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionDeploymentZip. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionDeploymentZip.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionDeploymentZip.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_url: str,
                  files_count: Optional[int] = None):
@@ -2035,9 +2522,6 @@ class StandardAppVersionDeploymentZip(dict):
         """
         return pulumi.get(self, "files_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionEntrypoint(dict):
@@ -2056,12 +2540,34 @@ class StandardAppVersionEntrypoint(dict):
         """
         return pulumi.get(self, "shell")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionHandler(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authFailAction":
+            suggest = "auth_fail_action"
+        elif key == "redirectHttpResponseCode":
+            suggest = "redirect_http_response_code"
+        elif key == "securityLevel":
+            suggest = "security_level"
+        elif key == "staticFiles":
+            suggest = "static_files"
+        elif key == "urlRegex":
+            suggest = "url_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionHandler. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionHandler.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionHandler.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auth_fail_action: Optional[str] = None,
                  login: Optional[str] = None,
@@ -2166,12 +2672,26 @@ class StandardAppVersionHandler(dict):
         """
         return pulumi.get(self, "url_regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionHandlerScript(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scriptPath":
+            suggest = "script_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionHandlerScript. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionHandlerScript.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionHandlerScript.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  script_path: str):
         """
@@ -2187,12 +2707,34 @@ class StandardAppVersionHandlerScript(dict):
         """
         return pulumi.get(self, "script_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionHandlerStaticFiles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationReadable":
+            suggest = "application_readable"
+        elif key == "httpHeaders":
+            suggest = "http_headers"
+        elif key == "mimeType":
+            suggest = "mime_type"
+        elif key == "requireMatchingFile":
+            suggest = "require_matching_file"
+        elif key == "uploadPathRegex":
+            suggest = "upload_path_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionHandlerStaticFiles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionHandlerStaticFiles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionHandlerStaticFiles.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  application_readable: Optional[bool] = None,
                  expiration: Optional[str] = None,
@@ -2291,9 +2833,6 @@ class StandardAppVersionHandlerStaticFiles(dict):
         """
         return pulumi.get(self, "upload_path_regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionLibrary(dict):
@@ -2325,9 +2864,6 @@ class StandardAppVersionLibrary(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionManualScaling(dict):
@@ -2350,9 +2886,6 @@ class StandardAppVersionManualScaling(dict):
         """
         return pulumi.get(self, "instances")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardAppVersionVpcAccessConnector(dict):
@@ -2370,8 +2903,5 @@ class StandardAppVersionVpcAccessConnector(dict):
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

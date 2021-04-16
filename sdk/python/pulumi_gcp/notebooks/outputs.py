@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'EnvironmentContainerImage',
@@ -50,12 +50,28 @@ class EnvironmentContainerImage(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EnvironmentVmImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageFamily":
+            suggest = "image_family"
+        elif key == "imageName":
+            suggest = "image_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentVmImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentVmImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentVmImage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project: str,
                  image_family: Optional[str] = None,
@@ -97,12 +113,26 @@ class EnvironmentVmImage(dict):
         """
         return pulumi.get(self, "image_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceAcceleratorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coreCount":
+            suggest = "core_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAcceleratorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAcceleratorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAcceleratorConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  core_count: int,
                  type: str):
@@ -130,9 +160,6 @@ class InstanceAcceleratorConfig(dict):
         Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -166,9 +193,6 @@ class InstanceContainerImage(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceIamBindingCondition(dict):
@@ -195,9 +219,6 @@ class InstanceIamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -226,12 +247,30 @@ class InstanceIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[bool] = None,
                  enable_secure_boot: Optional[bool] = None,
@@ -286,12 +325,28 @@ class InstanceShieldedInstanceConfig(dict):
         """
         return pulumi.get(self, "enable_vtpm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceVmImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageFamily":
+            suggest = "image_family"
+        elif key == "imageName":
+            suggest = "image_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVmImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVmImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVmImage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project: str,
                  image_family: Optional[str] = None,
@@ -332,8 +387,5 @@ class InstanceVmImage(dict):
         Use VM image name to find the image.
         """
         return pulumi.get(self, "image_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

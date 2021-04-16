@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['EnvGroupAttachmentArgs', 'EnvGroupAttachment']
 
@@ -50,6 +50,64 @@ class EnvGroupAttachmentArgs:
         pulumi.set(self, "environment", value)
 
 
+@pulumi.input_type
+class _EnvGroupAttachmentState:
+    def __init__(__self__, *,
+                 envgroup_id: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering EnvGroupAttachment resources.
+        :param pulumi.Input[str] envgroup_id: The Apigee environment group associated with the Apigee environment,
+               in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
+        :param pulumi.Input[str] environment: The resource ID of the environment.
+        :param pulumi.Input[str] name: The name of the newly created attachment (output parameter).
+        """
+        if envgroup_id is not None:
+            pulumi.set(__self__, "envgroup_id", envgroup_id)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="envgroupId")
+    def envgroup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Apigee environment group associated with the Apigee environment,
+        in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
+        """
+        return pulumi.get(self, "envgroup_id")
+
+    @envgroup_id.setter
+    def envgroup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "envgroup_id", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the environment.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the newly created attachment (output parameter).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
 class EnvGroupAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -57,9 +115,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  envgroup_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An `Environment Group attachment` in Apigee.
 
@@ -135,15 +191,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  envgroup_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -153,15 +201,15 @@ class EnvGroupAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EnvGroupAttachmentArgs.__new__(EnvGroupAttachmentArgs)
 
             if envgroup_id is None and not opts.urn:
                 raise TypeError("Missing required property 'envgroup_id'")
-            __props__['envgroup_id'] = envgroup_id
+            __props__.__dict__["envgroup_id"] = envgroup_id
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
-            __props__['environment'] = environment
-            __props__['name'] = None
+            __props__.__dict__["environment"] = environment
+            __props__.__dict__["name"] = None
         super(EnvGroupAttachment, __self__).__init__(
             'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
             resource_name,
@@ -189,11 +237,11 @@ class EnvGroupAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EnvGroupAttachmentState.__new__(_EnvGroupAttachmentState)
 
-        __props__["envgroup_id"] = envgroup_id
-        __props__["environment"] = environment
-        __props__["name"] = name
+        __props__.__dict__["envgroup_id"] = envgroup_id
+        __props__.__dict__["environment"] = environment
+        __props__.__dict__["name"] = name
         return EnvGroupAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -220,10 +268,4 @@ class EnvGroupAttachment(pulumi.CustomResource):
         The name of the newly created attachment (output parameter).
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

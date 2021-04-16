@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['IAMCustomRoleArgs', 'IAMCustomRole']
 
@@ -117,6 +117,148 @@ class IAMCustomRoleArgs:
         pulumi.set(self, "stage", value)
 
 
+@pulumi.input_type
+class _IAMCustomRoleState:
+    def __init__(__self__, *,
+                 deleted: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
+                 stage: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering IAMCustomRole resources.
+        :param pulumi.Input[bool] deleted: (Optional) The current deleted state of the role.
+        :param pulumi.Input[str] description: A human-readable description for the role.
+        :param pulumi.Input[str] name: The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        :param pulumi.Input[str] project: The project that the service account will be created in.
+               Defaults to the provider project configuration.
+        :param pulumi.Input[str] role_id: The camel case role id to use for this role. Cannot contain `-` characters.
+        :param pulumi.Input[str] stage: The current launch stage of the role.
+               Defaults to `GA`.
+               List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+        :param pulumi.Input[str] title: A human-readable title for the role.
+        """
+        if deleted is not None:
+            pulumi.set(__self__, "deleted", deleted)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if stage is not None:
+            pulumi.set(__self__, "stage", stage)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def deleted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Optional) The current deleted state of the role.
+        """
+        return pulumi.get(self, "deleted")
+
+    @deleted.setter
+    def deleted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deleted", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable description for the role.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project that the service account will be created in.
+        Defaults to the provider project configuration.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The camel case role id to use for this role. Cannot contain `-` characters.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_id", value)
+
+    @property
+    @pulumi.getter
+    def stage(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current launch stage of the role.
+        Defaults to `GA`.
+        List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+        """
+        return pulumi.get(self, "stage")
+
+    @stage.setter
+    def stage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stage", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable title for the role.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
 class IAMCustomRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -128,9 +270,7 @@ class IAMCustomRole(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows management of a customized Cloud IAM project role. For more information see
         [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -266,15 +406,7 @@ class IAMCustomRole(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,22 +416,22 @@ class IAMCustomRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IAMCustomRoleArgs.__new__(IAMCustomRoleArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if permissions is None and not opts.urn:
                 raise TypeError("Missing required property 'permissions'")
-            __props__['permissions'] = permissions
-            __props__['project'] = project
+            __props__.__dict__["permissions"] = permissions
+            __props__.__dict__["project"] = project
             if role_id is None and not opts.urn:
                 raise TypeError("Missing required property 'role_id'")
-            __props__['role_id'] = role_id
-            __props__['stage'] = stage
+            __props__.__dict__["role_id"] = role_id
+            __props__.__dict__["stage"] = stage
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
-            __props__['title'] = title
-            __props__['deleted'] = None
-            __props__['name'] = None
+            __props__.__dict__["title"] = title
+            __props__.__dict__["deleted"] = None
+            __props__.__dict__["name"] = None
         super(IAMCustomRole, __self__).__init__(
             'gcp:projects/iAMCustomRole:IAMCustomRole',
             resource_name,
@@ -339,16 +471,16 @@ class IAMCustomRole(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IAMCustomRoleState.__new__(_IAMCustomRoleState)
 
-        __props__["deleted"] = deleted
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["permissions"] = permissions
-        __props__["project"] = project
-        __props__["role_id"] = role_id
-        __props__["stage"] = stage
-        __props__["title"] = title
+        __props__.__dict__["deleted"] = deleted
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["permissions"] = permissions
+        __props__.__dict__["project"] = project
+        __props__.__dict__["role_id"] = role_id
+        __props__.__dict__["stage"] = stage
+        __props__.__dict__["title"] = title
         return IAMCustomRole(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -417,10 +549,4 @@ class IAMCustomRole(pulumi.CustomResource):
         A human-readable title for the role.
         """
         return pulumi.get(self, "title")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

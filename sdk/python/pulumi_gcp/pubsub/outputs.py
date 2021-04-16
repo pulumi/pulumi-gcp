@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -29,6 +29,23 @@ __all__ = [
 
 @pulumi.output_type
 class LiteSubscriptionDeliveryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deliveryRequirement":
+            suggest = "delivery_requirement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LiteSubscriptionDeliveryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LiteSubscriptionDeliveryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LiteSubscriptionDeliveryConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delivery_requirement: str):
         """
@@ -45,9 +62,6 @@ class LiteSubscriptionDeliveryConfig(dict):
         Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
         """
         return pulumi.get(self, "delivery_requirement")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -81,12 +95,28 @@ class LiteTopicPartitionConfig(dict):
         """
         return pulumi.get(self, "capacity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LiteTopicPartitionConfigCapacity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publishMibPerSec":
+            suggest = "publish_mib_per_sec"
+        elif key == "subscribeMibPerSec":
+            suggest = "subscribe_mib_per_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LiteTopicPartitionConfigCapacity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LiteTopicPartitionConfigCapacity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LiteTopicPartitionConfigCapacity.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  publish_mib_per_sec: int,
                  subscribe_mib_per_sec: int):
@@ -113,12 +143,26 @@ class LiteTopicPartitionConfigCapacity(dict):
         """
         return pulumi.get(self, "subscribe_mib_per_sec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LiteTopicRetentionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "perPartitionBytes":
+            suggest = "per_partition_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LiteTopicRetentionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LiteTopicRetentionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LiteTopicRetentionConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  per_partition_bytes: str,
                  period: Optional[str] = None):
@@ -152,12 +196,28 @@ class LiteTopicRetentionConfig(dict):
         """
         return pulumi.get(self, "period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubscriptionDeadLetterPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deadLetterTopic":
+            suggest = "dead_letter_topic"
+        elif key == "maxDeliveryAttempts":
+            suggest = "max_delivery_attempts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionDeadLetterPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionDeadLetterPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionDeadLetterPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dead_letter_topic: Optional[str] = None,
                  max_delivery_attempts: Optional[int] = None):
@@ -216,9 +276,6 @@ class SubscriptionDeadLetterPolicy(dict):
         """
         return pulumi.get(self, "max_delivery_attempts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubscriptionExpirationPolicy(dict):
@@ -244,9 +301,6 @@ class SubscriptionExpirationPolicy(dict):
         Example - "3.5s".
         """
         return pulumi.get(self, "ttl")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -275,9 +329,6 @@ class SubscriptionIAMBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubscriptionIAMMemberCondition(dict):
@@ -305,12 +356,28 @@ class SubscriptionIAMMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubscriptionPushConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pushEndpoint":
+            suggest = "push_endpoint"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionPushConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionPushConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionPushConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  push_endpoint: str,
                  attributes: Optional[Mapping[str, str]] = None,
@@ -392,12 +459,26 @@ class SubscriptionPushConfig(dict):
         """
         return pulumi.get(self, "oidc_token")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubscriptionPushConfigOidcToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionPushConfigOidcToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionPushConfigOidcToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionPushConfigOidcToken.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service_account_email: str,
                  audience: Optional[str] = None):
@@ -441,12 +522,28 @@ class SubscriptionPushConfigOidcToken(dict):
         """
         return pulumi.get(self, "audience")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubscriptionRetryPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maximumBackoff":
+            suggest = "maximum_backoff"
+        elif key == "minimumBackoff":
+            suggest = "minimum_backoff"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionRetryPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionRetryPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionRetryPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  maximum_backoff: Optional[str] = None,
                  minimum_backoff: Optional[str] = None):
@@ -479,9 +576,6 @@ class SubscriptionRetryPolicy(dict):
         """
         return pulumi.get(self, "minimum_backoff")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TopicIAMBindingCondition(dict):
@@ -508,9 +602,6 @@ class TopicIAMBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -539,12 +630,26 @@ class TopicIAMMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TopicMessageStoragePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedPersistenceRegions":
+            suggest = "allowed_persistence_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TopicMessageStoragePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TopicMessageStoragePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TopicMessageStoragePolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_persistence_regions: Sequence[str]):
         """
@@ -569,9 +674,6 @@ class TopicMessageStoragePolicy(dict):
         and is not a valid configuration.
         """
         return pulumi.get(self, "allowed_persistence_regions")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

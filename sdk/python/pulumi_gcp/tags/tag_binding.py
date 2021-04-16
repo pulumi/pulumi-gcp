@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['TagBindingArgs', 'TagBinding']
 
@@ -48,6 +48,62 @@ class TagBindingArgs:
         pulumi.set(self, "tag_value", value)
 
 
+@pulumi.input_type
+class _TagBindingState:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 tag_value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TagBinding resources.
+        :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
+        :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TagValue of the TagBinding. Must be of the form tagValues/456.
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_value", value)
+
+
 class TagBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -55,9 +111,7 @@ class TagBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tag_value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A TagBinding represents a connection between a TagValue and a cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
 
@@ -174,15 +228,7 @@ class TagBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tag_value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -192,15 +238,15 @@ class TagBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TagBindingArgs.__new__(TagBindingArgs)
 
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            __props__.__dict__["parent"] = parent
             if tag_value is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_value'")
-            __props__['tag_value'] = tag_value
-            __props__['name'] = None
+            __props__.__dict__["tag_value"] = tag_value
+            __props__.__dict__["name"] = None
         super(TagBinding, __self__).__init__(
             'gcp:tags/tagBinding:TagBinding',
             resource_name,
@@ -227,11 +273,11 @@ class TagBinding(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TagBindingState.__new__(_TagBindingState)
 
-        __props__["name"] = name
-        __props__["parent"] = parent
-        __props__["tag_value"] = tag_value
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
+        __props__.__dict__["tag_value"] = tag_value
         return TagBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -257,10 +303,4 @@ class TagBinding(pulumi.CustomResource):
         The TagValue of the TagBinding. Must be of the form tagValues/456.
         """
         return pulumi.get(self, "tag_value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

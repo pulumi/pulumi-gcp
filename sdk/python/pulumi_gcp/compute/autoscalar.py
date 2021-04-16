@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -130,6 +130,158 @@ class AutoscalarArgs:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.input_type
+class _AutoscalarState:
+    def __init__(__self__, *,
+                 autoscaling_policy: Optional[pulumi.Input['AutoscalarAutoscalingPolicyArgs']] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Autoscalar resources.
+        :param pulumi.Input['AutoscalarAutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+               define one or more of the policies for an autoscaler: cpuUtilization,
+               customMetricUtilizations, and loadBalancingUtilization.
+               If none of these are specified, the default will be to autoscale based
+               on cpuUtilization to 0.6 or 60%.
+               Structure is documented below.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
+               balancing configuration) that autoscaler should maintain. Must
+               be a positive float value. If not defined, the default is 0.8.
+        :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
+        """
+        if autoscaling_policy is not None:
+            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="autoscalingPolicy")
+    def autoscaling_policy(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyArgs']]:
+        """
+        The configuration parameters for the autoscaling algorithm. You can
+        define one or more of the policies for an autoscaler: cpuUtilization,
+        customMetricUtilizations, and loadBalancingUtilization.
+        If none of these are specified, the default will be to autoscale based
+        on cpuUtilization to 0.6 or 60%.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_policy")
+
+    @autoscaling_policy.setter
+    def autoscaling_policy(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyArgs']]):
+        pulumi.set(self, "autoscaling_policy", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fraction of backend capacity utilization (set in HTTP(s) load
+        balancing configuration) that autoscaler should maintain. Must
+        be a positive float value. If not defined, the default is 0.8.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the zone where the instance group resides.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 warnings.warn("""gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler""", DeprecationWarning)
 
 
@@ -146,9 +298,7 @@ class Autoscalar(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents an Autoscaler resource.
 
@@ -481,16 +631,8 @@ class Autoscalar(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         pulumi.log.warn("""Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler""")
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -500,20 +642,20 @@ class Autoscalar(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AutoscalarArgs.__new__(AutoscalarArgs)
 
             if autoscaling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling_policy'")
-            __props__['autoscaling_policy'] = autoscaling_policy
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['project'] = project
+            __props__.__dict__["autoscaling_policy"] = autoscaling_policy
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
-            __props__['target'] = target
-            __props__['zone'] = zone
-            __props__['creation_timestamp'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["target"] = target
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["self_link"] = None
         super(Autoscalar, __self__).__init__(
             'gcp:compute/autoscalar:Autoscalar',
             resource_name,
@@ -558,16 +700,16 @@ class Autoscalar(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AutoscalarState.__new__(_AutoscalarState)
 
-        __props__["autoscaling_policy"] = autoscaling_policy
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["self_link"] = self_link
-        __props__["target"] = target
-        __props__["zone"] = zone
+        __props__.__dict__["autoscaling_policy"] = autoscaling_policy
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["target"] = target
+        __props__.__dict__["zone"] = zone
         return Autoscalar(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -641,10 +783,4 @@ class Autoscalar(pulumi.CustomResource):
         URL of the zone where the instance group resides.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

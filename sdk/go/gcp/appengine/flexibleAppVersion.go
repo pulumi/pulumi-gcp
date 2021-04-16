@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Flexible App Version resource to create a new version of flexible GAE Application. Based on Google Compute Engine,
@@ -34,11 +34,11 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

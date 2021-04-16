@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BrandArgs', 'Brand']
 
@@ -74,6 +74,106 @@ class BrandArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _BrandState:
+    def __init__(__self__, *,
+                 application_title: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 org_internal_only: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 support_email: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Brand resources.
+        :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
+        :param pulumi.Input[str] name: Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
+               identification corresponds to the project number as only one brand per project can be created.
+        :param pulumi.Input[bool] org_internal_only: Whether the brand is only intended for usage inside the GSuite organization only.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen. Can be either a
+               user or group email. When a user email is specified, the caller must
+               be the user with the associated email address. When a group email is
+               specified, the caller can be either a user or a service account which
+               is an owner of the specified group in Cloud Identity.
+        """
+        if application_title is not None:
+            pulumi.set(__self__, "application_title", application_title)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if org_internal_only is not None:
+            pulumi.set(__self__, "org_internal_only", org_internal_only)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if support_email is not None:
+            pulumi.set(__self__, "support_email", support_email)
+
+    @property
+    @pulumi.getter(name="applicationTitle")
+    def application_title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Application name displayed on OAuth consent screen.
+        """
+        return pulumi.get(self, "application_title")
+
+    @application_title.setter
+    def application_title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_title", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
+        identification corresponds to the project number as only one brand per project can be created.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="orgInternalOnly")
+    def org_internal_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the brand is only intended for usage inside the GSuite organization only.
+        """
+        return pulumi.get(self, "org_internal_only")
+
+    @org_internal_only.setter
+    def org_internal_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "org_internal_only", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="supportEmail")
+    def support_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Support email displayed on the OAuth consent screen. Can be either a
+        user or group email. When a user email is specified, the caller must
+        be the user with the associated email address. When a group email is
+        specified, the caller can be either a user or a service account which
+        is an owner of the specified group in Cloud Identity.
+        """
+        return pulumi.get(self, "support_email")
+
+    @support_email.setter
+    def support_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "support_email", value)
+
+
 class Brand(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -82,9 +182,7 @@ class Brand(pulumi.CustomResource):
                  application_title: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         OAuth brand data. Only "Organization Internal" brands can be created
         programmatically via API. To convert it into an external brands
@@ -172,15 +270,7 @@ class Brand(pulumi.CustomResource):
                  application_title: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -190,17 +280,17 @@ class Brand(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BrandArgs.__new__(BrandArgs)
 
             if application_title is None and not opts.urn:
                 raise TypeError("Missing required property 'application_title'")
-            __props__['application_title'] = application_title
-            __props__['project'] = project
+            __props__.__dict__["application_title"] = application_title
+            __props__.__dict__["project"] = project
             if support_email is None and not opts.urn:
                 raise TypeError("Missing required property 'support_email'")
-            __props__['support_email'] = support_email
-            __props__['name'] = None
-            __props__['org_internal_only'] = None
+            __props__.__dict__["support_email"] = support_email
+            __props__.__dict__["name"] = None
+            __props__.__dict__["org_internal_only"] = None
         super(Brand, __self__).__init__(
             'gcp:iap/brand:Brand',
             resource_name,
@@ -237,13 +327,13 @@ class Brand(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BrandState.__new__(_BrandState)
 
-        __props__["application_title"] = application_title
-        __props__["name"] = name
-        __props__["org_internal_only"] = org_internal_only
-        __props__["project"] = project
-        __props__["support_email"] = support_email
+        __props__.__dict__["application_title"] = application_title
+        __props__.__dict__["name"] = name
+        __props__.__dict__["org_internal_only"] = org_internal_only
+        __props__.__dict__["project"] = project
+        __props__.__dict__["support_email"] = support_email
         return Brand(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -291,10 +381,4 @@ class Brand(pulumi.CustomResource):
         is an owner of the specified group in Cloud Identity.
         """
         return pulumi.get(self, "support_email")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

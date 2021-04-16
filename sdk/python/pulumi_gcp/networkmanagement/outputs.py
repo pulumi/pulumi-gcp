@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'ConnectivityTestDestination',
@@ -15,6 +15,25 @@ __all__ = [
 
 @pulumi.output_type
 class ConnectivityTestDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectivityTestDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectivityTestDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectivityTestDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance: Optional[str] = None,
                  ip_address: Optional[str] = None,
@@ -99,12 +118,30 @@ class ConnectivityTestDestination(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectivityTestSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "networkType":
+            suggest = "network_type"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectivityTestSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectivityTestSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectivityTestSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance: Optional[str] = None,
                  ip_address: Optional[str] = None,
@@ -202,8 +239,5 @@ class ConnectivityTestSource(dict):
         project.
         """
         return pulumi.get(self, "project_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

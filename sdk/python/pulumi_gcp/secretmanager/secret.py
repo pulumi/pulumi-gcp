@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -102,6 +102,130 @@ class SecretArgs:
         pulumi.set(self, "project", value)
 
 
+@pulumi.input_type
+class _SecretState:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
+                 secret_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Secret resources.
+        :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] name: The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+               after the Secret has been created.
+               Structure is documented below.
+        :param pulumi.Input[str] secret_id: This must be unique within the project.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if replication is not None:
+            pulumi.set(__self__, "replication", replication)
+        if secret_id is not None:
+            pulumi.set(__self__, "secret_id", secret_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which the Secret was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels assigned to this Secret.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        No more than 64 labels can be assigned to a given resource.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def replication(self) -> Optional[pulumi.Input['SecretReplicationArgs']]:
+        """
+        The replication policy of the secret data attached to the Secret. It cannot be changed
+        after the Secret has been created.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replication")
+
+    @replication.setter
+    def replication(self, value: Optional[pulumi.Input['SecretReplicationArgs']]):
+        pulumi.set(self, "replication", value)
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This must be unique within the project.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_id", value)
+
+
 class Secret(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -111,9 +235,7 @@ class Secret(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Secret is a logical secret whose value and versions can be accessed.
 
@@ -254,15 +376,7 @@ class Secret(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -272,18 +386,18 @@ class Secret(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SecretArgs.__new__(SecretArgs)
 
-            __props__['labels'] = labels
-            __props__['project'] = project
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["project"] = project
             if replication is None and not opts.urn:
                 raise TypeError("Missing required property 'replication'")
-            __props__['replication'] = replication
+            __props__.__dict__["replication"] = replication
             if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")
-            __props__['secret_id'] = secret_id
-            __props__['create_time'] = None
-            __props__['name'] = None
+            __props__.__dict__["secret_id"] = secret_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
         super(Secret, __self__).__init__(
             'gcp:secretmanager/secret:Secret',
             resource_name,
@@ -326,14 +440,14 @@ class Secret(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SecretState.__new__(_SecretState)
 
-        __props__["create_time"] = create_time
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["replication"] = replication
-        __props__["secret_id"] = secret_id
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["replication"] = replication
+        __props__.__dict__["secret_id"] = secret_id
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -393,10 +507,4 @@ class Secret(pulumi.CustomResource):
         This must be unique within the project.
         """
         return pulumi.get(self, "secret_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

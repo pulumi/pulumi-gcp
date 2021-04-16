@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['OrganizationArgs', 'Organization']
 
@@ -143,6 +143,192 @@ class OrganizationArgs:
         pulumi.set(self, "runtime_type", value)
 
 
+@pulumi.input_type
+class _OrganizationState:
+    def __init__(__self__, *,
+                 analytics_region: Optional[pulumi.Input[str]] = None,
+                 authorized_network: Optional[pulumi.Input[str]] = None,
+                 ca_certificate: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 runtime_type: Optional[pulumi.Input[str]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Organization resources.
+        :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
+               See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
+               Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
+        :param pulumi.Input[str] ca_certificate: Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
+               is CLOUD. A base64-encoded string.
+        :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[str] display_name: The display name of the Apigee organization.
+        :param pulumi.Input[str] name: Output only. Name of the Apigee organization.
+        :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
+        :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
+               Update is not allowed after the organization is created.
+               If not specified, a Google-Managed encryption key will be used.
+               Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
+        :param pulumi.Input[str] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
+               Default value is `CLOUD`.
+               Possible values are `CLOUD` and `HYBRID`.
+        :param pulumi.Input[str] subscription_type: Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
+               purposes only) or paid (full subscription has been purchased).
+        """
+        if analytics_region is not None:
+            pulumi.set(__self__, "analytics_region", analytics_region)
+        if authorized_network is not None:
+            pulumi.set(__self__, "authorized_network", authorized_network)
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if runtime_database_encryption_key_name is not None:
+            pulumi.set(__self__, "runtime_database_encryption_key_name", runtime_database_encryption_key_name)
+        if runtime_type is not None:
+            pulumi.set(__self__, "runtime_type", runtime_type)
+        if subscription_type is not None:
+            pulumi.set(__self__, "subscription_type", subscription_type)
+
+    @property
+    @pulumi.getter(name="analyticsRegion")
+    def analytics_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        """
+        return pulumi.get(self, "analytics_region")
+
+    @analytics_region.setter
+    def analytics_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "analytics_region", value)
+
+    @property
+    @pulumi.getter(name="authorizedNetwork")
+    def authorized_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
+        See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
+        Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
+        """
+        return pulumi.get(self, "authorized_network")
+
+    @authorized_network.setter
+    def authorized_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorized_network", value)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
+        is CLOUD. A base64-encoded string.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @ca_certificate.setter
+    def ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certificate", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the Apigee organization.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the Apigee organization.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Name of the Apigee organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID associated with the Apigee organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeDatabaseEncryptionKeyName")
+    def runtime_database_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
+        Update is not allowed after the organization is created.
+        If not specified, a Google-Managed encryption key will be used.
+        Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
+        """
+        return pulumi.get(self, "runtime_database_encryption_key_name")
+
+    @runtime_database_encryption_key_name.setter
+    def runtime_database_encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_database_encryption_key_name", value)
+
+    @property
+    @pulumi.getter(name="runtimeType")
+    def runtime_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        Default value is `CLOUD`.
+        Possible values are `CLOUD` and `HYBRID`.
+        """
+        return pulumi.get(self, "runtime_type")
+
+    @runtime_type.setter
+    def runtime_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_type", value)
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
+        purposes only) or paid (full subscription has been purchased).
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @subscription_type.setter
+    def subscription_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_type", value)
+
+
 class Organization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -155,9 +341,7 @@ class Organization(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An `Organization` is the top-level container in Apigee.
 
@@ -373,15 +557,7 @@ class Organization(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -391,20 +567,20 @@ class Organization(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
-            __props__['analytics_region'] = analytics_region
-            __props__['authorized_network'] = authorized_network
-            __props__['description'] = description
-            __props__['display_name'] = display_name
+            __props__.__dict__["analytics_region"] = analytics_region
+            __props__.__dict__["authorized_network"] = authorized_network
+            __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
-            __props__['runtime_database_encryption_key_name'] = runtime_database_encryption_key_name
-            __props__['runtime_type'] = runtime_type
-            __props__['ca_certificate'] = None
-            __props__['name'] = None
-            __props__['subscription_type'] = None
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["runtime_database_encryption_key_name"] = runtime_database_encryption_key_name
+            __props__.__dict__["runtime_type"] = runtime_type
+            __props__.__dict__["ca_certificate"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["subscription_type"] = None
         super(Organization, __self__).__init__(
             'gcp:apigee/organization:Organization',
             resource_name,
@@ -454,18 +630,18 @@ class Organization(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _OrganizationState.__new__(_OrganizationState)
 
-        __props__["analytics_region"] = analytics_region
-        __props__["authorized_network"] = authorized_network
-        __props__["ca_certificate"] = ca_certificate
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["name"] = name
-        __props__["project_id"] = project_id
-        __props__["runtime_database_encryption_key_name"] = runtime_database_encryption_key_name
-        __props__["runtime_type"] = runtime_type
-        __props__["subscription_type"] = subscription_type
+        __props__.__dict__["analytics_region"] = analytics_region
+        __props__.__dict__["authorized_network"] = authorized_network
+        __props__.__dict__["ca_certificate"] = ca_certificate
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["runtime_database_encryption_key_name"] = runtime_database_encryption_key_name
+        __props__.__dict__["runtime_type"] = runtime_type
+        __props__.__dict__["subscription_type"] = subscription_type
         return Organization(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -556,10 +732,4 @@ class Organization(pulumi.CustomResource):
         purposes only) or paid (full subscription has been purchased).
         """
         return pulumi.get(self, "subscription_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

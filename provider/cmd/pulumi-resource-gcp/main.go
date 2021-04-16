@@ -17,9 +17,9 @@
 package main
 
 import (
-	gcp "github.com/pulumi/pulumi-gcp/provider/v4"
-	"github.com/pulumi/pulumi-gcp/provider/v4/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	gcp "github.com/pulumi/pulumi-gcp/provider/v5"
+	"github.com/pulumi/pulumi-gcp/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 func main() {

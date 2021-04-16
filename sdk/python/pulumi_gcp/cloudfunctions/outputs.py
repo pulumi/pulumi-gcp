@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,25 @@ __all__ = [
 
 @pulumi.output_type
 class FunctionEventTrigger(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventType":
+            suggest = "event_type"
+        elif key == "failurePolicy":
+            suggest = "failure_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionEventTrigger. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionEventTrigger.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionEventTrigger.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  event_type: str,
                  resource: str,
@@ -66,9 +85,6 @@ class FunctionEventTrigger(dict):
         """
         return pulumi.get(self, "failure_policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FunctionEventTriggerFailurePolicy(dict):
@@ -86,9 +102,6 @@ class FunctionEventTriggerFailurePolicy(dict):
         Whether the function should be retried on failure. Defaults to `false`.
         """
         return pulumi.get(self, "retry")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -117,9 +130,6 @@ class FunctionIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FunctionIamMemberCondition(dict):
@@ -147,12 +157,26 @@ class FunctionIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FunctionSourceRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployedUrl":
+            suggest = "deployed_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionSourceRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionSourceRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionSourceRepository.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  url: str,
                  deployed_url: Optional[str] = None):
@@ -175,9 +199,6 @@ class FunctionSourceRepository(dict):
     @pulumi.getter(name="deployedUrl")
     def deployed_url(self) -> Optional[str]:
         return pulumi.get(self, "deployed_url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

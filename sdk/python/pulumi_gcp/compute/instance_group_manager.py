@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -258,6 +258,314 @@ class InstanceGroupManagerArgs:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.input_type
+class _InstanceGroupManagerState:
+    def __init__(__self__, *,
+                 auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
+                 base_instance_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 instance_group: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
+                 operation: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
+                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_size: Optional[pulumi.Input[int]] = None,
+                 update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
+                 wait_for_instances: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceGroupManager resources.
+        :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
+               group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+        :param pulumi.Input[str] base_instance_name: The base instance name to use for
+               instances in this group. The value must be a valid
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
+               are lowercase letters, numbers, and hyphens (-). Instances are named by
+               appending a hyphen and a random four-character string to the base instance
+               name.
+        :param pulumi.Input[str] description: An optional textual description of the instance
+               group manager.
+        :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
+        :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[str] name: - Version name.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
+               for details on configuration.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URL of the created resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
+               instances in the group are added. Updating the target pools attribute does
+               not affect existing instances.
+        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
+               version deals with a specific instance template, allowing canary release scenarios.
+               Structure is documented below.
+        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
+               returning. Note that if this is set to true and the operation does not succeed, this provider will
+               continue trying until it times out.
+        :param pulumi.Input[str] zone: The zone that instances in this group should be created
+               in.
+        """
+        if auto_healing_policies is not None:
+            pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
+        if base_instance_name is not None:
+            pulumi.set(__self__, "base_instance_name", base_instance_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if instance_group is not None:
+            pulumi.set(__self__, "instance_group", instance_group)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if named_ports is not None:
+            pulumi.set(__self__, "named_ports", named_ports)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if stateful_disks is not None:
+            pulumi.set(__self__, "stateful_disks", stateful_disks)
+        if target_pools is not None:
+            pulumi.set(__self__, "target_pools", target_pools)
+        if target_size is not None:
+            pulumi.set(__self__, "target_size", target_size)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+        if wait_for_instances is not None:
+            pulumi.set(__self__, "wait_for_instances", wait_for_instances)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="autoHealingPolicies")
+    def auto_healing_policies(self) -> Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']]:
+        """
+        The autohealing policies for this managed instance
+        group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+        """
+        return pulumi.get(self, "auto_healing_policies")
+
+    @auto_healing_policies.setter
+    def auto_healing_policies(self, value: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']]):
+        pulumi.set(self, "auto_healing_policies", value)
+
+    @property
+    @pulumi.getter(name="baseInstanceName")
+    def base_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base instance name to use for
+        instances in this group. The value must be a valid
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
+        are lowercase letters, numbers, and hyphens (-). Instances are named by
+        appending a hyphen and a random four-character string to the base instance
+        name.
+        """
+        return pulumi.get(self, "base_instance_name")
+
+    @base_instance_name.setter
+    def base_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_instance_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional textual description of the instance
+        group manager.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fingerprint of the instance group manager.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="instanceGroup")
+    def instance_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full URL of the instance group created by the manager.
+        """
+        return pulumi.get(self, "instance_group")
+
+    @instance_group.setter
+    def instance_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_group", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        - Version name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namedPorts")
+    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]]:
+        """
+        The named port configuration. See the section below
+        for details on configuration.
+        """
+        return pulumi.get(self, "named_ports")
+
+    @named_ports.setter
+    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]]):
+        pulumi.set(self, "named_ports", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="statefulDisks")
+    def stateful_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]]:
+        """
+        Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        """
+        return pulumi.get(self, "stateful_disks")
+
+    @stateful_disks.setter
+    def stateful_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]]):
+        pulumi.set(self, "stateful_disks", value)
+
+    @property
+    @pulumi.getter(name="targetPools")
+    def target_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The full URL of all target pools to which new
+        instances in the group are added. Updating the target pools attribute does
+        not affect existing instances.
+        """
+        return pulumi.get(self, "target_pools")
+
+    @target_pools.setter
+    def target_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_pools", value)
+
+    @property
+    @pulumi.getter(name="targetSize")
+    def target_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        """
+        return pulumi.get(self, "target_size")
+
+    @target_size.setter
+    def target_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_size", value)
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']]:
+        """
+        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+        """
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]]:
+        """
+        Application versions managed by this instance group. Each
+        version deals with a specific instance template, allowing canary release scenarios.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]]):
+        pulumi.set(self, "versions", value)
+
+    @property
+    @pulumi.getter(name="waitForInstances")
+    def wait_for_instances(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to wait for all instances to be created/updated before
+        returning. Note that if this is set to true and the operation does not succeed, this provider will
+        continue trying until it times out.
+        """
+        return pulumi.get(self, "wait_for_instances")
+
+    @wait_for_instances.setter
+    def wait_for_instances(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_for_instances", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone that instances in this group should be created
+        in.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
 class InstanceGroupManager(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -276,9 +584,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         The Google Compute Engine Instance Group Manager API creates and manages pools
         of homogeneous Compute Engine virtual machine instances from a common instance
@@ -517,15 +823,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -535,29 +833,29 @@ class InstanceGroupManager(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceGroupManagerArgs.__new__(InstanceGroupManagerArgs)
 
-            __props__['auto_healing_policies'] = auto_healing_policies
+            __props__.__dict__["auto_healing_policies"] = auto_healing_policies
             if base_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'base_instance_name'")
-            __props__['base_instance_name'] = base_instance_name
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['named_ports'] = named_ports
-            __props__['project'] = project
-            __props__['stateful_disks'] = stateful_disks
-            __props__['target_pools'] = target_pools
-            __props__['target_size'] = target_size
-            __props__['update_policy'] = update_policy
+            __props__.__dict__["base_instance_name"] = base_instance_name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["named_ports"] = named_ports
+            __props__.__dict__["project"] = project
+            __props__.__dict__["stateful_disks"] = stateful_disks
+            __props__.__dict__["target_pools"] = target_pools
+            __props__.__dict__["target_size"] = target_size
+            __props__.__dict__["update_policy"] = update_policy
             if versions is None and not opts.urn:
                 raise TypeError("Missing required property 'versions'")
-            __props__['versions'] = versions
-            __props__['wait_for_instances'] = wait_for_instances
-            __props__['zone'] = zone
-            __props__['fingerprint'] = None
-            __props__['instance_group'] = None
-            __props__['operation'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["versions"] = versions
+            __props__.__dict__["wait_for_instances"] = wait_for_instances
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["instance_group"] = None
+            __props__.__dict__["operation"] = None
+            __props__.__dict__["self_link"] = None
         super(InstanceGroupManager, __self__).__init__(
             'gcp:compute/instanceGroupManager:InstanceGroupManager',
             resource_name,
@@ -627,25 +925,25 @@ class InstanceGroupManager(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceGroupManagerState.__new__(_InstanceGroupManagerState)
 
-        __props__["auto_healing_policies"] = auto_healing_policies
-        __props__["base_instance_name"] = base_instance_name
-        __props__["description"] = description
-        __props__["fingerprint"] = fingerprint
-        __props__["instance_group"] = instance_group
-        __props__["name"] = name
-        __props__["named_ports"] = named_ports
-        __props__["operation"] = operation
-        __props__["project"] = project
-        __props__["self_link"] = self_link
-        __props__["stateful_disks"] = stateful_disks
-        __props__["target_pools"] = target_pools
-        __props__["target_size"] = target_size
-        __props__["update_policy"] = update_policy
-        __props__["versions"] = versions
-        __props__["wait_for_instances"] = wait_for_instances
-        __props__["zone"] = zone
+        __props__.__dict__["auto_healing_policies"] = auto_healing_policies
+        __props__.__dict__["base_instance_name"] = base_instance_name
+        __props__.__dict__["description"] = description
+        __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["instance_group"] = instance_group
+        __props__.__dict__["name"] = name
+        __props__.__dict__["named_ports"] = named_ports
+        __props__.__dict__["operation"] = operation
+        __props__.__dict__["project"] = project
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["stateful_disks"] = stateful_disks
+        __props__.__dict__["target_pools"] = target_pools
+        __props__.__dict__["target_size"] = target_size
+        __props__.__dict__["update_policy"] = update_policy
+        __props__.__dict__["versions"] = versions
+        __props__.__dict__["wait_for_instances"] = wait_for_instances
+        __props__.__dict__["zone"] = zone
         return InstanceGroupManager(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -796,10 +1094,4 @@ class InstanceGroupManager(pulumi.CustomResource):
         in.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

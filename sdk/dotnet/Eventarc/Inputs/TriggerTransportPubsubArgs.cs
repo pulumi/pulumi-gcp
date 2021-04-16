@@ -9,17 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Eventarc.Inputs
 {
-
-    public sealed class TriggerTransportPubsubArgs : Pulumi.ResourceArgs
-    {
-        [Input("subscription")]
-        public Input<string>? Subscription { get; set; }
-
-        [Input("topic")]
-        public Input<string>? Topic { get; set; }
-
-        public TriggerTransportPubsubArgs()
-        {
-        }
-    }
 }

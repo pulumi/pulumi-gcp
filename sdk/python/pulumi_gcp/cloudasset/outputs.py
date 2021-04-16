@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -80,12 +80,26 @@ class FolderFeedCondition(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FolderFeedFeedOutputConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubDestination":
+            suggest = "pubsub_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderFeedFeedOutputConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderFeedFeedOutputConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderFeedFeedOutputConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.FolderFeedFeedOutputConfigPubsubDestination'):
         """
@@ -102,9 +116,6 @@ class FolderFeedFeedOutputConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_destination")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -123,9 +134,6 @@ class FolderFeedFeedOutputConfigPubsubDestination(dict):
         Destination on Cloud Pubsub topic.
         """
         return pulumi.get(self, "topic")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -187,12 +195,26 @@ class OrganizationFeedCondition(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrganizationFeedFeedOutputConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubDestination":
+            suggest = "pubsub_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationFeedFeedOutputConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationFeedFeedOutputConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationFeedFeedOutputConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.OrganizationFeedFeedOutputConfigPubsubDestination'):
         """
@@ -209,9 +231,6 @@ class OrganizationFeedFeedOutputConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_destination")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -230,9 +249,6 @@ class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
         Destination on Cloud Pubsub topic.
         """
         return pulumi.get(self, "topic")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -294,12 +310,26 @@ class ProjectFeedCondition(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ProjectFeedFeedOutputConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubDestination":
+            suggest = "pubsub_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectFeedFeedOutputConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectFeedFeedOutputConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectFeedFeedOutputConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.ProjectFeedFeedOutputConfigPubsubDestination'):
         """
@@ -316,9 +346,6 @@ class ProjectFeedFeedOutputConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_destination")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -337,8 +364,5 @@ class ProjectFeedFeedOutputConfigPubsubDestination(dict):
         Destination on Cloud Pubsub topic.
         """
         return pulumi.get(self, "topic")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

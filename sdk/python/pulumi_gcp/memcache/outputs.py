@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'InstanceMemcacheNode',
@@ -16,6 +16,23 @@ __all__ = [
 
 @pulumi.output_type
 class InstanceMemcacheNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceMemcacheNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceMemcacheNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceMemcacheNode.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Optional[str] = None,
                  node_id: Optional[str] = None,
@@ -58,9 +75,6 @@ class InstanceMemcacheNode(dict):
     def zone(self) -> Optional[str]:
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceMemcacheParameters(dict):
@@ -94,12 +108,28 @@ class InstanceMemcacheParameters(dict):
         """
         return pulumi.get(self, "params")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuCount":
+            suggest = "cpu_count"
+        elif key == "memorySizeMb":
+            suggest = "memory_size_mb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu_count: int,
                  memory_size_mb: int):
@@ -125,8 +155,5 @@ class InstanceNodeConfig(dict):
         Memory size in Mebibytes for each memcache node.
         """
         return pulumi.get(self, "memory_size_mb")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
