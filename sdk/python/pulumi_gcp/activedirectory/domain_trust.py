@@ -6,50 +6,6 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-
-__all__ = ['DomainTrustArgs', 'DomainTrust']
-
-@pulumi.input_type
-class DomainTrustArgs:
-    def __init__(__self__, *,
-                 domain: pulumi.Input[str],
-                 target_dns_ip_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 target_domain_name: pulumi.Input[str],
-                 trust_direction: pulumi.Input[str],
-                 trust_handshake_secret: pulumi.Input[str],
-                 trust_type: pulumi.Input[str],
-                 project: Optional[pulumi.Input[str]] = None,
-                 selective_authentication: Optional[pulumi.Input[bool]] = None):
-        """
-        The set of arguments for constructing a DomainTrust resource.
-        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
-        :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
-        :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
-               Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
-        :param pulumi.Input[str] trust_handshake_secret: The trust secret used for the handshake with the target domain. This will not be stored.
-               **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
-               Possible values are `FOREST` and `EXTERNAL`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-        """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "target_dns_ip_addresses", target_dns_ip_addresses)
-        pulumi.set(__self__, "target_domain_name", target_domain_name)
-        pulumi.set(__self__, "trust_direction", trust_direction)
-        pulumi.set(__self__, "trust_handshake_secret", trust_handshake_secret)
-        pulumi.set(__self__, "trust_type", trust_type)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if selective_authentication is not None:
-            pulumi.set(__self__, "selective_authentication", selective_authentication)
-
-=======
 from .. import _utilities
 
 __all__ = ['DomainTrustArgs', 'DomainTrust']
@@ -92,7 +48,6 @@ class DomainTrustArgs:
         if selective_authentication is not None:
             pulumi.set(__self__, "selective_authentication", selective_authentication)
 
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
@@ -193,8 +148,6 @@ class DomainTrustArgs:
     @selective_authentication.setter
     def selective_authentication(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "selective_authentication", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -341,7 +294,6 @@ class _DomainTrustState:
     @trust_type.setter
     def trust_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trust_type", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class DomainTrust(pulumi.CustomResource):
@@ -357,9 +309,7 @@ class DomainTrust(pulumi.CustomResource):
                  trust_direction: Optional[pulumi.Input[str]] = None,
                  trust_handshake_secret: Optional[pulumi.Input[str]] = None,
                  trust_type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Adds a trust between Active Directory domains
 
@@ -493,15 +443,7 @@ class DomainTrust(pulumi.CustomResource):
                  trust_direction: Optional[pulumi.Input[str]] = None,
                  trust_handshake_secret: Optional[pulumi.Input[str]] = None,
                  trust_type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -136,8 +132,6 @@ class ReservationArgs:
     @specific_reservation_required.setter
     def specific_reservation_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "specific_reservation_required", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -326,7 +320,6 @@ class _ReservationState:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Reservation(pulumi.CustomResource):
@@ -340,9 +333,7 @@ class Reservation(pulumi.CustomResource):
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents a reservation resource. A reservation ensures that capacity is
         held in a specific zone even if the reserved VMs are not running.
@@ -497,15 +488,7 @@ class Reservation(pulumi.CustomResource):
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

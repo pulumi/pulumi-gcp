@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -216,8 +212,6 @@ class ServicePerimeterArgs:
     @use_explicit_dry_run_spec.setter
     def use_explicit_dry_run_spec(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_explicit_dry_run_spec", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -454,7 +448,6 @@ class _ServicePerimeterState:
     @use_explicit_dry_run_spec.setter
     def use_explicit_dry_run_spec(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_explicit_dry_run_spec", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ServicePerimeter(pulumi.CustomResource):
@@ -470,9 +463,7 @@ class ServicePerimeter(pulumi.CustomResource):
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         ServicePerimeter describes a set of GCP resources which can freely import
         and export data amongst themselves, but not export outside of the
@@ -933,15 +924,7 @@ class ServicePerimeter(pulumi.CustomResource):
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterStatusArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

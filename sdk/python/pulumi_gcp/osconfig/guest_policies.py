@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -184,8 +180,6 @@ class GuestPoliciesArgs:
     @recipes.setter
     def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
         pulumi.set(self, "recipes", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -416,7 +410,6 @@ class _GuestPoliciesState:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class GuestPolicies(pulumi.CustomResource):
@@ -432,9 +425,7 @@ class GuestPolicies(pulumi.CustomResource):
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         An OS Config resource representing a guest configuration policy. These policies represent
         the desired state for VM instance guest environments including packages to install or remove,
@@ -819,15 +810,7 @@ class GuestPolicies(pulumi.CustomResource):
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -92,8 +88,6 @@ class CustomServiceArgs:
     @telemetry.setter
     def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
         pulumi.set(self, "telemetry", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -188,7 +182,6 @@ class _CustomServiceState:
     @telemetry.setter
     def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
         pulumi.set(self, "telemetry", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class CustomService(pulumi.CustomResource):
@@ -200,9 +193,7 @@ class CustomService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Service is a discrete, autonomous, and network-accessible unit,
         designed to solve an individual concern (Wikipedia). In Cloud Monitoring,
@@ -310,15 +301,7 @@ class CustomService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['IAMPolicyArgs', 'IAMPolicy']
 
@@ -52,8 +48,6 @@ class IAMPolicyArgs:
     @service_account_id.setter
     def service_account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_account_id", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -112,7 +106,6 @@ class _IAMPolicyState:
     @service_account_id.setter
     def service_account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account_id", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class IAMPolicy(pulumi.CustomResource):
@@ -122,9 +115,7 @@ class IAMPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource, such as allowing the members to run operations as or modify the service account. To configure permissions for a service account on other GCP resources, use the google_project_iam set of resources.
 
@@ -420,15 +411,7 @@ class IAMPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

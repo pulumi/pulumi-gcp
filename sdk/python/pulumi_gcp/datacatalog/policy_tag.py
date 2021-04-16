@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['PolicyTagArgs', 'PolicyTag']
 
@@ -96,8 +92,6 @@ class PolicyTagArgs:
     @parent_policy_tag.setter
     def parent_policy_tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent_policy_tag", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -218,7 +212,6 @@ class _PolicyTagState:
     @taxonomy.setter
     def taxonomy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "taxonomy", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class PolicyTag(pulumi.CustomResource):
@@ -230,9 +223,7 @@ class PolicyTag(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
                  taxonomy: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Denotes one policy tag in a taxonomy.
 
@@ -408,15 +399,7 @@ class PolicyTag(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
                  taxonomy: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ServicePerimeterResourceArgs', 'ServicePerimeterResource']
 
@@ -54,8 +50,6 @@ class ServicePerimeterResourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -100,7 +94,6 @@ class _ServicePerimeterResourceState:
     @resource.setter
     def resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ServicePerimeterResource(pulumi.CustomResource):
@@ -110,9 +103,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  perimeter_name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Allows configuring a single GCP resource that should be inside of a service perimeter.
         This resource is intended to be used in cases where it is not possible to compile a full list
@@ -245,15 +236,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  perimeter_name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

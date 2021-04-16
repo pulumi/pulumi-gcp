@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -193,8 +189,6 @@ class DatasetAccessArgs:
     @view.setter
     def view(self, value: Optional[pulumi.Input['DatasetAccessViewArgs']]):
         pulumi.set(self, "view", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -393,7 +387,6 @@ class _DatasetAccessState:
     @view.setter
     def view(self, value: Optional[pulumi.Input['DatasetAccessViewArgs']]):
         pulumi.set(self, "view", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class DatasetAccess(pulumi.CustomResource):
@@ -410,9 +403,7 @@ class DatasetAccess(pulumi.CustomResource):
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['DatasetAccessViewArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         ## Import
 
@@ -479,15 +470,7 @@ class DatasetAccess(pulumi.CustomResource):
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['DatasetAccessViewArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

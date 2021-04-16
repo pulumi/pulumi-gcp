@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -57,8 +53,6 @@ class AccessLevelsArgs:
     @access_levels.setter
     def access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]]):
         pulumi.set(self, "access_levels", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -103,7 +97,6 @@ class _AccessLevelsState:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class AccessLevels(pulumi.CustomResource):
@@ -113,9 +106,7 @@ class AccessLevels(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
         This is a bulk edit of all Access Levels and may override existing Access Levels created by `accesscontextmanager.AccessLevel`,
@@ -300,15 +291,7 @@ class AccessLevels(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

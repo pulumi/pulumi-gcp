@@ -9,30 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
-
-    public sealed class JobStatusArgs : Pulumi.ResourceArgs
-    {
-        [Input("errorResults")]
-        private InputList<Inputs.JobStatusErrorResultArgs>? _errorResults;
-        public InputList<Inputs.JobStatusErrorResultArgs> ErrorResults
-        {
-            get => _errorResults ?? (_errorResults = new InputList<Inputs.JobStatusErrorResultArgs>());
-            set => _errorResults = value;
-        }
-
-        [Input("errors")]
-        private InputList<Inputs.JobStatusErrorArgs>? _errors;
-        public InputList<Inputs.JobStatusErrorArgs> Errors
-        {
-            get => _errors ?? (_errors = new InputList<Inputs.JobStatusErrorArgs>());
-            set => _errors = value;
-        }
-
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        public JobStatusArgs()
-        {
-        }
-    }
 }

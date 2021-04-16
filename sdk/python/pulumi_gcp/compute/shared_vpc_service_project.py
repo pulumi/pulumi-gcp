@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['SharedVPCServiceProjectArgs', 'SharedVPCServiceProject']
 
@@ -50,8 +46,6 @@ class SharedVPCServiceProjectArgs:
     @service_project.setter
     def service_project(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_project", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -92,7 +86,6 @@ class _SharedVPCServiceProjectState:
     @service_project.setter
     def service_project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_project", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class SharedVPCServiceProject(pulumi.CustomResource):
@@ -102,9 +95,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host_project: Optional[pulumi.Input[str]] = None,
                  service_project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Enables the Google Compute Engine
         [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
@@ -160,11 +151,8 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
         where the Shared VPC feature is referred to by its former name "XPN".
 
-<<<<<<< HEAD
         > **Note:** If Shared VPC Admin role is set at the folder level, use the google-beta provider. The google provider only supports this permission at project or organizational level currently. [[0]](https://cloud.google.com/vpc/docs/provisioning-shared-vpc#enable-shared-vpc-host)
 
-=======
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         ## Example Usage
 
         ```python
@@ -204,15 +192,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host_project: Optional[pulumi.Input[str]] = None,
                  service_project: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

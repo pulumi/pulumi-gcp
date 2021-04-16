@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -293,8 +289,6 @@ class InterconnectAttachmentArgs:
     @vlan_tag8021q.setter
     def vlan_tag8021q(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vlan_tag8021q", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -727,7 +721,6 @@ class _InterconnectAttachmentState:
     @vlan_tag8021q.setter
     def vlan_tag8021q(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vlan_tag8021q", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class InterconnectAttachment(pulumi.CustomResource):
@@ -748,9 +741,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  router: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents an InterconnectAttachment (VLAN attachment) resource. For more
         information, see Creating VLAN Attachments.
@@ -921,15 +912,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  router: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

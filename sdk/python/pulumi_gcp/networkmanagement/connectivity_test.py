@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -220,8 +216,6 @@ class ConnectivityTestArgs:
     @related_projects.setter
     def related_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "related_projects", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -430,7 +424,6 @@ class _ConnectivityTestState:
     @source.setter
     def source(self, value: Optional[pulumi.Input['ConnectivityTestSourceArgs']]):
         pulumi.set(self, "source", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ConnectivityTest(pulumi.CustomResource):
@@ -446,9 +439,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A connectivity test are a static analysis of your resource configurations
         that enables you to evaluate connectivity to and from Google Cloud
@@ -733,15 +724,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

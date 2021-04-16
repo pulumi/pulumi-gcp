@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['KeyArgs', 'Key']
 
@@ -125,8 +121,6 @@ class KeyArgs:
     @public_key_type.setter
     def public_key_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_key_type", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -325,7 +319,6 @@ class _KeyState:
     @valid_before.setter
     def valid_before(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "valid_before", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Key(pulumi.CustomResource):
@@ -339,9 +332,7 @@ class Key(pulumi.CustomResource):
                  public_key_data: Optional[pulumi.Input[str]] = None,
                  public_key_type: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates and manages service account keys, which allow the use of a service account outside of Google Cloud.
 
@@ -435,15 +426,7 @@ class Key(pulumi.CustomResource):
                  public_key_data: Optional[pulumi.Input[str]] = None,
                  public_key_type: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

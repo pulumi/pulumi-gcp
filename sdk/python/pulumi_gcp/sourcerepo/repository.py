@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -78,8 +74,6 @@ class RepositoryArgs:
     @pubsub_configs.setter
     def pubsub_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
         pulumi.set(self, "pubsub_configs", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -176,7 +170,6 @@ class _RepositoryState:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Repository(pulumi.CustomResource):
@@ -187,9 +180,7 @@ class Repository(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A repository (or repo) is a Git repository storing versioned source content.
 
@@ -318,15 +309,7 @@ class Repository(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -31,7 +27,7 @@ class InstanceArgs:
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
-                 instance_owners: Optional[pulumi.Input[str]] = None,
+                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -78,7 +74,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
-        :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
                If not specified, all of the service account users of
@@ -339,7 +335,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="instanceOwners")
-    def instance_owners(self) -> Optional[pulumi.Input[str]]:
+    def instance_owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of owners of this instance after creation.
         Format: alias@example.com.
@@ -350,7 +346,7 @@ class InstanceArgs:
         return pulumi.get(self, "instance_owners")
 
     @instance_owners.setter
-    def instance_owners(self, value: Optional[pulumi.Input[str]]):
+    def instance_owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_owners", value)
 
     @property
@@ -574,8 +570,6 @@ class InstanceArgs:
     @vm_image.setter
     def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArgs']]):
         pulumi.set(self, "vm_image", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -591,7 +585,7 @@ class _InstanceState:
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
-                 instance_owners: Optional[pulumi.Input[str]] = None,
+                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -640,7 +634,7 @@ class _InstanceState:
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
-        :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
                If not specified, all of the service account users of
@@ -887,7 +881,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="instanceOwners")
-    def instance_owners(self) -> Optional[pulumi.Input[str]]:
+    def instance_owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of owners of this instance after creation.
         Format: alias@example.com.
@@ -898,7 +892,7 @@ class _InstanceState:
         return pulumi.get(self, "instance_owners")
 
     @instance_owners.setter
-    def instance_owners(self, value: Optional[pulumi.Input[str]]):
+    def instance_owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_owners", value)
 
     @property
@@ -1170,7 +1164,6 @@ class _InstanceState:
     @vm_image.setter
     def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArgs']]):
         pulumi.set(self, "vm_image", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Instance(pulumi.CustomResource):
@@ -1188,7 +1181,7 @@ class Instance(pulumi.CustomResource):
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
-                 instance_owners: Optional[pulumi.Input[str]] = None,
+                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1208,9 +1201,7 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Cloud AI Platform Notebook instance.
 
@@ -1348,7 +1339,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
-        :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
                If not specified, all of the service account users of
@@ -1532,7 +1523,7 @@ class Instance(pulumi.CustomResource):
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
-                 instance_owners: Optional[pulumi.Input[str]] = None,
+                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1552,15 +1543,7 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1628,7 +1611,7 @@ class Instance(pulumi.CustomResource):
             data_disk_type: Optional[pulumi.Input[str]] = None,
             disk_encryption: Optional[pulumi.Input[str]] = None,
             install_gpu_driver: Optional[pulumi.Input[bool]] = None,
-            instance_owners: Optional[pulumi.Input[str]] = None,
+            instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kms_key: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1682,7 +1665,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
-        :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
                If not specified, all of the service account users of
@@ -1862,7 +1845,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceOwners")
-    def instance_owners(self) -> pulumi.Output[Optional[str]]:
+    def instance_owners(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of owners of this instance after creation.
         Format: alias@example.com.

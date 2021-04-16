@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['TargetSSLProxyArgs', 'TargetSSLProxy']
 
@@ -18,7 +14,7 @@ __all__ = ['TargetSSLProxyArgs', 'TargetSSLProxy']
 class TargetSSLProxyArgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str],
-                 ssl_certificates: pulumi.Input[str],
+                 ssl_certificates: pulumi.Input[Sequence[pulumi.Input[str]]],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,7 +23,7 @@ class TargetSSLProxyArgs:
         """
         The set of arguments for constructing a TargetSSLProxy resource.
         :param pulumi.Input[str] backend_service: A reference to the BackendService resource.
-        :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. At least one
                SSL certificate must be specified.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -75,7 +71,7 @@ class TargetSSLProxyArgs:
 
     @property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> pulumi.Input[str]:
+    def ssl_certificates(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of SslCertificate resources that are used to authenticate
         connections between users and the load balancer. At least one
@@ -84,7 +80,7 @@ class TargetSSLProxyArgs:
         return pulumi.get(self, "ssl_certificates")
 
     @ssl_certificates.setter
-    def ssl_certificates(self, value: pulumi.Input[str]):
+    def ssl_certificates(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "ssl_certificates", value)
 
     @property
@@ -158,8 +154,6 @@ class TargetSSLProxyArgs:
     @ssl_policy.setter
     def ssl_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssl_policy", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -173,7 +167,7 @@ class _TargetSSLProxyState:
                  proxy_header: Optional[pulumi.Input[str]] = None,
                  proxy_id: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 ssl_certificates: Optional[pulumi.Input[str]] = None,
+                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TargetSSLProxy resources.
@@ -195,7 +189,7 @@ class _TargetSSLProxyState:
                Possible values are `NONE` and `PROXY_V1`.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. At least one
                SSL certificate must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
@@ -331,7 +325,7 @@ class _TargetSSLProxyState:
 
     @property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> Optional[pulumi.Input[str]]:
+    def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of SslCertificate resources that are used to authenticate
         connections between users and the load balancer. At least one
@@ -340,7 +334,7 @@ class _TargetSSLProxyState:
         return pulumi.get(self, "ssl_certificates")
 
     @ssl_certificates.setter
-    def ssl_certificates(self, value: Optional[pulumi.Input[str]]):
+    def ssl_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ssl_certificates", value)
 
     @property
@@ -356,7 +350,6 @@ class _TargetSSLProxyState:
     @ssl_policy.setter
     def ssl_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssl_policy", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class TargetSSLProxy(pulumi.CustomResource):
@@ -369,11 +362,9 @@ class TargetSSLProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_header: Optional[pulumi.Input[str]] = None,
-                 ssl_certificates: Optional[pulumi.Input[str]] = None,
+                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents a TargetSslProxy resource, which is used by one or more
         global forwarding rule to route incoming SSL requests to a backend
@@ -442,7 +433,7 @@ class TargetSSLProxy(pulumi.CustomResource):
                the backend.
                Default value is `NONE`.
                Possible values are `NONE` and `PROXY_V1`.
-        :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. At least one
                SSL certificate must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
@@ -526,17 +517,9 @@ class TargetSSLProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_header: Optional[pulumi.Input[str]] = None,
-                 ssl_certificates: Optional[pulumi.Input[str]] = None,
+                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -580,7 +563,7 @@ class TargetSSLProxy(pulumi.CustomResource):
             proxy_header: Optional[pulumi.Input[str]] = None,
             proxy_id: Optional[pulumi.Input[int]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            ssl_certificates: Optional[pulumi.Input[str]] = None,
+            ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssl_policy: Optional[pulumi.Input[str]] = None) -> 'TargetSSLProxy':
         """
         Get an existing TargetSSLProxy resource's state with the given name, id, and optional extra
@@ -607,7 +590,7 @@ class TargetSSLProxy(pulumi.CustomResource):
                Possible values are `NONE` and `PROXY_V1`.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. At least one
                SSL certificate must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
@@ -706,7 +689,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> pulumi.Output[str]:
+    def ssl_certificates(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of SslCertificate resources that are used to authenticate
         connections between users and the load balancer. At least one

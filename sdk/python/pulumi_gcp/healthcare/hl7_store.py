@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -152,8 +148,6 @@ class Hl7StoreArgs:
     @parser_config.setter
     def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArgs']]):
         pulumi.set(self, "parser_config", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -309,7 +303,6 @@ class _Hl7StoreState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Hl7Store(pulumi.CustomResource):
@@ -323,9 +316,7 @@ class Hl7Store(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
                  parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
         standard for Healthcare information exchange
@@ -684,15 +675,7 @@ class Hl7Store(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
                  parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

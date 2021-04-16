@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -131,8 +127,6 @@ class AutoscalingPolicyArgs:
     @worker_config.setter
     def worker_config(self, value: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']]):
         pulumi.set(self, "worker_config", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -267,7 +261,6 @@ class _AutoscalingPolicyState:
     @worker_config.setter
     def worker_config(self, value: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']]):
         pulumi.set(self, "worker_config", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class AutoscalingPolicy(pulumi.CustomResource):
@@ -281,9 +274,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyWorkerConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Describes an autoscaling policy for Dataproc cluster autoscaler.
 
@@ -423,15 +414,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyWorkerConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

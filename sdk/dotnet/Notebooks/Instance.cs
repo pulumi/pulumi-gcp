@@ -257,7 +257,7 @@ namespace Pulumi.Gcp.Notebooks
         /// your VM instance's service account can use the instance.
         /// </summary>
         [Output("instanceOwners")]
-        public Output<string?> InstanceOwners { get; private set; } = null!;
+        public Output<ImmutableArray<string>> InstanceOwners { get; private set; } = null!;
 
         /// <summary>
         /// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
@@ -524,6 +524,9 @@ namespace Pulumi.Gcp.Notebooks
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
 
+        [Input("instanceOwners")]
+        private InputList<string>? _instanceOwners;
+
         /// <summary>
         /// The list of owners of this instance after creation.
         /// Format: alias@example.com.
@@ -531,8 +534,11 @@ namespace Pulumi.Gcp.Notebooks
         /// If not specified, all of the service account users of
         /// your VM instance's service account can use the instance.
         /// </summary>
-        [Input("instanceOwners")]
-        public Input<string>? InstanceOwners { get; set; }
+        public InputList<string> InstanceOwners
+        {
+            get => _instanceOwners ?? (_instanceOwners = new InputList<string>());
+            set => _instanceOwners = value;
+        }
 
         /// <summary>
         /// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
@@ -772,6 +778,9 @@ namespace Pulumi.Gcp.Notebooks
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
 
+        [Input("instanceOwners")]
+        private InputList<string>? _instanceOwners;
+
         /// <summary>
         /// The list of owners of this instance after creation.
         /// Format: alias@example.com.
@@ -779,8 +788,11 @@ namespace Pulumi.Gcp.Notebooks
         /// If not specified, all of the service account users of
         /// your VM instance's service account can use the instance.
         /// </summary>
-        [Input("instanceOwners")]
-        public Input<string>? InstanceOwners { get; set; }
+        public InputList<string> InstanceOwners
+        {
+            get => _instanceOwners ?? (_instanceOwners = new InputList<string>());
+            set => _instanceOwners = value;
+        }
 
         /// <summary>
         /// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.

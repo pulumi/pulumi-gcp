@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -194,8 +190,6 @@ class RegistryArgs:
     @state_notification_config.setter
     def state_notification_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "state_notification_config", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -376,7 +370,6 @@ class _RegistryState:
     @state_notification_config.setter
     def state_notification_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "state_notification_config", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Registry(pulumi.CustomResource):
@@ -393,9 +386,7 @@ class Registry(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A Google Cloud IoT Core device registry.
 
@@ -628,15 +619,7 @@ class Registry(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

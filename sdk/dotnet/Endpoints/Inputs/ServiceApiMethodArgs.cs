@@ -9,23 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Endpoints.Inputs
 {
-
-    public sealed class ServiceApiMethodArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("requestType")]
-        public Input<string>? RequestType { get; set; }
-
-        [Input("responseType")]
-        public Input<string>? ResponseType { get; set; }
-
-        [Input("syntax")]
-        public Input<string>? Syntax { get; set; }
-
-        public ServiceApiMethodArgs()
-        {
-        }
-    }
 }

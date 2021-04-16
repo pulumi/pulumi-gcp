@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ForwardingRuleArgs', 'ForwardingRule']
 
@@ -510,8 +506,6 @@ class ForwardingRuleArgs:
         pulumi.set(self, "target", value)
 
 
-<<<<<<< HEAD
-=======
 @pulumi.input_type
 class _ForwardingRuleState:
     def __init__(__self__, *,
@@ -1072,7 +1066,6 @@ class _ForwardingRuleState:
         pulumi.set(self, "target", value)
 
 
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 class ForwardingRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1097,9 +1090,7 @@ class ForwardingRule(pulumi.CustomResource):
                  service_label: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A ForwardingRule resource. A ForwardingRule resource specifies which pool
         of target virtual machines to forward a packet to if it matches the given
@@ -1143,7 +1134,6 @@ class ForwardingRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-<<<<<<< HEAD
 
         hc = gcp.compute.HealthCheck("hc",
             check_interval_sec=1,
@@ -1171,35 +1161,6 @@ class ForwardingRule(pulumi.CustomResource):
         ```
         ### Forwarding Rule Basic
 
-=======
-
-        hc = gcp.compute.HealthCheck("hc",
-            check_interval_sec=1,
-            timeout_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
-        backend = gcp.compute.RegionBackendService("backend",
-            region="us-central1",
-            health_checks=[hc.id])
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
-            network=default_network.id)
-        # Forwarding rule for Internal Load Balancing
-        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
-            region="us-central1",
-            load_balancing_scheme="INTERNAL",
-            backend_service=backend.id,
-            all_ports=True,
-            allow_global_access=True,
-            network=default_network.name,
-            subnetwork=default_subnetwork.name)
-        ```
-        ### Forwarding Rule Basic
-
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1842,15 +1803,7 @@ class ForwardingRule(pulumi.CustomResource):
                  service_label: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

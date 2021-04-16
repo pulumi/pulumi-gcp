@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ObjectACLArgs', 'ObjectACL']
 
@@ -84,8 +80,6 @@ class ObjectACLArgs:
     @role_entities.setter
     def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "role_entities", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -160,7 +154,6 @@ class _ObjectACLState:
     @role_entities.setter
     def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "role_entities", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ObjectACL(pulumi.CustomResource):
@@ -172,9 +165,7 @@ class ObjectACL(pulumi.CustomResource):
                  object: Optional[pulumi.Input[str]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Authoritatively manages the access control list (ACL) for an object in a Google
         Cloud Storage (GCS) bucket. Removing a `storage.ObjectACL` sets the
@@ -284,15 +275,7 @@ class ObjectACL(pulumi.CustomResource):
                  object: Optional[pulumi.Input[str]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -213,7 +213,7 @@ export class Instance extends pulumi.CustomResource {
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
      */
-    public readonly instanceOwners!: pulumi.Output<string | undefined>;
+    public readonly instanceOwners!: pulumi.Output<string[] | undefined>;
     /**
      * The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
      * Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
@@ -476,7 +476,7 @@ export interface InstanceState {
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
      */
-    readonly instanceOwners?: pulumi.Input<string>;
+    readonly instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
      * Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
@@ -647,7 +647,7 @@ export interface InstanceArgs {
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
      */
-    readonly instanceOwners?: pulumi.Input<string>;
+    readonly instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
      * Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}

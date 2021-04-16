@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Compute
         /// SSL certificate must be specified.
         /// </summary>
         [Output("sslCertificates")]
-        public Output<string> SslCertificates { get; private set; } = null!;
+        public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
 
         /// <summary>
         /// A reference to the SslPolicy resource that will be associated with
@@ -246,13 +246,19 @@ namespace Pulumi.Gcp.Compute
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }
 
+        [Input("sslCertificates", required: true)]
+        private InputList<string>? _sslCertificates;
+
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate
         /// connections between users and the load balancer. At least one
         /// SSL certificate must be specified.
         /// </summary>
-        [Input("sslCertificates", required: true)]
-        public Input<string> SslCertificates { get; set; } = null!;
+        public InputList<string> SslCertificates
+        {
+            get => _sslCertificates ?? (_sslCertificates = new InputList<string>());
+            set => _sslCertificates = value;
+        }
 
         /// <summary>
         /// A reference to the SslPolicy resource that will be associated with
@@ -327,13 +333,19 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        [Input("sslCertificates")]
+        private InputList<string>? _sslCertificates;
+
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate
         /// connections between users and the load balancer. At least one
         /// SSL certificate must be specified.
         /// </summary>
-        [Input("sslCertificates")]
-        public Input<string>? SslCertificates { get; set; }
+        public InputList<string> SslCertificates
+        {
+            get => _sslCertificates ?? (_sslCertificates = new InputList<string>());
+            set => _sslCertificates = value;
+        }
 
         /// <summary>
         /// A reference to the SslPolicy resource that will be associated with

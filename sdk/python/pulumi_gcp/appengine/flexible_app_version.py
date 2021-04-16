@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -512,8 +508,6 @@ class FlexibleAppVersionArgs:
     @vpc_access_connector.setter
     def vpc_access_connector(self, value: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']]):
         pulumi.set(self, "vpc_access_connector", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -1032,7 +1026,6 @@ class _FlexibleAppVersionState:
     @vpc_access_connector.setter
     def vpc_access_connector(self, value: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']]):
         pulumi.set(self, "vpc_access_connector", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class FlexibleAppVersion(pulumi.CustomResource):
@@ -1068,9 +1061,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Flexible App Version resource to create a new version of flexible GAE Application. Based on Google Compute Engine,
         the App Engine flexible environment automatically scales your app up and down while also balancing the load.
@@ -1370,15 +1361,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

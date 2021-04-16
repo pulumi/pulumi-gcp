@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -202,8 +198,6 @@ class SecurityScanConfigArgs:
     @user_agent.setter
     def user_agent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_agent", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -410,7 +404,6 @@ class _SecurityScanConfigState:
     @user_agent.setter
     def user_agent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_agent", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class SecurityScanConfig(pulumi.CustomResource):
@@ -428,9 +421,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A ScanConfig resource contains the configurations to launch a scan.
 
@@ -572,15 +563,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

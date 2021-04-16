@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -95,8 +91,6 @@ class DomainMappingArgs:
     @ssl_settings.setter
     def ssl_settings(self, value: Optional[pulumi.Input['DomainMappingSslSettingsArgs']]):
         pulumi.set(self, "ssl_settings", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -213,7 +207,6 @@ class _DomainMappingState:
     @ssl_settings.setter
     def ssl_settings(self, value: Optional[pulumi.Input['DomainMappingSslSettingsArgs']]):
         pulumi.set(self, "ssl_settings", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class DomainMapping(pulumi.CustomResource):
@@ -225,9 +218,7 @@ class DomainMapping(pulumi.CustomResource):
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         A domain serving an App Engine application.
 
@@ -343,15 +334,7 @@ class DomainMapping(pulumi.CustomResource):
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

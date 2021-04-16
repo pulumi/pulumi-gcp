@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['RegionTargetHttpsProxyArgs', 'RegionTargetHttpsProxy']
 
@@ -136,8 +132,6 @@ class RegionTargetHttpsProxyArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -312,7 +306,6 @@ class _RegionTargetHttpsProxyState:
     @url_map.setter
     def url_map(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url_map", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class RegionTargetHttpsProxy(pulumi.CustomResource):
@@ -326,9 +319,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents a RegionTargetHttpsProxy resource, which is used by one or more
         forwarding rules to route incoming HTTPS requests to a URL map.
@@ -522,15 +513,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

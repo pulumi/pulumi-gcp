@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -190,8 +186,6 @@ class NodeTemplateArgs:
     @server_binding.setter
     def server_binding(self, value: Optional[pulumi.Input['NodeTemplateServerBindingArgs']]):
         pulumi.set(self, "server_binding", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -400,7 +394,6 @@ class _NodeTemplateState:
     @server_binding.setter
     def server_binding(self, value: Optional[pulumi.Input['NodeTemplateServerBindingArgs']]):
         pulumi.set(self, "server_binding", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class NodeTemplate(pulumi.CustomResource):
@@ -417,9 +410,7 @@ class NodeTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input[pulumi.InputType['NodeTemplateServerBindingArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Represents a NodeTemplate resource. Node templates specify properties
         for creating sole-tenant nodes, such as node type, vCPU and memory
@@ -596,15 +587,7 @@ class NodeTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input[pulumi.InputType['NodeTemplateServerBindingArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

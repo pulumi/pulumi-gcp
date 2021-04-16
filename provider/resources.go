@@ -765,17 +765,10 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_subnetwork_iam.html.markdown",
 				},
 			},
-			"google_compute_target_http_proxy":  {Tok: gcpResource(gcpCompute, "TargetHttpProxy")},
-			"google_compute_target_https_proxy": {Tok: gcpResource(gcpCompute, "TargetHttpsProxy")},
-			"google_compute_target_instance":    {Tok: gcpResource(gcpCompute, "TargetInstance")},
-			"google_compute_target_ssl_proxy": {
-				Tok: gcpResource(gcpCompute, "TargetSSLProxy"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"ssl_certificates": {
-						MaxItemsOne: tfbridge.True(),
-					},
-				},
-			},
+			"google_compute_target_http_proxy":   {Tok: gcpResource(gcpCompute, "TargetHttpProxy")},
+			"google_compute_target_https_proxy":  {Tok: gcpResource(gcpCompute, "TargetHttpsProxy")},
+			"google_compute_target_instance":     {Tok: gcpResource(gcpCompute, "TargetInstance")},
+			"google_compute_target_ssl_proxy":    {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
 			"google_compute_target_tcp_proxy":    {Tok: gcpResource(gcpCompute, "TargetTCPProxy")},
 			"google_compute_target_pool":         {Tok: gcpResource(gcpCompute, "TargetPool")},
 			"google_compute_target_grpc_proxy":   {Tok: gcpResource(gcpCompute, "TargetGrpcProxy")},
@@ -1803,15 +1796,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
-			"google_notebooks_instance": {
-				Tok: gcpResource(gcpNotebooks, "Instance"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"instance_owners": {
-						MaxItemsOne: boolRef(true),
-					},
-				},
-			},
-			"google_notebooks_location": {Tok: gcpResource(gcpNotebooks, "Location")},
+			"google_notebooks_instance":    {Tok: gcpResource(gcpNotebooks, "Instance")},
+			"google_notebooks_location":    {Tok: gcpResource(gcpNotebooks, "Location")},
 			"google_notebooks_instance_iam_binding": {
 				Tok: gcpResource(gcpNotebooks, "InstanceIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -2468,7 +2454,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^3.0.0-alpha.0",
+				"@pulumi/pulumi":    "^3.0.0-rc.1",
 				"read-package-json": "^2.0.13",
 				"@types/express":    "^4.16.0",
 			},
@@ -2515,7 +2501,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0a1,<4.0.0", // https://www.python.org/dev/peps/pep-0440/#handling-of-pre-releases
+				"pulumi": ">=3.0.0rc1,<4.0.0", // https://www.python.org/dev/peps/pep-0440/#handling-of-pre-releases
 			},
 		},
 		CSharp: &tfbridge.CSharpInfo{

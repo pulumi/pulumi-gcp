@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -299,8 +295,6 @@ class BucketArgs:
     @website.setter
     def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
         pulumi.set(self, "website", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -618,7 +612,6 @@ class _BucketState:
     @website.setter
     def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
         pulumi.set(self, "website", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Bucket(pulumi.CustomResource):
@@ -643,9 +636,7 @@ class Bucket(pulumi.CustomResource):
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
@@ -860,15 +851,7 @@ class Bucket(pulumi.CustomResource):
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

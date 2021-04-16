@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -57,8 +53,6 @@ class ServicePerimetersArgs:
     @service_perimeters.setter
     def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
         pulumi.set(self, "service_perimeters", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -103,7 +97,6 @@ class _ServicePerimetersState:
     @service_perimeters.setter
     def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
         pulumi.set(self, "service_perimeters", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ServicePerimeters(pulumi.CustomResource):
@@ -113,9 +106,7 @@ class ServicePerimeters(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
         This is a bulk edit of all Service Perimeters and may override existing Service Perimeters created by `accesscontextmanager.ServicePerimeter`,
@@ -288,15 +279,7 @@ class ServicePerimeters(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

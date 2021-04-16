@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from .. import _utilities, _tables
-=======
 from .. import _utilities
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -100,8 +96,6 @@ class TagArgs:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -228,7 +222,6 @@ class _TagState:
     @template_displayname.setter
     def template_displayname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "template_displayname", value)
->>>>>>> 20179eed4 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Tag(pulumi.CustomResource):
@@ -240,9 +233,7 @@ class Tag(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Tags are used to attach custom metadata to Data Catalog resources. Tags conform to the specifications within their tag template.
 
@@ -825,15 +816,7 @@ class Tag(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
