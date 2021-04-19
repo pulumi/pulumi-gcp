@@ -2454,7 +2454,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^3.0.0-rc.1",
+				"@pulumi/pulumi":    "^3.0.0",
 				"read-package-json": "^2.0.13",
 				"@types/express":    "^4.16.0",
 			},
@@ -2501,12 +2501,12 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0rc1,<4.0.0", // https://www.python.org/dev/peps/pep-0440/#handling-of-pre-releases
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*-*", // this will cover the alphas while we are in the testing phase
+				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,

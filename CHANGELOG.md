@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 5.0.0 (2021-04-19)
 * Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
   Node SDK performance, general availability of Automation API, and more.  
   **PLEASE NOTE THE FOLLOWING BREAKING CHANGES:**
   * `gcp.notebooks.Instance` now supports multiple `instanceOwners`. 
   * `gcp.compute.TargetSSLProxy` now supports multiple `sslCertificates`. 
-
----
 
 ## 4.21.0 (2021-04-13)
 * Upgrade to v3.64.0 of the Google Beta Terraform Provider
