@@ -450,6 +450,7 @@
         "kms/getKMSCryptoKeyVersion.ts",
         "kms/getKMSKeyRing.ts",
         "kms/getKMSSecret.ts",
+        "kms/getKMSSecretAsymmetric.ts",
         "kms/getKMSSecretCiphertext.ts",
         "kms/index.ts",
         "kms/keyRing.ts",

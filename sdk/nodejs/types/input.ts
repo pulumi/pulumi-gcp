@@ -4987,6 +4987,9 @@ export namespace cloudrun {
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+         * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+         * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -5068,6 +5071,9 @@ export namespace cloudrun {
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+         * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+         * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -17051,7 +17057,6 @@ export namespace eventarc {
     export interface TriggerDestination {
         /**
          * Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-         * The `matchingCriteria` block supports:
          */
         cloudRunService?: pulumi.Input<inputs.eventarc.TriggerDestinationCloudRunService>;
     }
@@ -17083,11 +17088,22 @@ export namespace eventarc {
     }
 
     export interface TriggerTransport {
+        /**
+         * The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+         * The `pubsub` block supports:
+         */
         pubsubs?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransportPubsub>[]>;
     }
 
     export interface TriggerTransportPubsub {
+        /**
+         * -
+         * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+         */
         subscription?: pulumi.Input<string>;
+        /**
+         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+         */
         topic?: pulumi.Input<string>;
     }
 }

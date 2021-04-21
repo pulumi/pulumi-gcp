@@ -1184,6 +1184,9 @@ type ServiceMetadata struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations map[string]string `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -1233,6 +1236,9 @@ type ServiceMetadataArgs struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -1347,6 +1353,9 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -1421,6 +1430,9 @@ func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {
@@ -1905,6 +1917,9 @@ type ServiceTemplateMetadata struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations map[string]string `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -1956,6 +1971,9 @@ type ServiceTemplateMetadataArgs struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -2072,6 +2090,9 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithCon
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2151,6 +2172,9 @@ func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) map[string]string {
 		if v == nil {

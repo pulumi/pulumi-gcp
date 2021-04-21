@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Eventarc.Inputs
     {
         /// <summary>
         /// Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-        /// The `matching_criteria` block supports:
         /// </summary>
         [Input("cloudRunService")]
         public Input<Inputs.TriggerDestinationCloudRunServiceGetArgs>? CloudRunService { get; set; }
