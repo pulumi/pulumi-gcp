@@ -217,12 +217,10 @@ type Address struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource. Possible values include:
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT`, `VPC_PEERING`, and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -298,12 +296,10 @@ type addressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource. Possible values include:
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT`, `VPC_PEERING`, and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -351,12 +347,10 @@ type AddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource. Possible values include:
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT`, `VPC_PEERING`, and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -404,12 +398,10 @@ type addressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource. Possible values include:
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT`, `VPC_PEERING`, and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -450,12 +442,10 @@ type AddressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource. Possible values include:
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT`, `VPC_PEERING`, and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.

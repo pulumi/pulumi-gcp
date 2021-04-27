@@ -1947,7 +1947,23 @@ func Provider() tfbridge.ProviderInfo {
 			"google_workflows_workflow": {Tok: gcpResource(gcpWorkflows, "Workflow")},
 
 			//eventarc
-			"google_eventarc_trigger": {Tok: gcpResource(gcpEventarc, "Trigger")},
+			"google_eventarc_trigger": {
+				Tok: gcpResource(gcpEventarc, "Trigger"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"transport": {
+						Name:        "transports",
+						MaxItemsOne: boolRef(false),
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"pubsub": {
+									Name:        "pubsubs",
+									MaxItemsOne: boolRef(false),
+								},
+							},
+						},
+					},
+				},
+			},
 
 			// gke hub
 			"google_gke_hub_membership": {Tok: gcpResource(gcpGkeHub, "Membership")},

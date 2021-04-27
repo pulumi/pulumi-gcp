@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Eventarc.Outputs
     [OutputType]
     public sealed class TriggerTransport
     {
+        /// <summary>
+        /// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        /// The `pubsub` block supports:
+        /// </summary>
         public readonly ImmutableArray<Outputs.TriggerTransportPubsub> Pubsubs;
 
         [OutputConstructor]

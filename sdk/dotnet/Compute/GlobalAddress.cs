@@ -144,11 +144,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. For global internal addresses it can be
+        /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
         /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
-        /// This should only be set when using an Internal address.
-        /// Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -286,11 +284,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. For global internal addresses it can be
+        /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
         /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
-        /// This should only be set when using an Internal address.
-        /// Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -395,11 +391,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. For global internal addresses it can be
+        /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
         /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
-        /// This should only be set when using an Internal address.
-        /// Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

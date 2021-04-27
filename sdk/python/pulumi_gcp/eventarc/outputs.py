@@ -40,7 +40,6 @@ class TriggerDestination(dict):
                  cloud_run_service: Optional['outputs.TriggerDestinationCloudRunService'] = None):
         """
         :param 'TriggerDestinationCloudRunServiceArgs' cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-               The `matching_criteria` block supports:
         """
         if cloud_run_service is not None:
             pulumi.set(__self__, "cloud_run_service", cloud_run_service)
@@ -50,7 +49,6 @@ class TriggerDestination(dict):
     def cloud_run_service(self) -> Optional['outputs.TriggerDestinationCloudRunService']:
         """
         Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-        The `matching_criteria` block supports:
         """
         return pulumi.get(self, "cloud_run_service")
 
@@ -130,12 +128,20 @@ class TriggerMatchingCriteria(dict):
 class TriggerTransport(dict):
     def __init__(__self__, *,
                  pubsubs: Optional[Sequence['outputs.TriggerTransportPubsub']] = None):
+        """
+        :param Sequence['TriggerTransportPubsubArgs'] pubsubs: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+               The `pubsub` block supports:
+        """
         if pubsubs is not None:
             pulumi.set(__self__, "pubsubs", pubsubs)
 
     @property
     @pulumi.getter
     def pubsubs(self) -> Optional[Sequence['outputs.TriggerTransportPubsub']]:
+        """
+        The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        The `pubsub` block supports:
+        """
         return pulumi.get(self, "pubsubs")
 
 
@@ -144,6 +150,11 @@ class TriggerTransportPubsub(dict):
     def __init__(__self__, *,
                  subscription: Optional[str] = None,
                  topic: Optional[str] = None):
+        """
+        :param str subscription: -
+               Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        :param str topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        """
         if subscription is not None:
             pulumi.set(__self__, "subscription", subscription)
         if topic is not None:
@@ -152,11 +163,18 @@ class TriggerTransportPubsub(dict):
     @property
     @pulumi.getter
     def subscription(self) -> Optional[str]:
+        """
+        -
+        Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        """
         return pulumi.get(self, "subscription")
 
     @property
     @pulumi.getter
     def topic(self) -> Optional[str]:
+        """
+        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        """
         return pulumi.get(self, "topic")
 
 

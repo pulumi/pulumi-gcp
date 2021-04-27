@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Eventarc.Outputs
     {
         /// <summary>
         /// Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-        /// The `matching_criteria` block supports:
         /// </summary>
         public readonly Outputs.TriggerDestinationCloudRunService? CloudRunService;
 
