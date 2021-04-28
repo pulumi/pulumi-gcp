@@ -9,11 +9,49 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'DatabaseEncryptionConfig',
     'DatabaseIAMBindingCondition',
     'DatabaseIAMMemberCondition',
     'InstanceIAMBindingCondition',
     'InstanceIAMMemberCondition',
 ]
+
+@pulumi.output_type
+class DatabaseEncryptionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseEncryptionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseEncryptionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+               in the same location as the Spanner Database.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+        in the same location as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_name")
+
 
 @pulumi.output_type
 class DatabaseIAMBindingCondition(dict):

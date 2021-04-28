@@ -417,6 +417,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
             region="us-central1",
             protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
             timeout_sec=10,
             health_checks=[default_region_health_check.id])
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
@@ -546,6 +547,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
             region="us-central1",
             protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
             timeout_sec=10,
             health_checks=[default_region_health_check.id])
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",

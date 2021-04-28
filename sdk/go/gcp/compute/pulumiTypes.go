@@ -65030,6 +65030,106 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pul
 	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
 }
 
+type GetHcVpnGatewayVpnInterface struct {
+	Id        int    `pulumi:"id"`
+	IpAddress string `pulumi:"ipAddress"`
+}
+
+// GetHcVpnGatewayVpnInterfaceInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArgs and GetHcVpnGatewayVpnInterfaceOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayVpnInterfaceInput` via:
+//
+//          GetHcVpnGatewayVpnInterfaceArgs{...}
+type GetHcVpnGatewayVpnInterfaceInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput
+	ToGetHcVpnGatewayVpnInterfaceOutputWithContext(context.Context) GetHcVpnGatewayVpnInterfaceOutput
+}
+
+type GetHcVpnGatewayVpnInterfaceArgs struct {
+	Id        pulumi.IntInput    `pulumi:"id"`
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+}
+
+func (GetHcVpnGatewayVpnInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArgs) ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput {
+	return i.ToGetHcVpnGatewayVpnInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArgs) ToGetHcVpnGatewayVpnInterfaceOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayVpnInterfaceOutput)
+}
+
+// GetHcVpnGatewayVpnInterfaceArrayInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArray and GetHcVpnGatewayVpnInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayVpnInterfaceArrayInput` via:
+//
+//          GetHcVpnGatewayVpnInterfaceArray{ GetHcVpnGatewayVpnInterfaceArgs{...} }
+type GetHcVpnGatewayVpnInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput
+	ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput
+}
+
+type GetHcVpnGatewayVpnInterfaceArray []GetHcVpnGatewayVpnInterfaceInput
+
+func (GetHcVpnGatewayVpnInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArray) ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return i.ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArray) ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayVpnInterfaceArrayOutput)
+}
+
+type GetHcVpnGatewayVpnInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayVpnInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+type GetHcVpnGatewayVpnInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayVpnInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) Index(i pulumi.IntInput) GetHcVpnGatewayVpnInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHcVpnGatewayVpnInterface {
+		return vs[0].([]GetHcVpnGatewayVpnInterface)[vs[1].(int)]
+	}).(GetHcVpnGatewayVpnInterfaceOutput)
+}
+
 type GetHealthCheckGrpcHealthCheck struct {
 	GrpcServiceName   string `pulumi:"grpcServiceName"`
 	Port              int    `pulumi:"port"`
@@ -71255,6 +71355,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckHttp2HealthCheckOutput{})

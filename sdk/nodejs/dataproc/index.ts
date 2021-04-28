@@ -15,6 +15,7 @@ export * from "./jobIAMBinding";
 export * from "./jobIAMMember";
 export * from "./jobIAMPolicy";
 export * from "./metastoreService";
+export * from "./workflowTemplate";
 
 // Import resources to register:
 import { AutoscalingPolicy } from "./autoscalingPolicy";
@@ -27,6 +28,7 @@ import { JobIAMBinding } from "./jobIAMBinding";
 import { JobIAMMember } from "./jobIAMMember";
 import { JobIAMPolicy } from "./jobIAMPolicy";
 import { MetastoreService } from "./metastoreService";
+import { WorkflowTemplate } from "./workflowTemplate";
 
 const _module = {
     version: utilities.getVersion(),
@@ -52,6 +54,8 @@ const _module = {
                 return new JobIAMPolicy(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreService:MetastoreService":
                 return new MetastoreService(name, <any>undefined, { urn })
+            case "gcp:dataproc/workflowTemplate:WorkflowTemplate":
+                return new WorkflowTemplate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -67,3 +71,4 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreService", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/workflowTemplate", _module)

@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// <summary>
         /// The timestamp of the point in time that should be restored.
         /// </summary>
-        [Input("pointInTime", required: true)]
-        public Input<string> PointInTime { get; set; } = null!;
+        [Input("pointInTime")]
+        public Input<string>? PointInTime { get; set; }
 
         /// <summary>
         /// Name of the source instance which will be cloned.

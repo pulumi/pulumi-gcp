@@ -28,26 +28,15 @@ __all__ = [
 @pulumi.input_type
 class DatabaseInstanceCloneArgs:
     def __init__(__self__, *,
-                 point_in_time: pulumi.Input[str],
-                 source_instance_name: pulumi.Input[str]):
+                 source_instance_name: pulumi.Input[str],
+                 point_in_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] point_in_time: The timestamp of the point in time that should be restored.
         :param pulumi.Input[str] source_instance_name: Name of the source instance which will be cloned.
+        :param pulumi.Input[str] point_in_time: The timestamp of the point in time that should be restored.
         """
-        pulumi.set(__self__, "point_in_time", point_in_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
-
-    @property
-    @pulumi.getter(name="pointInTime")
-    def point_in_time(self) -> pulumi.Input[str]:
-        """
-        The timestamp of the point in time that should be restored.
-        """
-        return pulumi.get(self, "point_in_time")
-
-    @point_in_time.setter
-    def point_in_time(self, value: pulumi.Input[str]):
-        pulumi.set(self, "point_in_time", value)
+        if point_in_time is not None:
+            pulumi.set(__self__, "point_in_time", point_in_time)
 
     @property
     @pulumi.getter(name="sourceInstanceName")
@@ -60,6 +49,18 @@ class DatabaseInstanceCloneArgs:
     @source_instance_name.setter
     def source_instance_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_instance_name", value)
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of the point in time that should be restored.
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @point_in_time.setter
+    def point_in_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "point_in_time", value)
 
 
 @pulumi.input_type

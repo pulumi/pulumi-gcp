@@ -91,6 +91,13 @@ namespace Pulumi.Gcp.Spanner
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Encryption configuration for the database
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.DatabaseEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The instance to create the database on.
         /// </summary>
         [Output("instance")]
@@ -185,6 +192,13 @@ namespace Pulumi.Gcp.Spanner
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Encryption configuration for the database
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.DatabaseEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
         /// The instance to create the database on.
         /// </summary>
         [Input("instance", required: true)]
@@ -232,6 +246,13 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Encryption configuration for the database
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.DatabaseEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
         /// The instance to create the database on.

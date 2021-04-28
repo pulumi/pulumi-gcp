@@ -107,7 +107,6 @@ class ClusterAddonsConfigArgs:
         :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
-               It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
                It is enabled by default;
                set `disabled = true` to disable.
         :param pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs'] http_load_balancing: The status of the HTTP (L7) load balancing
@@ -202,7 +201,6 @@ class ClusterAddonsConfigArgs:
         The status of the Horizontal Pod Autoscaling
         addon, which increases or decreases the number of replica pods a replication controller
         has based on the resource usage of the existing pods.
-        It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
         It is enabled by default;
         set `disabled = true` to disable.
         """

@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.CloudFunctions
     public partial class Function : Pulumi.CustomResource
     {
         /// <summary>
-        /// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+        /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         /// </summary>
         [Output("availableMemoryMb")]
         public Output<int?> AvailableMemoryMb { get; private set; } = null!;
@@ -311,7 +311,7 @@ namespace Pulumi.Gcp.CloudFunctions
     public sealed class FunctionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+        /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         /// </summary>
         [Input("availableMemoryMb")]
         public Input<int>? AvailableMemoryMb { get; set; }
@@ -470,7 +470,7 @@ namespace Pulumi.Gcp.CloudFunctions
     public sealed class FunctionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+        /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         /// </summary>
         [Input("availableMemoryMb")]
         public Input<int>? AvailableMemoryMb { get; set; }

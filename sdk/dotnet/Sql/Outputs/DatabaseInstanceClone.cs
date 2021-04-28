@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// <summary>
         /// The timestamp of the point in time that should be restored.
         /// </summary>
-        public readonly string PointInTime;
+        public readonly string? PointInTime;
         /// <summary>
         /// Name of the source instance which will be cloned.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Sql.Outputs
 
         [OutputConstructor]
         private DatabaseInstanceClone(
-            string pointInTime,
+            string? pointInTime,
 
             string sourceInstanceName)
         {

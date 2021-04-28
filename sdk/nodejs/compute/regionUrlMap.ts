@@ -28,12 +28,14 @@ import * as utilities from "../utilities";
  * const login = new gcp.compute.RegionBackendService("login", {
  *     region: "us-central1",
  *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     timeoutSec: 10,
  *     healthChecks: [_default.id],
  * });
  * const home = new gcp.compute.RegionBackendService("home", {
  *     region: "us-central1",
  *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     timeoutSec: 10,
  *     healthChecks: [_default.id],
  * });

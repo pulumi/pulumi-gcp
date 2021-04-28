@@ -146,7 +146,7 @@ import (
 type Function struct {
 	pulumi.CustomResourceState
 
-	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrOutput `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapOutput `pulumi:"buildEnvironmentVariables"`
@@ -226,7 +226,7 @@ func GetFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Function resources.
 type functionState struct {
-	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
@@ -275,7 +275,7 @@ type functionState struct {
 }
 
 type FunctionState struct {
-	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapInput
@@ -328,7 +328,7 @@ func (FunctionState) ElementType() reflect.Type {
 }
 
 type functionArgs struct {
-	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
@@ -378,7 +378,7 @@ type functionArgs struct {
 
 // The set of arguments for constructing a Function resource.
 type FunctionArgs struct {
-	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
+	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapInput

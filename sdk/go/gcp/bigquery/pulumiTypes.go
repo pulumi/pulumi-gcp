@@ -3533,7 +3533,8 @@ type JobLoad struct {
 	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
 	// The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
 	// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
-	// For orc, specify "ORC". The default value is CSV.
+	// For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
+	// The default value is CSV.
 	SourceFormat *string `pulumi:"sourceFormat"`
 	// The fully-qualified URIs that point to your data in Google Cloud.
 	// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
@@ -3639,7 +3640,8 @@ type JobLoadArgs struct {
 	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
 	// The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
 	// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
-	// For orc, specify "ORC". The default value is CSV.
+	// For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
+	// The default value is CSV.
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
 	// The fully-qualified URIs that point to your data in Google Cloud.
 	// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
@@ -3857,7 +3859,8 @@ func (o JobLoadOutput) SkipLeadingRows() pulumi.IntPtrOutput {
 
 // The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
 // For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
-// For orc, specify "ORC". The default value is CSV.
+// For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
+// The default value is CSV.
 func (o JobLoadOutput) SourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
 }
@@ -4099,7 +4102,8 @@ func (o JobLoadPtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
 
 // The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
 // For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
-// For orc, specify "ORC". The default value is CSV.
+// For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
+// The default value is CSV.
 func (o JobLoadPtrOutput) SourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
 		if v == nil {
@@ -6622,8 +6626,8 @@ type TableExternalDataConfiguration struct {
 	// `google_bigquery_table.schema`
 	Schema *string `pulumi:"schema"`
 	// The data format. Supported values are:
-	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
-	// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
+	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
+	// "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
 	// the `scopes` must include
 	// "https://www.googleapis.com/auth/drive.readonly".
 	SourceFormat string `pulumi:"sourceFormat"`
@@ -6685,8 +6689,8 @@ type TableExternalDataConfigurationArgs struct {
 	// `google_bigquery_table.schema`
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The data format. Supported values are:
-	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
-	// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
+	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
+	// "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
 	// the `scopes` must include
 	// "https://www.googleapis.com/auth/drive.readonly".
 	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
@@ -6841,8 +6845,8 @@ func (o TableExternalDataConfigurationOutput) Schema() pulumi.StringPtrOutput {
 }
 
 // The data format. Supported values are:
-// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
-// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
+// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
+// "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
 // the `scopes` must include
 // "https://www.googleapis.com/auth/drive.readonly".
 func (o TableExternalDataConfigurationOutput) SourceFormat() pulumi.StringOutput {
@@ -6978,8 +6982,8 @@ func (o TableExternalDataConfigurationPtrOutput) Schema() pulumi.StringPtrOutput
 }
 
 // The data format. Supported values are:
-// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
-// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
+// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
+// "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
 // the `scopes` must include
 // "https://www.googleapis.com/auth/drive.readonly".
 func (o TableExternalDataConfigurationPtrOutput) SourceFormat() pulumi.StringPtrOutput {

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -97,6 +98,11 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Encryption configuration for the database
+     * Structure is documented below.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.spanner.DatabaseEncryptionConfig | undefined>;
+    /**
      * The instance to create the database on.
      */
     public readonly instance!: pulumi.Output<string>;
@@ -130,6 +136,7 @@ export class Database extends pulumi.CustomResource {
             const state = argsOrState as DatabaseState | undefined;
             inputs["ddls"] = state ? state.ddls : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            inputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -141,6 +148,7 @@ export class Database extends pulumi.CustomResource {
             }
             inputs["ddls"] = args ? args.ddls : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -169,6 +177,11 @@ export interface DatabaseState {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Encryption configuration for the database
+     * Structure is documented below.
+     */
+    readonly encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
      */
@@ -205,6 +218,11 @@ export interface DatabaseArgs {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Encryption configuration for the database
+     * Structure is documented below.
+     */
+    readonly encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
      */

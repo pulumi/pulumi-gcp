@@ -87,6 +87,9 @@ type Database struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Encryption configuration for the database
+	// Structure is documented below.
+	EncryptionConfig DatabaseEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
 	// The instance to create the database on.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -139,6 +142,9 @@ type databaseState struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Encryption configuration for the database
+	// Structure is documented below.
+	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
 	// The instance to create the database on.
 	Instance *string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -160,6 +166,9 @@ type DatabaseState struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
+	// Encryption configuration for the database
+	// Structure is documented below.
+	EncryptionConfig DatabaseEncryptionConfigPtrInput
 	// The instance to create the database on.
 	Instance pulumi.StringPtrInput
 	// A unique identifier for the database, which cannot be changed after
@@ -185,6 +194,9 @@ type databaseArgs struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Encryption configuration for the database
+	// Structure is documented below.
+	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
 	// The instance to create the database on.
 	Instance string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -205,6 +217,9 @@ type DatabaseArgs struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
+	// Encryption configuration for the database
+	// Structure is documented below.
+	EncryptionConfig DatabaseEncryptionConfigPtrInput
 	// The instance to create the database on.
 	Instance pulumi.StringInput
 	// A unique identifier for the database, which cannot be changed after

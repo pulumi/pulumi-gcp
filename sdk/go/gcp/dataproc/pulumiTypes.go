@@ -933,8 +933,11 @@ type ClusterClusterConfig struct {
 	// The Google Compute Engine config settings for the master instances
 	// in a cluster.. Structure defined below.
 	MasterConfig *ClusterClusterConfigMasterConfig `pulumi:"masterConfig"`
-	// The Google Compute Engine config settings for the additional (aka
-	// preemptible) instances in a cluster. Structure defined below.
+	// The Google Compute Engine config settings for the additional
+	// instances in a cluster. Structure defined below.
+	// * **NOTE** : `preemptibleWorkerConfig` is
+	//   an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+	//   such for legacy/compatibility reasons.
 	PreemptibleWorkerConfig *ClusterClusterConfigPreemptibleWorkerConfig `pulumi:"preemptibleWorkerConfig"`
 	// Security related configuration. Structure defined below.
 	SecurityConfig *ClusterClusterConfigSecurityConfig `pulumi:"securityConfig"`
@@ -995,8 +998,11 @@ type ClusterClusterConfigArgs struct {
 	// The Google Compute Engine config settings for the master instances
 	// in a cluster.. Structure defined below.
 	MasterConfig ClusterClusterConfigMasterConfigPtrInput `pulumi:"masterConfig"`
-	// The Google Compute Engine config settings for the additional (aka
-	// preemptible) instances in a cluster. Structure defined below.
+	// The Google Compute Engine config settings for the additional
+	// instances in a cluster. Structure defined below.
+	// * **NOTE** : `preemptibleWorkerConfig` is
+	//   an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+	//   such for legacy/compatibility reasons.
 	PreemptibleWorkerConfig ClusterClusterConfigPreemptibleWorkerConfigPtrInput `pulumi:"preemptibleWorkerConfig"`
 	// Security related configuration. Structure defined below.
 	SecurityConfig ClusterClusterConfigSecurityConfigPtrInput `pulumi:"securityConfig"`
@@ -1148,8 +1154,11 @@ func (o ClusterClusterConfigOutput) MasterConfig() ClusterClusterConfigMasterCon
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigMasterConfig { return v.MasterConfig }).(ClusterClusterConfigMasterConfigPtrOutput)
 }
 
-// The Google Compute Engine config settings for the additional (aka
-// preemptible) instances in a cluster. Structure defined below.
+// The Google Compute Engine config settings for the additional
+// instances in a cluster. Structure defined below.
+// * **NOTE** : `preemptibleWorkerConfig` is
+//   an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+//   such for legacy/compatibility reasons.
 func (o ClusterClusterConfigOutput) PreemptibleWorkerConfig() ClusterClusterConfigPreemptibleWorkerConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigPreemptibleWorkerConfig {
 		return v.PreemptibleWorkerConfig
@@ -1298,8 +1307,11 @@ func (o ClusterClusterConfigPtrOutput) MasterConfig() ClusterClusterConfigMaster
 	}).(ClusterClusterConfigMasterConfigPtrOutput)
 }
 
-// The Google Compute Engine config settings for the additional (aka
-// preemptible) instances in a cluster. Structure defined below.
+// The Google Compute Engine config settings for the additional
+// instances in a cluster. Structure defined below.
+// * **NOTE** : `preemptibleWorkerConfig` is
+//   an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+//   such for legacy/compatibility reasons.
 func (o ClusterClusterConfigPtrOutput) PreemptibleWorkerConfig() ClusterClusterConfigPreemptibleWorkerConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigPreemptibleWorkerConfig {
 		if v == nil {
@@ -1808,6 +1820,8 @@ type ClusterClusterConfigGceClusterConfig struct {
 	// short names are supported. To allow full access to all Cloud APIs, use the
 	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+	ShieldedInstanceConfig *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork the cluster will be part of. Conflicts with `network`.
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -1858,6 +1872,8 @@ type ClusterClusterConfigGceClusterConfigArgs struct {
 	// short names are supported. To allow full access to all Cloud APIs, use the
 	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
 	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
+	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+	ShieldedInstanceConfig ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork the cluster will be part of. Conflicts with `network`.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
@@ -1988,6 +2004,13 @@ func (o ClusterClusterConfigGceClusterConfigOutput) ServiceAccountScopes() pulum
 	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
 }
 
+// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+func (o ClusterClusterConfigGceClusterConfigOutput) ShieldedInstanceConfig() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
+}
+
 // The name or selfLink of the Google Compute Engine
 // subnetwork the cluster will be part of. Conflicts with `network`.
 func (o ClusterClusterConfigGceClusterConfigOutput) Subnetwork() pulumi.StringPtrOutput {
@@ -2091,6 +2114,16 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) ServiceAccountScopes() pu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+func (o ClusterClusterConfigGceClusterConfigPtrOutput) ShieldedInstanceConfig() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
+}
+
 // The name or selfLink of the Google Compute Engine
 // subnetwork the cluster will be part of. Conflicts with `network`.
 func (o ClusterClusterConfigGceClusterConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
@@ -2127,6 +2160,179 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) Zone() pulumi.StringPtrOu
 		}
 		return v.Zone
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigShieldedInstanceConfig struct {
+	// Defines whether instances have integrity monitoring enabled.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether instances have Secure Boot enabled.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// ClusterClusterConfigGceClusterConfigShieldedInstanceConfigInput is an input type that accepts ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs and ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigShieldedInstanceConfigInput` via:
+//
+//          ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs{...}
+type ClusterClusterConfigGceClusterConfigShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput
+	ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput
+}
+
+type ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs struct {
+	// Defines whether instances have integrity monitoring enabled.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether instances have Secure Boot enabled.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return i.ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
+}
+
+func (i ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return i.ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput).ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput is an input type that accepts ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs, ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtr and ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput` via:
+//
+//          ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput
+	ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput
+}
+
+type clusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrType ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs
+
+func ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtr(v *ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput {
+	return (*clusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return i.ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
+		return &v
+	}).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
+}
+
+// Defines whether instances have integrity monitoring enabled.
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether instances have Secure Boot enabled.
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) Elem() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
+		return *v
+	}).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
+}
+
+// Defines whether instances have integrity monitoring enabled.
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether instances have Secure Boot enabled.
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
+func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterClusterConfigInitializationAction struct {
@@ -8697,6 +8903,10056 @@ func (o MetastoreServiceMaintenanceWindowPtrOutput) HourOfDay() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+type WorkflowTemplateJob struct {
+	// Optional. Job is a Hadoop job.
+	HadoopJob *WorkflowTemplateJobHadoopJob `pulumi:"hadoopJob"`
+	// Optional. Job is a Hive job.
+	HiveJob *WorkflowTemplateJobHiveJob `pulumi:"hiveJob"`
+	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+	// The `secondaryWorkerConfig` block supports:
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Job is a Pig job.
+	PigJob *WorkflowTemplateJobPigJob `pulumi:"pigJob"`
+	// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+	PrerequisiteStepIds []string `pulumi:"prerequisiteStepIds"`
+	// Optional. Job is a Presto job.
+	PrestoJob *WorkflowTemplateJobPrestoJob `pulumi:"prestoJob"`
+	// Optional. Job is a PySpark job.
+	PysparkJob *WorkflowTemplateJobPysparkJob `pulumi:"pysparkJob"`
+	// Optional. Job scheduling configuration.
+	Scheduling *WorkflowTemplateJobScheduling `pulumi:"scheduling"`
+	// Optional. Job is a Spark job.
+	SparkJob *WorkflowTemplateJobSparkJob `pulumi:"sparkJob"`
+	// Optional. Job is a SparkR job.
+	SparkRJob *WorkflowTemplateJobSparkRJob `pulumi:"sparkRJob"`
+	// Optional. Job is a SparkSql job.
+	SparkSqlJob *WorkflowTemplateJobSparkSqlJob `pulumi:"sparkSqlJob"`
+	// Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The `placement` block supports:
+	StepId string `pulumi:"stepId"`
+}
+
+// WorkflowTemplateJobInput is an input type that accepts WorkflowTemplateJobArgs and WorkflowTemplateJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobInput` via:
+//
+//          WorkflowTemplateJobArgs{...}
+type WorkflowTemplateJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobOutput() WorkflowTemplateJobOutput
+	ToWorkflowTemplateJobOutputWithContext(context.Context) WorkflowTemplateJobOutput
+}
+
+type WorkflowTemplateJobArgs struct {
+	// Optional. Job is a Hadoop job.
+	HadoopJob WorkflowTemplateJobHadoopJobPtrInput `pulumi:"hadoopJob"`
+	// Optional. Job is a Hive job.
+	HiveJob WorkflowTemplateJobHiveJobPtrInput `pulumi:"hiveJob"`
+	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+	// The `secondaryWorkerConfig` block supports:
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Optional. Job is a Pig job.
+	PigJob WorkflowTemplateJobPigJobPtrInput `pulumi:"pigJob"`
+	// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+	PrerequisiteStepIds pulumi.StringArrayInput `pulumi:"prerequisiteStepIds"`
+	// Optional. Job is a Presto job.
+	PrestoJob WorkflowTemplateJobPrestoJobPtrInput `pulumi:"prestoJob"`
+	// Optional. Job is a PySpark job.
+	PysparkJob WorkflowTemplateJobPysparkJobPtrInput `pulumi:"pysparkJob"`
+	// Optional. Job scheduling configuration.
+	Scheduling WorkflowTemplateJobSchedulingPtrInput `pulumi:"scheduling"`
+	// Optional. Job is a Spark job.
+	SparkJob WorkflowTemplateJobSparkJobPtrInput `pulumi:"sparkJob"`
+	// Optional. Job is a SparkR job.
+	SparkRJob WorkflowTemplateJobSparkRJobPtrInput `pulumi:"sparkRJob"`
+	// Optional. Job is a SparkSql job.
+	SparkSqlJob WorkflowTemplateJobSparkSqlJobPtrInput `pulumi:"sparkSqlJob"`
+	// Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The `placement` block supports:
+	StepId pulumi.StringInput `pulumi:"stepId"`
+}
+
+func (WorkflowTemplateJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobArgs) ToWorkflowTemplateJobOutput() WorkflowTemplateJobOutput {
+	return i.ToWorkflowTemplateJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobArgs) ToWorkflowTemplateJobOutputWithContext(ctx context.Context) WorkflowTemplateJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobOutput)
+}
+
+// WorkflowTemplateJobArrayInput is an input type that accepts WorkflowTemplateJobArray and WorkflowTemplateJobArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobArrayInput` via:
+//
+//          WorkflowTemplateJobArray{ WorkflowTemplateJobArgs{...} }
+type WorkflowTemplateJobArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobArrayOutput() WorkflowTemplateJobArrayOutput
+	ToWorkflowTemplateJobArrayOutputWithContext(context.Context) WorkflowTemplateJobArrayOutput
+}
+
+type WorkflowTemplateJobArray []WorkflowTemplateJobInput
+
+func (WorkflowTemplateJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplateJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobArray) ToWorkflowTemplateJobArrayOutput() WorkflowTemplateJobArrayOutput {
+	return i.ToWorkflowTemplateJobArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobArray) ToWorkflowTemplateJobArrayOutputWithContext(ctx context.Context) WorkflowTemplateJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobArrayOutput)
+}
+
+type WorkflowTemplateJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobOutput) ToWorkflowTemplateJobOutput() WorkflowTemplateJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobOutput) ToWorkflowTemplateJobOutputWithContext(ctx context.Context) WorkflowTemplateJobOutput {
+	return o
+}
+
+// Optional. Job is a Hadoop job.
+func (o WorkflowTemplateJobOutput) HadoopJob() WorkflowTemplateJobHadoopJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobHadoopJob { return v.HadoopJob }).(WorkflowTemplateJobHadoopJobPtrOutput)
+}
+
+// Optional. Job is a Hive job.
+func (o WorkflowTemplateJobOutput) HiveJob() WorkflowTemplateJobHiveJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobHiveJob { return v.HiveJob }).(WorkflowTemplateJobHiveJobPtrOutput)
+}
+
+// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+// The `secondaryWorkerConfig` block supports:
+func (o WorkflowTemplateJobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Job is a Pig job.
+func (o WorkflowTemplateJobOutput) PigJob() WorkflowTemplateJobPigJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobPigJob { return v.PigJob }).(WorkflowTemplateJobPigJobPtrOutput)
+}
+
+// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+func (o WorkflowTemplateJobOutput) PrerequisiteStepIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) []string { return v.PrerequisiteStepIds }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Job is a Presto job.
+func (o WorkflowTemplateJobOutput) PrestoJob() WorkflowTemplateJobPrestoJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobPrestoJob { return v.PrestoJob }).(WorkflowTemplateJobPrestoJobPtrOutput)
+}
+
+// Optional. Job is a PySpark job.
+func (o WorkflowTemplateJobOutput) PysparkJob() WorkflowTemplateJobPysparkJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobPysparkJob { return v.PysparkJob }).(WorkflowTemplateJobPysparkJobPtrOutput)
+}
+
+// Optional. Job scheduling configuration.
+func (o WorkflowTemplateJobOutput) Scheduling() WorkflowTemplateJobSchedulingPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobScheduling { return v.Scheduling }).(WorkflowTemplateJobSchedulingPtrOutput)
+}
+
+// Optional. Job is a Spark job.
+func (o WorkflowTemplateJobOutput) SparkJob() WorkflowTemplateJobSparkJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobSparkJob { return v.SparkJob }).(WorkflowTemplateJobSparkJobPtrOutput)
+}
+
+// Optional. Job is a SparkR job.
+func (o WorkflowTemplateJobOutput) SparkRJob() WorkflowTemplateJobSparkRJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobSparkRJob { return v.SparkRJob }).(WorkflowTemplateJobSparkRJobPtrOutput)
+}
+
+// Optional. Job is a SparkSql job.
+func (o WorkflowTemplateJobOutput) SparkSqlJob() WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) *WorkflowTemplateJobSparkSqlJob { return v.SparkSqlJob }).(WorkflowTemplateJobSparkSqlJobPtrOutput)
+}
+
+// Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+// The `placement` block supports:
+func (o WorkflowTemplateJobOutput) StepId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplateJob) string { return v.StepId }).(pulumi.StringOutput)
+}
+
+type WorkflowTemplateJobArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplateJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobArrayOutput) ToWorkflowTemplateJobArrayOutput() WorkflowTemplateJobArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobArrayOutput) ToWorkflowTemplateJobArrayOutputWithContext(ctx context.Context) WorkflowTemplateJobArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobArrayOutput) Index(i pulumi.IntInput) WorkflowTemplateJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplateJob {
+		return vs[0].([]WorkflowTemplateJob)[vs[1].(int)]
+	}).(WorkflowTemplateJobOutput)
+}
+
+type WorkflowTemplateJobHadoopJob struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *WorkflowTemplateJobHadoopJobLoggingConfig `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+	MainClass *string `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri *string `pulumi:"mainJarFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// WorkflowTemplateJobHadoopJobInput is an input type that accepts WorkflowTemplateJobHadoopJobArgs and WorkflowTemplateJobHadoopJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHadoopJobInput` via:
+//
+//          WorkflowTemplateJobHadoopJobArgs{...}
+type WorkflowTemplateJobHadoopJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHadoopJobOutput() WorkflowTemplateJobHadoopJobOutput
+	ToWorkflowTemplateJobHadoopJobOutputWithContext(context.Context) WorkflowTemplateJobHadoopJobOutput
+}
+
+type WorkflowTemplateJobHadoopJobArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig WorkflowTemplateJobHadoopJobLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (WorkflowTemplateJobHadoopJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHadoopJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobHadoopJobArgs) ToWorkflowTemplateJobHadoopJobOutput() WorkflowTemplateJobHadoopJobOutput {
+	return i.ToWorkflowTemplateJobHadoopJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHadoopJobArgs) ToWorkflowTemplateJobHadoopJobOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobOutput)
+}
+
+func (i WorkflowTemplateJobHadoopJobArgs) ToWorkflowTemplateJobHadoopJobPtrOutput() WorkflowTemplateJobHadoopJobPtrOutput {
+	return i.ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHadoopJobArgs) ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobOutput).ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobHadoopJobPtrInput is an input type that accepts WorkflowTemplateJobHadoopJobArgs, WorkflowTemplateJobHadoopJobPtr and WorkflowTemplateJobHadoopJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHadoopJobPtrInput` via:
+//
+//          WorkflowTemplateJobHadoopJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobHadoopJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHadoopJobPtrOutput() WorkflowTemplateJobHadoopJobPtrOutput
+	ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(context.Context) WorkflowTemplateJobHadoopJobPtrOutput
+}
+
+type workflowTemplateJobHadoopJobPtrType WorkflowTemplateJobHadoopJobArgs
+
+func WorkflowTemplateJobHadoopJobPtr(v *WorkflowTemplateJobHadoopJobArgs) WorkflowTemplateJobHadoopJobPtrInput {
+	return (*workflowTemplateJobHadoopJobPtrType)(v)
+}
+
+func (*workflowTemplateJobHadoopJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHadoopJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobHadoopJobPtrType) ToWorkflowTemplateJobHadoopJobPtrOutput() WorkflowTemplateJobHadoopJobPtrOutput {
+	return i.ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobHadoopJobPtrType) ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobPtrOutput)
+}
+
+type WorkflowTemplateJobHadoopJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHadoopJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHadoopJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHadoopJobOutput) ToWorkflowTemplateJobHadoopJobOutput() WorkflowTemplateJobHadoopJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobOutput) ToWorkflowTemplateJobHadoopJobOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobOutput) ToWorkflowTemplateJobHadoopJobPtrOutput() WorkflowTemplateJobHadoopJobPtrOutput {
+	return o.ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobHadoopJobOutput) ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) *WorkflowTemplateJobHadoopJob {
+		return &v
+	}).(WorkflowTemplateJobHadoopJobPtrOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobHadoopJobOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobHadoopJobOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobHadoopJobOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobHadoopJobOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobHadoopJobOutput) LoggingConfig() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) *WorkflowTemplateJobHadoopJobLoggingConfig {
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+func (o WorkflowTemplateJobHadoopJobOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o WorkflowTemplateJobHadoopJobOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobHadoopJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobHadoopJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHadoopJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHadoopJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHadoopJobPtrOutput) ToWorkflowTemplateJobHadoopJobPtrOutput() WorkflowTemplateJobHadoopJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobPtrOutput) ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobPtrOutput) Elem() WorkflowTemplateJobHadoopJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) WorkflowTemplateJobHadoopJob { return *v }).(WorkflowTemplateJobHadoopJobOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobHadoopJobPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobHadoopJobPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobHadoopJobPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobHadoopJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobHadoopJobPtrOutput) LoggingConfig() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) *WorkflowTemplateJobHadoopJobLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+func (o WorkflowTemplateJobHadoopJobPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o WorkflowTemplateJobHadoopJobPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobHadoopJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobHadoopJobLoggingConfig struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// WorkflowTemplateJobHadoopJobLoggingConfigInput is an input type that accepts WorkflowTemplateJobHadoopJobLoggingConfigArgs and WorkflowTemplateJobHadoopJobLoggingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHadoopJobLoggingConfigInput` via:
+//
+//          WorkflowTemplateJobHadoopJobLoggingConfigArgs{...}
+type WorkflowTemplateJobHadoopJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHadoopJobLoggingConfigOutput() WorkflowTemplateJobHadoopJobLoggingConfigOutput
+	ToWorkflowTemplateJobHadoopJobLoggingConfigOutputWithContext(context.Context) WorkflowTemplateJobHadoopJobLoggingConfigOutput
+}
+
+type WorkflowTemplateJobHadoopJobLoggingConfigArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (WorkflowTemplateJobHadoopJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHadoopJobLoggingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobHadoopJobLoggingConfigArgs) ToWorkflowTemplateJobHadoopJobLoggingConfigOutput() WorkflowTemplateJobHadoopJobLoggingConfigOutput {
+	return i.ToWorkflowTemplateJobHadoopJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHadoopJobLoggingConfigArgs) ToWorkflowTemplateJobHadoopJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobLoggingConfigOutput)
+}
+
+func (i WorkflowTemplateJobHadoopJobLoggingConfigArgs) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutput() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHadoopJobLoggingConfigArgs) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobLoggingConfigOutput).ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobHadoopJobLoggingConfigPtrInput is an input type that accepts WorkflowTemplateJobHadoopJobLoggingConfigArgs, WorkflowTemplateJobHadoopJobLoggingConfigPtr and WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHadoopJobLoggingConfigPtrInput` via:
+//
+//          WorkflowTemplateJobHadoopJobLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobHadoopJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutput() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput
+	ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(context.Context) WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput
+}
+
+type workflowTemplateJobHadoopJobLoggingConfigPtrType WorkflowTemplateJobHadoopJobLoggingConfigArgs
+
+func WorkflowTemplateJobHadoopJobLoggingConfigPtr(v *WorkflowTemplateJobHadoopJobLoggingConfigArgs) WorkflowTemplateJobHadoopJobLoggingConfigPtrInput {
+	return (*workflowTemplateJobHadoopJobLoggingConfigPtrType)(v)
+}
+
+func (*workflowTemplateJobHadoopJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHadoopJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobHadoopJobLoggingConfigPtrType) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutput() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobHadoopJobLoggingConfigPtrType) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput)
+}
+
+type WorkflowTemplateJobHadoopJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHadoopJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHadoopJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigOutput() WorkflowTemplateJobHadoopJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutput() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return o.ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJobLoggingConfig) *WorkflowTemplateJobHadoopJobLoggingConfig {
+		return &v
+	}).(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHadoopJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHadoopJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutput() WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobHadoopJobLoggingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJobLoggingConfig) WorkflowTemplateJobHadoopJobLoggingConfig {
+		return *v
+	}).(WorkflowTemplateJobHadoopJobLoggingConfigOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJobLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobHiveJob struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri *string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList *WorkflowTemplateJobHiveJobQueryList `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	// The `loggingConfig` block supports:
+	ScriptVariables map[string]string `pulumi:"scriptVariables"`
+}
+
+// WorkflowTemplateJobHiveJobInput is an input type that accepts WorkflowTemplateJobHiveJobArgs and WorkflowTemplateJobHiveJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHiveJobInput` via:
+//
+//          WorkflowTemplateJobHiveJobArgs{...}
+type WorkflowTemplateJobHiveJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHiveJobOutput() WorkflowTemplateJobHiveJobOutput
+	ToWorkflowTemplateJobHiveJobOutputWithContext(context.Context) WorkflowTemplateJobHiveJobOutput
+}
+
+type WorkflowTemplateJobHiveJobArgs struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList WorkflowTemplateJobHiveJobQueryListPtrInput `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	// The `loggingConfig` block supports:
+	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
+}
+
+func (WorkflowTemplateJobHiveJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHiveJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobHiveJobArgs) ToWorkflowTemplateJobHiveJobOutput() WorkflowTemplateJobHiveJobOutput {
+	return i.ToWorkflowTemplateJobHiveJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHiveJobArgs) ToWorkflowTemplateJobHiveJobOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobOutput)
+}
+
+func (i WorkflowTemplateJobHiveJobArgs) ToWorkflowTemplateJobHiveJobPtrOutput() WorkflowTemplateJobHiveJobPtrOutput {
+	return i.ToWorkflowTemplateJobHiveJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHiveJobArgs) ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobOutput).ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobHiveJobPtrInput is an input type that accepts WorkflowTemplateJobHiveJobArgs, WorkflowTemplateJobHiveJobPtr and WorkflowTemplateJobHiveJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHiveJobPtrInput` via:
+//
+//          WorkflowTemplateJobHiveJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobHiveJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHiveJobPtrOutput() WorkflowTemplateJobHiveJobPtrOutput
+	ToWorkflowTemplateJobHiveJobPtrOutputWithContext(context.Context) WorkflowTemplateJobHiveJobPtrOutput
+}
+
+type workflowTemplateJobHiveJobPtrType WorkflowTemplateJobHiveJobArgs
+
+func WorkflowTemplateJobHiveJobPtr(v *WorkflowTemplateJobHiveJobArgs) WorkflowTemplateJobHiveJobPtrInput {
+	return (*workflowTemplateJobHiveJobPtrType)(v)
+}
+
+func (*workflowTemplateJobHiveJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHiveJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobHiveJobPtrType) ToWorkflowTemplateJobHiveJobPtrOutput() WorkflowTemplateJobHiveJobPtrOutput {
+	return i.ToWorkflowTemplateJobHiveJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobHiveJobPtrType) ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobPtrOutput)
+}
+
+type WorkflowTemplateJobHiveJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHiveJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHiveJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHiveJobOutput) ToWorkflowTemplateJobHiveJobOutput() WorkflowTemplateJobHiveJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobOutput) ToWorkflowTemplateJobHiveJobOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobOutput) ToWorkflowTemplateJobHiveJobPtrOutput() WorkflowTemplateJobHiveJobPtrOutput {
+	return o.ToWorkflowTemplateJobHiveJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobHiveJobOutput) ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) *WorkflowTemplateJobHiveJob {
+		return &v
+	}).(WorkflowTemplateJobHiveJobPtrOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+func (o WorkflowTemplateJobHiveJobOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobHiveJobOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobHiveJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobHiveJobOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) *string { return v.QueryFileUri }).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobHiveJobOutput) QueryList() WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) *WorkflowTemplateJobHiveJobQueryList { return v.QueryList }).(WorkflowTemplateJobHiveJobQueryListPtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobHiveJobOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobHiveJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHiveJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHiveJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHiveJobPtrOutput) ToWorkflowTemplateJobHiveJobPtrOutput() WorkflowTemplateJobHiveJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobPtrOutput) ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobPtrOutput) Elem() WorkflowTemplateJobHiveJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) WorkflowTemplateJobHiveJob { return *v }).(WorkflowTemplateJobHiveJobOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+func (o WorkflowTemplateJobHiveJobPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobHiveJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobHiveJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobHiveJobPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobHiveJobPtrOutput) QueryList() WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) *WorkflowTemplateJobHiveJobQueryList {
+		if v == nil {
+			return nil
+		}
+		return v.QueryList
+	}).(WorkflowTemplateJobHiveJobQueryListPtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobHiveJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobHiveJobQueryList struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries []string `pulumi:"queries"`
+}
+
+// WorkflowTemplateJobHiveJobQueryListInput is an input type that accepts WorkflowTemplateJobHiveJobQueryListArgs and WorkflowTemplateJobHiveJobQueryListOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHiveJobQueryListInput` via:
+//
+//          WorkflowTemplateJobHiveJobQueryListArgs{...}
+type WorkflowTemplateJobHiveJobQueryListInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHiveJobQueryListOutput() WorkflowTemplateJobHiveJobQueryListOutput
+	ToWorkflowTemplateJobHiveJobQueryListOutputWithContext(context.Context) WorkflowTemplateJobHiveJobQueryListOutput
+}
+
+type WorkflowTemplateJobHiveJobQueryListArgs struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries pulumi.StringArrayInput `pulumi:"queries"`
+}
+
+func (WorkflowTemplateJobHiveJobQueryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHiveJobQueryList)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobHiveJobQueryListArgs) ToWorkflowTemplateJobHiveJobQueryListOutput() WorkflowTemplateJobHiveJobQueryListOutput {
+	return i.ToWorkflowTemplateJobHiveJobQueryListOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHiveJobQueryListArgs) ToWorkflowTemplateJobHiveJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobQueryListOutput)
+}
+
+func (i WorkflowTemplateJobHiveJobQueryListArgs) ToWorkflowTemplateJobHiveJobQueryListPtrOutput() WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobHiveJobQueryListArgs) ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobQueryListOutput).ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobHiveJobQueryListPtrInput is an input type that accepts WorkflowTemplateJobHiveJobQueryListArgs, WorkflowTemplateJobHiveJobQueryListPtr and WorkflowTemplateJobHiveJobQueryListPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobHiveJobQueryListPtrInput` via:
+//
+//          WorkflowTemplateJobHiveJobQueryListArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobHiveJobQueryListPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobHiveJobQueryListPtrOutput() WorkflowTemplateJobHiveJobQueryListPtrOutput
+	ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(context.Context) WorkflowTemplateJobHiveJobQueryListPtrOutput
+}
+
+type workflowTemplateJobHiveJobQueryListPtrType WorkflowTemplateJobHiveJobQueryListArgs
+
+func WorkflowTemplateJobHiveJobQueryListPtr(v *WorkflowTemplateJobHiveJobQueryListArgs) WorkflowTemplateJobHiveJobQueryListPtrInput {
+	return (*workflowTemplateJobHiveJobQueryListPtrType)(v)
+}
+
+func (*workflowTemplateJobHiveJobQueryListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHiveJobQueryList)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobHiveJobQueryListPtrType) ToWorkflowTemplateJobHiveJobQueryListPtrOutput() WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobHiveJobQueryListPtrType) ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobHiveJobQueryListPtrOutput)
+}
+
+type WorkflowTemplateJobHiveJobQueryListOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHiveJobQueryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobHiveJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQueryListOutput() WorkflowTemplateJobHiveJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQueryListPtrOutput() WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return o.ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJobQueryList) *WorkflowTemplateJobHiveJobQueryList {
+		return &v
+	}).(WorkflowTemplateJobHiveJobQueryListPtrOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobHiveJobQueryListOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobHiveJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobHiveJobQueryListPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobHiveJobQueryListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobHiveJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) ToWorkflowTemplateJobHiveJobQueryListPtrOutput() WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) Elem() WorkflowTemplateJobHiveJobQueryListOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJobQueryList) WorkflowTemplateJobHiveJobQueryList { return *v }).(WorkflowTemplateJobHiveJobQueryListOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJobQueryList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobPigJob struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *WorkflowTemplateJobPigJobLoggingConfig `pulumi:"loggingConfig"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri *string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList *WorkflowTemplateJobPigJobQueryList `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	// The `loggingConfig` block supports:
+	ScriptVariables map[string]string `pulumi:"scriptVariables"`
+}
+
+// WorkflowTemplateJobPigJobInput is an input type that accepts WorkflowTemplateJobPigJobArgs and WorkflowTemplateJobPigJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPigJobInput` via:
+//
+//          WorkflowTemplateJobPigJobArgs{...}
+type WorkflowTemplateJobPigJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPigJobOutput() WorkflowTemplateJobPigJobOutput
+	ToWorkflowTemplateJobPigJobOutputWithContext(context.Context) WorkflowTemplateJobPigJobOutput
+}
+
+type WorkflowTemplateJobPigJobArgs struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig WorkflowTemplateJobPigJobLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList WorkflowTemplateJobPigJobQueryListPtrInput `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	// The `loggingConfig` block supports:
+	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
+}
+
+func (WorkflowTemplateJobPigJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPigJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPigJobArgs) ToWorkflowTemplateJobPigJobOutput() WorkflowTemplateJobPigJobOutput {
+	return i.ToWorkflowTemplateJobPigJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPigJobArgs) ToWorkflowTemplateJobPigJobOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobOutput)
+}
+
+func (i WorkflowTemplateJobPigJobArgs) ToWorkflowTemplateJobPigJobPtrOutput() WorkflowTemplateJobPigJobPtrOutput {
+	return i.ToWorkflowTemplateJobPigJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPigJobArgs) ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobOutput).ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPigJobPtrInput is an input type that accepts WorkflowTemplateJobPigJobArgs, WorkflowTemplateJobPigJobPtr and WorkflowTemplateJobPigJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPigJobPtrInput` via:
+//
+//          WorkflowTemplateJobPigJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPigJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPigJobPtrOutput() WorkflowTemplateJobPigJobPtrOutput
+	ToWorkflowTemplateJobPigJobPtrOutputWithContext(context.Context) WorkflowTemplateJobPigJobPtrOutput
+}
+
+type workflowTemplateJobPigJobPtrType WorkflowTemplateJobPigJobArgs
+
+func WorkflowTemplateJobPigJobPtr(v *WorkflowTemplateJobPigJobArgs) WorkflowTemplateJobPigJobPtrInput {
+	return (*workflowTemplateJobPigJobPtrType)(v)
+}
+
+func (*workflowTemplateJobPigJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPigJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPigJobPtrType) ToWorkflowTemplateJobPigJobPtrOutput() WorkflowTemplateJobPigJobPtrOutput {
+	return i.ToWorkflowTemplateJobPigJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPigJobPtrType) ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobPtrOutput)
+}
+
+type WorkflowTemplateJobPigJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPigJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPigJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPigJobOutput) ToWorkflowTemplateJobPigJobOutput() WorkflowTemplateJobPigJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobOutput) ToWorkflowTemplateJobPigJobOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobOutput) ToWorkflowTemplateJobPigJobPtrOutput() WorkflowTemplateJobPigJobPtrOutput {
+	return o.ToWorkflowTemplateJobPigJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPigJobOutput) ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJob {
+		return &v
+	}).(WorkflowTemplateJobPigJobPtrOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+func (o WorkflowTemplateJobPigJobOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobPigJobOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobPigJobOutput) LoggingConfig() WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJobLoggingConfig { return v.LoggingConfig }).(WorkflowTemplateJobPigJobLoggingConfigPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobPigJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobPigJobOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) *string { return v.QueryFileUri }).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobPigJobOutput) QueryList() WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJobQueryList { return v.QueryList }).(WorkflowTemplateJobPigJobQueryListPtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobPigJobOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJob) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobPigJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPigJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPigJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPigJobPtrOutput) ToWorkflowTemplateJobPigJobPtrOutput() WorkflowTemplateJobPigJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobPtrOutput) ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobPtrOutput) Elem() WorkflowTemplateJobPigJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) WorkflowTemplateJobPigJob { return *v }).(WorkflowTemplateJobPigJobOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+func (o WorkflowTemplateJobPigJobPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobPigJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobPigJobPtrOutput) LoggingConfig() WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJobLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobPigJobLoggingConfigPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobPigJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobPigJobPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobPigJobPtrOutput) QueryList() WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJobQueryList {
+		if v == nil {
+			return nil
+		}
+		return v.QueryList
+	}).(WorkflowTemplateJobPigJobQueryListPtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobPigJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobPigJobLoggingConfig struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// WorkflowTemplateJobPigJobLoggingConfigInput is an input type that accepts WorkflowTemplateJobPigJobLoggingConfigArgs and WorkflowTemplateJobPigJobLoggingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPigJobLoggingConfigInput` via:
+//
+//          WorkflowTemplateJobPigJobLoggingConfigArgs{...}
+type WorkflowTemplateJobPigJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPigJobLoggingConfigOutput() WorkflowTemplateJobPigJobLoggingConfigOutput
+	ToWorkflowTemplateJobPigJobLoggingConfigOutputWithContext(context.Context) WorkflowTemplateJobPigJobLoggingConfigOutput
+}
+
+type WorkflowTemplateJobPigJobLoggingConfigArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (WorkflowTemplateJobPigJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPigJobLoggingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPigJobLoggingConfigArgs) ToWorkflowTemplateJobPigJobLoggingConfigOutput() WorkflowTemplateJobPigJobLoggingConfigOutput {
+	return i.ToWorkflowTemplateJobPigJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPigJobLoggingConfigArgs) ToWorkflowTemplateJobPigJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobLoggingConfigOutput)
+}
+
+func (i WorkflowTemplateJobPigJobLoggingConfigArgs) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutput() WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPigJobLoggingConfigArgs) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobLoggingConfigOutput).ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPigJobLoggingConfigPtrInput is an input type that accepts WorkflowTemplateJobPigJobLoggingConfigArgs, WorkflowTemplateJobPigJobLoggingConfigPtr and WorkflowTemplateJobPigJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPigJobLoggingConfigPtrInput` via:
+//
+//          WorkflowTemplateJobPigJobLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPigJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPigJobLoggingConfigPtrOutput() WorkflowTemplateJobPigJobLoggingConfigPtrOutput
+	ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(context.Context) WorkflowTemplateJobPigJobLoggingConfigPtrOutput
+}
+
+type workflowTemplateJobPigJobLoggingConfigPtrType WorkflowTemplateJobPigJobLoggingConfigArgs
+
+func WorkflowTemplateJobPigJobLoggingConfigPtr(v *WorkflowTemplateJobPigJobLoggingConfigArgs) WorkflowTemplateJobPigJobLoggingConfigPtrInput {
+	return (*workflowTemplateJobPigJobLoggingConfigPtrType)(v)
+}
+
+func (*workflowTemplateJobPigJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPigJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPigJobLoggingConfigPtrType) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutput() WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPigJobLoggingConfigPtrType) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobLoggingConfigPtrOutput)
+}
+
+type WorkflowTemplateJobPigJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPigJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPigJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJobLoggingConfigOutput() WorkflowTemplateJobPigJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutput() WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return o.ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJobLoggingConfig) *WorkflowTemplateJobPigJobLoggingConfig {
+		return &v
+	}).(WorkflowTemplateJobPigJobLoggingConfigPtrOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobPigJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobPigJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPigJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPigJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutput() WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPigJobLoggingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJobLoggingConfig) WorkflowTemplateJobPigJobLoggingConfig { return *v }).(WorkflowTemplateJobPigJobLoggingConfigOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJobLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobPigJobQueryList struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries []string `pulumi:"queries"`
+}
+
+// WorkflowTemplateJobPigJobQueryListInput is an input type that accepts WorkflowTemplateJobPigJobQueryListArgs and WorkflowTemplateJobPigJobQueryListOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPigJobQueryListInput` via:
+//
+//          WorkflowTemplateJobPigJobQueryListArgs{...}
+type WorkflowTemplateJobPigJobQueryListInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPigJobQueryListOutput() WorkflowTemplateJobPigJobQueryListOutput
+	ToWorkflowTemplateJobPigJobQueryListOutputWithContext(context.Context) WorkflowTemplateJobPigJobQueryListOutput
+}
+
+type WorkflowTemplateJobPigJobQueryListArgs struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries pulumi.StringArrayInput `pulumi:"queries"`
+}
+
+func (WorkflowTemplateJobPigJobQueryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPigJobQueryList)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPigJobQueryListArgs) ToWorkflowTemplateJobPigJobQueryListOutput() WorkflowTemplateJobPigJobQueryListOutput {
+	return i.ToWorkflowTemplateJobPigJobQueryListOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPigJobQueryListArgs) ToWorkflowTemplateJobPigJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobQueryListOutput)
+}
+
+func (i WorkflowTemplateJobPigJobQueryListArgs) ToWorkflowTemplateJobPigJobQueryListPtrOutput() WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPigJobQueryListArgs) ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobQueryListOutput).ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPigJobQueryListPtrInput is an input type that accepts WorkflowTemplateJobPigJobQueryListArgs, WorkflowTemplateJobPigJobQueryListPtr and WorkflowTemplateJobPigJobQueryListPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPigJobQueryListPtrInput` via:
+//
+//          WorkflowTemplateJobPigJobQueryListArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPigJobQueryListPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPigJobQueryListPtrOutput() WorkflowTemplateJobPigJobQueryListPtrOutput
+	ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(context.Context) WorkflowTemplateJobPigJobQueryListPtrOutput
+}
+
+type workflowTemplateJobPigJobQueryListPtrType WorkflowTemplateJobPigJobQueryListArgs
+
+func WorkflowTemplateJobPigJobQueryListPtr(v *WorkflowTemplateJobPigJobQueryListArgs) WorkflowTemplateJobPigJobQueryListPtrInput {
+	return (*workflowTemplateJobPigJobQueryListPtrType)(v)
+}
+
+func (*workflowTemplateJobPigJobQueryListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPigJobQueryList)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPigJobQueryListPtrType) ToWorkflowTemplateJobPigJobQueryListPtrOutput() WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPigJobQueryListPtrType) ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPigJobQueryListPtrOutput)
+}
+
+type WorkflowTemplateJobPigJobQueryListOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPigJobQueryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPigJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQueryListOutput() WorkflowTemplateJobPigJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQueryListPtrOutput() WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return o.ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJobQueryList) *WorkflowTemplateJobPigJobQueryList {
+		return &v
+	}).(WorkflowTemplateJobPigJobQueryListPtrOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobPigJobQueryListOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPigJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobPigJobQueryListPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPigJobQueryListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPigJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPigJobQueryListPtrOutput) ToWorkflowTemplateJobPigJobQueryListPtrOutput() WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobQueryListPtrOutput) ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPigJobQueryListPtrOutput) Elem() WorkflowTemplateJobPigJobQueryListOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJobQueryList) WorkflowTemplateJobPigJobQueryList { return *v }).(WorkflowTemplateJobPigJobQueryListOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobPigJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJobQueryList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobPrestoJob struct {
+	// Optional. Presto client tags to attach to this query
+	ClientTags []string `pulumi:"clientTags"`
+	// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *WorkflowTemplateJobPrestoJobLoggingConfig `pulumi:"loggingConfig"`
+	// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri *string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList *WorkflowTemplateJobPrestoJobQueryList `pulumi:"queryList"`
+}
+
+// WorkflowTemplateJobPrestoJobInput is an input type that accepts WorkflowTemplateJobPrestoJobArgs and WorkflowTemplateJobPrestoJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPrestoJobInput` via:
+//
+//          WorkflowTemplateJobPrestoJobArgs{...}
+type WorkflowTemplateJobPrestoJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPrestoJobOutput() WorkflowTemplateJobPrestoJobOutput
+	ToWorkflowTemplateJobPrestoJobOutputWithContext(context.Context) WorkflowTemplateJobPrestoJobOutput
+}
+
+type WorkflowTemplateJobPrestoJobArgs struct {
+	// Optional. Presto client tags to attach to this query
+	ClientTags pulumi.StringArrayInput `pulumi:"clientTags"`
+	// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig WorkflowTemplateJobPrestoJobLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList WorkflowTemplateJobPrestoJobQueryListPtrInput `pulumi:"queryList"`
+}
+
+func (WorkflowTemplateJobPrestoJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPrestoJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPrestoJobArgs) ToWorkflowTemplateJobPrestoJobOutput() WorkflowTemplateJobPrestoJobOutput {
+	return i.ToWorkflowTemplateJobPrestoJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPrestoJobArgs) ToWorkflowTemplateJobPrestoJobOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobOutput)
+}
+
+func (i WorkflowTemplateJobPrestoJobArgs) ToWorkflowTemplateJobPrestoJobPtrOutput() WorkflowTemplateJobPrestoJobPtrOutput {
+	return i.ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPrestoJobArgs) ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobOutput).ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPrestoJobPtrInput is an input type that accepts WorkflowTemplateJobPrestoJobArgs, WorkflowTemplateJobPrestoJobPtr and WorkflowTemplateJobPrestoJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPrestoJobPtrInput` via:
+//
+//          WorkflowTemplateJobPrestoJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPrestoJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPrestoJobPtrOutput() WorkflowTemplateJobPrestoJobPtrOutput
+	ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(context.Context) WorkflowTemplateJobPrestoJobPtrOutput
+}
+
+type workflowTemplateJobPrestoJobPtrType WorkflowTemplateJobPrestoJobArgs
+
+func WorkflowTemplateJobPrestoJobPtr(v *WorkflowTemplateJobPrestoJobArgs) WorkflowTemplateJobPrestoJobPtrInput {
+	return (*workflowTemplateJobPrestoJobPtrType)(v)
+}
+
+func (*workflowTemplateJobPrestoJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPrestoJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPrestoJobPtrType) ToWorkflowTemplateJobPrestoJobPtrOutput() WorkflowTemplateJobPrestoJobPtrOutput {
+	return i.ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPrestoJobPtrType) ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobPtrOutput)
+}
+
+type WorkflowTemplateJobPrestoJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPrestoJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPrestoJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPrestoJobOutput) ToWorkflowTemplateJobPrestoJobOutput() WorkflowTemplateJobPrestoJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobOutput) ToWorkflowTemplateJobPrestoJobOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobOutput) ToWorkflowTemplateJobPrestoJobPtrOutput() WorkflowTemplateJobPrestoJobPtrOutput {
+	return o.ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPrestoJobOutput) ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJob {
+		return &v
+	}).(WorkflowTemplateJobPrestoJobPtrOutput)
+}
+
+// Optional. Presto client tags to attach to this query
+func (o WorkflowTemplateJobPrestoJobOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) []string { return v.ClientTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+func (o WorkflowTemplateJobPrestoJobOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobPrestoJobOutput) LoggingConfig() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJobLoggingConfig {
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput)
+}
+
+// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+func (o WorkflowTemplateJobPrestoJobOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobPrestoJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobPrestoJobOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) *string { return v.QueryFileUri }).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobPrestoJobOutput) QueryList() WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJobQueryList { return v.QueryList }).(WorkflowTemplateJobPrestoJobQueryListPtrOutput)
+}
+
+type WorkflowTemplateJobPrestoJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPrestoJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPrestoJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPrestoJobPtrOutput) ToWorkflowTemplateJobPrestoJobPtrOutput() WorkflowTemplateJobPrestoJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobPtrOutput) ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobPtrOutput) Elem() WorkflowTemplateJobPrestoJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) WorkflowTemplateJobPrestoJob { return *v }).(WorkflowTemplateJobPrestoJobOutput)
+}
+
+// Optional. Presto client tags to attach to this query
+func (o WorkflowTemplateJobPrestoJobPtrOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+func (o WorkflowTemplateJobPrestoJobPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobPrestoJobPtrOutput) LoggingConfig() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJobLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput)
+}
+
+// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+func (o WorkflowTemplateJobPrestoJobPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobPrestoJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobPrestoJobPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobPrestoJobPtrOutput) QueryList() WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJobQueryList {
+		if v == nil {
+			return nil
+		}
+		return v.QueryList
+	}).(WorkflowTemplateJobPrestoJobQueryListPtrOutput)
+}
+
+type WorkflowTemplateJobPrestoJobLoggingConfig struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// WorkflowTemplateJobPrestoJobLoggingConfigInput is an input type that accepts WorkflowTemplateJobPrestoJobLoggingConfigArgs and WorkflowTemplateJobPrestoJobLoggingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPrestoJobLoggingConfigInput` via:
+//
+//          WorkflowTemplateJobPrestoJobLoggingConfigArgs{...}
+type WorkflowTemplateJobPrestoJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPrestoJobLoggingConfigOutput() WorkflowTemplateJobPrestoJobLoggingConfigOutput
+	ToWorkflowTemplateJobPrestoJobLoggingConfigOutputWithContext(context.Context) WorkflowTemplateJobPrestoJobLoggingConfigOutput
+}
+
+type WorkflowTemplateJobPrestoJobLoggingConfigArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (WorkflowTemplateJobPrestoJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPrestoJobLoggingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPrestoJobLoggingConfigArgs) ToWorkflowTemplateJobPrestoJobLoggingConfigOutput() WorkflowTemplateJobPrestoJobLoggingConfigOutput {
+	return i.ToWorkflowTemplateJobPrestoJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPrestoJobLoggingConfigArgs) ToWorkflowTemplateJobPrestoJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobLoggingConfigOutput)
+}
+
+func (i WorkflowTemplateJobPrestoJobLoggingConfigArgs) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutput() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPrestoJobLoggingConfigArgs) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobLoggingConfigOutput).ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPrestoJobLoggingConfigPtrInput is an input type that accepts WorkflowTemplateJobPrestoJobLoggingConfigArgs, WorkflowTemplateJobPrestoJobLoggingConfigPtr and WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPrestoJobLoggingConfigPtrInput` via:
+//
+//          WorkflowTemplateJobPrestoJobLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPrestoJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutput() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput
+	ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(context.Context) WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput
+}
+
+type workflowTemplateJobPrestoJobLoggingConfigPtrType WorkflowTemplateJobPrestoJobLoggingConfigArgs
+
+func WorkflowTemplateJobPrestoJobLoggingConfigPtr(v *WorkflowTemplateJobPrestoJobLoggingConfigArgs) WorkflowTemplateJobPrestoJobLoggingConfigPtrInput {
+	return (*workflowTemplateJobPrestoJobLoggingConfigPtrType)(v)
+}
+
+func (*workflowTemplateJobPrestoJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPrestoJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPrestoJobLoggingConfigPtrType) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutput() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPrestoJobLoggingConfigPtrType) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput)
+}
+
+type WorkflowTemplateJobPrestoJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPrestoJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPrestoJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigOutput() WorkflowTemplateJobPrestoJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutput() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return o.ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobLoggingConfig) *WorkflowTemplateJobPrestoJobLoggingConfig {
+		return &v
+	}).(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPrestoJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutput() WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPrestoJobLoggingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobLoggingConfig) WorkflowTemplateJobPrestoJobLoggingConfig {
+		return *v
+	}).(WorkflowTemplateJobPrestoJobLoggingConfigOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobPrestoJobQueryList struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries []string `pulumi:"queries"`
+}
+
+// WorkflowTemplateJobPrestoJobQueryListInput is an input type that accepts WorkflowTemplateJobPrestoJobQueryListArgs and WorkflowTemplateJobPrestoJobQueryListOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPrestoJobQueryListInput` via:
+//
+//          WorkflowTemplateJobPrestoJobQueryListArgs{...}
+type WorkflowTemplateJobPrestoJobQueryListInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPrestoJobQueryListOutput() WorkflowTemplateJobPrestoJobQueryListOutput
+	ToWorkflowTemplateJobPrestoJobQueryListOutputWithContext(context.Context) WorkflowTemplateJobPrestoJobQueryListOutput
+}
+
+type WorkflowTemplateJobPrestoJobQueryListArgs struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries pulumi.StringArrayInput `pulumi:"queries"`
+}
+
+func (WorkflowTemplateJobPrestoJobQueryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPrestoJobQueryList)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPrestoJobQueryListArgs) ToWorkflowTemplateJobPrestoJobQueryListOutput() WorkflowTemplateJobPrestoJobQueryListOutput {
+	return i.ToWorkflowTemplateJobPrestoJobQueryListOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPrestoJobQueryListArgs) ToWorkflowTemplateJobPrestoJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobQueryListOutput)
+}
+
+func (i WorkflowTemplateJobPrestoJobQueryListArgs) ToWorkflowTemplateJobPrestoJobQueryListPtrOutput() WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPrestoJobQueryListArgs) ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobQueryListOutput).ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPrestoJobQueryListPtrInput is an input type that accepts WorkflowTemplateJobPrestoJobQueryListArgs, WorkflowTemplateJobPrestoJobQueryListPtr and WorkflowTemplateJobPrestoJobQueryListPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPrestoJobQueryListPtrInput` via:
+//
+//          WorkflowTemplateJobPrestoJobQueryListArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPrestoJobQueryListPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPrestoJobQueryListPtrOutput() WorkflowTemplateJobPrestoJobQueryListPtrOutput
+	ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(context.Context) WorkflowTemplateJobPrestoJobQueryListPtrOutput
+}
+
+type workflowTemplateJobPrestoJobQueryListPtrType WorkflowTemplateJobPrestoJobQueryListArgs
+
+func WorkflowTemplateJobPrestoJobQueryListPtr(v *WorkflowTemplateJobPrestoJobQueryListArgs) WorkflowTemplateJobPrestoJobQueryListPtrInput {
+	return (*workflowTemplateJobPrestoJobQueryListPtrType)(v)
+}
+
+func (*workflowTemplateJobPrestoJobQueryListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPrestoJobQueryList)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPrestoJobQueryListPtrType) ToWorkflowTemplateJobPrestoJobQueryListPtrOutput() WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPrestoJobQueryListPtrType) ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPrestoJobQueryListPtrOutput)
+}
+
+type WorkflowTemplateJobPrestoJobQueryListOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPrestoJobQueryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPrestoJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPrestoJobQueryListOutput() WorkflowTemplateJobPrestoJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPrestoJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPrestoJobQueryListPtrOutput() WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return o.ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobQueryList) *WorkflowTemplateJobPrestoJobQueryList {
+		return &v
+	}).(WorkflowTemplateJobPrestoJobQueryListPtrOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobPrestoJobQueryListOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobPrestoJobQueryListPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPrestoJobQueryListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPrestoJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) ToWorkflowTemplateJobPrestoJobQueryListPtrOutput() WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) Elem() WorkflowTemplateJobPrestoJobQueryListOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobQueryList) WorkflowTemplateJobPrestoJobQueryList { return *v }).(WorkflowTemplateJobPrestoJobQueryListOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobQueryList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobPysparkJob struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *WorkflowTemplateJobPysparkJobLoggingConfig `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	// The `loggingConfig` block supports:
+	PythonFileUris []string `pulumi:"pythonFileUris"`
+}
+
+// WorkflowTemplateJobPysparkJobInput is an input type that accepts WorkflowTemplateJobPysparkJobArgs and WorkflowTemplateJobPysparkJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPysparkJobInput` via:
+//
+//          WorkflowTemplateJobPysparkJobArgs{...}
+type WorkflowTemplateJobPysparkJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPysparkJobOutput() WorkflowTemplateJobPysparkJobOutput
+	ToWorkflowTemplateJobPysparkJobOutputWithContext(context.Context) WorkflowTemplateJobPysparkJobOutput
+}
+
+type WorkflowTemplateJobPysparkJobArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig WorkflowTemplateJobPysparkJobLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	// The `loggingConfig` block supports:
+	PythonFileUris pulumi.StringArrayInput `pulumi:"pythonFileUris"`
+}
+
+func (WorkflowTemplateJobPysparkJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPysparkJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPysparkJobArgs) ToWorkflowTemplateJobPysparkJobOutput() WorkflowTemplateJobPysparkJobOutput {
+	return i.ToWorkflowTemplateJobPysparkJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPysparkJobArgs) ToWorkflowTemplateJobPysparkJobOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobOutput)
+}
+
+func (i WorkflowTemplateJobPysparkJobArgs) ToWorkflowTemplateJobPysparkJobPtrOutput() WorkflowTemplateJobPysparkJobPtrOutput {
+	return i.ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPysparkJobArgs) ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobOutput).ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPysparkJobPtrInput is an input type that accepts WorkflowTemplateJobPysparkJobArgs, WorkflowTemplateJobPysparkJobPtr and WorkflowTemplateJobPysparkJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPysparkJobPtrInput` via:
+//
+//          WorkflowTemplateJobPysparkJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPysparkJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPysparkJobPtrOutput() WorkflowTemplateJobPysparkJobPtrOutput
+	ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(context.Context) WorkflowTemplateJobPysparkJobPtrOutput
+}
+
+type workflowTemplateJobPysparkJobPtrType WorkflowTemplateJobPysparkJobArgs
+
+func WorkflowTemplateJobPysparkJobPtr(v *WorkflowTemplateJobPysparkJobArgs) WorkflowTemplateJobPysparkJobPtrInput {
+	return (*workflowTemplateJobPysparkJobPtrType)(v)
+}
+
+func (*workflowTemplateJobPysparkJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPysparkJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPysparkJobPtrType) ToWorkflowTemplateJobPysparkJobPtrOutput() WorkflowTemplateJobPysparkJobPtrOutput {
+	return i.ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPysparkJobPtrType) ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobPtrOutput)
+}
+
+type WorkflowTemplateJobPysparkJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPysparkJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPysparkJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPysparkJobOutput) ToWorkflowTemplateJobPysparkJobOutput() WorkflowTemplateJobPysparkJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobOutput) ToWorkflowTemplateJobPysparkJobOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobOutput) ToWorkflowTemplateJobPysparkJobPtrOutput() WorkflowTemplateJobPysparkJobPtrOutput {
+	return o.ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPysparkJobOutput) ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) *WorkflowTemplateJobPysparkJob {
+		return &v
+	}).(WorkflowTemplateJobPysparkJobPtrOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobPysparkJobOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobPysparkJobOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobPysparkJobOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobPysparkJobOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobPysparkJobOutput) LoggingConfig() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) *WorkflowTemplateJobPysparkJobLoggingConfig {
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput)
+}
+
+// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+func (o WorkflowTemplateJobPysparkJobOutput) MainPythonFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobPysparkJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobPysparkJobOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) []string { return v.PythonFileUris }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobPysparkJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPysparkJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPysparkJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPysparkJobPtrOutput) ToWorkflowTemplateJobPysparkJobPtrOutput() WorkflowTemplateJobPysparkJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobPtrOutput) ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobPtrOutput) Elem() WorkflowTemplateJobPysparkJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) WorkflowTemplateJobPysparkJob { return *v }).(WorkflowTemplateJobPysparkJobOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobPysparkJobPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobPysparkJobPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobPysparkJobPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobPysparkJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobPysparkJobPtrOutput) LoggingConfig() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) *WorkflowTemplateJobPysparkJobLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput)
+}
+
+// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+func (o WorkflowTemplateJobPysparkJobPtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainPythonFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobPysparkJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobPysparkJobPtrOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobPysparkJobLoggingConfig struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// WorkflowTemplateJobPysparkJobLoggingConfigInput is an input type that accepts WorkflowTemplateJobPysparkJobLoggingConfigArgs and WorkflowTemplateJobPysparkJobLoggingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPysparkJobLoggingConfigInput` via:
+//
+//          WorkflowTemplateJobPysparkJobLoggingConfigArgs{...}
+type WorkflowTemplateJobPysparkJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPysparkJobLoggingConfigOutput() WorkflowTemplateJobPysparkJobLoggingConfigOutput
+	ToWorkflowTemplateJobPysparkJobLoggingConfigOutputWithContext(context.Context) WorkflowTemplateJobPysparkJobLoggingConfigOutput
+}
+
+type WorkflowTemplateJobPysparkJobLoggingConfigArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (WorkflowTemplateJobPysparkJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPysparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobPysparkJobLoggingConfigArgs) ToWorkflowTemplateJobPysparkJobLoggingConfigOutput() WorkflowTemplateJobPysparkJobLoggingConfigOutput {
+	return i.ToWorkflowTemplateJobPysparkJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPysparkJobLoggingConfigArgs) ToWorkflowTemplateJobPysparkJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobLoggingConfigOutput)
+}
+
+func (i WorkflowTemplateJobPysparkJobLoggingConfigArgs) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutput() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobPysparkJobLoggingConfigArgs) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobLoggingConfigOutput).ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobPysparkJobLoggingConfigPtrInput is an input type that accepts WorkflowTemplateJobPysparkJobLoggingConfigArgs, WorkflowTemplateJobPysparkJobLoggingConfigPtr and WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobPysparkJobLoggingConfigPtrInput` via:
+//
+//          WorkflowTemplateJobPysparkJobLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobPysparkJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutput() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput
+	ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(context.Context) WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput
+}
+
+type workflowTemplateJobPysparkJobLoggingConfigPtrType WorkflowTemplateJobPysparkJobLoggingConfigArgs
+
+func WorkflowTemplateJobPysparkJobLoggingConfigPtr(v *WorkflowTemplateJobPysparkJobLoggingConfigArgs) WorkflowTemplateJobPysparkJobLoggingConfigPtrInput {
+	return (*workflowTemplateJobPysparkJobLoggingConfigPtrType)(v)
+}
+
+func (*workflowTemplateJobPysparkJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPysparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobPysparkJobLoggingConfigPtrType) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutput() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobPysparkJobLoggingConfigPtrType) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput)
+}
+
+type WorkflowTemplateJobPysparkJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPysparkJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobPysparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigOutput() WorkflowTemplateJobPysparkJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutput() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return o.ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJobLoggingConfig) *WorkflowTemplateJobPysparkJobLoggingConfig {
+		return &v
+	}).(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobPysparkJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobPysparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutput() WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPysparkJobLoggingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJobLoggingConfig) WorkflowTemplateJobPysparkJobLoggingConfig {
+		return *v
+	}).(WorkflowTemplateJobPysparkJobLoggingConfigOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJobLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobScheduling struct {
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+	MaxFailuresPerHour *int `pulumi:"maxFailuresPerHour"`
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+	// The `sparkJob` block supports:
+	MaxFailuresTotal *int `pulumi:"maxFailuresTotal"`
+}
+
+// WorkflowTemplateJobSchedulingInput is an input type that accepts WorkflowTemplateJobSchedulingArgs and WorkflowTemplateJobSchedulingOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSchedulingInput` via:
+//
+//          WorkflowTemplateJobSchedulingArgs{...}
+type WorkflowTemplateJobSchedulingInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSchedulingOutput() WorkflowTemplateJobSchedulingOutput
+	ToWorkflowTemplateJobSchedulingOutputWithContext(context.Context) WorkflowTemplateJobSchedulingOutput
+}
+
+type WorkflowTemplateJobSchedulingArgs struct {
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+	MaxFailuresPerHour pulumi.IntPtrInput `pulumi:"maxFailuresPerHour"`
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+	// The `sparkJob` block supports:
+	MaxFailuresTotal pulumi.IntPtrInput `pulumi:"maxFailuresTotal"`
+}
+
+func (WorkflowTemplateJobSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobScheduling)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSchedulingArgs) ToWorkflowTemplateJobSchedulingOutput() WorkflowTemplateJobSchedulingOutput {
+	return i.ToWorkflowTemplateJobSchedulingOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSchedulingArgs) ToWorkflowTemplateJobSchedulingOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSchedulingOutput)
+}
+
+func (i WorkflowTemplateJobSchedulingArgs) ToWorkflowTemplateJobSchedulingPtrOutput() WorkflowTemplateJobSchedulingPtrOutput {
+	return i.ToWorkflowTemplateJobSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSchedulingArgs) ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSchedulingOutput).ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSchedulingPtrInput is an input type that accepts WorkflowTemplateJobSchedulingArgs, WorkflowTemplateJobSchedulingPtr and WorkflowTemplateJobSchedulingPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSchedulingPtrInput` via:
+//
+//          WorkflowTemplateJobSchedulingArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSchedulingPtrOutput() WorkflowTemplateJobSchedulingPtrOutput
+	ToWorkflowTemplateJobSchedulingPtrOutputWithContext(context.Context) WorkflowTemplateJobSchedulingPtrOutput
+}
+
+type workflowTemplateJobSchedulingPtrType WorkflowTemplateJobSchedulingArgs
+
+func WorkflowTemplateJobSchedulingPtr(v *WorkflowTemplateJobSchedulingArgs) WorkflowTemplateJobSchedulingPtrInput {
+	return (*workflowTemplateJobSchedulingPtrType)(v)
+}
+
+func (*workflowTemplateJobSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobScheduling)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSchedulingPtrType) ToWorkflowTemplateJobSchedulingPtrOutput() WorkflowTemplateJobSchedulingPtrOutput {
+	return i.ToWorkflowTemplateJobSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSchedulingPtrType) ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSchedulingPtrOutput)
+}
+
+type WorkflowTemplateJobSchedulingOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobScheduling)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSchedulingOutput) ToWorkflowTemplateJobSchedulingOutput() WorkflowTemplateJobSchedulingOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSchedulingOutput) ToWorkflowTemplateJobSchedulingOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSchedulingOutput) ToWorkflowTemplateJobSchedulingPtrOutput() WorkflowTemplateJobSchedulingPtrOutput {
+	return o.ToWorkflowTemplateJobSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSchedulingOutput) ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobScheduling) *WorkflowTemplateJobScheduling {
+		return &v
+	}).(WorkflowTemplateJobSchedulingPtrOutput)
+}
+
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+func (o WorkflowTemplateJobSchedulingOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobScheduling) *int { return v.MaxFailuresPerHour }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+// The `sparkJob` block supports:
+func (o WorkflowTemplateJobSchedulingOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobScheduling) *int { return v.MaxFailuresTotal }).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplateJobSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobScheduling)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSchedulingPtrOutput) ToWorkflowTemplateJobSchedulingPtrOutput() WorkflowTemplateJobSchedulingPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSchedulingPtrOutput) ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSchedulingPtrOutput) Elem() WorkflowTemplateJobSchedulingOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobScheduling) WorkflowTemplateJobScheduling { return *v }).(WorkflowTemplateJobSchedulingOutput)
+}
+
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+func (o WorkflowTemplateJobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFailuresPerHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+// The `sparkJob` block supports:
+func (o WorkflowTemplateJobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFailuresTotal
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplateJobSparkJob struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *WorkflowTemplateJobSparkJobLoggingConfig `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+	MainClass *string `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri *string `pulumi:"mainJarFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// WorkflowTemplateJobSparkJobInput is an input type that accepts WorkflowTemplateJobSparkJobArgs and WorkflowTemplateJobSparkJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkJobInput` via:
+//
+//          WorkflowTemplateJobSparkJobArgs{...}
+type WorkflowTemplateJobSparkJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkJobOutput() WorkflowTemplateJobSparkJobOutput
+	ToWorkflowTemplateJobSparkJobOutputWithContext(context.Context) WorkflowTemplateJobSparkJobOutput
+}
+
+type WorkflowTemplateJobSparkJobArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig WorkflowTemplateJobSparkJobLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (WorkflowTemplateJobSparkJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSparkJobArgs) ToWorkflowTemplateJobSparkJobOutput() WorkflowTemplateJobSparkJobOutput {
+	return i.ToWorkflowTemplateJobSparkJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkJobArgs) ToWorkflowTemplateJobSparkJobOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobOutput)
+}
+
+func (i WorkflowTemplateJobSparkJobArgs) ToWorkflowTemplateJobSparkJobPtrOutput() WorkflowTemplateJobSparkJobPtrOutput {
+	return i.ToWorkflowTemplateJobSparkJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkJobArgs) ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobOutput).ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSparkJobPtrInput is an input type that accepts WorkflowTemplateJobSparkJobArgs, WorkflowTemplateJobSparkJobPtr and WorkflowTemplateJobSparkJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkJobPtrInput` via:
+//
+//          WorkflowTemplateJobSparkJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSparkJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkJobPtrOutput() WorkflowTemplateJobSparkJobPtrOutput
+	ToWorkflowTemplateJobSparkJobPtrOutputWithContext(context.Context) WorkflowTemplateJobSparkJobPtrOutput
+}
+
+type workflowTemplateJobSparkJobPtrType WorkflowTemplateJobSparkJobArgs
+
+func WorkflowTemplateJobSparkJobPtr(v *WorkflowTemplateJobSparkJobArgs) WorkflowTemplateJobSparkJobPtrInput {
+	return (*workflowTemplateJobSparkJobPtrType)(v)
+}
+
+func (*workflowTemplateJobSparkJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSparkJobPtrType) ToWorkflowTemplateJobSparkJobPtrOutput() WorkflowTemplateJobSparkJobPtrOutput {
+	return i.ToWorkflowTemplateJobSparkJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSparkJobPtrType) ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobPtrOutput)
+}
+
+type WorkflowTemplateJobSparkJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkJobOutput) ToWorkflowTemplateJobSparkJobOutput() WorkflowTemplateJobSparkJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobOutput) ToWorkflowTemplateJobSparkJobOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobOutput) ToWorkflowTemplateJobSparkJobPtrOutput() WorkflowTemplateJobSparkJobPtrOutput {
+	return o.ToWorkflowTemplateJobSparkJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSparkJobOutput) ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) *WorkflowTemplateJobSparkJob {
+		return &v
+	}).(WorkflowTemplateJobSparkJobPtrOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobSparkJobOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobSparkJobOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobSparkJobOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobSparkJobOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobSparkJobOutput) LoggingConfig() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) *WorkflowTemplateJobSparkJobLoggingConfig { return v.LoggingConfig }).(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+func (o WorkflowTemplateJobSparkJobOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o WorkflowTemplateJobSparkJobOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobSparkJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkJobPtrOutput) ToWorkflowTemplateJobSparkJobPtrOutput() WorkflowTemplateJobSparkJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobPtrOutput) ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobPtrOutput) Elem() WorkflowTemplateJobSparkJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) WorkflowTemplateJobSparkJob { return *v }).(WorkflowTemplateJobSparkJobOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobSparkJobPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobSparkJobPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobSparkJobPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobSparkJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobSparkJobPtrOutput) LoggingConfig() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) *WorkflowTemplateJobSparkJobLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
+func (o WorkflowTemplateJobSparkJobPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o WorkflowTemplateJobSparkJobPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobSparkJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkJobLoggingConfig struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// WorkflowTemplateJobSparkJobLoggingConfigInput is an input type that accepts WorkflowTemplateJobSparkJobLoggingConfigArgs and WorkflowTemplateJobSparkJobLoggingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkJobLoggingConfigInput` via:
+//
+//          WorkflowTemplateJobSparkJobLoggingConfigArgs{...}
+type WorkflowTemplateJobSparkJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkJobLoggingConfigOutput() WorkflowTemplateJobSparkJobLoggingConfigOutput
+	ToWorkflowTemplateJobSparkJobLoggingConfigOutputWithContext(context.Context) WorkflowTemplateJobSparkJobLoggingConfigOutput
+}
+
+type WorkflowTemplateJobSparkJobLoggingConfigArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (WorkflowTemplateJobSparkJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSparkJobLoggingConfigArgs) ToWorkflowTemplateJobSparkJobLoggingConfigOutput() WorkflowTemplateJobSparkJobLoggingConfigOutput {
+	return i.ToWorkflowTemplateJobSparkJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkJobLoggingConfigArgs) ToWorkflowTemplateJobSparkJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobLoggingConfigOutput)
+}
+
+func (i WorkflowTemplateJobSparkJobLoggingConfigArgs) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkJobLoggingConfigArgs) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobLoggingConfigOutput).ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSparkJobLoggingConfigPtrInput is an input type that accepts WorkflowTemplateJobSparkJobLoggingConfigArgs, WorkflowTemplateJobSparkJobLoggingConfigPtr and WorkflowTemplateJobSparkJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkJobLoggingConfigPtrInput` via:
+//
+//          WorkflowTemplateJobSparkJobLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSparkJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput
+	ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(context.Context) WorkflowTemplateJobSparkJobLoggingConfigPtrOutput
+}
+
+type workflowTemplateJobSparkJobLoggingConfigPtrType WorkflowTemplateJobSparkJobLoggingConfigArgs
+
+func WorkflowTemplateJobSparkJobLoggingConfigPtr(v *WorkflowTemplateJobSparkJobLoggingConfigArgs) WorkflowTemplateJobSparkJobLoggingConfigPtrInput {
+	return (*workflowTemplateJobSparkJobLoggingConfigPtrType)(v)
+}
+
+func (*workflowTemplateJobSparkJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSparkJobLoggingConfigPtrType) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSparkJobLoggingConfigPtrType) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput)
+}
+
+type WorkflowTemplateJobSparkJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSparkJobLoggingConfigOutput() WorkflowTemplateJobSparkJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSparkJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return o.ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJobLoggingConfig) *WorkflowTemplateJobSparkJobLoggingConfig {
+		return &v
+	}).(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkJobLoggingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJobLoggingConfig) WorkflowTemplateJobSparkJobLoggingConfig { return *v }).(WorkflowTemplateJobSparkJobLoggingConfigOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJobLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkRJob struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *WorkflowTemplateJobSparkRJobLoggingConfig `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri string `pulumi:"mainRFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// WorkflowTemplateJobSparkRJobInput is an input type that accepts WorkflowTemplateJobSparkRJobArgs and WorkflowTemplateJobSparkRJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkRJobInput` via:
+//
+//          WorkflowTemplateJobSparkRJobArgs{...}
+type WorkflowTemplateJobSparkRJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkRJobOutput() WorkflowTemplateJobSparkRJobOutput
+	ToWorkflowTemplateJobSparkRJobOutputWithContext(context.Context) WorkflowTemplateJobSparkRJobOutput
+}
+
+type WorkflowTemplateJobSparkRJobArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig WorkflowTemplateJobSparkRJobLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri pulumi.StringInput `pulumi:"mainRFileUri"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (WorkflowTemplateJobSparkRJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkRJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSparkRJobArgs) ToWorkflowTemplateJobSparkRJobOutput() WorkflowTemplateJobSparkRJobOutput {
+	return i.ToWorkflowTemplateJobSparkRJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkRJobArgs) ToWorkflowTemplateJobSparkRJobOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobOutput)
+}
+
+func (i WorkflowTemplateJobSparkRJobArgs) ToWorkflowTemplateJobSparkRJobPtrOutput() WorkflowTemplateJobSparkRJobPtrOutput {
+	return i.ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkRJobArgs) ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobOutput).ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSparkRJobPtrInput is an input type that accepts WorkflowTemplateJobSparkRJobArgs, WorkflowTemplateJobSparkRJobPtr and WorkflowTemplateJobSparkRJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkRJobPtrInput` via:
+//
+//          WorkflowTemplateJobSparkRJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSparkRJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkRJobPtrOutput() WorkflowTemplateJobSparkRJobPtrOutput
+	ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(context.Context) WorkflowTemplateJobSparkRJobPtrOutput
+}
+
+type workflowTemplateJobSparkRJobPtrType WorkflowTemplateJobSparkRJobArgs
+
+func WorkflowTemplateJobSparkRJobPtr(v *WorkflowTemplateJobSparkRJobArgs) WorkflowTemplateJobSparkRJobPtrInput {
+	return (*workflowTemplateJobSparkRJobPtrType)(v)
+}
+
+func (*workflowTemplateJobSparkRJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkRJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSparkRJobPtrType) ToWorkflowTemplateJobSparkRJobPtrOutput() WorkflowTemplateJobSparkRJobPtrOutput {
+	return i.ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSparkRJobPtrType) ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobPtrOutput)
+}
+
+type WorkflowTemplateJobSparkRJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkRJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkRJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkRJobOutput) ToWorkflowTemplateJobSparkRJobOutput() WorkflowTemplateJobSparkRJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobOutput) ToWorkflowTemplateJobSparkRJobOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobOutput) ToWorkflowTemplateJobSparkRJobPtrOutput() WorkflowTemplateJobSparkRJobPtrOutput {
+	return o.ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSparkRJobOutput) ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) *WorkflowTemplateJobSparkRJob {
+		return &v
+	}).(WorkflowTemplateJobSparkRJobPtrOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobSparkRJobOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobSparkRJobOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobSparkRJobOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobSparkRJobOutput) LoggingConfig() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) *WorkflowTemplateJobSparkRJobLoggingConfig {
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput)
+}
+
+// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+func (o WorkflowTemplateJobSparkRJobOutput) MainRFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) string { return v.MainRFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobSparkRJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkRJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkRJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkRJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkRJobPtrOutput) ToWorkflowTemplateJobSparkRJobPtrOutput() WorkflowTemplateJobSparkRJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobPtrOutput) ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobPtrOutput) Elem() WorkflowTemplateJobSparkRJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) WorkflowTemplateJobSparkRJob { return *v }).(WorkflowTemplateJobSparkRJobOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o WorkflowTemplateJobSparkRJobPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o WorkflowTemplateJobSparkRJobPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o WorkflowTemplateJobSparkRJobPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobSparkRJobPtrOutput) LoggingConfig() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) *WorkflowTemplateJobSparkRJobLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput)
+}
+
+// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+func (o WorkflowTemplateJobSparkRJobPtrOutput) MainRFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainRFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobSparkRJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkRJobLoggingConfig struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// WorkflowTemplateJobSparkRJobLoggingConfigInput is an input type that accepts WorkflowTemplateJobSparkRJobLoggingConfigArgs and WorkflowTemplateJobSparkRJobLoggingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkRJobLoggingConfigInput` via:
+//
+//          WorkflowTemplateJobSparkRJobLoggingConfigArgs{...}
+type WorkflowTemplateJobSparkRJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkRJobLoggingConfigOutput() WorkflowTemplateJobSparkRJobLoggingConfigOutput
+	ToWorkflowTemplateJobSparkRJobLoggingConfigOutputWithContext(context.Context) WorkflowTemplateJobSparkRJobLoggingConfigOutput
+}
+
+type WorkflowTemplateJobSparkRJobLoggingConfigArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (WorkflowTemplateJobSparkRJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkRJobLoggingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSparkRJobLoggingConfigArgs) ToWorkflowTemplateJobSparkRJobLoggingConfigOutput() WorkflowTemplateJobSparkRJobLoggingConfigOutput {
+	return i.ToWorkflowTemplateJobSparkRJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkRJobLoggingConfigArgs) ToWorkflowTemplateJobSparkRJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobLoggingConfigOutput)
+}
+
+func (i WorkflowTemplateJobSparkRJobLoggingConfigArgs) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkRJobLoggingConfigArgs) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobLoggingConfigOutput).ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSparkRJobLoggingConfigPtrInput is an input type that accepts WorkflowTemplateJobSparkRJobLoggingConfigArgs, WorkflowTemplateJobSparkRJobLoggingConfigPtr and WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkRJobLoggingConfigPtrInput` via:
+//
+//          WorkflowTemplateJobSparkRJobLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSparkRJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput
+	ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(context.Context) WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput
+}
+
+type workflowTemplateJobSparkRJobLoggingConfigPtrType WorkflowTemplateJobSparkRJobLoggingConfigArgs
+
+func WorkflowTemplateJobSparkRJobLoggingConfigPtr(v *WorkflowTemplateJobSparkRJobLoggingConfigArgs) WorkflowTemplateJobSparkRJobLoggingConfigPtrInput {
+	return (*workflowTemplateJobSparkRJobLoggingConfigPtrType)(v)
+}
+
+func (*workflowTemplateJobSparkRJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkRJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSparkRJobLoggingConfigPtrType) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSparkRJobLoggingConfigPtrType) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput)
+}
+
+type WorkflowTemplateJobSparkRJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkRJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkRJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigOutput() WorkflowTemplateJobSparkRJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return o.ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJobLoggingConfig) *WorkflowTemplateJobSparkRJobLoggingConfig {
+		return &v
+	}).(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkRJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkRJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkRJobLoggingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJobLoggingConfig) WorkflowTemplateJobSparkRJobLoggingConfig {
+		return *v
+	}).(WorkflowTemplateJobSparkRJobLoggingConfigOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJobLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJob struct {
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *WorkflowTemplateJobSparkSqlJobLoggingConfig `pulumi:"loggingConfig"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri *string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList *WorkflowTemplateJobSparkSqlJobQueryList `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	// The `loggingConfig` block supports:
+	ScriptVariables map[string]string `pulumi:"scriptVariables"`
+}
+
+// WorkflowTemplateJobSparkSqlJobInput is an input type that accepts WorkflowTemplateJobSparkSqlJobArgs and WorkflowTemplateJobSparkSqlJobOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkSqlJobInput` via:
+//
+//          WorkflowTemplateJobSparkSqlJobArgs{...}
+type WorkflowTemplateJobSparkSqlJobInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkSqlJobOutput() WorkflowTemplateJobSparkSqlJobOutput
+	ToWorkflowTemplateJobSparkSqlJobOutputWithContext(context.Context) WorkflowTemplateJobSparkSqlJobOutput
+}
+
+type WorkflowTemplateJobSparkSqlJobArgs struct {
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig WorkflowTemplateJobSparkSqlJobLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList WorkflowTemplateJobSparkSqlJobQueryListPtrInput `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	// The `loggingConfig` block supports:
+	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
+}
+
+func (WorkflowTemplateJobSparkSqlJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkSqlJob)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSparkSqlJobArgs) ToWorkflowTemplateJobSparkSqlJobOutput() WorkflowTemplateJobSparkSqlJobOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkSqlJobArgs) ToWorkflowTemplateJobSparkSqlJobOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobOutput)
+}
+
+func (i WorkflowTemplateJobSparkSqlJobArgs) ToWorkflowTemplateJobSparkSqlJobPtrOutput() WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkSqlJobArgs) ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobOutput).ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSparkSqlJobPtrInput is an input type that accepts WorkflowTemplateJobSparkSqlJobArgs, WorkflowTemplateJobSparkSqlJobPtr and WorkflowTemplateJobSparkSqlJobPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkSqlJobPtrInput` via:
+//
+//          WorkflowTemplateJobSparkSqlJobArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSparkSqlJobPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkSqlJobPtrOutput() WorkflowTemplateJobSparkSqlJobPtrOutput
+	ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(context.Context) WorkflowTemplateJobSparkSqlJobPtrOutput
+}
+
+type workflowTemplateJobSparkSqlJobPtrType WorkflowTemplateJobSparkSqlJobArgs
+
+func WorkflowTemplateJobSparkSqlJobPtr(v *WorkflowTemplateJobSparkSqlJobArgs) WorkflowTemplateJobSparkSqlJobPtrInput {
+	return (*workflowTemplateJobSparkSqlJobPtrType)(v)
+}
+
+func (*workflowTemplateJobSparkSqlJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkSqlJob)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSparkSqlJobPtrType) ToWorkflowTemplateJobSparkSqlJobPtrOutput() WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSparkSqlJobPtrType) ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobPtrOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkSqlJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkSqlJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkSqlJobOutput) ToWorkflowTemplateJobSparkSqlJobOutput() WorkflowTemplateJobSparkSqlJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobOutput) ToWorkflowTemplateJobSparkSqlJobOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobOutput) ToWorkflowTemplateJobSparkSqlJobPtrOutput() WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return o.ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSparkSqlJobOutput) ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJob {
+		return &v
+	}).(WorkflowTemplateJobSparkSqlJobPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobSparkSqlJobOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobSparkSqlJobOutput) LoggingConfig() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJobLoggingConfig {
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobSparkSqlJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobSparkSqlJobOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) *string { return v.QueryFileUri }).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobSparkSqlJobOutput) QueryList() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJobQueryList { return v.QueryList }).(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobSparkSqlJobOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkSqlJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkSqlJob)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ToWorkflowTemplateJobSparkSqlJobPtrOutput() WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) WorkflowTemplateJobSparkSqlJob { return *v }).(WorkflowTemplateJobSparkSqlJobOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) LoggingConfig() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJobLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) QueryList() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJobQueryList {
+		if v == nil {
+			return nil
+		}
+		return v.QueryList
+	}).(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+// The `loggingConfig` block supports:
+func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobLoggingConfig struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// WorkflowTemplateJobSparkSqlJobLoggingConfigInput is an input type that accepts WorkflowTemplateJobSparkSqlJobLoggingConfigArgs and WorkflowTemplateJobSparkSqlJobLoggingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkSqlJobLoggingConfigInput` via:
+//
+//          WorkflowTemplateJobSparkSqlJobLoggingConfigArgs{...}
+type WorkflowTemplateJobSparkSqlJobLoggingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigOutput
+	ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutputWithContext(context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigOutput
+}
+
+type WorkflowTemplateJobSparkSqlJobLoggingConfigArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	// The `queryList` block supports:
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkSqlJobLoggingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobLoggingConfigOutput)
+}
+
+func (i WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobLoggingConfigOutput).ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSparkSqlJobLoggingConfigPtrInput is an input type that accepts WorkflowTemplateJobSparkSqlJobLoggingConfigArgs, WorkflowTemplateJobSparkSqlJobLoggingConfigPtr and WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkSqlJobLoggingConfigPtrInput` via:
+//
+//          WorkflowTemplateJobSparkSqlJobLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSparkSqlJobLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput
+	ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput
+}
+
+type workflowTemplateJobSparkSqlJobLoggingConfigPtrType WorkflowTemplateJobSparkSqlJobLoggingConfigArgs
+
+func WorkflowTemplateJobSparkSqlJobLoggingConfigPtr(v *WorkflowTemplateJobSparkSqlJobLoggingConfigArgs) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrInput {
+	return (*workflowTemplateJobSparkSqlJobLoggingConfigPtrType)(v)
+}
+
+func (*workflowTemplateJobSparkSqlJobLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkSqlJobLoggingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSparkSqlJobLoggingConfigPtrType) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSparkSqlJobLoggingConfigPtrType) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkSqlJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return o.ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobLoggingConfig) *WorkflowTemplateJobSparkSqlJobLoggingConfig {
+		return &v
+	}).(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkSqlJobLoggingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput() WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobLoggingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobLoggingConfig) WorkflowTemplateJobSparkSqlJobLoggingConfig {
+		return *v
+	}).(WorkflowTemplateJobSparkSqlJobLoggingConfigOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+// The `queryList` block supports:
+func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobQueryList struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries []string `pulumi:"queries"`
+}
+
+// WorkflowTemplateJobSparkSqlJobQueryListInput is an input type that accepts WorkflowTemplateJobSparkSqlJobQueryListArgs and WorkflowTemplateJobSparkSqlJobQueryListOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkSqlJobQueryListInput` via:
+//
+//          WorkflowTemplateJobSparkSqlJobQueryListArgs{...}
+type WorkflowTemplateJobSparkSqlJobQueryListInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkSqlJobQueryListOutput() WorkflowTemplateJobSparkSqlJobQueryListOutput
+	ToWorkflowTemplateJobSparkSqlJobQueryListOutputWithContext(context.Context) WorkflowTemplateJobSparkSqlJobQueryListOutput
+}
+
+type WorkflowTemplateJobSparkSqlJobQueryListArgs struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+	// The `parameters` block supports:
+	Queries pulumi.StringArrayInput `pulumi:"queries"`
+}
+
+func (WorkflowTemplateJobSparkSqlJobQueryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkSqlJobQueryList)(nil)).Elem()
+}
+
+func (i WorkflowTemplateJobSparkSqlJobQueryListArgs) ToWorkflowTemplateJobSparkSqlJobQueryListOutput() WorkflowTemplateJobSparkSqlJobQueryListOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobQueryListOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkSqlJobQueryListArgs) ToWorkflowTemplateJobSparkSqlJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobQueryListOutput)
+}
+
+func (i WorkflowTemplateJobSparkSqlJobQueryListArgs) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutput() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateJobSparkSqlJobQueryListArgs) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobQueryListOutput).ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateJobSparkSqlJobQueryListPtrInput is an input type that accepts WorkflowTemplateJobSparkSqlJobQueryListArgs, WorkflowTemplateJobSparkSqlJobQueryListPtr and WorkflowTemplateJobSparkSqlJobQueryListPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateJobSparkSqlJobQueryListPtrInput` via:
+//
+//          WorkflowTemplateJobSparkSqlJobQueryListArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateJobSparkSqlJobQueryListPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutput() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput
+	ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(context.Context) WorkflowTemplateJobSparkSqlJobQueryListPtrOutput
+}
+
+type workflowTemplateJobSparkSqlJobQueryListPtrType WorkflowTemplateJobSparkSqlJobQueryListArgs
+
+func WorkflowTemplateJobSparkSqlJobQueryListPtr(v *WorkflowTemplateJobSparkSqlJobQueryListArgs) WorkflowTemplateJobSparkSqlJobQueryListPtrInput {
+	return (*workflowTemplateJobSparkSqlJobQueryListPtrType)(v)
+}
+
+func (*workflowTemplateJobSparkSqlJobQueryListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkSqlJobQueryList)(nil)).Elem()
+}
+
+func (i *workflowTemplateJobSparkSqlJobQueryListPtrType) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutput() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return i.ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateJobSparkSqlJobQueryListPtrType) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobQueryListOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkSqlJobQueryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateJobSparkSqlJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSparkSqlJobQueryListOutput() WorkflowTemplateJobSparkSqlJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSparkSqlJobQueryListOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutput() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return o.ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobQueryList) *WorkflowTemplateJobSparkSqlJobQueryList {
+		return &v
+	}).(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateJobSparkSqlJobQueryListPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateJobSparkSqlJobQueryList)(nil)).Elem()
+}
+
+func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutput() WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobQueryListOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobQueryList) WorkflowTemplateJobSparkSqlJobQueryList { return *v }).(WorkflowTemplateJobSparkSqlJobQueryListOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+// The `parameters` block supports:
+func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobQueryList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateParameter struct {
+	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+	Description *string `pulumi:"description"`
+	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
+	Fields []string `pulumi:"fields"`
+	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	Name string `pulumi:"name"`
+	// Optional. Validation rules to be applied to this parameter's value.
+	// The `validation` block supports:
+	Validation *WorkflowTemplateParameterValidation `pulumi:"validation"`
+}
+
+// WorkflowTemplateParameterInput is an input type that accepts WorkflowTemplateParameterArgs and WorkflowTemplateParameterOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterInput` via:
+//
+//          WorkflowTemplateParameterArgs{...}
+type WorkflowTemplateParameterInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterOutput() WorkflowTemplateParameterOutput
+	ToWorkflowTemplateParameterOutputWithContext(context.Context) WorkflowTemplateParameterOutput
+}
+
+type WorkflowTemplateParameterArgs struct {
+	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
+	Fields pulumi.StringArrayInput `pulumi:"fields"`
+	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional. Validation rules to be applied to this parameter's value.
+	// The `validation` block supports:
+	Validation WorkflowTemplateParameterValidationPtrInput `pulumi:"validation"`
+}
+
+func (WorkflowTemplateParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameter)(nil)).Elem()
+}
+
+func (i WorkflowTemplateParameterArgs) ToWorkflowTemplateParameterOutput() WorkflowTemplateParameterOutput {
+	return i.ToWorkflowTemplateParameterOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterArgs) ToWorkflowTemplateParameterOutputWithContext(ctx context.Context) WorkflowTemplateParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterOutput)
+}
+
+// WorkflowTemplateParameterArrayInput is an input type that accepts WorkflowTemplateParameterArray and WorkflowTemplateParameterArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterArrayInput` via:
+//
+//          WorkflowTemplateParameterArray{ WorkflowTemplateParameterArgs{...} }
+type WorkflowTemplateParameterArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterArrayOutput() WorkflowTemplateParameterArrayOutput
+	ToWorkflowTemplateParameterArrayOutputWithContext(context.Context) WorkflowTemplateParameterArrayOutput
+}
+
+type WorkflowTemplateParameterArray []WorkflowTemplateParameterInput
+
+func (WorkflowTemplateParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplateParameter)(nil)).Elem()
+}
+
+func (i WorkflowTemplateParameterArray) ToWorkflowTemplateParameterArrayOutput() WorkflowTemplateParameterArrayOutput {
+	return i.ToWorkflowTemplateParameterArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterArray) ToWorkflowTemplateParameterArrayOutputWithContext(ctx context.Context) WorkflowTemplateParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterArrayOutput)
+}
+
+type WorkflowTemplateParameterOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameter)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterOutput) ToWorkflowTemplateParameterOutput() WorkflowTemplateParameterOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterOutput) ToWorkflowTemplateParameterOutputWithContext(ctx context.Context) WorkflowTemplateParameterOutput {
+	return o
+}
+
+// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+func (o WorkflowTemplateParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
+func (o WorkflowTemplateParameterOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameter) []string { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+func (o WorkflowTemplateParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Validation rules to be applied to this parameter's value.
+// The `validation` block supports:
+func (o WorkflowTemplateParameterOutput) Validation() WorkflowTemplateParameterValidationPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameter) *WorkflowTemplateParameterValidation { return v.Validation }).(WorkflowTemplateParameterValidationPtrOutput)
+}
+
+type WorkflowTemplateParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplateParameter)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterArrayOutput) ToWorkflowTemplateParameterArrayOutput() WorkflowTemplateParameterArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterArrayOutput) ToWorkflowTemplateParameterArrayOutputWithContext(ctx context.Context) WorkflowTemplateParameterArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterArrayOutput) Index(i pulumi.IntInput) WorkflowTemplateParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplateParameter {
+		return vs[0].([]WorkflowTemplateParameter)[vs[1].(int)]
+	}).(WorkflowTemplateParameterOutput)
+}
+
+type WorkflowTemplateParameterValidation struct {
+	// Validation based on regular expressions.
+	Regex *WorkflowTemplateParameterValidationRegex `pulumi:"regex"`
+	// Optional. Corresponds to the label values of reservation resource.
+	// The `gkeClusterConfig` block supports:
+	Values *WorkflowTemplateParameterValidationValues `pulumi:"values"`
+}
+
+// WorkflowTemplateParameterValidationInput is an input type that accepts WorkflowTemplateParameterValidationArgs and WorkflowTemplateParameterValidationOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterValidationInput` via:
+//
+//          WorkflowTemplateParameterValidationArgs{...}
+type WorkflowTemplateParameterValidationInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterValidationOutput() WorkflowTemplateParameterValidationOutput
+	ToWorkflowTemplateParameterValidationOutputWithContext(context.Context) WorkflowTemplateParameterValidationOutput
+}
+
+type WorkflowTemplateParameterValidationArgs struct {
+	// Validation based on regular expressions.
+	Regex WorkflowTemplateParameterValidationRegexPtrInput `pulumi:"regex"`
+	// Optional. Corresponds to the label values of reservation resource.
+	// The `gkeClusterConfig` block supports:
+	Values WorkflowTemplateParameterValidationValuesPtrInput `pulumi:"values"`
+}
+
+func (WorkflowTemplateParameterValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameterValidation)(nil)).Elem()
+}
+
+func (i WorkflowTemplateParameterValidationArgs) ToWorkflowTemplateParameterValidationOutput() WorkflowTemplateParameterValidationOutput {
+	return i.ToWorkflowTemplateParameterValidationOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterValidationArgs) ToWorkflowTemplateParameterValidationOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationOutput)
+}
+
+func (i WorkflowTemplateParameterValidationArgs) ToWorkflowTemplateParameterValidationPtrOutput() WorkflowTemplateParameterValidationPtrOutput {
+	return i.ToWorkflowTemplateParameterValidationPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterValidationArgs) ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationOutput).ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateParameterValidationPtrInput is an input type that accepts WorkflowTemplateParameterValidationArgs, WorkflowTemplateParameterValidationPtr and WorkflowTemplateParameterValidationPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterValidationPtrInput` via:
+//
+//          WorkflowTemplateParameterValidationArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateParameterValidationPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterValidationPtrOutput() WorkflowTemplateParameterValidationPtrOutput
+	ToWorkflowTemplateParameterValidationPtrOutputWithContext(context.Context) WorkflowTemplateParameterValidationPtrOutput
+}
+
+type workflowTemplateParameterValidationPtrType WorkflowTemplateParameterValidationArgs
+
+func WorkflowTemplateParameterValidationPtr(v *WorkflowTemplateParameterValidationArgs) WorkflowTemplateParameterValidationPtrInput {
+	return (*workflowTemplateParameterValidationPtrType)(v)
+}
+
+func (*workflowTemplateParameterValidationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateParameterValidation)(nil)).Elem()
+}
+
+func (i *workflowTemplateParameterValidationPtrType) ToWorkflowTemplateParameterValidationPtrOutput() WorkflowTemplateParameterValidationPtrOutput {
+	return i.ToWorkflowTemplateParameterValidationPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateParameterValidationPtrType) ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationPtrOutput)
+}
+
+type WorkflowTemplateParameterValidationOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameterValidation)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterValidationOutput) ToWorkflowTemplateParameterValidationOutput() WorkflowTemplateParameterValidationOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationOutput) ToWorkflowTemplateParameterValidationOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationOutput) ToWorkflowTemplateParameterValidationPtrOutput() WorkflowTemplateParameterValidationPtrOutput {
+	return o.ToWorkflowTemplateParameterValidationPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateParameterValidationOutput) ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidation {
+		return &v
+	}).(WorkflowTemplateParameterValidationPtrOutput)
+}
+
+// Validation based on regular expressions.
+func (o WorkflowTemplateParameterValidationOutput) Regex() WorkflowTemplateParameterValidationRegexPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidationRegex { return v.Regex }).(WorkflowTemplateParameterValidationRegexPtrOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+// The `gkeClusterConfig` block supports:
+func (o WorkflowTemplateParameterValidationOutput) Values() WorkflowTemplateParameterValidationValuesPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidationValues {
+		return v.Values
+	}).(WorkflowTemplateParameterValidationValuesPtrOutput)
+}
+
+type WorkflowTemplateParameterValidationPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterValidationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateParameterValidation)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterValidationPtrOutput) ToWorkflowTemplateParameterValidationPtrOutput() WorkflowTemplateParameterValidationPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationPtrOutput) ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationPtrOutput) Elem() WorkflowTemplateParameterValidationOutput {
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidation) WorkflowTemplateParameterValidation { return *v }).(WorkflowTemplateParameterValidationOutput)
+}
+
+// Validation based on regular expressions.
+func (o WorkflowTemplateParameterValidationPtrOutput) Regex() WorkflowTemplateParameterValidationRegexPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidationRegex {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(WorkflowTemplateParameterValidationRegexPtrOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+// The `gkeClusterConfig` block supports:
+func (o WorkflowTemplateParameterValidationPtrOutput) Values() WorkflowTemplateParameterValidationValuesPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidationValues {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(WorkflowTemplateParameterValidationValuesPtrOutput)
+}
+
+type WorkflowTemplateParameterValidationRegex struct {
+	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	// The `values` block supports:
+	Regexes []string `pulumi:"regexes"`
+}
+
+// WorkflowTemplateParameterValidationRegexInput is an input type that accepts WorkflowTemplateParameterValidationRegexArgs and WorkflowTemplateParameterValidationRegexOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterValidationRegexInput` via:
+//
+//          WorkflowTemplateParameterValidationRegexArgs{...}
+type WorkflowTemplateParameterValidationRegexInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterValidationRegexOutput() WorkflowTemplateParameterValidationRegexOutput
+	ToWorkflowTemplateParameterValidationRegexOutputWithContext(context.Context) WorkflowTemplateParameterValidationRegexOutput
+}
+
+type WorkflowTemplateParameterValidationRegexArgs struct {
+	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	// The `values` block supports:
+	Regexes pulumi.StringArrayInput `pulumi:"regexes"`
+}
+
+func (WorkflowTemplateParameterValidationRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameterValidationRegex)(nil)).Elem()
+}
+
+func (i WorkflowTemplateParameterValidationRegexArgs) ToWorkflowTemplateParameterValidationRegexOutput() WorkflowTemplateParameterValidationRegexOutput {
+	return i.ToWorkflowTemplateParameterValidationRegexOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterValidationRegexArgs) ToWorkflowTemplateParameterValidationRegexOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationRegexOutput)
+}
+
+func (i WorkflowTemplateParameterValidationRegexArgs) ToWorkflowTemplateParameterValidationRegexPtrOutput() WorkflowTemplateParameterValidationRegexPtrOutput {
+	return i.ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterValidationRegexArgs) ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationRegexOutput).ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateParameterValidationRegexPtrInput is an input type that accepts WorkflowTemplateParameterValidationRegexArgs, WorkflowTemplateParameterValidationRegexPtr and WorkflowTemplateParameterValidationRegexPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterValidationRegexPtrInput` via:
+//
+//          WorkflowTemplateParameterValidationRegexArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateParameterValidationRegexPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterValidationRegexPtrOutput() WorkflowTemplateParameterValidationRegexPtrOutput
+	ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(context.Context) WorkflowTemplateParameterValidationRegexPtrOutput
+}
+
+type workflowTemplateParameterValidationRegexPtrType WorkflowTemplateParameterValidationRegexArgs
+
+func WorkflowTemplateParameterValidationRegexPtr(v *WorkflowTemplateParameterValidationRegexArgs) WorkflowTemplateParameterValidationRegexPtrInput {
+	return (*workflowTemplateParameterValidationRegexPtrType)(v)
+}
+
+func (*workflowTemplateParameterValidationRegexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateParameterValidationRegex)(nil)).Elem()
+}
+
+func (i *workflowTemplateParameterValidationRegexPtrType) ToWorkflowTemplateParameterValidationRegexPtrOutput() WorkflowTemplateParameterValidationRegexPtrOutput {
+	return i.ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateParameterValidationRegexPtrType) ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationRegexPtrOutput)
+}
+
+type WorkflowTemplateParameterValidationRegexOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterValidationRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameterValidationRegex)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParameterValidationRegexOutput() WorkflowTemplateParameterValidationRegexOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParameterValidationRegexOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParameterValidationRegexPtrOutput() WorkflowTemplateParameterValidationRegexPtrOutput {
+	return o.ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameterValidationRegex) *WorkflowTemplateParameterValidationRegex {
+		return &v
+	}).(WorkflowTemplateParameterValidationRegexPtrOutput)
+}
+
+// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+// The `values` block supports:
+func (o WorkflowTemplateParameterValidationRegexOutput) Regexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameterValidationRegex) []string { return v.Regexes }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateParameterValidationRegexPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterValidationRegexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateParameterValidationRegex)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterValidationRegexPtrOutput) ToWorkflowTemplateParameterValidationRegexPtrOutput() WorkflowTemplateParameterValidationRegexPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationRegexPtrOutput) ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationRegexPtrOutput) Elem() WorkflowTemplateParameterValidationRegexOutput {
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidationRegex) WorkflowTemplateParameterValidationRegex { return *v }).(WorkflowTemplateParameterValidationRegexOutput)
+}
+
+// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+// The `values` block supports:
+func (o WorkflowTemplateParameterValidationRegexPtrOutput) Regexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidationRegex) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Regexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateParameterValidationValues struct {
+	// Optional. Corresponds to the label values of reservation resource.
+	// The `gkeClusterConfig` block supports:
+	Values []string `pulumi:"values"`
+}
+
+// WorkflowTemplateParameterValidationValuesInput is an input type that accepts WorkflowTemplateParameterValidationValuesArgs and WorkflowTemplateParameterValidationValuesOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterValidationValuesInput` via:
+//
+//          WorkflowTemplateParameterValidationValuesArgs{...}
+type WorkflowTemplateParameterValidationValuesInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterValidationValuesOutput() WorkflowTemplateParameterValidationValuesOutput
+	ToWorkflowTemplateParameterValidationValuesOutputWithContext(context.Context) WorkflowTemplateParameterValidationValuesOutput
+}
+
+type WorkflowTemplateParameterValidationValuesArgs struct {
+	// Optional. Corresponds to the label values of reservation resource.
+	// The `gkeClusterConfig` block supports:
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (WorkflowTemplateParameterValidationValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameterValidationValues)(nil)).Elem()
+}
+
+func (i WorkflowTemplateParameterValidationValuesArgs) ToWorkflowTemplateParameterValidationValuesOutput() WorkflowTemplateParameterValidationValuesOutput {
+	return i.ToWorkflowTemplateParameterValidationValuesOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterValidationValuesArgs) ToWorkflowTemplateParameterValidationValuesOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationValuesOutput)
+}
+
+func (i WorkflowTemplateParameterValidationValuesArgs) ToWorkflowTemplateParameterValidationValuesPtrOutput() WorkflowTemplateParameterValidationValuesPtrOutput {
+	return i.ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplateParameterValidationValuesArgs) ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationValuesOutput).ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplateParameterValidationValuesPtrInput is an input type that accepts WorkflowTemplateParameterValidationValuesArgs, WorkflowTemplateParameterValidationValuesPtr and WorkflowTemplateParameterValidationValuesPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplateParameterValidationValuesPtrInput` via:
+//
+//          WorkflowTemplateParameterValidationValuesArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplateParameterValidationValuesPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplateParameterValidationValuesPtrOutput() WorkflowTemplateParameterValidationValuesPtrOutput
+	ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(context.Context) WorkflowTemplateParameterValidationValuesPtrOutput
+}
+
+type workflowTemplateParameterValidationValuesPtrType WorkflowTemplateParameterValidationValuesArgs
+
+func WorkflowTemplateParameterValidationValuesPtr(v *WorkflowTemplateParameterValidationValuesArgs) WorkflowTemplateParameterValidationValuesPtrInput {
+	return (*workflowTemplateParameterValidationValuesPtrType)(v)
+}
+
+func (*workflowTemplateParameterValidationValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateParameterValidationValues)(nil)).Elem()
+}
+
+func (i *workflowTemplateParameterValidationValuesPtrType) ToWorkflowTemplateParameterValidationValuesPtrOutput() WorkflowTemplateParameterValidationValuesPtrOutput {
+	return i.ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplateParameterValidationValuesPtrType) ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateParameterValidationValuesPtrOutput)
+}
+
+type WorkflowTemplateParameterValidationValuesOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterValidationValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplateParameterValidationValues)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParameterValidationValuesOutput() WorkflowTemplateParameterValidationValuesOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParameterValidationValuesOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParameterValidationValuesPtrOutput() WorkflowTemplateParameterValidationValuesPtrOutput {
+	return o.ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameterValidationValues) *WorkflowTemplateParameterValidationValues {
+		return &v
+	}).(WorkflowTemplateParameterValidationValuesPtrOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+// The `gkeClusterConfig` block supports:
+func (o WorkflowTemplateParameterValidationValuesOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplateParameterValidationValues) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplateParameterValidationValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplateParameterValidationValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplateParameterValidationValues)(nil)).Elem()
+}
+
+func (o WorkflowTemplateParameterValidationValuesPtrOutput) ToWorkflowTemplateParameterValidationValuesPtrOutput() WorkflowTemplateParameterValidationValuesPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationValuesPtrOutput) ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplateParameterValidationValuesPtrOutput) Elem() WorkflowTemplateParameterValidationValuesOutput {
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidationValues) WorkflowTemplateParameterValidationValues {
+		return *v
+	}).(WorkflowTemplateParameterValidationValuesOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+// The `gkeClusterConfig` block supports:
+func (o WorkflowTemplateParameterValidationValuesPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidationValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplatePlacement struct {
+	// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+	ClusterSelector *WorkflowTemplatePlacementClusterSelector `pulumi:"clusterSelector"`
+	// A cluster that is managed by the workflow.
+	// The `config` block supports:
+	ManagedCluster *WorkflowTemplatePlacementManagedCluster `pulumi:"managedCluster"`
+}
+
+// WorkflowTemplatePlacementInput is an input type that accepts WorkflowTemplatePlacementArgs and WorkflowTemplatePlacementOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementInput` via:
+//
+//          WorkflowTemplatePlacementArgs{...}
+type WorkflowTemplatePlacementInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementOutput() WorkflowTemplatePlacementOutput
+	ToWorkflowTemplatePlacementOutputWithContext(context.Context) WorkflowTemplatePlacementOutput
+}
+
+type WorkflowTemplatePlacementArgs struct {
+	// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+	ClusterSelector WorkflowTemplatePlacementClusterSelectorPtrInput `pulumi:"clusterSelector"`
+	// A cluster that is managed by the workflow.
+	// The `config` block supports:
+	ManagedCluster WorkflowTemplatePlacementManagedClusterPtrInput `pulumi:"managedCluster"`
+}
+
+func (WorkflowTemplatePlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacement)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementOutput() WorkflowTemplatePlacementOutput {
+	return i.ToWorkflowTemplatePlacementOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementOutputWithContext(ctx context.Context) WorkflowTemplatePlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementOutput)
+}
+
+func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
+	return i.ToWorkflowTemplatePlacementPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementOutput).ToWorkflowTemplatePlacementPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementPtrInput is an input type that accepts WorkflowTemplatePlacementArgs, WorkflowTemplatePlacementPtr and WorkflowTemplatePlacementPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementPtrInput` via:
+//
+//          WorkflowTemplatePlacementArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput
+	ToWorkflowTemplatePlacementPtrOutputWithContext(context.Context) WorkflowTemplatePlacementPtrOutput
+}
+
+type workflowTemplatePlacementPtrType WorkflowTemplatePlacementArgs
+
+func WorkflowTemplatePlacementPtr(v *WorkflowTemplatePlacementArgs) WorkflowTemplatePlacementPtrInput {
+	return (*workflowTemplatePlacementPtrType)(v)
+}
+
+func (*workflowTemplatePlacementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacement)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementPtrType) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
+	return i.ToWorkflowTemplatePlacementPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementPtrType) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementPtrOutput)
+}
+
+type WorkflowTemplatePlacementOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacement)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementOutput() WorkflowTemplatePlacementOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementOutputWithContext(ctx context.Context) WorkflowTemplatePlacementOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
+	return o.ToWorkflowTemplatePlacementPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacement {
+		return &v
+	}).(WorkflowTemplatePlacementPtrOutput)
+}
+
+// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+func (o WorkflowTemplatePlacementOutput) ClusterSelector() WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementClusterSelector { return v.ClusterSelector }).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
+}
+
+// A cluster that is managed by the workflow.
+// The `config` block supports:
+func (o WorkflowTemplatePlacementOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster { return v.ManagedCluster }).(WorkflowTemplatePlacementManagedClusterPtrOutput)
+}
+
+type WorkflowTemplatePlacementPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacement)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementPtrOutput) Elem() WorkflowTemplatePlacementOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacement) WorkflowTemplatePlacement { return *v }).(WorkflowTemplatePlacementOutput)
+}
+
+// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+func (o WorkflowTemplatePlacementPtrOutput) ClusterSelector() WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacement) *WorkflowTemplatePlacementClusterSelector {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterSelector
+	}).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
+}
+
+// A cluster that is managed by the workflow.
+// The `config` block supports:
+func (o WorkflowTemplatePlacementPtrOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedCluster
+	}).(WorkflowTemplatePlacementManagedClusterPtrOutput)
+}
+
+type WorkflowTemplatePlacementClusterSelector struct {
+	// Required. The cluster labels. Cluster must have all labels to match.
+	ClusterLabels map[string]string `pulumi:"clusterLabels"`
+	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+	// The `nodeGroupAffinity` block supports:
+	Zone *string `pulumi:"zone"`
+}
+
+// WorkflowTemplatePlacementClusterSelectorInput is an input type that accepts WorkflowTemplatePlacementClusterSelectorArgs and WorkflowTemplatePlacementClusterSelectorOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementClusterSelectorInput` via:
+//
+//          WorkflowTemplatePlacementClusterSelectorArgs{...}
+type WorkflowTemplatePlacementClusterSelectorInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementClusterSelectorOutput() WorkflowTemplatePlacementClusterSelectorOutput
+	ToWorkflowTemplatePlacementClusterSelectorOutputWithContext(context.Context) WorkflowTemplatePlacementClusterSelectorOutput
+}
+
+type WorkflowTemplatePlacementClusterSelectorArgs struct {
+	// Required. The cluster labels. Cluster must have all labels to match.
+	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
+	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+	// The `nodeGroupAffinity` block supports:
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (WorkflowTemplatePlacementClusterSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementClusterSelector)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementClusterSelectorArgs) ToWorkflowTemplatePlacementClusterSelectorOutput() WorkflowTemplatePlacementClusterSelectorOutput {
+	return i.ToWorkflowTemplatePlacementClusterSelectorOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementClusterSelectorArgs) ToWorkflowTemplatePlacementClusterSelectorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementClusterSelectorOutput)
+}
+
+func (i WorkflowTemplatePlacementClusterSelectorArgs) ToWorkflowTemplatePlacementClusterSelectorPtrOutput() WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return i.ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementClusterSelectorArgs) ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementClusterSelectorOutput).ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementClusterSelectorPtrInput is an input type that accepts WorkflowTemplatePlacementClusterSelectorArgs, WorkflowTemplatePlacementClusterSelectorPtr and WorkflowTemplatePlacementClusterSelectorPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementClusterSelectorPtrInput` via:
+//
+//          WorkflowTemplatePlacementClusterSelectorArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementClusterSelectorPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementClusterSelectorPtrOutput() WorkflowTemplatePlacementClusterSelectorPtrOutput
+	ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(context.Context) WorkflowTemplatePlacementClusterSelectorPtrOutput
+}
+
+type workflowTemplatePlacementClusterSelectorPtrType WorkflowTemplatePlacementClusterSelectorArgs
+
+func WorkflowTemplatePlacementClusterSelectorPtr(v *WorkflowTemplatePlacementClusterSelectorArgs) WorkflowTemplatePlacementClusterSelectorPtrInput {
+	return (*workflowTemplatePlacementClusterSelectorPtrType)(v)
+}
+
+func (*workflowTemplatePlacementClusterSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementClusterSelector)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementClusterSelectorPtrType) ToWorkflowTemplatePlacementClusterSelectorPtrOutput() WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return i.ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementClusterSelectorPtrType) ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
+}
+
+type WorkflowTemplatePlacementClusterSelectorOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementClusterSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementClusterSelector)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementClusterSelectorOutput) ToWorkflowTemplatePlacementClusterSelectorOutput() WorkflowTemplatePlacementClusterSelectorOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementClusterSelectorOutput) ToWorkflowTemplatePlacementClusterSelectorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementClusterSelectorOutput) ToWorkflowTemplatePlacementClusterSelectorPtrOutput() WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return o.ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementClusterSelectorOutput) ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementClusterSelector) *WorkflowTemplatePlacementClusterSelector {
+		return &v
+	}).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
+}
+
+// Required. The cluster labels. Cluster must have all labels to match.
+func (o WorkflowTemplatePlacementClusterSelectorOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementClusterSelector) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+// The `nodeGroupAffinity` block supports:
+func (o WorkflowTemplatePlacementClusterSelectorOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementClusterSelector) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementClusterSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementClusterSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementClusterSelector)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ToWorkflowTemplatePlacementClusterSelectorPtrOutput() WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) Elem() WorkflowTemplatePlacementClusterSelectorOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementClusterSelector) WorkflowTemplatePlacementClusterSelector { return *v }).(WorkflowTemplatePlacementClusterSelectorOutput)
+}
+
+// Required. The cluster labels. Cluster must have all labels to match.
+func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementClusterSelector) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+// The `nodeGroupAffinity` block supports:
+func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementClusterSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedCluster struct {
+	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	ClusterName string `pulumi:"clusterName"`
+	// Required. The cluster configuration.
+	Config WorkflowTemplatePlacementManagedClusterConfig `pulumi:"config"`
+	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+	// The `secondaryWorkerConfig` block supports:
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// WorkflowTemplatePlacementManagedClusterInput is an input type that accepts WorkflowTemplatePlacementManagedClusterArgs and WorkflowTemplatePlacementManagedClusterOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterArgs{...}
+type WorkflowTemplatePlacementManagedClusterInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterOutput() WorkflowTemplatePlacementManagedClusterOutput
+	ToWorkflowTemplatePlacementManagedClusterOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterArgs struct {
+	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Required. The cluster configuration.
+	Config WorkflowTemplatePlacementManagedClusterConfigInput `pulumi:"config"`
+	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+	// The `secondaryWorkerConfig` block supports:
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedCluster)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterArgs) ToWorkflowTemplatePlacementManagedClusterOutput() WorkflowTemplatePlacementManagedClusterOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterArgs) ToWorkflowTemplatePlacementManagedClusterOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterArgs) ToWorkflowTemplatePlacementManagedClusterPtrOutput() WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterArgs) ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterOutput).ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterArgs, WorkflowTemplatePlacementManagedClusterPtr and WorkflowTemplatePlacementManagedClusterPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterPtrOutput() WorkflowTemplatePlacementManagedClusterPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterPtrType WorkflowTemplatePlacementManagedClusterArgs
+
+func WorkflowTemplatePlacementManagedClusterPtr(v *WorkflowTemplatePlacementManagedClusterArgs) WorkflowTemplatePlacementManagedClusterPtrInput {
+	return (*workflowTemplatePlacementManagedClusterPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedCluster)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterPtrType) ToWorkflowTemplatePlacementManagedClusterPtrOutput() WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterPtrType) ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedCluster)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterOutput) ToWorkflowTemplatePlacementManagedClusterOutput() WorkflowTemplatePlacementManagedClusterOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterOutput) ToWorkflowTemplatePlacementManagedClusterOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterOutput) ToWorkflowTemplatePlacementManagedClusterPtrOutput() WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterOutput) ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) *WorkflowTemplatePlacementManagedCluster {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterPtrOutput)
+}
+
+// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+func (o WorkflowTemplatePlacementManagedClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Required. The cluster configuration.
+func (o WorkflowTemplatePlacementManagedClusterOutput) Config() WorkflowTemplatePlacementManagedClusterConfigOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) WorkflowTemplatePlacementManagedClusterConfig {
+		return v.Config
+	}).(WorkflowTemplatePlacementManagedClusterConfigOutput)
+}
+
+// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+// The `secondaryWorkerConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedCluster)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ToWorkflowTemplatePlacementManagedClusterPtrOutput() WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) WorkflowTemplatePlacementManagedCluster { return *v }).(WorkflowTemplatePlacementManagedClusterOutput)
+}
+
+// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The cluster configuration.
+func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Config() WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) *WorkflowTemplatePlacementManagedClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.Config
+	}).(WorkflowTemplatePlacementManagedClusterConfigPtrOutput)
+}
+
+// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+// The `secondaryWorkerConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfig struct {
+	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+	AutoscalingConfig *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig `pulumi:"autoscalingConfig"`
+	// Optional. Encryption settings for the cluster.
+	EncryptionConfig *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig `pulumi:"encryptionConfig"`
+	// Optional. Port/endpoint configuration for this cluster
+	EndpointConfig *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig `pulumi:"endpointConfig"`
+	// Optional. The shared Compute Engine config settings for all instances in a cluster.
+	GceClusterConfig *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig `pulumi:"gceClusterConfig"`
+	// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
+	GkeClusterConfig *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig `pulumi:"gkeClusterConfig"`
+	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+	InitializationActions []WorkflowTemplatePlacementManagedClusterConfigInitializationAction `pulumi:"initializationActions"`
+	// Optional. Lifecycle setting for the cluster.
+	LifecycleConfig *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig `pulumi:"lifecycleConfig"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	MasterConfig *WorkflowTemplatePlacementManagedClusterConfigMasterConfig `pulumi:"masterConfig"`
+	// Optional. Metastore configuration.
+	MetastoreConfig *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig `pulumi:"metastoreConfig"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	SecondaryWorkerConfig *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig `pulumi:"secondaryWorkerConfig"`
+	// Optional. Security settings for the cluster.
+	SecurityConfig *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig `pulumi:"securityConfig"`
+	// Optional. The config settings for software inside the cluster.
+	SoftwareConfig *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig `pulumi:"softwareConfig"`
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+	StagingBucket *string `pulumi:"stagingBucket"`
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+	TempBucket *string `pulumi:"tempBucket"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	WorkerConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig `pulumi:"workerConfig"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigArgs and WorkflowTemplatePlacementManagedClusterConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigArgs struct {
+	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+	AutoscalingConfig WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
+	// Optional. Encryption settings for the cluster.
+	EncryptionConfig WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	// Optional. Port/endpoint configuration for this cluster
+	EndpointConfig WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrInput `pulumi:"endpointConfig"`
+	// Optional. The shared Compute Engine config settings for all instances in a cluster.
+	GceClusterConfig WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrInput `pulumi:"gceClusterConfig"`
+	// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
+	GkeClusterConfig WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrInput `pulumi:"gkeClusterConfig"`
+	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+	InitializationActions WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayInput `pulumi:"initializationActions"`
+	// Optional. Lifecycle setting for the cluster.
+	LifecycleConfig WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrInput `pulumi:"lifecycleConfig"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	MasterConfig WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrInput `pulumi:"masterConfig"`
+	// Optional. Metastore configuration.
+	MetastoreConfig WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput `pulumi:"metastoreConfig"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	SecondaryWorkerConfig WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrInput `pulumi:"secondaryWorkerConfig"`
+	// Optional. Security settings for the cluster.
+	SecurityConfig WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput `pulumi:"securityConfig"`
+	// Optional. The config settings for software inside the cluster.
+	SoftwareConfig WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	WorkerConfig WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput `pulumi:"workerConfig"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigArgs, WorkflowTemplatePlacementManagedClusterConfigPtr and WorkflowTemplatePlacementManagedClusterConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigPtrType WorkflowTemplatePlacementManagedClusterConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigArgs) WorkflowTemplatePlacementManagedClusterConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigPtrOutput)
+}
+
+// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) AutoscalingConfig() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
+		return v.AutoscalingConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
+}
+
+// Optional. Encryption settings for the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) EncryptionConfig() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
+		return v.EncryptionConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput)
+}
+
+// Optional. Port/endpoint configuration for this cluster
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) EndpointConfig() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
+		return v.EndpointConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
+}
+
+// Optional. The shared Compute Engine config settings for all instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) GceClusterConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
+		return v.GceClusterConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput)
+}
+
+// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) GkeClusterConfig() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
+		return v.GkeClusterConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput)
+}
+
+// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) InitializationActions() WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) []WorkflowTemplatePlacementManagedClusterConfigInitializationAction {
+		return v.InitializationActions
+	}).(WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput)
+}
+
+// Optional. Lifecycle setting for the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) LifecycleConfig() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
+		return v.LifecycleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) MasterConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
+		return v.MasterConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
+}
+
+// Optional. Metastore configuration.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) MetastoreConfig() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
+		return v.MetastoreConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) SecondaryWorkerConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
+		return v.SecondaryWorkerConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
+}
+
+// Optional. Security settings for the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) SecurityConfig() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
+		return v.SecurityConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput)
+}
+
+// Optional. The config settings for software inside the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) SoftwareConfig() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
+		return v.SoftwareConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
+}
+
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *string { return v.StagingBucket }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) TempBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *string { return v.TempBucket }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) WorkerConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
+		return v.WorkerConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) WorkflowTemplatePlacementManagedClusterConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigOutput)
+}
+
+// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) AutoscalingConfig() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
+}
+
+// Optional. Encryption settings for the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) EncryptionConfig() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput)
+}
+
+// Optional. Port/endpoint configuration for this cluster
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) EndpointConfig() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
+}
+
+// Optional. The shared Compute Engine config settings for all instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) GceClusterConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GceClusterConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput)
+}
+
+// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) GkeClusterConfig() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GkeClusterConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput)
+}
+
+// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) InitializationActions() WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) []WorkflowTemplatePlacementManagedClusterConfigInitializationAction {
+		if v == nil {
+			return nil
+		}
+		return v.InitializationActions
+	}).(WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput)
+}
+
+// Optional. Lifecycle setting for the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) LifecycleConfig() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) MasterConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MasterConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
+}
+
+// Optional. Metastore configuration.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) MetastoreConfig() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) SecondaryWorkerConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryWorkerConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
+}
+
+// Optional. Security settings for the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) SecurityConfig() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput)
+}
+
+// Optional. The config settings for software inside the cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) SoftwareConfig() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SoftwareConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
+}
+
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StagingBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) TempBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TempBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) WorkerConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig struct {
+	// Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+	// The `encryptionConfig` block supports:
+	Policy *string `pulumi:"policy"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs and WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs struct {
+	// Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+	// The `encryptionConfig` block supports:
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs, WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtr and WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrType WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
+}
+
+// Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+// The `encryptionConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput)
+}
+
+// Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+// The `encryptionConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig struct {
+	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+	// The `endpointConfig` block supports:
+	GcePdKmsKeyName *string `pulumi:"gcePdKmsKeyName"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs and WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs struct {
+	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+	// The `endpointConfig` block supports:
+	GcePdKmsKeyName pulumi.StringPtrInput `pulumi:"gcePdKmsKeyName"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs, WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtr and WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrType WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput)
+}
+
+// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+// The `endpointConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *string {
+		return v.GcePdKmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput)
+}
+
+// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+// The `endpointConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcePdKmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEndpointConfig struct {
+	// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+	EnableHttpPortAccess *bool `pulumi:"enableHttpPortAccess"`
+	// -
+	// Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+	// The `gceClusterConfig` block supports:
+	HttpPorts map[string]string `pulumi:"httpPorts"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigEndpointConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs and WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigEndpointConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigEndpointConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs struct {
+	// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+	EnableHttpPortAccess pulumi.BoolPtrInput `pulumi:"enableHttpPortAccess"`
+	// -
+	// Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+	// The `gceClusterConfig` block supports:
+	HttpPorts pulumi.StringMapInput `pulumi:"httpPorts"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs, WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtr and WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigEndpointConfigPtrType WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigEndpointConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigEndpointConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigEndpointConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigEndpointConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
+}
+
+// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) EnableHttpPortAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) *bool {
+		return v.EnableHttpPortAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// -
+// Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+// The `gceClusterConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) HttpPorts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) map[string]string {
+		return v.HttpPorts
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput)
+}
+
+// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) EnableHttpPortAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHttpPortAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// -
+// Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+// The `gceClusterConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) HttpPorts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPorts
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig struct {
+	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+	InternalIpOnly *bool `pulumi:"internalIpOnly"`
+	// The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+	Metadata map[string]string `pulumi:"metadata"`
+	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
+	Network *string `pulumi:"network"`
+	// Optional. Node Group Affinity for sole-tenant clusters.
+	NodeGroupAffinity *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity `pulumi:"nodeGroupAffinity"`
+	// Optional. The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
+	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
+	// Optional. Reservation Affinity for consuming Zonal reservation.
+	ReservationAffinity *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity `pulumi:"reservationAffinity"`
+	// Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
+	Subnetwork *string `pulumi:"subnetwork"`
+	// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags []string `pulumi:"tags"`
+	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+	// The `nodeGroupAffinity` block supports:
+	Zone *string `pulumi:"zone"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs struct {
+	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
+	// The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Optional. Node Group Affinity for sole-tenant clusters.
+	NodeGroupAffinity WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrInput `pulumi:"nodeGroupAffinity"`
+	// Optional. The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
+	PrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"privateIpv6GoogleAccess"`
+	// Optional. Reservation Affinity for consuming Zonal reservation.
+	ReservationAffinity WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
+	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+	// The `nodeGroupAffinity` block supports:
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs, WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtr and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrType WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput)
+}
+
+// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) InternalIpOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *bool { return v.InternalIpOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) map[string]string {
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Node Group Affinity for sole-tenant clusters.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) NodeGroupAffinity() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
+		return v.NodeGroupAffinity
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
+}
+
+// Optional. The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
+		return v.PrivateIpv6GoogleAccess
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Reservation Affinity for consuming Zonal reservation.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ReservationAffinity() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
+		return v.ReservationAffinity
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
+}
+
+// Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string {
+		return v.ServiceAccountScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+// The `nodeGroupAffinity` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput)
+}
+
+// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) InternalIpOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIpOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Node Group Affinity for sole-tenant clusters.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) NodeGroupAffinity() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.NodeGroupAffinity
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
+}
+
+// Optional. The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIpv6GoogleAccess
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Reservation Affinity for consuming Zonal reservation.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ReservationAffinity() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
+}
+
+// Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+// The `nodeGroupAffinity` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity struct {
+	// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+	NodeGroup string `pulumi:"nodeGroup"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs struct {
+	// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+	NodeGroup pulumi.StringInput `pulumi:"nodeGroup"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput).ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs, WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtr and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrType WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtr(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
+}
+
+// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) NodeGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) string {
+		return v.NodeGroup
+	}).(pulumi.StringOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput)
+}
+
+// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) NodeGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity struct {
+	// Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+	ConsumeReservationType *string `pulumi:"consumeReservationType"`
+	// Optional. Corresponds to the label key of reservation resource.
+	Key *string `pulumi:"key"`
+	// Optional. Corresponds to the label values of reservation resource.
+	// The `gkeClusterConfig` block supports:
+	Values []string `pulumi:"values"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs struct {
+	// Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
+	// Optional. Corresponds to the label key of reservation resource.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Optional. Corresponds to the label values of reservation resource.
+	// The `gkeClusterConfig` block supports:
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput).ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs, WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtr and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrType WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtr(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
+}
+
+// Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *string {
+		return v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label key of reservation resource.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+// The `gkeClusterConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput)
+}
+
+// Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label key of reservation resource.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+// The `gkeClusterConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig struct {
+	// Optional. A target for the deployment.
+	// The `namespacedGkeDeploymentTarget` block supports:
+	NamespacedGkeDeploymentTarget *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget `pulumi:"namespacedGkeDeploymentTarget"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs and WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs struct {
+	// Optional. A target for the deployment.
+	// The `namespacedGkeDeploymentTarget` block supports:
+	NamespacedGkeDeploymentTarget WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrInput `pulumi:"namespacedGkeDeploymentTarget"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs, WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtr and WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrType WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput)
+}
+
+// Optional. A target for the deployment.
+// The `namespacedGkeDeploymentTarget` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) NamespacedGkeDeploymentTarget() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
+		return v.NamespacedGkeDeploymentTarget
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput)
+}
+
+// Optional. A target for the deployment.
+// The `namespacedGkeDeploymentTarget` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) NamespacedGkeDeploymentTarget() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
+		if v == nil {
+			return nil
+		}
+		return v.NamespacedGkeDeploymentTarget
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget struct {
+	// Optional. A namespace within the GKE cluster to deploy into.
+	ClusterNamespace *string `pulumi:"clusterNamespace"`
+	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	// The `initializationActions` block supports:
+	TargetGkeCluster *string `pulumi:"targetGkeCluster"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs and WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs struct {
+	// Optional. A namespace within the GKE cluster to deploy into.
+	ClusterNamespace pulumi.StringPtrInput `pulumi:"clusterNamespace"`
+	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	// The `initializationActions` block supports:
+	TargetGkeCluster pulumi.StringPtrInput `pulumi:"targetGkeCluster"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput).ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs, WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtr and WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrType WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtr(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput)
+}
+
+// Optional. A namespace within the GKE cluster to deploy into.
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *string {
+		return v.ClusterNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+// The `initializationActions` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) TargetGkeCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *string {
+		return v.TargetGkeCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput)
+}
+
+// Optional. A namespace within the GKE cluster to deploy into.
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+// The `initializationActions` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) TargetGkeCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetGkeCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigInitializationAction struct {
+	// Required. Cloud Storage URI of executable file.
+	ExecutableFile *string `pulumi:"executableFile"`
+	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+	// The `lifecycleConfig` block supports:
+	ExecutionTimeout *string `pulumi:"executionTimeout"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigInitializationActionInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs and WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigInitializationActionInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigInitializationActionInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput() WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs struct {
+	// Required. Cloud Storage URI of executable file.
+	ExecutableFile pulumi.StringPtrInput `pulumi:"executableFile"`
+	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+	// The `lifecycleConfig` block supports:
+	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigInitializationAction)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput() WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray and WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray{ WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput() WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray []WorkflowTemplatePlacementManagedClusterConfigInitializationActionInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigInitializationAction)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput() WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigInitializationActionArray) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigInitializationAction)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput() WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput {
+	return o
+}
+
+// Required. Cloud Storage URI of executable file.
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ExecutableFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigInitializationAction) *string {
+		return v.ExecutableFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+// The `lifecycleConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ExecutionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigInitializationAction) *string {
+		return v.ExecutionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigInitializationAction)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput() WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigInitializationAction {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigInitializationAction)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig struct {
+	// Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTime *string `pulumi:"autoDeleteTime"`
+	// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTtl *string `pulumi:"autoDeleteTtl"`
+	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+	IdleDeleteTtl *string `pulumi:"idleDeleteTtl"`
+	// -
+	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// The `metastoreConfig` block supports:
+	IdleStartTime *string `pulumi:"idleStartTime"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs and WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs struct {
+	// Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTime pulumi.StringPtrInput `pulumi:"autoDeleteTime"`
+	// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTtl pulumi.StringPtrInput `pulumi:"autoDeleteTtl"`
+	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+	IdleDeleteTtl pulumi.StringPtrInput `pulumi:"idleDeleteTtl"`
+	// -
+	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// The `metastoreConfig` block supports:
+	IdleStartTime pulumi.StringPtrInput `pulumi:"idleStartTime"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs, WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtr and WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrType WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
+}
+
+// Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) AutoDeleteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string { return v.AutoDeleteTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) AutoDeleteTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string { return v.AutoDeleteTtl }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string { return v.IdleDeleteTtl }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// The `metastoreConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) IdleStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string { return v.IdleStartTime }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput)
+}
+
+// Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) AutoDeleteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoDeleteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) AutoDeleteTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoDeleteTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleDeleteTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// The `metastoreConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) IdleStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfig struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators []WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	Image *string `pulumi:"image"`
+	// -
+	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	InstanceNames []string `pulumi:"instanceNames"`
+	// -
+	// Output only. Specifies that this instance group contains preemptible instances.
+	IsPreemptible *bool `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	MachineType *string `pulumi:"machineType"`
+	// -
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// The `accelerators` block supports:
+	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
+	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	NumInstances *int `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	Preemptibility *string `pulumi:"preemptibility"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrInput `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// -
+	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
+	// -
+	// Output only. Specifies that this instance group contains preemptible instances.
+	IsPreemptible pulumi.BoolPtrInput `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// -
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// The `accelerators` block supports:
+	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
+	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs, WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtr and WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigMasterConfigPtrType WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigMasterConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigMasterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator {
+		return v.Accelerators
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Specifies that this instance group contains preemptible instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) IsPreemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *bool { return v.IsPreemptible }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// The `accelerators` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
+		return v.ManagedGroupConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput)
+}
+
+// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string { return v.Preemptibility }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Specifies that this instance group contains preemptible instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) IsPreemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPreemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// The `accelerators` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedGroupConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput)
+}
+
+// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptibility
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// The `diskConfig` block supports:
+	AcceleratorType *string `pulumi:"acceleratorType"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// The `diskConfig` block supports:
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray{ WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray []WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput {
+	return o
+}
+
+// The number of the accelerator cards of this type exposed to this instance.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator) *int {
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+// The `diskConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator) *string {
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// The `autoscalingConfig` block supports:
+	NumLocalSsds *int `pulumi:"numLocalSsds"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// The `autoscalingConfig` block supports:
+	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs, WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtr and WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrType WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *string {
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// The `autoscalingConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// The `autoscalingConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig struct {
+	InstanceGroupManagerName *string `pulumi:"instanceGroupManagerName"`
+	InstanceTemplateName     *string `pulumi:"instanceTemplateName"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs struct {
+	InstanceGroupManagerName pulumi.StringPtrInput `pulumi:"instanceGroupManagerName"`
+	InstanceTemplateName     pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray{ WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig) *string {
+		return v.InstanceGroupManagerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) InstanceTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig) *string {
+		return v.InstanceTemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig struct {
+	// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
+	// The `securityConfig` block supports:
+	DataprocMetastoreService string `pulumi:"dataprocMetastoreService"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs struct {
+	// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
+	// The `securityConfig` block supports:
+	DataprocMetastoreService pulumi.StringInput `pulumi:"dataprocMetastoreService"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs, WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtr and WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrType WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
+}
+
+// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
+// The `securityConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) DataprocMetastoreService() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) string {
+		return v.DataprocMetastoreService
+	}).(pulumi.StringOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput)
+}
+
+// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
+// The `securityConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataprocMetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	Image *string `pulumi:"image"`
+	// -
+	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	InstanceNames []string `pulumi:"instanceNames"`
+	// -
+	// Output only. Specifies that this instance group contains preemptible instances.
+	IsPreemptible *bool `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	MachineType *string `pulumi:"machineType"`
+	// -
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// The `accelerators` block supports:
+	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
+	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	NumInstances *int `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	Preemptibility *string `pulumi:"preemptibility"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrInput `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// -
+	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
+	// -
+	// Output only. Specifies that this instance group contains preemptible instances.
+	IsPreemptible pulumi.BoolPtrInput `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// -
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// The `accelerators` block supports:
+	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
+	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs, WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtr and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrType WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator {
+		return v.Accelerators
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []string {
+		return v.InstanceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Specifies that this instance group contains preemptible instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) IsPreemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *bool {
+		return v.IsPreemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// The `accelerators` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
+		return v.ManagedGroupConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput)
+}
+
+// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
+		return v.Preemptibility
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Specifies that this instance group contains preemptible instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) IsPreemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPreemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// The `accelerators` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedGroupConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput)
+}
+
+// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptibility
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// The `diskConfig` block supports:
+	AcceleratorType *string `pulumi:"acceleratorType"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// The `diskConfig` block supports:
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray{ WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput {
+	return o
+}
+
+// The number of the accelerator cards of this type exposed to this instance.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator) *int {
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+// The `diskConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator) *string {
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// The `autoscalingConfig` block supports:
+	NumLocalSsds *int `pulumi:"numLocalSsds"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// The `autoscalingConfig` block supports:
+	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs, WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtr and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrType WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *string {
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// The `autoscalingConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// The `autoscalingConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig struct {
+	InstanceGroupManagerName *string `pulumi:"instanceGroupManagerName"`
+	InstanceTemplateName     *string `pulumi:"instanceTemplateName"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs struct {
+	InstanceGroupManagerName pulumi.StringPtrInput `pulumi:"instanceGroupManagerName"`
+	InstanceTemplateName     pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray{ WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig) *string {
+		return v.InstanceGroupManagerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) InstanceTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig) *string {
+		return v.InstanceTemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfig struct {
+	// Kerberos related configuration.
+	// The `kerberosConfig` block supports:
+	KerberosConfig *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig `pulumi:"kerberosConfig"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecurityConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecurityConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs struct {
+	// Kerberos related configuration.
+	// The `kerberosConfig` block supports:
+	KerberosConfig WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrInput `pulumi:"kerberosConfig"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs, WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtr and WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecurityConfigPtrType WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecurityConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecurityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecurityConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput)
+}
+
+// Kerberos related configuration.
+// The `kerberosConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) KerberosConfig() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
+		return v.KerberosConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecurityConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput)
+}
+
+// Kerberos related configuration.
+// The `kerberosConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) KerberosConfig() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KerberosConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig struct {
+	// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustAdminServer *string `pulumi:"crossRealmTrustAdminServer"`
+	// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustKdc *string `pulumi:"crossRealmTrustKdc"`
+	// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+	CrossRealmTrustRealm *string `pulumi:"crossRealmTrustRealm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+	CrossRealmTrustSharedPassword *string `pulumi:"crossRealmTrustSharedPassword"`
+	// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+	EnableKerberos *bool `pulumi:"enableKerberos"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+	KdcDbKey *string `pulumi:"kdcDbKey"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+	KeyPassword *string `pulumi:"keyPassword"`
+	// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	Keystore *string `pulumi:"keystore"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+	KeystorePassword *string `pulumi:"keystorePassword"`
+	// Optional. The uri of the KMS key used to encrypt various sensitive files.
+	KmsKey *string `pulumi:"kmsKey"`
+	// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+	Realm *string `pulumi:"realm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+	RootPrincipalPassword *string `pulumi:"rootPrincipalPassword"`
+	// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+	TgtLifetimeHours *int `pulumi:"tgtLifetimeHours"`
+	// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	Truststore *string `pulumi:"truststore"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+	// The `softwareConfig` block supports:
+	TruststorePassword *string `pulumi:"truststorePassword"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs struct {
+	// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustAdminServer pulumi.StringPtrInput `pulumi:"crossRealmTrustAdminServer"`
+	// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustKdc pulumi.StringPtrInput `pulumi:"crossRealmTrustKdc"`
+	// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+	CrossRealmTrustRealm pulumi.StringPtrInput `pulumi:"crossRealmTrustRealm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+	CrossRealmTrustSharedPassword pulumi.StringPtrInput `pulumi:"crossRealmTrustSharedPassword"`
+	// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+	EnableKerberos pulumi.BoolPtrInput `pulumi:"enableKerberos"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+	KdcDbKey pulumi.StringPtrInput `pulumi:"kdcDbKey"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+	KeyPassword pulumi.StringPtrInput `pulumi:"keyPassword"`
+	// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	Keystore pulumi.StringPtrInput `pulumi:"keystore"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+	KeystorePassword pulumi.StringPtrInput `pulumi:"keystorePassword"`
+	// Optional. The uri of the KMS key used to encrypt various sensitive files.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+	Realm pulumi.StringPtrInput `pulumi:"realm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+	RootPrincipalPassword pulumi.StringPtrInput `pulumi:"rootPrincipalPassword"`
+	// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+	TgtLifetimeHours pulumi.IntPtrInput `pulumi:"tgtLifetimeHours"`
+	// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	Truststore pulumi.StringPtrInput `pulumi:"truststore"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+	// The `softwareConfig` block supports:
+	TruststorePassword pulumi.StringPtrInput `pulumi:"truststorePassword"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs, WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtr and WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrType WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput)
+}
+
+// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) CrossRealmTrustAdminServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.CrossRealmTrustAdminServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) CrossRealmTrustKdc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.CrossRealmTrustKdc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) CrossRealmTrustRealm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.CrossRealmTrustRealm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) CrossRealmTrustSharedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.CrossRealmTrustSharedPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) EnableKerberos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *bool {
+		return v.EnableKerberos
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) KdcDbKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.KdcDbKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) KeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.KeyPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) Keystore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.Keystore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) KeystorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.KeystorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The uri of the KMS key used to encrypt various sensitive files.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) Realm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.Realm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) RootPrincipalPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.RootPrincipalPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) TgtLifetimeHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *int {
+		return v.TgtLifetimeHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) Truststore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.Truststore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+// The `softwareConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) TruststorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		return v.TruststorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput)
+}
+
+// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) CrossRealmTrustAdminServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CrossRealmTrustAdminServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) CrossRealmTrustKdc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CrossRealmTrustKdc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) CrossRealmTrustRealm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CrossRealmTrustRealm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) CrossRealmTrustSharedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CrossRealmTrustSharedPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) EnableKerberos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableKerberos
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) KdcDbKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KdcDbKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) KeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) Keystore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Keystore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) KeystorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeystorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The uri of the KMS key used to encrypt various sensitive files.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) Realm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Realm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) RootPrincipalPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootPrincipalPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) TgtLifetimeHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TgtLifetimeHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) Truststore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Truststore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+// The `softwareConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) TruststorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TruststorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig struct {
+	// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+	ImageVersion *string `pulumi:"imageVersion"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs struct {
+	// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
+	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs, WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtr and WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrType WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
+}
+
+// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) map[string]string {
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput)
+}
+
+// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfig struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	Image *string `pulumi:"image"`
+	// -
+	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	InstanceNames []string `pulumi:"instanceNames"`
+	// -
+	// Output only. Specifies that this instance group contains preemptible instances.
+	IsPreemptible *bool `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	MachineType *string `pulumi:"machineType"`
+	// -
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// The `accelerators` block supports:
+	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
+	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	NumInstances *int `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	Preemptibility *string `pulumi:"preemptibility"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// -
+	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
+	// -
+	// Output only. Specifies that this instance group contains preemptible instances.
+	IsPreemptible pulumi.BoolPtrInput `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// -
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// The `accelerators` block supports:
+	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
+	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs, WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtr and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigWorkerConfigPtrType WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigWorkerConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigWorkerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator {
+		return v.Accelerators
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Specifies that this instance group contains preemptible instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) IsPreemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *bool { return v.IsPreemptible }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// The `accelerators` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
+		return v.ManagedGroupConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput)
+}
+
+// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string { return v.Preemptibility }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Specifies that this instance group contains preemptible instances.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) IsPreemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPreemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// The `accelerators` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedGroupConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput)
+}
+
+// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptibility
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// The `diskConfig` block supports:
+	AcceleratorType *string `pulumi:"acceleratorType"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// The `diskConfig` block supports:
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray{ WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput {
+	return o
+}
+
+// The number of the accelerator cards of this type exposed to this instance.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator) *int {
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+// The `diskConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator) *string {
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// The `autoscalingConfig` block supports:
+	NumLocalSsds *int `pulumi:"numLocalSsds"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// The `autoscalingConfig` block supports:
+	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs, WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtr and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrType WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *string {
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// The `autoscalingConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
+		return *v
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// The `autoscalingConfig` block supports:
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig struct {
+	InstanceGroupManagerName *string `pulumi:"instanceGroupManagerName"`
+	InstanceTemplateName     *string `pulumi:"instanceTemplateName"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs struct {
+	InstanceGroupManagerName pulumi.StringPtrInput `pulumi:"instanceGroupManagerName"`
+	InstanceTemplateName     pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput` via:
+//
+//          WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray{ WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig) *string {
+		return v.InstanceGroupManagerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) InstanceTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig) *string {
+		return v.InstanceTemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmPtrOutput{})
@@ -8716,6 +18972,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigEndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigInitializationActionOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigInitializationActionArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigLifecycleConfigOutput{})
@@ -8788,4 +19046,114 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHiveJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHiveJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHiveJobQueryListOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobHiveJobQueryListPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPigJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPigJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPigJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPigJobLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPigJobQueryListOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPigJobQueryListPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPrestoJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPrestoJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPrestoJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPrestoJobQueryListOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPrestoJobQueryListPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPysparkJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPysparkJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPysparkJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSchedulingOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkRJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkRJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkRJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkSqlJobOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkSqlJobPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkSqlJobLoggingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkSqlJobQueryListOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationRegexOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationRegexPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationValuesOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationValuesPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementClusterSelectorOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementClusterSelectorPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput{})
 }

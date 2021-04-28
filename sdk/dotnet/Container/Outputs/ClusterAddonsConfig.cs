@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.
-        /// It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
         /// It is enabled by default;
         /// set `disabled = true` to disable.
         /// </summary>

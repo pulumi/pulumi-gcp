@@ -46,10 +46,10 @@ class DatabaseInstanceClone(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "pointInTime":
-            suggest = "point_in_time"
-        elif key == "sourceInstanceName":
+        if key == "sourceInstanceName":
             suggest = "source_instance_name"
+        elif key == "pointInTime":
+            suggest = "point_in_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceClone. Access the value via the '{suggest}' property getter instead.")
@@ -63,22 +63,15 @@ class DatabaseInstanceClone(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 point_in_time: str,
-                 source_instance_name: str):
+                 source_instance_name: str,
+                 point_in_time: Optional[str] = None):
         """
-        :param str point_in_time: The timestamp of the point in time that should be restored.
         :param str source_instance_name: Name of the source instance which will be cloned.
+        :param str point_in_time: The timestamp of the point in time that should be restored.
         """
-        pulumi.set(__self__, "point_in_time", point_in_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
-
-    @property
-    @pulumi.getter(name="pointInTime")
-    def point_in_time(self) -> str:
-        """
-        The timestamp of the point in time that should be restored.
-        """
-        return pulumi.get(self, "point_in_time")
+        if point_in_time is not None:
+            pulumi.set(__self__, "point_in_time", point_in_time)
 
     @property
     @pulumi.getter(name="sourceInstanceName")
@@ -87,6 +80,14 @@ class DatabaseInstanceClone(dict):
         Name of the source instance which will be cloned.
         """
         return pulumi.get(self, "source_instance_name")
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> Optional[str]:
+        """
+        The timestamp of the point in time that should be restored.
+        """
+        return pulumi.get(self, "point_in_time")
 
 
 @pulumi.output_type

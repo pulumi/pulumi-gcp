@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
  *     region: "us-central1",
  *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     timeoutSec: 10,
  *     healthChecks: [defaultRegionHealthCheck.id],
  * });

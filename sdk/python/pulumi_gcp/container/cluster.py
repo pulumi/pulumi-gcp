@@ -2236,6 +2236,19 @@ class Cluster(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
+        ### Autopilot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            enable_autopilot=True,
+            location="us-central1-a")
+        ```
 
         ## Import
 
@@ -2456,6 +2469,19 @@ class Cluster(pulumi.CustomResource):
                 service_account=default.email,
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
+        ```
+        ### Autopilot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            enable_autopilot=True,
+            location="us-central1-a")
         ```
 
         ## Import

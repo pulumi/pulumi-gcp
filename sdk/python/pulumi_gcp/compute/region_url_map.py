@@ -465,11 +465,13 @@ class RegionUrlMap(pulumi.CustomResource):
         login = gcp.compute.RegionBackendService("login",
             region="us-central1",
             protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
             timeout_sec=10,
             health_checks=[default.id])
         home = gcp.compute.RegionBackendService("home",
             region="us-central1",
             protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
             timeout_sec=10,
             health_checks=[default.id])
         regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
@@ -860,11 +862,13 @@ class RegionUrlMap(pulumi.CustomResource):
         login = gcp.compute.RegionBackendService("login",
             region="us-central1",
             protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
             timeout_sec=10,
             health_checks=[default.id])
         home = gcp.compute.RegionBackendService("home",
             region="us-central1",
             protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
             timeout_sec=10,
             health_checks=[default.id])
         regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
