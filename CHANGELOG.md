@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.65.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 5.1.0 (2021-04-28)
+* Upgrade to v3.65.0 of the Google Beta Terraform Provider
 
 ## 5.0.0 (2021-04-19)
 * Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
