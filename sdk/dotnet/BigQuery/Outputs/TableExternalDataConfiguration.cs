@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? Schema;
         /// <summary>
         /// The data format. Supported values are:
-        /// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
-        /// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
+        /// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
+        /// "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
         /// the `scopes` must include
         /// "https://www.googleapis.com/auth/drive.readonly".
         /// </summary>

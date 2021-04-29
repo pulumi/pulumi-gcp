@@ -9,11 +9,36 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'DatabaseEncryptionConfigArgs',
     'DatabaseIAMBindingConditionArgs',
     'DatabaseIAMMemberConditionArgs',
     'InstanceIAMBindingConditionArgs',
     'InstanceIAMMemberConditionArgs',
 ]
+
+@pulumi.input_type
+class DatabaseEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+               in the same location as the Spanner Database.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+        in the same location as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
+
 
 @pulumi.input_type
 class DatabaseIAMBindingConditionArgs:

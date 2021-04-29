@@ -34,20 +34,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const central1a = gcp.compute.getNodeTypes({
+ * const central1a = pulumi.output(gcp.compute.getNodeTypes({
  *     zone: "us-central1-a",
- * });
+ * }, { async: true }));
  * const template = new gcp.compute.NodeTemplate("template", {
- *     region: "us-central1",
- *     nodeType: "n1-node-96-624",
  *     nodeAffinityLabels: {
  *         foo: "baz",
  *     },
+ *     nodeType: "n1-node-96-624",
+ *     region: "us-central1",
  *     serverBinding: {
  *         type: "RESTART_NODE_ON_MINIMAL_SERVERS",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DatabaseArgs', 'Database']
 
@@ -16,6 +18,7 @@ class DatabaseArgs:
                  instance: pulumi.Input[str],
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -27,6 +30,8 @@ class DatabaseArgs:
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
+               Structure is documented below.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -37,6 +42,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "ddls", ddls)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -83,6 +90,19 @@ class DatabaseArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]:
+        """
+        Encryption configuration for the database
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -114,6 +134,7 @@ class _DatabaseState:
     def __init__(__self__, *,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -126,6 +147,8 @@ class _DatabaseState:
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
+               Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -137,6 +160,8 @@ class _DatabaseState:
             pulumi.set(__self__, "ddls", ddls)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if name is not None:
@@ -173,6 +198,19 @@ class _DatabaseState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]:
+        """
+        Encryption configuration for the database
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter
@@ -232,6 +270,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -294,6 +333,8 @@ class Database(pulumi.CustomResource):
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
+               Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -373,6 +414,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -390,6 +432,7 @@ class Database(pulumi.CustomResource):
 
             __props__.__dict__["ddls"] = ddls
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["encryption_config"] = encryption_config
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
@@ -408,6 +451,7 @@ class Database(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -425,6 +469,8 @@ class Database(pulumi.CustomResource):
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
+               Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -438,6 +484,7 @@ class Database(pulumi.CustomResource):
 
         __props__.__dict__["ddls"] = ddls
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["instance"] = instance
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -463,6 +510,15 @@ class Database(pulumi.CustomResource):
         in state, a `destroy` or `update` that would delete the instance will fail.
         """
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output[Optional['outputs.DatabaseEncryptionConfig']]:
+        """
+        Encryption configuration for the database
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter

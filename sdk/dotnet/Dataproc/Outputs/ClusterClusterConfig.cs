@@ -53,8 +53,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigMasterConfig? MasterConfig;
         /// <summary>
-        /// The Google Compute Engine config settings for the additional (aka
-        /// preemptible) instances in a cluster. Structure defined below.
+        /// The Google Compute Engine config settings for the additional
+        /// instances in a cluster. Structure defined below.
+        /// * **NOTE** : `preemptible_worker_config` is
+        /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+        /// such for legacy/compatibility reasons.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfig? PreemptibleWorkerConfig;
         /// <summary>

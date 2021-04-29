@@ -64,15 +64,15 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
-// 			Region:   pulumi.String("us-central1"),
-// 			NodeType: pulumi.String("n1-node-96-624"),
 // 			NodeAffinityLabels: pulumi.StringMap{
 // 				"foo": pulumi.String("baz"),
 // 			},
+// 			NodeType: pulumi.String("n1-node-96-624"),
+// 			Region:   pulumi.String("us-central1"),
 // 			ServerBinding: &compute.NodeTemplateServerBindingArgs{
 // 				Type: pulumi.String("RESTART_NODE_ON_MINIMAL_SERVERS"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

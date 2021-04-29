@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Monitoring
     /// Dashboard can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:monitoring/dashboard:Dashboard default project/{{project}}/dashboards/{{dashboard_id}}
+    ///  $ pulumi import gcp:monitoring/dashboard:Dashboard default projects/{{project}}/dashboards/{{dashboard_id}}
     /// ```
     /// 
     /// ```sh

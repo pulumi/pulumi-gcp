@@ -60,6 +60,30 @@ namespace Pulumi.Gcp.Container
     /// 
     /// }
     /// ```
+    /// ### Autopilot
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "service-account-id",
+    ///             DisplayName = "Service Account",
+    ///         });
+    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             EnableAutopilot = true,
+    ///             Location = "us-central1-a",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -374,6 +374,7 @@ __all__ = [
     'GetBackendServiceOutlierDetectionIntervalResult',
     'GetGlobalForwardingRuleMetadataFilterResult',
     'GetGlobalForwardingRuleMetadataFilterFilterLabelResult',
+    'GetHcVpnGatewayVpnInterfaceResult',
     'GetHealthCheckGrpcHealthCheckResult',
     'GetHealthCheckHttp2HealthCheckResult',
     'GetHealthCheckHttpHealthCheckResult',
@@ -26551,6 +26552,25 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetHcVpnGatewayVpnInterfaceResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 ip_address: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_address", ip_address)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        return pulumi.get(self, "ip_address")
 
 
 @pulumi.output_type

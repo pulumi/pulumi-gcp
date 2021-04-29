@@ -1419,7 +1419,8 @@ class JobLoad(dict):
                row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         :param str source_format: The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
                For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
-               For orc, specify "ORC". The default value is CSV.
+               For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
+               The default value is CSV.
         :param 'JobLoadTimePartitioningArgs' time_partitioning: Time-based partitioning specification for the destination table.
                Structure is documented below.
         :param str write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
@@ -1646,7 +1647,8 @@ class JobLoad(dict):
         """
         The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
         For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
-        For orc, specify "ORC". The default value is CSV.
+        For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
+        The default value is CSV.
         """
         return pulumi.get(self, "source_format")
 
@@ -2731,8 +2733,8 @@ class TableExternalDataConfiguration(dict):
         :param bool autodetect: - Let BigQuery try to autodetect the schema
                and format of the table.
         :param str source_format: The data format. Supported values are:
-               "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
-               and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
+               "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
+               "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
                the `scopes` must include
                "https://www.googleapis.com/auth/drive.readonly".
         :param Sequence[str] source_uris: A list of the fully-qualified URIs that point to
@@ -2800,8 +2802,8 @@ class TableExternalDataConfiguration(dict):
     def source_format(self) -> str:
         """
         The data format. Supported values are:
-        "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
-        and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
+        "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
+        "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
         the `scopes` must include
         "https://www.googleapis.com/auth/drive.readonly".
         """

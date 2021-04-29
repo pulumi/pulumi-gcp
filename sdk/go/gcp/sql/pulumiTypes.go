@@ -12,7 +12,7 @@ import (
 
 type DatabaseInstanceClone struct {
 	// The timestamp of the point in time that should be restored.
-	PointInTime string `pulumi:"pointInTime"`
+	PointInTime *string `pulumi:"pointInTime"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -30,7 +30,7 @@ type DatabaseInstanceCloneInput interface {
 
 type DatabaseInstanceCloneArgs struct {
 	// The timestamp of the point in time that should be restored.
-	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
+	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -113,8 +113,8 @@ func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceClonePtrOutputWithContext
 }
 
 // The timestamp of the point in time that should be restored.
-func (o DatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseInstanceClone) string { return v.PointInTime }).(pulumi.StringOutput)
+func (o DatabaseInstanceCloneOutput) PointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.PointInTime }).(pulumi.StringPtrOutput)
 }
 
 // Name of the source instance which will be cloned.
@@ -146,7 +146,7 @@ func (o DatabaseInstanceClonePtrOutput) PointInTime() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.PointInTime
+		return v.PointInTime
 	}).(pulumi.StringPtrOutput)
 }
 

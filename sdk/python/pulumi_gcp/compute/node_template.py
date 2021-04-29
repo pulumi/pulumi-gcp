@@ -441,15 +441,14 @@ class NodeTemplate(pulumi.CustomResource):
 
         central1a = gcp.compute.get_node_types(zone="us-central1-a")
         template = gcp.compute.NodeTemplate("template",
-            region="us-central1",
-            node_type="n1-node-96-624",
             node_affinity_labels={
                 "foo": "baz",
             },
+            node_type="n1-node-96-624",
+            region="us-central1",
             server_binding=gcp.compute.NodeTemplateServerBindingArgs(
                 type="RESTART_NODE_ON_MINIMAL_SERVERS",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -532,15 +531,14 @@ class NodeTemplate(pulumi.CustomResource):
 
         central1a = gcp.compute.get_node_types(zone="us-central1-a")
         template = gcp.compute.NodeTemplate("template",
-            region="us-central1",
-            node_type="n1-node-96-624",
             node_affinity_labels={
                 "foo": "baz",
             },
+            node_type="n1-node-96-624",
+            region="us-central1",
             server_binding=gcp.compute.NodeTemplateServerBindingArgs(
                 type="RESTART_NODE_ON_MINIMAL_SERVERS",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

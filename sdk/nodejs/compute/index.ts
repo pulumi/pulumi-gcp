@@ -29,6 +29,7 @@ export * from "./getDefaultServiceAccount";
 export * from "./getForwardingRule";
 export * from "./getGlobalAddress";
 export * from "./getGlobalForwardingRule";
+export * from "./getHcVpnGateway";
 export * from "./getHealthCheck";
 export * from "./getImage";
 export * from "./getInstance";

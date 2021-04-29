@@ -39,9 +39,10 @@ import (
 // 			return err
 // 		}
 // 		login, err := compute.NewRegionBackendService(ctx, "login", &compute.RegionBackendServiceArgs{
-// 			Region:     pulumi.String("us-central1"),
-// 			Protocol:   pulumi.String("HTTP"),
-// 			TimeoutSec: pulumi.Int(10),
+// 			Region:              pulumi.String("us-central1"),
+// 			Protocol:            pulumi.String("HTTP"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+// 			TimeoutSec:          pulumi.Int(10),
 // 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
 // 			}),
@@ -50,9 +51,10 @@ import (
 // 			return err
 // 		}
 // 		home, err := compute.NewRegionBackendService(ctx, "home", &compute.RegionBackendServiceArgs{
-// 			Region:     pulumi.String("us-central1"),
-// 			Protocol:   pulumi.String("HTTP"),
-// 			TimeoutSec: pulumi.Int(10),
+// 			Region:              pulumi.String("us-central1"),
+// 			Protocol:            pulumi.String("HTTP"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+// 			TimeoutSec:          pulumi.Int(10),
 // 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
 // 			}),

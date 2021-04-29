@@ -56,19 +56,16 @@ namespace Pulumi.Gcp.Compute
     ///         }));
     ///         var template = new Gcp.Compute.NodeTemplate("template", new Gcp.Compute.NodeTemplateArgs
     ///         {
-    ///             Region = "us-central1",
-    ///             NodeType = "n1-node-96-624",
     ///             NodeAffinityLabels = 
     ///             {
     ///                 { "foo", "baz" },
     ///             },
+    ///             NodeType = "n1-node-96-624",
+    ///             Region = "us-central1",
     ///             ServerBinding = new Gcp.Compute.Inputs.NodeTemplateServerBindingArgs
     ///             {
     ///                 Type = "RESTART_NODE_ON_MINIMAL_SERVERS",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ServiceAccountScopes;
         /// <summary>
+        /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig? ShieldedInstanceConfig;
+        /// <summary>
         /// The name or self_link of the Google Compute Engine
         /// subnetwork the cluster will be part of. Conflicts with `network`.
         /// </summary>
@@ -78,6 +82,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             ImmutableArray<string> serviceAccountScopes,
 
+            Outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig? shieldedInstanceConfig,
+
             string? subnetwork,
 
             ImmutableArray<string> tags,
@@ -89,6 +95,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Network = network;
             ServiceAccount = serviceAccount;
             ServiceAccountScopes = serviceAccountScopes;
+            ShieldedInstanceConfig = shieldedInstanceConfig;
             Subnetwork = subnetwork;
             Tags = tags;
             Zone = zone;

@@ -72,6 +72,24 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Autopilot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultAccount = new gcp.serviceAccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     enableAutopilot: true,
+ *     location: "us-central1-a",
+ * }, { timeouts: {
+ *     create: "30m",
+ *     update: "40m",
+ * } });
+ * ```
  *
  * ## Import
  *

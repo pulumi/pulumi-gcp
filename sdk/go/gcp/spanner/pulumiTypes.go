@@ -10,6 +10,141 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DatabaseEncryptionConfig struct {
+	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+	// in the same location as the Spanner Database.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// DatabaseEncryptionConfigInput is an input type that accepts DatabaseEncryptionConfigArgs and DatabaseEncryptionConfigOutput values.
+// You can construct a concrete instance of `DatabaseEncryptionConfigInput` via:
+//
+//          DatabaseEncryptionConfigArgs{...}
+type DatabaseEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseEncryptionConfigOutput() DatabaseEncryptionConfigOutput
+	ToDatabaseEncryptionConfigOutputWithContext(context.Context) DatabaseEncryptionConfigOutput
+}
+
+type DatabaseEncryptionConfigArgs struct {
+	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+	// in the same location as the Spanner Database.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (DatabaseEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigOutput() DatabaseEncryptionConfigOutput {
+	return i.ToDatabaseEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigOutputWithContext(ctx context.Context) DatabaseEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigOutput)
+}
+
+func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigPtrOutput() DatabaseEncryptionConfigPtrOutput {
+	return i.ToDatabaseEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigOutput).ToDatabaseEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseEncryptionConfigPtrInput is an input type that accepts DatabaseEncryptionConfigArgs, DatabaseEncryptionConfigPtr and DatabaseEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseEncryptionConfigPtrInput` via:
+//
+//          DatabaseEncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseEncryptionConfigPtrOutput() DatabaseEncryptionConfigPtrOutput
+	ToDatabaseEncryptionConfigPtrOutputWithContext(context.Context) DatabaseEncryptionConfigPtrOutput
+}
+
+type databaseEncryptionConfigPtrType DatabaseEncryptionConfigArgs
+
+func DatabaseEncryptionConfigPtr(v *DatabaseEncryptionConfigArgs) DatabaseEncryptionConfigPtrInput {
+	return (*databaseEncryptionConfigPtrType)(v)
+}
+
+func (*databaseEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (i *databaseEncryptionConfigPtrType) ToDatabaseEncryptionConfigPtrOutput() DatabaseEncryptionConfigPtrOutput {
+	return i.ToDatabaseEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseEncryptionConfigPtrType) ToDatabaseEncryptionConfigPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigPtrOutput)
+}
+
+type DatabaseEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigOutput() DatabaseEncryptionConfigOutput {
+	return o
+}
+
+func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigOutputWithContext(ctx context.Context) DatabaseEncryptionConfigOutput {
+	return o
+}
+
+func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigPtrOutput() DatabaseEncryptionConfigPtrOutput {
+	return o.ToDatabaseEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseEncryptionConfig) *DatabaseEncryptionConfig {
+		return &v
+	}).(DatabaseEncryptionConfigPtrOutput)
+}
+
+// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+// in the same location as the Spanner Database.
+func (o DatabaseEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type DatabaseEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (o DatabaseEncryptionConfigPtrOutput) ToDatabaseEncryptionConfigPtrOutput() DatabaseEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseEncryptionConfigPtrOutput) ToDatabaseEncryptionConfigPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseEncryptionConfigPtrOutput) Elem() DatabaseEncryptionConfigOutput {
+	return o.ApplyT(func(v *DatabaseEncryptionConfig) DatabaseEncryptionConfig { return *v }).(DatabaseEncryptionConfigOutput)
+}
+
+// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+// in the same location as the Spanner Database.
+func (o DatabaseEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatabaseIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -635,6 +770,8 @@ func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(DatabaseEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMMemberConditionOutput{})

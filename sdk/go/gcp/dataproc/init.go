@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JobIAMPolicy{}
 	case "gcp:dataproc/metastoreService:MetastoreService":
 		r = &MetastoreService{}
+	case "gcp:dataproc/workflowTemplate:WorkflowTemplate":
+		r = &WorkflowTemplate{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -102,6 +104,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/metastoreService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/workflowTemplate",
 		&module{version},
 	)
 }

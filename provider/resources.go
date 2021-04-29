@@ -915,6 +915,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_dataproc_autoscaling_policy": {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
 			"google_dataproc_metastore_service":  {Tok: gcpResource(gcpDataProc, "MetastoreService")},
+			"google_dataproc_workflow_template":  {Tok: gcpResource(gcpDataProc, "WorkflowTemplate")},
 
 			// DataStore resources
 			"google_datastore_index": {Tok: gcpResource(gcpDatastore, "DataStoreIndex")},
@@ -2188,6 +2189,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_compute_region_instance_group.html.markdown",
 				},
 			},
+			"google_compute_ha_vpn_gateway": {Tok: gcpDataSource(gcpCompute, "getHcVpnGateway")},
 			"google_compute_region_ssl_certificate": {
 				Tok: gcpDataSource(gcpCompute, "getRegionSslCertificate"),
 			},
