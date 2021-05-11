@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerResources? Resources;
+        public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerVolumeMount> VolumeMounts;
         /// <summary>
         /// -
         /// (Optional, Deprecated)
@@ -98,6 +99,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             Outputs.ServiceTemplateSpecContainerResources? resources,
 
+            ImmutableArray<Outputs.ServiceTemplateSpecContainerVolumeMount> volumeMounts,
+
             string? workingDir)
         {
             Args = args;
@@ -107,6 +110,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Image = image;
             Ports = ports;
             Resources = resources;
+            VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }
     }

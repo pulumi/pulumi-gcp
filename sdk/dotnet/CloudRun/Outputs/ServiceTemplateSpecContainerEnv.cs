@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class ServiceTemplateSpecContainerEnv
     {
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -28,15 +28,19 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Defaults to "".
         /// </summary>
         public readonly string? Value;
+        public readonly Outputs.ServiceTemplateSpecContainerEnvValueFrom? ValueFrom;
 
         [OutputConstructor]
         private ServiceTemplateSpecContainerEnv(
             string? name,
 
-            string? value)
+            string? value,
+
+            Outputs.ServiceTemplateSpecContainerEnvValueFrom? valueFrom)
         {
             Name = name;
             Value = value;
+            ValueFrom = valueFrom;
         }
     }
 }

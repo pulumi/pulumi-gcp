@@ -59,8 +59,8 @@ type LookupInstanceTemplateResult struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription string `pulumi:"instanceDescription"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// (Optional) A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType string `pulumi:"machineType"`

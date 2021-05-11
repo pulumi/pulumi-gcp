@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *     maintenanceWindow: {
  *         startTime: "08:00",
  *     },
- *     size: 1,
+ *     initialSize: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  *     autoscalingPolicy: {
  *         mode: "ONLY_SCALE_OUT",
@@ -127,6 +127,10 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     */
+    public readonly initialSize!: pulumi.Output<number | undefined>;
+    /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
     public readonly maintenancePolicy!: pulumi.Output<string | undefined>;
@@ -153,7 +157,7 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The total number of nodes in the node group.
+     * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
     public readonly size!: pulumi.Output<number>;
     /**
@@ -177,6 +181,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["initialSize"] = state ? state.initialSize : undefined;
             inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -190,11 +195,9 @@ export class NodeGroup extends pulumi.CustomResource {
             if ((!args || args.nodeTemplate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeTemplate'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'size'");
-            }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["initialSize"] = args ? args.initialSize : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -231,6 +234,10 @@ export interface NodeGroupState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     */
+    readonly initialSize?: pulumi.Input<number>;
+    /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
     readonly maintenancePolicy?: pulumi.Input<string>;
@@ -257,7 +264,7 @@ export interface NodeGroupState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The total number of nodes in the node group.
+     * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
     readonly size?: pulumi.Input<number>;
     /**
@@ -281,6 +288,10 @@ export interface NodeGroupArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     */
+    readonly initialSize?: pulumi.Input<number>;
+    /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
     readonly maintenancePolicy?: pulumi.Input<string>;
@@ -303,9 +314,9 @@ export interface NodeGroupArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The total number of nodes in the node group.
+     * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
-    readonly size: pulumi.Input<number>;
+    readonly size?: pulumi.Input<number>;
     /**
      * Zone where this node group is located
      */

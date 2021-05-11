@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

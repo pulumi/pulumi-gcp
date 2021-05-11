@@ -612,6 +612,9 @@ func (o SecretReplicationUserManagedPtrOutput) Replicas() SecretReplicationUserM
 }
 
 type SecretReplicationUserManagedReplica struct {
+	// Customer Managed Encryption for the secret.
+	// Structure is documented below.
+	CustomerManagedEncryption *SecretReplicationUserManagedReplicaCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
 	// The canonical IDs of the location to replicate data. For example: "us-east1".
 	Location string `pulumi:"location"`
 }
@@ -628,6 +631,9 @@ type SecretReplicationUserManagedReplicaInput interface {
 }
 
 type SecretReplicationUserManagedReplicaArgs struct {
+	// Customer Managed Encryption for the secret.
+	// Structure is documented below.
+	CustomerManagedEncryption SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput `pulumi:"customerManagedEncryption"`
 	// The canonical IDs of the location to replicate data. For example: "us-east1".
 	Location pulumi.StringInput `pulumi:"location"`
 }
@@ -683,6 +689,14 @@ func (o SecretReplicationUserManagedReplicaOutput) ToSecretReplicationUserManage
 	return o
 }
 
+// Customer Managed Encryption for the secret.
+// Structure is documented below.
+func (o SecretReplicationUserManagedReplicaOutput) CustomerManagedEncryption() SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return o.ApplyT(func(v SecretReplicationUserManagedReplica) *SecretReplicationUserManagedReplicaCustomerManagedEncryption {
+		return v.CustomerManagedEncryption
+	}).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput)
+}
+
 // The canonical IDs of the location to replicate data. For example: "us-east1".
 func (o SecretReplicationUserManagedReplicaOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretReplicationUserManagedReplica) string { return v.Location }).(pulumi.StringOutput)
@@ -708,6 +722,139 @@ func (o SecretReplicationUserManagedReplicaArrayOutput) Index(i pulumi.IntInput)
 	}).(SecretReplicationUserManagedReplicaOutput)
 }
 
+type SecretReplicationUserManagedReplicaCustomerManagedEncryption struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// SecretReplicationUserManagedReplicaCustomerManagedEncryptionInput is an input type that accepts SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs and SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `SecretReplicationUserManagedReplicaCustomerManagedEncryptionInput` via:
+//
+//          SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
+type SecretReplicationUserManagedReplicaCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput
+	ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput
+}
+
+type SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return i.ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput)
+}
+
+func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return i.ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput).ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx)
+}
+
+// SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput is an input type that accepts SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs, SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtr and SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput values.
+// You can construct a concrete instance of `SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput` via:
+//
+//          SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput
+	ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput
+}
+
+type secretReplicationUserManagedReplicaCustomerManagedEncryptionPtrType SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs
+
+func SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtr(v *SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput {
+	return (*secretReplicationUserManagedReplicaCustomerManagedEncryptionPtrType)(v)
+}
+
+func (*secretReplicationUserManagedReplicaCustomerManagedEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i *secretReplicationUserManagedReplicaCustomerManagedEncryptionPtrType) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return i.ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *secretReplicationUserManagedReplicaCustomerManagedEncryptionPtrType) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput)
+}
+
+type SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return o.ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return o.ApplyT(func(v SecretReplicationUserManagedReplicaCustomerManagedEncryption) *SecretReplicationUserManagedReplicaCustomerManagedEncryption {
+		return &v
+	}).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretReplicationUserManagedReplicaCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return o
+}
+
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
+	return o
+}
+
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) Elem() SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return o.ApplyT(func(v *SecretReplicationUserManagedReplicaCustomerManagedEncryption) SecretReplicationUserManagedReplicaCustomerManagedEncryption {
+		return *v
+	}).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretReplicationUserManagedReplicaCustomerManagedEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecretIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(SecretIamBindingConditionPtrOutput{})
@@ -719,4 +866,6 @@ func init() {
 	pulumi.RegisterOutputType(SecretReplicationUserManagedPtrOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaArrayOutput{})
+	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput{})
 }

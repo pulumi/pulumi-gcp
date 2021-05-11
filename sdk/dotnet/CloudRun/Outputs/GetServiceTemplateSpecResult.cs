@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly string ServiceAccountName;
         public readonly string ServingState;
         public readonly int TimeoutSeconds;
+        public readonly ImmutableArray<Outputs.GetServiceTemplateSpecVolumeResult> Volumes;
 
         [OutputConstructor]
         private GetServiceTemplateSpecResult(
@@ -29,13 +30,16 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             string servingState,
 
-            int timeoutSeconds)
+            int timeoutSeconds,
+
+            ImmutableArray<Outputs.GetServiceTemplateSpecVolumeResult> volumes)
         {
             ContainerConcurrency = containerConcurrency;
             Containers = containers;
             ServiceAccountName = serviceAccountName;
             ServingState = servingState;
             TimeoutSeconds = timeoutSeconds;
+            Volumes = volumes;
         }
     }
 }

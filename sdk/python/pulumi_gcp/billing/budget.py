@@ -415,7 +415,19 @@ class Budget(pulumi.CustomResource):
 
         ## Import
 
-        This resource does not support import.
+        Budget can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/budget:Budget default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -573,7 +585,19 @@ class Budget(pulumi.CustomResource):
 
         ## Import
 
-        This resource does not support import.
+        Budget can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/budget:Budget default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param BudgetArgs args: The arguments to use to populate this resource's properties.

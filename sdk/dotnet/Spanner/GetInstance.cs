@@ -50,6 +50,9 @@ namespace Pulumi.Gcp.Spanner
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
+        [Input("forceDestroy")]
+        public bool? ForceDestroy { get; set; }
+
         [Input("labels")]
         private Dictionary<string, string>? _labels;
         public Dictionary<string, string> Labels
@@ -85,6 +88,7 @@ namespace Pulumi.Gcp.Spanner
     {
         public readonly string? Config;
         public readonly string? DisplayName;
+        public readonly bool? ForceDestroy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -101,6 +105,8 @@ namespace Pulumi.Gcp.Spanner
 
             string? displayName,
 
+            bool? forceDestroy,
+
             string id,
 
             ImmutableDictionary<string, string>? labels,
@@ -115,6 +121,7 @@ namespace Pulumi.Gcp.Spanner
         {
             Config = config;
             DisplayName = displayName;
+            ForceDestroy = forceDestroy;
             Id = id;
             Labels = labels;
             Name = name;

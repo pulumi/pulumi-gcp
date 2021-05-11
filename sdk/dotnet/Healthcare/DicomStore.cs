@@ -53,6 +53,84 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// }
     /// ```
+    /// ### Healthcare Dicom Store Bq Stream
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var bqDataset = new Gcp.BigQuery.Dataset("bqDataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "dicom_bq_ds",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "US",
+    ///             DeleteContentsOnDestroy = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var bqTable = new Gcp.BigQuery.Table("bqTable", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DeletionProtection = false,
+    ///             DatasetId = bqDataset.DatasetId,
+    ///             TableId = "dicom_bq_tb",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @default = new Gcp.Healthcare.DicomStore("default", new Gcp.Healthcare.DicomStoreArgs
+    ///         {
+    ///             Dataset = dataset.Id,
+    ///             NotificationConfig = new Gcp.Healthcare.Inputs.DicomStoreNotificationConfigArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "label1", "labelvalue1" },
+    ///             },
+    ///             StreamConfigs = 
+    ///             {
+    ///                 new Gcp.Healthcare.Inputs.DicomStoreStreamConfigArgs
+    ///                 {
+    ///                     BigqueryDestination = new Gcp.Healthcare.Inputs.DicomStoreStreamConfigBigqueryDestinationArgs
+    ///                     {
+    ///                         TableUri = Output.Tuple(bqDataset.Project, bqDataset.DatasetId, bqTable.TableId).Apply(values =&gt;
+    ///                         {
+    ///                             var project = values.Item1;
+    ///                             var datasetId = values.Item2;
+    ///                             var tableId = values.Item3;
+    ///                             return $"bq://{project}.{datasetId}.{tableId}";
+    ///                         }),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -108,6 +186,14 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+        /// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+        /// tables in a BigQuery dataset.
+        /// </summary>
+        [Output("streamConfigs")]
+        public Output<ImmutableArray<Outputs.DicomStoreStreamConfig>> StreamConfigs { get; private set; } = null!;
 
 
         /// <summary>
@@ -195,6 +281,20 @@ namespace Pulumi.Gcp.Healthcare
         [Input("notificationConfig")]
         public Input<Inputs.DicomStoreNotificationConfigArgs>? NotificationConfig { get; set; }
 
+        [Input("streamConfigs")]
+        private InputList<Inputs.DicomStoreStreamConfigArgs>? _streamConfigs;
+
+        /// <summary>
+        /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+        /// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+        /// tables in a BigQuery dataset.
+        /// </summary>
+        public InputList<Inputs.DicomStoreStreamConfigArgs> StreamConfigs
+        {
+            get => _streamConfigs ?? (_streamConfigs = new InputList<Inputs.DicomStoreStreamConfigArgs>());
+            set => _streamConfigs = value;
+        }
+
         public DicomStoreArgs()
         {
         }
@@ -247,6 +347,20 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        [Input("streamConfigs")]
+        private InputList<Inputs.DicomStoreStreamConfigGetArgs>? _streamConfigs;
+
+        /// <summary>
+        /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+        /// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+        /// tables in a BigQuery dataset.
+        /// </summary>
+        public InputList<Inputs.DicomStoreStreamConfigGetArgs> StreamConfigs
+        {
+            get => _streamConfigs ?? (_streamConfigs = new InputList<Inputs.DicomStoreStreamConfigGetArgs>());
+            set => _streamConfigs = value;
+        }
 
         public DicomStoreState()
         {

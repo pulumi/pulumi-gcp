@@ -3587,7 +3587,7 @@ func (o GetDatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetDatabaseInstanceSetting struct {
 	// This specifies when the instance should be
-	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+	// active. Can be either `ALWAYS` or `NEVER`.
 	ActivationPolicy string `pulumi:"activationPolicy"`
 	// (Deprecated) This property is only applicable to First Generation instances.
 	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
@@ -3637,7 +3637,7 @@ type GetDatabaseInstanceSettingInput interface {
 
 type GetDatabaseInstanceSettingArgs struct {
 	// This specifies when the instance should be
-	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+	// active. Can be either `ALWAYS` or `NEVER`.
 	ActivationPolicy pulumi.StringInput `pulumi:"activationPolicy"`
 	// (Deprecated) This property is only applicable to First Generation instances.
 	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
@@ -3726,7 +3726,7 @@ func (o GetDatabaseInstanceSettingOutput) ToGetDatabaseInstanceSettingOutputWith
 }
 
 // This specifies when the instance should be
-// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+// active. Can be either `ALWAYS` or `NEVER`.
 func (o GetDatabaseInstanceSettingOutput) ActivationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ActivationPolicy }).(pulumi.StringOutput)
 }

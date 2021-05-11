@@ -18812,8 +18812,8 @@ type InstanceTemplateDisk struct {
 	// and the request will fail if you attempt to attach a persistent disk in any other format
 	// than SCSI. Local SSDs can use either NVME or SCSI.
 	Interface *string `pulumi:"interface"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels map[string]string `pulumi:"labels"`
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
@@ -18875,8 +18875,8 @@ type InstanceTemplateDiskArgs struct {
 	// and the request will fail if you attempt to attach a persistent disk in any other format
 	// than SCSI. Local SSDs can use either NVME or SCSI.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
@@ -19001,8 +19001,8 @@ func (o InstanceTemplateDiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
-// A set of key/value label pairs to assign to instances
-// created from this template,
+// A set of ket/value label pairs to assign to disk created from
+// this template
 func (o InstanceTemplateDiskOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -67756,8 +67756,8 @@ type GetInstanceTemplateDisk struct {
 	// and the request will fail if you attempt to attach a persistent disk in any other format
 	// than SCSI. Local SSDs can use either NVME or SCSI.
 	Interface string `pulumi:"interface"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// (Optional) A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels map[string]string `pulumi:"labels"`
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
@@ -67818,8 +67818,8 @@ type GetInstanceTemplateDiskArgs struct {
 	// and the request will fail if you attempt to attach a persistent disk in any other format
 	// than SCSI. Local SSDs can use either NVME or SCSI.
 	Interface pulumi.StringInput `pulumi:"interface"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// (Optional) A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
@@ -67945,8 +67945,8 @@ func (o GetInstanceTemplateDiskOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Interface }).(pulumi.StringOutput)
 }
 
-// A set of key/value label pairs to assign to instances
-// created from this template,
+// (Optional) A set of ket/value label pairs to assign to disk created from
+// this template
 func (o GetInstanceTemplateDiskOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         }
 
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

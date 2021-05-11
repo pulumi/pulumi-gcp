@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly string Image;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerPortResult> Ports;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerResourceResult> Resources;
+        public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerVolumeMountResult> VolumeMounts;
         public readonly string WorkingDir;
 
         [OutputConstructor]
@@ -38,6 +39,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             ImmutableArray<Outputs.GetServiceTemplateSpecContainerResourceResult> resources,
 
+            ImmutableArray<Outputs.GetServiceTemplateSpecContainerVolumeMountResult> volumeMounts,
+
             string workingDir)
         {
             Args = args;
@@ -47,6 +50,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Image = image;
             Ports = ports;
             Resources = resources;
+            VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }
     }

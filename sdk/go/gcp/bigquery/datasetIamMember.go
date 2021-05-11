@@ -155,8 +155,10 @@ type DatasetIamMember struct {
 	// The dataset ID.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
-	Etag    pulumi.StringOutput `pulumi:"etag"`
-	Member  pulumi.StringOutput `pulumi:"member"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
+	Member pulumi.StringOutput `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
@@ -206,8 +208,10 @@ type datasetIamMemberState struct {
 	// The dataset ID.
 	DatasetId *string `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
-	Etag    *string `pulumi:"etag"`
-	Member  *string `pulumi:"member"`
+	Etag   *string `pulumi:"etag"`
+	Member *string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
@@ -220,8 +224,10 @@ type DatasetIamMemberState struct {
 	// The dataset ID.
 	DatasetId pulumi.StringPtrInput
 	// (Computed) The etag of the dataset's IAM policy.
-	Etag    pulumi.StringPtrInput
-	Member  pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
+	Member pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
@@ -236,9 +242,11 @@ func (DatasetIamMemberState) ElementType() reflect.Type {
 type datasetIamMemberArgs struct {
 	Condition *DatasetIamMemberCondition `pulumi:"condition"`
 	// The dataset ID.
-	DatasetId string  `pulumi:"datasetId"`
-	Member    string  `pulumi:"member"`
-	Project   *string `pulumi:"project"`
+	DatasetId string `pulumi:"datasetId"`
+	Member    string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -251,7 +259,9 @@ type DatasetIamMemberArgs struct {
 	// The dataset ID.
 	DatasetId pulumi.StringInput
 	Member    pulumi.StringInput
-	Project   pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.

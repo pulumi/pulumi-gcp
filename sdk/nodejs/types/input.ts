@@ -123,9 +123,13 @@ export namespace accesscontextmanager {
         minimumVersion?: pulumi.Input<string>;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
          */
         osType: pulumi.Input<string>;
+        /**
+         * If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
+         */
+        requireVerifiedChromeOs?: pulumi.Input<boolean>;
     }
 
     export interface AccessLevelConditionDevicePolicy {
@@ -171,7 +175,7 @@ export namespace accesscontextmanager {
         minimumVersion?: pulumi.Input<string>;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
          */
         osType: pulumi.Input<string>;
     }
@@ -347,7 +351,7 @@ export namespace accesscontextmanager {
         minimumVersion?: pulumi.Input<string>;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
          */
         osType: pulumi.Input<string>;
     }
@@ -4961,7 +4965,7 @@ export namespace cloudrun {
 
     export interface DomainMappingStatusResourceRecord {
         /**
-         * Name should be a verified domain
+         * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
          */
         name?: pulumi.Input<string>;
         rrdata?: pulumi.Input<string>;
@@ -5090,7 +5094,7 @@ export namespace cloudrun {
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name?: pulumi.Input<string>;
         /**
@@ -5159,6 +5163,7 @@ export namespace cloudrun {
          * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
          */
         timeoutSeconds?: pulumi.Input<number>;
+        volumes?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecVolume>[]>;
     }
 
     export interface ServiceTemplateSpecContainer {
@@ -5224,6 +5229,7 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerResources>;
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerVolumeMount>[]>;
         /**
          * -
          * (Optional, Deprecated)
@@ -5238,7 +5244,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnv {
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name?: pulumi.Input<string>;
         /**
@@ -5252,6 +5258,7 @@ export namespace cloudrun {
          * Defaults to "".
          */
         value?: pulumi.Input<string>;
+        valueFrom?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvValueFrom>;
     }
 
     export interface ServiceTemplateSpecContainerEnvFrom {
@@ -5285,7 +5292,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name: pulumi.Input<string>;
     }
@@ -5304,7 +5311,27 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
         /**
-         * Name of the port.
+         * Volume's name.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvValueFrom {
+        /**
+         * Selects a key (version) of a secret in Secret Manager.
+         * Structure is documented below.
+         */
+        secretKeyRef: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvValueFromSecretKeyRef>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
+        /**
+         * The Cloud Secret Manager secret version.
+         * Can be 'latest' for the latest value or an integer for a specific version.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Volume's name.
          */
         name: pulumi.Input<string>;
     }
@@ -5315,7 +5342,7 @@ export namespace cloudrun {
          */
         containerPort: pulumi.Input<number>;
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name?: pulumi.Input<string>;
         /**
@@ -5339,6 +5366,71 @@ export namespace cloudrun {
          * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface ServiceTemplateSpecContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted.  Must
+         * not contain ':'.
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Volume's name.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecVolume {
+        /**
+         * Volume's name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The secret's value will be presented as the content of a file whose
+         * name is defined in the item path. If no items are defined, the name of
+         * the file is the secret_name.
+         * Structure is documented below.
+         */
+        secret: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecVolumeSecret>;
+    }
+
+    export interface ServiceTemplateSpecVolumeSecret {
+        /**
+         * If unspecified, the volume will expose a file whose name is the
+         * secret_name.
+         * If specified, the key will be used as the version to fetch from Cloud
+         * Secret Manager and the path will be the name of the file exposed in the
+         * volume. When items are defined, they must specify a key and a path.
+         * Structure is documented below.
+         */
+        items?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecVolumeSecretItem>[]>;
+        /**
+         * The name of the secret in Cloud Secret Manager. By default, the secret
+         * is assumed to be in the same project.
+         * If the secret is in another project, you must define an alias.
+         * An alias definition has the form:
+         * <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+         * If multiple alias definitions are needed, they must be separated by
+         * commas.
+         * The alias definitions must be set on the run.googleapis.com/secrets
+         * annotation.
+         */
+        secretName: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecVolumeSecretItem {
+        /**
+         * The Cloud Secret Manager secret version.
+         * Can be 'latest' for the latest value or an integer for a specific version.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The relative path of the file to map the key to.
+         * May not be an absolute path.
+         * May not contain the path element '..'.
+         * May not start with the string '..'.
+         */
+        path: pulumi.Input<string>;
     }
 
     export interface ServiceTraffic {
@@ -5799,7 +5891,7 @@ export namespace composer {
          * for assigning internal IP addresses to the cluster master or set of masters and to the
          * internal load balancer virtual IP. This range must not overlap with any other ranges
          * in use within the cluster's network.
-         * If left blank, the default value of '172.16.0.0/28' is used.
+         * If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
          */
         masterIpv4CidrBlock?: pulumi.Input<string>;
         /**
@@ -8090,8 +8182,8 @@ export namespace compute {
          */
         interface?: pulumi.Input<string>;
         /**
-         * A set of key/value label pairs to assign to instances
-         * created from this template,
+         * A set of ket/value label pairs to assign to disk created from
+         * this template
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -18542,6 +18634,21 @@ export namespace healthcare {
         pubsubTopic: pulumi.Input<string>;
     }
 
+    export interface DicomStoreStreamConfig {
+        /**
+         * BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+         * Structure is documented below.
+         */
+        bigqueryDestination: pulumi.Input<inputs.healthcare.DicomStoreStreamConfigBigqueryDestination>;
+    }
+
+    export interface DicomStoreStreamConfigBigqueryDestination {
+        /**
+         * a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+         */
+        tableUri: pulumi.Input<string>;
+    }
+
     export interface FhirStoreIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -22460,9 +22567,21 @@ export namespace secretmanager {
 
     export interface SecretReplicationUserManagedReplica {
         /**
+         * Customer Managed Encryption for the secret.
+         * Structure is documented below.
+         */
+        customerManagedEncryption?: pulumi.Input<inputs.secretmanager.SecretReplicationUserManagedReplicaCustomerManagedEncryption>;
+        /**
          * The canonical IDs of the location to replicate data. For example: "us-east1".
          */
         location: pulumi.Input<string>;
+    }
+
+    export interface SecretReplicationUserManagedReplicaCustomerManagedEncryption {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination secret.
+         */
+        kmsKeyName: pulumi.Input<string>;
     }
 }
 
@@ -22985,7 +23104,7 @@ export namespace storage {
 
     export interface BucketLifecycleRuleAction {
         /**
-         * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+         * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
          */
         storageClass?: pulumi.Input<string>;
         /**
@@ -23016,7 +23135,7 @@ export namespace storage {
          */
         daysSinceNoncurrentTime?: pulumi.Input<number>;
         /**
-         * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+         * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>;
         /**

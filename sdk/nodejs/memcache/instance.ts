@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Instance, see:
  *
- * * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
+ * * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
  *
@@ -29,15 +29,11 @@ import * as utilities from "../utilities";
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
- * }, {
- *     provider: google_beta,
  * });
  * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
  *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [serviceRange.name],
- * }, {
- *     provider: google_beta,
  * });
  * const instance = new gcp.memcache.Instance("instance", {
  *     authorizedNetwork: privateServiceConnection.network,
@@ -47,8 +43,6 @@ import * as utilities from "../utilities";
  *     },
  *     nodeCount: 1,
  *     memcacheVersion: "MEMCACHE_1_5",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

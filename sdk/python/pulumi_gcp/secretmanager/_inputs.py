@@ -14,6 +14,7 @@ __all__ = [
     'SecretReplicationArgs',
     'SecretReplicationUserManagedArgs',
     'SecretReplicationUserManagedReplicaArgs',
+    'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs',
 ]
 
 @pulumi.input_type
@@ -162,11 +163,16 @@ class SecretReplicationUserManagedArgs:
 @pulumi.input_type
 class SecretReplicationUserManagedReplicaArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str]):
+                 location: pulumi.Input[str],
+                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']] = None):
         """
         :param pulumi.Input[str] location: The canonical IDs of the location to replicate data. For example: "us-east1".
+        :param pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs'] customer_managed_encryption: Customer Managed Encryption for the secret.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
+        if customer_managed_encryption is not None:
+            pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
 
     @property
     @pulumi.getter
@@ -179,5 +185,40 @@ class SecretReplicationUserManagedReplicaArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryption")
+    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]:
+        """
+        Customer Managed Encryption for the secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryption")
+
+    @customer_managed_encryption.setter
+    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]):
+        pulumi.set(self, "customer_managed_encryption", value)
+
+
+@pulumi.input_type
+class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
 
 

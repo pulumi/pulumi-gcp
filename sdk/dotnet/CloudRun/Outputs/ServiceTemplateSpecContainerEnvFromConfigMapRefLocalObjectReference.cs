@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference
     {
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         public readonly string Name;
 

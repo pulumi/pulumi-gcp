@@ -121,6 +121,9 @@ type RegionDisk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface pulumi.StringPtrOutput `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
@@ -232,6 +235,9 @@ type regionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface *string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
@@ -312,6 +318,9 @@ type RegionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
@@ -394,6 +403,9 @@ type regionDiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
@@ -459,6 +471,9 @@ type RegionDiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is

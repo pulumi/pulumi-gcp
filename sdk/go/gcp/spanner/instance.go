@@ -104,6 +104,9 @@ type Instance struct {
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+	// This must be set to true if you created a backup manually in the console.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -165,6 +168,9 @@ type instanceState struct {
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName *string `pulumi:"displayName"`
+	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+	// This must be set to true if you created a backup manually in the console.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -192,6 +198,9 @@ type InstanceState struct {
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringPtrInput
+	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+	// This must be set to true if you created a backup manually in the console.
+	ForceDestroy pulumi.BoolPtrInput
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
@@ -223,6 +232,9 @@ type instanceArgs struct {
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName string `pulumi:"displayName"`
+	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+	// This must be set to true if you created a backup manually in the console.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -249,6 +261,9 @@ type InstanceArgs struct {
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringInput
+	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+	// This must be set to true if you created a backup manually in the console.
+	ForceDestroy pulumi.BoolPtrInput
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput

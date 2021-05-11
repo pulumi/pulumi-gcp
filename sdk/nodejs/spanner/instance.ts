@@ -105,6 +105,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * When deleting a spanner instance, this boolean option will delete all backups of this instance.
+     * This must be set to true if you created a backup manually in the console.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
@@ -144,6 +149,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["numNodes"] = state ? state.numNodes : undefined;
@@ -159,6 +165,7 @@ export class Instance extends pulumi.CustomResource {
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["numNodes"] = args ? args.numNodes : undefined;
@@ -190,6 +197,11 @@ export interface InstanceState {
      * unique per project and between 4 and 30 characters in length.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * When deleting a spanner instance, this boolean option will delete all backups of this instance.
+     * This must be set to true if you created a backup manually in the console.
+     */
+    readonly forceDestroy?: pulumi.Input<boolean>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -234,6 +246,11 @@ export interface InstanceArgs {
      * unique per project and between 4 and 30 characters in length.
      */
     readonly displayName: pulumi.Input<string>;
+    /**
+     * When deleting a spanner instance, this boolean option will delete all backups of this instance.
+     * This must be set to true if you created a backup manually in the console.
+     */
+    readonly forceDestroy?: pulumi.Input<boolean>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         public readonly string Description;
         public readonly string DisplayName;
         public readonly ImmutableArray<Outputs.GetGroupsGroupGroupKeyResult> GroupKeys;
+        public readonly string InitialGroupConfig;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
@@ -35,6 +36,8 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
 
             ImmutableArray<Outputs.GetGroupsGroupGroupKeyResult> groupKeys,
 
+            string initialGroupConfig,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -47,6 +50,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
             Description = description;
             DisplayName = displayName;
             GroupKeys = groupKeys;
+            InitialGroupConfig = initialGroupConfig;
             Labels = labels;
             Name = name;
             Parent = parent;

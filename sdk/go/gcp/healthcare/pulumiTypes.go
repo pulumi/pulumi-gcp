@@ -1097,6 +1097,158 @@ func (o DicomStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type DicomStoreStreamConfig struct {
+	// BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+	// Structure is documented below.
+	BigqueryDestination DicomStoreStreamConfigBigqueryDestination `pulumi:"bigqueryDestination"`
+}
+
+// DicomStoreStreamConfigInput is an input type that accepts DicomStoreStreamConfigArgs and DicomStoreStreamConfigOutput values.
+// You can construct a concrete instance of `DicomStoreStreamConfigInput` via:
+//
+//          DicomStoreStreamConfigArgs{...}
+type DicomStoreStreamConfigInput interface {
+	pulumi.Input
+
+	ToDicomStoreStreamConfigOutput() DicomStoreStreamConfigOutput
+	ToDicomStoreStreamConfigOutputWithContext(context.Context) DicomStoreStreamConfigOutput
+}
+
+type DicomStoreStreamConfigArgs struct {
+	// BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+	// Structure is documented below.
+	BigqueryDestination DicomStoreStreamConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
+}
+
+func (DicomStoreStreamConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreStreamConfig)(nil)).Elem()
+}
+
+func (i DicomStoreStreamConfigArgs) ToDicomStoreStreamConfigOutput() DicomStoreStreamConfigOutput {
+	return i.ToDicomStoreStreamConfigOutputWithContext(context.Background())
+}
+
+func (i DicomStoreStreamConfigArgs) ToDicomStoreStreamConfigOutputWithContext(ctx context.Context) DicomStoreStreamConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreStreamConfigOutput)
+}
+
+// DicomStoreStreamConfigArrayInput is an input type that accepts DicomStoreStreamConfigArray and DicomStoreStreamConfigArrayOutput values.
+// You can construct a concrete instance of `DicomStoreStreamConfigArrayInput` via:
+//
+//          DicomStoreStreamConfigArray{ DicomStoreStreamConfigArgs{...} }
+type DicomStoreStreamConfigArrayInput interface {
+	pulumi.Input
+
+	ToDicomStoreStreamConfigArrayOutput() DicomStoreStreamConfigArrayOutput
+	ToDicomStoreStreamConfigArrayOutputWithContext(context.Context) DicomStoreStreamConfigArrayOutput
+}
+
+type DicomStoreStreamConfigArray []DicomStoreStreamConfigInput
+
+func (DicomStoreStreamConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DicomStoreStreamConfig)(nil)).Elem()
+}
+
+func (i DicomStoreStreamConfigArray) ToDicomStoreStreamConfigArrayOutput() DicomStoreStreamConfigArrayOutput {
+	return i.ToDicomStoreStreamConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DicomStoreStreamConfigArray) ToDicomStoreStreamConfigArrayOutputWithContext(ctx context.Context) DicomStoreStreamConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreStreamConfigArrayOutput)
+}
+
+type DicomStoreStreamConfigOutput struct{ *pulumi.OutputState }
+
+func (DicomStoreStreamConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreStreamConfig)(nil)).Elem()
+}
+
+func (o DicomStoreStreamConfigOutput) ToDicomStoreStreamConfigOutput() DicomStoreStreamConfigOutput {
+	return o
+}
+
+func (o DicomStoreStreamConfigOutput) ToDicomStoreStreamConfigOutputWithContext(ctx context.Context) DicomStoreStreamConfigOutput {
+	return o
+}
+
+// BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+// Structure is documented below.
+func (o DicomStoreStreamConfigOutput) BigqueryDestination() DicomStoreStreamConfigBigqueryDestinationOutput {
+	return o.ApplyT(func(v DicomStoreStreamConfig) DicomStoreStreamConfigBigqueryDestination { return v.BigqueryDestination }).(DicomStoreStreamConfigBigqueryDestinationOutput)
+}
+
+type DicomStoreStreamConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DicomStoreStreamConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DicomStoreStreamConfig)(nil)).Elem()
+}
+
+func (o DicomStoreStreamConfigArrayOutput) ToDicomStoreStreamConfigArrayOutput() DicomStoreStreamConfigArrayOutput {
+	return o
+}
+
+func (o DicomStoreStreamConfigArrayOutput) ToDicomStoreStreamConfigArrayOutputWithContext(ctx context.Context) DicomStoreStreamConfigArrayOutput {
+	return o
+}
+
+func (o DicomStoreStreamConfigArrayOutput) Index(i pulumi.IntInput) DicomStoreStreamConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DicomStoreStreamConfig {
+		return vs[0].([]DicomStoreStreamConfig)[vs[1].(int)]
+	}).(DicomStoreStreamConfigOutput)
+}
+
+type DicomStoreStreamConfigBigqueryDestination struct {
+	// a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+	TableUri string `pulumi:"tableUri"`
+}
+
+// DicomStoreStreamConfigBigqueryDestinationInput is an input type that accepts DicomStoreStreamConfigBigqueryDestinationArgs and DicomStoreStreamConfigBigqueryDestinationOutput values.
+// You can construct a concrete instance of `DicomStoreStreamConfigBigqueryDestinationInput` via:
+//
+//          DicomStoreStreamConfigBigqueryDestinationArgs{...}
+type DicomStoreStreamConfigBigqueryDestinationInput interface {
+	pulumi.Input
+
+	ToDicomStoreStreamConfigBigqueryDestinationOutput() DicomStoreStreamConfigBigqueryDestinationOutput
+	ToDicomStoreStreamConfigBigqueryDestinationOutputWithContext(context.Context) DicomStoreStreamConfigBigqueryDestinationOutput
+}
+
+type DicomStoreStreamConfigBigqueryDestinationArgs struct {
+	// a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+	TableUri pulumi.StringInput `pulumi:"tableUri"`
+}
+
+func (DicomStoreStreamConfigBigqueryDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreStreamConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i DicomStoreStreamConfigBigqueryDestinationArgs) ToDicomStoreStreamConfigBigqueryDestinationOutput() DicomStoreStreamConfigBigqueryDestinationOutput {
+	return i.ToDicomStoreStreamConfigBigqueryDestinationOutputWithContext(context.Background())
+}
+
+func (i DicomStoreStreamConfigBigqueryDestinationArgs) ToDicomStoreStreamConfigBigqueryDestinationOutputWithContext(ctx context.Context) DicomStoreStreamConfigBigqueryDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreStreamConfigBigqueryDestinationOutput)
+}
+
+type DicomStoreStreamConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
+
+func (DicomStoreStreamConfigBigqueryDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreStreamConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o DicomStoreStreamConfigBigqueryDestinationOutput) ToDicomStoreStreamConfigBigqueryDestinationOutput() DicomStoreStreamConfigBigqueryDestinationOutput {
+	return o
+}
+
+func (o DicomStoreStreamConfigBigqueryDestinationOutput) ToDicomStoreStreamConfigBigqueryDestinationOutputWithContext(ctx context.Context) DicomStoreStreamConfigBigqueryDestinationOutput {
+	return o
+}
+
+// a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+func (o DicomStoreStreamConfigBigqueryDestinationOutput) TableUri() pulumi.StringOutput {
+	return o.ApplyT(func(v DicomStoreStreamConfigBigqueryDestination) string { return v.TableUri }).(pulumi.StringOutput)
+}
+
 type FhirStoreIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -2662,6 +2814,9 @@ func init() {
 	pulumi.RegisterOutputType(DicomStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(DicomStoreNotificationConfigOutput{})
 	pulumi.RegisterOutputType(DicomStoreNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(DicomStoreStreamConfigOutput{})
+	pulumi.RegisterOutputType(DicomStoreStreamConfigArrayOutput{})
+	pulumi.RegisterOutputType(DicomStoreStreamConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberConditionOutput{})

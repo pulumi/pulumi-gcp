@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class DomainMappingStatusResourceRecord
     {
         /// <summary>
-        /// Name should be a verified domain
+        /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         /// </summary>
         public readonly string? Name;
         public readonly string? Rrdata;

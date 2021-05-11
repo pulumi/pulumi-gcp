@@ -90,7 +90,7 @@ type DomainMapping struct {
 	// Metadata associated with this DomainMapping.
 	// Structure is documented below.
 	Metadata DomainMappingMetadataOutput `pulumi:"metadata"`
-	// Name should be a verified domain
+	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -145,7 +145,7 @@ type domainMappingState struct {
 	// Metadata associated with this DomainMapping.
 	// Structure is documented below.
 	Metadata *DomainMappingMetadata `pulumi:"metadata"`
-	// Name should be a verified domain
+	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -163,7 +163,7 @@ type DomainMappingState struct {
 	// Metadata associated with this DomainMapping.
 	// Structure is documented below.
 	Metadata DomainMappingMetadataPtrInput
-	// Name should be a verified domain
+	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -185,7 +185,7 @@ type domainMappingArgs struct {
 	// Metadata associated with this DomainMapping.
 	// Structure is documented below.
 	Metadata DomainMappingMetadata `pulumi:"metadata"`
-	// Name should be a verified domain
+	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -202,7 +202,7 @@ type DomainMappingArgs struct {
 	// Metadata associated with this DomainMapping.
 	// Structure is documented below.
 	Metadata DomainMappingMetadataInput
-	// Name should be a verified domain
+	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

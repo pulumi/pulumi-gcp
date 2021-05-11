@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecContainerEnvArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
+
+        [Input("valueFrom")]
+        public Input<Inputs.ServiceTemplateSpecContainerEnvValueFromArgs>? ValueFrom { get; set; }
 
         public ServiceTemplateSpecContainerEnvArgs()
         {

@@ -123,9 +123,13 @@ export namespace accesscontextmanager {
         minimumVersion?: string;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
          */
         osType: string;
+        /**
+         * If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
+         */
+        requireVerifiedChromeOs?: boolean;
     }
 
     export interface AccessLevelConditionDevicePolicy {
@@ -171,7 +175,7 @@ export namespace accesscontextmanager {
         minimumVersion?: string;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
          */
         osType: string;
     }
@@ -347,7 +351,7 @@ export namespace accesscontextmanager {
         minimumVersion?: string;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
          */
         osType: string;
     }
@@ -4894,6 +4898,7 @@ export namespace cloudidentity {
         description: string;
         displayName: string;
         groupKeys: outputs.cloudidentity.GetGroupsGroupGroupKey[];
+        initialGroupConfig: string;
         labels: {[key: string]: string};
         name: string;
         /**
@@ -5070,7 +5075,7 @@ export namespace cloudrun {
 
     export interface DomainMappingStatusResourceRecord {
         /**
-         * Name should be a verified domain
+         * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
          */
         name: string;
         rrdata: string;
@@ -5127,6 +5132,7 @@ export namespace cloudrun {
         serviceAccountName: string;
         servingState: string;
         timeoutSeconds: number;
+        volumes: outputs.cloudrun.GetServiceTemplateSpecVolume[];
     }
 
     export interface GetServiceTemplateSpecContainer {
@@ -5137,6 +5143,7 @@ export namespace cloudrun {
         image: string;
         ports: outputs.cloudrun.GetServiceTemplateSpecContainerPort[];
         resources: outputs.cloudrun.GetServiceTemplateSpecContainerResource[];
+        volumeMounts: outputs.cloudrun.GetServiceTemplateSpecContainerVolumeMount[];
         workingDir: string;
     }
 
@@ -5146,6 +5153,7 @@ export namespace cloudrun {
          */
         name: string;
         value: string;
+        valueFroms: outputs.cloudrun.GetServiceTemplateSpecContainerEnvValueFrom[];
     }
 
     export interface GetServiceTemplateSpecContainerEnvFrom {
@@ -5178,6 +5186,18 @@ export namespace cloudrun {
         name: string;
     }
 
+    export interface GetServiceTemplateSpecContainerEnvValueFrom {
+        secretKeyReves: outputs.cloudrun.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef[];
+    }
+
+    export interface GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
+        key: string;
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+    }
+
     export interface GetServiceTemplateSpecContainerPort {
         containerPort: number;
         /**
@@ -5190,6 +5210,32 @@ export namespace cloudrun {
     export interface GetServiceTemplateSpecContainerResource {
         limits: {[key: string]: string};
         requests: {[key: string]: string};
+    }
+
+    export interface GetServiceTemplateSpecContainerVolumeMount {
+        mountPath: string;
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+    }
+
+    export interface GetServiceTemplateSpecVolume {
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+        secrets: outputs.cloudrun.GetServiceTemplateSpecVolumeSecret[];
+    }
+
+    export interface GetServiceTemplateSpecVolumeSecret {
+        items: outputs.cloudrun.GetServiceTemplateSpecVolumeSecretItem[];
+        secretName: string;
+    }
+
+    export interface GetServiceTemplateSpecVolumeSecretItem {
+        key: string;
+        path: string;
     }
 
     export interface GetServiceTraffic {
@@ -5320,7 +5366,7 @@ export namespace cloudrun {
          */
         labels?: {[key: string]: string};
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name: string;
         /**
@@ -5389,6 +5435,7 @@ export namespace cloudrun {
          * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
          */
         timeoutSeconds: number;
+        volumes?: outputs.cloudrun.ServiceTemplateSpecVolume[];
     }
 
     export interface ServiceTemplateSpecContainer {
@@ -5454,6 +5501,7 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         resources: outputs.cloudrun.ServiceTemplateSpecContainerResources;
+        volumeMounts?: outputs.cloudrun.ServiceTemplateSpecContainerVolumeMount[];
         /**
          * -
          * (Optional, Deprecated)
@@ -5468,7 +5516,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnv {
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name?: string;
         /**
@@ -5482,6 +5530,7 @@ export namespace cloudrun {
          * Defaults to "".
          */
         value?: string;
+        valueFrom?: outputs.cloudrun.ServiceTemplateSpecContainerEnvValueFrom;
     }
 
     export interface ServiceTemplateSpecContainerEnvFrom {
@@ -5515,7 +5564,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name: string;
     }
@@ -5534,7 +5583,27 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
         /**
-         * Name of the port.
+         * Volume's name.
+         */
+        name: string;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvValueFrom {
+        /**
+         * Selects a key (version) of a secret in Secret Manager.
+         * Structure is documented below.
+         */
+        secretKeyRef: outputs.cloudrun.ServiceTemplateSpecContainerEnvValueFromSecretKeyRef;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
+        /**
+         * The Cloud Secret Manager secret version.
+         * Can be 'latest' for the latest value or an integer for a specific version.
+         */
+        key: string;
+        /**
+         * Volume's name.
          */
         name: string;
     }
@@ -5545,7 +5614,7 @@ export namespace cloudrun {
          */
         containerPort: number;
         /**
-         * Name of the port.
+         * Volume's name.
          */
         name?: string;
         /**
@@ -5569,6 +5638,71 @@ export namespace cloudrun {
          * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         requests?: {[key: string]: string};
+    }
+
+    export interface ServiceTemplateSpecContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted.  Must
+         * not contain ':'.
+         */
+        mountPath: string;
+        /**
+         * Volume's name.
+         */
+        name: string;
+    }
+
+    export interface ServiceTemplateSpecVolume {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The secret's value will be presented as the content of a file whose
+         * name is defined in the item path. If no items are defined, the name of
+         * the file is the secret_name.
+         * Structure is documented below.
+         */
+        secret: outputs.cloudrun.ServiceTemplateSpecVolumeSecret;
+    }
+
+    export interface ServiceTemplateSpecVolumeSecret {
+        /**
+         * If unspecified, the volume will expose a file whose name is the
+         * secret_name.
+         * If specified, the key will be used as the version to fetch from Cloud
+         * Secret Manager and the path will be the name of the file exposed in the
+         * volume. When items are defined, they must specify a key and a path.
+         * Structure is documented below.
+         */
+        items?: outputs.cloudrun.ServiceTemplateSpecVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. By default, the secret
+         * is assumed to be in the same project.
+         * If the secret is in another project, you must define an alias.
+         * An alias definition has the form:
+         * <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+         * If multiple alias definitions are needed, they must be separated by
+         * commas.
+         * The alias definitions must be set on the run.googleapis.com/secrets
+         * annotation.
+         */
+        secretName: string;
+    }
+
+    export interface ServiceTemplateSpecVolumeSecretItem {
+        /**
+         * The Cloud Secret Manager secret version.
+         * Can be 'latest' for the latest value or an integer for a specific version.
+         */
+        key: string;
+        /**
+         * The relative path of the file to map the key to.
+         * May not be an absolute path.
+         * May not contain the path element '..'.
+         * May not start with the string '..'.
+         */
+        path: string;
     }
 
     export interface ServiceTraffic {
@@ -6029,9 +6163,9 @@ export namespace composer {
          * for assigning internal IP addresses to the cluster master or set of masters and to the
          * internal load balancer virtual IP. This range must not overlap with any other ranges
          * in use within the cluster's network.
-         * If left blank, the default value of '172.16.0.0/28' is used.
+         * If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
          */
-        masterIpv4CidrBlock?: string;
+        masterIpv4CidrBlock: string;
         /**
          * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
          */
@@ -7784,8 +7918,8 @@ export namespace compute {
          */
         interface: string;
         /**
-         * A set of key/value label pairs to assign to instances
-         * created from this template,
+         * (Optional) A set of ket/value label pairs to assign to disk created from
+         * this template
          */
         labels: {[key: string]: string};
         /**
@@ -9142,8 +9276,8 @@ export namespace compute {
          */
         interface: string;
         /**
-         * A set of key/value label pairs to assign to instances
-         * created from this template,
+         * A set of ket/value label pairs to assign to disk created from
+         * this template
          */
         labels?: {[key: string]: string};
         /**
@@ -20088,6 +20222,21 @@ export namespace healthcare {
         pubsubTopic: string;
     }
 
+    export interface DicomStoreStreamConfig {
+        /**
+         * BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+         * Structure is documented below.
+         */
+        bigqueryDestination: outputs.healthcare.DicomStoreStreamConfigBigqueryDestination;
+    }
+
+    export interface DicomStoreStreamConfigBigqueryDestination {
+        /**
+         * a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+         */
+        tableUri: string;
+    }
+
     export interface FhirStoreIamBindingCondition {
         description?: string;
         expression: string;
@@ -24145,9 +24294,21 @@ export namespace secretmanager {
 
     export interface SecretReplicationUserManagedReplica {
         /**
+         * Customer Managed Encryption for the secret.
+         * Structure is documented below.
+         */
+        customerManagedEncryption?: outputs.secretmanager.SecretReplicationUserManagedReplicaCustomerManagedEncryption;
+        /**
          * The canonical IDs of the location to replicate data. For example: "us-east1".
          */
         location: string;
+    }
+
+    export interface SecretReplicationUserManagedReplicaCustomerManagedEncryption {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination secret.
+         */
+        kmsKeyName: string;
     }
 }
 
@@ -24703,7 +24864,7 @@ export namespace sql {
     export interface GetDatabaseInstanceSetting {
         /**
          * This specifies when the instance should be
-         * active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+         * active. Can be either `ALWAYS` or `NEVER`.
          */
         activationPolicy: string;
         /**
@@ -24941,7 +25102,7 @@ export namespace storage {
 
     export interface BucketLifecycleRuleAction {
         /**
-         * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+         * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
          */
         storageClass?: string;
         /**
@@ -24972,7 +25133,7 @@ export namespace storage {
          */
         daysSinceNoncurrentTime?: number;
         /**
-         * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+         * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: string[];
         /**

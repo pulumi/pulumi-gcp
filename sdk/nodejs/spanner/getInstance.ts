@@ -30,6 +30,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("gcp:spanner/getInstance:getInstance", {
         "config": args.config,
         "displayName": args.displayName,
+        "forceDestroy": args.forceDestroy,
         "labels": args.labels,
         "name": args.name,
         "numNodes": args.numNodes,
@@ -43,6 +44,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
 export interface GetInstanceArgs {
     readonly config?: string;
     readonly displayName?: string;
+    readonly forceDestroy?: boolean;
     readonly labels?: {[key: string]: string};
     /**
      * The name of the spanner instance.
@@ -62,6 +64,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly config?: string;
     readonly displayName?: string;
+    readonly forceDestroy?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

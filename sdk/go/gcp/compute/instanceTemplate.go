@@ -246,8 +246,8 @@ type InstanceTemplate struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription pulumi.StringPtrOutput `pulumi:"instanceDescription"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -354,8 +354,8 @@ type instanceTemplateState struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription *string `pulumi:"instanceDescription"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType *string `pulumi:"machineType"`
@@ -428,8 +428,8 @@ type InstanceTemplateState struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringPtrInput
@@ -506,8 +506,8 @@ type instanceTemplateArgs struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription *string `pulumi:"instanceDescription"`
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType string `pulumi:"machineType"`
@@ -575,8 +575,8 @@ type InstanceTemplateArgs struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to instances
-	// created from this template,
+	// A set of ket/value label pairs to assign to disk created from
+	// this template
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringInput

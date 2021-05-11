@@ -43,6 +43,7 @@ import (
 // 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
 // 				Id: pulumi.String("my-identity-group@example.com"),
 // 			},
+// 			InitialGroupConfig: pulumi.String("WITH_INITIAL_OWNER"),
 // 			Labels: pulumi.StringMap{
 // 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
 // 			},
@@ -76,6 +77,13 @@ type Group struct {
 	// EntityKey of the Group.
 	// Structure is documented below.
 	GroupKey GroupGroupKeyOutput `pulumi:"groupKey"`
+	// The initial configuration options for creating a Group.
+	// See the
+	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+	// for possible values.
+	// Default value is `EMPTY`.
+	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	InitialGroupConfig pulumi.StringPtrOutput `pulumi:"initialGroupConfig"`
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
 	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -140,6 +148,13 @@ type groupState struct {
 	// EntityKey of the Group.
 	// Structure is documented below.
 	GroupKey *GroupGroupKey `pulumi:"groupKey"`
+	// The initial configuration options for creating a Group.
+	// See the
+	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+	// for possible values.
+	// Default value is `EMPTY`.
+	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	InitialGroupConfig *string `pulumi:"initialGroupConfig"`
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
 	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -167,6 +182,13 @@ type GroupState struct {
 	// EntityKey of the Group.
 	// Structure is documented below.
 	GroupKey GroupGroupKeyPtrInput
+	// The initial configuration options for creating a Group.
+	// See the
+	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+	// for possible values.
+	// Default value is `EMPTY`.
+	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	InitialGroupConfig pulumi.StringPtrInput
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
 	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -196,6 +218,13 @@ type groupArgs struct {
 	// EntityKey of the Group.
 	// Structure is documented below.
 	GroupKey GroupGroupKey `pulumi:"groupKey"`
+	// The initial configuration options for creating a Group.
+	// See the
+	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+	// for possible values.
+	// Default value is `EMPTY`.
+	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	InitialGroupConfig *string `pulumi:"initialGroupConfig"`
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
 	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -218,6 +247,13 @@ type GroupArgs struct {
 	// EntityKey of the Group.
 	// Structure is documented below.
 	GroupKey GroupGroupKeyInput
+	// The initial configuration options for creating a Group.
+	// See the
+	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+	// for possible values.
+	// Default value is `EMPTY`.
+	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	InitialGroupConfig pulumi.StringPtrInput
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
 	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or

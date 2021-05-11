@@ -500,7 +500,7 @@ class Instance(pulumi.CustomResource):
 
         To get more information about Instance, see:
 
-        * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
+        * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1/projects.locations.instances)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 
@@ -516,13 +516,11 @@ class Instance(pulumi.CustomResource):
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
-            network=memcache_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=memcache_network.id)
         private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
             network=memcache_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            reserved_peering_ranges=[service_range.name])
         instance = gcp.memcache.Instance("instance",
             authorized_network=private_service_connection.network,
             node_config=gcp.memcache.InstanceNodeConfigArgs(
@@ -530,8 +528,7 @@ class Instance(pulumi.CustomResource):
                 memory_size_mb=1024,
             ),
             node_count=1,
-            memcache_version="MEMCACHE_1_5",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            memcache_version="MEMCACHE_1_5")
         ```
 
         ## Import
@@ -588,7 +585,7 @@ class Instance(pulumi.CustomResource):
 
         To get more information about Instance, see:
 
-        * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
+        * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1/projects.locations.instances)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 
@@ -604,13 +601,11 @@ class Instance(pulumi.CustomResource):
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
-            network=memcache_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=memcache_network.id)
         private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
             network=memcache_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            reserved_peering_ranges=[service_range.name])
         instance = gcp.memcache.Instance("instance",
             authorized_network=private_service_connection.network,
             node_config=gcp.memcache.InstanceNodeConfigArgs(
@@ -618,8 +613,7 @@ class Instance(pulumi.CustomResource):
                 memory_size_mb=1024,
             ),
             node_count=1,
-            memcache_version="MEMCACHE_1_5",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            memcache_version="MEMCACHE_1_5")
         ```
 
         ## Import

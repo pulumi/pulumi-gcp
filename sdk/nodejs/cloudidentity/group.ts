@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     groupKey: {
  *         id: "my-identity-group@example.com",
  *     },
+ *     initialGroupConfig: "WITH_INITIAL_OWNER",
  *     labels: {
  *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
  *     },
@@ -94,6 +95,15 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly groupKey!: pulumi.Output<outputs.cloudidentity.GroupGroupKey>;
     /**
+     * The initial configuration options for creating a Group.
+     * See the
+     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+     * for possible values.
+     * Default value is `EMPTY`.
+     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     */
+    public readonly initialGroupConfig!: pulumi.Output<string | undefined>;
+    /**
      * The labels that apply to the Group.
      * Must not contain more than one entry. Must contain the entry
      * 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -133,6 +143,7 @@ export class Group extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["groupKey"] = state ? state.groupKey : undefined;
+            inputs["initialGroupConfig"] = state ? state.initialGroupConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
@@ -151,6 +162,7 @@ export class Group extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["groupKey"] = args ? args.groupKey : undefined;
+            inputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -186,6 +198,15 @@ export interface GroupState {
      * Structure is documented below.
      */
     readonly groupKey?: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
+    /**
+     * The initial configuration options for creating a Group.
+     * See the
+     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+     * for possible values.
+     * Default value is `EMPTY`.
+     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     */
+    readonly initialGroupConfig?: pulumi.Input<string>;
     /**
      * The labels that apply to the Group.
      * Must not contain more than one entry. Must contain the entry
@@ -228,6 +249,15 @@ export interface GroupArgs {
      * Structure is documented below.
      */
     readonly groupKey: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
+    /**
+     * The initial configuration options for creating a Group.
+     * See the
+     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+     * for possible values.
+     * Default value is `EMPTY`.
+     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     */
+    readonly initialGroupConfig?: pulumi.Input<string>;
     /**
      * The labels that apply to the Group.
      * Must not contain more than one entry. Must contain the entry

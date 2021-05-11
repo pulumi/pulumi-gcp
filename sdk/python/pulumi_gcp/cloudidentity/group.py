@@ -19,7 +19,8 @@ class GroupArgs:
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  parent: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None):
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 initial_group_config: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input['GroupGroupKeyArgs'] group_key: EntityKey of the Group.
@@ -35,6 +36,12 @@ class GroupArgs:
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
+        :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group.
+               See the
+               [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+               for possible values.
+               Default value is `EMPTY`.
+               Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
         """
         pulumi.set(__self__, "group_key", group_key)
         pulumi.set(__self__, "labels", labels)
@@ -43,6 +50,8 @@ class GroupArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if initial_group_config is not None:
+            pulumi.set(__self__, "initial_group_config", initial_group_config)
 
     @property
     @pulumi.getter(name="groupKey")
@@ -112,6 +121,23 @@ class GroupArgs:
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
 
+    @property
+    @pulumi.getter(name="initialGroupConfig")
+    def initial_group_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial configuration options for creating a Group.
+        See the
+        [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        for possible values.
+        Default value is `EMPTY`.
+        Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        """
+        return pulumi.get(self, "initial_group_config")
+
+    @initial_group_config.setter
+    def initial_group_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_group_config", value)
+
 
 @pulumi.input_type
 class _GroupState:
@@ -120,6 +146,7 @@ class _GroupState:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input['GroupGroupKeyArgs']] = None,
+                 initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -132,6 +159,12 @@ class _GroupState:
         :param pulumi.Input[str] display_name: The display name of the Group.
         :param pulumi.Input['GroupGroupKeyArgs'] group_key: EntityKey of the Group.
                Structure is documented below.
+        :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group.
+               See the
+               [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+               for possible values.
+               Default value is `EMPTY`.
+               Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels that apply to the Group.
                Must not contain more than one entry. Must contain the entry
                'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -151,6 +184,8 @@ class _GroupState:
             pulumi.set(__self__, "display_name", display_name)
         if group_key is not None:
             pulumi.set(__self__, "group_key", group_key)
+        if initial_group_config is not None:
+            pulumi.set(__self__, "initial_group_config", initial_group_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -209,6 +244,23 @@ class _GroupState:
     @group_key.setter
     def group_key(self, value: Optional[pulumi.Input['GroupGroupKeyArgs']]):
         pulumi.set(self, "group_key", value)
+
+    @property
+    @pulumi.getter(name="initialGroupConfig")
+    def initial_group_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial configuration options for creating a Group.
+        See the
+        [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        for possible values.
+        Default value is `EMPTY`.
+        Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        """
+        return pulumi.get(self, "initial_group_config")
+
+    @initial_group_config.setter
+    def initial_group_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_group_config", value)
 
     @property
     @pulumi.getter
@@ -273,6 +325,7 @@ class Group(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+                 initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -303,6 +356,7 @@ class Group(pulumi.CustomResource):
             group_key=gcp.cloudidentity.GroupGroupKeyArgs(
                 id="my-identity-group@example.com",
             ),
+            initial_group_config="WITH_INITIAL_OWNER",
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             },
@@ -324,6 +378,12 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the Group.
         :param pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']] group_key: EntityKey of the Group.
                Structure is documented below.
+        :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group.
+               See the
+               [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+               for possible values.
+               Default value is `EMPTY`.
+               Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels that apply to the Group.
                Must not contain more than one entry. Must contain the entry
                'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -366,6 +426,7 @@ class Group(pulumi.CustomResource):
             group_key=gcp.cloudidentity.GroupGroupKeyArgs(
                 id="my-identity-group@example.com",
             ),
+            initial_group_config="WITH_INITIAL_OWNER",
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             },
@@ -398,6 +459,7 @@ class Group(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+                 initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -417,6 +479,7 @@ class Group(pulumi.CustomResource):
             if group_key is None and not opts.urn:
                 raise TypeError("Missing required property 'group_key'")
             __props__.__dict__["group_key"] = group_key
+            __props__.__dict__["initial_group_config"] = initial_group_config
             if labels is None and not opts.urn:
                 raise TypeError("Missing required property 'labels'")
             __props__.__dict__["labels"] = labels
@@ -440,6 +503,7 @@ class Group(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+            initial_group_config: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
@@ -457,6 +521,12 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the Group.
         :param pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']] group_key: EntityKey of the Group.
                Structure is documented below.
+        :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group.
+               See the
+               [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+               for possible values.
+               Default value is `EMPTY`.
+               Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels that apply to the Group.
                Must not contain more than one entry. Must contain the entry
                'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -476,6 +546,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["group_key"] = group_key
+        __props__.__dict__["initial_group_config"] = initial_group_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
@@ -515,6 +586,19 @@ class Group(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "group_key")
+
+    @property
+    @pulumi.getter(name="initialGroupConfig")
+    def initial_group_config(self) -> pulumi.Output[Optional[str]]:
+        """
+        The initial configuration options for creating a Group.
+        See the
+        [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        for possible values.
+        Default value is `EMPTY`.
+        Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        """
+        return pulumi.get(self, "initial_group_config")
 
     @property
     @pulumi.getter

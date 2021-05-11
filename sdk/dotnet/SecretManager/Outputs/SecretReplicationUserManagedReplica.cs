@@ -14,13 +14,22 @@ namespace Pulumi.Gcp.SecretManager.Outputs
     public sealed class SecretReplicationUserManagedReplica
     {
         /// <summary>
+        /// Customer Managed Encryption for the secret.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecretReplicationUserManagedReplicaCustomerManagedEncryption? CustomerManagedEncryption;
+        /// <summary>
         /// The canonical IDs of the location to replicate data. For example: "us-east1".
         /// </summary>
         public readonly string Location;
 
         [OutputConstructor]
-        private SecretReplicationUserManagedReplica(string location)
+        private SecretReplicationUserManagedReplica(
+            Outputs.SecretReplicationUserManagedReplicaCustomerManagedEncryption? customerManagedEncryption,
+
+            string location)
         {
+            CustomerManagedEncryption = customerManagedEncryption;
             Location = location;
         }
     }

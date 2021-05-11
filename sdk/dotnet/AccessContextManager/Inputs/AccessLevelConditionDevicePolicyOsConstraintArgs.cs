@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         /// <summary>
         /// The operating system type of the device.
-        /// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        /// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         /// </summary>
         [Input("osType", required: true)]
         public Input<string> OsType { get; set; } = null!;

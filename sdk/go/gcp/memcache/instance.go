@@ -15,7 +15,7 @@ import (
 //
 // To get more information about Instance, see:
 //
-// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
+// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1/projects.locations.instances)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 //
@@ -45,7 +45,7 @@ import (
 // 			AddressType:  pulumi.String("INTERNAL"),
 // 			PrefixLength: pulumi.Int(16),
 // 			Network:      pulumi.String(memcacheNetwork.Id),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -55,7 +55,7 @@ import (
 // 			ReservedPeeringRanges: pulumi.StringArray{
 // 				serviceRange.Name,
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -67,7 +67,7 @@ import (
 // 			},
 // 			NodeCount:       pulumi.Int(1),
 // 			MemcacheVersion: pulumi.String("MEMCACHE_1_5"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -6,14 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * subcategory: "Dataproc"
- * layout: "google"
- * page_title: "Google: gcp.dataproc.WorkflowTemplate"
- * sidebar_current: "docs-google-dataproc-workflow-template"
- * description: |-
- *   A Workflow Template is a reusable workflow configuration.
- * ---
- *
  * A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
  *
  * ## Example Usage

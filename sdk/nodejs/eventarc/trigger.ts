@@ -6,14 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * subcategory: "Eventarc"
- * layout: "google"
- * page_title: "Google: gcp.eventarc.Trigger"
- * sidebar_current: "docs-google-eventarc-trigger"
- * description: |-
- *   An event trigger sends messages to the event receiver service deployed on Cloud Run.
- * ---
- *
  * An event trigger sends messages to the event receiver service deployed on Cloud Run.
  *
  * * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
@@ -42,8 +34,6 @@ import * as utilities from "../utilities";
  *         percent: 100,
  *         latestRevision: true,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * const trigger = new gcp.eventarc.Trigger("trigger", {
  *     location: "us-central1",
@@ -57,8 +47,6 @@ import * as utilities from "../utilities";
  *             region: "us-central1",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

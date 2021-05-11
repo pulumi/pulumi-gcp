@@ -42,9 +42,10 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 
 // A collection of arguments for invoking getInstance.
 type LookupInstanceArgs struct {
-	Config      *string           `pulumi:"config"`
-	DisplayName *string           `pulumi:"displayName"`
-	Labels      map[string]string `pulumi:"labels"`
+	Config       *string           `pulumi:"config"`
+	DisplayName  *string           `pulumi:"displayName"`
+	ForceDestroy *bool             `pulumi:"forceDestroy"`
+	Labels       map[string]string `pulumi:"labels"`
 	// The name of the spanner instance.
 	Name     string `pulumi:"name"`
 	NumNodes *int   `pulumi:"numNodes"`
@@ -55,8 +56,9 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	Config      *string `pulumi:"config"`
-	DisplayName *string `pulumi:"displayName"`
+	Config       *string `pulumi:"config"`
+	DisplayName  *string `pulumi:"displayName"`
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string            `pulumi:"id"`
 	Labels   map[string]string `pulumi:"labels"`

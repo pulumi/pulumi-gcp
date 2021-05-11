@@ -31,6 +31,10 @@ import (
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/run/docs/)
 //
+// > **Warning:** `googleCloudrunService` creates a Managed Google Cloud Run Service. If you need to create
+// a Cloud Run Service on Anthos(GKE/VMWare) then you will need to create it using the kubernetes alpha provider.
+// Have a look at the Cloud Run Anthos example below.
+//
 // ## Example Usage
 // ### Cloud Run Service Basic
 //
@@ -271,6 +275,197 @@ import (
 // 	})
 // }
 // ```
+// ### Cloud Run Service Secret Environment Variables
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
+// 			SecretId: pulumi.String("secret"),
+// 			Replication: &secretmanager.SecretReplicationArgs{
+// 				Automatic: pulumi.Bool(true),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = secretmanager.NewSecretVersion(ctx, "secret_version_data", &secretmanager.SecretVersionArgs{
+// 			Secret:     secret.Name,
+// 			SecretData: pulumi.String("secret-data"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret_access", &secretmanager.SecretIamMemberArgs{
+// 			SecretId: secret.ID(),
+// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+// 			Member:   pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", project.Number, "-compute@developer.gserviceaccount.com")),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			secret,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							Envs: cloudrun.ServiceTemplateSpecContainerEnvArray{
+// 								&cloudrun.ServiceTemplateSpecContainerEnvArgs{
+// 									Name: pulumi.String("SECRET_ENV_VAR"),
+// 									ValueFrom: &cloudrun.ServiceTemplateSpecContainerEnvValueFromArgs{
+// 										SecretKeyRef: &cloudrun.ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{
+// 											Name: secret.SecretId,
+// 											Key:  pulumi.String("1"),
+// 										},
+// 									},
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Annotations: pulumi.StringMap{
+// 					"generated-by":                    pulumi.String("magic-modules"),
+// 					"run.googleapis.com/launch-stage": pulumi.String("ALPHA"),
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
+// 				},
+// 			},
+// 			AutogenerateRevisionName: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			secret_version_data,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Cloud Run Service Secret Volumes
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
+// 			SecretId: pulumi.String("secret"),
+// 			Replication: &secretmanager.SecretReplicationArgs{
+// 				Automatic: pulumi.Bool(true),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = secretmanager.NewSecretVersion(ctx, "secret_version_data", &secretmanager.SecretVersionArgs{
+// 			Secret:     secret.Name,
+// 			SecretData: pulumi.String("secret-data"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret_access", &secretmanager.SecretIamMemberArgs{
+// 			SecretId: secret.ID(),
+// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+// 			Member:   pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", project.Number, "-compute@developer.gserviceaccount.com")),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			secret,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							VolumeMounts: cloudrun.ServiceTemplateSpecContainerVolumeMountArray{
+// 								&cloudrun.ServiceTemplateSpecContainerVolumeMountArgs{
+// 									Name:      pulumi.String("a-volume"),
+// 									MountPath: pulumi.String("/secrets"),
+// 								},
+// 							},
+// 						},
+// 					},
+// 					Volumes: cloudrun.ServiceTemplateSpecVolumeArray{
+// 						&cloudrun.ServiceTemplateSpecVolumeArgs{
+// 							Name: pulumi.String("a-volume"),
+// 							Secret: &cloudrun.ServiceTemplateSpecVolumeSecretArgs{
+// 								SecretName: secret.SecretId,
+// 								Items: cloudrun.ServiceTemplateSpecVolumeSecretItemArray{
+// 									&cloudrun.ServiceTemplateSpecVolumeSecretItemArgs{
+// 										Key:  pulumi.String("1"),
+// 										Path: pulumi.String("my-secret"),
+// 									},
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Annotations: pulumi.StringMap{
+// 					"generated-by":                    pulumi.String("magic-modules"),
+// 					"run.googleapis.com/launch-stage": pulumi.String("ALPHA"),
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
+// 				},
+// 			},
+// 			AutogenerateRevisionName: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			secret_version_data,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -302,7 +497,7 @@ type Service struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata ServiceMetadataOutput `pulumi:"metadata"`
-	// Name of the port.
+	// Volume's name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -370,7 +565,7 @@ type serviceState struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name of the port.
+	// Volume's name.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -407,7 +602,7 @@ type ServiceState struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name of the port.
+	// Volume's name.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -448,7 +643,7 @@ type serviceArgs struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name of the port.
+	// Volume's name.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -484,7 +679,7 @@ type ServiceArgs struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name of the port.
+	// Volume's name.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

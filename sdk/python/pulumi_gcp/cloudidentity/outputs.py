@@ -370,6 +370,7 @@ class GetGroupsGroupResult(dict):
                  description: str,
                  display_name: str,
                  group_keys: Sequence['outputs.GetGroupsGroupGroupKeyResult'],
+                 initial_group_config: str,
                  labels: Mapping[str, str],
                  name: str,
                  parent: str,
@@ -381,6 +382,7 @@ class GetGroupsGroupResult(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "group_keys", group_keys)
+        pulumi.set(__self__, "initial_group_config", initial_group_config)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parent", parent)
@@ -405,6 +407,11 @@ class GetGroupsGroupResult(dict):
     @pulumi.getter(name="groupKeys")
     def group_keys(self) -> Sequence['outputs.GetGroupsGroupGroupKeyResult']:
         return pulumi.get(self, "group_keys")
+
+    @property
+    @pulumi.getter(name="initialGroupConfig")
+    def initial_group_config(self) -> str:
+        return pulumi.get(self, "initial_group_config")
 
     @property
     @pulumi.getter
