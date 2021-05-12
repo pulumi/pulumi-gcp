@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 5.3.0 (2021-05-12)
 * Upgrade to v3.67.0 of the Google Beta Terraform Provider  
   **PLEASE NOTE THE FOLLOWING BREAKING CHANGES:**
   * Changing `dataSetId` or `projectId` on `gcp.bigquery.Dataset` will now force a resource recreation.
   This is due to changes in the upstream API.
-
----
 
 ## 5.2.0 (2021-04-29)
 * Upgrade to v3.66.1 of the Google Beta Terraform Provider
