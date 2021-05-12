@@ -22,10 +22,16 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         /// <summary>
         /// The operating system type of the device.
-        /// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        /// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         /// </summary>
         [Input("osType", required: true)]
         public Input<string> OsType { get; set; } = null!;
+
+        /// <summary>
+        /// If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
+        /// </summary>
+        [Input("requireVerifiedChromeOs")]
+        public Input<bool>? RequireVerifiedChromeOs { get; set; }
 
         public AccessLevelBasicConditionDevicePolicyOsConstraintArgs()
         {

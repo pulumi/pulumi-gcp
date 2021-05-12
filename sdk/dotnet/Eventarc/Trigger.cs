@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc
 {
     /// <summary>
-    /// subcategory: "Eventarc"
-    /// layout: "google"
-    /// page_title: "Google: gcp.eventarc.Trigger"
-    /// sidebar_current: "docs-google-eventarc-trigger"
-    /// description: |-
-    ///   An event trigger sends messages to the event receiver service deployed on Cloud Run.
-    /// ---
-    /// 
     /// An event trigger sends messages to the event receiver service deployed on Cloud Run.
     /// 
     /// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
@@ -65,9 +57,6 @@ namespace Pulumi.Gcp.Eventarc
     ///                     LatestRevision = true,
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var trigger = new Gcp.Eventarc.Trigger("trigger", new Gcp.Eventarc.TriggerArgs
     ///         {
@@ -88,9 +77,6 @@ namespace Pulumi.Gcp.Eventarc
     ///                     Region = "us-central1",
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

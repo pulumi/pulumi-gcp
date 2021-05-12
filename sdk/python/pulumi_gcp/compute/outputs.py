@@ -7932,8 +7932,8 @@ class InstanceTemplateDisk(dict):
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
                than SCSI. Local SSDs can use either NVME or SCSI.
-        :param Mapping[str, str] labels: A set of key/value label pairs to assign to instances
-               created from this template,
+        :param Mapping[str, str] labels: A set of ket/value label pairs to assign to disk created from
+               this template
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
@@ -8057,8 +8057,8 @@ class InstanceTemplateDisk(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        A set of key/value label pairs to assign to instances
-        created from this template,
+        A set of ket/value label pairs to assign to disk created from
+        this template
         """
         return pulumi.get(self, "labels")
 
@@ -27516,8 +27516,8 @@ class GetInstanceTemplateDiskResult(dict):
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
                than SCSI. Local SSDs can use either NVME or SCSI.
-        :param Mapping[str, str] labels: A set of key/value label pairs to assign to instances
-               created from this template,
+        :param Mapping[str, str] labels: (Optional) A set of ket/value label pairs to assign to disk created from
+               this template
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
@@ -27626,8 +27626,8 @@ class GetInstanceTemplateDiskResult(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        A set of key/value label pairs to assign to instances
-        created from this template,
+        (Optional) A set of ket/value label pairs to assign to disk created from
+        this template
         """
         return pulumi.get(self, "labels")
 

@@ -181,8 +181,8 @@ class GetInstanceTemplateResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        A set of key/value label pairs to assign to instances
-        created from this template,
+        (Optional) A set of ket/value label pairs to assign to disk created from
+        this template
         """
         return pulumi.get(self, "labels")
 

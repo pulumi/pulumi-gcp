@@ -357,14 +357,6 @@ class WorkflowTemplate(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        subcategory: "Dataproc"
-        layout: "google"
-        page_title: "Google: dataproc.WorkflowTemplate"
-        sidebar_current: "docs-google-dataproc-workflow-template"
-        description: |-
-          A Workflow Template is a reusable workflow configuration.
-        ---
-
         A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
 
         ## Example Usage
@@ -464,14 +456,6 @@ class WorkflowTemplate(pulumi.CustomResource):
                  args: WorkflowTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        subcategory: "Dataproc"
-        layout: "google"
-        page_title: "Google: dataproc.WorkflowTemplate"
-        sidebar_current: "docs-google-dataproc-workflow-template"
-        description: |-
-          A Workflow Template is a reusable workflow configuration.
-        ---
-
         A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
 
         ## Example Usage

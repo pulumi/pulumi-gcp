@@ -18,6 +18,7 @@ class RegionDiskArgs:
                  replica_zones: pulumi.Input[Sequence[pulumi.Input[str]]],
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -42,6 +43,8 @@ class RegionDiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+               value: "SCSI" Possible values: ["SCSI", "NVME"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -84,6 +87,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -148,6 +153,19 @@ class RegionDiskArgs:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
 
     @property
     @pulumi.getter
@@ -291,6 +309,7 @@ class _RegionDiskState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_attach_timestamp: Optional[pulumi.Input[str]] = None,
@@ -322,6 +341,8 @@ class _RegionDiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+               value: "SCSI" Possible values: ["SCSI", "NVME"]
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -374,6 +395,8 @@ class _RegionDiskState:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -452,6 +475,19 @@ class _RegionDiskState:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
 
     @property
     @pulumi.getter(name="labelFingerprint")
@@ -682,6 +718,7 @@ class RegionDisk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -779,6 +816,8 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+               value: "SCSI" Possible values: ["SCSI", "NVME"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -912,6 +951,7 @@ class RegionDisk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -936,6 +976,7 @@ class RegionDisk(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
@@ -968,6 +1009,7 @@ class RegionDisk(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
+            interface: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_attach_timestamp: Optional[pulumi.Input[str]] = None,
@@ -1004,6 +1046,8 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+               value: "SCSI" Possible values: ["SCSI", "NVME"]
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -1057,6 +1101,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["interface"] = interface
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_attach_timestamp"] = last_attach_timestamp
@@ -1108,6 +1153,15 @@ class RegionDisk(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        """
+        return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter(name="labelFingerprint")

@@ -56,8 +56,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Interface;
         /// <summary>
-        /// A set of key/value label pairs to assign to instances
-        /// created from this template,
+        /// A set of ket/value label pairs to assign to disk created from
+        /// this template
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>

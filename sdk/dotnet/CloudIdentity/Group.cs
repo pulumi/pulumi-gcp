@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.CloudIdentity
     ///             {
     ///                 Id = "my-identity-group@example.com",
     ///             },
+    ///             InitialGroupConfig = "WITH_INITIAL_OWNER",
     ///             Labels = 
     ///             {
     ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
@@ -89,6 +90,17 @@ namespace Pulumi.Gcp.CloudIdentity
         /// </summary>
         [Output("groupKey")]
         public Output<Outputs.GroupGroupKey> GroupKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The initial configuration options for creating a Group.
+        /// See the
+        /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        /// for possible values.
+        /// Default value is `EMPTY`.
+        /// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        /// </summary>
+        [Output("initialGroupConfig")]
+        public Output<string?> InitialGroupConfig { get; private set; } = null!;
 
         /// <summary>
         /// The labels that apply to the Group.
@@ -186,6 +198,17 @@ namespace Pulumi.Gcp.CloudIdentity
         [Input("groupKey", required: true)]
         public Input<Inputs.GroupGroupKeyArgs> GroupKey { get; set; } = null!;
 
+        /// <summary>
+        /// The initial configuration options for creating a Group.
+        /// See the
+        /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        /// for possible values.
+        /// Default value is `EMPTY`.
+        /// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        /// </summary>
+        [Input("initialGroupConfig")]
+        public Input<string>? InitialGroupConfig { get; set; }
+
         [Input("labels", required: true)]
         private InputMap<string>? _labels;
 
@@ -242,6 +265,17 @@ namespace Pulumi.Gcp.CloudIdentity
         /// </summary>
         [Input("groupKey")]
         public Input<Inputs.GroupGroupKeyGetArgs>? GroupKey { get; set; }
+
+        /// <summary>
+        /// The initial configuration options for creating a Group.
+        /// See the
+        /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        /// for possible values.
+        /// Default value is `EMPTY`.
+        /// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        /// </summary>
+        [Input("initialGroupConfig")]
+        public Input<string>? InitialGroupConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

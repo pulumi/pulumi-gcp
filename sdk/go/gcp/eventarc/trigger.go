@@ -11,14 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// subcategory: "Eventarc"
-// layout: "google"
-// page_title: "Google: eventarc.Trigger"
-// sidebar_current: "docs-google-eventarc-trigger"
-// description: |-
-//   An event trigger sends messages to the event receiver service deployed on Cloud Run.
-// ---
-//
 // An event trigger sends messages to the event receiver service deployed on Cloud Run.
 //
 // * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
@@ -60,7 +52,7 @@ import (
 // 					LatestRevision: pulumi.Bool(true),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -78,7 +70,7 @@ import (
 // 					Region:  pulumi.String("us-central1"),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

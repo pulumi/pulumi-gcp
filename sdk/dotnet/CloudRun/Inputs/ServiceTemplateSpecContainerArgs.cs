@@ -117,6 +117,14 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("resources")]
         public Input<Inputs.ServiceTemplateSpecContainerResourcesArgs>? Resources { get; set; }
 
+        [Input("volumeMounts")]
+        private InputList<Inputs.ServiceTemplateSpecContainerVolumeMountArgs>? _volumeMounts;
+        public InputList<Inputs.ServiceTemplateSpecContainerVolumeMountArgs> VolumeMounts
+        {
+            get => _volumeMounts ?? (_volumeMounts = new InputList<Inputs.ServiceTemplateSpecContainerVolumeMountArgs>());
+            set => _volumeMounts = value;
+        }
+
         /// <summary>
         /// -
         /// (Optional, Deprecated)

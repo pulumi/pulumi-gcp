@@ -249,8 +249,8 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly instanceDescription!: pulumi.Output<string | undefined>;
     /**
-     * A set of key/value label pairs to assign to instances
-     * created from this template,
+     * A set of ket/value label pairs to assign to disk created from
+     * this template
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -450,8 +450,8 @@ export interface InstanceTemplateState {
      */
     readonly instanceDescription?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to instances
-     * created from this template,
+     * A set of ket/value label pairs to assign to disk created from
+     * this template
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -575,8 +575,8 @@ export interface InstanceTemplateArgs {
      */
     readonly instanceDescription?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to instances
-     * created from this template,
+     * A set of ket/value label pairs to assign to disk created from
+     * this template
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

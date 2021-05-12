@@ -1167,12 +1167,13 @@ func (o GetGroupMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetGroupsGroup struct {
-	CreateTime  string                   `pulumi:"createTime"`
-	Description string                   `pulumi:"description"`
-	DisplayName string                   `pulumi:"displayName"`
-	GroupKeys   []GetGroupsGroupGroupKey `pulumi:"groupKeys"`
-	Labels      map[string]string        `pulumi:"labels"`
-	Name        string                   `pulumi:"name"`
+	CreateTime         string                   `pulumi:"createTime"`
+	Description        string                   `pulumi:"description"`
+	DisplayName        string                   `pulumi:"displayName"`
+	GroupKeys          []GetGroupsGroupGroupKey `pulumi:"groupKeys"`
+	InitialGroupConfig string                   `pulumi:"initialGroupConfig"`
+	Labels             map[string]string        `pulumi:"labels"`
+	Name               string                   `pulumi:"name"`
 	// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
 	Parent     string `pulumi:"parent"`
 	UpdateTime string `pulumi:"updateTime"`
@@ -1190,12 +1191,13 @@ type GetGroupsGroupInput interface {
 }
 
 type GetGroupsGroupArgs struct {
-	CreateTime  pulumi.StringInput               `pulumi:"createTime"`
-	Description pulumi.StringInput               `pulumi:"description"`
-	DisplayName pulumi.StringInput               `pulumi:"displayName"`
-	GroupKeys   GetGroupsGroupGroupKeyArrayInput `pulumi:"groupKeys"`
-	Labels      pulumi.StringMapInput            `pulumi:"labels"`
-	Name        pulumi.StringInput               `pulumi:"name"`
+	CreateTime         pulumi.StringInput               `pulumi:"createTime"`
+	Description        pulumi.StringInput               `pulumi:"description"`
+	DisplayName        pulumi.StringInput               `pulumi:"displayName"`
+	GroupKeys          GetGroupsGroupGroupKeyArrayInput `pulumi:"groupKeys"`
+	InitialGroupConfig pulumi.StringInput               `pulumi:"initialGroupConfig"`
+	Labels             pulumi.StringMapInput            `pulumi:"labels"`
+	Name               pulumi.StringInput               `pulumi:"name"`
 	// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
 	Parent     pulumi.StringInput `pulumi:"parent"`
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
@@ -1266,6 +1268,10 @@ func (o GetGroupsGroupOutput) DisplayName() pulumi.StringOutput {
 
 func (o GetGroupsGroupOutput) GroupKeys() GetGroupsGroupGroupKeyArrayOutput {
 	return o.ApplyT(func(v GetGroupsGroup) []GetGroupsGroupGroupKey { return v.GroupKeys }).(GetGroupsGroupGroupKeyArrayOutput)
+}
+
+func (o GetGroupsGroupOutput) InitialGroupConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.InitialGroupConfig }).(pulumi.StringOutput)
 }
 
 func (o GetGroupsGroupOutput) Labels() pulumi.StringMapOutput {

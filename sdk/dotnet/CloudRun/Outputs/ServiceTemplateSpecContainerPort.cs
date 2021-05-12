@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly int ContainerPort;
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -407,24 +407,28 @@ class AccessLevelBasicConditionDevicePolicyArgs:
 class AccessLevelBasicConditionDevicePolicyOsConstraintArgs:
     def __init__(__self__, *,
                  os_type: pulumi.Input[str],
-                 minimum_version: Optional[pulumi.Input[str]] = None):
+                 minimum_version: Optional[pulumi.Input[str]] = None,
+                 require_verified_chrome_os: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] os_type: The operating system type of the device.
-               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         :param pulumi.Input[str] minimum_version: The minimum allowed OS version. If not set, any version
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+        :param pulumi.Input[bool] require_verified_chrome_os: If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
         """
         pulumi.set(__self__, "os_type", os_type)
         if minimum_version is not None:
             pulumi.set(__self__, "minimum_version", minimum_version)
+        if require_verified_chrome_os is not None:
+            pulumi.set(__self__, "require_verified_chrome_os", require_verified_chrome_os)
 
     @property
     @pulumi.getter(name="osType")
     def os_type(self) -> pulumi.Input[str]:
         """
         The operating system type of the device.
-        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         """
         return pulumi.get(self, "os_type")
 
@@ -445,6 +449,18 @@ class AccessLevelBasicConditionDevicePolicyOsConstraintArgs:
     @minimum_version.setter
     def minimum_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "minimum_version", value)
+
+    @property
+    @pulumi.getter(name="requireVerifiedChromeOs")
+    def require_verified_chrome_os(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
+        """
+        return pulumi.get(self, "require_verified_chrome_os")
+
+    @require_verified_chrome_os.setter
+    def require_verified_chrome_os(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_verified_chrome_os", value)
 
 
 @pulumi.input_type
@@ -571,7 +587,7 @@ class AccessLevelConditionDevicePolicyOsConstraintArgs:
                  minimum_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] os_type: The operating system type of the device.
-               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         :param pulumi.Input[str] minimum_version: The minimum allowed OS version. If not set, any version
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
@@ -585,7 +601,7 @@ class AccessLevelConditionDevicePolicyOsConstraintArgs:
     def os_type(self) -> pulumi.Input[str]:
         """
         The operating system type of the device.
-        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         """
         return pulumi.get(self, "os_type")
 
@@ -1132,7 +1148,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs:
                  minimum_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] os_type: The operating system type of the device.
-               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         :param pulumi.Input[str] minimum_version: The minimum allowed OS version. If not set, any version
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
@@ -1146,7 +1162,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs:
     def os_type(self) -> pulumi.Input[str]:
         """
         The operating system type of the device.
-        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
         """
         return pulumi.get(self, "os_type")
 

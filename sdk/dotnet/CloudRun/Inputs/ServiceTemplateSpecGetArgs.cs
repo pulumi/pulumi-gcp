@@ -61,6 +61,14 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
+        [Input("volumes")]
+        private InputList<Inputs.ServiceTemplateSpecVolumeGetArgs>? _volumes;
+        public InputList<Inputs.ServiceTemplateSpecVolumeGetArgs> Volumes
+        {
+            get => _volumes ?? (_volumes = new InputList<Inputs.ServiceTemplateSpecVolumeGetArgs>());
+            set => _volumes = value;
+        }
+
         public ServiceTemplateSpecGetArgs()
         {
         }

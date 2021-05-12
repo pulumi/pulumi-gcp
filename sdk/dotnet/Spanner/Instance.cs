@@ -107,6 +107,13 @@ namespace Pulumi.Gcp.Spanner
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+        /// This must be set to true if you created a backup manually in the console.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
@@ -204,6 +211,13 @@ namespace Pulumi.Gcp.Spanner
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+        /// This must be set to true if you created a backup manually in the console.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -262,6 +276,13 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// When deleting a spanner instance, this boolean option will delete all backups of this instance.
+        /// This must be set to true if you created a backup manually in the console.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

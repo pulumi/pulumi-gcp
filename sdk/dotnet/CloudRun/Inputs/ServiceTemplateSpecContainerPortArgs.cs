@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<int> ContainerPort { get; set; } = null!;
 
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

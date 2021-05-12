@@ -150,7 +150,19 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource does not support import.
+ * Budget can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:billing/budget:Budget default {{name}}
+ * ```
  */
 export class Budget extends pulumi.CustomResource {
     /**

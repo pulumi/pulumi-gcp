@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
  *
+ * > **Warning:** `googleCloudrunService` creates a Managed Google Cloud Run Service. If you need to create
+ * a Cloud Run Service on Anthos(GKE/VMWare) then you will need to create it using the kubernetes alpha provider.
+ * Have a look at the Cloud Run Anthos example below.
+ *
  * ## Example Usage
  * ### Cloud Run Service Basic
  *
@@ -178,6 +182,137 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Cloud Run Service Secret Environment Variables
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret",
+ *     replication: {
+ *         automatic: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [secret],
+ * });
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *                 envs: [{
+ *                     name: "SECRET_ENV_VAR",
+ *                     valueFrom: {
+ *                         secretKeyRef: {
+ *                             name: secret.secretId,
+ *                             key: "1",
+ *                         },
+ *                     },
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ *     metadata: {
+ *         annotations: {
+ *             "generated-by": "magic-modules",
+ *             "run.googleapis.com/launch-stage": "ALPHA",
+ *         },
+ *     },
+ *     traffics: [{
+ *         percent: 100,
+ *         latestRevision: true,
+ *     }],
+ *     autogenerateRevisionName: true,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [secret_version_data],
+ * });
+ * ```
+ * ### Cloud Run Service Secret Volumes
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret",
+ *     replication: {
+ *         automatic: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [secret],
+ * });
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *                 volumeMounts: [{
+ *                     name: "a-volume",
+ *                     mountPath: "/secrets",
+ *                 }],
+ *             }],
+ *             volumes: [{
+ *                 name: "a-volume",
+ *                 secret: {
+ *                     secretName: secret.secretId,
+ *                     items: [{
+ *                         key: "1",
+ *                         path: "my-secret",
+ *                     }],
+ *                 },
+ *             }],
+ *         },
+ *     },
+ *     metadata: {
+ *         annotations: {
+ *             "generated-by": "magic-modules",
+ *             "run.googleapis.com/launch-stage": "ALPHA",
+ *         },
+ *     },
+ *     traffics: [{
+ *         percent: 100,
+ *         latestRevision: true,
+ *     }],
+ *     autogenerateRevisionName: true,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [secret_version_data],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -242,7 +377,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.ServiceMetadata>;
     /**
-     * Name of the port.
+     * Volume's name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -339,7 +474,7 @@ export interface ServiceState {
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
-     * Name of the port.
+     * Volume's name.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -395,7 +530,7 @@ export interface ServiceArgs {
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
-     * Name of the port.
+     * Volume's name.
      */
     readonly name?: pulumi.Input<string>;
     /**

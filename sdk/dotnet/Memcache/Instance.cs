@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Memcache
     /// 
     /// To get more information about Instance, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
+    /// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1/projects.locations.instances)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
     /// 
@@ -39,9 +39,6 @@ namespace Pulumi.Gcp.Memcache
     ///             AddressType = "INTERNAL",
     ///             PrefixLength = 16,
     ///             Network = memcacheNetwork.Apply(memcacheNetwork =&gt; memcacheNetwork.Id),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new Gcp.ServiceNetworking.ConnectionArgs
     ///         {
@@ -51,9 +48,6 @@ namespace Pulumi.Gcp.Memcache
     ///             {
     ///                 serviceRange.Name,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var instance = new Gcp.Memcache.Instance("instance", new Gcp.Memcache.InstanceArgs
     ///         {
@@ -65,9 +59,6 @@ namespace Pulumi.Gcp.Memcache
     ///             },
     ///             NodeCount = 1,
     ///             MemcacheVersion = "MEMCACHE_1_5",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

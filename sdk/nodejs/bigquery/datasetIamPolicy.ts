@@ -138,6 +138,10 @@ export class DatasetIamPolicy extends pulumi.CustomResource {
      * a `gcp.organizations.getIAMPolicy` data source.
      */
     public readonly policyData!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -194,6 +198,10 @@ export interface DatasetIamPolicyState {
      * a `gcp.organizations.getIAMPolicy` data source.
      */
     readonly policyData?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -210,5 +218,9 @@ export interface DatasetIamPolicyArgs {
      * a `gcp.organizations.getIAMPolicy` data source.
      */
     readonly policyData: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

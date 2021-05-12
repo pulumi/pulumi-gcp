@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.CloudRun
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/run/docs/)
     /// 
+    /// &gt; **Warning:** `google_cloudrun_service` creates a Managed Google Cloud Run Service. If you need to create
+    /// a Cloud Run Service on Anthos(GKE/VMWare) then you will need to create it using the kubernetes alpha provider.
+    /// Have a look at the Cloud Run Anthos example below.
+    /// 
     /// ## Example Usage
     /// ### Cloud Run Service Basic
     /// 
@@ -281,6 +285,224 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// }
     /// ```
+    /// ### Cloud Run Service Secret Environment Variables
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var secret = new Gcp.SecretManager.Secret("secret", new Gcp.SecretManager.SecretArgs
+    ///         {
+    ///             SecretId = "secret",
+    ///             Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///             {
+    ///                 Automatic = true,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new Gcp.SecretManager.SecretVersionArgs
+    ///         {
+    ///             Secret = secret.Name,
+    ///             SecretData = "secret-data",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new Gcp.SecretManager.SecretIamMemberArgs
+    ///         {
+    ///             SecretId = secret.Id,
+    ///             Role = "roles/secretmanager.secretAccessor",
+    ///             Member = project.Apply(project =&gt; $"serviceAccount:{project.Number}-compute@developer.gserviceaccount.com"),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 secret,
+    ///             },
+    ///         });
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                             Envs = 
+    ///                             {
+    ///                                 new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerEnvArgs
+    ///                                 {
+    ///                                     Name = "SECRET_ENV_VAR",
+    ///                                     ValueFrom = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerEnvValueFromArgs
+    ///                                     {
+    ///                                         SecretKeyRef = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs
+    ///                                         {
+    ///                                             Name = secret.SecretId,
+    ///                                             Key = "1",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "generated-by", "magic-modules" },
+    ///                     { "run.googleapis.com/launch-stage", "ALPHA" },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     LatestRevision = true,
+    ///                 },
+    ///             },
+    ///             AutogenerateRevisionName = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 secret_version_data,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Secret Volumes
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var secret = new Gcp.SecretManager.Secret("secret", new Gcp.SecretManager.SecretArgs
+    ///         {
+    ///             SecretId = "secret",
+    ///             Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///             {
+    ///                 Automatic = true,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new Gcp.SecretManager.SecretVersionArgs
+    ///         {
+    ///             Secret = secret.Name,
+    ///             SecretData = "secret-data",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new Gcp.SecretManager.SecretIamMemberArgs
+    ///         {
+    ///             SecretId = secret.Id,
+    ///             Role = "roles/secretmanager.secretAccessor",
+    ///             Member = project.Apply(project =&gt; $"serviceAccount:{project.Number}-compute@developer.gserviceaccount.com"),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 secret,
+    ///             },
+    ///         });
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                             VolumeMounts = 
+    ///                             {
+    ///                                 new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerVolumeMountArgs
+    ///                                 {
+    ///                                     Name = "a-volume",
+    ///                                     MountPath = "/secrets",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Volumes = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeArgs
+    ///                         {
+    ///                             Name = "a-volume",
+    ///                             Secret = new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeSecretArgs
+    ///                             {
+    ///                                 SecretName = secret.SecretId,
+    ///                                 Items = 
+    ///                                 {
+    ///                                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeSecretItemArgs
+    ///                                     {
+    ///                                         Key = "1",
+    ///                                         Path = "my-secret",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "generated-by", "magic-modules" },
+    ///                     { "run.googleapis.com/launch-stage", "ALPHA" },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     LatestRevision = true,
+    ///                 },
+    ///             },
+    ///             AutogenerateRevisionName = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 secret_version_data,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -326,7 +548,7 @@ namespace Pulumi.Gcp.CloudRun
         public Output<Outputs.ServiceMetadata> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -438,7 +660,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<Inputs.ServiceMetadataArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -511,7 +733,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<Inputs.ServiceMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// Name of the port.
+        /// Volume's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

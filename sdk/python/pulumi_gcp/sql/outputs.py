@@ -1621,7 +1621,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  version: int):
         """
         :param str activation_policy: This specifies when the instance should be
-               active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+               active. Can be either `ALWAYS` or `NEVER`.
         :param Sequence[str] authorized_gae_applications: (Deprecated) This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
                for information on how to upgrade to Second Generation instances.
@@ -1663,7 +1663,7 @@ class GetDatabaseInstanceSettingResult(dict):
     def activation_policy(self) -> str:
         """
         This specifies when the instance should be
-        active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+        active. Can be either `ALWAYS` or `NEVER`.
         """
         return pulumi.get(self, "activation_policy")
 

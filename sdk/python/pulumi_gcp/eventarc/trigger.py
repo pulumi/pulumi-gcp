@@ -332,14 +332,6 @@ class Trigger(pulumi.CustomResource):
                  transports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]]] = None,
                  __props__=None):
         """
-        subcategory: "Eventarc"
-        layout: "google"
-        page_title: "Google: eventarc.Trigger"
-        sidebar_current: "docs-google-eventarc-trigger"
-        description: |-
-          An event trigger sends messages to the event receiver service deployed on Cloud Run.
-        ---
-
         An event trigger sends messages to the event receiver service deployed on Cloud Run.
 
         * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
@@ -367,8 +359,7 @@ class Trigger(pulumi.CustomResource):
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
                 percent=100,
                 latest_revision=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         trigger = gcp.eventarc.Trigger("trigger",
             location="us-central1",
             matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
@@ -380,8 +371,7 @@ class Trigger(pulumi.CustomResource):
                     service=default.name,
                     region="us-central1",
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -418,14 +408,6 @@ class Trigger(pulumi.CustomResource):
                  args: TriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        subcategory: "Eventarc"
-        layout: "google"
-        page_title: "Google: eventarc.Trigger"
-        sidebar_current: "docs-google-eventarc-trigger"
-        description: |-
-          An event trigger sends messages to the event receiver service deployed on Cloud Run.
-        ---
-
         An event trigger sends messages to the event receiver service deployed on Cloud Run.
 
         * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
@@ -453,8 +435,7 @@ class Trigger(pulumi.CustomResource):
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
                 percent=100,
                 latest_revision=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         trigger = gcp.eventarc.Trigger("trigger",
             location="us-central1",
             matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
@@ -466,8 +447,7 @@ class Trigger(pulumi.CustomResource):
                     service=default.name,
                     region="us-central1",
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

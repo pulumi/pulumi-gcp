@@ -11,14 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// subcategory: "Dataproc"
-// layout: "google"
-// page_title: "Google: dataproc.WorkflowTemplate"
-// sidebar_current: "docs-google-dataproc-workflow-template"
-// description: |-
-//   A Workflow Template is a reusable workflow configuration.
-// ---
-//
 // A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
 //
 // ## Example Usage

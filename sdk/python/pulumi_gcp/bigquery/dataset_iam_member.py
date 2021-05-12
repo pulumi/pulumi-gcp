@@ -26,6 +26,8 @@ class DatasetIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "member", member)
@@ -82,6 +84,10 @@ class DatasetIamMemberArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -102,6 +108,8 @@ class _DatasetIamMemberState:
         Input properties used for looking up and filtering DatasetIamMember resources.
         :param pulumi.Input[str] dataset_id: The dataset ID.
         :param pulumi.Input[str] etag: (Computed) The etag of the dataset's IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -164,6 +172,10 @@ class _DatasetIamMemberState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -287,6 +299,8 @@ class DatasetIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset_id: The dataset ID.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -454,6 +468,8 @@ class DatasetIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset_id: The dataset ID.
         :param pulumi.Input[str] etag: (Computed) The etag of the dataset's IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -499,6 +515,10 @@ class DatasetIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

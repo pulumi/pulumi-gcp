@@ -19,13 +19,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, config=None, display_name=None, id=None, labels=None, name=None, num_nodes=None, project=None, state=None):
+    def __init__(__self__, config=None, display_name=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, project=None, state=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if force_destroy and not isinstance(force_destroy, bool):
+            raise TypeError("Expected argument 'force_destroy' to be a bool")
+        pulumi.set(__self__, "force_destroy", force_destroy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -54,6 +57,11 @@ class GetInstanceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[bool]:
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter
@@ -97,6 +105,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             config=self.config,
             display_name=self.display_name,
+            force_destroy=self.force_destroy,
             id=self.id,
             labels=self.labels,
             name=self.name,
@@ -107,6 +116,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
 
 def get_instance(config: Optional[str] = None,
                  display_name: Optional[str] = None,
+                 force_destroy: Optional[bool] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None,
                  num_nodes: Optional[int] = None,
@@ -132,6 +142,7 @@ def get_instance(config: Optional[str] = None,
     __args__ = dict()
     __args__['config'] = config
     __args__['displayName'] = display_name
+    __args__['forceDestroy'] = force_destroy
     __args__['labels'] = labels
     __args__['name'] = name
     __args__['numNodes'] = num_nodes
@@ -145,6 +156,7 @@ def get_instance(config: Optional[str] = None,
     return AwaitableGetInstanceResult(
         config=__ret__.config,
         display_name=__ret__.display_name,
+        force_destroy=__ret__.force_destroy,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name,

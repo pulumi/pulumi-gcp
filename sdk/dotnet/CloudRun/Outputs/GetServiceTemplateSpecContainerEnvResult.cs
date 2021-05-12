@@ -18,15 +18,19 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string Name;
         public readonly string Value;
+        public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvValueFromResult> ValueFroms;
 
         [OutputConstructor]
         private GetServiceTemplateSpecContainerEnvResult(
             string name,
 
-            string value)
+            string value,
+
+            ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvValueFromResult> valueFroms)
         {
             Name = name;
             Value = value;
+            ValueFroms = valueFroms;
         }
     }
 }

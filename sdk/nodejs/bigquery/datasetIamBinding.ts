@@ -136,6 +136,10 @@ export class DatasetIamBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -202,6 +206,10 @@ export interface DatasetIamBindingState {
      */
     readonly etag?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -221,6 +229,10 @@ export interface DatasetIamBindingArgs {
      */
     readonly datasetId: pulumi.Input<string>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

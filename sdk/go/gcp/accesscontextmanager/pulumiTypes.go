@@ -670,8 +670,10 @@ type AccessLevelBasicConditionDevicePolicyOsConstraint struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 	OsType string `pulumi:"osType"`
+	// If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
+	RequireVerifiedChromeOs *bool `pulumi:"requireVerifiedChromeOs"`
 }
 
 // AccessLevelBasicConditionDevicePolicyOsConstraintInput is an input type that accepts AccessLevelBasicConditionDevicePolicyOsConstraintArgs and AccessLevelBasicConditionDevicePolicyOsConstraintOutput values.
@@ -691,8 +693,10 @@ type AccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 	OsType pulumi.StringInput `pulumi:"osType"`
+	// If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
+	RequireVerifiedChromeOs pulumi.BoolPtrInput `pulumi:"requireVerifiedChromeOs"`
 }
 
 func (AccessLevelBasicConditionDevicePolicyOsConstraintArgs) ElementType() reflect.Type {
@@ -754,9 +758,14 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) MinimumVersion(
 }
 
 // The operating system type of the device.
-// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
+func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) RequireVerifiedChromeOs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) *bool { return v.RequireVerifiedChromeOs }).(pulumi.BoolPtrOutput)
 }
 
 type AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput struct{ *pulumi.OutputState }
@@ -1041,7 +1050,7 @@ type AccessLevelConditionDevicePolicyOsConstraint struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 	OsType string `pulumi:"osType"`
 }
 
@@ -1062,7 +1071,7 @@ type AccessLevelConditionDevicePolicyOsConstraintArgs struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 	OsType pulumi.StringInput `pulumi:"osType"`
 }
 
@@ -1125,7 +1134,7 @@ func (o AccessLevelConditionDevicePolicyOsConstraintOutput) MinimumVersion() pul
 }
 
 // The operating system type of the device.
-// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 func (o AccessLevelConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -2295,7 +2304,7 @@ type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 	OsType string `pulumi:"osType"`
 }
 
@@ -2316,7 +2325,7 @@ type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 	OsType pulumi.StringInput `pulumi:"osType"`
 }
 
@@ -2379,7 +2388,7 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) Min
 }
 
 // The operating system type of the device.
-// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }

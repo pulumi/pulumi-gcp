@@ -33,7 +33,7 @@ class ServiceArgs:
         :param pulumi.Input['ServiceMetadataArgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the port.
+        :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ServiceTemplateArgs'] template: template holds the latest specification for the Revision to
@@ -110,7 +110,7 @@ class ServiceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the port.
+        Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -189,7 +189,7 @@ class _ServiceState:
         :param pulumi.Input['ServiceMetadataArgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the port.
+        :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]] statuses: The current status of the Service.
@@ -270,7 +270,7 @@ class _ServiceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the port.
+        Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -373,6 +373,10 @@ class Service(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
+        > **Warning:** `google_cloudrun_service` creates a Managed Google Cloud Run Service. If you need to create
+        a Cloud Run Service on Anthos(GKE/VMWare) then you will need to create it using the kubernetes alpha provider.
+        Have a look at the Cloud Run Anthos example below.
+
         ## Example Usage
         ### Cloud Run Service Basic
 
@@ -515,6 +519,121 @@ class Service(pulumi.CustomResource):
                 ),
             ])
         ```
+        ### Cloud Run Service Secret Environment Variables
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret]))
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                        envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                            name="SECRET_ENV_VAR",
+                            value_from=gcp.cloudrun.ServiceTemplateSpecContainerEnvValueFromArgs(
+                                secret_key_ref=gcp.cloudrun.ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs(
+                                    name=secret.secret_id,
+                                    key="1",
+                                ),
+                            ),
+                        )],
+                    )],
+                ),
+            ),
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "generated-by": "magic-modules",
+                    "run.googleapis.com/launch-stage": "ALPHA",
+                },
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            autogenerate_revision_name=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret_version_data]))
+        ```
+        ### Cloud Run Service Secret Volumes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret]))
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                        volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                            name="a-volume",
+                            mount_path="/secrets",
+                        )],
+                    )],
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                        name="a-volume",
+                        secret=gcp.cloudrun.ServiceTemplateSpecVolumeSecretArgs(
+                            secret_name=secret.secret_id,
+                            items=[gcp.cloudrun.ServiceTemplateSpecVolumeSecretItemArgs(
+                                key="1",
+                                path="my-secret",
+                            )],
+                        ),
+                    )],
+                ),
+            ),
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "generated-by": "magic-modules",
+                    "run.googleapis.com/launch-stage": "ALPHA",
+                },
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            autogenerate_revision_name=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret_version_data]))
+        ```
 
         ## Import
 
@@ -543,7 +662,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceMetadataArgs']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the port.
+        :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: template holds the latest specification for the Revision to
@@ -587,6 +706,10 @@ class Service(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
+        > **Warning:** `google_cloudrun_service` creates a Managed Google Cloud Run Service. If you need to create
+        a Cloud Run Service on Anthos(GKE/VMWare) then you will need to create it using the kubernetes alpha provider.
+        Have a look at the Cloud Run Anthos example below.
+
         ## Example Usage
         ### Cloud Run Service Basic
 
@@ -728,6 +851,121 @@ class Service(pulumi.CustomResource):
                     revision_name="cloudrun-srv-blue",
                 ),
             ])
+        ```
+        ### Cloud Run Service Secret Environment Variables
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret]))
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                        envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                            name="SECRET_ENV_VAR",
+                            value_from=gcp.cloudrun.ServiceTemplateSpecContainerEnvValueFromArgs(
+                                secret_key_ref=gcp.cloudrun.ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs(
+                                    name=secret.secret_id,
+                                    key="1",
+                                ),
+                            ),
+                        )],
+                    )],
+                ),
+            ),
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "generated-by": "magic-modules",
+                    "run.googleapis.com/launch-stage": "ALPHA",
+                },
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            autogenerate_revision_name=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret_version_data]))
+        ```
+        ### Cloud Run Service Secret Volumes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret]))
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                        volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                            name="a-volume",
+                            mount_path="/secrets",
+                        )],
+                    )],
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                        name="a-volume",
+                        secret=gcp.cloudrun.ServiceTemplateSpecVolumeSecretArgs(
+                            secret_name=secret.secret_id,
+                            items=[gcp.cloudrun.ServiceTemplateSpecVolumeSecretItemArgs(
+                                key="1",
+                                path="my-secret",
+                            )],
+                        ),
+                    )],
+                ),
+            ),
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "generated-by": "magic-modules",
+                    "run.googleapis.com/launch-stage": "ALPHA",
+                },
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            autogenerate_revision_name=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[secret_version_data]))
         ```
 
         ## Import
@@ -824,7 +1062,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceMetadataArgs']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the port.
+        :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]] statuses: The current status of the Service.
@@ -890,7 +1128,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the port.
+        Volume's name.
         """
         return pulumi.get(self, "name")
 

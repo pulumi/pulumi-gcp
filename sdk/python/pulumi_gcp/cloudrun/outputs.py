@@ -30,8 +30,14 @@ __all__ = [
     'ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference',
     'ServiceTemplateSpecContainerEnvFromSecretRef',
     'ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference',
+    'ServiceTemplateSpecContainerEnvValueFrom',
+    'ServiceTemplateSpecContainerEnvValueFromSecretKeyRef',
     'ServiceTemplateSpecContainerPort',
     'ServiceTemplateSpecContainerResources',
+    'ServiceTemplateSpecContainerVolumeMount',
+    'ServiceTemplateSpecVolume',
+    'ServiceTemplateSpecVolumeSecret',
+    'ServiceTemplateSpecVolumeSecretItem',
     'ServiceTraffic',
     'GetServiceMetadataResult',
     'GetServiceStatusResult',
@@ -46,8 +52,14 @@ __all__ = [
     'GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult',
     'GetServiceTemplateSpecContainerEnvFromSecretRefResult',
     'GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult',
+    'GetServiceTemplateSpecContainerEnvValueFromResult',
+    'GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult',
     'GetServiceTemplateSpecContainerPortResult',
     'GetServiceTemplateSpecContainerResourceResult',
+    'GetServiceTemplateSpecContainerVolumeMountResult',
+    'GetServiceTemplateSpecVolumeResult',
+    'GetServiceTemplateSpecVolumeSecretResult',
+    'GetServiceTemplateSpecVolumeSecretItemResult',
     'GetServiceTrafficResult',
 ]
 
@@ -379,7 +391,7 @@ class DomainMappingStatusResourceRecord(dict):
                  rrdata: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param str name: Name should be a verified domain
+        :param str name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -392,7 +404,7 @@ class DomainMappingStatusResourceRecord(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name should be a verified domain
+        Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         """
         return pulumi.get(self, "name")
 
@@ -805,7 +817,7 @@ class ServiceTemplateMetadata(dict):
                (scope and select) objects. May match selectors of replication controllers
                and routes.
                More info: http://kubernetes.io/docs/user-guide/labels
-        :param str name: Name of the port.
+        :param str name: Volume's name.
         :param str namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
         :param str resource_version: -
@@ -880,7 +892,7 @@ class ServiceTemplateMetadata(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the port.
+        Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -959,7 +971,8 @@ class ServiceTemplateSpec(dict):
                  containers: Optional[Sequence['outputs.ServiceTemplateSpecContainer']] = None,
                  service_account_name: Optional[str] = None,
                  serving_state: Optional[str] = None,
-                 timeout_seconds: Optional[int] = None):
+                 timeout_seconds: Optional[int] = None,
+                 volumes: Optional[Sequence['outputs.ServiceTemplateSpecVolume']] = None):
         """
         :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
                requests per container of the Revision. Values are:
@@ -990,6 +1003,8 @@ class ServiceTemplateSpec(dict):
             pulumi.set(__self__, "serving_state", serving_state)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="containerConcurrency")
@@ -1044,6 +1059,11 @@ class ServiceTemplateSpec(dict):
         """
         return pulumi.get(self, "timeout_seconds")
 
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.ServiceTemplateSpecVolume']]:
+        return pulumi.get(self, "volumes")
+
 
 @pulumi.output_type
 class ServiceTemplateSpecContainer(dict):
@@ -1052,6 +1072,8 @@ class ServiceTemplateSpecContainer(dict):
         suggest = None
         if key == "envFroms":
             suggest = "env_froms"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
         elif key == "workingDir":
             suggest = "working_dir"
 
@@ -1074,6 +1096,7 @@ class ServiceTemplateSpecContainer(dict):
                  envs: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnv']] = None,
                  ports: Optional[Sequence['outputs.ServiceTemplateSpecContainerPort']] = None,
                  resources: Optional['outputs.ServiceTemplateSpecContainerResources'] = None,
+                 volume_mounts: Optional[Sequence['outputs.ServiceTemplateSpecContainerVolumeMount']] = None,
                  working_dir: Optional[str] = None):
         """
         :param str image: Docker image name. This is most often a reference to a container located
@@ -1134,6 +1157,8 @@ class ServiceTemplateSpecContainer(dict):
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
             pulumi.set(__self__, "working_dir", working_dir)
 
@@ -1226,6 +1251,11 @@ class ServiceTemplateSpecContainer(dict):
         return pulumi.get(self, "resources")
 
     @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainerVolumeMount']]:
+        return pulumi.get(self, "volume_mounts")
+
+    @property
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> Optional[str]:
         """
@@ -1240,11 +1270,29 @@ class ServiceTemplateSpecContainer(dict):
 
 @pulumi.output_type
 class ServiceTemplateSpecContainerEnv(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueFrom":
+            suggest = "value_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerEnv. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerEnv.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerEnv.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: Optional[str] = None,
-                 value: Optional[str] = None):
+                 value: Optional[str] = None,
+                 value_from: Optional['outputs.ServiceTemplateSpecContainerEnvValueFrom'] = None):
         """
-        :param str name: Name of the port.
+        :param str name: Volume's name.
         :param str value: Variable references $(VAR_NAME) are expanded
                using the previous defined environment variables in the container and
                any route environment variables. If a variable cannot be resolved,
@@ -1258,12 +1306,14 @@ class ServiceTemplateSpecContainerEnv(dict):
             pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
+        if value_from is not None:
+            pulumi.set(__self__, "value_from", value_from)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the port.
+        Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -1281,6 +1331,11 @@ class ServiceTemplateSpecContainerEnv(dict):
         Defaults to "".
         """
         return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueFrom")
+    def value_from(self) -> Optional['outputs.ServiceTemplateSpecContainerEnvValueFrom']:
+        return pulumi.get(self, "value_from")
 
 
 @pulumi.output_type
@@ -1404,7 +1459,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of the port.
+        :param str name: Volume's name.
         """
         pulumi.set(__self__, "name", name)
 
@@ -1412,7 +1467,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the port.
+        Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -1472,7 +1527,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of the port.
+        :param str name: Volume's name.
         """
         pulumi.set(__self__, "name", name)
 
@@ -1480,7 +1535,75 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the port.
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecContainerEnvValueFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretKeyRef":
+            suggest = "secret_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerEnvValueFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerEnvValueFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerEnvValueFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_key_ref: 'outputs.ServiceTemplateSpecContainerEnvValueFromSecretKeyRef'):
+        """
+        :param 'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs' secret_key_ref: Selects a key (version) of a secret in Secret Manager.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> 'outputs.ServiceTemplateSpecContainerEnvValueFromSecretKeyRef':
+        """
+        Selects a key (version) of a secret in Secret Manager.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        """
+        :param str key: The Cloud Secret Manager secret version.
+               Can be 'latest' for the latest value or an integer for a specific version.
+        :param str name: Volume's name.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The Cloud Secret Manager secret version.
+        Can be 'latest' for the latest value or an integer for a specific version.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -1510,7 +1633,7 @@ class ServiceTemplateSpecContainerPort(dict):
                  protocol: Optional[str] = None):
         """
         :param int container_port: Port number.
-        :param str name: Name of the port.
+        :param str name: Volume's name.
         :param str protocol: Protocol used on port. Defaults to TCP.
         """
         pulumi.set(__self__, "container_port", container_port)
@@ -1531,7 +1654,7 @@ class ServiceTemplateSpecContainerPort(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the port.
+        Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -1585,6 +1708,199 @@ class ServiceTemplateSpecContainerResources(dict):
         https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecContainerVolumeMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerVolumeMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerVolumeMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerVolumeMount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: str,
+                 name: str):
+        """
+        :param str mount_path: Path within the container at which the volume should be mounted.  Must
+               not contain ':'.
+        :param str name: Volume's name.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        Path within the container at which the volume should be mounted.  Must
+        not contain ':'.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecVolume(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 secret: 'outputs.ServiceTemplateSpecVolumeSecret'):
+        """
+        :param str name: Volume's name.
+        :param 'ServiceTemplateSpecVolumeSecretArgs' secret: The secret's value will be presented as the content of a file whose
+               name is defined in the item path. If no items are defined, the name of
+               the file is the secret_name.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> 'outputs.ServiceTemplateSpecVolumeSecret':
+        """
+        The secret's value will be presented as the content of a file whose
+        name is defined in the item path. If no items are defined, the name of
+        the file is the secret_name.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecVolumeSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretName":
+            suggest = "secret_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecVolumeSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecVolumeSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecVolumeSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_name: str,
+                 items: Optional[Sequence['outputs.ServiceTemplateSpecVolumeSecretItem']] = None):
+        """
+        :param str secret_name: The name of the secret in Cloud Secret Manager. By default, the secret
+               is assumed to be in the same project.
+               If the secret is in another project, you must define an alias.
+               An alias definition has the form:
+               <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+               If multiple alias definitions are needed, they must be separated by
+               commas.
+               The alias definitions must be set on the run.googleapis.com/secrets
+               annotation.
+        :param Sequence['ServiceTemplateSpecVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the
+               secret_name.
+               If specified, the key will be used as the version to fetch from Cloud
+               Secret Manager and the path will be the name of the file exposed in the
+               volume. When items are defined, they must specify a key and a path.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "secret_name", secret_name)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> str:
+        """
+        The name of the secret in Cloud Secret Manager. By default, the secret
+        is assumed to be in the same project.
+        If the secret is in another project, you must define an alias.
+        An alias definition has the form:
+        <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+        If multiple alias definitions are needed, they must be separated by
+        commas.
+        The alias definitions must be set on the run.googleapis.com/secrets
+        annotation.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.ServiceTemplateSpecVolumeSecretItem']]:
+        """
+        If unspecified, the volume will expose a file whose name is the
+        secret_name.
+        If specified, the key will be used as the version to fetch from Cloud
+        Secret Manager and the path will be the name of the file exposed in the
+        volume. When items are defined, they must specify a key and a path.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "items")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecVolumeSecretItem(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 path: str):
+        """
+        :param str key: The Cloud Secret Manager secret version.
+               Can be 'latest' for the latest value or an integer for a specific version.
+        :param str path: The relative path of the file to map the key to.
+               May not be an absolute path.
+               May not contain the path element '..'.
+               May not start with the string '..'.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The Cloud Secret Manager secret version.
+        Can be 'latest' for the latest value or an integer for a specific version.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The relative path of the file to map the key to.
+        May not be an absolute path.
+        May not contain the path element '..'.
+        May not start with the string '..'.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type
@@ -1874,12 +2190,14 @@ class GetServiceTemplateSpecResult(dict):
                  containers: Sequence['outputs.GetServiceTemplateSpecContainerResult'],
                  service_account_name: str,
                  serving_state: str,
-                 timeout_seconds: int):
+                 timeout_seconds: int,
+                 volumes: Sequence['outputs.GetServiceTemplateSpecVolumeResult']):
         pulumi.set(__self__, "container_concurrency", container_concurrency)
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "service_account_name", service_account_name)
         pulumi.set(__self__, "serving_state", serving_state)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="containerConcurrency")
@@ -1906,6 +2224,11 @@ class GetServiceTemplateSpecResult(dict):
     def timeout_seconds(self) -> int:
         return pulumi.get(self, "timeout_seconds")
 
+    @property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GetServiceTemplateSpecVolumeResult']:
+        return pulumi.get(self, "volumes")
+
 
 @pulumi.output_type
 class GetServiceTemplateSpecContainerResult(dict):
@@ -1917,6 +2240,7 @@ class GetServiceTemplateSpecContainerResult(dict):
                  image: str,
                  ports: Sequence['outputs.GetServiceTemplateSpecContainerPortResult'],
                  resources: Sequence['outputs.GetServiceTemplateSpecContainerResourceResult'],
+                 volume_mounts: Sequence['outputs.GetServiceTemplateSpecContainerVolumeMountResult'],
                  working_dir: str):
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "commands", commands)
@@ -1925,6 +2249,7 @@ class GetServiceTemplateSpecContainerResult(dict):
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
 
     @property
@@ -1963,6 +2288,11 @@ class GetServiceTemplateSpecContainerResult(dict):
         return pulumi.get(self, "resources")
 
     @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Sequence['outputs.GetServiceTemplateSpecContainerVolumeMountResult']:
+        return pulumi.get(self, "volume_mounts")
+
+    @property
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> str:
         return pulumi.get(self, "working_dir")
@@ -1972,12 +2302,14 @@ class GetServiceTemplateSpecContainerResult(dict):
 class GetServiceTemplateSpecContainerEnvResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 value: str):
+                 value: str,
+                 value_froms: Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromResult']):
         """
         :param str name: The name of the Cloud Run Service.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_froms", value_froms)
 
     @property
     @pulumi.getter
@@ -1991,6 +2323,11 @@ class GetServiceTemplateSpecContainerEnvResult(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueFroms")
+    def value_froms(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromResult']:
+        return pulumi.get(self, "value_froms")
 
 
 @pulumi.output_type
@@ -2094,6 +2431,43 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(
 
 
 @pulumi.output_type
+class GetServiceTemplateSpecContainerEnvValueFromResult(dict):
+    def __init__(__self__, *,
+                 secret_key_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult']):
+        pulumi.set(__self__, "secret_key_reves", secret_key_reves)
+
+    @property
+    @pulumi.getter(name="secretKeyReves")
+    def secret_key_reves(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult']:
+        return pulumi.get(self, "secret_key_reves")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetServiceTemplateSpecContainerPortResult(dict):
     def __init__(__self__, *,
                  container_port: int,
@@ -2142,6 +2516,94 @@ class GetServiceTemplateSpecContainerResourceResult(dict):
     @pulumi.getter
     def requests(self) -> Mapping[str, str]:
         return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerVolumeMountResult(dict):
+    def __init__(__self__, *,
+                 mount_path: str,
+                 name: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecVolumeResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 secrets: Sequence['outputs.GetServiceTemplateSpecVolumeSecretResult']):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secrets", secrets)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> Sequence['outputs.GetServiceTemplateSpecVolumeSecretResult']:
+        return pulumi.get(self, "secrets")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecVolumeSecretResult(dict):
+    def __init__(__self__, *,
+                 items: Sequence['outputs.GetServiceTemplateSpecVolumeSecretItemResult'],
+                 secret_name: str):
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "secret_name", secret_name)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Sequence['outputs.GetServiceTemplateSpecVolumeSecretItemResult']:
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> str:
+        return pulumi.get(self, "secret_name")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecVolumeSecretItemResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 path: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 StartTime = "08:00",
     ///             },
-    ///             Size = 1,
+    ///             InitialSize = 1,
     ///             NodeTemplate = soletenant_tmpl.Id,
     ///             AutoscalingPolicy = new Gcp.Compute.Inputs.NodeGroupAutoscalingPolicyArgs
     ///             {
@@ -132,6 +132,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// </summary>
+        [Output("initialSize")]
+        public Output<int?> InitialSize { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         /// </summary>
         [Output("maintenancePolicy")]
@@ -170,7 +176,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The total number of nodes in the node group.
+        /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -242,6 +248,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// </summary>
+        [Input("initialSize")]
+        public Input<int>? InitialSize { get; set; }
+
+        /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         /// </summary>
         [Input("maintenancePolicy")]
@@ -274,10 +286,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The total number of nodes in the node group.
+        /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         /// </summary>
-        [Input("size", required: true)]
-        public Input<int> Size { get; set; } = null!;
+        [Input("size")]
+        public Input<int>? Size { get; set; }
 
         /// <summary>
         /// Zone where this node group is located
@@ -311,6 +323,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// </summary>
+        [Input("initialSize")]
+        public Input<int>? InitialSize { get; set; }
 
         /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
@@ -351,7 +369,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The total number of nodes in the node group.
+        /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

@@ -83,7 +83,7 @@ import (
 // 			MaintenanceWindow: &compute.NodeGroupMaintenanceWindowArgs{
 // 				StartTime: pulumi.String("08:00"),
 // 			},
-// 			Size:         pulumi.Int(1),
+// 			InitialSize:  pulumi.Int(1),
 // 			NodeTemplate: soletenant_tmpl.ID(),
 // 			AutoscalingPolicy: &compute.NodeGroupAutoscalingPolicyArgs{
 // 				Mode:     pulumi.String("ONLY_SCALE_OUT"),
@@ -129,6 +129,8 @@ type NodeGroup struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	InitialSize pulumi.IntPtrOutput `pulumi:"initialSize"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrOutput `pulumi:"maintenancePolicy"`
 	// contains properties for the timeframe of maintenance
@@ -143,7 +145,7 @@ type NodeGroup struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The total number of nodes in the node group.
+	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// Zone where this node group is located
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -158,9 +160,6 @@ func NewNodeGroup(ctx *pulumi.Context,
 
 	if args.NodeTemplate == nil {
 		return nil, errors.New("invalid value for required argument 'NodeTemplate'")
-	}
-	if args.Size == nil {
-		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource NodeGroup
 	err := ctx.RegisterResource("gcp:compute/nodeGroup:NodeGroup", name, args, &resource, opts...)
@@ -192,6 +191,8 @@ type nodeGroupState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
+	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	InitialSize *int `pulumi:"initialSize"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// contains properties for the timeframe of maintenance
@@ -206,7 +207,7 @@ type nodeGroupState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The total number of nodes in the node group.
+	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size *int `pulumi:"size"`
 	// Zone where this node group is located
 	Zone *string `pulumi:"zone"`
@@ -221,6 +222,8 @@ type NodeGroupState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
+	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	InitialSize pulumi.IntPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
 	// contains properties for the timeframe of maintenance
@@ -235,7 +238,7 @@ type NodeGroupState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The total number of nodes in the node group.
+	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size pulumi.IntPtrInput
 	// Zone where this node group is located
 	Zone pulumi.StringPtrInput
@@ -252,6 +255,8 @@ type nodeGroupArgs struct {
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
+	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	InitialSize *int `pulumi:"initialSize"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// contains properties for the timeframe of maintenance
@@ -264,8 +269,8 @@ type nodeGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The total number of nodes in the node group.
-	Size int `pulumi:"size"`
+	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	Size *int `pulumi:"size"`
 	// Zone where this node group is located
 	Zone *string `pulumi:"zone"`
 }
@@ -278,6 +283,8 @@ type NodeGroupArgs struct {
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
+	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	InitialSize pulumi.IntPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
 	// contains properties for the timeframe of maintenance
@@ -290,8 +297,8 @@ type NodeGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The total number of nodes in the node group.
-	Size pulumi.IntInput
+	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	Size pulumi.IntPtrInput
 	// Zone where this node group is located
 	Zone pulumi.StringPtrInput
 }

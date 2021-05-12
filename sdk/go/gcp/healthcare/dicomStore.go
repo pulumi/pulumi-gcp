@@ -60,6 +60,78 @@ import (
 // 	})
 // }
 // ```
+// ### Healthcare Dicom Store Bq Stream
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		topic, err := pubsub.NewTopic(ctx, "topic", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bqDataset, err := bigquery.NewDataset(ctx, "bqDataset", &bigquery.DatasetArgs{
+// 			DatasetId:               pulumi.String("dicom_bq_ds"),
+// 			FriendlyName:            pulumi.String("test"),
+// 			Description:             pulumi.String("This is a test description"),
+// 			Location:                pulumi.String("US"),
+// 			DeleteContentsOnDestroy: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bqTable, err := bigquery.NewTable(ctx, "bqTable", &bigquery.TableArgs{
+// 			DeletionProtection: pulumi.Bool(false),
+// 			DatasetId:          bqDataset.DatasetId,
+// 			TableId:            pulumi.String("dicom_bq_tb"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewDicomStore(ctx, "_default", &healthcare.DicomStoreArgs{
+// 			Dataset: dataset.ID(),
+// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
+// 				PubsubTopic: topic.ID(),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"label1": pulumi.String("labelvalue1"),
+// 			},
+// 			StreamConfigs: healthcare.DicomStoreStreamConfigArray{
+// 				&healthcare.DicomStoreStreamConfigArgs{
+// 					BigqueryDestination: &healthcare.DicomStoreStreamConfigBigqueryDestinationArgs{
+// 						TableUri: pulumi.All(bqDataset.Project, bqDataset.DatasetId, bqTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+// 							project := _args[0].(string)
+// 							datasetId := _args[1].(string)
+// 							tableId := _args[2].(string)
+// 							return fmt.Sprintf("%v%v%v%v%v%v", "bq://", project, ".", datasetId, ".", tableId), nil
+// 						}).(pulumi.StringOutput),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -95,6 +167,10 @@ type DicomStore struct {
 	NotificationConfig DicomStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
+	StreamConfigs DicomStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
 }
 
 // NewDicomStore registers a new resource with the given unique name, arguments, and options.
@@ -149,6 +225,10 @@ type dicomStoreState struct {
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
+	StreamConfigs []DicomStoreStreamConfig `pulumi:"streamConfigs"`
 }
 
 type DicomStoreState struct {
@@ -172,6 +252,10 @@ type DicomStoreState struct {
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
+	StreamConfigs DicomStoreStreamConfigArrayInput
 }
 
 func (DicomStoreState) ElementType() reflect.Type {
@@ -197,6 +281,10 @@ type dicomStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
+	StreamConfigs []DicomStoreStreamConfig `pulumi:"streamConfigs"`
 }
 
 // The set of arguments for constructing a DicomStore resource.
@@ -219,6 +307,10 @@ type DicomStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
+	StreamConfigs DicomStoreStreamConfigArrayInput
 }
 
 func (DicomStoreArgs) ElementType() reflect.Type {

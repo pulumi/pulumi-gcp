@@ -131,6 +131,11 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.RegionDiskDiskEncryptionKey | undefined>;
     /**
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     */
+    public readonly interface!: pulumi.Output<string | undefined>;
+    /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
@@ -240,6 +245,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
+            inputs["interface"] = state ? state.interface : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
@@ -263,6 +269,7 @@ export class RegionDisk extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
+            inputs["interface"] = args ? args.interface : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
@@ -314,6 +321,11 @@ export interface RegionDiskState {
      * Structure is documented below.
      */
     readonly diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
+    /**
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     */
+    readonly interface?: pulumi.Input<string>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -431,6 +443,11 @@ export interface RegionDiskArgs {
      * Structure is documented below.
      */
     readonly diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
+    /**
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     */
+    readonly interface?: pulumi.Input<string>;
     /**
      * Labels to apply to this disk.  A list of key->value pairs.
      */

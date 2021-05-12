@@ -27,7 +27,7 @@ class DomainMappingArgs:
                Structure is documented below.
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -81,7 +81,7 @@ class DomainMappingArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name should be a verified domain
+        Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         """
         return pulumi.get(self, "name")
 
@@ -117,7 +117,7 @@ class _DomainMappingState:
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
@@ -166,7 +166,7 @@ class _DomainMappingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name should be a verified domain
+        Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         """
         return pulumi.get(self, "name")
 
@@ -283,7 +283,7 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
@@ -419,7 +419,7 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
@@ -459,7 +459,7 @@ class DomainMapping(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name should be a verified domain
+        Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         """
         return pulumi.get(self, "name")
 

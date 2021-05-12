@@ -17,6 +17,8 @@ __all__ = [
     'DicomStoreIamBindingCondition',
     'DicomStoreIamMemberCondition',
     'DicomStoreNotificationConfig',
+    'DicomStoreStreamConfig',
+    'DicomStoreStreamConfigBigqueryDestination',
     'FhirStoreIamBindingCondition',
     'FhirStoreIamMemberCondition',
     'FhirStoreNotificationConfig',
@@ -235,6 +237,78 @@ class DicomStoreNotificationConfig(dict):
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
+
+
+@pulumi.output_type
+class DicomStoreStreamConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryDestination":
+            suggest = "bigquery_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DicomStoreStreamConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DicomStoreStreamConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DicomStoreStreamConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bigquery_destination: 'outputs.DicomStoreStreamConfigBigqueryDestination'):
+        """
+        :param 'DicomStoreStreamConfigBigqueryDestinationArgs' bigquery_destination: BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+
+    @property
+    @pulumi.getter(name="bigqueryDestination")
+    def bigquery_destination(self) -> 'outputs.DicomStoreStreamConfigBigqueryDestination':
+        """
+        BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_destination")
+
+
+@pulumi.output_type
+class DicomStoreStreamConfigBigqueryDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableUri":
+            suggest = "table_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DicomStoreStreamConfigBigqueryDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DicomStoreStreamConfigBigqueryDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DicomStoreStreamConfigBigqueryDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table_uri: str):
+        """
+        :param str table_uri: a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        """
+        pulumi.set(__self__, "table_uri", table_uri)
+
+    @property
+    @pulumi.getter(name="tableUri")
+    def table_uri(self) -> str:
+        """
+        a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        """
+        return pulumi.get(self, "table_uri")
 
 
 @pulumi.output_type

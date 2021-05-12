@@ -34,6 +34,51 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Healthcare Dicom Store Bq Stream
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {}, {
+ *     provider: google_beta,
+ * });
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const bqDataset = new gcp.bigquery.Dataset("bqDataset", {
+ *     datasetId: "dicom_bq_ds",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const bqTable = new gcp.bigquery.Table("bqTable", {
+ *     deletionProtection: false,
+ *     datasetId: bqDataset.datasetId,
+ *     tableId: "dicom_bq_tb",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.healthcare.DicomStore("default", {
+ *     dataset: dataset.id,
+ *     notificationConfig: {
+ *         pubsubTopic: topic.id,
+ *     },
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     streamConfigs: [{
+ *         bigqueryDestination: {
+ *             tableUri: pulumi.interpolate`bq://${bqDataset.project}.${bqDataset.datasetId}.${bqTable.tableId}`,
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -105,6 +150,12 @@ export class DicomStore extends pulumi.CustomResource {
      * The fully qualified name of this dataset
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+     * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+     * tables in a BigQuery dataset.
+     */
+    public readonly streamConfigs!: pulumi.Output<outputs.healthcare.DicomStoreStreamConfig[] | undefined>;
 
     /**
      * Create a DicomStore resource with the given unique name, arguments, and options.
@@ -124,6 +175,7 @@ export class DicomStore extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["streamConfigs"] = state ? state.streamConfigs : undefined;
         } else {
             const args = argsOrState as DicomStoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
@@ -133,6 +185,7 @@ export class DicomStore extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -176,6 +229,12 @@ export interface DicomStoreState {
      * The fully qualified name of this dataset
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+     * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+     * tables in a BigQuery dataset.
+     */
+    readonly streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[]>;
 }
 
 /**
@@ -208,4 +267,10 @@ export interface DicomStoreArgs {
      * Structure is documented below.
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;
+    /**
+     * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+     * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+     * tables in a BigQuery dataset.
+     */
+    readonly streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[]>;
 }

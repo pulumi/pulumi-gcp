@@ -12,8 +12,6 @@ import (
 
 // Creates a new bucket in Google cloud storage service (GCS).
 // Once a bucket has been created, its location can't be changed.
-// [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
-// using the [`storage.BucketACL`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html) resource.
 //
 // For more information see
 // [the official documentation](https://cloud.google.com/storage/docs/overview)
@@ -154,7 +152,7 @@ type Bucket struct {
 	RetentionPolicy BucketRetentionPolicyPtrOutput `pulumi:"retentionPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolOutput `pulumi:"uniformBucketLevelAccess"`
@@ -227,7 +225,7 @@ type bucketState struct {
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
@@ -272,7 +270,7 @@ type BucketState struct {
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolPtrInput
@@ -319,7 +317,7 @@ type bucketArgs struct {
 	RequesterPays *bool `pulumi:"requesterPays"`
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
-	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
@@ -361,7 +359,7 @@ type BucketArgs struct {
 	RequesterPays pulumi.BoolPtrInput
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 	RetentionPolicy BucketRetentionPolicyPtrInput
-	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolPtrInput

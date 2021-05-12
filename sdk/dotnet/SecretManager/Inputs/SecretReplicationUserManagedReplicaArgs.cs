@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.SecretManager.Inputs
     public sealed class SecretReplicationUserManagedReplicaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Customer Managed Encryption for the secret.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customerManagedEncryption")]
+        public Input<Inputs.SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs>? CustomerManagedEncryption { get; set; }
+
+        /// <summary>
         /// The canonical IDs of the location to replicate data. For example: "us-east1".
         /// </summary>
         [Input("location", required: true)]

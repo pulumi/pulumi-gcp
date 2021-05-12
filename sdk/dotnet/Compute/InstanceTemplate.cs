@@ -267,8 +267,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> InstanceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to instances
-        /// created from this template,
+        /// A set of ket/value label pairs to assign to disk created from
+        /// this template
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -495,8 +495,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to instances
-        /// created from this template,
+        /// A set of ket/value label pairs to assign to disk created from
+        /// this template
         /// </summary>
         public InputMap<string> Labels
         {
@@ -687,8 +687,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to instances
-        /// created from this template,
+        /// A set of ket/value label pairs to assign to disk created from
+        /// this template
         /// </summary>
         public InputMap<string> Labels
         {

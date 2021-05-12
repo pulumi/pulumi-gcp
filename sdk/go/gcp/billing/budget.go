@@ -256,7 +256,19 @@ import (
 //
 // ## Import
 //
-// This resource does not support import.
+// Budget can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:billing/budget:Budget default {{name}}
+// ```
 type Budget struct {
 	pulumi.CustomResourceState
 

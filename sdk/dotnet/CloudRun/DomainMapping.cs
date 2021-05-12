@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.CloudRun
         public Output<Outputs.DomainMappingMetadata> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Name should be a verified domain
+        /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<Inputs.DomainMappingMetadataArgs> Metadata { get; set; } = null!;
 
         /// <summary>
-        /// Name should be a verified domain
+        /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<Inputs.DomainMappingMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// Name should be a verified domain
+        /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

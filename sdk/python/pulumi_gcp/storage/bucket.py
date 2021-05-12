@@ -49,7 +49,7 @@ class BucketArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
-        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input['BucketWebsiteArgs'] website: Configuration if the bucket acts as a website. Structure is documented below.
@@ -252,7 +252,7 @@ class BucketArgs:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
 
@@ -337,7 +337,7 @@ class _BucketState:
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
@@ -557,7 +557,7 @@ class _BucketState:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
 
@@ -640,8 +640,6 @@ class Bucket(pulumi.CustomResource):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
-        [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
-        using the [`storage.BucketACL`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html) resource.
 
         For more information see
         [the official documentation](https://cloud.google.com/storage/docs/overview)
@@ -731,7 +729,7 @@ class Bucket(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
-        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: Configuration if the bucket acts as a website. Structure is documented below.
@@ -745,8 +743,6 @@ class Bucket(pulumi.CustomResource):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
-        [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
-        using the [`storage.BucketACL`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html) resource.
 
         For more information see
         [the official documentation](https://cloud.google.com/storage/docs/overview)
@@ -937,7 +933,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
@@ -1084,7 +1080,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> pulumi.Output[Optional[str]]:
         """
-        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
 

@@ -1264,7 +1264,7 @@ type EnvironmentConfigPrivateEnvironmentConfig struct {
 	// for assigning internal IP addresses to the cluster master or set of masters and to the
 	// internal load balancer virtual IP. This range must not overlap with any other ranges
 	// in use within the cluster's network.
-	// If left blank, the default value of '172.16.0.0/28' is used.
+	// If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
 	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
 	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
 	WebServerIpv4CidrBlock *string `pulumi:"webServerIpv4CidrBlock"`
@@ -1291,7 +1291,7 @@ type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
 	// for assigning internal IP addresses to the cluster master or set of masters and to the
 	// internal load balancer virtual IP. This range must not overlap with any other ranges
 	// in use within the cluster's network.
-	// If left blank, the default value of '172.16.0.0/28' is used.
+	// If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
 	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
 	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
 	WebServerIpv4CidrBlock pulumi.StringPtrInput `pulumi:"webServerIpv4CidrBlock"`
@@ -1389,7 +1389,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint()
 // for assigning internal IP addresses to the cluster master or set of masters and to the
 // internal load balancer virtual IP. This range must not overlap with any other ranges
 // in use within the cluster's network.
-// If left blank, the default value of '172.16.0.0/28' is used.
+// If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -1444,7 +1444,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivateEndpoin
 // for assigning internal IP addresses to the cluster master or set of masters and to the
 // internal load balancer virtual IP. This range must not overlap with any other ranges
 // in use within the cluster's network.
-// If left blank, the default value of '172.16.0.0/28' is used.
+// If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
 		if v == nil {

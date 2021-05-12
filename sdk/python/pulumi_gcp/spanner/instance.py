@@ -15,6 +15,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
@@ -29,6 +30,8 @@ class InstanceArgs:
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
+               This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
@@ -40,6 +43,8 @@ class InstanceArgs:
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "display_name", display_name)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -78,6 +83,19 @@ class InstanceArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When deleting a spanner instance, this boolean option will delete all backups of this instance.
+        This must be set to true if you created a backup manually in the console.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter
@@ -137,6 +155,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
@@ -152,6 +171,8 @@ class _InstanceState:
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
+               This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
@@ -166,6 +187,8 @@ class _InstanceState:
             pulumi.set(__self__, "config", config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -206,6 +229,19 @@ class _InstanceState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When deleting a spanner instance, this boolean option will delete all backups of this instance.
+        This must be set to true if you created a backup manually in the console.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter
@@ -279,6 +315,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
@@ -350,6 +387,8 @@ class Instance(pulumi.CustomResource):
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
+               This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
@@ -438,6 +477,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
@@ -460,6 +500,7 @@ class Instance(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["num_nodes"] = num_nodes
@@ -477,6 +518,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             num_nodes: Optional[pulumi.Input[int]] = None,
@@ -497,6 +539,8 @@ class Instance(pulumi.CustomResource):
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
+               This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
@@ -513,6 +557,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["config"] = config
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["num_nodes"] = num_nodes
@@ -541,6 +586,15 @@ class Instance(pulumi.CustomResource):
         unique per project and between 4 and 30 characters in length.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When deleting a spanner instance, this boolean option will delete all backups of this instance.
+        This must be set to true if you created a backup manually in the console.
+        """
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter

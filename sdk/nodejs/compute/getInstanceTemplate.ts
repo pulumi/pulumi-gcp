@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * // using a filter
  * const generic_regex = pulumi.output(gcp.compute.getInstanceTemplate({
- *     filter: "name eq generic-tpl-.*",
+ *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
  * }, { async: true }));
  * ```
@@ -112,8 +112,8 @@ export interface GetInstanceTemplateResult {
      */
     readonly instanceDescription: string;
     /**
-     * A set of key/value label pairs to assign to instances
-     * created from this template,
+     * (Optional) A set of ket/value label pairs to assign to disk created from
+     * this template
      */
     readonly labels: {[key: string]: string};
     /**

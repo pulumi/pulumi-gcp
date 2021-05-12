@@ -16,6 +16,8 @@ __all__ = [
     'DicomStoreIamBindingConditionArgs',
     'DicomStoreIamMemberConditionArgs',
     'DicomStoreNotificationConfigArgs',
+    'DicomStoreStreamConfigArgs',
+    'DicomStoreStreamConfigBigqueryDestinationArgs',
     'FhirStoreIamBindingConditionArgs',
     'FhirStoreIamMemberConditionArgs',
     'FhirStoreNotificationConfigArgs',
@@ -293,6 +295,52 @@ class DicomStoreNotificationConfigArgs:
     @pubsub_topic.setter
     def pubsub_topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "pubsub_topic", value)
+
+
+@pulumi.input_type
+class DicomStoreStreamConfigArgs:
+    def __init__(__self__, *,
+                 bigquery_destination: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']):
+        """
+        :param pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs'] bigquery_destination: BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+
+    @property
+    @pulumi.getter(name="bigqueryDestination")
+    def bigquery_destination(self) -> pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']:
+        """
+        BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_destination")
+
+    @bigquery_destination.setter
+    def bigquery_destination(self, value: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']):
+        pulumi.set(self, "bigquery_destination", value)
+
+
+@pulumi.input_type
+class DicomStoreStreamConfigBigqueryDestinationArgs:
+    def __init__(__self__, *,
+                 table_uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] table_uri: a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        """
+        pulumi.set(__self__, "table_uri", table_uri)
+
+    @property
+    @pulumi.getter(name="tableUri")
+    def table_uri(self) -> pulumi.Input[str]:
+        """
+        a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        """
+        return pulumi.get(self, "table_uri")
+
+    @table_uri.setter
+    def table_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table_uri", value)
 
 
 @pulumi.input_type

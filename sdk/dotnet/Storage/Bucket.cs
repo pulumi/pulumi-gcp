@@ -12,8 +12,6 @@ namespace Pulumi.Gcp.Storage
     /// <summary>
     /// Creates a new bucket in Google cloud storage service (GCS).
     /// Once a bucket has been created, its location can't be changed.
-    /// [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
-    /// using the [`gcp.storage.BucketACL`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html) resource.
     /// 
     /// For more information see
     /// [the official documentation](https://cloud.google.com/storage/docs/overview)
@@ -210,7 +208,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         /// </summary>
         [Output("storageClass")]
         public Output<string?> StorageClass { get; private set; } = null!;
@@ -382,7 +380,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketRetentionPolicyArgs>? RetentionPolicy { get; set; }
 
         /// <summary>
-        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -515,7 +513,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }

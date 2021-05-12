@@ -99,7 +99,7 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.DomainMappingMetadata>;
     /**
-     * Name should be a verified domain
+     * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -175,7 +175,7 @@ export interface DomainMappingState {
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     /**
-     * Name should be a verified domain
+     * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -208,7 +208,7 @@ export interface DomainMappingArgs {
      */
     readonly metadata: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     /**
-     * Name should be a verified domain
+     * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
     readonly name?: pulumi.Input<string>;
     /**

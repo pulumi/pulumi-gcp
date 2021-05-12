@@ -15,6 +15,7 @@ __all__ = [
     'SecretReplication',
     'SecretReplicationUserManaged',
     'SecretReplicationUserManagedReplica',
+    'SecretReplicationUserManagedReplicaCustomerManagedEncryption',
 ]
 
 @pulumi.output_type
@@ -143,12 +144,34 @@ class SecretReplicationUserManaged(dict):
 
 @pulumi.output_type
 class SecretReplicationUserManagedReplica(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerManagedEncryption":
+            suggest = "customer_managed_encryption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretReplicationUserManagedReplica. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretReplicationUserManagedReplica.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretReplicationUserManagedReplica.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 location: str):
+                 location: str,
+                 customer_managed_encryption: Optional['outputs.SecretReplicationUserManagedReplicaCustomerManagedEncryption'] = None):
         """
         :param str location: The canonical IDs of the location to replicate data. For example: "us-east1".
+        :param 'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs' customer_managed_encryption: Customer Managed Encryption for the secret.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
+        if customer_managed_encryption is not None:
+            pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
 
     @property
     @pulumi.getter
@@ -157,5 +180,49 @@ class SecretReplicationUserManagedReplica(dict):
         The canonical IDs of the location to replicate data. For example: "us-east1".
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="customerManagedEncryption")
+    def customer_managed_encryption(self) -> Optional['outputs.SecretReplicationUserManagedReplicaCustomerManagedEncryption']:
+        """
+        Customer Managed Encryption for the secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryption")
+
+
+@pulumi.output_type
+class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretReplicationUserManagedReplicaCustomerManagedEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretReplicationUserManagedReplicaCustomerManagedEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretReplicationUserManagedReplicaCustomerManagedEncryption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        return pulumi.get(self, "kms_key_name")
 
 

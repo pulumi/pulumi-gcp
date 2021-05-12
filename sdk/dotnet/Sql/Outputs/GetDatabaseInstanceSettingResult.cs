@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     {
         /// <summary>
         /// This specifies when the instance should be
-        /// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+        /// active. Can be either `ALWAYS` or `NEVER`.
         /// </summary>
         public readonly string ActivationPolicy;
         /// <summary>
