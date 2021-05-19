@@ -8424,7 +8424,6 @@ export namespace compute {
 
     export interface MachineImageMachineImageEncryptionKey {
         /**
-         * -
          * The name of the encryption key that is stored in Google Cloud KMS.
          */
         kmsKeyName?: pulumi.Input<string>;
@@ -22506,6 +22505,22 @@ export namespace pubsub {
          */
         allowedPersistenceRegions: pulumi.Input<pulumi.Input<string>[]>;
     }
+
+    export interface TopicSchemaSettings {
+        /**
+         * The encoding of messages validated against schema.
+         * Default value is `ENCODING_UNSPECIFIED`.
+         * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * The name of the schema that messages published should be
+         * validated against. Format is projects/{project}/schemas/{schema}.
+         * The value of this field will be _deleted-schema_
+         * if the schema has been deleted.
+         */
+        schema: pulumi.Input<string>;
+    }
 }
 
 export namespace redis {
@@ -22877,7 +22892,7 @@ export namespace sql {
         replicationType?: pulumi.Input<string>;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-         * for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+         * for more details and supported versions. Postgres supports only shared-core machine types,
          * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
          */
         tier: pulumi.Input<string>;

@@ -60,4 +60,5 @@ type LookupTopicResult struct {
 	MessageStoragePolicies []GetTopicMessageStoragePolicy `pulumi:"messageStoragePolicies"`
 	Name                   string                         `pulumi:"name"`
 	Project                *string                        `pulumi:"project"`
+	SchemaSettings         []GetTopicSchemaSetting        `pulumi:"schemaSettings"`
 }

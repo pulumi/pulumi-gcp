@@ -966,7 +966,7 @@ type DatabaseInstanceSettings struct {
 	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
 	ReplicationType *string `pulumi:"replicationType"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-	// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
 	Tier string `pulumi:"tier"`
 	// A set of key/value user label pairs to assign to the instance.
@@ -1031,7 +1031,7 @@ type DatabaseInstanceSettingsArgs struct {
 	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
 	ReplicationType pulumi.StringPtrInput `pulumi:"replicationType"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-	// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
 	Tier pulumi.StringInput `pulumi:"tier"`
 	// A set of key/value user label pairs to assign to the instance.
@@ -1212,7 +1212,7 @@ func (o DatabaseInstanceSettingsOutput) ReplicationType() pulumi.StringPtrOutput
 }
 
 // The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+// for more details and supported versions. Postgres supports only shared-core machine types,
 // and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
 func (o DatabaseInstanceSettingsOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
@@ -1410,7 +1410,7 @@ func (o DatabaseInstanceSettingsPtrOutput) ReplicationType() pulumi.StringPtrOut
 }
 
 // The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+// for more details and supported versions. Postgres supports only shared-core machine types,
 // and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
 func (o DatabaseInstanceSettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {

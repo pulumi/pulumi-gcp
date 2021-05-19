@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-        /// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+        /// for more details and supported versions. Postgres supports only shared-core machine types,
         /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         /// </summary>
         [Input("tier", required: true)]

@@ -40,6 +40,49 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Compute Machine Image Kms
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vm = new gcp.compute.Instance("vm", {
+ *     machineType: "e2-medium",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"}, {
+ *     provider: google_beta,
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id}, {
+ *     provider: google_beta,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const kms_project_binding = new gcp.projects.IAMMember("kms-project-binding", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@compute-system.iam.gserviceaccount.com`),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const image = new gcp.compute.MachineImage("image", {
+ *     sourceInstance: vm.selfLink,
+ *     machineImageEncryptionKey: {
+ *         kmsKeyName: cryptoKey.id,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [kms_project_binding],
+ * });
+ * ```
  *
  * ## Import
  *

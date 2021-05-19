@@ -1035,6 +1035,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_pubsub_lite_subscription": {Tok: gcpResource(gcpPubSub, "LiteSubscription")},
 			"google_pubsub_lite_topic":        {Tok: gcpResource(gcpPubSub, "LiteTopic")},
+			"google_pubsub_schema":        {Tok: gcpResource(gcpPubSub, "Schema")},
 
 			// Redis resources
 			"google_redis_instance": {Tok: gcpResource(gcpRedis, "Instance")},

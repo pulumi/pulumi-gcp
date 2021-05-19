@@ -20868,7 +20868,6 @@ func (o MachineImageIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type MachineImageMachineImageEncryptionKey struct {
-	// -
 	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The service account used for the encryption request for the given KMS key.
@@ -20895,7 +20894,6 @@ type MachineImageMachineImageEncryptionKeyInput interface {
 }
 
 type MachineImageMachineImageEncryptionKeyArgs struct {
-	// -
 	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The service account used for the encryption request for the given KMS key.
@@ -20987,7 +20985,6 @@ func (o MachineImageMachineImageEncryptionKeyOutput) ToMachineImageMachineImageE
 	}).(MachineImageMachineImageEncryptionKeyPtrOutput)
 }
 
-// -
 // The name of the encryption key that is stored in Google Cloud KMS.
 func (o MachineImageMachineImageEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MachineImageMachineImageEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -21030,7 +21027,6 @@ func (o MachineImageMachineImageEncryptionKeyPtrOutput) Elem() MachineImageMachi
 	return o.ApplyT(func(v *MachineImageMachineImageEncryptionKey) MachineImageMachineImageEncryptionKey { return *v }).(MachineImageMachineImageEncryptionKeyOutput)
 }
 
-// -
 // The name of the encryption key that is stored in Google Cloud KMS.
 func (o MachineImageMachineImageEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MachineImageMachineImageEncryptionKey) *string {

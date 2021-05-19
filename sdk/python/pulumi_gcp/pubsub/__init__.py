@@ -6,6 +6,7 @@
 from .get_topic import *
 from .lite_subscription import *
 from .lite_topic import *
+from .schema import *
 from .subscription import *
 from .subscription_iam_binding import *
 from .subscription_iam_member import *
@@ -33,6 +34,8 @@ def _register_module():
                 return LiteSubscription(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:pubsub/liteTopic:LiteTopic":
                 return LiteTopic(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/schema:Schema":
+                return Schema(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:pubsub/subscription:Subscription":
                 return Subscription(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
@@ -56,6 +59,7 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("gcp", "pubsub/liteSubscription", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "pubsub/liteTopic", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/schema", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "pubsub/subscription", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "pubsub/subscriptionIAMBinding", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "pubsub/subscriptionIAMMember", _module_instance)

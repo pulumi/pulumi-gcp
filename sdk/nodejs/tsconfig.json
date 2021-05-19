@@ -547,6 +547,7 @@
         "pubsub/index.ts",
         "pubsub/liteSubscription.ts",
         "pubsub/liteTopic.ts",
+        "pubsub/schema.ts",
         "pubsub/subscription.ts",
         "pubsub/subscriptionIAMBinding.ts",
         "pubsub/subscriptionIAMMember.ts",

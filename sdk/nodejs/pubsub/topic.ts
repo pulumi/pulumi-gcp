@@ -52,6 +52,37 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Pubsub Topic Schema Settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleSchema = new gcp.pubsub.Schema("exampleSchema", {
+ *     type: "AVRO",
+ *     definition: `{
+ *   "type" : "record",
+ *   "name" : "Avro",
+ *   "fields" : [
+ *     {
+ *       "name" : "StringField",
+ *       "type" : "string"
+ *     },
+ *     {
+ *       "name" : "IntField",
+ *       "type" : "int"
+ *     }
+ *   ]
+ * }
+ * `,
+ * });
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {schemaSettings: {
+ *     schema: "projects/my-project-name/schemas/example",
+ *     encoding: "JSON",
+ * }}, {
+ *     dependsOn: [exampleSchema],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -125,6 +156,11 @@ export class Topic extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Settings for validating messages published against a schema.
+     * Structure is documented below.
+     */
+    public readonly schemaSettings!: pulumi.Output<outputs.pubsub.TopicSchemaSettings>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -144,6 +180,7 @@ export class Topic extends pulumi.CustomResource {
             inputs["messageStoragePolicy"] = state ? state.messageStoragePolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["schemaSettings"] = state ? state.schemaSettings : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -151,6 +188,7 @@ export class Topic extends pulumi.CustomResource {
             inputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["schemaSettings"] = args ? args.schemaSettings : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -191,6 +229,11 @@ export interface TopicState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Settings for validating messages published against a schema.
+     * Structure is documented below.
+     */
+    readonly schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
 }
 
 /**
@@ -225,4 +268,9 @@ export interface TopicArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Settings for validating messages published against a schema.
+     * Structure is documented below.
+     */
+    readonly schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
 }

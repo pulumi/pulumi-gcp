@@ -93,6 +93,53 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// }
     /// ```
+    /// ### Pubsub Topic Schema Settings
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new Gcp.PubSub.SchemaArgs
+    ///         {
+    ///             Type = "AVRO",
+    ///             Definition = @"{
+    ///   ""type"" : ""record"",
+    ///   ""name"" : ""Avro"",
+    ///   ""fields"" : [
+    ///     {
+    ///       ""name"" : ""StringField"",
+    ///       ""type"" : ""string""
+    ///     },
+    ///     {
+    ///       ""name"" : ""IntField"",
+    ///       ""type"" : ""int""
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///         });
+    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///             SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
+    ///             {
+    ///                 Schema = "projects/my-project-name/schemas/example",
+    ///                 Encoding = "JSON",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 exampleSchema,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -150,6 +197,13 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for validating messages published against a schema.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("schemaSettings")]
+        public Output<Outputs.TopicSchemaSettings> SchemaSettings { get; private set; } = null!;
 
 
         /// <summary>
@@ -241,6 +295,13 @@ namespace Pulumi.Gcp.PubSub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Settings for validating messages published against a schema.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("schemaSettings")]
+        public Input<Inputs.TopicSchemaSettingsArgs>? SchemaSettings { get; set; }
+
         public TopicArgs()
         {
         }
@@ -291,6 +352,13 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Settings for validating messages published against a schema.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("schemaSettings")]
+        public Input<Inputs.TopicSchemaSettingsGetArgs>? SchemaSettings { get; set; }
 
         public TopicState()
         {

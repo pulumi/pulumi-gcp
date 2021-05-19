@@ -50,7 +50,7 @@ import (
 // 		}
 // 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 // 			Description:         pulumi.String("My function"),
-// 			Runtime:             pulumi.String("nodejs12"),
+// 			Runtime:             pulumi.String("nodejs14"),
 // 			AvailableMemoryMb:   pulumi.Int(128),
 // 			SourceArchiveBucket: bucket.Name,
 // 			SourceArchiveObject: archive.Name,
@@ -100,7 +100,7 @@ import (
 // 		}
 // 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 // 			Description:         pulumi.String("My function"),
-// 			Runtime:             pulumi.String("nodejs12"),
+// 			Runtime:             pulumi.String("nodejs14"),
 // 			AvailableMemoryMb:   pulumi.Int(128),
 // 			SourceArchiveBucket: bucket.Name,
 // 			SourceArchiveObject: archive.Name,
@@ -173,7 +173,7 @@ type Function struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
@@ -253,7 +253,7 @@ type functionState struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime *string `pulumi:"runtime"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -302,7 +302,7 @@ type FunctionState struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringPtrInput
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringPtrInput
@@ -355,7 +355,7 @@ type functionArgs struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime string `pulumi:"runtime"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -405,7 +405,7 @@ type FunctionArgs struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringInput
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringPtrInput

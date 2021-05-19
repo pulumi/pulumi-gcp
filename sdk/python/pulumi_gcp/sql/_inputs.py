@@ -455,7 +455,7 @@ class DatabaseInstanceSettingsArgs:
                  version: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] tier: The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-               for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+               for more details and supported versions. Postgres supports only shared-core machine types,
                and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         :param pulumi.Input[str] activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
@@ -532,7 +532,7 @@ class DatabaseInstanceSettingsArgs:
     def tier(self) -> pulumi.Input[str]:
         """
         The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-        for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+        for more details and supported versions. Postgres supports only shared-core machine types,
         and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         """
         return pulumi.get(self, "tier")

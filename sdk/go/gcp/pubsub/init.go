@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LiteSubscription{}
 	case "gcp:pubsub/liteTopic:LiteTopic":
 		r = &LiteTopic{}
+	case "gcp:pubsub/schema:Schema":
+		r = &Schema{}
 	case "gcp:pubsub/subscription:Subscription":
 		r = &Subscription{}
 	case "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"pubsub/liteTopic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"pubsub/schema",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

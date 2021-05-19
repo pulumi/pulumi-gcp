@@ -107,6 +107,40 @@ import (
 // 	})
 // }
 // ```
+// ### Pubsub Topic Schema Settings
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
+// 			Type:       pulumi.String("AVRO"),
+// 			Definition: pulumi.String("{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
+// 			SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
+// 				Schema:   pulumi.String("projects/my-project-name/schemas/example"),
+// 				Encoding: pulumi.String("JSON"),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			exampleSchema,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -144,6 +178,9 @@ type Topic struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Settings for validating messages published against a schema.
+	// Structure is documented below.
+	SchemaSettings TopicSchemaSettingsOutput `pulumi:"schemaSettings"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -193,6 +230,9 @@ type topicState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Settings for validating messages published against a schema.
+	// Structure is documented below.
+	SchemaSettings *TopicSchemaSettings `pulumi:"schemaSettings"`
 }
 
 type TopicState struct {
@@ -214,6 +254,9 @@ type TopicState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Settings for validating messages published against a schema.
+	// Structure is documented below.
+	SchemaSettings TopicSchemaSettingsPtrInput
 }
 
 func (TopicState) ElementType() reflect.Type {
@@ -239,6 +282,9 @@ type topicArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Settings for validating messages published against a schema.
+	// Structure is documented below.
+	SchemaSettings *TopicSchemaSettings `pulumi:"schemaSettings"`
 }
 
 // The set of arguments for constructing a Topic resource.
@@ -261,6 +307,9 @@ type TopicArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Settings for validating messages published against a schema.
+	// Structure is documented below.
+	SchemaSettings TopicSchemaSettingsPtrInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

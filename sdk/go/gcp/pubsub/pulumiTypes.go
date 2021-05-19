@@ -2336,6 +2336,176 @@ func (o TopicMessageStoragePolicyPtrOutput) AllowedPersistenceRegions() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+type TopicSchemaSettings struct {
+	// The encoding of messages validated against schema.
+	// Default value is `ENCODING_UNSPECIFIED`.
+	// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+	Encoding *string `pulumi:"encoding"`
+	// The name of the schema that messages published should be
+	// validated against. Format is projects/{project}/schemas/{schema}.
+	// The value of this field will be _deleted-schema_
+	// if the schema has been deleted.
+	Schema string `pulumi:"schema"`
+}
+
+// TopicSchemaSettingsInput is an input type that accepts TopicSchemaSettingsArgs and TopicSchemaSettingsOutput values.
+// You can construct a concrete instance of `TopicSchemaSettingsInput` via:
+//
+//          TopicSchemaSettingsArgs{...}
+type TopicSchemaSettingsInput interface {
+	pulumi.Input
+
+	ToTopicSchemaSettingsOutput() TopicSchemaSettingsOutput
+	ToTopicSchemaSettingsOutputWithContext(context.Context) TopicSchemaSettingsOutput
+}
+
+type TopicSchemaSettingsArgs struct {
+	// The encoding of messages validated against schema.
+	// Default value is `ENCODING_UNSPECIFIED`.
+	// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// The name of the schema that messages published should be
+	// validated against. Format is projects/{project}/schemas/{schema}.
+	// The value of this field will be _deleted-schema_
+	// if the schema has been deleted.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (TopicSchemaSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSchemaSettings)(nil)).Elem()
+}
+
+func (i TopicSchemaSettingsArgs) ToTopicSchemaSettingsOutput() TopicSchemaSettingsOutput {
+	return i.ToTopicSchemaSettingsOutputWithContext(context.Background())
+}
+
+func (i TopicSchemaSettingsArgs) ToTopicSchemaSettingsOutputWithContext(ctx context.Context) TopicSchemaSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSchemaSettingsOutput)
+}
+
+func (i TopicSchemaSettingsArgs) ToTopicSchemaSettingsPtrOutput() TopicSchemaSettingsPtrOutput {
+	return i.ToTopicSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TopicSchemaSettingsArgs) ToTopicSchemaSettingsPtrOutputWithContext(ctx context.Context) TopicSchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSchemaSettingsOutput).ToTopicSchemaSettingsPtrOutputWithContext(ctx)
+}
+
+// TopicSchemaSettingsPtrInput is an input type that accepts TopicSchemaSettingsArgs, TopicSchemaSettingsPtr and TopicSchemaSettingsPtrOutput values.
+// You can construct a concrete instance of `TopicSchemaSettingsPtrInput` via:
+//
+//          TopicSchemaSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type TopicSchemaSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTopicSchemaSettingsPtrOutput() TopicSchemaSettingsPtrOutput
+	ToTopicSchemaSettingsPtrOutputWithContext(context.Context) TopicSchemaSettingsPtrOutput
+}
+
+type topicSchemaSettingsPtrType TopicSchemaSettingsArgs
+
+func TopicSchemaSettingsPtr(v *TopicSchemaSettingsArgs) TopicSchemaSettingsPtrInput {
+	return (*topicSchemaSettingsPtrType)(v)
+}
+
+func (*topicSchemaSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicSchemaSettings)(nil)).Elem()
+}
+
+func (i *topicSchemaSettingsPtrType) ToTopicSchemaSettingsPtrOutput() TopicSchemaSettingsPtrOutput {
+	return i.ToTopicSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *topicSchemaSettingsPtrType) ToTopicSchemaSettingsPtrOutputWithContext(ctx context.Context) TopicSchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSchemaSettingsPtrOutput)
+}
+
+type TopicSchemaSettingsOutput struct{ *pulumi.OutputState }
+
+func (TopicSchemaSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSchemaSettings)(nil)).Elem()
+}
+
+func (o TopicSchemaSettingsOutput) ToTopicSchemaSettingsOutput() TopicSchemaSettingsOutput {
+	return o
+}
+
+func (o TopicSchemaSettingsOutput) ToTopicSchemaSettingsOutputWithContext(ctx context.Context) TopicSchemaSettingsOutput {
+	return o
+}
+
+func (o TopicSchemaSettingsOutput) ToTopicSchemaSettingsPtrOutput() TopicSchemaSettingsPtrOutput {
+	return o.ToTopicSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TopicSchemaSettingsOutput) ToTopicSchemaSettingsPtrOutputWithContext(ctx context.Context) TopicSchemaSettingsPtrOutput {
+	return o.ApplyT(func(v TopicSchemaSettings) *TopicSchemaSettings {
+		return &v
+	}).(TopicSchemaSettingsPtrOutput)
+}
+
+// The encoding of messages validated against schema.
+// Default value is `ENCODING_UNSPECIFIED`.
+// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+func (o TopicSchemaSettingsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicSchemaSettings) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema that messages published should be
+// validated against. Format is projects/{project}/schemas/{schema}.
+// The value of this field will be _deleted-schema_
+// if the schema has been deleted.
+func (o TopicSchemaSettingsOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicSchemaSettings) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type TopicSchemaSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicSchemaSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicSchemaSettings)(nil)).Elem()
+}
+
+func (o TopicSchemaSettingsPtrOutput) ToTopicSchemaSettingsPtrOutput() TopicSchemaSettingsPtrOutput {
+	return o
+}
+
+func (o TopicSchemaSettingsPtrOutput) ToTopicSchemaSettingsPtrOutputWithContext(ctx context.Context) TopicSchemaSettingsPtrOutput {
+	return o
+}
+
+func (o TopicSchemaSettingsPtrOutput) Elem() TopicSchemaSettingsOutput {
+	return o.ApplyT(func(v *TopicSchemaSettings) TopicSchemaSettings { return *v }).(TopicSchemaSettingsOutput)
+}
+
+// The encoding of messages validated against schema.
+// Default value is `ENCODING_UNSPECIFIED`.
+// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+func (o TopicSchemaSettingsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema that messages published should be
+// validated against. Format is projects/{project}/schemas/{schema}.
+// The value of this field will be _deleted-schema_
+// if the schema has been deleted.
+func (o TopicSchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetTopicMessageStoragePolicy struct {
 	AllowedPersistenceRegions []string `pulumi:"allowedPersistenceRegions"`
 }
@@ -2430,6 +2600,106 @@ func (o GetTopicMessageStoragePolicyArrayOutput) Index(i pulumi.IntInput) GetTop
 	}).(GetTopicMessageStoragePolicyOutput)
 }
 
+type GetTopicSchemaSetting struct {
+	Encoding string `pulumi:"encoding"`
+	Schema   string `pulumi:"schema"`
+}
+
+// GetTopicSchemaSettingInput is an input type that accepts GetTopicSchemaSettingArgs and GetTopicSchemaSettingOutput values.
+// You can construct a concrete instance of `GetTopicSchemaSettingInput` via:
+//
+//          GetTopicSchemaSettingArgs{...}
+type GetTopicSchemaSettingInput interface {
+	pulumi.Input
+
+	ToGetTopicSchemaSettingOutput() GetTopicSchemaSettingOutput
+	ToGetTopicSchemaSettingOutputWithContext(context.Context) GetTopicSchemaSettingOutput
+}
+
+type GetTopicSchemaSettingArgs struct {
+	Encoding pulumi.StringInput `pulumi:"encoding"`
+	Schema   pulumi.StringInput `pulumi:"schema"`
+}
+
+func (GetTopicSchemaSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicSchemaSetting)(nil)).Elem()
+}
+
+func (i GetTopicSchemaSettingArgs) ToGetTopicSchemaSettingOutput() GetTopicSchemaSettingOutput {
+	return i.ToGetTopicSchemaSettingOutputWithContext(context.Background())
+}
+
+func (i GetTopicSchemaSettingArgs) ToGetTopicSchemaSettingOutputWithContext(ctx context.Context) GetTopicSchemaSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicSchemaSettingOutput)
+}
+
+// GetTopicSchemaSettingArrayInput is an input type that accepts GetTopicSchemaSettingArray and GetTopicSchemaSettingArrayOutput values.
+// You can construct a concrete instance of `GetTopicSchemaSettingArrayInput` via:
+//
+//          GetTopicSchemaSettingArray{ GetTopicSchemaSettingArgs{...} }
+type GetTopicSchemaSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicSchemaSettingArrayOutput() GetTopicSchemaSettingArrayOutput
+	ToGetTopicSchemaSettingArrayOutputWithContext(context.Context) GetTopicSchemaSettingArrayOutput
+}
+
+type GetTopicSchemaSettingArray []GetTopicSchemaSettingInput
+
+func (GetTopicSchemaSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicSchemaSetting)(nil)).Elem()
+}
+
+func (i GetTopicSchemaSettingArray) ToGetTopicSchemaSettingArrayOutput() GetTopicSchemaSettingArrayOutput {
+	return i.ToGetTopicSchemaSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicSchemaSettingArray) ToGetTopicSchemaSettingArrayOutputWithContext(ctx context.Context) GetTopicSchemaSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicSchemaSettingArrayOutput)
+}
+
+type GetTopicSchemaSettingOutput struct{ *pulumi.OutputState }
+
+func (GetTopicSchemaSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicSchemaSetting)(nil)).Elem()
+}
+
+func (o GetTopicSchemaSettingOutput) ToGetTopicSchemaSettingOutput() GetTopicSchemaSettingOutput {
+	return o
+}
+
+func (o GetTopicSchemaSettingOutput) ToGetTopicSchemaSettingOutputWithContext(ctx context.Context) GetTopicSchemaSettingOutput {
+	return o
+}
+
+func (o GetTopicSchemaSettingOutput) Encoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicSchemaSetting) string { return v.Encoding }).(pulumi.StringOutput)
+}
+
+func (o GetTopicSchemaSettingOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicSchemaSetting) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type GetTopicSchemaSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicSchemaSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicSchemaSetting)(nil)).Elem()
+}
+
+func (o GetTopicSchemaSettingArrayOutput) ToGetTopicSchemaSettingArrayOutput() GetTopicSchemaSettingArrayOutput {
+	return o
+}
+
+func (o GetTopicSchemaSettingArrayOutput) ToGetTopicSchemaSettingArrayOutputWithContext(ctx context.Context) GetTopicSchemaSettingArrayOutput {
+	return o
+}
+
+func (o GetTopicSchemaSettingArrayOutput) Index(i pulumi.IntInput) GetTopicSchemaSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicSchemaSetting {
+		return vs[0].([]GetTopicSchemaSetting)[vs[1].(int)]
+	}).(GetTopicSchemaSettingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LiteSubscriptionDeliveryConfigOutput{})
 	pulumi.RegisterOutputType(LiteSubscriptionDeliveryConfigPtrOutput{})
@@ -2459,6 +2729,10 @@ func init() {
 	pulumi.RegisterOutputType(TopicIAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyPtrOutput{})
+	pulumi.RegisterOutputType(TopicSchemaSettingsOutput{})
+	pulumi.RegisterOutputType(TopicSchemaSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicSchemaSettingOutput{})
+	pulumi.RegisterOutputType(GetTopicSchemaSettingArrayOutput{})
 }
