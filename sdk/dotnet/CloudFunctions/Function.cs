@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
     ///         {
     ///             Description = "My function",
-    ///             Runtime = "nodejs12",
+    ///             Runtime = "nodejs14",
     ///             AvailableMemoryMb = 128,
     ///             SourceArchiveBucket = bucket.Name,
     ///             SourceArchiveObject = archive.Name,
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
     ///         {
     ///             Description = "My function",
-    ///             Runtime = "nodejs12",
+    ///             Runtime = "nodejs14",
     ///             AvailableMemoryMb = 128,
     ///             SourceArchiveBucket = bucket.Name,
     ///             SourceArchiveObject = archive.Name,
@@ -210,7 +210,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+        /// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -408,7 +408,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+        /// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -567,7 +567,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+        /// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

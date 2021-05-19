@@ -24,7 +24,9 @@ __all__ = [
     'TopicIAMBindingCondition',
     'TopicIAMMemberCondition',
     'TopicMessageStoragePolicy',
+    'TopicSchemaSettings',
     'GetTopicMessageStoragePolicyResult',
+    'GetTopicSchemaSettingResult',
 ]
 
 @pulumi.output_type
@@ -677,6 +679,46 @@ class TopicMessageStoragePolicy(dict):
 
 
 @pulumi.output_type
+class TopicSchemaSettings(dict):
+    def __init__(__self__, *,
+                 schema: str,
+                 encoding: Optional[str] = None):
+        """
+        :param str schema: The name of the schema that messages published should be
+               validated against. Format is projects/{project}/schemas/{schema}.
+               The value of this field will be _deleted-schema_
+               if the schema has been deleted.
+        :param str encoding: The encoding of messages validated against schema.
+               Default value is `ENCODING_UNSPECIFIED`.
+               Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        The name of the schema that messages published should be
+        validated against. Format is projects/{project}/schemas/{schema}.
+        The value of this field will be _deleted-schema_
+        if the schema has been deleted.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        The encoding of messages validated against schema.
+        Default value is `ENCODING_UNSPECIFIED`.
+        Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+        """
+        return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
 class GetTopicMessageStoragePolicyResult(dict):
     def __init__(__self__, *,
                  allowed_persistence_regions: Sequence[str]):
@@ -686,5 +728,24 @@ class GetTopicMessageStoragePolicyResult(dict):
     @pulumi.getter(name="allowedPersistenceRegions")
     def allowed_persistence_regions(self) -> Sequence[str]:
         return pulumi.get(self, "allowed_persistence_regions")
+
+
+@pulumi.output_type
+class GetTopicSchemaSettingResult(dict):
+    def __init__(__self__, *,
+                 encoding: str,
+                 schema: str):
+        pulumi.set(__self__, "encoding", encoding)
+        pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> str:
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        return pulumi.get(self, "schema")
 
 

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class MachineImageMachineImageEncryptionKey
     {
         /// <summary>
-        /// -
         /// The name of the encryption key that is stored in Google Cloud KMS.
         /// </summary>
         public readonly string? KmsKeyName;

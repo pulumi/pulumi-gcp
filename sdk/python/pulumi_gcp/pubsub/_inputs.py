@@ -23,6 +23,7 @@ __all__ = [
     'TopicIAMBindingConditionArgs',
     'TopicIAMMemberConditionArgs',
     'TopicMessageStoragePolicyArgs',
+    'TopicSchemaSettingsArgs',
 ]
 
 @pulumi.input_type
@@ -648,5 +649,53 @@ class TopicMessageStoragePolicyArgs:
     @allowed_persistence_regions.setter
     def allowed_persistence_regions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_persistence_regions", value)
+
+
+@pulumi.input_type
+class TopicSchemaSettingsArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 encoding: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] schema: The name of the schema that messages published should be
+               validated against. Format is projects/{project}/schemas/{schema}.
+               The value of this field will be _deleted-schema_
+               if the schema has been deleted.
+        :param pulumi.Input[str] encoding: The encoding of messages validated against schema.
+               Default value is `ENCODING_UNSPECIFIED`.
+               Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        The name of the schema that messages published should be
+        validated against. Format is projects/{project}/schemas/{schema}.
+        The value of this field will be _deleted-schema_
+        if the schema has been deleted.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encoding of messages validated against schema.
+        Default value is `ENCODING_UNSPECIFIED`.
+        Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
 
 

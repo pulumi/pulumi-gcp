@@ -8955,8 +8955,7 @@ class MachineImageMachineImageEncryptionKeyArgs:
                  raw_key: Optional[pulumi.Input[str]] = None,
                  sha256: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] kms_key_name: -
-               The name of the encryption key that is stored in Google Cloud KMS.
+        :param pulumi.Input[str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param pulumi.Input[str] kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -8978,7 +8977,6 @@ class MachineImageMachineImageEncryptionKeyArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The name of the encryption key that is stored in Google Cloud KMS.
         """
         return pulumi.get(self, "kms_key_name")

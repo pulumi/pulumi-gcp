@@ -319,6 +319,41 @@ class MachineImage(pulumi.CustomResource):
         image = gcp.compute.MachineImage("image", source_instance=vm.self_link,
         opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Compute Machine Image Kms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vm = gcp.compute.Instance("vm",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        key_ring = gcp.kms.KeyRing("keyRing", location="us",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        kms_project_binding = gcp.projects.IAMMember("kms-project-binding",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@compute-system.iam.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        image = gcp.compute.MachineImage("image",
+            source_instance=vm.self_link,
+            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
+                kms_key_name=crypto_key.id,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[kms_project_binding]))
+        ```
 
         ## Import
 
@@ -388,6 +423,41 @@ class MachineImage(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         image = gcp.compute.MachineImage("image", source_instance=vm.self_link,
         opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Compute Machine Image Kms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vm = gcp.compute.Instance("vm",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        key_ring = gcp.kms.KeyRing("keyRing", location="us",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        kms_project_binding = gcp.projects.IAMMember("kms-project-binding",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@compute-system.iam.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        image = gcp.compute.MachineImage("image",
+            source_instance=vm.self_link,
+            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
+                kms_key_name=crypto_key.id,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[kms_project_binding]))
         ```
 
         ## Import

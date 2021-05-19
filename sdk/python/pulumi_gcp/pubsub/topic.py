@@ -19,7 +19,8 @@ class TopicArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -35,6 +36,8 @@ class TopicArgs:
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
+               Structure is documented below.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -46,6 +49,8 @@ class TopicArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if schema_settings is not None:
+            pulumi.set(__self__, "schema_settings", schema_settings)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -115,6 +120,19 @@ class TopicArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="schemaSettings")
+    def schema_settings(self) -> Optional[pulumi.Input['TopicSchemaSettingsArgs']]:
+        """
+        Settings for validating messages published against a schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_settings")
+
+    @schema_settings.setter
+    def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
+        pulumi.set(self, "schema_settings", value)
+
 
 @pulumi.input_type
 class _TopicState:
@@ -123,7 +141,8 @@ class _TopicState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -139,6 +158,8 @@ class _TopicState:
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
+               Structure is documented below.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -150,6 +171,8 @@ class _TopicState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if schema_settings is not None:
+            pulumi.set(__self__, "schema_settings", schema_settings)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -219,6 +242,19 @@ class _TopicState:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="schemaSettings")
+    def schema_settings(self) -> Optional[pulumi.Input['TopicSchemaSettingsArgs']]:
+        """
+        Settings for validating messages published against a schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_settings")
+
+    @schema_settings.setter
+    def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
+        pulumi.set(self, "schema_settings", value)
+
 
 class Topic(pulumi.CustomResource):
     @overload
@@ -230,6 +266,7 @@ class Topic(pulumi.CustomResource):
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
                  __props__=None):
         """
         A named resource to which messages are sent by publishers.
@@ -274,6 +311,35 @@ class Topic(pulumi.CustomResource):
             allowed_persistence_regions=["europe-west3"],
         ))
         ```
+        ### Pubsub Topic Schema Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_schema = gcp.pubsub.Schema("exampleSchema",
+            type="AVRO",
+            definition=\"\"\"{
+          "type" : "record",
+          "name" : "Avro",
+          "fields" : [
+            {
+              "name" : "StringField",
+              "type" : "string"
+            },
+            {
+              "name" : "IntField",
+              "type" : "int"
+            }
+          ]
+        }
+        \"\"\")
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+            schema="projects/my-project-name/schemas/example",
+            encoding="JSON",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        ```
 
         ## Import
 
@@ -306,6 +372,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
+               Structure is documented below.
         """
         ...
     @overload
@@ -356,6 +424,35 @@ class Topic(pulumi.CustomResource):
             allowed_persistence_regions=["europe-west3"],
         ))
         ```
+        ### Pubsub Topic Schema Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_schema = gcp.pubsub.Schema("exampleSchema",
+            type="AVRO",
+            definition=\"\"\"{
+          "type" : "record",
+          "name" : "Avro",
+          "fields" : [
+            {
+              "name" : "StringField",
+              "type" : "string"
+            },
+            {
+              "name" : "IntField",
+              "type" : "int"
+            }
+          ]
+        }
+        \"\"\")
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+            schema="projects/my-project-name/schemas/example",
+            encoding="JSON",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        ```
 
         ## Import
 
@@ -393,6 +490,7 @@ class Topic(pulumi.CustomResource):
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -410,6 +508,7 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["message_storage_policy"] = message_storage_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["schema_settings"] = schema_settings
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',
             resource_name,
@@ -424,7 +523,8 @@ class Topic(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'Topic':
+            project: Optional[pulumi.Input[str]] = None,
+            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -445,6 +545,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -455,6 +557,7 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["message_storage_policy"] = message_storage_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["schema_settings"] = schema_settings
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -504,4 +607,13 @@ class Topic(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="schemaSettings")
+    def schema_settings(self) -> pulumi.Output['outputs.TopicSchemaSettings']:
+        """
+        Settings for validating messages published against a schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_settings")
 

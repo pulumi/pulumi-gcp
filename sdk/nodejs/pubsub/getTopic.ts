@@ -63,4 +63,5 @@ export interface GetTopicResult {
     readonly messageStoragePolicies: outputs.pubsub.GetTopicMessageStoragePolicy[];
     readonly name: string;
     readonly project?: string;
+    readonly schemaSettings: outputs.pubsub.GetTopicSchemaSetting[];
 }

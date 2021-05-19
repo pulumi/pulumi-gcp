@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetTopicMessageStoragePolicyResult> MessageStoragePolicies;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetTopicSchemaSettingResult> SchemaSettings;
 
         [OutputConstructor]
         private GetTopicResult(
@@ -90,7 +91,9 @@ namespace Pulumi.Gcp.PubSub
 
             string name,
 
-            string? project)
+            string? project,
+
+            ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings)
         {
             Id = id;
             KmsKeyName = kmsKeyName;
@@ -98,6 +101,7 @@ namespace Pulumi.Gcp.PubSub
             MessageStoragePolicies = messageStoragePolicies;
             Name = name;
             Project = project;
+            SchemaSettings = schemaSettings;
         }
     }
 }

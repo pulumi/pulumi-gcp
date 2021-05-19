@@ -40,7 +40,7 @@ class FunctionArgs:
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
@@ -113,7 +113,7 @@ class FunctionArgs:
     def runtime(self) -> pulumi.Input[str]:
         """
         The runtime in which the function is going to run.
-        Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+        Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         """
         return pulumi.get(self, "runtime")
 
@@ -416,7 +416,7 @@ class _FunctionState:
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -633,7 +633,7 @@ class _FunctionState:
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
         The runtime in which the function is going to run.
-        Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+        Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         """
         return pulumi.get(self, "runtime")
 
@@ -793,7 +793,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs12",
+            runtime="nodejs14",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -819,7 +819,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs12",
+            runtime="nodejs14",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -869,7 +869,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -912,7 +912,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs12",
+            runtime="nodejs14",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -938,7 +938,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs12",
+            runtime="nodejs14",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -1098,7 +1098,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -1246,7 +1246,7 @@ class Function(pulumi.CustomResource):
     def runtime(self) -> pulumi.Output[str]:
         """
         The runtime in which the function is going to run.
-        Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+        Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         """
         return pulumi.get(self, "runtime")
 

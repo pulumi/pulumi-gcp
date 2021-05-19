@@ -63,6 +63,80 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Compute Machine Image Kms
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vm = new Gcp.Compute.Instance("vm", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-9",
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "us",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyRing.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var kms_project_binding = new Gcp.Projects.IAMMember("kms-project-binding", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Project = project.Apply(project =&gt; project.ProjectId),
+    ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///             Member = project.Apply(project =&gt; $"serviceAccount:service-{project.Number}@compute-system.iam.gserviceaccount.com"),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var image = new Gcp.Compute.MachineImage("image", new Gcp.Compute.MachineImageArgs
+    ///         {
+    ///             SourceInstance = vm.SelfLink,
+    ///             MachineImageEncryptionKey = new Gcp.Compute.Inputs.MachineImageMachineImageEncryptionKeyArgs
+    ///             {
+    ///                 KmsKeyName = cryptoKey.Id,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 kms_project_binding,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

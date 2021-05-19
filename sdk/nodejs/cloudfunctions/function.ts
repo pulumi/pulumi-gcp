@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
- *     runtime: "nodejs12",
+ *     runtime: "nodejs14",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
- *     runtime: "nodejs12",
+ *     runtime: "nodejs14",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -179,7 +179,7 @@ export class Function extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+     * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -344,7 +344,7 @@ export interface FunctionState {
     readonly region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+     * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     readonly runtime?: pulumi.Input<string>;
     /**
@@ -440,7 +440,7 @@ export interface FunctionArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
+     * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     readonly runtime: pulumi.Input<string>;
     /**

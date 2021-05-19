@@ -6983,16 +6983,16 @@ export namespace compute {
         /**
          * Specifies the maximum allowed TTL for cached content served by this origin.
          */
-        clientTtl?: number;
+        clientTtl: number;
         /**
          * Specifies the default TTL for cached content served by this origin for responses
          * that do not have an existing valid TTL (max-age or s-max-age).
          */
-        defaultTtl?: number;
+        defaultTtl: number;
         /**
          * Specifies the maximum allowed TTL for cached content served by this origin.
          */
-        maxTtl?: number;
+        maxTtl: number;
         /**
          * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
          */
@@ -7006,7 +7006,7 @@ export namespace compute {
         /**
          * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
          */
-        serveWhileStale?: number;
+        serveWhileStale: number;
         /**
          * Maximum number of seconds the response to a signed URL request
          * will be considered fresh, defaults to 1hr (3600s). After this
@@ -9518,10 +9518,9 @@ export namespace compute {
 
     export interface MachineImageMachineImageEncryptionKey {
         /**
-         * -
          * The name of the encryption key that is stored in Google Cloud KMS.
          */
-        kmsKeyName: string;
+        kmsKeyName?: string;
         /**
          * The service account used for the encryption request for the given KMS key.
          * If absent, the Compute Engine Service Agent service account is used.
@@ -10139,16 +10138,16 @@ export namespace compute {
         /**
          * Specifies the maximum allowed TTL for cached content served by this origin.
          */
-        clientTtl?: number;
+        clientTtl: number;
         /**
          * Specifies the default TTL for cached content served by this origin for responses
          * that do not have an existing valid TTL (max-age or s-max-age).
          */
-        defaultTtl?: number;
+        defaultTtl: number;
         /**
          * Specifies the maximum allowed TTL for cached content served by this origin.
          */
-        maxTtl?: number;
+        maxTtl: number;
         /**
          * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
          */
@@ -10162,7 +10161,7 @@ export namespace compute {
         /**
          * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
          */
-        serveWhileStale?: number;
+        serveWhileStale: number;
         /**
          * Maximum number of seconds the response to a signed URL request
          * will be considered fresh, defaults to 1hr (3600s). After this
@@ -24040,6 +24039,11 @@ export namespace pubsub {
         allowedPersistenceRegions: string[];
     }
 
+    export interface GetTopicSchemaSetting {
+        encoding: string;
+        schema: string;
+    }
+
     export interface LiteSubscriptionDeliveryConfig {
         /**
          * When this subscription should send messages to subscribers relative to messages persistence in storage.
@@ -24224,6 +24228,22 @@ export namespace pubsub {
          * and is not a valid configuration.
          */
         allowedPersistenceRegions: string[];
+    }
+
+    export interface TopicSchemaSettings {
+        /**
+         * The encoding of messages validated against schema.
+         * Default value is `ENCODING_UNSPECIFIED`.
+         * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+         */
+        encoding?: string;
+        /**
+         * The name of the schema that messages published should be
+         * validated against. Format is projects/{project}/schemas/{schema}.
+         * The value of this field will be _deleted-schema_
+         * if the schema has been deleted.
+         */
+        schema: string;
     }
 }
 
@@ -24604,7 +24624,7 @@ export namespace sql {
         replicationType: string;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
-         * for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+         * for more details and supported versions. Postgres supports only shared-core machine types,
          * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
          */
         tier: string;

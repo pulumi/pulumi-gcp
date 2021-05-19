@@ -20,7 +20,7 @@ class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, id=None, kms_key_name=None, labels=None, message_storage_policies=None, name=None, project=None):
+    def __init__(__self__, id=None, kms_key_name=None, labels=None, message_storage_policies=None, name=None, project=None, schema_settings=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +39,9 @@ class GetTopicResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if schema_settings and not isinstance(schema_settings, list):
+            raise TypeError("Expected argument 'schema_settings' to be a list")
+        pulumi.set(__self__, "schema_settings", schema_settings)
 
     @property
     @pulumi.getter
@@ -73,6 +76,11 @@ class GetTopicResult:
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
 
+    @property
+    @pulumi.getter(name="schemaSettings")
+    def schema_settings(self) -> Sequence['outputs.GetTopicSchemaSettingResult']:
+        return pulumi.get(self, "schema_settings")
+
 
 class AwaitableGetTopicResult(GetTopicResult):
     # pylint: disable=using-constant-test
@@ -85,7 +93,8 @@ class AwaitableGetTopicResult(GetTopicResult):
             labels=self.labels,
             message_storage_policies=self.message_storage_policies,
             name=self.name,
-            project=self.project)
+            project=self.project,
+            schema_settings=self.schema_settings)
 
 
 def get_topic(name: Optional[str] = None,
@@ -125,4 +134,5 @@ def get_topic(name: Optional[str] = None,
         labels=__ret__.labels,
         message_storage_policies=__ret__.message_storage_policies,
         name=__ret__.name,
-        project=__ret__.project)
+        project=__ret__.project,
+        schema_settings=__ret__.schema_settings)
