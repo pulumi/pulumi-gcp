@@ -59,6 +59,7 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
+
 build_go:: install_plugins tfgen # build the go sdk
 	PATH=$(PATH):$(WORKING_DIR)/bin	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
