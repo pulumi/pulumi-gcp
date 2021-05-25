@@ -29,6 +29,22 @@ class AccessApprovalSettingsEnrolledServiceArgs:
     def __init__(__self__, *,
                  cloud_product: pulumi.Input[str],
                  enrollment_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cloud_product: The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+               all
+               appengine.googleapis.com
+               bigquery.googleapis.com
+               bigtable.googleapis.com
+               cloudkms.googleapis.com
+               compute.googleapis.com
+               dataflow.googleapis.com
+               iam.googleapis.com
+               pubsub.googleapis.com
+               storage.googleapis.com
+        :param pulumi.Input[str] enrollment_level: The enrollment level of the service.
+               Default value is `BLOCK_ALL`.
+               Possible values are `BLOCK_ALL`.
+        """
         pulumi.set(__self__, "cloud_product", cloud_product)
         if enrollment_level is not None:
             pulumi.set(__self__, "enrollment_level", enrollment_level)
@@ -36,6 +52,19 @@ class AccessApprovalSettingsEnrolledServiceArgs:
     @property
     @pulumi.getter(name="cloudProduct")
     def cloud_product(self) -> pulumi.Input[str]:
+        """
+        The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+        all
+        appengine.googleapis.com
+        bigquery.googleapis.com
+        bigtable.googleapis.com
+        cloudkms.googleapis.com
+        compute.googleapis.com
+        dataflow.googleapis.com
+        iam.googleapis.com
+        pubsub.googleapis.com
+        storage.googleapis.com
+        """
         return pulumi.get(self, "cloud_product")
 
     @cloud_product.setter
@@ -45,6 +74,11 @@ class AccessApprovalSettingsEnrolledServiceArgs:
     @property
     @pulumi.getter(name="enrollmentLevel")
     def enrollment_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The enrollment level of the service.
+        Default value is `BLOCK_ALL`.
+        Possible values are `BLOCK_ALL`.
+        """
         return pulumi.get(self, "enrollment_level")
 
     @enrollment_level.setter

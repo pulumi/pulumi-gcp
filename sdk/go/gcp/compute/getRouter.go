@@ -57,9 +57,10 @@ type LookupRouterArgs struct {
 
 // A collection of values returned by getRouter.
 type LookupRouterResult struct {
-	Bgps              []GetRouterBgp `pulumi:"bgps"`
-	CreationTimestamp string         `pulumi:"creationTimestamp"`
-	Description       string         `pulumi:"description"`
+	Bgps                        []GetRouterBgp `pulumi:"bgps"`
+	CreationTimestamp           string         `pulumi:"creationTimestamp"`
+	Description                 string         `pulumi:"description"`
+	EncryptedInterconnectRouter bool           `pulumi:"encryptedInterconnectRouter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string  `pulumi:"id"`
 	Name     string  `pulumi:"name"`

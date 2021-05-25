@@ -50,7 +50,7 @@ class FlexibleAppVersionArgs:
         :param pulumi.Input['FlexibleAppVersionReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
                Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
-        :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
         :param pulumi.Input['FlexibleAppVersionApiConfigArgs'] api_config: Serving configuration for Google Cloud Endpoints.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
@@ -192,7 +192,7 @@ class FlexibleAppVersionArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        AppEngine service resource
+        AppEngine service resource. Can contain numbers, letters, and hyphens.
         """
         return pulumi.get(self, "service")
 
@@ -588,7 +588,7 @@ class _FlexibleAppVersionState:
                Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
-        :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
                Possible values are `SERVING` and `STOPPED`.
@@ -979,7 +979,7 @@ class _FlexibleAppVersionState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        AppEngine service resource
+        AppEngine service resource. Can contain numbers, letters, and hyphens.
         """
         return pulumi.get(self, "service")
 
@@ -1205,7 +1205,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
-        :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
                Possible values are `SERVING` and `STOPPED`.
@@ -1500,7 +1500,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
-        :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
                Possible values are `SERVING` and `STOPPED`.
@@ -1767,7 +1767,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[str]:
         """
-        AppEngine service resource
+        AppEngine service resource. Can contain numbers, letters, and hyphens.
         """
         return pulumi.get(self, "service")
 

@@ -19,7 +19,8 @@ class HaVpnGatewayArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
         """
         The set of arguments for constructing a HaVpnGateway resource.
         :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
@@ -34,6 +35,8 @@ class HaVpnGatewayArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
+        :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
+               Structure is documented below.
         """
         pulumi.set(__self__, "network", network)
         if description is not None:
@@ -44,6 +47,8 @@ class HaVpnGatewayArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if vpn_interfaces is not None:
+            pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
 
     @property
     @pulumi.getter
@@ -112,6 +117,19 @@ class HaVpnGatewayArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="vpnInterfaces")
+    def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]:
+        """
+        A list of interfaces on this VPN gateway.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpn_interfaces")
+
+    @vpn_interfaces.setter
+    def vpn_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]):
+        pulumi.set(self, "vpn_interfaces", value)
+
 
 @pulumi.input_type
 class _HaVpnGatewayState:
@@ -139,6 +157,7 @@ class _HaVpnGatewayState:
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
+               Structure is documented below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -239,6 +258,7 @@ class _HaVpnGatewayState:
     def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]:
         """
         A list of interfaces on this VPN gateway.
+        Structure is documented below.
         """
         return pulumi.get(self, "vpn_interfaces")
 
@@ -257,6 +277,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None,
                  __props__=None):
         """
         Represents a VPN gateway running in GCP. This virtual device is managed
@@ -403,6 +424,63 @@ class HaVpnGateway(pulumi.CustomResource):
             advertised_route_priority=100,
             interface=router2_interface2.name)
         ```
+        ### Compute Ha Vpn Gateway Encrypted Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        address1 = gcp.compute.Address("address1",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.1.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        router = gcp.compute.Router("router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=16550,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        attachment1 = gcp.compute.InterconnectAttachment("attachment1",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=router.id,
+            encryption="IPSEC",
+            ipsec_internal_addresses=[address1.self_link],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        address2 = gcp.compute.Address("address2",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.2.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        attachment2 = gcp.compute.InterconnectAttachment("attachment2",
+            edge_availability_domain="AVAILABILITY_DOMAIN_2",
+            type="PARTNER",
+            router=router.id,
+            encryption="IPSEC",
+            ipsec_internal_addresses=[address2.self_link],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
+            network=network.id,
+            vpn_interfaces=[
+                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                    id=0,
+                    interconnect_attachment=attachment1.self_link,
+                ),
+                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                    id=1,
+                    interconnect_attachment=attachment2.self_link,
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -438,6 +516,8 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
+               Structure is documented below.
         """
         ...
     @overload
@@ -590,6 +670,63 @@ class HaVpnGateway(pulumi.CustomResource):
             advertised_route_priority=100,
             interface=router2_interface2.name)
         ```
+        ### Compute Ha Vpn Gateway Encrypted Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        address1 = gcp.compute.Address("address1",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.1.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        router = gcp.compute.Router("router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=16550,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        attachment1 = gcp.compute.InterconnectAttachment("attachment1",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=router.id,
+            encryption="IPSEC",
+            ipsec_internal_addresses=[address1.self_link],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        address2 = gcp.compute.Address("address2",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.2.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        attachment2 = gcp.compute.InterconnectAttachment("attachment2",
+            edge_availability_domain="AVAILABILITY_DOMAIN_2",
+            type="PARTNER",
+            router=router.id,
+            encryption="IPSEC",
+            ipsec_internal_addresses=[address2.self_link],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
+            network=network.id,
+            vpn_interfaces=[
+                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                    id=0,
+                    interconnect_attachment=attachment1.self_link,
+                ),
+                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                    id=1,
+                    interconnect_attachment=attachment2.self_link,
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -631,6 +768,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -650,8 +788,8 @@ class HaVpnGateway(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["vpn_interfaces"] = vpn_interfaces
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["vpn_interfaces"] = None
         super(HaVpnGateway, __self__).__init__(
             'gcp:compute/haVpnGateway:HaVpnGateway',
             resource_name,
@@ -690,6 +828,7 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -764,6 +903,7 @@ class HaVpnGateway(pulumi.CustomResource):
     def vpn_interfaces(self) -> pulumi.Output[Sequence['outputs.HaVpnGatewayVpnInterface']]:
         """
         A list of interfaces on this VPN gateway.
+        Structure is documented below.
         """
         return pulumi.get(self, "vpn_interfaces")
 

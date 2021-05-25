@@ -67,6 +67,7 @@ export interface GetRouterResult {
     readonly bgps: outputs.compute.GetRouterBgp[];
     readonly creationTimestamp: string;
     readonly description: string;
+    readonly encryptedInterconnectRouter: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

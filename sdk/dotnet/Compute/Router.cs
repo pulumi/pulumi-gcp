@@ -61,6 +61,39 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Compute Router Encrypted Interconnect
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var encrypted_interconnect_router = new Gcp.Compute.Router("encrypted-interconnect-router", new Gcp.Compute.RouterArgs
+    ///         {
+    ///             Network = network.Name,
+    ///             EncryptedInterconnectRouter = true,
+    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///             {
+    ///                 Asn = 64514,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -103,6 +136,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+        /// Interconnect feature). Not currently available publicly.
+        /// </summary>
+        [Output("encryptedInterconnectRouter")]
+        public Output<bool?> EncryptedInterconnectRouter { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
@@ -200,6 +240,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+        /// Interconnect feature). Not currently available publicly.
+        /// </summary>
+        [Input("encryptedInterconnectRouter")]
+        public Input<bool>? EncryptedInterconnectRouter { get; set; }
+
+        /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
         /// comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `a-z?`
@@ -254,6 +301,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+        /// Interconnect feature). Not currently available publicly.
+        /// </summary>
+        [Input("encryptedInterconnectRouter")]
+        public Input<bool>? EncryptedInterconnectRouter { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and

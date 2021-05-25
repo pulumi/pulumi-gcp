@@ -257,7 +257,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      */
     public readonly runtimeMainExecutablePath!: pulumi.Output<string | undefined>;
     /**
-     * AppEngine service resource
+     * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
     public readonly service!: pulumi.Output<string>;
     /**
@@ -494,7 +494,7 @@ export interface FlexibleAppVersionState {
      */
     readonly runtimeMainExecutablePath?: pulumi.Input<string>;
     /**
-     * AppEngine service resource
+     * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
     readonly service?: pulumi.Input<string>;
     /**
@@ -635,7 +635,7 @@ export interface FlexibleAppVersionArgs {
      */
     readonly runtimeMainExecutablePath?: pulumi.Input<string>;
     /**
-     * AppEngine service resource
+     * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
     readonly service: pulumi.Input<string>;
     /**

@@ -22,7 +22,10 @@ import * as utilities from "../utilities";
  *     disableDependentServices: true,
  *     project: "your-project-id",
  *     service: "iam.googleapis.com",
- * });
+ * }, { timeouts: {
+ *     create: "30m",
+ *     update: "40m",
+ * } });
  * ```
  *
  * ## Import

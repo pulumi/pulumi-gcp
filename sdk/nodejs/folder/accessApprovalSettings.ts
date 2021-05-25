@@ -5,6 +5,48 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Access Approval enables you to require your explicit approval whenever Google support and engineering need to access your customer content.
+ *
+ * To get more information about FolderSettings, see:
+ *
+ * * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/folders)
+ *
+ * ## Example Usage
+ * ### Folder Access Approval Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myFolder = new gcp.organizations.Folder("myFolder", {
+ *     displayName: "my-folder",
+ *     parent: "organizations/123456789",
+ * });
+ * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folderAccessApproval", {
+ *     folderId: myFolder.folderId,
+ *     notificationEmails: [
+ *         "testuser@example.com",
+ *         "example.user@example.com",
+ *     ],
+ *     enrolledServices: [{
+ *         cloudProduct: "all",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * FolderSettings can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
+ * ```
+ */
 export class AccessApprovalSettings extends pulumi.CustomResource {
     /**
      * Get an existing AccessApprovalSettings resource's state with the given name, ID, and optional extra
@@ -39,10 +81,11 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly enrolledAncestor!: pulumi.Output<boolean>;
     /**
-     * A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-     * resource given by name against any of these services contained here will be required to have explicit approval.
-     * Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-     * expanded as the set of supported services is expanded.
+     * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+     * Access requests for the resource given by name against any of these services contained here will be required
+     * to have explicit approval. Enrollment can only be done on an all or nothing basis.
+     * A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+     * Structure is documented below.
      */
     public readonly enrolledServices!: pulumi.Output<outputs.folder.AccessApprovalSettingsEnrolledService[]>;
     /**
@@ -54,9 +97,9 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      */
     public readonly notificationEmails!: pulumi.Output<string[]>;
 
@@ -109,10 +152,11 @@ export interface AccessApprovalSettingsState {
      */
     readonly enrolledAncestor?: pulumi.Input<boolean>;
     /**
-     * A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-     * resource given by name against any of these services contained here will be required to have explicit approval.
-     * Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-     * expanded as the set of supported services is expanded.
+     * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+     * Access requests for the resource given by name against any of these services contained here will be required
+     * to have explicit approval. Enrollment can only be done on an all or nothing basis.
+     * A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+     * Structure is documented below.
      */
     readonly enrolledServices?: pulumi.Input<pulumi.Input<inputs.folder.AccessApprovalSettingsEnrolledService>[]>;
     /**
@@ -124,9 +168,9 @@ export interface AccessApprovalSettingsState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      */
     readonly notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -136,10 +180,11 @@ export interface AccessApprovalSettingsState {
  */
 export interface AccessApprovalSettingsArgs {
     /**
-     * A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-     * resource given by name against any of these services contained here will be required to have explicit approval.
-     * Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-     * expanded as the set of supported services is expanded.
+     * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+     * Access requests for the resource given by name against any of these services contained here will be required
+     * to have explicit approval. Enrollment can only be done on an all or nothing basis.
+     * A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+     * Structure is documented below.
      */
     readonly enrolledServices: pulumi.Input<pulumi.Input<inputs.folder.AccessApprovalSettingsEnrolledService>[]>;
     /**
@@ -147,9 +192,9 @@ export interface AccessApprovalSettingsArgs {
      */
     readonly folderId: pulumi.Input<string>;
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      */
     readonly notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
 }

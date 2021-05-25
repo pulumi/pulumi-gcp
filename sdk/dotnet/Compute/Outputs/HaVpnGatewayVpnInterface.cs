@@ -14,18 +14,26 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class HaVpnGatewayVpnInterface
     {
         /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        /// The numeric ID of this VPN gateway interface.
         /// </summary>
         public readonly int? Id;
+        public readonly string? InterconnectAttachment;
+        /// <summary>
+        /// -
+        /// The external IP address for this VPN gateway interface.
+        /// </summary>
         public readonly string? IpAddress;
 
         [OutputConstructor]
         private HaVpnGatewayVpnInterface(
             int? id,
 
+            string? interconnectAttachment,
+
             string? ipAddress)
         {
             Id = id;
+            InterconnectAttachment = interconnectAttachment;
             IpAddress = ipAddress;
         }
     }

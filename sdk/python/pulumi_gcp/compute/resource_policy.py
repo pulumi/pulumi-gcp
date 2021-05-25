@@ -15,14 +15,19 @@ __all__ = ['ResourcePolicyArgs', 'ResourcePolicy']
 @pulumi.input_type
 class ResourcePolicyArgs:
     def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
+                 instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None):
         """
         The set of arguments for constructing a ResourcePolicy resource.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs'] group_placement_policy: Resource policy for instances used for placement configuration.
+               Structure is documented below.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs'] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -37,8 +42,12 @@ class ResourcePolicyArgs:
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if group_placement_policy is not None:
             pulumi.set(__self__, "group_placement_policy", group_placement_policy)
+        if instance_schedule_policy is not None:
+            pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -47,6 +56,18 @@ class ResourcePolicyArgs:
             pulumi.set(__self__, "region", region)
         if snapshot_schedule_policy is not None:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
@@ -60,6 +81,19 @@ class ResourcePolicyArgs:
     @group_placement_policy.setter
     def group_placement_policy(self, value: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']]):
         pulumi.set(self, "group_placement_policy", value)
+
+    @property
+    @pulumi.getter(name="instanceSchedulePolicy")
+    def instance_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]:
+        """
+        Resource policy for scheduling instance operations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_schedule_policy")
+
+    @instance_schedule_policy.setter
+    def instance_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]):
+        pulumi.set(self, "instance_schedule_policy", value)
 
     @property
     @pulumi.getter
@@ -121,7 +155,9 @@ class ResourcePolicyArgs:
 @pulumi.input_type
 class _ResourcePolicyState:
     def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
+                 instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -129,7 +165,10 @@ class _ResourcePolicyState:
                  snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None):
         """
         Input properties used for looking up and filtering ResourcePolicy resources.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs'] group_placement_policy: Resource policy for instances used for placement configuration.
+               Structure is documented below.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs'] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -145,8 +184,12 @@ class _ResourcePolicyState:
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if group_placement_policy is not None:
             pulumi.set(__self__, "group_placement_policy", group_placement_policy)
+        if instance_schedule_policy is not None:
+            pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -157,6 +200,18 @@ class _ResourcePolicyState:
             pulumi.set(__self__, "self_link", self_link)
         if snapshot_schedule_policy is not None:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
@@ -170,6 +225,19 @@ class _ResourcePolicyState:
     @group_placement_policy.setter
     def group_placement_policy(self, value: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']]):
         pulumi.set(self, "group_placement_policy", value)
+
+    @property
+    @pulumi.getter(name="instanceSchedulePolicy")
+    def instance_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]:
+        """
+        Resource policy for scheduling instance operations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_schedule_policy")
+
+    @instance_schedule_policy.setter
+    def instance_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]):
+        pulumi.set(self, "instance_schedule_policy", value)
 
     @property
     @pulumi.getter
@@ -245,7 +313,9 @@ class ResourcePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
+                 instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -313,6 +383,25 @@ class ResourcePolicy(pulumi.CustomResource):
             ),
             region="us-central1")
         ```
+        ### Resource Policy Instance Schedule Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="Start and stop instances",
+            instance_schedule_policy=gcp.compute.ResourcePolicyInstanceSchedulePolicyArgs(
+                time_zone="US/Central",
+                vm_start_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs(
+                    schedule="0 * * * *",
+                ),
+                vm_stop_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs(
+                    schedule="15 * * * *",
+                ),
+            ),
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -336,7 +425,10 @@ class ResourcePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -419,6 +511,25 @@ class ResourcePolicy(pulumi.CustomResource):
             ),
             region="us-central1")
         ```
+        ### Resource Policy Instance Schedule Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="Start and stop instances",
+            instance_schedule_policy=gcp.compute.ResourcePolicyInstanceSchedulePolicyArgs(
+                time_zone="US/Central",
+                vm_start_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs(
+                    schedule="0 * * * *",
+                ),
+                vm_stop_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs(
+                    schedule="15 * * * *",
+                ),
+            ),
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -455,7 +566,9 @@ class ResourcePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
+                 instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -472,7 +585,9 @@ class ResourcePolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourcePolicyArgs.__new__(ResourcePolicyArgs)
 
+            __props__.__dict__["description"] = description
             __props__.__dict__["group_placement_policy"] = group_placement_policy
+            __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
@@ -488,7 +603,9 @@ class ResourcePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
             group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
+            instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -501,7 +618,10 @@ class ResourcePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -521,13 +641,23 @@ class ResourcePolicy(pulumi.CustomResource):
 
         __props__ = _ResourcePolicyState.__new__(_ResourcePolicyState)
 
+        __props__.__dict__["description"] = description
         __props__.__dict__["group_placement_policy"] = group_placement_policy
+        __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["snapshot_schedule_policy"] = snapshot_schedule_policy
         return ResourcePolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
@@ -537,6 +667,15 @@ class ResourcePolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "group_placement_policy")
+
+    @property
+    @pulumi.getter(name="instanceSchedulePolicy")
+    def instance_schedule_policy(self) -> pulumi.Output[Optional['outputs.ResourcePolicyInstanceSchedulePolicy']]:
+        """
+        Resource policy for scheduling instance operations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_schedule_policy")
 
     @property
     @pulumi.getter

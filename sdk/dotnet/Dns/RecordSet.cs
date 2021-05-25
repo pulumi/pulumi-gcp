@@ -10,16 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns
 {
     /// <summary>
-    /// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
-    /// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+    /// A single DNS record that exists on a domain name (i.e. in a managed zone).
+    /// This record defines the information about the domain and where the
+    /// domain / subdomains direct to.
     /// 
-    /// &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including
-    /// the default records) for the given type will be overwritten when you create this resource in the provider.
-    /// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider
-    /// will not actually remove NS records during destroy but will report that it did.
+    /// The record will include the domain/subdomain name, a type (i.e. A, AAA,
+    /// CAA, MX, CNAME, NS, etc)
     /// 
     /// ## Example Usage
-    /// ### Binding a DNS name to the ephemeral IP of a new instance:
+    /// ### Dns Record Set Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -29,167 +28,28 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     public MyStack()
     ///     {
-    ///         var frontendInstance = new Gcp.Compute.Instance("frontendInstance", new Gcp.Compute.InstanceArgs
+    ///         var parent_zone = new Gcp.Dns.ManagedZone("parent-zone", new Gcp.Dns.ManagedZoneArgs
     ///         {
-    ///             MachineType = "g1-small",
-    ///             Zone = "us-central1-b",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = "debian-cloud/debian-9",
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
+    ///             DnsName = "my-zone.hashicorptest.com.",
+    ///             Description = "Test Description",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "google-beta",
     ///         });
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         var resource_recordset = new Gcp.Dns.RecordSet("resource-recordset", new Gcp.Dns.RecordSetArgs
     ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var frontendRecordSet = new Gcp.Dns.RecordSet("frontendRecordSet", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
+    ///             ManagedZone = parent_zone.Name,
+    ///             Name = "test-record.my-zone.hashicorptest.com.",
     ///             Type = "A",
-    ///             Ttl = 300,
-    ///             ManagedZone = prod.Name,
     ///             Rrdatas = 
     ///             {
-    ///                 frontendInstance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].AccessConfigs?[0]?.NatIp),
+    ///                 "10.0.0.1",
+    ///                 "10.1.0.1",
     ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Adding an A record
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///             Ttl = 86400,
+    ///         }, new CustomResourceOptions
     ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var recordSet = new Gcp.Dns.RecordSet("recordSet", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
-    ///             ManagedZone = prod.Name,
-    ///             Type = "A",
-    ///             Ttl = 300,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "8.8.8.8",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Adding an MX record
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var mx = new Gcp.Dns.RecordSet("mx", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName,
-    ///             ManagedZone = prod.Name,
-    ///             Type = "MX",
-    ///             Ttl = 3600,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "1 aspmx.l.google.com.",
-    ///                 "5 alt1.aspmx.l.google.com.",
-    ///                 "5 alt2.aspmx.l.google.com.",
-    ///                 "10 alt3.aspmx.l.google.com.",
-    ///                 "10 alt4.aspmx.l.google.com.",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Adding an SPF record
-    /// 
-    /// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var spf = new Gcp.Dns.RecordSet("spf", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-    ///             ManagedZone = prod.Name,
-    ///             Type = "TXT",
-    ///             Ttl = 300,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\"",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Adding a CNAME record
-    /// 
-    ///  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var cname = new Gcp.Dns.RecordSet("cname", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-    ///             ManagedZone = prod.Name,
-    ///             Type = "CNAME",
-    ///             Ttl = 300,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "frontend.mydomain.com.",
-    ///             },
+    ///             Provider = "google-beta",
     ///         });
     ///     }
     /// 
@@ -198,56 +58,61 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ## Import
     /// 
-    /// DNS record sets can be imported using either of these accepted formats
+    /// ResourceDnsRecordSet can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{managed_zone}}/rrsets/{{name}}/{{type}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{managed_zone}}/{{name}}/{{type}}
     /// ```
     /// 
-    ///  NoteThe record name must include the trailing dot at the end.
+    /// ```sh
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet default {{managed_zone}}/{{name}}/{{type}}
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:dns/recordSet:RecordSet")]
     public partial class RecordSet : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the zone in which this record set will
-        /// reside.
+        /// Identifies the managed zone addressed by this request.
         /// </summary>
         [Output("managedZone")]
         public Output<string> ManagedZone { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS name this record set will apply to.
+        /// For example, www.example.com.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The string data for the records in this record set
-        /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+        /// string (e.g. "first255characters\"\"morecharacters").
         /// </summary>
         [Output("rrdatas")]
         public Output<ImmutableArray<string>> Rrdatas { get; private set; } = null!;
 
         /// <summary>
-        /// The time-to-live of this record set (seconds).
+        /// Number of seconds that this ResourceRecordSet can be cached by
+        /// resolvers.
         /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS record set type.
+        /// One of valid DNS resource types.
+        /// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -299,21 +164,20 @@ namespace Pulumi.Gcp.Dns
     public sealed class RecordSetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the zone in which this record set will
-        /// reside.
+        /// Identifies the managed zone addressed by this request.
         /// </summary>
         [Input("managedZone", required: true)]
         public Input<string> ManagedZone { get; set; } = null!;
 
         /// <summary>
-        /// The DNS name this record set will apply to.
+        /// For example, www.example.com.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -322,8 +186,10 @@ namespace Pulumi.Gcp.Dns
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// The string data for the records in this record set
-        /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+        /// string (e.g. "first255characters\"\"morecharacters").
         /// </summary>
         public InputList<string> Rrdatas
         {
@@ -332,13 +198,15 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// The time-to-live of this record set (seconds).
+        /// Number of seconds that this ResourceRecordSet can be cached by
+        /// resolvers.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The DNS record set type.
+        /// One of valid DNS resource types.
+        /// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -351,21 +219,20 @@ namespace Pulumi.Gcp.Dns
     public sealed class RecordSetState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the zone in which this record set will
-        /// reside.
+        /// Identifies the managed zone addressed by this request.
         /// </summary>
         [Input("managedZone")]
         public Input<string>? ManagedZone { get; set; }
 
         /// <summary>
-        /// The DNS name this record set will apply to.
+        /// For example, www.example.com.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -374,8 +241,10 @@ namespace Pulumi.Gcp.Dns
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// The string data for the records in this record set
-        /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+        /// string (e.g. "first255characters\"\"morecharacters").
         /// </summary>
         public InputList<string> Rrdatas
         {
@@ -384,13 +253,15 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// The time-to-live of this record set (seconds).
+        /// Number of seconds that this ResourceRecordSet can be cached by
+        /// resolvers.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The DNS record set type.
+        /// One of valid DNS resource types.
+        /// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

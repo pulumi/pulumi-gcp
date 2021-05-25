@@ -63,6 +63,38 @@ import (
 // 	})
 // }
 // ```
+// ### Compute Router Encrypted Interconnect
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRouter(ctx, "encrypted_interconnect_router", &compute.RouterArgs{
+// 			Network:                     network.Name,
+// 			EncryptedInterconnectRouter: pulumi.Bool(true),
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn: pulumi.Int(64514),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -93,6 +125,9 @@ type Router struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// User-specified description for the IP range.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+	// Interconnect feature). Not currently available publicly.
+	EncryptedInterconnectRouter pulumi.BoolPtrOutput `pulumi:"encryptedInterconnectRouter"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -150,6 +185,9 @@ type routerState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// User-specified description for the IP range.
 	Description *string `pulumi:"description"`
+	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+	// Interconnect feature). Not currently available publicly.
+	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -176,6 +214,9 @@ type RouterState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// User-specified description for the IP range.
 	Description pulumi.StringPtrInput
+	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+	// Interconnect feature). Not currently available publicly.
+	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -204,6 +245,9 @@ type routerArgs struct {
 	Bgp *RouterBgp `pulumi:"bgp"`
 	// User-specified description for the IP range.
 	Description *string `pulumi:"description"`
+	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+	// Interconnect feature). Not currently available publicly.
+	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -227,6 +271,9 @@ type RouterArgs struct {
 	Bgp RouterBgpPtrInput
 	// User-specified description for the IP range.
 	Description pulumi.StringPtrInput
+	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+	// Interconnect feature). Not currently available publicly.
+	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`

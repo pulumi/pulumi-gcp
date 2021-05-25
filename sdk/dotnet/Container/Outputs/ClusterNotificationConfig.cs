@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNotificationConfig
     {
+        /// <summary>
+        /// The pubsub config for the cluster's upgrade notifications.
+        /// </summary>
         public readonly Outputs.ClusterNotificationConfigPubsub Pubsub;
 
         [OutputConstructor]

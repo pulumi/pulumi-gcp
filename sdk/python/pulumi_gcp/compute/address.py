@@ -18,7 +18,9 @@ class AddressArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -40,15 +42,24 @@ class AddressArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+               VPC_PEERING and IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
+        :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of this resource. Possible values include:
-               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
+               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+               ranges, internal load balancers, and similar resources.
+               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+               internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
+               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+               Interconnect configuration. These addresses are regional resources.
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
@@ -66,8 +77,12 @@ class AddressArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if network_tier is not None:
             pulumi.set(__self__, "network_tier", network_tier)
+        if prefix_length is not None:
+            pulumi.set(__self__, "prefix_length", prefix_length)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if purpose is not None:
@@ -148,6 +163,19 @@ class AddressArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+        VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -160,6 +188,18 @@ class AddressArgs:
     @network_tier.setter
     def network_tier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length if the resource represents an IP range.
+        """
+        return pulumi.get(self, "prefix_length")
+
+    @prefix_length.setter
+    def prefix_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "prefix_length", value)
 
     @property
     @pulumi.getter
@@ -178,10 +218,16 @@ class AddressArgs:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of this resource. Possible values include:
-        * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-        * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        The purpose of this resource, which can be one of the following values:
+        * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+        ranges, internal load balancers, and similar resources.
+        * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+        internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
+        * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+        Interconnect configuration. These addresses are regional resources.
+        This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 
@@ -228,7 +274,9 @@ class _AddressState:
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -254,15 +302,24 @@ class _AddressState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+               VPC_PEERING and IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
+        :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of this resource. Possible values include:
-               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
+               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+               ranges, internal load balancers, and similar resources.
+               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+               internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
+               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+               Interconnect configuration. These addresses are regional resources.
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -286,8 +343,12 @@ class _AddressState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if network_tier is not None:
             pulumi.set(__self__, "network_tier", network_tier)
+        if prefix_length is not None:
+            pulumi.set(__self__, "prefix_length", prefix_length)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if purpose is not None:
@@ -396,6 +457,19 @@ class _AddressState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+        VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -408,6 +482,18 @@ class _AddressState:
     @network_tier.setter
     def network_tier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length if the resource represents an IP range.
+        """
+        return pulumi.get(self, "prefix_length")
+
+    @prefix_length.setter
+    def prefix_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "prefix_length", value)
 
     @property
     @pulumi.getter
@@ -426,10 +512,16 @@ class _AddressState:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of this resource. Possible values include:
-        * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-        * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        The purpose of this resource, which can be one of the following values:
+        * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+        ranges, internal load balancers, and similar resources.
+        * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+        internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
+        * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+        Interconnect configuration. These addresses are regional resources.
+        This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 
@@ -500,7 +592,9 @@ class Address(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -588,6 +682,22 @@ class Address(pulumi.CustomResource):
                 )],
             )])
         ```
+        ### Compute Address Ipsec Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.1.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -626,15 +736,24 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+               VPC_PEERING and IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
+        :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of this resource. Possible values include:
-               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
+               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+               ranges, internal load balancers, and similar resources.
+               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+               internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
+               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+               Interconnect configuration. These addresses are regional resources.
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
@@ -730,6 +849,22 @@ class Address(pulumi.CustomResource):
                 )],
             )])
         ```
+        ### Compute Address Ipsec Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.1.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -771,7 +906,9 @@ class Address(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -793,7 +930,9 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
             __props__.__dict__["network_tier"] = network_tier
+            __props__.__dict__["prefix_length"] = prefix_length
             __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["region"] = region
@@ -819,7 +958,9 @@ class Address(pulumi.CustomResource):
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
             network_tier: Optional[pulumi.Input[str]] = None,
+            prefix_length: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -850,15 +991,24 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+               VPC_PEERING and IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
+        :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of this resource. Possible values include:
-               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
+               * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+               ranges, internal load balancers, and similar resources.
+               * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+               internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
+               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+               Interconnect configuration. These addresses are regional resources.
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -879,7 +1029,9 @@ class Address(pulumi.CustomResource):
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
         __props__.__dict__["network_tier"] = network_tier
+        __props__.__dict__["prefix_length"] = prefix_length
         __props__.__dict__["project"] = project
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["region"] = region
@@ -955,6 +1107,15 @@ class Address(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+        VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        """
+        return pulumi.get(self, "network")
+
+    @property
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> pulumi.Output[str]:
         """
@@ -963,6 +1124,14 @@ class Address(pulumi.CustomResource):
         Possible values are `PREMIUM` and `STANDARD`.
         """
         return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> pulumi.Output[Optional[int]]:
+        """
+        The prefix length if the resource represents an IP range.
+        """
+        return pulumi.get(self, "prefix_length")
 
     @property
     @pulumi.getter
@@ -977,10 +1146,16 @@ class Address(pulumi.CustomResource):
     @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
-        The purpose of this resource. Possible values include:
-        * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-        * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        The purpose of this resource, which can be one of the following values:
+        * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+        ranges, internal load balancers, and similar resources.
+        * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+        internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
+        * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+        Interconnect configuration. These addresses are regional resources.
+        This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 

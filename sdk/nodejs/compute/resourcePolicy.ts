@@ -70,6 +70,26 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ * ### Resource Policy Instance Schedule Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hourly = new gcp.compute.ResourcePolicy("hourly", {
+ *     description: "Start and stop instances",
+ *     instanceSchedulePolicy: {
+ *         timeZone: "US/Central",
+ *         vmStartSchedule: {
+ *             schedule: "0 * * * *",
+ *         },
+ *         vmStopSchedule: {
+ *             schedule: "15 * * * *",
+ *         },
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -120,10 +140,19 @@ export class ResourcePolicy extends pulumi.CustomResource {
     }
 
     /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
     public readonly groupPlacementPolicy!: pulumi.Output<outputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
+    /**
+     * Resource policy for scheduling instance operations.
+     * Structure is documented below.
+     */
+    public readonly instanceSchedulePolicy!: pulumi.Output<outputs.compute.ResourcePolicyInstanceSchedulePolicy | undefined>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -166,7 +195,9 @@ export class ResourcePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcePolicyState | undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["groupPlacementPolicy"] = state ? state.groupPlacementPolicy : undefined;
+            inputs["instanceSchedulePolicy"] = state ? state.instanceSchedulePolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -174,7 +205,9 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["snapshotSchedulePolicy"] = state ? state.snapshotSchedulePolicy : undefined;
         } else {
             const args = argsOrState as ResourcePolicyArgs | undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
+            inputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -193,10 +226,19 @@ export class ResourcePolicy extends pulumi.CustomResource {
  */
 export interface ResourcePolicyState {
     /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
     readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
+    /**
+     * Resource policy for scheduling instance operations.
+     * Structure is documented below.
+     */
+    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -232,10 +274,19 @@ export interface ResourcePolicyState {
  */
 export interface ResourcePolicyArgs {
     /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
     readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
+    /**
+     * Resource policy for scheduling instance operations.
+     * Structure is documented below.
+     */
+    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply

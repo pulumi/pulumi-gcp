@@ -292,10 +292,11 @@ type Cluster struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
-	// The notification config for sending cluster upgrade notifications
+	// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigOutput `pulumi:"notificationConfig"`
 	Operation          pulumi.StringOutput             `pulumi:"operation"`
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v3.69.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrOutput `pulumi:"podSecurityPolicyConfig"`
@@ -553,10 +554,11 @@ type clusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
-	// The notification config for sending cluster upgrade notifications
+	// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
 	Operation          *string                    `pulumi:"operation"`
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v3.69.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -786,10 +788,11 @@ type ClusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
-	// The notification config for sending cluster upgrade notifications
+	// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
 	Operation          pulumi.StringPtrInput
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v3.69.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1012,9 +1015,10 @@ type clusterArgs struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
-	// The notification config for sending cluster upgrade notifications
+	// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v3.69.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -1223,9 +1227,10 @@ type ClusterArgs struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
-	// The notification config for sending cluster upgrade notifications
+	// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v3.69.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput

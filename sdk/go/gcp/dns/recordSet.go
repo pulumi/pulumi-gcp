@@ -11,164 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
-// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+// A single DNS record that exists on a domain name (i.e. in a managed zone).
+// This record defines the information about the domain and where the
+// domain / subdomains direct to.
 //
-// > **Note:** The provider treats this resource as an authoritative record set. This means existing records (including
-// the default records) for the given type will be overwritten when you create this resource in the provider.
-// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider
-// will not actually remove NS records during destroy but will report that it did.
+// The record will include the domain/subdomain name, a type (i.e. A, AAA,
+// CAA, MX, CNAME, NS, etc)
 //
 // ## Example Usage
-// ### Adding an A record
+// ### Dns Record Set Basic
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
-//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
-// 			DnsName: pulumi.String("prod.mydomain.com."),
-// 		})
+// 		_, err := dns.NewManagedZone(ctx, "parent_zone", &dns.ManagedZoneArgs{
+// 			DnsName:     pulumi.String("my-zone.hashicorptest.com."),
+// 			Description: pulumi.String("Test Description"),
+// 		}, pulumi.Provider("google-beta"))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
-// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "backend.", dnsName), nil
-// 			}).(pulumi.StringOutput),
-// 			ManagedZone: prod.Name,
+// 		_, err = dns.NewRecordSet(ctx, "resource_recordset", &dns.RecordSetArgs{
+// 			ManagedZone: parent_zone.Name,
+// 			Name:        pulumi.String("test-record.my-zone.hashicorptest.com."),
 // 			Type:        pulumi.String("A"),
-// 			Ttl:         pulumi.Int(300),
 // 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String("8.8.8.8"),
+// 				pulumi.String("10.0.0.1"),
+// 				pulumi.String("10.1.0.1"),
 // 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Adding an MX record
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
-// 			DnsName: pulumi.String("prod.mydomain.com."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "mx", &dns.RecordSetArgs{
-// 			Name:        prod.DnsName,
-// 			ManagedZone: prod.Name,
-// 			Type:        pulumi.String("MX"),
-// 			Ttl:         pulumi.Int(3600),
-// 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String("1 aspmx.l.google.com."),
-// 				pulumi.String("5 alt1.aspmx.l.google.com."),
-// 				pulumi.String("5 alt2.aspmx.l.google.com."),
-// 				pulumi.String("10 alt3.aspmx.l.google.com."),
-// 				pulumi.String("10 alt4.aspmx.l.google.com."),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Adding an SPF record
-//
-// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
-// 			DnsName: pulumi.String("prod.mydomain.com."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "spf", &dns.RecordSetArgs{
-// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
-// 			}).(pulumi.StringOutput),
-// 			ManagedZone: prod.Name,
-// 			Type:        pulumi.String("TXT"),
-// 			Ttl:         pulumi.Int(300),
-// 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String("\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Adding a CNAME record
-//
-//  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
-// 			DnsName: pulumi.String("prod.mydomain.com."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "cname", &dns.RecordSetArgs{
-// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
-// 			}).(pulumi.StringOutput),
-// 			ManagedZone: prod.Name,
-// 			Type:        pulumi.String("CNAME"),
-// 			Ttl:         pulumi.Int(300),
-// 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String("frontend.mydomain.com."),
-// 			},
-// 		})
+// 			Ttl: pulumi.Int(86400),
+// 		}, pulumi.Provider("google-beta"))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -179,34 +58,39 @@ import (
 //
 // ## Import
 //
-// DNS record sets can be imported using either of these accepted formats
+// ResourceDnsRecordSet can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
+//  $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{managed_zone}}/rrsets/{{name}}/{{type}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
+//  $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{managed_zone}}/{{name}}/{{type}}
 // ```
 //
-//  NoteThe record name must include the trailing dot at the end.
+// ```sh
+//  $ pulumi import gcp:dns/recordSet:RecordSet default {{managed_zone}}/{{name}}/{{type}}
+// ```
 type RecordSet struct {
 	pulumi.CustomResourceState
 
-	// The name of the zone in which this record set will
-	// reside.
+	// Identifies the managed zone addressed by this request.
 	ManagedZone pulumi.StringOutput `pulumi:"managedZone"`
-	// The DNS name this record set will apply to.
+	// For example, www.example.com.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
-	// The time-to-live of this record set (seconds).
+	// Number of seconds that this ResourceRecordSet can be cached by
+	// resolvers.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// The DNS record set type.
+	// One of valid DNS resource types.
+	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -248,38 +132,44 @@ func GetRecordSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RecordSet resources.
 type recordSetState struct {
-	// The name of the zone in which this record set will
-	// reside.
+	// Identifies the managed zone addressed by this request.
 	ManagedZone *string `pulumi:"managedZone"`
-	// The DNS name this record set will apply to.
+	// For example, www.example.com.
 	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas []string `pulumi:"rrdatas"`
-	// The time-to-live of this record set (seconds).
+	// Number of seconds that this ResourceRecordSet can be cached by
+	// resolvers.
 	Ttl *int `pulumi:"ttl"`
-	// The DNS record set type.
+	// One of valid DNS resource types.
+	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
 	Type *string `pulumi:"type"`
 }
 
 type RecordSetState struct {
-	// The name of the zone in which this record set will
-	// reside.
+	// Identifies the managed zone addressed by this request.
 	ManagedZone pulumi.StringPtrInput
-	// The DNS name this record set will apply to.
+	// For example, www.example.com.
 	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayInput
-	// The time-to-live of this record set (seconds).
+	// Number of seconds that this ResourceRecordSet can be cached by
+	// resolvers.
 	Ttl pulumi.IntPtrInput
-	// The DNS record set type.
+	// One of valid DNS resource types.
+	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
 	Type pulumi.StringPtrInput
 }
 
@@ -288,39 +178,45 @@ func (RecordSetState) ElementType() reflect.Type {
 }
 
 type recordSetArgs struct {
-	// The name of the zone in which this record set will
-	// reside.
+	// Identifies the managed zone addressed by this request.
 	ManagedZone string `pulumi:"managedZone"`
-	// The DNS name this record set will apply to.
+	// For example, www.example.com.
 	Name string `pulumi:"name"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas []string `pulumi:"rrdatas"`
-	// The time-to-live of this record set (seconds).
+	// Number of seconds that this ResourceRecordSet can be cached by
+	// resolvers.
 	Ttl *int `pulumi:"ttl"`
-	// The DNS record set type.
+	// One of valid DNS resource types.
+	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RecordSet resource.
 type RecordSetArgs struct {
-	// The name of the zone in which this record set will
-	// reside.
+	// Identifies the managed zone addressed by this request.
 	ManagedZone pulumi.StringInput
-	// The DNS name this record set will apply to.
+	// For example, www.example.com.
 	Name pulumi.StringInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayInput
-	// The time-to-live of this record set (seconds).
+	// Number of seconds that this ResourceRecordSet can be cached by
+	// resolvers.
 	Ttl pulumi.IntPtrInput
-	// The DNS record set type.
+	// One of valid DNS resource types.
+	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
 	Type pulumi.StringInput
 }
 

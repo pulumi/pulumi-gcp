@@ -391,12 +391,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeVersion!: pulumi.Output<string>;
     /**
-     * The notification config for sending cluster upgrade notifications
+     * ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.container.ClusterNotificationConfig>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
-     * Configuration for the
+     * ) Configuration for the
+     * >>>>>>> v3.69.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -871,12 +872,13 @@ export interface ClusterState {
      */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
-     * The notification config for sending cluster upgrade notifications
+     * ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
     readonly notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     readonly operation?: pulumi.Input<string>;
     /**
-     * Configuration for the
+     * ) Configuration for the
+     * >>>>>>> v3.69.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1198,11 +1200,12 @@ export interface ClusterArgs {
      */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
-     * The notification config for sending cluster upgrade notifications
+     * ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
     readonly notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     /**
-     * Configuration for the
+     * ) Configuration for the
+     * >>>>>>> v3.69.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */

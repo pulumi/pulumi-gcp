@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Compute
     ///         var appengineNegFlexibleAppVersion = new Gcp.AppEngine.FlexibleAppVersion("appengineNegFlexibleAppVersion", new Gcp.AppEngine.FlexibleAppVersionArgs
     ///         {
     ///             VersionId = "v1",
-    ///             Service = "default",
+    ///             Service = "appengine-network-endpoint-group",
     ///             Runtime = "nodejs",
     ///             Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
     ///             {

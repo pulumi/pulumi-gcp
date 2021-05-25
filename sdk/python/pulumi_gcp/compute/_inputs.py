@@ -244,6 +244,9 @@ __all__ = [
     'ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs',
     'ReservationSpecificReservationInstancePropertiesLocalSsdArgs',
     'ResourcePolicyGroupPlacementPolicyArgs',
+    'ResourcePolicyInstanceSchedulePolicyArgs',
+    'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs',
+    'ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs',
     'ResourcePolicySnapshotSchedulePolicyArgs',
     'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs',
     'ResourcePolicySnapshotSchedulePolicyScheduleArgs',
@@ -4058,12 +4061,17 @@ class GlobalForwardingRuleMetadataFilterFilterLabelArgs:
 class HaVpnGatewayVpnInterfaceArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
+                 interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] id: an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        :param pulumi.Input[int] id: The numeric ID of this VPN gateway interface.
+        :param pulumi.Input[str] ip_address: -
+               The external IP address for this VPN gateway interface.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if interconnect_attachment is not None:
+            pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
 
@@ -4071,7 +4079,7 @@ class HaVpnGatewayVpnInterfaceArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[int]]:
         """
-        an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        The numeric ID of this VPN gateway interface.
         """
         return pulumi.get(self, "id")
 
@@ -4080,8 +4088,21 @@ class HaVpnGatewayVpnInterfaceArgs:
         pulumi.set(self, "id", value)
 
     @property
+    @pulumi.getter(name="interconnectAttachment")
+    def interconnect_attachment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "interconnect_attachment")
+
+    @interconnect_attachment.setter
+    def interconnect_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interconnect_attachment", value)
+
+    @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The external IP address for this VPN gateway interface.
+        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -17956,14 +17977,149 @@ class ResourcePolicyGroupPlacementPolicyArgs:
 
 
 @pulumi.input_type
+class ResourcePolicyInstanceSchedulePolicyArgs:
+    def __init__(__self__, *,
+                 time_zone: pulumi.Input[str],
+                 expiration_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 vm_start_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs']] = None,
+                 vm_stop_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']] = None):
+        """
+        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+               from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        :param pulumi.Input[str] expiration_time: The expiration time of the schedule. The timestamp is an RFC3339 string.
+        :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs'] vm_start_schedule: Specifies the schedule for starting instances.
+               Structure is documented below.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs'] vm_stop_schedule: Specifies the schedule for stopping instances.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "time_zone", time_zone)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if vm_start_schedule is not None:
+            pulumi.set(__self__, "vm_start_schedule", vm_start_schedule)
+        if vm_stop_schedule is not None:
+            pulumi.set(__self__, "vm_stop_schedule", vm_stop_schedule)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[str]:
+        """
+        Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+        from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expiration time of the schedule. The timestamp is an RFC3339 string.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of the schedule. The timestamp is an RFC3339 string.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="vmStartSchedule")
+    def vm_start_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs']]:
+        """
+        Specifies the schedule for starting instances.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vm_start_schedule")
+
+    @vm_start_schedule.setter
+    def vm_start_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs']]):
+        pulumi.set(self, "vm_start_schedule", value)
+
+    @property
+    @pulumi.getter(name="vmStopSchedule")
+    def vm_stop_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']]:
+        """
+        Specifies the schedule for stopping instances.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vm_stop_schedule")
+
+    @vm_stop_schedule.setter
+    def vm_stop_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']]):
+        pulumi.set(self, "vm_stop_schedule", value)
+
+
+@pulumi.input_type
+class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs:
+    def __init__(__self__, *,
+                 schedule: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] schedule: Specifies the frequency for the operation, using the unix-cron format.
+        """
+        pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input[str]:
+        """
+        Specifies the frequency for the operation, using the unix-cron format.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schedule", value)
+
+
+@pulumi.input_type
+class ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs:
+    def __init__(__self__, *,
+                 schedule: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] schedule: Specifies the frequency for the operation, using the unix-cron format.
+        """
+        pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input[str]:
+        """
+        Specifies the frequency for the operation, using the unix-cron format.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schedule", value)
+
+
+@pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyArgs:
     def __init__(__self__, *,
                  schedule: pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs'],
                  retention_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs']] = None,
                  snapshot_properties: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs']] = None):
         """
-        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs'] schedule: Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
-               Structure is documented below.
+        :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs'] schedule: Specifies the frequency for the operation, using the unix-cron format.
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs'] retention_policy: Retention policy applied to snapshots created by this resource policy.
                Structure is documented below.
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs'] snapshot_properties: Properties with which the snapshots are created, such as labels.
@@ -17979,8 +18135,7 @@ class ResourcePolicySnapshotSchedulePolicyArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs']:
         """
-        Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
-        Structure is documented below.
+        Specifies the frequency for the operation, using the unix-cron format.
         """
         return pulumi.get(self, "schedule")
 
@@ -18127,8 +18282,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
                  start_time: pulumi.Input[str]):
         """
         :param pulumi.Input[int] days_in_cycle: The number of days between snapshots.
-        :param pulumi.Input[str] start_time: Time within the window to start the operations.
-               It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
         """
         pulumi.set(__self__, "days_in_cycle", days_in_cycle)
         pulumi.set(__self__, "start_time", start_time)
@@ -18149,8 +18303,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[str]:
         """
-        Time within the window to start the operations.
-        It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        The start time of the schedule. The timestamp is an RFC3339 string.
         """
         return pulumi.get(self, "start_time")
 
@@ -18166,8 +18319,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
                  start_time: pulumi.Input[str]):
         """
         :param pulumi.Input[int] hours_in_cycle: The number of hours between snapshots.
-        :param pulumi.Input[str] start_time: Time within the window to start the operations.
-               It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
         """
         pulumi.set(__self__, "hours_in_cycle", hours_in_cycle)
         pulumi.set(__self__, "start_time", start_time)
@@ -18188,8 +18340,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[str]:
         """
-        Time within the window to start the operations.
-        It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        The start time of the schedule. The timestamp is an RFC3339 string.
         """
         return pulumi.get(self, "start_time")
 
@@ -18230,8 +18381,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
         """
         :param pulumi.Input[str] day: The day of the week to create the snapshot. e.g. MONDAY
                Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
-        :param pulumi.Input[str] start_time: Time within the window to start the operations.
-               It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
         """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "start_time", start_time)
@@ -18253,8 +18403,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[str]:
         """
-        Time within the window to start the operations.
-        It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        The start time of the schedule. The timestamp is an RFC3339 string.
         """
         return pulumi.get(self, "start_time")
 

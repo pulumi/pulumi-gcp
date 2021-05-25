@@ -55,11 +55,16 @@ export interface GetResourcePolicyArgs {
  * A collection of values returned by getResourcePolicy.
  */
 export interface GetResourcePolicyResult {
+    /**
+     * Description of this Resource Policy.
+     */
+    readonly description: string;
     readonly groupPlacementPolicies: outputs.compute.GetResourcePolicyGroupPlacementPolicy[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceSchedulePolicies: outputs.compute.GetResourcePolicyInstanceSchedulePolicy[];
     readonly name: string;
     readonly project?: string;
     readonly region?: string;

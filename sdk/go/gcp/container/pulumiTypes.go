@@ -8604,6 +8604,7 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrO
 }
 
 type ClusterNotificationConfig struct {
+	// The pubsub config for the cluster's upgrade notifications.
 	Pubsub ClusterNotificationConfigPubsub `pulumi:"pubsub"`
 }
 
@@ -8619,6 +8620,7 @@ type ClusterNotificationConfigInput interface {
 }
 
 type ClusterNotificationConfigArgs struct {
+	// The pubsub config for the cluster's upgrade notifications.
 	Pubsub ClusterNotificationConfigPubsubInput `pulumi:"pubsub"`
 }
 
@@ -8698,6 +8700,8 @@ func (o ClusterNotificationConfigOutput) ToClusterNotificationConfigPtrOutputWit
 		return &v
 	}).(ClusterNotificationConfigPtrOutput)
 }
+
+// The pubsub config for the cluster's upgrade notifications.
 func (o ClusterNotificationConfigOutput) Pubsub() ClusterNotificationConfigPubsubOutput {
 	return o.ApplyT(func(v ClusterNotificationConfig) ClusterNotificationConfigPubsub { return v.Pubsub }).(ClusterNotificationConfigPubsubOutput)
 }
@@ -8720,6 +8724,7 @@ func (o ClusterNotificationConfigPtrOutput) Elem() ClusterNotificationConfigOutp
 	return o.ApplyT(func(v *ClusterNotificationConfig) ClusterNotificationConfig { return *v }).(ClusterNotificationConfigOutput)
 }
 
+// The pubsub config for the cluster's upgrade notifications.
 func (o ClusterNotificationConfigPtrOutput) Pubsub() ClusterNotificationConfigPubsubPtrOutput {
 	return o.ApplyT(func(v *ClusterNotificationConfig) *ClusterNotificationConfigPubsub {
 		if v == nil {
@@ -8732,8 +8737,9 @@ func (o ClusterNotificationConfigPtrOutput) Pubsub() ClusterNotificationConfigPu
 type ClusterNotificationConfigPubsub struct {
 	// Enable the PodSecurityPolicy controller for this cluster.
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	Enabled bool    `pulumi:"enabled"`
-	Topic   *string `pulumi:"topic"`
+	Enabled bool `pulumi:"enabled"`
+	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
+	Topic *string `pulumi:"topic"`
 }
 
 // ClusterNotificationConfigPubsubInput is an input type that accepts ClusterNotificationConfigPubsubArgs and ClusterNotificationConfigPubsubOutput values.
@@ -8750,8 +8756,9 @@ type ClusterNotificationConfigPubsubInput interface {
 type ClusterNotificationConfigPubsubArgs struct {
 	// Enable the PodSecurityPolicy controller for this cluster.
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	Enabled pulumi.BoolInput      `pulumi:"enabled"`
-	Topic   pulumi.StringPtrInput `pulumi:"topic"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
 
 func (ClusterNotificationConfigPubsubArgs) ElementType() reflect.Type {
@@ -8837,6 +8844,7 @@ func (o ClusterNotificationConfigPubsubOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNotificationConfigPubsub) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 func (o ClusterNotificationConfigPubsubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNotificationConfigPubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
@@ -8870,6 +8878,7 @@ func (o ClusterNotificationConfigPubsubPtrOutput) Enabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 func (o ClusterNotificationConfigPubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) *string {
 		if v == nil {

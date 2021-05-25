@@ -7148,9 +7148,14 @@ export namespace compute {
 
     export interface HaVpnGatewayVpnInterface {
         /**
-         * an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+         * The numeric ID of this VPN gateway interface.
          */
         id?: pulumi.Input<number>;
+        interconnectAttachment?: pulumi.Input<string>;
+        /**
+         * -
+         * The external IP address for this VPN gateway interface.
+         */
         ipAddress?: pulumi.Input<string>;
     }
 
@@ -11287,6 +11292,46 @@ export namespace compute {
         vmCount?: pulumi.Input<number>;
     }
 
+    export interface ResourcePolicyInstanceSchedulePolicy {
+        /**
+         * The expiration time of the schedule. The timestamp is an RFC3339 string.
+         */
+        expirationTime?: pulumi.Input<string>;
+        /**
+         * The start time of the schedule. The timestamp is an RFC3339 string.
+         */
+        startTime?: pulumi.Input<string>;
+        /**
+         * Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+         * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         */
+        timeZone: pulumi.Input<string>;
+        /**
+         * Specifies the schedule for starting instances.
+         * Structure is documented below.
+         */
+        vmStartSchedule?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicyVmStartSchedule>;
+        /**
+         * Specifies the schedule for stopping instances.
+         * Structure is documented below.
+         */
+        vmStopSchedule?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicyVmStopSchedule>;
+    }
+
+    export interface ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+        /**
+         * Specifies the frequency for the operation, using the unix-cron format.
+         */
+        schedule: pulumi.Input<string>;
+    }
+
+    export interface ResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+        /**
+         * Specifies the frequency for the operation, using the unix-cron format.
+         */
+        schedule: pulumi.Input<string>;
+    }
+
     export interface ResourcePolicySnapshotSchedulePolicy {
         /**
          * Retention policy applied to snapshots created by this resource policy.
@@ -11294,8 +11339,7 @@ export namespace compute {
          */
         retentionPolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicy>;
         /**
-         * Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
-         * Structure is documented below.
+         * Specifies the frequency for the operation, using the unix-cron format.
          */
         schedule: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicySchedule>;
         /**
@@ -11343,8 +11387,7 @@ export namespace compute {
          */
         daysInCycle: pulumi.Input<number>;
         /**
-         * Time within the window to start the operations.
-         * It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+         * The start time of the schedule. The timestamp is an RFC3339 string.
          */
         startTime: pulumi.Input<string>;
     }
@@ -11355,8 +11398,7 @@ export namespace compute {
          */
         hoursInCycle: pulumi.Input<number>;
         /**
-         * Time within the window to start the operations.
-         * It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+         * The start time of the schedule. The timestamp is an RFC3339 string.
          */
         startTime: pulumi.Input<string>;
     }
@@ -11376,8 +11418,7 @@ export namespace compute {
          */
         day: pulumi.Input<string>;
         /**
-         * Time within the window to start the operations.
-         * It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+         * The start time of the schedule. The timestamp is an RFC3339 string.
          */
         startTime: pulumi.Input<string>;
     }
@@ -14533,6 +14574,9 @@ export namespace container {
     }
 
     export interface ClusterNotificationConfig {
+        /**
+         * The pubsub config for the cluster's upgrade notifications.
+         */
         pubsub: pulumi.Input<inputs.container.ClusterNotificationConfigPubsub>;
     }
 
@@ -14542,6 +14586,9 @@ export namespace container {
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          */
         enabled: pulumi.Input<boolean>;
+        /**
+         * The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
+         */
         topic?: pulumi.Input<string>;
     }
 
@@ -18363,7 +18410,37 @@ export namespace firestore {
 
 export namespace folder {
     export interface AccessApprovalSettingsEnrolledService {
+        /**
+         * The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+         * * all
+         * * App Engine
+         * * BigQuery
+         * * Cloud Bigtable
+         * * Cloud Key Management Service
+         * * Compute Engine
+         * * Cloud Dataflow
+         * * Cloud Identity and Access Management
+         * * Cloud Pub/Sub
+         * * Cloud Storage
+         * * Persistent Disk
+         * Note: These values are supported as input, but considered a legacy format:
+         * * all
+         * * appengine.googleapis.com
+         * * bigquery.googleapis.com
+         * * bigtable.googleapis.com
+         * * cloudkms.googleapis.com
+         * * compute.googleapis.com
+         * * dataflow.googleapis.com
+         * * iam.googleapis.com
+         * * pubsub.googleapis.com
+         * * storage.googleapis.com
+         */
         cloudProduct: pulumi.Input<string>;
+        /**
+         * The enrollment level of the service.
+         * Default value is `BLOCK_ALL`.
+         * Possible values are `BLOCK_ALL`.
+         */
         enrollmentLevel?: pulumi.Input<string>;
     }
 
@@ -19346,24 +19423,11 @@ export namespace kms {
     }
 
     export interface RegistryCredential {
-        /**
-         * A public key certificate format and data.
-         */
         publicKeyCertificate: pulumi.Input<{[key: string]: any}>;
     }
 
     export interface RegistryEventNotificationConfigItem {
-        /**
-         * PubSub topic name to publish device events.
-         */
         pubsubTopicName: pulumi.Input<string>;
-        /**
-         * If the subfolder name matches this string exactly, this
-         * configuration will be used. The string must not include the
-         * leading '/' character. If empty, all strings are matched. Empty
-         * value can only be used for the last `eventNotificationConfigs`
-         * item.
-         */
         subfolderMatches?: pulumi.Input<string>;
     }
 }
@@ -21006,7 +21070,25 @@ export namespace notebooks {
 
 export namespace organizations {
     export interface AccessApprovalSettingsEnrolledService {
+        /**
+         * The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+         * all
+         * appengine.googleapis.com
+         * bigquery.googleapis.com
+         * bigtable.googleapis.com
+         * cloudkms.googleapis.com
+         * compute.googleapis.com
+         * dataflow.googleapis.com
+         * iam.googleapis.com
+         * pubsub.googleapis.com
+         * storage.googleapis.com
+         */
         cloudProduct: pulumi.Input<string>;
+        /**
+         * The enrollment level of the service.
+         * Default value is `BLOCK_ALL`.
+         * Possible values are `BLOCK_ALL`.
+         */
         enrollmentLevel?: pulumi.Input<string>;
     }
 
@@ -22220,7 +22302,25 @@ export namespace osconfig {
 
 export namespace projects {
     export interface AccessApprovalSettingsEnrolledService {
+        /**
+         * The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+         * all
+         * appengine.googleapis.com
+         * bigquery.googleapis.com
+         * bigtable.googleapis.com
+         * cloudkms.googleapis.com
+         * compute.googleapis.com
+         * dataflow.googleapis.com
+         * iam.googleapis.com
+         * pubsub.googleapis.com
+         * storage.googleapis.com
+         */
         cloudProduct: pulumi.Input<string>;
+        /**
+         * The enrollment level of the service.
+         * Default value is `BLOCK_ALL`.
+         * Possible values are `BLOCK_ALL`.
+         */
         enrollmentLevel?: pulumi.Input<string>;
     }
 

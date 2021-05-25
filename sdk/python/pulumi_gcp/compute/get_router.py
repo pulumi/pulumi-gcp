@@ -20,7 +20,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, id=None, name=None, network=None, project=None, region=None, self_link=None):
+    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, id=None, name=None, network=None, project=None, region=None, self_link=None):
         if bgps and not isinstance(bgps, list):
             raise TypeError("Expected argument 'bgps' to be a list")
         pulumi.set(__self__, "bgps", bgps)
@@ -30,6 +30,9 @@ class GetRouterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if encrypted_interconnect_router and not isinstance(encrypted_interconnect_router, bool):
+            raise TypeError("Expected argument 'encrypted_interconnect_router' to be a bool")
+        pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -63,6 +66,11 @@ class GetRouterResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptedInterconnectRouter")
+    def encrypted_interconnect_router(self) -> bool:
+        return pulumi.get(self, "encrypted_interconnect_router")
 
     @property
     @pulumi.getter
@@ -107,6 +115,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             bgps=self.bgps,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            encrypted_interconnect_router=self.encrypted_interconnect_router,
             id=self.id,
             name=self.name,
             network=self.network,
@@ -156,6 +165,7 @@ def get_router(name: Optional[str] = None,
         bgps=__ret__.bgps,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        encrypted_interconnect_router=__ret__.encrypted_interconnect_router,
         id=__ret__.id,
         name=__ret__.name,
         network=__ret__.network,

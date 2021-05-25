@@ -64,7 +64,8 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+     * When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
      */
     public readonly apiConfig!: pulumi.Output<string>;
     /**
@@ -147,7 +148,8 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
-     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+     * When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
      */
     readonly apiConfig?: pulumi.Input<string>;
     /**
@@ -186,7 +188,8 @@ export interface GatewayState {
  */
 export interface GatewayArgs {
     /**
-     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+     * When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
      */
     readonly apiConfig: pulumi.Input<string>;
     /**

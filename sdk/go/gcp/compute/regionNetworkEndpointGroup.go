@@ -149,7 +149,7 @@ import (
 // 		}
 // 		appengineNegFlexibleAppVersion, err := appengine.NewFlexibleAppVersion(ctx, "appengineNegFlexibleAppVersion", &appengine.FlexibleAppVersionArgs{
 // 			VersionId: pulumi.String("v1"),
-// 			Service:   pulumi.String("default"),
+// 			Service:   pulumi.String("appengine-network-endpoint-group"),
 // 			Runtime:   pulumi.String("nodejs"),
 // 			Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
 // 				Shell: pulumi.String("node ./app.js"),
