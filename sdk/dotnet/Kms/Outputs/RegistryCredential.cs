@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class RegistryCredential
     {
-        /// <summary>
-        /// A public key certificate format and data.
-        /// </summary>
         public readonly ImmutableDictionary<string, object> PublicKeyCertificate;
 
         [OutputConstructor]

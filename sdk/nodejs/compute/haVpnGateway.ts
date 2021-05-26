@@ -173,6 +173,76 @@ import * as utilities from "../utilities";
  *     "interface": router2Interface2.name,
  * });
  * ```
+ * ### Compute Ha Vpn Gateway Encrypted Interconnect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const address1 = new gcp.compute.Address("address1", {
+ *     addressType: "INTERNAL",
+ *     purpose: "IPSEC_INTERCONNECT",
+ *     address: "192.168.1.0",
+ *     prefixLength: 29,
+ *     network: network.selfLink,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     network: network.name,
+ *     encryptedInterconnectRouter: true,
+ *     bgp: {
+ *         asn: 16550,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const attachment1 = new gcp.compute.InterconnectAttachment("attachment1", {
+ *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
+ *     type: "PARTNER",
+ *     router: router.id,
+ *     encryption: "IPSEC",
+ *     ipsecInternalAddresses: [address1.selfLink],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const address2 = new gcp.compute.Address("address2", {
+ *     addressType: "INTERNAL",
+ *     purpose: "IPSEC_INTERCONNECT",
+ *     address: "192.168.2.0",
+ *     prefixLength: 29,
+ *     network: network.selfLink,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const attachment2 = new gcp.compute.InterconnectAttachment("attachment2", {
+ *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_2",
+ *     type: "PARTNER",
+ *     router: router.id,
+ *     encryption: "IPSEC",
+ *     ipsecInternalAddresses: [address2.selfLink],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const vpn_gateway = new gcp.compute.HaVpnGateway("vpn-gateway", {
+ *     network: network.id,
+ *     vpnInterfaces: [
+ *         {
+ *             id: 0,
+ *             interconnectAttachment: attachment1.selfLink,
+ *         },
+ *         {
+ *             id: 1,
+ *             interconnectAttachment: attachment2.selfLink,
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -255,8 +325,9 @@ export class HaVpnGateway extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * A list of interfaces on this VPN gateway.
+     * Structure is documented below.
      */
-    public /*out*/ readonly vpnInterfaces!: pulumi.Output<outputs.compute.HaVpnGatewayVpnInterface[]>;
+    public readonly vpnInterfaces!: pulumi.Output<outputs.compute.HaVpnGatewayVpnInterface[]>;
 
     /**
      * Create a HaVpnGateway resource with the given unique name, arguments, and options.
@@ -288,8 +359,8 @@ export class HaVpnGateway extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["vpnInterfaces"] = args ? args.vpnInterfaces : undefined;
             inputs["selfLink"] = undefined /*out*/;
-            inputs["vpnInterfaces"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -335,6 +406,7 @@ export interface HaVpnGatewayState {
     readonly selfLink?: pulumi.Input<string>;
     /**
      * A list of interfaces on this VPN gateway.
+     * Structure is documented below.
      */
     readonly vpnInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.HaVpnGatewayVpnInterface>[]>;
 }
@@ -370,4 +442,9 @@ export interface HaVpnGatewayArgs {
      * The region this gateway should sit in.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A list of interfaces on this VPN gateway.
+     * Structure is documented below.
+     */
+    readonly vpnInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.HaVpnGatewayVpnInterface>[]>;
 }

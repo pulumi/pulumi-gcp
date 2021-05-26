@@ -3037,11 +3037,17 @@ class ClusterNodePoolUpgradeSettingsArgs:
 class ClusterNotificationConfigArgs:
     def __init__(__self__, *,
                  pubsub: pulumi.Input['ClusterNotificationConfigPubsubArgs']):
+        """
+        :param pulumi.Input['ClusterNotificationConfigPubsubArgs'] pubsub: The pubsub config for the cluster's upgrade notifications.
+        """
         pulumi.set(__self__, "pubsub", pubsub)
 
     @property
     @pulumi.getter
     def pubsub(self) -> pulumi.Input['ClusterNotificationConfigPubsubArgs']:
+        """
+        The pubsub config for the cluster's upgrade notifications.
+        """
         return pulumi.get(self, "pubsub")
 
     @pubsub.setter
@@ -3057,6 +3063,7 @@ class ClusterNotificationConfigPubsubArgs:
         """
         :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param pulumi.Input[str] topic: The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
         """
         pulumi.set(__self__, "enabled", enabled)
         if topic is not None:
@@ -3078,6 +3085,9 @@ class ClusterNotificationConfigPubsubArgs:
     @property
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
+        """
         return pulumi.get(self, "topic")
 
     @topic.setter

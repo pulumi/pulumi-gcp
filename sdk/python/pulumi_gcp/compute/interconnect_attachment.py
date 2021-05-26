@@ -21,7 +21,9 @@ class InterconnectAttachmentArgs:
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
+                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -56,9 +58,23 @@ class InterconnectAttachmentArgs:
                selected availability domain will be provided to the Partner via the
                pairing key so that the provisioned circuit will lie in the specified
                domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input[str] encryption: Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+               that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+               attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+               gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+               Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+               values: ["NONE", "IPSEC"]
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+               the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+               interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+               address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+               paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+               from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+               attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+               the HA VPN gateway's IP address will be allocated from regional external IP address pool.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -87,8 +103,12 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
             pulumi.set(__self__, "edge_availability_domain", edge_availability_domain)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if interconnect is not None:
             pulumi.set(__self__, "interconnect", interconnect)
+        if ipsec_internal_addresses is not None:
+            pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -196,6 +216,23 @@ class InterconnectAttachmentArgs:
 
     @property
     @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+        that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+        attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+        gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+        Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+        values: ["NONE", "IPSEC"]
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption", value)
+
+    @property
+    @pulumi.getter
     def interconnect(self) -> Optional[pulumi.Input[str]]:
         """
         URL of the underlying Interconnect object that this attachment's
@@ -207,6 +244,25 @@ class InterconnectAttachmentArgs:
     @interconnect.setter
     def interconnect(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interconnect", value)
+
+    @property
+    @pulumi.getter(name="ipsecInternalAddresses")
+    def ipsec_internal_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+        the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+        interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+        address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+        paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+        from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+        attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+        the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+        """
+        return pulumi.get(self, "ipsec_internal_addresses")
+
+    @ipsec_internal_addresses.setter
+    def ipsec_internal_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipsec_internal_addresses", value)
 
     @property
     @pulumi.getter
@@ -302,8 +358,10 @@ class _InterconnectAttachmentState:
                  customer_router_ip_address: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input[str]] = None,
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
+                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
@@ -343,11 +401,25 @@ class _InterconnectAttachmentState:
                selected availability domain will be provided to the Partner via the
                pairing key so that the provisioned circuit will lie in the specified
                domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input[str] encryption: Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+               that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+               attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+               gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+               Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+               values: ["NONE", "IPSEC"]
         :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
                issues.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+               the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+               interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+               address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+               paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+               from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+               attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+               the HA VPN gateway's IP address will be allocated from regional external IP address pool.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -393,10 +465,14 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
             pulumi.set(__self__, "edge_availability_domain", edge_availability_domain)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if google_reference_id is not None:
             pulumi.set(__self__, "google_reference_id", google_reference_id)
         if interconnect is not None:
             pulumi.set(__self__, "interconnect", interconnect)
+        if ipsec_internal_addresses is not None:
+            pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -536,6 +612,23 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "edge_availability_domain", value)
 
     @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+        that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+        attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+        gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+        Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+        values: ["NONE", "IPSEC"]
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption", value)
+
+    @property
     @pulumi.getter(name="googleReferenceId")
     def google_reference_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -561,6 +654,25 @@ class _InterconnectAttachmentState:
     @interconnect.setter
     def interconnect(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interconnect", value)
+
+    @property
+    @pulumi.getter(name="ipsecInternalAddresses")
+    def ipsec_internal_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+        the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+        interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+        address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+        paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+        from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+        attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+        the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+        """
+        return pulumi.get(self, "ipsec_internal_addresses")
+
+    @ipsec_internal_addresses.setter
+    def ipsec_internal_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipsec_internal_addresses", value)
 
     @property
     @pulumi.getter
@@ -733,7 +845,9 @@ class InterconnectAttachment(pulumi.CustomResource):
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
+                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -764,6 +878,36 @@ class InterconnectAttachment(pulumi.CustomResource):
             type="PARTNER",
             router=foobar_router.id,
             mtu="1500")
+        ```
+        ### Compute Interconnect Attachment Ipsec Encryption
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        address = gcp.compute.Address("address",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.1.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        router = gcp.compute.Router("router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=16550,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=router.id,
+            encryption="IPSEC",
+            ipsec_internal_addresses=[address.self_link],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -810,9 +954,23 @@ class InterconnectAttachment(pulumi.CustomResource):
                selected availability domain will be provided to the Partner via the
                pairing key so that the provisioned circuit will lie in the specified
                domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input[str] encryption: Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+               that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+               attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+               gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+               Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+               values: ["NONE", "IPSEC"]
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+               the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+               interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+               address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+               paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+               from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+               attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+               the HA VPN gateway's IP address will be allocated from regional external IP address pool.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -863,6 +1021,36 @@ class InterconnectAttachment(pulumi.CustomResource):
             router=foobar_router.id,
             mtu="1500")
         ```
+        ### Compute Interconnect Attachment Ipsec Encryption
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        address = gcp.compute.Address("address",
+            address_type="INTERNAL",
+            purpose="IPSEC_INTERCONNECT",
+            address="192.168.1.0",
+            prefix_length=29,
+            network=network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        router = gcp.compute.Router("router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=16550,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=router.id,
+            encryption="IPSEC",
+            ipsec_internal_addresses=[address.self_link],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -904,7 +1092,9 @@ class InterconnectAttachment(pulumi.CustomResource):
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
+                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -929,7 +1119,9 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["candidate_subnets"] = candidate_subnets
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_availability_domain"] = edge_availability_domain
+            __props__.__dict__["encryption"] = encryption
             __props__.__dict__["interconnect"] = interconnect
+            __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -966,8 +1158,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             customer_router_ip_address: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             edge_availability_domain: Optional[pulumi.Input[str]] = None,
+            encryption: Optional[pulumi.Input[str]] = None,
             google_reference_id: Optional[pulumi.Input[str]] = None,
             interconnect: Optional[pulumi.Input[str]] = None,
+            ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             mtu: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pairing_key: Optional[pulumi.Input[str]] = None,
@@ -1012,11 +1206,25 @@ class InterconnectAttachment(pulumi.CustomResource):
                selected availability domain will be provided to the Partner via the
                pairing key so that the provisioned circuit will lie in the specified
                domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input[str] encryption: Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+               that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+               attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+               gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+               Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+               values: ["NONE", "IPSEC"]
         :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
                issues.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+               the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+               interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+               address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+               paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+               from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+               attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+               the HA VPN gateway's IP address will be allocated from regional external IP address pool.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -1058,8 +1266,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["customer_router_ip_address"] = customer_router_ip_address
         __props__.__dict__["description"] = description
         __props__.__dict__["edge_availability_domain"] = edge_availability_domain
+        __props__.__dict__["encryption"] = encryption
         __props__.__dict__["google_reference_id"] = google_reference_id
         __props__.__dict__["interconnect"] = interconnect
+        __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["pairing_key"] = pairing_key
@@ -1156,6 +1366,19 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "edge_availability_domain")
 
     @property
+    @pulumi.getter
+    def encryption(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+        that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+        attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+        gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+        Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+        values: ["NONE", "IPSEC"]
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
     @pulumi.getter(name="googleReferenceId")
     def google_reference_id(self) -> pulumi.Output[str]:
         """
@@ -1173,6 +1396,21 @@ class InterconnectAttachment(pulumi.CustomResource):
         be set if type is PARTNER.
         """
         return pulumi.get(self, "interconnect")
+
+    @property
+    @pulumi.getter(name="ipsecInternalAddresses")
+    def ipsec_internal_addresses(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+        the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+        interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+        address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+        paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+        from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+        attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+        the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+        """
+        return pulumi.get(self, "ipsec_internal_addresses")
 
     @property
     @pulumi.getter

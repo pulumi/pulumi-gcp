@@ -83,6 +83,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRouterBgpResult> Bgps;
         public readonly string CreationTimestamp;
         public readonly string Description;
+        public readonly bool EncryptedInterconnectRouter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -101,6 +102,8 @@ namespace Pulumi.Gcp.Compute
 
             string description,
 
+            bool encryptedInterconnectRouter,
+
             string id,
 
             string name,
@@ -116,6 +119,7 @@ namespace Pulumi.Gcp.Compute
             Bgps = bgps;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            EncryptedInterconnectRouter = encryptedInterconnectRouter;
             Id = id;
             Name = name;
             Network = network;

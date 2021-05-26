@@ -108,6 +108,37 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Resource Policy Instance Schedule Policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var hourly = new Gcp.Compute.ResourcePolicy("hourly", new Gcp.Compute.ResourcePolicyArgs
+    ///         {
+    ///             Description = "Start and stop instances",
+    ///             InstanceSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyArgs
+    ///             {
+    ///                 TimeZone = "US/Central",
+    ///                 VmStartSchedule = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs
+    ///                 {
+    ///                     Schedule = "0 * * * *",
+    ///                 },
+    ///                 VmStopSchedule = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs
+    ///                 {
+    ///                     Schedule = "15 * * * *",
+    ///                 },
+    ///             },
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -133,11 +164,24 @@ namespace Pulumi.Gcp.Compute
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Resource policy for instances used for placement configuration.
         /// Structure is documented below.
         /// </summary>
         [Output("groupPlacementPolicy")]
         public Output<Outputs.ResourcePolicyGroupPlacementPolicy?> GroupPlacementPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource policy for scheduling instance operations.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("instanceSchedulePolicy")]
+        public Output<Outputs.ResourcePolicyInstanceSchedulePolicy?> InstanceSchedulePolicy { get; private set; } = null!;
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating
@@ -224,11 +268,24 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Resource policy for instances used for placement configuration.
         /// Structure is documented below.
         /// </summary>
         [Input("groupPlacementPolicy")]
         public Input<Inputs.ResourcePolicyGroupPlacementPolicyArgs>? GroupPlacementPolicy { get; set; }
+
+        /// <summary>
+        /// Resource policy for scheduling instance operations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("instanceSchedulePolicy")]
+        public Input<Inputs.ResourcePolicyInstanceSchedulePolicyArgs>? InstanceSchedulePolicy { get; set; }
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating
@@ -270,11 +327,24 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Resource policy for instances used for placement configuration.
         /// Structure is documented below.
         /// </summary>
         [Input("groupPlacementPolicy")]
         public Input<Inputs.ResourcePolicyGroupPlacementPolicyGetArgs>? GroupPlacementPolicy { get; set; }
+
+        /// <summary>
+        /// Resource policy for scheduling instance operations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("instanceSchedulePolicy")]
+        public Input<Inputs.ResourcePolicyInstanceSchedulePolicyGetArgs>? InstanceSchedulePolicy { get; set; }
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating

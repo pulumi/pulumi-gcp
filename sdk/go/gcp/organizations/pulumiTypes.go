@@ -11,7 +11,21 @@ import (
 )
 
 type AccessApprovalSettingsEnrolledService struct {
-	CloudProduct    string  `pulumi:"cloudProduct"`
+	// The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+	// all
+	// appengine.googleapis.com
+	// bigquery.googleapis.com
+	// bigtable.googleapis.com
+	// cloudkms.googleapis.com
+	// compute.googleapis.com
+	// dataflow.googleapis.com
+	// iam.googleapis.com
+	// pubsub.googleapis.com
+	// storage.googleapis.com
+	CloudProduct string `pulumi:"cloudProduct"`
+	// The enrollment level of the service.
+	// Default value is `BLOCK_ALL`.
+	// Possible values are `BLOCK_ALL`.
 	EnrollmentLevel *string `pulumi:"enrollmentLevel"`
 }
 
@@ -27,7 +41,21 @@ type AccessApprovalSettingsEnrolledServiceInput interface {
 }
 
 type AccessApprovalSettingsEnrolledServiceArgs struct {
-	CloudProduct    pulumi.StringInput    `pulumi:"cloudProduct"`
+	// The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+	// all
+	// appengine.googleapis.com
+	// bigquery.googleapis.com
+	// bigtable.googleapis.com
+	// cloudkms.googleapis.com
+	// compute.googleapis.com
+	// dataflow.googleapis.com
+	// iam.googleapis.com
+	// pubsub.googleapis.com
+	// storage.googleapis.com
+	CloudProduct pulumi.StringInput `pulumi:"cloudProduct"`
+	// The enrollment level of the service.
+	// Default value is `BLOCK_ALL`.
+	// Possible values are `BLOCK_ALL`.
 	EnrollmentLevel pulumi.StringPtrInput `pulumi:"enrollmentLevel"`
 }
 
@@ -82,10 +110,24 @@ func (o AccessApprovalSettingsEnrolledServiceOutput) ToAccessApprovalSettingsEnr
 	return o
 }
 
+// The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+// all
+// appengine.googleapis.com
+// bigquery.googleapis.com
+// bigtable.googleapis.com
+// cloudkms.googleapis.com
+// compute.googleapis.com
+// dataflow.googleapis.com
+// iam.googleapis.com
+// pubsub.googleapis.com
+// storage.googleapis.com
 func (o AccessApprovalSettingsEnrolledServiceOutput) CloudProduct() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) string { return v.CloudProduct }).(pulumi.StringOutput)
 }
 
+// The enrollment level of the service.
+// Default value is `BLOCK_ALL`.
+// Possible values are `BLOCK_ALL`.
 func (o AccessApprovalSettingsEnrolledServiceOutput) EnrollmentLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) *string { return v.EnrollmentLevel }).(pulumi.StringPtrOutput)
 }

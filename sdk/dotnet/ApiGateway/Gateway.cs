@@ -44,7 +44,8 @@ namespace Pulumi.Gcp.ApiGateway
     public partial class Gateway : Pulumi.CustomResource
     {
         /// <summary>
-        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+        /// When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
         /// </summary>
         [Output("apiConfig")]
         public Output<string> ApiConfig { get; private set; } = null!;
@@ -139,7 +140,8 @@ namespace Pulumi.Gcp.ApiGateway
     public sealed class GatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+        /// When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
         /// </summary>
         [Input("apiConfig", required: true)]
         public Input<string> ApiConfig { get; set; } = null!;
@@ -189,7 +191,8 @@ namespace Pulumi.Gcp.ApiGateway
     public sealed class GatewayState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+        /// When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
         /// </summary>
         [Input("apiConfig")]
         public Input<string>? ApiConfig { get; set; }

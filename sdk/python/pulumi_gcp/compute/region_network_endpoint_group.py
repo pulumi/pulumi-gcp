@@ -453,7 +453,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
         appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion",
             version_id="v1",
-            service="default",
+            service="appengine-network-endpoint-group",
             runtime="nodejs",
             entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
                 shell="node ./app.js",
@@ -628,7 +628,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
         appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion",
             version_id="v1",
-            service="default",
+            service="appengine-network-endpoint-group",
             runtime="nodejs",
             entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
                 shell="node ./app.js",

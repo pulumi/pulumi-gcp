@@ -50,6 +50,34 @@ class AccessApprovalSettingsEnrolledService(dict):
     def __init__(__self__, *,
                  cloud_product: str,
                  enrollment_level: Optional[str] = None):
+        """
+        :param str cloud_product: The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+               * all
+               * App Engine
+               * BigQuery
+               * Cloud Bigtable
+               * Cloud Key Management Service
+               * Compute Engine
+               * Cloud Dataflow
+               * Cloud Identity and Access Management
+               * Cloud Pub/Sub
+               * Cloud Storage
+               * Persistent Disk
+               Note: These values are supported as input, but considered a legacy format:
+               * all
+               * appengine.googleapis.com
+               * bigquery.googleapis.com
+               * bigtable.googleapis.com
+               * cloudkms.googleapis.com
+               * compute.googleapis.com
+               * dataflow.googleapis.com
+               * iam.googleapis.com
+               * pubsub.googleapis.com
+               * storage.googleapis.com
+        :param str enrollment_level: The enrollment level of the service.
+               Default value is `BLOCK_ALL`.
+               Possible values are `BLOCK_ALL`.
+        """
         pulumi.set(__self__, "cloud_product", cloud_product)
         if enrollment_level is not None:
             pulumi.set(__self__, "enrollment_level", enrollment_level)
@@ -57,11 +85,41 @@ class AccessApprovalSettingsEnrolledService(dict):
     @property
     @pulumi.getter(name="cloudProduct")
     def cloud_product(self) -> str:
+        """
+        The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+        * all
+        * App Engine
+        * BigQuery
+        * Cloud Bigtable
+        * Cloud Key Management Service
+        * Compute Engine
+        * Cloud Dataflow
+        * Cloud Identity and Access Management
+        * Cloud Pub/Sub
+        * Cloud Storage
+        * Persistent Disk
+        Note: These values are supported as input, but considered a legacy format:
+        * all
+        * appengine.googleapis.com
+        * bigquery.googleapis.com
+        * bigtable.googleapis.com
+        * cloudkms.googleapis.com
+        * compute.googleapis.com
+        * dataflow.googleapis.com
+        * iam.googleapis.com
+        * pubsub.googleapis.com
+        * storage.googleapis.com
+        """
         return pulumi.get(self, "cloud_product")
 
     @property
     @pulumi.getter(name="enrollmentLevel")
     def enrollment_level(self) -> Optional[str]:
+        """
+        The enrollment level of the service.
+        Default value is `BLOCK_ALL`.
+        Possible values are `BLOCK_ALL`.
+        """
         return pulumi.get(self, "enrollment_level")
 
 

@@ -39,6 +39,25 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Compute Router Encrypted Interconnect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const encrypted_interconnect_router = new gcp.compute.Router("encrypted-interconnect-router", {
+ *     network: network.name,
+ *     encryptedInterconnectRouter: true,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -102,6 +121,11 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+     * Interconnect feature). Not currently available publicly.
+     */
+    public readonly encryptedInterconnectRouter!: pulumi.Output<boolean | undefined>;
+    /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
      * long and match the regular expression `a-z?`
@@ -144,6 +168,7 @@ export class Router extends pulumi.CustomResource {
             inputs["bgp"] = state ? state.bgp : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["encryptedInterconnectRouter"] = state ? state.encryptedInterconnectRouter : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -156,6 +181,7 @@ export class Router extends pulumi.CustomResource {
             }
             inputs["bgp"] = args ? args.bgp : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -187,6 +213,11 @@ export interface RouterState {
      * User-specified description for the IP range.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+     * Interconnect feature). Not currently available publicly.
+     */
+    readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -228,6 +259,11 @@ export interface RouterArgs {
      * User-specified description for the IP range.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+     * Interconnect feature). Not currently available publicly.
+     */
+    readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters

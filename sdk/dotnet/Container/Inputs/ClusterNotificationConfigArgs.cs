@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNotificationConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The pubsub config for the cluster's upgrade notifications.
+        /// </summary>
         [Input("pubsub", required: true)]
         public Input<Inputs.ClusterNotificationConfigPubsubArgs> Pubsub { get; set; } = null!;
 

@@ -30,6 +30,43 @@ import * as utilities from "../utilities";
  *     mtu: 1500,
  * });
  * ```
+ * ### Compute Interconnect Attachment Ipsec Encryption
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const address = new gcp.compute.Address("address", {
+ *     addressType: "INTERNAL",
+ *     purpose: "IPSEC_INTERCONNECT",
+ *     address: "192.168.1.0",
+ *     prefixLength: 29,
+ *     network: network.selfLink,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     network: network.name,
+ *     encryptedInterconnectRouter: true,
+ *     bgp: {
+ *         asn: 16550,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const ipsec_encrypted_interconnect_attachment = new gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", {
+ *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
+ *     type: "PARTNER",
+ *     router: router.id,
+ *     encryption: "IPSEC",
+ *     ipsecInternalAddresses: [address.selfLink],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -129,6 +166,15 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly edgeAvailabilityDomain!: pulumi.Output<string>;
     /**
+     * Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+     * that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+     * attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+     * gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+     * Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+     * values: ["NONE", "IPSEC"]
+     */
+    public readonly encryption!: pulumi.Output<string | undefined>;
+    /**
      * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
      * issues.
      */
@@ -139,6 +185,17 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * be set if type is PARTNER.
      */
     public readonly interconnect!: pulumi.Output<string | undefined>;
+    /**
+     * URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+     * the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+     * interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+     * address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+     * paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+     * from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+     * attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+     * the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+     */
+    public readonly ipsecInternalAddresses!: pulumi.Output<string[] | undefined>;
     /**
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through
      * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
@@ -225,8 +282,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["customerRouterIpAddress"] = state ? state.customerRouterIpAddress : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["edgeAvailabilityDomain"] = state ? state.edgeAvailabilityDomain : undefined;
+            inputs["encryption"] = state ? state.encryption : undefined;
             inputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
             inputs["interconnect"] = state ? state.interconnect : undefined;
+            inputs["ipsecInternalAddresses"] = state ? state.ipsecInternalAddresses : undefined;
             inputs["mtu"] = state ? state.mtu : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["pairingKey"] = state ? state.pairingKey : undefined;
@@ -249,7 +308,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
+            inputs["encryption"] = args ? args.encryption : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
+            inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
             inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -328,6 +389,15 @@ export interface InterconnectAttachmentState {
      */
     readonly edgeAvailabilityDomain?: pulumi.Input<string>;
     /**
+     * Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+     * that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+     * attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+     * gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+     * Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+     * values: ["NONE", "IPSEC"]
+     */
+    readonly encryption?: pulumi.Input<string>;
+    /**
      * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
      * issues.
      */
@@ -338,6 +408,17 @@ export interface InterconnectAttachmentState {
      * be set if type is PARTNER.
      */
     readonly interconnect?: pulumi.Input<string>;
+    /**
+     * URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+     * the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+     * interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+     * address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+     * paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+     * from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+     * attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+     * the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+     */
+    readonly ipsecInternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through
      * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
@@ -446,11 +527,31 @@ export interface InterconnectAttachmentArgs {
      */
     readonly edgeAvailabilityDomain?: pulumi.Input<string>;
     /**
+     * Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
+     * that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
+     * attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
+     * gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+     * Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
+     * values: ["NONE", "IPSEC"]
+     */
+    readonly encryption?: pulumi.Input<string>;
+    /**
      * URL of the underlying Interconnect object that this attachment's
      * traffic will traverse through. Required if type is DEDICATED, must not
      * be set if type is PARTNER.
      */
     readonly interconnect?: pulumi.Input<string>;
+    /**
+     * URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
+     * the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
+     * interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
+     * address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
+     * paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+     * from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
+     * attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
+     * the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+     */
+    readonly ipsecInternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through
      * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.

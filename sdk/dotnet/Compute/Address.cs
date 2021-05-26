@@ -146,6 +146,38 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Compute Address Ipsec Interconnect
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var ipsec_interconnect_address = new Gcp.Compute.Address("ipsec-interconnect-address", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             AddressType = "INTERNAL",
+    ///             Purpose = "IPSEC_INTERCONNECT",
+    ///             Address = "192.168.1.0",
+    ///             PrefixLength = 29,
+    ///             Network = network.SelfLink,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -223,12 +255,25 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+        /// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Output("networkTier")]
         public Output<string> NetworkTier { get; private set; } = null!;
+
+        /// <summary>
+        /// The prefix length if the resource represents an IP range.
+        /// </summary>
+        [Output("prefixLength")]
+        public Output<int?> PrefixLength { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -238,10 +283,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of this resource. Possible values include:
-        /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-        /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        /// The purpose of this resource, which can be one of the following values:
+        /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+        /// ranges, internal load balancers, and similar resources.
+        /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+        /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
+        /// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+        /// Interconnect configuration. These addresses are regional resources.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -367,12 +418,25 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+        /// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
+
+        /// <summary>
+        /// The prefix length if the resource represents an IP range.
+        /// </summary>
+        [Input("prefixLength")]
+        public Input<int>? PrefixLength { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -382,10 +446,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of this resource. Possible values include:
-        /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-        /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        /// The purpose of this resource, which can be one of the following values:
+        /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+        /// ranges, internal load balancers, and similar resources.
+        /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+        /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
+        /// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+        /// Interconnect configuration. These addresses are regional resources.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -472,12 +542,25 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+        /// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
+
+        /// <summary>
+        /// The prefix length if the resource represents an IP range.
+        /// </summary>
+        [Input("prefixLength")]
+        public Input<int>? PrefixLength { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -487,10 +570,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of this resource. Possible values include:
-        /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-        /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+        /// The purpose of this resource, which can be one of the following values:
+        /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+        /// ranges, internal load balancers, and similar resources.
+        /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+        /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
+        /// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+        /// Interconnect configuration. These addresses are regional resources.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

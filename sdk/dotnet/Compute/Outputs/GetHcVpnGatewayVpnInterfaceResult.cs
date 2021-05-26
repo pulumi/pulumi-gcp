@@ -14,15 +14,19 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetHcVpnGatewayVpnInterfaceResult
     {
         public readonly int Id;
+        public readonly string InterconnectAttachment;
         public readonly string IpAddress;
 
         [OutputConstructor]
         private GetHcVpnGatewayVpnInterfaceResult(
             int id,
 
+            string interconnectAttachment,
+
             string ipAddress)
         {
             Id = id;
+            InterconnectAttachment = interconnectAttachment;
             IpAddress = ipAddress;
         }
     }

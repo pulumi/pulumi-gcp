@@ -110,6 +110,38 @@ import (
 // 	})
 // }
 // ```
+// ### Resource Policy Instance Schedule Policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewResourcePolicy(ctx, "hourly", &compute.ResourcePolicyArgs{
+// 			Description: pulumi.String("Start and stop instances"),
+// 			InstanceSchedulePolicy: &compute.ResourcePolicyInstanceSchedulePolicyArgs{
+// 				TimeZone: pulumi.String("US/Central"),
+// 				VmStartSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{
+// 					Schedule: pulumi.String("0 * * * *"),
+// 				},
+// 				VmStopSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{
+// 					Schedule: pulumi.String("15 * * * *"),
+// 				},
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -133,9 +165,14 @@ import (
 type ResourcePolicy struct {
 	pulumi.CustomResourceState
 
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrOutput `pulumi:"groupPlacementPolicy"`
+	// Resource policy for scheduling instance operations.
+	// Structure is documented below.
+	InstanceSchedulePolicy ResourcePolicyInstanceSchedulePolicyPtrOutput `pulumi:"instanceSchedulePolicy"`
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
 	// with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -185,9 +222,14 @@ func GetResourcePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourcePolicy resources.
 type resourcePolicyState struct {
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description *string `pulumi:"description"`
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
+	// Resource policy for scheduling instance operations.
+	// Structure is documented below.
+	InstanceSchedulePolicy *ResourcePolicyInstanceSchedulePolicy `pulumi:"instanceSchedulePolicy"`
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
 	// with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -209,9 +251,14 @@ type resourcePolicyState struct {
 }
 
 type ResourcePolicyState struct {
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringPtrInput
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
+	// Resource policy for scheduling instance operations.
+	// Structure is documented below.
+	InstanceSchedulePolicy ResourcePolicyInstanceSchedulePolicyPtrInput
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
 	// with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -237,9 +284,14 @@ func (ResourcePolicyState) ElementType() reflect.Type {
 }
 
 type resourcePolicyArgs struct {
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description *string `pulumi:"description"`
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
+	// Resource policy for scheduling instance operations.
+	// Structure is documented below.
+	InstanceSchedulePolicy *ResourcePolicyInstanceSchedulePolicy `pulumi:"instanceSchedulePolicy"`
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
 	// with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -260,9 +312,14 @@ type resourcePolicyArgs struct {
 
 // The set of arguments for constructing a ResourcePolicy resource.
 type ResourcePolicyArgs struct {
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringPtrInput
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
+	// Resource policy for scheduling instance operations.
+	// Structure is documented below.
+	InstanceSchedulePolicy ResourcePolicyInstanceSchedulePolicyPtrInput
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
 	// with RFC1035. Specifically, the name must be 1-63 characters long and

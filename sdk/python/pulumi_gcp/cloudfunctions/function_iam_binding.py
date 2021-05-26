@@ -23,15 +23,6 @@ class FunctionIamBindingArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FunctionIamBinding resource.
-        :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
-               region is specified, it is taken from the provider configuration.
         """
         pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "members", members)
@@ -46,9 +37,6 @@ class FunctionIamBindingArgs:
     @property
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> pulumi.Input[str]:
-        """
-        Used to find the parent resource to bind the IAM policy to
-        """
         return pulumi.get(self, "cloud_function")
 
     @cloud_function.setter
@@ -67,11 +55,6 @@ class FunctionIamBindingArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
-        """
-        The role that should be applied. Only one
-        `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -90,10 +73,6 @@ class FunctionIamBindingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -103,11 +82,6 @@ class FunctionIamBindingArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
-        region is specified, it is taken from the provider configuration.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -127,16 +101,6 @@ class _FunctionIamBindingState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FunctionIamBinding resources.
-        :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
-               region is specified, it is taken from the provider configuration.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if cloud_function is not None:
             pulumi.set(__self__, "cloud_function", cloud_function)
@@ -156,9 +120,6 @@ class _FunctionIamBindingState:
     @property
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> Optional[pulumi.Input[str]]:
-        """
-        Used to find the parent resource to bind the IAM policy to
-        """
         return pulumi.get(self, "cloud_function")
 
     @cloud_function.setter
@@ -177,9 +138,6 @@ class _FunctionIamBindingState:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Computed) The etag of the IAM policy.
-        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -198,10 +156,6 @@ class _FunctionIamBindingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -211,11 +165,6 @@ class _FunctionIamBindingState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
-        region is specified, it is taken from the provider configuration.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -225,11 +174,6 @@ class _FunctionIamBindingState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
-        """
-        The role that should be applied. Only one
-        `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -250,96 +194,9 @@ class FunctionIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Three different resources help you manage your IAM policy for Cloud Functions CloudFunction. Each of these resources serves a different use case:
-
-        * `cloudfunctions.FunctionIamPolicy`: Authoritative. Sets the IAM policy for the cloudfunction and replaces any existing policy already attached.
-        * `cloudfunctions.FunctionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cloudfunction are preserved.
-        * `cloudfunctions.FunctionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cloudfunction are preserved.
-
-        > **Note:** `cloudfunctions.FunctionIamPolicy` **cannot** be used in conjunction with `cloudfunctions.FunctionIamBinding` and `cloudfunctions.FunctionIamMember` or they will fight over what your policy should be.
-
-        > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\_cloudfunctions\_function\_iam\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudfunctions.FunctionIamPolicy("policy",
-            project=google_cloudfunctions_function["function"]["project"],
-            region=google_cloudfunctions_function["function"]["region"],
-            cloud_function=google_cloudfunctions_function["function"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\_cloudfunctions\_function\_iam\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudfunctions.FunctionIamBinding("binding",
-            project=google_cloudfunctions_function["function"]["project"],
-            region=google_cloudfunctions_function["function"]["region"],
-            cloud_function=google_cloudfunctions_function["function"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\_cloudfunctions\_function\_iam\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudfunctions.FunctionIamMember("member",
-            project=google_cloudfunctions_function["function"]["project"],
-            region=google_cloudfunctions_function["function"]["region"],
-            cloud_function=google_cloudfunctions_function["function"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
-        ## Import
-
-        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} * {{project}}/{{region}}/{{cloud_function}} * {{region}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions cloudfunction IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
-
-        ```sh
-         $ pulumi import gcp:cloudfunctions/functionIamBinding:FunctionIamBinding editor "projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} roles/viewer user:jane@example.com"
-        ```
-
-         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
-
-        ```sh
-         $ pulumi import gcp:cloudfunctions/functionIamBinding:FunctionIamBinding editor "projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} roles/viewer"
-        ```
-
-         IAM policy imports use the identifier of the resource in question, e.g.
-
-        ```sh
-         $ pulumi import gcp:cloudfunctions/functionIamBinding:FunctionIamBinding editor projects/{{project}}/locations/{{region}}/functions/{{cloud_function}}
-        ```
-
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-
+        Create a FunctionIamBinding resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
-               region is specified, it is taken from the provider configuration.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
@@ -348,85 +205,7 @@ class FunctionIamBinding(pulumi.CustomResource):
                  args: FunctionIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Three different resources help you manage your IAM policy for Cloud Functions CloudFunction. Each of these resources serves a different use case:
-
-        * `cloudfunctions.FunctionIamPolicy`: Authoritative. Sets the IAM policy for the cloudfunction and replaces any existing policy already attached.
-        * `cloudfunctions.FunctionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cloudfunction are preserved.
-        * `cloudfunctions.FunctionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cloudfunction are preserved.
-
-        > **Note:** `cloudfunctions.FunctionIamPolicy` **cannot** be used in conjunction with `cloudfunctions.FunctionIamBinding` and `cloudfunctions.FunctionIamMember` or they will fight over what your policy should be.
-
-        > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\_cloudfunctions\_function\_iam\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudfunctions.FunctionIamPolicy("policy",
-            project=google_cloudfunctions_function["function"]["project"],
-            region=google_cloudfunctions_function["function"]["region"],
-            cloud_function=google_cloudfunctions_function["function"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\_cloudfunctions\_function\_iam\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudfunctions.FunctionIamBinding("binding",
-            project=google_cloudfunctions_function["function"]["project"],
-            region=google_cloudfunctions_function["function"]["region"],
-            cloud_function=google_cloudfunctions_function["function"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\_cloudfunctions\_function\_iam\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudfunctions.FunctionIamMember("member",
-            project=google_cloudfunctions_function["function"]["project"],
-            region=google_cloudfunctions_function["function"]["region"],
-            cloud_function=google_cloudfunctions_function["function"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
-        ## Import
-
-        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} * {{project}}/{{region}}/{{cloud_function}} * {{region}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions cloudfunction IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
-
-        ```sh
-         $ pulumi import gcp:cloudfunctions/functionIamBinding:FunctionIamBinding editor "projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} roles/viewer user:jane@example.com"
-        ```
-
-         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
-
-        ```sh
-         $ pulumi import gcp:cloudfunctions/functionIamBinding:FunctionIamBinding editor "projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} roles/viewer"
-        ```
-
-         IAM policy imports use the identifier of the resource in question, e.g.
-
-        ```sh
-         $ pulumi import gcp:cloudfunctions/functionIamBinding:FunctionIamBinding editor projects/{{project}}/locations/{{region}}/functions/{{cloud_function}}
-        ```
-
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-
+        Create a FunctionIamBinding resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FunctionIamBindingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -497,16 +276,6 @@ class FunctionIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
-               region is specified, it is taken from the provider configuration.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -524,9 +293,6 @@ class FunctionIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> pulumi.Output[str]:
-        """
-        Used to find the parent resource to bind the IAM policy to
-        """
         return pulumi.get(self, "cloud_function")
 
     @property
@@ -537,9 +303,6 @@ class FunctionIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
-        """
-        (Computed) The etag of the IAM policy.
-        """
         return pulumi.get(self, "etag")
 
     @property
@@ -550,29 +313,15 @@ class FunctionIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
-        region is specified, it is taken from the provider configuration.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
-        """
-        The role that should be applied. Only one
-        `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         return pulumi.get(self, "role")
 

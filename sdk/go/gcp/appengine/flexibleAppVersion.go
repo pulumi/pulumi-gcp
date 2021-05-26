@@ -230,7 +230,7 @@ type FlexibleAppVersion struct {
 	RuntimeChannel pulumi.StringPtrOutput `pulumi:"runtimeChannel"`
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath pulumi.StringPtrOutput `pulumi:"runtimeMainExecutablePath"`
-	// AppEngine service resource
+	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service pulumi.StringOutput `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
@@ -354,7 +354,7 @@ type flexibleAppVersionState struct {
 	RuntimeChannel *string `pulumi:"runtimeChannel"`
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath *string `pulumi:"runtimeMainExecutablePath"`
-	// AppEngine service resource
+	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service *string `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
@@ -438,7 +438,7 @@ type FlexibleAppVersionState struct {
 	RuntimeChannel pulumi.StringPtrInput
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath pulumi.StringPtrInput
-	// AppEngine service resource
+	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service pulumi.StringPtrInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
@@ -524,7 +524,7 @@ type flexibleAppVersionArgs struct {
 	RuntimeChannel *string `pulumi:"runtimeChannel"`
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath *string `pulumi:"runtimeMainExecutablePath"`
-	// AppEngine service resource
+	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service string `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
@@ -607,7 +607,7 @@ type FlexibleAppVersionArgs struct {
 	RuntimeChannel pulumi.StringPtrInput
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath pulumi.StringPtrInput
-	// AppEngine service resource
+	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service pulumi.StringInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.

@@ -11,24 +11,78 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Access Approval enables you to require your explicit approval whenever Google support and engineering need to access your customer content.
+//
+// To get more information about ProjectSettings, see:
+//
+// * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/projects)
+//
+// ## Example Usage
+// ### Project Access Approval Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
+// 			EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
+// 				&projects.AccessApprovalSettingsEnrolledServiceArgs{
+// 					CloudProduct:    pulumi.String("all"),
+// 					EnrollmentLevel: pulumi.String("BLOCK_ALL"),
+// 				},
+// 			},
+// 			NotificationEmails: pulumi.StringArray{
+// 				pulumi.String("testuser@example.com"),
+// 				pulumi.String("example.user@example.com"),
+// 			},
+// 			ProjectId: pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ProjectSettings can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
+// ```
 type AccessApprovalSettings struct {
 	pulumi.CustomResourceState
 
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
 	// of the Project.
 	EnrolledAncestor pulumi.BoolOutput `pulumi:"enrolledAncestor"`
-	// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-	// resource given by name against any of these services contained here will be required to have explicit approval.
-	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-	// expanded as the set of supported services is expanded.
+	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+	// Access requests for the resource given by name against any of these services contained here will be required
+	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayOutput `pulumi:"enrolledServices"`
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayOutput `pulumi:"notificationEmails"`
-	// Deprecated in favor of 'project_id'
+	// -
+	// (Optional, Deprecated)
+	// Deprecated in favor of `projectId`
 	//
 	// Deprecated: Deprecated in favor of `project_id`
 	Project pulumi.StringPtrOutput `pulumi:"project"`
@@ -74,18 +128,21 @@ type accessApprovalSettingsState struct {
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
 	// of the Project.
 	EnrolledAncestor *bool `pulumi:"enrolledAncestor"`
-	// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-	// resource given by name against any of these services contained here will be required to have explicit approval.
-	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-	// expanded as the set of supported services is expanded.
+	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+	// Access requests for the resource given by name against any of these services contained here will be required
+	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+	// Structure is documented below.
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name *string `pulumi:"name"`
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	// Deprecated in favor of 'project_id'
+	// -
+	// (Optional, Deprecated)
+	// Deprecated in favor of `projectId`
 	//
 	// Deprecated: Deprecated in favor of `project_id`
 	Project *string `pulumi:"project"`
@@ -97,18 +154,21 @@ type AccessApprovalSettingsState struct {
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
 	// of the Project.
 	EnrolledAncestor pulumi.BoolPtrInput
-	// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-	// resource given by name against any of these services contained here will be required to have explicit approval.
-	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-	// expanded as the set of supported services is expanded.
+	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+	// Access requests for the resource given by name against any of these services contained here will be required
+	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringPtrInput
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	// Deprecated in favor of 'project_id'
+	// -
+	// (Optional, Deprecated)
+	// Deprecated in favor of `projectId`
 	//
 	// Deprecated: Deprecated in favor of `project_id`
 	Project pulumi.StringPtrInput
@@ -121,16 +181,19 @@ func (AccessApprovalSettingsState) ElementType() reflect.Type {
 }
 
 type accessApprovalSettingsArgs struct {
-	// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-	// resource given by name against any of these services contained here will be required to have explicit approval.
-	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-	// expanded as the set of supported services is expanded.
+	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+	// Access requests for the resource given by name against any of these services contained here will be required
+	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+	// Structure is documented below.
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	// Deprecated in favor of 'project_id'
+	// -
+	// (Optional, Deprecated)
+	// Deprecated in favor of `projectId`
 	//
 	// Deprecated: Deprecated in favor of `project_id`
 	Project *string `pulumi:"project"`
@@ -140,16 +203,19 @@ type accessApprovalSettingsArgs struct {
 
 // The set of arguments for constructing a AccessApprovalSettings resource.
 type AccessApprovalSettingsArgs struct {
-	// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-	// resource given by name against any of these services contained here will be required to have explicit approval.
-	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-	// expanded as the set of supported services is expanded.
+	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+	// Access requests for the resource given by name against any of these services contained here will be required
+	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	// Deprecated in favor of 'project_id'
+	// -
+	// (Optional, Deprecated)
+	// Deprecated in favor of `projectId`
 	//
 	// Deprecated: Deprecated in favor of `project_id`
 	Project pulumi.StringPtrInput

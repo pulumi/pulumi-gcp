@@ -270,6 +270,98 @@ import (
 // 	})
 // }
 // ```
+// ### Compute Ha Vpn Gateway Encrypted Interconnect
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		address1, err := compute.NewAddress(ctx, "address1", &compute.AddressArgs{
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
+// 			Address:      pulumi.String("192.168.1.0"),
+// 			PrefixLength: pulumi.Int(29),
+// 			Network:      network.SelfLink,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+// 			Network:                     network.Name,
+// 			EncryptedInterconnectRouter: pulumi.Bool(true),
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn: pulumi.Int(16550),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		attachment1, err := compute.NewInterconnectAttachment(ctx, "attachment1", &compute.InterconnectAttachmentArgs{
+// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
+// 			Type:                   pulumi.String("PARTNER"),
+// 			Router:                 router.ID(),
+// 			Encryption:             pulumi.String("IPSEC"),
+// 			IpsecInternalAddresses: pulumi.StringArray{
+// 				address1.SelfLink,
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		address2, err := compute.NewAddress(ctx, "address2", &compute.AddressArgs{
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
+// 			Address:      pulumi.String("192.168.2.0"),
+// 			PrefixLength: pulumi.Int(29),
+// 			Network:      network.SelfLink,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		attachment2, err := compute.NewInterconnectAttachment(ctx, "attachment2", &compute.InterconnectAttachmentArgs{
+// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_2"),
+// 			Type:                   pulumi.String("PARTNER"),
+// 			Router:                 router.ID(),
+// 			Encryption:             pulumi.String("IPSEC"),
+// 			IpsecInternalAddresses: pulumi.StringArray{
+// 				address2.SelfLink,
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewHaVpnGateway(ctx, "vpn_gateway", &compute.HaVpnGatewayArgs{
+// 			Network: network.ID(),
+// 			VpnInterfaces: compute.HaVpnGatewayVpnInterfaceArray{
+// 				&compute.HaVpnGatewayVpnInterfaceArgs{
+// 					Id:                     pulumi.Int(0),
+// 					InterconnectAttachment: attachment1.SelfLink,
+// 				},
+// 				&compute.HaVpnGatewayVpnInterfaceArgs{
+// 					Id:                     pulumi.Int(1),
+// 					InterconnectAttachment: attachment2.SelfLink,
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -313,6 +405,7 @@ type HaVpnGateway struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A list of interfaces on this VPN gateway.
+	// Structure is documented below.
 	VpnInterfaces HaVpnGatewayVpnInterfaceArrayOutput `pulumi:"vpnInterfaces"`
 }
 
@@ -368,6 +461,7 @@ type haVpnGatewayState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of interfaces on this VPN gateway.
+	// Structure is documented below.
 	VpnInterfaces []HaVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
 }
 
@@ -392,6 +486,7 @@ type HaVpnGatewayState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// A list of interfaces on this VPN gateway.
+	// Structure is documented below.
 	VpnInterfaces HaVpnGatewayVpnInterfaceArrayInput
 }
 
@@ -417,6 +512,9 @@ type haVpnGatewayArgs struct {
 	Project *string `pulumi:"project"`
 	// The region this gateway should sit in.
 	Region *string `pulumi:"region"`
+	// A list of interfaces on this VPN gateway.
+	// Structure is documented below.
+	VpnInterfaces []HaVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
 }
 
 // The set of arguments for constructing a HaVpnGateway resource.
@@ -438,6 +536,9 @@ type HaVpnGatewayArgs struct {
 	Project pulumi.StringPtrInput
 	// The region this gateway should sit in.
 	Region pulumi.StringPtrInput
+	// A list of interfaces on this VPN gateway.
+	// Structure is documented below.
+	VpnInterfaces HaVpnGatewayVpnInterfaceArrayInput
 }
 
 func (HaVpnGatewayArgs) ElementType() reflect.Type {

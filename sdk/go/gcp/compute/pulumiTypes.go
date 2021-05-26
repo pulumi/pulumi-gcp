@@ -8854,8 +8854,11 @@ func (o GlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pulumi
 }
 
 type HaVpnGatewayVpnInterface struct {
-	// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
-	Id        *int    `pulumi:"id"`
+	// The numeric ID of this VPN gateway interface.
+	Id                     *int    `pulumi:"id"`
+	InterconnectAttachment *string `pulumi:"interconnectAttachment"`
+	// -
+	// The external IP address for this VPN gateway interface.
 	IpAddress *string `pulumi:"ipAddress"`
 }
 
@@ -8871,8 +8874,11 @@ type HaVpnGatewayVpnInterfaceInput interface {
 }
 
 type HaVpnGatewayVpnInterfaceArgs struct {
-	// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
-	Id        pulumi.IntPtrInput    `pulumi:"id"`
+	// The numeric ID of this VPN gateway interface.
+	Id                     pulumi.IntPtrInput    `pulumi:"id"`
+	InterconnectAttachment pulumi.StringPtrInput `pulumi:"interconnectAttachment"`
+	// -
+	// The external IP address for this VPN gateway interface.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 }
 
@@ -8927,11 +8933,17 @@ func (o HaVpnGatewayVpnInterfaceOutput) ToHaVpnGatewayVpnInterfaceOutputWithCont
 	return o
 }
 
-// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+// The numeric ID of this VPN gateway interface.
 func (o HaVpnGatewayVpnInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HaVpnGatewayVpnInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+func (o HaVpnGatewayVpnInterfaceOutput) InterconnectAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HaVpnGatewayVpnInterface) *string { return v.InterconnectAttachment }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The external IP address for this VPN gateway interface.
 func (o HaVpnGatewayVpnInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HaVpnGatewayVpnInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -43227,12 +43239,500 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) VmCount() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+type ResourcePolicyInstanceSchedulePolicy struct {
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime *string `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime *string `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+	// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone string `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
+	// Structure is documented below.
+	VmStartSchedule *ResourcePolicyInstanceSchedulePolicyVmStartSchedule `pulumi:"vmStartSchedule"`
+	// Specifies the schedule for stopping instances.
+	// Structure is documented below.
+	VmStopSchedule *ResourcePolicyInstanceSchedulePolicyVmStopSchedule `pulumi:"vmStopSchedule"`
+}
+
+// ResourcePolicyInstanceSchedulePolicyInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyArgs and ResourcePolicyInstanceSchedulePolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyArgs{...}
+type ResourcePolicyInstanceSchedulePolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyOutput() ResourcePolicyInstanceSchedulePolicyOutput
+	ToResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyOutput
+}
+
+type ResourcePolicyInstanceSchedulePolicyArgs struct {
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+	// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
+	// Structure is documented below.
+	VmStartSchedule ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrInput `pulumi:"vmStartSchedule"`
+	// Specifies the schedule for stopping instances.
+	// Structure is documented below.
+	VmStopSchedule ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrInput `pulumi:"vmStopSchedule"`
+}
+
+func (ResourcePolicyInstanceSchedulePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyOutput() ResourcePolicyInstanceSchedulePolicyOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyOutput)
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyOutput).ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyInstanceSchedulePolicyPtrInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyArgs, ResourcePolicyInstanceSchedulePolicyPtr and ResourcePolicyInstanceSchedulePolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyPtrInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyInstanceSchedulePolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput
+	ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput
+}
+
+type resourcePolicyInstanceSchedulePolicyPtrType ResourcePolicyInstanceSchedulePolicyArgs
+
+func ResourcePolicyInstanceSchedulePolicyPtr(v *ResourcePolicyInstanceSchedulePolicyArgs) ResourcePolicyInstanceSchedulePolicyPtrInput {
+	return (*resourcePolicyInstanceSchedulePolicyPtrType)(v)
+}
+
+func (*resourcePolicyInstanceSchedulePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyPtrType) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyPtrType) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyPtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyOutput() ResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o.ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicy {
+		return &v
+	}).(ResourcePolicyInstanceSchedulePolicyPtrOutput)
+}
+
+// The expiration time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+// The start time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Specifies the schedule for starting instances.
+// Structure is documented below.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) VmStartSchedule() ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		return v.VmStartSchedule
+	}).(ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput)
+}
+
+// Specifies the schedule for stopping instances.
+// Structure is documented below.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) VmStopSchedule() ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		return v.VmStopSchedule
+	}).(ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) Elem() ResourcePolicyInstanceSchedulePolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) ResourcePolicyInstanceSchedulePolicy { return *v }).(ResourcePolicyInstanceSchedulePolicyOutput)
+}
+
+// The expiration time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the schedule for starting instances.
+// Structure is documented below.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) VmStartSchedule() ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.VmStartSchedule
+	}).(ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput)
+}
+
+// Specifies the schedule for stopping instances.
+// Structure is documented below.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) VmStopSchedule() ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.VmStopSchedule
+	}).(ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStartSchedule struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule string `pulumi:"schedule"`
+}
+
+// ResourcePolicyInstanceSchedulePolicyVmStartScheduleInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs and ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyVmStartScheduleInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{...}
+type ResourcePolicyInstanceSchedulePolicyVmStartScheduleInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput
+	ToResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+}
+
+func (ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput)
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput).ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs, ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtr and ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput
+	ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput
+}
+
+type resourcePolicyInstanceSchedulePolicyVmStartSchedulePtrType ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs
+
+func ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtr(v *ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrInput {
+	return (*resourcePolicyInstanceSchedulePolicyVmStartSchedulePtrType)(v)
+}
+
+func (*resourcePolicyInstanceSchedulePolicyVmStartSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyVmStartSchedulePtrType) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyVmStartSchedulePtrType) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return o.ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyVmStartSchedule) *ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		return &v
+	}).(ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput)
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyVmStartSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput) ToResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput) Elem() ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicyVmStartSchedule) ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		return *v
+	}).(ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput)
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicyVmStartSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStopSchedule struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule string `pulumi:"schedule"`
+}
+
+// ResourcePolicyInstanceSchedulePolicyVmStopScheduleInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs and ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyVmStopScheduleInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{...}
+type ResourcePolicyInstanceSchedulePolicyVmStopScheduleInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput
+	ToResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+}
+
+func (ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput)
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput).ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs, ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtr and ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput
+	ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput
+}
+
+type resourcePolicyInstanceSchedulePolicyVmStopSchedulePtrType ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs
+
+func ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtr(v *ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrInput {
+	return (*resourcePolicyInstanceSchedulePolicyVmStopSchedulePtrType)(v)
+}
+
+func (*resourcePolicyInstanceSchedulePolicyVmStopSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyVmStopSchedulePtrType) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyVmStopSchedulePtrType) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return o.ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyVmStopSchedule) *ResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		return &v
+	}).(ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput)
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyVmStopSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput() ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput) ToResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput) Elem() ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicyVmStopSchedule) ResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		return *v
+	}).(ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput)
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicyVmStopSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourcePolicySnapshotSchedulePolicy struct {
 	// Retention policy applied to snapshots created by this resource policy.
 	// Structure is documented below.
 	RetentionPolicy *ResourcePolicySnapshotSchedulePolicyRetentionPolicy `pulumi:"retentionPolicy"`
-	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
-	// Structure is documented below.
+	// Specifies the frequency for the operation, using the unix-cron format.
 	Schedule ResourcePolicySnapshotSchedulePolicySchedule `pulumi:"schedule"`
 	// Properties with which the snapshots are created, such as labels.
 	// Structure is documented below.
@@ -43254,8 +43754,7 @@ type ResourcePolicySnapshotSchedulePolicyArgs struct {
 	// Retention policy applied to snapshots created by this resource policy.
 	// Structure is documented below.
 	RetentionPolicy ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput `pulumi:"retentionPolicy"`
-	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
-	// Structure is documented below.
+	// Specifies the frequency for the operation, using the unix-cron format.
 	Schedule ResourcePolicySnapshotSchedulePolicyScheduleInput `pulumi:"schedule"`
 	// Properties with which the snapshots are created, such as labels.
 	// Structure is documented below.
@@ -43347,8 +43846,7 @@ func (o ResourcePolicySnapshotSchedulePolicyOutput) RetentionPolicy() ResourcePo
 	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
 }
 
-// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
-// Structure is documented below.
+// Specifies the frequency for the operation, using the unix-cron format.
 func (o ResourcePolicySnapshotSchedulePolicyOutput) Schedule() ResourcePolicySnapshotSchedulePolicyScheduleOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicy) ResourcePolicySnapshotSchedulePolicySchedule {
 		return v.Schedule
@@ -43392,8 +43890,7 @@ func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) RetentionPolicy() Resourc
 	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
 }
 
-// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
-// Structure is documented below.
+// Specifies the frequency for the operation, using the unix-cron format.
 func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) Schedule() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicySchedule {
 		if v == nil {
@@ -43770,8 +44267,7 @@ func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) WeeklySchedule() 
 type ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule struct {
 	// The number of days between snapshots.
 	DaysInCycle int `pulumi:"daysInCycle"`
-	// Time within the window to start the operations.
-	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -43789,8 +44285,7 @@ type ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput interface {
 type ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs struct {
 	// The number of days between snapshots.
 	DaysInCycle pulumi.IntInput `pulumi:"daysInCycle"`
-	// Time within the window to start the operations.
-	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -43876,8 +44371,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) DaysInC
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) int { return v.DaysInCycle }).(pulumi.IntOutput)
 }
 
-// Time within the window to start the operations.
-// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+// The start time of the schedule. The timestamp is an RFC3339 string.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -43912,8 +44406,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) Days
 	}).(pulumi.IntPtrOutput)
 }
 
-// Time within the window to start the operations.
-// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+// The start time of the schedule. The timestamp is an RFC3339 string.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) *string {
 		if v == nil {
@@ -43926,8 +44419,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput) Star
 type ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule struct {
 	// The number of hours between snapshots.
 	HoursInCycle int `pulumi:"hoursInCycle"`
-	// Time within the window to start the operations.
-	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -43945,8 +44437,7 @@ type ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput interface {
 type ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs struct {
 	// The number of hours between snapshots.
 	HoursInCycle pulumi.IntInput `pulumi:"hoursInCycle"`
-	// Time within the window to start the operations.
-	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -44032,8 +44523,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) HoursI
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) int { return v.HoursInCycle }).(pulumi.IntOutput)
 }
 
-// Time within the window to start the operations.
-// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+// The start time of the schedule. The timestamp is an RFC3339 string.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -44068,8 +44558,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) Hou
 	}).(pulumi.IntPtrOutput)
 }
 
-// Time within the window to start the operations.
-// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+// The start time of the schedule. The timestamp is an RFC3339 string.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) *string {
 		if v == nil {
@@ -44222,8 +44711,7 @@ type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek struct 
 	// The day of the week to create the snapshot. e.g. MONDAY
 	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	Day string `pulumi:"day"`
-	// Time within the window to start the operations.
-	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -44242,8 +44730,7 @@ type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs str
 	// The day of the week to create the snapshot. e.g. MONDAY
 	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	Day pulumi.StringInput `pulumi:"day"`
-	// Time within the window to start the operations.
-	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -44304,8 +44791,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutpu
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string { return v.Day }).(pulumi.StringOutput)
 }
 
-// Time within the window to start the operations.
-// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+// The start time of the schedule. The timestamp is an RFC3339 string.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -65027,8 +65513,9 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pul
 }
 
 type GetHcVpnGatewayVpnInterface struct {
-	Id        int    `pulumi:"id"`
-	IpAddress string `pulumi:"ipAddress"`
+	Id                     int    `pulumi:"id"`
+	InterconnectAttachment string `pulumi:"interconnectAttachment"`
+	IpAddress              string `pulumi:"ipAddress"`
 }
 
 // GetHcVpnGatewayVpnInterfaceInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArgs and GetHcVpnGatewayVpnInterfaceOutput values.
@@ -65043,8 +65530,9 @@ type GetHcVpnGatewayVpnInterfaceInput interface {
 }
 
 type GetHcVpnGatewayVpnInterfaceArgs struct {
-	Id        pulumi.IntInput    `pulumi:"id"`
-	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	Id                     pulumi.IntInput    `pulumi:"id"`
+	InterconnectAttachment pulumi.StringInput `pulumi:"interconnectAttachment"`
+	IpAddress              pulumi.StringInput `pulumi:"ipAddress"`
 }
 
 func (GetHcVpnGatewayVpnInterfaceArgs) ElementType() reflect.Type {
@@ -65100,6 +65588,10 @@ func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutputWi
 
 func (o GetHcVpnGatewayVpnInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) InterconnectAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.InterconnectAttachment }).(pulumi.StringOutput)
 }
 
 func (o GetHcVpnGatewayVpnInterfaceOutput) IpAddress() pulumi.StringOutput {
@@ -69471,6 +69963,316 @@ func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) Index(i pulumi.IntInpu
 	}).(GetResourcePolicyGroupPlacementPolicyOutput)
 }
 
+type GetResourcePolicyInstanceSchedulePolicy struct {
+	ExpirationTime   string                                                   `pulumi:"expirationTime"`
+	StartTime        string                                                   `pulumi:"startTime"`
+	TimeZone         string                                                   `pulumi:"timeZone"`
+	VmStartSchedules []GetResourcePolicyInstanceSchedulePolicyVmStartSchedule `pulumi:"vmStartSchedules"`
+	VmStopSchedules  []GetResourcePolicyInstanceSchedulePolicyVmStopSchedule  `pulumi:"vmStopSchedules"`
+}
+
+// GetResourcePolicyInstanceSchedulePolicyInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyArgs and GetResourcePolicyInstanceSchedulePolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyInput` via:
+//
+//          GetResourcePolicyInstanceSchedulePolicyArgs{...}
+type GetResourcePolicyInstanceSchedulePolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyOutput() GetResourcePolicyInstanceSchedulePolicyOutput
+	ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyArgs struct {
+	ExpirationTime   pulumi.StringInput                                               `pulumi:"expirationTime"`
+	StartTime        pulumi.StringInput                                               `pulumi:"startTime"`
+	TimeZone         pulumi.StringInput                                               `pulumi:"timeZone"`
+	VmStartSchedules GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput `pulumi:"vmStartSchedules"`
+	VmStopSchedules  GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput  `pulumi:"vmStopSchedules"`
+}
+
+func (GetResourcePolicyInstanceSchedulePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArgs) ToGetResourcePolicyInstanceSchedulePolicyOutput() GetResourcePolicyInstanceSchedulePolicyOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArgs) ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyOutput)
+}
+
+// GetResourcePolicyInstanceSchedulePolicyArrayInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyArray and GetResourcePolicyInstanceSchedulePolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyArrayInput` via:
+//
+//          GetResourcePolicyInstanceSchedulePolicyArray{ GetResourcePolicyInstanceSchedulePolicyArgs{...} }
+type GetResourcePolicyInstanceSchedulePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyArrayOutput() GetResourcePolicyInstanceSchedulePolicyArrayOutput
+	ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyArrayOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyArray []GetResourcePolicyInstanceSchedulePolicyInput
+
+func (GetResourcePolicyInstanceSchedulePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArray) ToGetResourcePolicyInstanceSchedulePolicyArrayOutput() GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArray) ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) ToGetResourcePolicyInstanceSchedulePolicyOutput() GetResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) VmStartSchedules() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) []GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		return v.VmStartSchedules
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput)
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) VmStopSchedules() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) []GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		return v.VmStopSchedules
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyArrayOutput() GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyInstanceSchedulePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyInstanceSchedulePolicy {
+		return vs[0].([]GetResourcePolicyInstanceSchedulePolicy)[vs[1].(int)]
+	}).(GetResourcePolicyInstanceSchedulePolicyOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartSchedule struct {
+	Schedule string `pulumi:"schedule"`
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs and GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput` via:
+//
+//          GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{...}
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs struct {
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+}
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput)
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray and GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput` via:
+//
+//          GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray{ GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{...} }
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray []GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicyVmStartSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		return vs[0].([]GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)[vs[1].(int)]
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopSchedule struct {
+	Schedule string `pulumi:"schedule"`
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs and GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput` via:
+//
+//          GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{...}
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs struct {
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+}
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput)
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray and GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput` via:
+//
+//          GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray{ GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{...} }
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray []GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicyVmStopSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		return vs[0].([]GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)[vs[1].(int)]
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput)
+}
+
 type GetResourcePolicySnapshotSchedulePolicy struct {
 	RetentionPolicies  []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy  `pulumi:"retentionPolicies"`
 	Schedules          []GetResourcePolicySnapshotSchedulePolicySchedule         `pulumi:"schedules"`
@@ -71094,6 +71896,12 @@ func init() {
 	pulumi.RegisterOutputType(ReservationSpecificReservationInstancePropertiesLocalSsdArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyVmStartSchedulePtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyVmStopSchedulePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})
@@ -71423,6 +72231,12 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})

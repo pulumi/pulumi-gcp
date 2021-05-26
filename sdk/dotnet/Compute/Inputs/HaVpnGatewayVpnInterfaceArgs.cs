@@ -9,4 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute.Inputs
 {
+
+    public sealed class HaVpnGatewayVpnInterfaceArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The numeric ID of this VPN gateway interface.
+        /// </summary>
+        [Input("id")]
+        public Input<int>? Id { get; set; }
+
+        [Input("interconnectAttachment")]
+        public Input<string>? InterconnectAttachment { get; set; }
+
+        /// <summary>
+        /// -
+        /// The external IP address for this VPN gateway interface.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        public HaVpnGatewayVpnInterfaceArgs()
+        {
+        }
+    }
 }

@@ -20,13 +20,19 @@ class GetResourcePolicyResult:
     """
     A collection of values returned by getResourcePolicy.
     """
-    def __init__(__self__, group_placement_policies=None, id=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None):
+    def __init__(__self__, description=None, group_placement_policies=None, id=None, instance_schedule_policies=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None):
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if group_placement_policies and not isinstance(group_placement_policies, list):
             raise TypeError("Expected argument 'group_placement_policies' to be a list")
         pulumi.set(__self__, "group_placement_policies", group_placement_policies)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if instance_schedule_policies and not isinstance(instance_schedule_policies, list):
+            raise TypeError("Expected argument 'instance_schedule_policies' to be a list")
+        pulumi.set(__self__, "instance_schedule_policies", instance_schedule_policies)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -44,6 +50,14 @@ class GetResourcePolicyResult:
         pulumi.set(__self__, "snapshot_schedule_policies", snapshot_schedule_policies)
 
     @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of this Resource Policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
     @pulumi.getter(name="groupPlacementPolicies")
     def group_placement_policies(self) -> Sequence['outputs.GetResourcePolicyGroupPlacementPolicyResult']:
         return pulumi.get(self, "group_placement_policies")
@@ -55,6 +69,11 @@ class GetResourcePolicyResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceSchedulePolicies")
+    def instance_schedule_policies(self) -> Sequence['outputs.GetResourcePolicyInstanceSchedulePolicyResult']:
+        return pulumi.get(self, "instance_schedule_policies")
 
     @property
     @pulumi.getter
@@ -91,8 +110,10 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
         if False:
             yield self
         return GetResourcePolicyResult(
+            description=self.description,
             group_placement_policies=self.group_placement_policies,
             id=self.id,
+            instance_schedule_policies=self.instance_schedule_policies,
             name=self.name,
             project=self.project,
             region=self.region,
@@ -131,8 +152,10 @@ def get_resource_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getResourcePolicy:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult).value
 
     return AwaitableGetResourcePolicyResult(
+        description=__ret__.description,
         group_placement_policies=__ret__.group_placement_policies,
         id=__ret__.id,
+        instance_schedule_policies=__ret__.instance_schedule_policies,
         name=__ret__.name,
         project=__ret__.project,
         region=__ret__.region,

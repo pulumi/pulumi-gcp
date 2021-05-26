@@ -92,6 +92,25 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Compute Address Ipsec Interconnect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const ipsec_interconnect_address = new gcp.compute.Address("ipsec-interconnect-address", {
+ *     addressType: "INTERNAL",
+ *     purpose: "IPSEC_INTERCONNECT",
+ *     address: "192.168.1.0",
+ *     prefixLength: 29,
+ *     network: network.selfLink,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -180,21 +199,36 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+     * VPC_PEERING and IPSEC_INTERCONNECT purposes.
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * Possible values are `PREMIUM` and `STANDARD`.
      */
     public readonly networkTier!: pulumi.Output<string>;
     /**
+     * The prefix length if the resource represents an IP range.
+     */
+    public readonly prefixLength!: pulumi.Output<number | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The purpose of this resource. Possible values include:
-     * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-     * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+     * The purpose of this resource, which can be one of the following values:
+     * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+     * ranges, internal load balancers, and similar resources.
+     * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+     * internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
+     * * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+     * that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+     * Interconnect configuration. These addresses are regional resources.
+     * This should only be set when using an Internal address.
      */
     public readonly purpose!: pulumi.Output<string>;
     /**
@@ -238,7 +272,9 @@ export class Address extends pulumi.CustomResource {
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["network"] = state ? state.network : undefined;
             inputs["networkTier"] = state ? state.networkTier : undefined;
+            inputs["prefixLength"] = state ? state.prefixLength : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["purpose"] = state ? state.purpose : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -252,7 +288,9 @@ export class Address extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["networkTier"] = args ? args.networkTier : undefined;
+            inputs["prefixLength"] = args ? args.prefixLength : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -312,21 +350,36 @@ export interface AddressState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+     * VPC_PEERING and IPSEC_INTERCONNECT purposes.
+     */
+    readonly network?: pulumi.Input<string>;
+    /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * Possible values are `PREMIUM` and `STANDARD`.
      */
     readonly networkTier?: pulumi.Input<string>;
     /**
+     * The prefix length if the resource represents an IP range.
+     */
+    readonly prefixLength?: pulumi.Input<number>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The purpose of this resource. Possible values include:
-     * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-     * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+     * The purpose of this resource, which can be one of the following values:
+     * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+     * ranges, internal load balancers, and similar resources.
+     * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+     * internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
+     * * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+     * that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+     * Interconnect configuration. These addresses are regional resources.
+     * This should only be set when using an Internal address.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -386,21 +439,36 @@ export interface AddressArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
+     * VPC_PEERING and IPSEC_INTERCONNECT purposes.
+     */
+    readonly network?: pulumi.Input<string>;
+    /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * Possible values are `PREMIUM` and `STANDARD`.
      */
     readonly networkTier?: pulumi.Input<string>;
     /**
+     * The prefix length if the resource represents an IP range.
+     */
+    readonly prefixLength?: pulumi.Input<number>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The purpose of this resource. Possible values include:
-     * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-     * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
+     * The purpose of this resource, which can be one of the following values:
+     * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+     * ranges, internal load balancers, and similar resources.
+     * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+     * internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
+     * * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+     * that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+     * Interconnect configuration. These addresses are regional resources.
+     * This should only be set when using an Internal address.
      */
     readonly purpose?: pulumi.Input<string>;
     /**

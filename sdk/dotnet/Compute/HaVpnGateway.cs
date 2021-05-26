@@ -219,6 +219,109 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Compute Ha Vpn Gateway Encrypted Interconnect
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var address1 = new Gcp.Compute.Address("address1", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             AddressType = "INTERNAL",
+    ///             Purpose = "IPSEC_INTERCONNECT",
+    ///             Address = "192.168.1.0",
+    ///             PrefixLength = 29,
+    ///             Network = network.SelfLink,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
+    ///         {
+    ///             Network = network.Name,
+    ///             EncryptedInterconnectRouter = true,
+    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///             {
+    ///                 Asn = 16550,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var attachment1 = new Gcp.Compute.InterconnectAttachment("attachment1", new Gcp.Compute.InterconnectAttachmentArgs
+    ///         {
+    ///             EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///             Type = "PARTNER",
+    ///             Router = router.Id,
+    ///             Encryption = "IPSEC",
+    ///             IpsecInternalAddresses = 
+    ///             {
+    ///                 address1.SelfLink,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var address2 = new Gcp.Compute.Address("address2", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             AddressType = "INTERNAL",
+    ///             Purpose = "IPSEC_INTERCONNECT",
+    ///             Address = "192.168.2.0",
+    ///             PrefixLength = 29,
+    ///             Network = network.SelfLink,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var attachment2 = new Gcp.Compute.InterconnectAttachment("attachment2", new Gcp.Compute.InterconnectAttachmentArgs
+    ///         {
+    ///             EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_2",
+    ///             Type = "PARTNER",
+    ///             Router = router.Id,
+    ///             Encryption = "IPSEC",
+    ///             IpsecInternalAddresses = 
+    ///             {
+    ///                 address2.SelfLink,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var vpn_gateway = new Gcp.Compute.HaVpnGateway("vpn-gateway", new Gcp.Compute.HaVpnGatewayArgs
+    ///         {
+    ///             Network = network.Id,
+    ///             VpnInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.HaVpnGatewayVpnInterfaceArgs
+    ///                 {
+    ///                     Id = 0,
+    ///                     InterconnectAttachment = attachment1.SelfLink,
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.HaVpnGatewayVpnInterfaceArgs
+    ///                 {
+    ///                     Id = 1,
+    ///                     InterconnectAttachment = attachment2.SelfLink,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -288,6 +391,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of interfaces on this VPN gateway.
+        /// Structure is documented below.
         /// </summary>
         [Output("vpnInterfaces")]
         public Output<ImmutableArray<Outputs.HaVpnGatewayVpnInterface>> VpnInterfaces { get; private set; } = null!;
@@ -375,6 +479,19 @@ namespace Pulumi.Gcp.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("vpnInterfaces")]
+        private InputList<Inputs.HaVpnGatewayVpnInterfaceArgs>? _vpnInterfaces;
+
+        /// <summary>
+        /// A list of interfaces on this VPN gateway.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.HaVpnGatewayVpnInterfaceArgs> VpnInterfaces
+        {
+            get => _vpnInterfaces ?? (_vpnInterfaces = new InputList<Inputs.HaVpnGatewayVpnInterfaceArgs>());
+            set => _vpnInterfaces = value;
+        }
+
         public HaVpnGatewayArgs()
         {
         }
@@ -430,6 +547,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of interfaces on this VPN gateway.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.HaVpnGatewayVpnInterfaceGetArgs> VpnInterfaces
         {

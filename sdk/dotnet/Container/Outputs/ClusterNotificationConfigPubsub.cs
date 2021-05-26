@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
+        /// </summary>
         public readonly string? Topic;
 
         [OutputConstructor]

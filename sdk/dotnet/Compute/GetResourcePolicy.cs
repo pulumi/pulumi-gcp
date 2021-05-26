@@ -66,11 +66,16 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetResourcePolicyResult
     {
+        /// <summary>
+        /// Description of this Resource Policy.
+        /// </summary>
+        public readonly string Description;
         public readonly ImmutableArray<Outputs.GetResourcePolicyGroupPlacementPolicyResult> GroupPlacementPolicies;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetResourcePolicyInstanceSchedulePolicyResult> InstanceSchedulePolicies;
         public readonly string Name;
         public readonly string? Project;
         public readonly string? Region;
@@ -82,9 +87,13 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetResourcePolicyResult(
+            string description,
+
             ImmutableArray<Outputs.GetResourcePolicyGroupPlacementPolicyResult> groupPlacementPolicies,
 
             string id,
+
+            ImmutableArray<Outputs.GetResourcePolicyInstanceSchedulePolicyResult> instanceSchedulePolicies,
 
             string name,
 
@@ -96,8 +105,10 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyResult> snapshotSchedulePolicies)
         {
+            Description = description;
             GroupPlacementPolicies = groupPlacementPolicies;
             Id = id;
+            InstanceSchedulePolicies = instanceSchedulePolicies;
             Name = name;
             Project = project;
             Region = region;

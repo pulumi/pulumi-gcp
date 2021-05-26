@@ -9,6 +9,58 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Projects
 {
+    /// <summary>
+    /// Access Approval enables you to require your explicit approval whenever Google support and engineering need to access your customer content.
+    /// 
+    /// To get more information about ProjectSettings, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/projects)
+    /// 
+    /// ## Example Usage
+    /// ### Project Access Approval Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new Gcp.Projects.AccessApprovalSettingsArgs
+    ///         {
+    ///             EnrolledServices = 
+    ///             {
+    ///                 new Gcp.Projects.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///                 {
+    ///                     CloudProduct = "all",
+    ///                     EnrollmentLevel = "BLOCK_ALL",
+    ///                 },
+    ///             },
+    ///             NotificationEmails = 
+    ///             {
+    ///                 "testuser@example.com",
+    ///                 "example.user@example.com",
+    ///             },
+    ///             ProjectId = "my-project-name",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ProjectSettings can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
+    /// ```
+    /// </summary>
     [GcpResourceType("gcp:projects/accessApprovalSettings:AccessApprovalSettings")]
     public partial class AccessApprovalSettings : Pulumi.CustomResource
     {
@@ -20,10 +72,11 @@ namespace Pulumi.Gcp.Projects
         public Output<bool> EnrolledAncestor { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-        /// resource given by name against any of these services contained here will be required to have explicit approval.
-        /// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-        /// expanded as the set of supported services is expanded.
+        /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        /// Access requests for the resource given by name against any of these services contained here will be required
+        /// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+        /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+        /// Structure is documented below.
         /// </summary>
         [Output("enrolledServices")]
         public Output<ImmutableArray<Outputs.AccessApprovalSettingsEnrolledService>> EnrolledServices { get; private set; } = null!;
@@ -35,15 +88,17 @@ namespace Pulumi.Gcp.Projects
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-        /// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-        /// addresses are allowed.
+        /// A list of email addresses to which notifications relating to approval requests should be sent.
+        /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+        /// resources of that resource. A maximum of 50 email addresses are allowed.
         /// </summary>
         [Output("notificationEmails")]
         public Output<ImmutableArray<string>> NotificationEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated in favor of 'project_id'
+        /// -
+        /// (Optional, Deprecated)
+        /// Deprecated in favor of `project_id`
         /// </summary>
         [Output("project")]
         public Output<string?> Project { get; private set; } = null!;
@@ -104,10 +159,11 @@ namespace Pulumi.Gcp.Projects
         private InputList<Inputs.AccessApprovalSettingsEnrolledServiceArgs>? _enrolledServices;
 
         /// <summary>
-        /// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-        /// resource given by name against any of these services contained here will be required to have explicit approval.
-        /// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-        /// expanded as the set of supported services is expanded.
+        /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        /// Access requests for the resource given by name against any of these services contained here will be required
+        /// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+        /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AccessApprovalSettingsEnrolledServiceArgs> EnrolledServices
         {
@@ -119,9 +175,9 @@ namespace Pulumi.Gcp.Projects
         private InputList<string>? _notificationEmails;
 
         /// <summary>
-        /// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-        /// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-        /// addresses are allowed.
+        /// A list of email addresses to which notifications relating to approval requests should be sent.
+        /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+        /// resources of that resource. A maximum of 50 email addresses are allowed.
         /// </summary>
         public InputList<string> NotificationEmails
         {
@@ -130,7 +186,9 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// Deprecated in favor of 'project_id'
+        /// -
+        /// (Optional, Deprecated)
+        /// Deprecated in favor of `project_id`
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -159,10 +217,11 @@ namespace Pulumi.Gcp.Projects
         private InputList<Inputs.AccessApprovalSettingsEnrolledServiceGetArgs>? _enrolledServices;
 
         /// <summary>
-        /// A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
-        /// resource given by name against any of these services contained here will be required to have explicit approval.
-        /// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
-        /// expanded as the set of supported services is expanded.
+        /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        /// Access requests for the resource given by name against any of these services contained here will be required
+        /// to have explicit approval. Enrollment can only be done on an all or nothing basis.
+        /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AccessApprovalSettingsEnrolledServiceGetArgs> EnrolledServices
         {
@@ -180,9 +239,9 @@ namespace Pulumi.Gcp.Projects
         private InputList<string>? _notificationEmails;
 
         /// <summary>
-        /// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-        /// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-        /// addresses are allowed.
+        /// A list of email addresses to which notifications relating to approval requests should be sent.
+        /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+        /// resources of that resource. A maximum of 50 email addresses are allowed.
         /// </summary>
         public InputList<string> NotificationEmails
         {
@@ -191,7 +250,9 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// Deprecated in favor of 'project_id'
+        /// -
+        /// (Optional, Deprecated)
+        /// Deprecated in favor of `project_id`
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

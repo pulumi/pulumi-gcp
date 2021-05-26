@@ -13,11 +13,18 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class HaVpnGatewayVpnInterfaceGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        /// The numeric ID of this VPN gateway interface.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
 
+        [Input("interconnectAttachment")]
+        public Input<string>? InterconnectAttachment { get; set; }
+
+        /// <summary>
+        /// -
+        /// The external IP address for this VPN gateway interface.
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 

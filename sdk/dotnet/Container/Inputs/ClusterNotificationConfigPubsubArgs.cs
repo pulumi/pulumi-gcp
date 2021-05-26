@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
+        /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }
 

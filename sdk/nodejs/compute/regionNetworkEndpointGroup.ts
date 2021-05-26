@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * const appengineNegFlexibleAppVersion = new gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion", {
  *     versionId: "v1",
- *     service: "default",
+ *     service: "appengine-network-endpoint-group",
  *     runtime: "nodejs",
  *     entrypoint: {
  *         shell: "node ./app.js",

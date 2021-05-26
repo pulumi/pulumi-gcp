@@ -18,6 +18,7 @@ class RouterArgs:
                  network: pulumi.Input[str],
                  bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -27,6 +28,8 @@ class RouterArgs:
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+               Interconnect feature). Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -42,6 +45,8 @@ class RouterArgs:
             pulumi.set(__self__, "bgp", bgp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypted_interconnect_router is not None:
+            pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -85,6 +90,19 @@ class RouterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="encryptedInterconnectRouter")
+    def encrypted_interconnect_router(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+        Interconnect feature). Not currently available publicly.
+        """
+        return pulumi.get(self, "encrypted_interconnect_router")
+
+    @encrypted_interconnect_router.setter
+    def encrypted_interconnect_router(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted_interconnect_router", value)
 
     @property
     @pulumi.getter
@@ -135,6 +153,7 @@ class _RouterState:
                  bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -146,6 +165,8 @@ class _RouterState:
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+               Interconnect feature). Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -164,6 +185,8 @@ class _RouterState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypted_interconnect_router is not None:
+            pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -211,6 +234,19 @@ class _RouterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="encryptedInterconnectRouter")
+    def encrypted_interconnect_router(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+        Interconnect feature). Not currently available publicly.
+        """
+        return pulumi.get(self, "encrypted_interconnect_router")
+
+    @encrypted_interconnect_router.setter
+    def encrypted_interconnect_router(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted_interconnect_router", value)
 
     @property
     @pulumi.getter
@@ -286,6 +322,7 @@ class Router(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -324,6 +361,22 @@ class Router(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Compute Router Encrypted Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -350,6 +403,8 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+               Interconnect feature). Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -400,6 +455,22 @@ class Router(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Compute Router Encrypted Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -438,6 +509,7 @@ class Router(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -456,6 +528,7 @@ class Router(pulumi.CustomResource):
 
             __props__.__dict__["bgp"] = bgp
             __props__.__dict__["description"] = description
+            __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
@@ -477,6 +550,7 @@ class Router(pulumi.CustomResource):
             bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -493,6 +567,8 @@ class Router(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+               Interconnect feature). Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -512,6 +588,7 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["bgp"] = bgp
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
@@ -543,6 +620,15 @@ class Router(pulumi.CustomResource):
         User-specified description for the IP range.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptedInterconnectRouter")
+    def encrypted_interconnect_router(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
+        Interconnect feature). Not currently available publicly.
+        """
+        return pulumi.get(self, "encrypted_interconnect_router")
 
     @property
     @pulumi.getter
