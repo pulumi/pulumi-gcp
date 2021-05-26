@@ -2,12 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.69.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
 
-## 5.4.0 (2021-05-19)
-* Fix the ldflags that get pushed as part of the release process
+## 5.5.0 (2021-05-26)
+* Upgrade to v3.69.0 of the Google Beta Terraform Provider
 
 ## 5.4.0 (2021-05-19)
 * Upgrade to v3.68.0 of the Google Beta Terraform Provider
