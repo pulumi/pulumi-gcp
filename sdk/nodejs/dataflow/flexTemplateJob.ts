@@ -181,11 +181,11 @@ export interface FlexTemplateJobState {
      * The GCS path to the Dataflow job Flex
      * Template.
      */
-    readonly containerSpecGcsPath?: pulumi.Input<string>;
+    containerSpecGcsPath?: pulumi.Input<string>;
     /**
      * The unique ID of this job.
      */
-    readonly jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string>;
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -197,35 +197,35 @@ export interface FlexTemplateJobState {
      *
      * @deprecated Deprecated until the API supports this field
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by Dataflow.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * One of "drain" or "cancel". Specifies behavior of
      * deletion during `pulumi destroy`.  See above note.
      */
-    readonly onDelete?: pulumi.Input<string>;
+    onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as
      * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
      * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the created job should run.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface FlexTemplateJobArgs {
      * The GCS path to the Dataflow job Flex
      * Template.
      */
-    readonly containerSpecGcsPath: pulumi.Input<string>;
+    containerSpecGcsPath: pulumi.Input<string>;
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -248,29 +248,29 @@ export interface FlexTemplateJobArgs {
      *
      * @deprecated Deprecated until the API supports this field
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by Dataflow.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * One of "drain" or "cancel". Specifies behavior of
      * deletion during `pulumi destroy`.  See above note.
      */
-    readonly onDelete?: pulumi.Input<string>;
+    onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as
      * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
      * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the created job should run.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

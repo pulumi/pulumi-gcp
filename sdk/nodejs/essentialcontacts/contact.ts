@@ -146,23 +146,23 @@ export interface ContactState {
     /**
      * The email address to send notifications to. This does not need to be a Google account.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
      */
-    readonly languageTag?: pulumi.Input<string>;
+    languageTag?: pulumi.Input<string>;
     /**
      * The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The categories of notifications that the contact will receive communications for.
      */
-    readonly notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
 }
 
 /**
@@ -172,17 +172,17 @@ export interface ContactArgs {
     /**
      * The email address to send notifications to. This does not need to be a Google account.
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
      */
-    readonly languageTag: pulumi.Input<string>;
+    languageTag: pulumi.Input<string>;
     /**
      * The categories of notifications that the contact will receive communications for.
      */
-    readonly notificationCategorySubscriptions: pulumi.Input<pulumi.Input<string>[]>;
+    notificationCategorySubscriptions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
 }

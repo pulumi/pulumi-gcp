@@ -152,27 +152,27 @@ export interface NamespaceState {
      * labels can be associated with a given resource. Label keys and values can
      * be no longer than 63 characters.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the Namespace.
      * A full list of valid locations can be found by running
      * `gcloud beta service-directory locations list`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name for the namespace in the format 'projects/*&#47;locations/*&#47;namespaces/*'.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -184,21 +184,21 @@ export interface NamespaceArgs {
      * labels can be associated with a given resource. Label keys and values can
      * be no longer than 63 characters.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the Namespace.
      * A full list of valid locations can be found by running
      * `gcloud beta service-directory locations list`.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      */
-    readonly namespaceId: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

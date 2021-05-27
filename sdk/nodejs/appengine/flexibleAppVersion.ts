@@ -378,141 +378,141 @@ export interface FlexibleAppVersionState {
      * Serving configuration for Google Cloud Endpoints.
      * Structure is documented below.
      */
-    readonly apiConfig?: pulumi.Input<inputs.appengine.FlexibleAppVersionApiConfig>;
+    apiConfig?: pulumi.Input<inputs.appengine.FlexibleAppVersionApiConfig>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
      */
-    readonly automaticScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScaling>;
+    automaticScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScaling>;
     /**
      * Metadata settings that are supplied to this version to enable beta runtime features.
      */
-    readonly betaSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    betaSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Duration that static files should be cached by web proxies and browsers.
      * Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
      */
-    readonly defaultExpiration?: pulumi.Input<string>;
+    defaultExpiration?: pulumi.Input<string>;
     /**
      * If set to `true`, the service will be deleted if it is the last version.
      */
-    readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
+    deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
-    readonly deployment?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeployment>;
+    deployment?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeployment>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
-    readonly endpointsApiService?: pulumi.Input<inputs.appengine.FlexibleAppVersionEndpointsApiService>;
+    endpointsApiService?: pulumi.Input<inputs.appengine.FlexibleAppVersionEndpointsApiService>;
     /**
      * The entrypoint for the application.
      * Structure is documented below.
      */
-    readonly entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
+    entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
     /**
      * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      */
-    readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
      * The first matching URL handles the request and other request handlers are not attempted.
      * Structure is documented below.
      */
-    readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
+    handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
      * A list of the types of messages that this application is able to receive.
      * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
      */
-    readonly inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
+    inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G
      * ManualScaling: B1, B2, B4, B8, B4_1G
      * Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
      */
-    readonly instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string>;
     /**
      * Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
      * Structure is documented below.
      */
-    readonly livenessCheck?: pulumi.Input<inputs.appengine.FlexibleAppVersionLivenessCheck>;
+    livenessCheck?: pulumi.Input<inputs.appengine.FlexibleAppVersionLivenessCheck>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    readonly manualScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionManualScaling>;
+    manualScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionManualScaling>;
     /**
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Extra network settings
      * Structure is documented below.
      */
-    readonly network?: pulumi.Input<inputs.appengine.FlexibleAppVersionNetwork>;
+    network?: pulumi.Input<inputs.appengine.FlexibleAppVersionNetwork>;
     /**
      * Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
      */
-    readonly nobuildFilesRegex?: pulumi.Input<string>;
+    nobuildFilesRegex?: pulumi.Input<string>;
     /**
      * If set to `true`, the application version will not be deleted.
      */
-    readonly noopOnDestroy?: pulumi.Input<boolean>;
+    noopOnDestroy?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
      * Structure is documented below.
      */
-    readonly readinessCheck?: pulumi.Input<inputs.appengine.FlexibleAppVersionReadinessCheck>;
+    readinessCheck?: pulumi.Input<inputs.appengine.FlexibleAppVersionReadinessCheck>;
     /**
      * Machine resources for a version.
      * Structure is documented below.
      */
-    readonly resources?: pulumi.Input<inputs.appengine.FlexibleAppVersionResources>;
+    resources?: pulumi.Input<inputs.appengine.FlexibleAppVersionResources>;
     /**
      * Desired runtime. Example python27.
      */
-    readonly runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string>;
     /**
      * The version of the API in the given runtime environment.
      * Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
      */
-    readonly runtimeApiVersion?: pulumi.Input<string>;
+    runtimeApiVersion?: pulumi.Input<string>;
     /**
      * The channel of the runtime to use. Only available for some runtimes.
      */
-    readonly runtimeChannel?: pulumi.Input<string>;
+    runtimeChannel?: pulumi.Input<string>;
     /**
      * The path or name of the app's main executable.
      */
-    readonly runtimeMainExecutablePath?: pulumi.Input<string>;
+    runtimeMainExecutablePath?: pulumi.Input<string>;
     /**
      * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
      * Possible values are `SERVING` and `STOPPED`.
      */
-    readonly servingStatus?: pulumi.Input<string>;
+    servingStatus?: pulumi.Input<string>;
     /**
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
      * Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
-    readonly versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
     /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.
      */
-    readonly vpcAccessConnector?: pulumi.Input<inputs.appengine.FlexibleAppVersionVpcAccessConnector>;
+    vpcAccessConnector?: pulumi.Input<inputs.appengine.FlexibleAppVersionVpcAccessConnector>;
 }
 
 /**
@@ -523,135 +523,135 @@ export interface FlexibleAppVersionArgs {
      * Serving configuration for Google Cloud Endpoints.
      * Structure is documented below.
      */
-    readonly apiConfig?: pulumi.Input<inputs.appengine.FlexibleAppVersionApiConfig>;
+    apiConfig?: pulumi.Input<inputs.appengine.FlexibleAppVersionApiConfig>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
      */
-    readonly automaticScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScaling>;
+    automaticScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScaling>;
     /**
      * Metadata settings that are supplied to this version to enable beta runtime features.
      */
-    readonly betaSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    betaSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Duration that static files should be cached by web proxies and browsers.
      * Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
      */
-    readonly defaultExpiration?: pulumi.Input<string>;
+    defaultExpiration?: pulumi.Input<string>;
     /**
      * If set to `true`, the service will be deleted if it is the last version.
      */
-    readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
+    deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
-    readonly deployment?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeployment>;
+    deployment?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeployment>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
-    readonly endpointsApiService?: pulumi.Input<inputs.appengine.FlexibleAppVersionEndpointsApiService>;
+    endpointsApiService?: pulumi.Input<inputs.appengine.FlexibleAppVersionEndpointsApiService>;
     /**
      * The entrypoint for the application.
      * Structure is documented below.
      */
-    readonly entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
+    entrypoint?: pulumi.Input<inputs.appengine.FlexibleAppVersionEntrypoint>;
     /**
      * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      */
-    readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
      * The first matching URL handles the request and other request handlers are not attempted.
      * Structure is documented below.
      */
-    readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
+    handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
      * A list of the types of messages that this application is able to receive.
      * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
      */
-    readonly inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
+    inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G
      * ManualScaling: B1, B2, B4, B8, B4_1G
      * Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
      */
-    readonly instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string>;
     /**
      * Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
      * Structure is documented below.
      */
-    readonly livenessCheck: pulumi.Input<inputs.appengine.FlexibleAppVersionLivenessCheck>;
+    livenessCheck: pulumi.Input<inputs.appengine.FlexibleAppVersionLivenessCheck>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    readonly manualScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionManualScaling>;
+    manualScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionManualScaling>;
     /**
      * Extra network settings
      * Structure is documented below.
      */
-    readonly network?: pulumi.Input<inputs.appengine.FlexibleAppVersionNetwork>;
+    network?: pulumi.Input<inputs.appengine.FlexibleAppVersionNetwork>;
     /**
      * Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
      */
-    readonly nobuildFilesRegex?: pulumi.Input<string>;
+    nobuildFilesRegex?: pulumi.Input<string>;
     /**
      * If set to `true`, the application version will not be deleted.
      */
-    readonly noopOnDestroy?: pulumi.Input<boolean>;
+    noopOnDestroy?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
      * Structure is documented below.
      */
-    readonly readinessCheck: pulumi.Input<inputs.appengine.FlexibleAppVersionReadinessCheck>;
+    readinessCheck: pulumi.Input<inputs.appengine.FlexibleAppVersionReadinessCheck>;
     /**
      * Machine resources for a version.
      * Structure is documented below.
      */
-    readonly resources?: pulumi.Input<inputs.appengine.FlexibleAppVersionResources>;
+    resources?: pulumi.Input<inputs.appengine.FlexibleAppVersionResources>;
     /**
      * Desired runtime. Example python27.
      */
-    readonly runtime: pulumi.Input<string>;
+    runtime: pulumi.Input<string>;
     /**
      * The version of the API in the given runtime environment.
      * Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
      */
-    readonly runtimeApiVersion?: pulumi.Input<string>;
+    runtimeApiVersion?: pulumi.Input<string>;
     /**
      * The channel of the runtime to use. Only available for some runtimes.
      */
-    readonly runtimeChannel?: pulumi.Input<string>;
+    runtimeChannel?: pulumi.Input<string>;
     /**
      * The path or name of the app's main executable.
      */
-    readonly runtimeMainExecutablePath?: pulumi.Input<string>;
+    runtimeMainExecutablePath?: pulumi.Input<string>;
     /**
      * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
      * Possible values are `SERVING` and `STOPPED`.
      */
-    readonly servingStatus?: pulumi.Input<string>;
+    servingStatus?: pulumi.Input<string>;
     /**
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
      * Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
-    readonly versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
     /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.
      */
-    readonly vpcAccessConnector?: pulumi.Input<inputs.appengine.FlexibleAppVersionVpcAccessConnector>;
+    vpcAccessConnector?: pulumi.Input<inputs.appengine.FlexibleAppVersionVpcAccessConnector>;
 }

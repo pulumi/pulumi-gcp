@@ -187,15 +187,15 @@ export interface ObjectAccessControlState {
     /**
      * The name of the bucket.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * The domain associated with the entity.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The email address associated with the entity.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
@@ -207,28 +207,28 @@ export interface ObjectAccessControlState {
      * * allUsers
      * * allAuthenticatedUsers
      */
-    readonly entity?: pulumi.Input<string>;
+    entity?: pulumi.Input<string>;
     /**
      * The ID for the entity
      */
-    readonly entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string>;
     /**
      * The content generation of the object, if applied to an object.
      */
-    readonly generation?: pulumi.Input<number>;
+    generation?: pulumi.Input<number>;
     /**
      * The name of the object to apply the access control to.
      */
-    readonly object?: pulumi.Input<string>;
+    object?: pulumi.Input<string>;
     /**
      * The project team associated with the entity
      */
-    readonly projectTeams?: pulumi.Input<pulumi.Input<inputs.storage.ObjectAccessControlProjectTeam>[]>;
+    projectTeams?: pulumi.Input<pulumi.Input<inputs.storage.ObjectAccessControlProjectTeam>[]>;
     /**
      * The access permission for the entity.
      * Possible values are `OWNER` and `READER`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface ObjectAccessControlArgs {
     /**
      * The name of the bucket.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
@@ -250,14 +250,14 @@ export interface ObjectAccessControlArgs {
      * * allUsers
      * * allAuthenticatedUsers
      */
-    readonly entity: pulumi.Input<string>;
+    entity: pulumi.Input<string>;
     /**
      * The name of the object to apply the access control to.
      */
-    readonly object: pulumi.Input<string>;
+    object: pulumi.Input<string>;
     /**
      * The access permission for the entity.
      * Possible values are `OWNER` and `READER`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

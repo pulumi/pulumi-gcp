@@ -231,36 +231,36 @@ export interface InstanceState {
      * The full name of the GCE network to connect the instance to.  If not provided,
      * 'default' will be used.
      */
-    readonly authorizedNetwork?: pulumi.Input<string>;
+    authorizedNetwork?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Endpoint for Discovery API
      */
-    readonly discoveryEndpoint?: pulumi.Input<string>;
+    discoveryEndpoint?: pulumi.Input<string>;
     /**
      * A user-visible name for the instance.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The full version of memcached server running on this instance.
      */
-    readonly memcacheFullVersion?: pulumi.Input<string>;
+    memcacheFullVersion?: pulumi.Input<string>;
     /**
      * Additional information about the instance state, if available.
      */
-    readonly memcacheNodes?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMemcacheNode>[]>;
+    memcacheNodes?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMemcacheNode>[]>;
     /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.
      */
-    readonly memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
+    memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used.
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -268,34 +268,34 @@ export interface InstanceState {
      * Default value is `MEMCACHE_1_5`.
      * Possible values are `MEMCACHE_1_5`.
      */
-    readonly memcacheVersion?: pulumi.Input<string>;
+    memcacheVersion?: pulumi.Input<string>;
     /**
      * The resource name of the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Configuration for memcache nodes.
      * Structure is documented below.
      */
-    readonly nodeConfig?: pulumi.Input<inputs.memcache.InstanceNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.memcache.InstanceNodeConfig>;
     /**
      * Number of nodes in the memcache instance.
      */
-    readonly nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      */
-    readonly zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -306,20 +306,20 @@ export interface InstanceArgs {
      * The full name of the GCE network to connect the instance to.  If not provided,
      * 'default' will be used.
      */
-    readonly authorizedNetwork?: pulumi.Input<string>;
+    authorizedNetwork?: pulumi.Input<string>;
     /**
      * A user-visible name for the instance.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.
      */
-    readonly memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
+    memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used.
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -327,32 +327,32 @@ export interface InstanceArgs {
      * Default value is `MEMCACHE_1_5`.
      * Possible values are `MEMCACHE_1_5`.
      */
-    readonly memcacheVersion?: pulumi.Input<string>;
+    memcacheVersion?: pulumi.Input<string>;
     /**
      * The resource name of the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Configuration for memcache nodes.
      * Structure is documented below.
      */
-    readonly nodeConfig: pulumi.Input<inputs.memcache.InstanceNodeConfig>;
+    nodeConfig: pulumi.Input<inputs.memcache.InstanceNodeConfig>;
     /**
      * Number of nodes in the memcache instance.
      */
-    readonly nodeCount: pulumi.Input<number>;
+    nodeCount: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      */
-    readonly zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

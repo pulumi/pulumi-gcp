@@ -239,23 +239,23 @@ export interface BucketIAMMemberState {
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
@@ -265,17 +265,17 @@ export interface BucketIAMMemberArgs {
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
-    readonly member: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
+    member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

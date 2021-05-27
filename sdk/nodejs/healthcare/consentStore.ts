@@ -170,16 +170,16 @@ export interface ConsentStoreState {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    readonly dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string>;
     /**
      * Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
-    readonly defaultConsentTtl?: pulumi.Input<string>;
+    defaultConsentTtl?: pulumi.Input<string>;
     /**
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
-    readonly enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
+    enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
     /**
      * User-supplied key-value pairs used to organize Consent stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -190,12 +190,12 @@ export interface ConsentStoreState {
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of this ConsentStore, for example:
      * "consent1"
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -206,16 +206,16 @@ export interface ConsentStoreArgs {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    readonly dataset: pulumi.Input<string>;
+    dataset: pulumi.Input<string>;
     /**
      * Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
-    readonly defaultConsentTtl?: pulumi.Input<string>;
+    defaultConsentTtl?: pulumi.Input<string>;
     /**
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
-    readonly enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
+    enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
     /**
      * User-supplied key-value pairs used to organize Consent stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -226,10 +226,10 @@ export interface ConsentStoreArgs {
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of this ConsentStore, for example:
      * "consent1"
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const qa = pulumi.output(gcp.gameservices.getGameServerDeploymentRollout({
  *     deploymentId: "tf-test-deployment-s8sn12jt2c",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGameServerDeploymentRollout(args: GetGameServerDeploymentRolloutArgs, opts?: pulumi.InvokeOptions): Promise<GetGameServerDeploymentRolloutResult> {
@@ -41,7 +41,7 @@ export interface GetGameServerDeploymentRolloutArgs {
     /**
      * The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
      */
-    readonly deploymentId: string;
+    deploymentId: string;
 }
 
 /**

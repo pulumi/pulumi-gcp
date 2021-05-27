@@ -240,29 +240,29 @@ export interface MetricState {
      * describes the bucket boundaries used to create a histogram of the extracted values.
      * Structure is documented below.
      */
-    readonly bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
+    bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     /**
      * A description of this metric, which is used in documentation. The maximum length of the
      * description is 8000 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * A map from a label key string to an extractor expression which is used to extract data from a log
      * entry field and assign as the label value. Each label key specified in the LabelDescriptor must
      * have an associated extractor expression in this map. The syntax of the extractor expression is
      * the same as for the valueExtractor field.
      */
-    readonly labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The metric descriptor associated with the logs-based metric.
      * Structure is documented below.
      */
-    readonly metricDescriptor?: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
+    metricDescriptor?: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
     /**
      * The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
      * Metric identifiers are limited to 100 characters and can include only the following
@@ -270,12 +270,12 @@ export interface MetricState {
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
@@ -285,7 +285,7 @@ export interface MetricState {
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      */
-    readonly valueExtractor?: pulumi.Input<string>;
+    valueExtractor?: pulumi.Input<string>;
 }
 
 /**
@@ -297,29 +297,29 @@ export interface MetricArgs {
      * describes the bucket boundaries used to create a histogram of the extracted values.
      * Structure is documented below.
      */
-    readonly bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
+    bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     /**
      * A description of this metric, which is used in documentation. The maximum length of the
      * description is 8000 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
      */
-    readonly filter: pulumi.Input<string>;
+    filter: pulumi.Input<string>;
     /**
      * A map from a label key string to an extractor expression which is used to extract data from a log
      * entry field and assign as the label value. Each label key specified in the LabelDescriptor must
      * have an associated extractor expression in this map. The syntax of the extractor expression is
      * the same as for the valueExtractor field.
      */
-    readonly labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The metric descriptor associated with the logs-based metric.
      * Structure is documented below.
      */
-    readonly metricDescriptor: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
+    metricDescriptor: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
     /**
      * The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
      * Metric identifiers are limited to 100 characters and can include only the following
@@ -327,12 +327,12 @@ export interface MetricArgs {
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
@@ -342,5 +342,5 @@ export interface MetricArgs {
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      */
-    readonly valueExtractor?: pulumi.Input<string>;
+    valueExtractor?: pulumi.Input<string>;
 }

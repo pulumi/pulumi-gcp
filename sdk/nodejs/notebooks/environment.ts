@@ -167,43 +167,43 @@ export interface EnvironmentState {
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    readonly containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
+    containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
     /**
      * Instance creation time
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * A brief description of this environment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of this environment for the UI.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name specified for the Environment instance.
      * Format: projects/{project_id}/locations/{location}/environments/{environmentId}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up.
      * The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
      */
-    readonly postStartupScript?: pulumi.Input<string>;
+    postStartupScript?: pulumi.Input<string>;
     /**
      * The name of the Google Cloud project that this VM image belongs to.
      * Format: projects/{project_id}
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    readonly vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
+    vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
 }
 
 /**
@@ -214,37 +214,37 @@ export interface EnvironmentArgs {
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    readonly containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
+    containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
     /**
      * A brief description of this environment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of this environment for the UI.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The name specified for the Environment instance.
      * Format: projects/{project_id}/locations/{location}/environments/{environmentId}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up.
      * The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
      */
-    readonly postStartupScript?: pulumi.Input<string>;
+    postStartupScript?: pulumi.Input<string>;
     /**
      * The name of the Google Cloud project that this VM image belongs to.
      * Format: projects/{project_id}
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    readonly vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
+    vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
 }

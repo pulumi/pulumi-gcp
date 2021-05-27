@@ -109,16 +109,16 @@ export interface ProjectState {
     /**
      * The GCP project display name
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The number of the google project that firebase is enabled on.
      */
-    readonly projectNumber?: pulumi.Input<string>;
+    projectNumber?: pulumi.Input<string>;
 }
 
 /**
@@ -129,5 +129,5 @@ export interface ProjectArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

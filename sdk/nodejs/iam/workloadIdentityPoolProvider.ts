@@ -356,7 +356,7 @@ export interface WorkloadIdentityPoolProviderState {
      * import * as pulumi from "@pulumi/pulumi";
      * ```
      */
-    readonly attributeCondition?: pulumi.Input<string>;
+    attributeCondition?: pulumi.Input<string>;
     /**
      * Maps attributes from authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -402,59 +402,59 @@ export interface WorkloadIdentityPoolProviderState {
      * import * as pulumi from "@pulumi/pulumi";
      * ```
      */
-    readonly attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An Amazon Web Services identity provider. Not compatible with the property oidc.
      * Structure is documented below.
      */
-    readonly aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
+    aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
     /**
      * A description for the provider. Cannot exceed 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * A display name for the provider. Cannot exceed 32 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The resource name of the provider as
      * 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
      * Structure is documented below.
      */
-    readonly oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
+    oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
      * validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
      * deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
      * You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The ID used for the pool, which is the final component of the pool resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    readonly workloadIdentityPoolId?: pulumi.Input<string>;
+    workloadIdentityPoolId?: pulumi.Input<string>;
     /**
      * The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    readonly workloadIdentityPoolProviderId?: pulumi.Input<string>;
+    workloadIdentityPoolProviderId?: pulumi.Input<string>;
 }
 
 /**
@@ -478,7 +478,7 @@ export interface WorkloadIdentityPoolProviderArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * ```
      */
-    readonly attributeCondition?: pulumi.Input<string>;
+    attributeCondition?: pulumi.Input<string>;
     /**
      * Maps attributes from authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -524,45 +524,45 @@ export interface WorkloadIdentityPoolProviderArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * ```
      */
-    readonly attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An Amazon Web Services identity provider. Not compatible with the property oidc.
      * Structure is documented below.
      */
-    readonly aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
+    aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
     /**
      * A description for the provider. Cannot exceed 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * A display name for the provider. Cannot exceed 32 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
      * Structure is documented below.
      */
-    readonly oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
+    oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The ID used for the pool, which is the final component of the pool resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    readonly workloadIdentityPoolId: pulumi.Input<string>;
+    workloadIdentityPoolId: pulumi.Input<string>;
     /**
      * The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    readonly workloadIdentityPoolProviderId: pulumi.Input<string>;
+    workloadIdentityPoolProviderId: pulumi.Input<string>;
 }

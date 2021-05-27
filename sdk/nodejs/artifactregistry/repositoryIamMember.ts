@@ -195,58 +195,58 @@ export class RepositoryIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RepositoryIamMember resources.
  */
 export interface RepositoryIamMemberState {
-    readonly condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamMemberCondition>;
+    condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The name of the location this repository is located in.
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly location?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.artifactregistry.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a RepositoryIamMember resource.
  */
 export interface RepositoryIamMemberArgs {
-    readonly condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamMemberCondition>;
+    condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamMemberCondition>;
     /**
      * The name of the location this repository is located in.
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly location?: pulumi.Input<string>;
-    readonly member: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
+    member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly repository: pulumi.Input<string>;
+    repository: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.artifactregistry.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

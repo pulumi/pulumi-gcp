@@ -166,16 +166,16 @@ export interface EntityTypeState {
     /**
      * The name of this entity type to be displayed on the console.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Enables fuzzy entity extraction during classification.
      */
-    readonly enableFuzzyExtraction?: pulumi.Input<boolean>;
+    enableFuzzyExtraction?: pulumi.Input<boolean>;
     /**
      * The collection of entity entries associated with the entity type.
      * Structure is documented below.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.diagflow.EntityTypeEntity>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.diagflow.EntityTypeEntity>[]>;
     /**
      * Indicates the kind of entity type.
      * * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -184,16 +184,16 @@ export interface EntityTypeState {
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -203,16 +203,16 @@ export interface EntityTypeArgs {
     /**
      * The name of this entity type to be displayed on the console.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Enables fuzzy entity extraction during classification.
      */
-    readonly enableFuzzyExtraction?: pulumi.Input<boolean>;
+    enableFuzzyExtraction?: pulumi.Input<boolean>;
     /**
      * The collection of entity entries associated with the entity type.
      * Structure is documented below.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.diagflow.EntityTypeEntity>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.diagflow.EntityTypeEntity>[]>;
     /**
      * Indicates the kind of entity type.
      * * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -221,10 +221,10 @@ export interface EntityTypeArgs {
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
      */
-    readonly kind: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

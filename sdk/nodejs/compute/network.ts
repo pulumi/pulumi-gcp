@@ -185,26 +185,26 @@ export interface NetworkState {
      * When set to `false`, the network is created in "custom subnet mode" so
      * the user can explicitly connect subnetwork resources.
      */
-    readonly autoCreateSubnetworks?: pulumi.Input<boolean>;
+    autoCreateSubnetworks?: pulumi.Input<boolean>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
      */
-    readonly deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
+    deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
     /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The gateway address for default routing out of the network. This value is selected by GCP.
      */
-    readonly gatewayIpv4?: pulumi.Input<string>;
+    gatewayIpv4?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
      * and the maximum value is 1500 bytes.
      */
-    readonly mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -214,12 +214,12 @@ export interface NetworkState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The network-wide routing mode to use. If set to `REGIONAL`, this
      * network's cloud routers will only advertise routes with subnetworks
@@ -228,11 +228,11 @@ export interface NetworkState {
      * subnetworks of this network, across regions.
      * Possible values are `REGIONAL` and `GLOBAL`.
      */
-    readonly routingMode?: pulumi.Input<string>;
+    routingMode?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -246,22 +246,22 @@ export interface NetworkArgs {
      * When set to `false`, the network is created in "custom subnet mode" so
      * the user can explicitly connect subnetwork resources.
      */
-    readonly autoCreateSubnetworks?: pulumi.Input<boolean>;
+    autoCreateSubnetworks?: pulumi.Input<boolean>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
      */
-    readonly deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
+    deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
     /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
      * and the maximum value is 1500 bytes.
      */
-    readonly mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -271,12 +271,12 @@ export interface NetworkArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The network-wide routing mode to use. If set to `REGIONAL`, this
      * network's cloud routers will only advertise routes with subnetworks
@@ -285,5 +285,5 @@ export interface NetworkArgs {
      * subnetworks of this network, across regions.
      * Possible values are `REGIONAL` and `GLOBAL`.
      */
-    readonly routingMode?: pulumi.Input<string>;
+    routingMode?: pulumi.Input<string>;
 }

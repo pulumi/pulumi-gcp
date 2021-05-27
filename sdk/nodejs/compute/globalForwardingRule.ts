@@ -385,7 +385,7 @@ export interface GlobalForwardingRuleState {
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP address that this forwarding rule serves. When a client sends
      * traffic to this IP address, the forwarding rule directs the traffic to
@@ -401,7 +401,7 @@ export interface GlobalForwardingRuleState {
      * For Private Service Connect forwarding rules that forward traffic to
      * Google APIs, IP address must be provided.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
@@ -409,20 +409,20 @@ export interface GlobalForwardingRuleState {
      * and addressType of INTERNAL
      * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
      * Possible values are `IPV4` and `IPV6`.
      */
-    readonly ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
-    readonly labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This signifies what the GlobalForwardingRule will be used for.
      * The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -434,7 +434,7 @@ export interface GlobalForwardingRuleState {
      * Default value is `EXTERNAL`.
      * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
-    readonly loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string>;
     /**
      * Opaque filter criteria used by Loadbalancer to restrict routing
      * configuration to a limited set xDS compliant clients. In their xDS
@@ -452,12 +452,12 @@ export interface GlobalForwardingRuleState {
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
+    metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
     /**
      * Name of the metadata label. The length must be between
      * 1 and 1024 characters, inclusive.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * This field is not used for external load balancing.
      * For INTERNAL_SELF_MANAGED load balancing, this field
@@ -465,7 +465,7 @@ export interface GlobalForwardingRuleState {
      * for this global forwarding rule. If this field is not specified,
      * the default network will be used.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * This field is used along with the target field for TargetHttpProxy,
      * TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -484,16 +484,16 @@ export interface GlobalForwardingRuleState {
      * 1883, 5222
      * * TargetVpnGateway: 500, 4500
      */
-    readonly portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The URL of the target resource to receive the matched traffic.
      * The forwarded traffic must be of a type appropriate to the target object.
@@ -502,7 +502,7 @@ export interface GlobalForwardingRuleState {
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
      */
-    readonly target?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
 }
 
 /**
@@ -513,7 +513,7 @@ export interface GlobalForwardingRuleArgs {
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP address that this forwarding rule serves. When a client sends
      * traffic to this IP address, the forwarding rule directs the traffic to
@@ -529,7 +529,7 @@ export interface GlobalForwardingRuleArgs {
      * For Private Service Connect forwarding rules that forward traffic to
      * Google APIs, IP address must be provided.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
@@ -537,16 +537,16 @@ export interface GlobalForwardingRuleArgs {
      * and addressType of INTERNAL
      * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
      * Possible values are `IPV4` and `IPV6`.
      */
-    readonly ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This signifies what the GlobalForwardingRule will be used for.
      * The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -558,7 +558,7 @@ export interface GlobalForwardingRuleArgs {
      * Default value is `EXTERNAL`.
      * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
-    readonly loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string>;
     /**
      * Opaque filter criteria used by Loadbalancer to restrict routing
      * configuration to a limited set xDS compliant clients. In their xDS
@@ -576,12 +576,12 @@ export interface GlobalForwardingRuleArgs {
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
+    metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
     /**
      * Name of the metadata label. The length must be between
      * 1 and 1024 characters, inclusive.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * This field is not used for external load balancing.
      * For INTERNAL_SELF_MANAGED load balancing, this field
@@ -589,7 +589,7 @@ export interface GlobalForwardingRuleArgs {
      * for this global forwarding rule. If this field is not specified,
      * the default network will be used.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * This field is used along with the target field for TargetHttpProxy,
      * TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -608,12 +608,12 @@ export interface GlobalForwardingRuleArgs {
      * 1883, 5222
      * * TargetVpnGateway: 500, 4500
      */
-    readonly portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URL of the target resource to receive the matched traffic.
      * The forwarded traffic must be of a type appropriate to the target object.
@@ -622,5 +622,5 @@ export interface GlobalForwardingRuleArgs {
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
      */
-    readonly target: pulumi.Input<string>;
+    target: pulumi.Input<string>;
 }

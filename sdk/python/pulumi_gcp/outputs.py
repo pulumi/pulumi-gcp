@@ -14,25 +14,6 @@ __all__ = [
 
 @pulumi.output_type
 class ProviderBatching(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableBatching":
-            suggest = "enable_batching"
-        elif key == "sendAfter":
-            suggest = "send_after"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProviderBatching. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProviderBatching.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProviderBatching.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_batching: Optional[bool] = None,
                  send_after: Optional[str] = None):

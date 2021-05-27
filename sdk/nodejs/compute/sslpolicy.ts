@@ -199,7 +199,7 @@ export interface SSLPolicyState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. This can be one of
@@ -211,26 +211,26 @@ export interface SSLPolicyState {
      * *must* be present when using the `CUSTOM` profile. This argument
      * *must not* be present when using any other profile.
      */
-    readonly customFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    customFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The list of features enabled in the SSL policy.
      */
-    readonly enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
      * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
      */
-    readonly minTlsVersion?: pulumi.Input<string>;
+    minTlsVersion?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -240,7 +240,7 @@ export interface SSLPolicyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -252,16 +252,16 @@ export interface SSLPolicyState {
      * Default value is `COMPATIBLE`.
      * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
      */
-    readonly profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -279,18 +279,18 @@ export interface SSLPolicyArgs {
      * *must* be present when using the `CUSTOM` profile. This argument
      * *must not* be present when using any other profile.
      */
-    readonly customFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    customFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
      * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
      */
-    readonly minTlsVersion?: pulumi.Input<string>;
+    minTlsVersion?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -300,7 +300,7 @@ export interface SSLPolicyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -312,10 +312,10 @@ export interface SSLPolicyArgs {
      * Default value is `COMPATIBLE`.
      * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
      */
-    readonly profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

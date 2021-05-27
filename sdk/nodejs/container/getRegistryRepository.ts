@@ -39,8 +39,8 @@ export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: p
  * A collection of arguments for invoking getRegistryRepository.
  */
 export interface GetRegistryRepositoryArgs {
-    readonly project?: string;
-    readonly region?: string;
+    project?: string;
+    region?: string;
 }
 
 /**

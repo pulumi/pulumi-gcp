@@ -243,32 +243,32 @@ export interface SloState {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
+    basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
      * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
      */
-    readonly calendarPeriod?: pulumi.Input<string>;
+    calendarPeriod?: pulumi.Input<string>;
     /**
      * Name used for UI elements listing this SLO.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The fraction of service that must be good in order for this objective
      * to be met. 0 < goal <= 0.999
      */
-    readonly goal?: pulumi.Input<number>;
+    goal?: pulumi.Input<number>;
     /**
      * The full resource name for this service. The syntax is:
      * projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A request-based SLI defines a SLI for which atomic units of
      * service are counted directly.
@@ -279,20 +279,20 @@ export interface SloState {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
+    requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
     /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.
      */
-    readonly rollingPeriodDays?: pulumi.Input<number>;
+    rollingPeriodDays?: pulumi.Input<number>;
     /**
      * ID of the service to which this SLO belongs.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
     /**
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
-    readonly sloId?: pulumi.Input<string>;
+    sloId?: pulumi.Input<string>;
     /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows
@@ -304,7 +304,7 @@ export interface SloState {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    readonly windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
+    windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
 }
 
 /**
@@ -320,27 +320,27 @@ export interface SloArgs {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
+    basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
      * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
      */
-    readonly calendarPeriod?: pulumi.Input<string>;
+    calendarPeriod?: pulumi.Input<string>;
     /**
      * Name used for UI elements listing this SLO.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The fraction of service that must be good in order for this objective
      * to be met. 0 < goal <= 0.999
      */
-    readonly goal: pulumi.Input<number>;
+    goal: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A request-based SLI defines a SLI for which atomic units of
      * service are counted directly.
@@ -351,20 +351,20 @@ export interface SloArgs {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
+    requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
     /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.
      */
-    readonly rollingPeriodDays?: pulumi.Input<number>;
+    rollingPeriodDays?: pulumi.Input<number>;
     /**
      * ID of the service to which this SLO belongs.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
     /**
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
-    readonly sloId?: pulumi.Input<string>;
+    sloId?: pulumi.Input<string>;
     /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows
@@ -376,5 +376,5 @@ export interface SloArgs {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    readonly windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
+    windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
 }

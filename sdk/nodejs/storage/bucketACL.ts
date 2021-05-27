@@ -124,19 +124,19 @@ export interface BucketACLState {
     /**
      * The name of the bucket it applies to.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * Configure this ACL to be the default ACL.
      */
-    readonly defaultAcl?: pulumi.Input<string>;
+    defaultAcl?: pulumi.Input<string>;
     /**
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
-    readonly predefinedAcl?: pulumi.Input<string>;
+    predefinedAcl?: pulumi.Input<string>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
      */
-    readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
+    roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -146,17 +146,17 @@ export interface BucketACLArgs {
     /**
      * The name of the bucket it applies to.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * Configure this ACL to be the default ACL.
      */
-    readonly defaultAcl?: pulumi.Input<string>;
+    defaultAcl?: pulumi.Input<string>;
     /**
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
-    readonly predefinedAcl?: pulumi.Input<string>;
+    predefinedAcl?: pulumi.Input<string>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
      */
-    readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
+    roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

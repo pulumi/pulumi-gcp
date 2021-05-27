@@ -81,19 +81,19 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FunctionIamPolicy resources.
  */
 export interface FunctionIamPolicyState {
-    readonly cloudFunction?: pulumi.Input<string>;
-    readonly etag?: pulumi.Input<string>;
-    readonly policyData?: pulumi.Input<string>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    cloudFunction?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a FunctionIamPolicy resource.
  */
 export interface FunctionIamPolicyArgs {
-    readonly cloudFunction: pulumi.Input<string>;
-    readonly policyData: pulumi.Input<string>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    cloudFunction: pulumi.Input<string>;
+    policyData: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

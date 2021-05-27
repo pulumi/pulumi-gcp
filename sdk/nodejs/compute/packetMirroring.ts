@@ -241,48 +241,48 @@ export interface PacketMirroringState {
      * set to true.
      * Structure is documented below.
      */
-    readonly collectorIlb?: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
+    collectorIlb?: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
     /**
      * A human-readable description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
      */
-    readonly filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
+    filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
     /**
      * A means of specifying which resources to mirror.
      * Structure is documented below.
      */
-    readonly mirroredResources?: pulumi.Input<inputs.compute.PacketMirroringMirroredResources>;
+    mirroredResources?: pulumi.Input<inputs.compute.PacketMirroringMirroredResources>;
     /**
      * The name of the packet mirroring rule
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the mirrored VPC network. Only packets in this network
      * will be mirrored. All mirrored VMs should have a NIC in the given
      * network. All mirrored subnetworks should belong to the given network.
      * Structure is documented below.
      */
-    readonly network?: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
+    network?: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
     /**
      * Since only one rule can be active at a time, priority is
      * used to break ties in the case of two rules that apply to
      * the same instances.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -296,46 +296,46 @@ export interface PacketMirroringArgs {
      * set to true.
      * Structure is documented below.
      */
-    readonly collectorIlb: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
+    collectorIlb: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
     /**
      * A human-readable description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
      */
-    readonly filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
+    filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
     /**
      * A means of specifying which resources to mirror.
      * Structure is documented below.
      */
-    readonly mirroredResources: pulumi.Input<inputs.compute.PacketMirroringMirroredResources>;
+    mirroredResources: pulumi.Input<inputs.compute.PacketMirroringMirroredResources>;
     /**
      * The name of the packet mirroring rule
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the mirrored VPC network. Only packets in this network
      * will be mirrored. All mirrored VMs should have a NIC in the given
      * network. All mirrored subnetworks should belong to the given network.
      * Structure is documented below.
      */
-    readonly network: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
+    network: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
     /**
      * Since only one rule can be active at a time, priority is
      * used to break ties in the case of two rules that apply to
      * the same instances.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

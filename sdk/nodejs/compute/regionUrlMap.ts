@@ -533,67 +533,67 @@ export interface RegionUrlMapState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * A reference to a RegionBackendService resource. This will be used if
      * none of the pathRules defined by this PathMatcher is matched by
      * the URL's path portion.
      */
-    readonly defaultService?: pulumi.Input<string>;
+    defaultService?: pulumi.Input<string>;
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
      * defaultRouteAction must not be set.
      * Structure is documented below.
      */
-    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
+    defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
     /**
      * Description of this test case.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
-    readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
+    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
     /**
      * The unique identifier for the resource.
      */
-    readonly mapId?: pulumi.Input<number>;
+    mapId?: pulumi.Input<number>;
     /**
      * The name of the query parameter to match. The query parameter must exist in the
      * request, in the absence of which the request match fails.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the PathMatcher to use to match the path portion of
      * the URL if the hostRule matches the URL's host portion.
      */
-    readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
+    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The Region in which the url map should reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
      * succeed only if all of the test cases pass.
      * Structure is documented below.
      */
-    readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
+    tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
 }
 
 /**
@@ -605,47 +605,47 @@ export interface RegionUrlMapArgs {
      * none of the pathRules defined by this PathMatcher is matched by
      * the URL's path portion.
      */
-    readonly defaultService?: pulumi.Input<string>;
+    defaultService?: pulumi.Input<string>;
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
      * defaultRouteAction must not be set.
      * Structure is documented below.
      */
-    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
+    defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
     /**
      * Description of this test case.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
-    readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
+    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
     /**
      * The name of the query parameter to match. The query parameter must exist in the
      * request, in the absence of which the request match fails.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the PathMatcher to use to match the path portion of
      * the URL if the hostRule matches the URL's host portion.
      */
-    readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
+    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The Region in which the url map should reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
      * succeed only if all of the test cases pass.
      * Structure is documented below.
      */
-    readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
+    tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
 }

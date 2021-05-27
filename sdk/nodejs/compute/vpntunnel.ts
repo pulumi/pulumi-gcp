@@ -368,36 +368,36 @@ export interface VPNTunnelState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Detailed status message for the VPN tunnel.
      */
-    readonly detailedStatus?: pulumi.Input<string>;
+    detailedStatus?: pulumi.Input<string>;
     /**
      * IKE protocol version to use when establishing the VPN tunnel with
      * peer VPN gateway.
      * Acceptable IKE versions are 1 or 2. Default version is 2.
      */
-    readonly ikeVersion?: pulumi.Input<number>;
+    ikeVersion?: pulumi.Input<number>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
-    readonly labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this VpnTunnel.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Local traffic selector to use when establishing the VPN tunnel with
      * peer VPN gateway. The value should be a CIDR formatted string,
      * for example `192.168.0.0/16`. The ranges should be disjoint.
      * Only IPv4 is supported.
      */
-    readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63
@@ -407,79 +407,79 @@ export interface VPNTunnelState {
      * be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      */
-    readonly peerExternalGateway?: pulumi.Input<string>;
+    peerExternalGateway?: pulumi.Input<string>;
     /**
      * The interface ID of the external VPN gateway to which this VPN tunnel is connected.
      */
-    readonly peerExternalGatewayInterface?: pulumi.Input<number>;
+    peerExternalGatewayInterface?: pulumi.Input<number>;
     /**
      * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
      * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
      * ID in the peer GCP VPN gateway.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
-    readonly peerGcpGateway?: pulumi.Input<string>;
+    peerGcpGateway?: pulumi.Input<string>;
     /**
      * IP address of the peer VPN gateway. Only IPv4 is supported.
      */
-    readonly peerIp?: pulumi.Input<string>;
+    peerIp?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Remote traffic selector to use when establishing the VPN tunnel with
      * peer VPN gateway. The value should be a CIDR formatted string,
      * for example `192.168.0.0/16`. The ranges should be disjoint.
      * Only IPv4 is supported.
      */
-    readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URL of router resource to be used for dynamic routing.
      */
-    readonly router?: pulumi.Input<string>;
+    router?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly sharedSecret?: pulumi.Input<string>;
+    sharedSecret?: pulumi.Input<string>;
     /**
      * Hash of the shared secret.
      */
-    readonly sharedSecretHash?: pulumi.Input<string>;
+    sharedSecretHash?: pulumi.Input<string>;
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is
      * associated.
      */
-    readonly targetVpnGateway?: pulumi.Input<string>;
+    targetVpnGateway?: pulumi.Input<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly tunnelId?: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string>;
     /**
      * URL of the VPN gateway with which this VPN tunnel is associated.
      * This must be used if a High Availability VPN gateway resource is created.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
-    readonly vpnGateway?: pulumi.Input<string>;
+    vpnGateway?: pulumi.Input<string>;
     /**
      * The interface ID of the VPN gateway with which this VPN tunnel is associated.
      */
-    readonly vpnGatewayInterface?: pulumi.Input<number>;
+    vpnGatewayInterface?: pulumi.Input<number>;
 }
 
 /**
@@ -489,24 +489,24 @@ export interface VPNTunnelArgs {
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * IKE protocol version to use when establishing the VPN tunnel with
      * peer VPN gateway.
      * Acceptable IKE versions are 1 or 2. Default version is 2.
      */
-    readonly ikeVersion?: pulumi.Input<number>;
+    ikeVersion?: pulumi.Input<number>;
     /**
      * Labels to apply to this VpnTunnel.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Local traffic selector to use when establishing the VPN tunnel with
      * peer VPN gateway. The value should be a CIDR formatted string,
      * for example `192.168.0.0/16`. The ranges should be disjoint.
      * Only IPv4 is supported.
      */
-    readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63
@@ -516,65 +516,65 @@ export interface VPNTunnelArgs {
      * be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      */
-    readonly peerExternalGateway?: pulumi.Input<string>;
+    peerExternalGateway?: pulumi.Input<string>;
     /**
      * The interface ID of the external VPN gateway to which this VPN tunnel is connected.
      */
-    readonly peerExternalGatewayInterface?: pulumi.Input<number>;
+    peerExternalGatewayInterface?: pulumi.Input<number>;
     /**
      * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
      * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
      * ID in the peer GCP VPN gateway.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
-    readonly peerGcpGateway?: pulumi.Input<string>;
+    peerGcpGateway?: pulumi.Input<string>;
     /**
      * IP address of the peer VPN gateway. Only IPv4 is supported.
      */
-    readonly peerIp?: pulumi.Input<string>;
+    peerIp?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Remote traffic selector to use when establishing the VPN tunnel with
      * peer VPN gateway. The value should be a CIDR formatted string,
      * for example `192.168.0.0/16`. The ranges should be disjoint.
      * Only IPv4 is supported.
      */
-    readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URL of router resource to be used for dynamic routing.
      */
-    readonly router?: pulumi.Input<string>;
+    router?: pulumi.Input<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly sharedSecret: pulumi.Input<string>;
+    sharedSecret: pulumi.Input<string>;
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is
      * associated.
      */
-    readonly targetVpnGateway?: pulumi.Input<string>;
+    targetVpnGateway?: pulumi.Input<string>;
     /**
      * URL of the VPN gateway with which this VPN tunnel is associated.
      * This must be used if a High Availability VPN gateway resource is created.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
-    readonly vpnGateway?: pulumi.Input<string>;
+    vpnGateway?: pulumi.Input<string>;
     /**
      * The interface ID of the VPN gateway with which this VPN tunnel is associated.
      */
-    readonly vpnGatewayInterface?: pulumi.Input<number>;
+    vpnGatewayInterface?: pulumi.Input<number>;
 }

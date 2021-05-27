@@ -198,15 +198,15 @@ export interface VPNGatewayState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The unique identifier for the resource.
      */
-    readonly gatewayId?: pulumi.Input<number>;
+    gatewayId?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -216,24 +216,24 @@ export interface VPNGatewayState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region this gateway should sit in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -243,7 +243,7 @@ export interface VPNGatewayArgs {
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -253,18 +253,18 @@ export interface VPNGatewayArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
      */
-    readonly network: pulumi.Input<string>;
+    network: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region this gateway should sit in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

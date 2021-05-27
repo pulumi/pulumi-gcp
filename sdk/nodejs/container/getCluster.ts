@@ -50,16 +50,16 @@ export interface GetClusterArgs {
      * created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
      * be specified.
      */
-    readonly location?: string;
+    location?: string;
     /**
      * The name of the cluster.
      */
-    readonly name: string;
+    name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

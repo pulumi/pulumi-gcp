@@ -116,11 +116,11 @@ export interface SharedVPCServiceProjectState {
     /**
      * The ID of a host project to associate.
      */
-    readonly hostProject?: pulumi.Input<string>;
+    hostProject?: pulumi.Input<string>;
     /**
      * The ID of the project that will serve as a Shared VPC service project.
      */
-    readonly serviceProject?: pulumi.Input<string>;
+    serviceProject?: pulumi.Input<string>;
 }
 
 /**
@@ -130,9 +130,9 @@ export interface SharedVPCServiceProjectArgs {
     /**
      * The ID of a host project to associate.
      */
-    readonly hostProject: pulumi.Input<string>;
+    hostProject: pulumi.Input<string>;
     /**
      * The ID of the project that will serve as a Shared VPC service project.
      */
-    readonly serviceProject: pulumi.Input<string>;
+    serviceProject: pulumi.Input<string>;
 }

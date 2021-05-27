@@ -195,7 +195,7 @@ export interface PolicyState {
      * requests will always be permitted regardless of your admission rules.
      * Structure is documented below.
      */
-    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
     /**
      * Per-cluster admission rules. An admission rule specifies either that
      * all container images used in a pod creation request must be attested
@@ -203,29 +203,29 @@ export interface PolicyState {
      * or that all pod creations will be denied. There can be at most one
      * admission rule per cluster spec.
      */
-    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
      * rule.
      * Structure is documented below.
      */
-    readonly defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     /**
      * A descriptive comment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
      * Possible values are `ENABLE` and `DISABLE`.
      */
-    readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
+    globalPolicyEvaluationMode?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface PolicyArgs {
      * requests will always be permitted regardless of your admission rules.
      * Structure is documented below.
      */
-    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
     /**
      * Per-cluster admission rules. An admission rule specifies either that
      * all container images used in a pod creation request must be attested
@@ -246,27 +246,27 @@ export interface PolicyArgs {
      * or that all pod creations will be denied. There can be at most one
      * admission rule per cluster spec.
      */
-    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
      * rule.
      * Structure is documented below.
      */
-    readonly defaultAdmissionRule: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    defaultAdmissionRule: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     /**
      * A descriptive comment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
      * Possible values are `ENABLE` and `DISABLE`.
      */
-    readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
+    globalPolicyEvaluationMode?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

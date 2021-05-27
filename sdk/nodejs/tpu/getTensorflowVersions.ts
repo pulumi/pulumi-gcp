@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const available = pulumi.output(gcp.tpu.getTensorflowVersions({ async: true }));
+ * const available = pulumi.output(gcp.tpu.getTensorflowVersions());
  * ```
  * ### Configure Basic TPU Node With Available Version
  *
@@ -54,12 +54,12 @@ export interface GetTensorflowVersionsArgs {
      * The project to list versions for. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The zone to list versions for. If it
      * is not provided, the provider zone is used.
      */
-    readonly zone?: string;
+    zone?: string;
 }
 
 /**

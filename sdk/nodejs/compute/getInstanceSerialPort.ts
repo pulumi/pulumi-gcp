@@ -90,21 +90,21 @@ export interface GetInstanceSerialPortArgs {
     /**
      * The name of the Compute Instance to read output from.
      */
-    readonly instance: string;
+    instance: string;
     /**
      * The number of the serial port to read output from. Possible values are 1-4.
      */
-    readonly port: number;
+    port: number;
     /**
      * The project in which the Compute Instance exists. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The zone in which the Compute Instance exists.
      * If it is not provided, the provider zone is used.
      */
-    readonly zone?: string;
+    zone?: string;
 }
 
 /**

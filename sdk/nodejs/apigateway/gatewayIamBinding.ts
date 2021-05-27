@@ -194,56 +194,56 @@ export class GatewayIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GatewayIamBinding resources.
  */
 export interface GatewayIamBindingState {
-    readonly condition?: pulumi.Input<inputs.apigateway.GatewayIamBindingCondition>;
+    condition?: pulumi.Input<inputs.apigateway.GatewayIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly gateway?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    etag?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the gateway for the API.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.apigateway.GatewayIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a GatewayIamBinding resource.
  */
 export interface GatewayIamBindingArgs {
-    readonly condition?: pulumi.Input<inputs.apigateway.GatewayIamBindingCondition>;
-    readonly gateway: pulumi.Input<string>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    condition?: pulumi.Input<inputs.apigateway.GatewayIamBindingCondition>;
+    gateway: pulumi.Input<string>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the gateway for the API.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.apigateway.GatewayIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

@@ -46,16 +46,16 @@ export interface GetAccountKeyArgs {
      * `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
      * is the email address or unique id of the service account.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
-    readonly publicKeyType?: string;
+    publicKeyType?: string;
 }
 
 /**

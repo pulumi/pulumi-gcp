@@ -75,15 +75,15 @@ export class AccountIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccountIamPolicy resources.
  */
 export interface AccountIamPolicyState {
-    readonly billingAccountId?: pulumi.Input<string>;
-    readonly etag?: pulumi.Input<string>;
-    readonly policyData?: pulumi.Input<string>;
+    billingAccountId?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a AccountIamPolicy resource.
  */
 export interface AccountIamPolicyArgs {
-    readonly billingAccountId: pulumi.Input<string>;
-    readonly policyData: pulumi.Input<string>;
+    billingAccountId: pulumi.Input<string>;
+    policyData: pulumi.Input<string>;
 }

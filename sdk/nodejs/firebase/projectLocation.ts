@@ -113,12 +113,12 @@ export interface ProjectLocationState {
      * The ID of the default GCP resource location for the Project. The location must be one of the available GCP
      * resource locations.
      */
-    readonly locationId?: pulumi.Input<string>;
+    locationId?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -129,10 +129,10 @@ export interface ProjectLocationArgs {
      * The ID of the default GCP resource location for the Project. The location must be one of the available GCP
      * resource locations.
      */
-    readonly locationId: pulumi.Input<string>;
+    locationId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

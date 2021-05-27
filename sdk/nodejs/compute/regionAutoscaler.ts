@@ -223,38 +223,38 @@ export interface RegionAutoscalerState {
      * on cpuUtilization to 0.6 or 60%.
      * Structure is documented below.
      */
-    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
+    autoscalingPolicy?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The identifier for this object. Format specified above.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * URL of the region where the instance group resides.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Fraction of backend capacity utilization (set in HTTP(s) load
      * balancing configuration) that autoscaler should maintain. Must
      * be a positive float value. If not defined, the default is 0.8.
      */
-    readonly target?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
 }
 
 /**
@@ -269,28 +269,28 @@ export interface RegionAutoscalerArgs {
      * on cpuUtilization to 0.6 or 60%.
      * Structure is documented below.
      */
-    readonly autoscalingPolicy: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
+    autoscalingPolicy: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The identifier for this object. Format specified above.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * URL of the region where the instance group resides.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Fraction of backend capacity utilization (set in HTTP(s) load
      * balancing configuration) that autoscaler should maintain. Must
      * be a positive float value. If not defined, the default is 0.8.
      */
-    readonly target: pulumi.Input<string>;
+    target: pulumi.Input<string>;
 }

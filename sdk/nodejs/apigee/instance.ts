@@ -151,44 +151,44 @@ export interface InstanceState {
     /**
      * Description of the instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      */
-    readonly diskEncryptionKeyName?: pulumi.Input<string>;
+    diskEncryptionKeyName?: pulumi.Input<string>;
     /**
      * Display name of the instance.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * Compute Engine location where the instance resides. For trial organization
      * subscriptions, the location must be a Compute Engine zone. For paid organization
      * subscriptions, it should correspond to a Compute Engine region.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Resource ID of the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * The size of the CIDR block range that will be reserved by the instance.
      * Possible values are `SLASH_16` and `SLASH_20`.
      */
-    readonly peeringCidrRange?: pulumi.Input<string>;
+    peeringCidrRange?: pulumi.Input<string>;
     /**
      * Output only. Port number of the exposed Apigee endpoint.
      */
-    readonly port?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
 }
 
 /**
@@ -198,34 +198,34 @@ export interface InstanceArgs {
     /**
      * Description of the instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      */
-    readonly diskEncryptionKeyName?: pulumi.Input<string>;
+    diskEncryptionKeyName?: pulumi.Input<string>;
     /**
      * Display name of the instance.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Compute Engine location where the instance resides. For trial organization
      * subscriptions, the location must be a Compute Engine zone. For paid organization
      * subscriptions, it should correspond to a Compute Engine region.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Resource ID of the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
     /**
      * The size of the CIDR block range that will be reserved by the instance.
      * Possible values are `SLASH_16` and `SLASH_20`.
      */
-    readonly peeringCidrRange?: pulumi.Input<string>;
+    peeringCidrRange?: pulumi.Input<string>;
 }

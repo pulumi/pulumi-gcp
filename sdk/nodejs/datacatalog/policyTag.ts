@@ -193,35 +193,35 @@ export interface PolicyTagState {
     /**
      * Resource names of child policy tags of this policy tag.
      */
-    readonly childPolicyTags?: pulumi.Input<pulumi.Input<string>[]>;
+    childPolicyTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of this policy tag. It must: contain only unicode characters, tabs,
      * newlines, carriage returns and page breaks; and be at most 2000 bytes long when
      * encoded in UTF-8. If not set, defaults to an empty description.
      * If not set, defaults to an empty description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * User defined name of this policy tag. It must: be unique within the parent
      * taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
      * not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Resource name of this policy tag, whose format is:
      * "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Resource name of this policy tag's parent policy tag.
      * If empty, it means this policy tag is a top level policy tag.
      * If not set, defaults to an empty string.
      */
-    readonly parentPolicyTag?: pulumi.Input<string>;
+    parentPolicyTag?: pulumi.Input<string>;
     /**
      * Taxonomy the policy tag is associated with
      */
-    readonly taxonomy?: pulumi.Input<string>;
+    taxonomy?: pulumi.Input<string>;
 }
 
 /**
@@ -234,21 +234,21 @@ export interface PolicyTagArgs {
      * encoded in UTF-8. If not set, defaults to an empty description.
      * If not set, defaults to an empty description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * User defined name of this policy tag. It must: be unique within the parent
      * taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
      * not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Resource name of this policy tag's parent policy tag.
      * If empty, it means this policy tag is a top level policy tag.
      * If not set, defaults to an empty string.
      */
-    readonly parentPolicyTag?: pulumi.Input<string>;
+    parentPolicyTag?: pulumi.Input<string>;
     /**
      * Taxonomy the policy tag is associated with
      */
-    readonly taxonomy: pulumi.Input<string>;
+    taxonomy: pulumi.Input<string>;
 }

@@ -61,7 +61,7 @@ export interface GetNetblockIPRangesArgs {
     /**
      * The type of range for which to provide results.
      */
-    readonly rangeType?: string;
+    rangeType?: string;
 }
 
 /**

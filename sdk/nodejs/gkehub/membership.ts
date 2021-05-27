@@ -126,33 +126,33 @@ export interface MembershipState {
      * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
      * Structure is documented below.
      */
-    readonly authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
+    authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
      * The name of this entity type to be displayed on the console.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
      */
-    readonly endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
+    endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
     /**
      * Labels to apply to this membership.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The client-provided identifier of the membership.
      */
-    readonly membershipId?: pulumi.Input<string>;
+    membershipId?: pulumi.Input<string>;
     /**
      * The unique identifier of the membership.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -165,27 +165,27 @@ export interface MembershipArgs {
      * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
      * Structure is documented below.
      */
-    readonly authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
+    authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
      * The name of this entity type to be displayed on the console.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
      */
-    readonly endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
+    endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
     /**
      * Labels to apply to this membership.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The client-provided identifier of the membership.
      */
-    readonly membershipId: pulumi.Input<string>;
+    membershipId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

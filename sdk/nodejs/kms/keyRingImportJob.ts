@@ -164,43 +164,43 @@ export interface KeyRingImportJobState {
      * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
      * ImportMethod is one with a protection level of HSM.
      */
-    readonly attestations?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobAttestation>[]>;
+    attestations?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobAttestation>[]>;
     /**
      * The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
      */
-    readonly expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
      */
-    readonly importJobId?: pulumi.Input<string>;
+    importJobId?: pulumi.Input<string>;
     /**
      * The wrapping method to be used for incoming key material.
      * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
      */
-    readonly importMethod?: pulumi.Input<string>;
+    importMethod?: pulumi.Input<string>;
     /**
      * The KeyRing that this import job belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
-    readonly keyRing?: pulumi.Input<string>;
+    keyRing?: pulumi.Input<string>;
     /**
      * The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
      * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
      */
-    readonly protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<string>;
     /**
      * The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
      */
-    readonly publicKeys?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobPublicKey>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobPublicKey>[]>;
     /**
      * The current state of the ImportJob, indicating if it can be used.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }
 
 /**
@@ -210,21 +210,21 @@ export interface KeyRingImportJobArgs {
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
      */
-    readonly importJobId: pulumi.Input<string>;
+    importJobId: pulumi.Input<string>;
     /**
      * The wrapping method to be used for incoming key material.
      * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
      */
-    readonly importMethod: pulumi.Input<string>;
+    importMethod: pulumi.Input<string>;
     /**
      * The KeyRing that this import job belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
-    readonly keyRing: pulumi.Input<string>;
+    keyRing: pulumi.Input<string>;
     /**
      * The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
      * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
      */
-    readonly protectionLevel: pulumi.Input<string>;
+    protectionLevel: pulumi.Input<string>;
 }

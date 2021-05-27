@@ -269,74 +269,74 @@ export interface InstanceState {
     /**
      * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
      */
-    readonly dataprocServiceAccount?: pulumi.Input<string>;
+    dataprocServiceAccount?: pulumi.Input<string>;
     /**
      * An optional description of the instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Option to enable Stackdriver Logging.
      */
-    readonly enableStackdriverLogging?: pulumi.Input<boolean>;
+    enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
      * Option to enable Stackdriver Monitoring.
      */
-    readonly enableStackdriverMonitoring?: pulumi.Input<boolean>;
+    enableStackdriverMonitoring?: pulumi.Input<boolean>;
     /**
      * The resource labels for instance to use to annotate any related underlying resources,
      * such as Compute Engine VMs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Network configuration options. These are required when a private Data Fusion instance is to be created.
      * Structure is documented below.
      */
-    readonly networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
     /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
-    readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies whether the Data Fusion instance should be private. If set to
      * true, all Data Fusion nodes will have private IP addresses and will not be
      * able to access the public internet.
      */
-    readonly privateInstance?: pulumi.Input<boolean>;
+    privateInstance?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the Data Fusion instance.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Service account which will be used to access resources in the customer project.
      */
-    readonly serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Endpoint on which the Data Fusion UI and REST APIs are accessible.
      */
-    readonly serviceEndpoint?: pulumi.Input<string>;
+    serviceEndpoint?: pulumi.Input<string>;
     /**
      * The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
      * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
      * being upgraded - RESTARTING: Instance is being restarted
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Additional information about the current state of this Data Fusion instance if available.
      */
-    readonly stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string>;
     /**
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
@@ -350,15 +350,15 @@ export interface InstanceState {
      * pipelines at low cost.
      * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
     /**
      * Current version of the Data Fusion.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -368,52 +368,52 @@ export interface InstanceArgs {
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
      */
-    readonly dataprocServiceAccount?: pulumi.Input<string>;
+    dataprocServiceAccount?: pulumi.Input<string>;
     /**
      * An optional description of the instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Option to enable Stackdriver Logging.
      */
-    readonly enableStackdriverLogging?: pulumi.Input<boolean>;
+    enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
      * Option to enable Stackdriver Monitoring.
      */
-    readonly enableStackdriverMonitoring?: pulumi.Input<boolean>;
+    enableStackdriverMonitoring?: pulumi.Input<boolean>;
     /**
      * The resource labels for instance to use to annotate any related underlying resources,
      * such as Compute Engine VMs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Network configuration options. These are required when a private Data Fusion instance is to be created.
      * Structure is documented below.
      */
-    readonly networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
     /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
-    readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies whether the Data Fusion instance should be private. If set to
      * true, all Data Fusion nodes will have private IP addresses and will not be
      * able to access the public internet.
      */
-    readonly privateInstance?: pulumi.Input<boolean>;
+    privateInstance?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the Data Fusion instance.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
@@ -427,9 +427,9 @@ export interface InstanceArgs {
      * pipelines at low cost.
      * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * Current version of the Data Fusion.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

@@ -171,34 +171,34 @@ export interface AttachedDiskState {
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
      */
-    readonly deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
      */
-    readonly disk?: pulumi.Input<string>;
+    disk?: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the compute instance that the disk will be attached to.
      * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      */
-    readonly instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string>;
     /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The project that the referenced compute instance is a part of. If `instance` is referenced by its
      * `selfLink` the project defined in the link will take precedence.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The zone that the referenced compute instance is located within. If `instance` is referenced by its
      * `selfLink` the zone defined in the link will take precedence.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -212,32 +212,32 @@ export interface AttachedDiskArgs {
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
      */
-    readonly deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
      */
-    readonly disk: pulumi.Input<string>;
+    disk: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the compute instance that the disk will be attached to.
      * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      */
-    readonly instance: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
     /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The project that the referenced compute instance is a part of. If `instance` is referenced by its
      * `selfLink` the project defined in the link will take precedence.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The zone that the referenced compute instance is located within. If `instance` is referenced by its
      * `selfLink` the zone defined in the link will take precedence.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

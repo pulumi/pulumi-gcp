@@ -147,26 +147,26 @@ export interface RepositoryState {
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub.
      * Keyed by the topic names.
      * Structure is documented below.
      */
-    readonly pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
+    pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
     /**
      * The disk usage of the repo, in bytes.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * URL to clone the repository from Google Cloud Source Repositories.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -177,16 +177,16 @@ export interface RepositoryArgs {
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub.
      * Keyed by the topic names.
      * Structure is documented below.
      */
-    readonly pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
+    pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
 }

@@ -262,20 +262,20 @@ export interface ImageState {
     /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */
-    readonly archiveSizeBytes?: pulumi.Input<number>;
+    archiveSizeBytes?: pulumi.Input<number>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Size of the image when restored onto a persistent disk (in GB).
      */
-    readonly diskSizeGb?: pulumi.Input<number>;
+    diskSizeGb?: pulumi.Input<number>;
     /**
      * The name of the image family to which this image belongs. You can
      * create disks by specifying an image family instead of a specific
@@ -283,25 +283,25 @@ export interface ImageState {
      * not deprecated. The name of the image family must comply with
      * RFC1035.
      */
-    readonly family?: pulumi.Input<string>;
+    family?: pulumi.Input<string>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable images.
      * Structure is documented below.
      */
-    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
-    readonly labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this Image.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Any applicable license URI.
      */
-    readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -311,27 +311,27 @@ export interface ImageState {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The parameters of the raw disk image.
      * Structure is documented below.
      */
-    readonly rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
+    rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
      */
-    readonly sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string>;
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
@@ -340,7 +340,7 @@ export interface ImageState {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    readonly sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -350,7 +350,7 @@ export interface ImageState {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    readonly sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string>;
 }
 
 /**
@@ -361,11 +361,11 @@ export interface ImageArgs {
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Size of the image when restored onto a persistent disk (in GB).
      */
-    readonly diskSizeGb?: pulumi.Input<number>;
+    diskSizeGb?: pulumi.Input<number>;
     /**
      * The name of the image family to which this image belongs. You can
      * create disks by specifying an image family instead of a specific
@@ -373,21 +373,21 @@ export interface ImageArgs {
      * not deprecated. The name of the image family must comply with
      * RFC1035.
      */
-    readonly family?: pulumi.Input<string>;
+    family?: pulumi.Input<string>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable images.
      * Structure is documented below.
      */
-    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
     /**
      * Labels to apply to this Image.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Any applicable license URI.
      */
-    readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -397,23 +397,23 @@ export interface ImageArgs {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The parameters of the raw disk image.
      * Structure is documented below.
      */
-    readonly rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
+    rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
     /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
      */
-    readonly sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string>;
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
@@ -422,7 +422,7 @@ export interface ImageArgs {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    readonly sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -432,5 +432,5 @@ export interface ImageArgs {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    readonly sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string>;
 }

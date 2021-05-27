@@ -227,75 +227,75 @@ export interface DeviceState {
     /**
      * If a device is blocked, connections or requests from this device will fail.
      */
-    readonly blocked?: pulumi.Input<boolean>;
+    blocked?: pulumi.Input<boolean>;
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
      */
-    readonly configs?: pulumi.Input<pulumi.Input<inputs.iot.DeviceConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.iot.DeviceConfig>[]>;
     /**
      * The credentials used to authenticate this device.
      * Structure is documented below.
      */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.DeviceCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.iot.DeviceCredential>[]>;
     /**
      * Gateway-related configuration and state.
      * Structure is documented below.
      */
-    readonly gatewayConfig?: pulumi.Input<inputs.iot.DeviceGatewayConfig>;
+    gatewayConfig?: pulumi.Input<inputs.iot.DeviceGatewayConfig>;
     /**
      * The last time a cloud-to-device config version acknowledgment was received from the device.
      */
-    readonly lastConfigAckTime?: pulumi.Input<string>;
+    lastConfigAckTime?: pulumi.Input<string>;
     /**
      * The last time a cloud-to-device config version was sent to the device.
      */
-    readonly lastConfigSendTime?: pulumi.Input<string>;
+    lastConfigSendTime?: pulumi.Input<string>;
     /**
      * The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
      */
-    readonly lastErrorStatuses?: pulumi.Input<pulumi.Input<inputs.iot.DeviceLastErrorStatus>[]>;
+    lastErrorStatuses?: pulumi.Input<pulumi.Input<inputs.iot.DeviceLastErrorStatus>[]>;
     /**
      * The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
      */
-    readonly lastErrorTime?: pulumi.Input<string>;
+    lastErrorTime?: pulumi.Input<string>;
     /**
      * The last time a telemetry event was received.
      */
-    readonly lastEventTime?: pulumi.Input<string>;
+    lastEventTime?: pulumi.Input<string>;
     /**
      * The last time an MQTT PINGREQ was received.
      */
-    readonly lastHeartbeatTime?: pulumi.Input<string>;
+    lastHeartbeatTime?: pulumi.Input<string>;
     /**
      * The last time a state event was received.
      */
-    readonly lastStateTime?: pulumi.Input<string>;
+    lastStateTime?: pulumi.Input<string>;
     /**
      * The logging verbosity for device activity.
      * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
-    readonly logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<string>;
     /**
      * The metadata key-value pairs assigned to the device.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
      * unique.
      */
-    readonly numId?: pulumi.Input<string>;
+    numId?: pulumi.Input<string>;
     /**
      * The name of the device registry where this device should be created.
      */
-    readonly registry?: pulumi.Input<string>;
+    registry?: pulumi.Input<string>;
     /**
      * The state most recently received from the device.
      */
-    readonly states?: pulumi.Input<pulumi.Input<inputs.iot.DeviceState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.iot.DeviceState>[]>;
 }
 
 /**
@@ -305,32 +305,32 @@ export interface DeviceArgs {
     /**
      * If a device is blocked, connections or requests from this device will fail.
      */
-    readonly blocked?: pulumi.Input<boolean>;
+    blocked?: pulumi.Input<boolean>;
     /**
      * The credentials used to authenticate this device.
      * Structure is documented below.
      */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.DeviceCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.iot.DeviceCredential>[]>;
     /**
      * Gateway-related configuration and state.
      * Structure is documented below.
      */
-    readonly gatewayConfig?: pulumi.Input<inputs.iot.DeviceGatewayConfig>;
+    gatewayConfig?: pulumi.Input<inputs.iot.DeviceGatewayConfig>;
     /**
      * The logging verbosity for device activity.
      * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
-    readonly logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<string>;
     /**
      * The metadata key-value pairs assigned to the device.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the device registry where this device should be created.
      */
-    readonly registry: pulumi.Input<string>;
+    registry: pulumi.Input<string>;
 }

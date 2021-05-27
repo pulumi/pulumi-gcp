@@ -167,37 +167,37 @@ export interface AutoscalingPolicyState {
      * Basic algorithm for autoscaling.
      * Structure is documented below.
      */
-    readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
+    basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
     /**
      * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The "resource name" of the autoscaling policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
      */
-    readonly policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Describes how the autoscaler will operate for secondary workers.
      * Structure is documented below.
      */
-    readonly secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicySecondaryWorkerConfig>;
+    secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicySecondaryWorkerConfig>;
     /**
      * Describes how the autoscaler will operate for primary workers.
      * Structure is documented below.
      */
-    readonly workerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicyWorkerConfig>;
+    workerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicyWorkerConfig>;
 }
 
 /**
@@ -208,31 +208,31 @@ export interface AutoscalingPolicyArgs {
      * Basic algorithm for autoscaling.
      * Structure is documented below.
      */
-    readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
+    basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
     /**
      * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
      */
-    readonly policyId: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Describes how the autoscaler will operate for secondary workers.
      * Structure is documented below.
      */
-    readonly secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicySecondaryWorkerConfig>;
+    secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicySecondaryWorkerConfig>;
     /**
      * Describes how the autoscaler will operate for primary workers.
      * Structure is documented below.
      */
-    readonly workerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicyWorkerConfig>;
+    workerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicyWorkerConfig>;
 }

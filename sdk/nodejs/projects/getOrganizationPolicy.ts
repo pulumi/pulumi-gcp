@@ -44,11 +44,11 @@ export interface GetOrganizationPolicyArgs {
     /**
      * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
-    readonly constraint: string;
+    constraint: string;
     /**
      * The project ID.
      */
-    readonly project: string;
+    project: string;
 }
 
 /**

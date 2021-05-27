@@ -45,7 +45,7 @@ export interface GetProjectArgs {
     /**
      * A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
      */
-    readonly filter: string;
+    filter: string;
 }
 
 /**

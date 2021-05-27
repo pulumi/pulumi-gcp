@@ -20,12 +20,12 @@ import * as utilities from "../utilities";
  * // by name
  * const generic = pulumi.output(gcp.compute.getInstanceTemplate({
  *     name: "generic-tpl-20200107",
- * }, { async: true }));
+ * }));
  * // using a filter
  * const generic_regex = pulumi.output(gcp.compute.getInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstanceTemplate(args: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
@@ -53,20 +53,20 @@ export interface GetInstanceTemplateArgs {
      * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
      * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
      */
-    readonly filter?: string;
+    filter?: string;
     /**
      * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
      */
-    readonly mostRecent?: boolean;
+    mostRecent?: boolean;
     /**
      * The name of the instance template. One of `name` or `filter` must be provided.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the project in which the resource belongs.
      * If `project` is not provideded, the provider project is used.
      */
-    readonly project: string;
+    project: string;
 }
 
 /**

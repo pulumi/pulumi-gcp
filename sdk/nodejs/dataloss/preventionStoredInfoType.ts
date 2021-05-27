@@ -200,25 +200,25 @@ export interface PreventionStoredInfoTypeState {
     /**
      * A description of the info type.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    readonly dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary>;
+    dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary>;
     /**
      * User set display name of the info type.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    readonly largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
+    largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
     /**
      * Name describing the field.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The parent of the info type in any of the following formats:
      * * `projects/{{project}}`
@@ -226,12 +226,12 @@ export interface PreventionStoredInfoTypeState {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * Regular expression which defines the rule.
      * Structure is documented below.
      */
-    readonly regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex>;
+    regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex>;
 }
 
 /**
@@ -241,21 +241,21 @@ export interface PreventionStoredInfoTypeArgs {
     /**
      * A description of the info type.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    readonly dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary>;
+    dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary>;
     /**
      * User set display name of the info type.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    readonly largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
+    largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
     /**
      * The parent of the info type in any of the following formats:
      * * `projects/{{project}}`
@@ -263,10 +263,10 @@ export interface PreventionStoredInfoTypeArgs {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
     /**
      * Regular expression which defines the rule.
      * Structure is documented below.
      */
-    readonly regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex>;
+    regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex>;
 }

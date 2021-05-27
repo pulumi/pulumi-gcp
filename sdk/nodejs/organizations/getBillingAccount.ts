@@ -46,15 +46,15 @@ export interface GetBillingAccountArgs {
     /**
      * The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
      */
-    readonly billingAccount?: string;
+    billingAccount?: string;
     /**
      * The display name of the billing account.
      */
-    readonly displayName?: string;
+    displayName?: string;
     /**
      * `true` if the billing account is open, `false` if the billing account is closed.
      */
-    readonly open?: boolean;
+    open?: boolean;
 }
 
 /**

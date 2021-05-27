@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const group = pulumi.output(gcp.compute.getRegionInstanceGroup({
  *     name: "instance-group-name",
- * }, { async: true }));
+ * }));
  * ```
  *
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -44,23 +44,23 @@ export interface GetRegionInstanceGroupArgs {
     /**
      * The name of the instance group.  One of `name` or `selfLink` must be provided.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the project in which the resource belongs.
      * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The region in which the resource belongs.  If `selfLink`
      * is provided, this value is ignored.  If neither `selfLink` nor `region` are
      * provided, the provider region is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The link to the instance group.  One of `name` or `selfLink` must be provided.
      */
-    readonly selfLink?: string;
+    selfLink?: string;
 }
 
 /**

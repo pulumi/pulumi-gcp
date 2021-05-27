@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const my_backend_bucket = pulumi.output(gcp.compute.getBackendBucket({
  *     name: "my-backend",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendBucketResult> {
@@ -40,12 +40,12 @@ export interface GetBackendBucketArgs {
     /**
      * Name of the resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

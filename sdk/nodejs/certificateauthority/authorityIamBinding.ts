@@ -171,32 +171,32 @@ export class AuthorityIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthorityIamBinding resources.
  */
 export interface AuthorityIamBindingState {
-    readonly certificateAuthority?: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.certificateauthority.AuthorityIamBindingCondition>;
+    certificateAuthority?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.certificateauthority.AuthorityIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a AuthorityIamBinding resource.
  */
 export interface AuthorityIamBindingArgs {
-    readonly certificateAuthority: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.certificateauthority.AuthorityIamBindingCondition>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    certificateAuthority: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.certificateauthority.AuthorityIamBindingCondition>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.certificateauthority.AuthorityIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

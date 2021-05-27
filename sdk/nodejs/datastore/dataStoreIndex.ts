@@ -156,25 +156,25 @@ export interface DataStoreIndexState {
      * Default value is `NONE`.
      * Possible values are `NONE` and `ALL_ANCESTORS`.
      */
-    readonly ancestor?: pulumi.Input<string>;
+    ancestor?: pulumi.Input<string>;
     /**
      * The index id.
      */
-    readonly indexId?: pulumi.Input<string>;
+    indexId?: pulumi.Input<string>;
     /**
      * The entity kind which the index applies to.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * An ordered list of properties to index on.
      * Structure is documented below.
      */
-    readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.DataStoreIndexProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.datastore.DataStoreIndexProperty>[]>;
 }
 
 /**
@@ -186,19 +186,19 @@ export interface DataStoreIndexArgs {
      * Default value is `NONE`.
      * Possible values are `NONE` and `ALL_ANCESTORS`.
      */
-    readonly ancestor?: pulumi.Input<string>;
+    ancestor?: pulumi.Input<string>;
     /**
      * The entity kind which the index applies to.
      */
-    readonly kind: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * An ordered list of properties to index on.
      * Structure is documented below.
      */
-    readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.DataStoreIndexProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.datastore.DataStoreIndexProperty>[]>;
 }

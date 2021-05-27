@@ -168,15 +168,15 @@ export interface TenantDefaultSupportedIdpConfigState {
     /**
      * OAuth client ID
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * OAuth client secret
      */
-    readonly clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * If this IDP allows the user to sign in
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * ID of the IDP. Possible values include:
      * * `apple.com`
@@ -190,20 +190,20 @@ export interface TenantDefaultSupportedIdpConfigState {
      * * `twitter.com`
      * * `yahoo.com`
      */
-    readonly idpId?: pulumi.Input<string>;
+    idpId?: pulumi.Input<string>;
     /**
      * The name of the default supported IDP config resource
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The name of the tenant where this DefaultSupportedIdpConfig resource exists
      */
-    readonly tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string>;
 }
 
 /**
@@ -213,15 +213,15 @@ export interface TenantDefaultSupportedIdpConfigArgs {
     /**
      * OAuth client ID
      */
-    readonly clientId: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
     /**
      * OAuth client secret
      */
-    readonly clientSecret: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
     /**
      * If this IDP allows the user to sign in
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * ID of the IDP. Possible values include:
      * * `apple.com`
@@ -235,14 +235,14 @@ export interface TenantDefaultSupportedIdpConfigArgs {
      * * `twitter.com`
      * * `yahoo.com`
      */
-    readonly idpId: pulumi.Input<string>;
+    idpId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The name of the tenant where this DefaultSupportedIdpConfig resource exists
      */
-    readonly tenant: pulumi.Input<string>;
+    tenant: pulumi.Input<string>;
 }

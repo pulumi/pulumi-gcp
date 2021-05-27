@@ -180,44 +180,44 @@ export class FhirStoreIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FhirStoreIamBinding resources.
  */
 export interface FhirStoreIamBindingState {
-    readonly condition?: pulumi.Input<inputs.healthcare.FhirStoreIamBindingCondition>;
+    condition?: pulumi.Input<inputs.healthcare.FhirStoreIamBindingCondition>;
     /**
      * (Computed) The etag of the FHIR store's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The FHIR store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
      * `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    readonly fhirStoreId?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    fhirStoreId?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a FhirStoreIamBinding resource.
  */
 export interface FhirStoreIamBindingArgs {
-    readonly condition?: pulumi.Input<inputs.healthcare.FhirStoreIamBindingCondition>;
+    condition?: pulumi.Input<inputs.healthcare.FhirStoreIamBindingCondition>;
     /**
      * The FHIR store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
      * `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    readonly fhirStoreId: pulumi.Input<string>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    fhirStoreId: pulumi.Input<string>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

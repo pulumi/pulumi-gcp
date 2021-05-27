@@ -131,30 +131,30 @@ export interface SubAccountState {
     /**
      * The billing account id.
      */
-    readonly billingAccountId?: pulumi.Input<string>;
+    billingAccountId?: pulumi.Input<string>;
     /**
      * If set to "RENAME_ON_DESTROY" the billing account displayName
      * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
      * Default is "".
      */
-    readonly deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The display name of the billing account.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The name of the master billing account that the subaccount
      * will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
      */
-    readonly masterBillingAccount?: pulumi.Input<string>;
+    masterBillingAccount?: pulumi.Input<string>;
     /**
      * The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * `true` if the billing account is open, `false` if the billing account is closed.
      */
-    readonly open?: pulumi.Input<boolean>;
+    open?: pulumi.Input<boolean>;
 }
 
 /**
@@ -166,14 +166,14 @@ export interface SubAccountArgs {
      * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
      * Default is "".
      */
-    readonly deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The display name of the billing account.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * The name of the master billing account that the subaccount
      * will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
      */
-    readonly masterBillingAccount: pulumi.Input<string>;
+    masterBillingAccount: pulumi.Input<string>;
 }

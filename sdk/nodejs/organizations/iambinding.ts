@@ -138,44 +138,44 @@ export class IAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMBinding resources.
  */
 export interface IAMBindingState {
-    readonly condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a IAMBinding resource.
  */
 export interface IAMBindingArgs {
-    readonly condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
     /**
      * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

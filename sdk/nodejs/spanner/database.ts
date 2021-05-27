@@ -171,35 +171,35 @@ export interface DatabaseState {
      * execute atomically with the creation of the database: if there is an
      * error in any statement, the database is not created.
      */
-    readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database
      * Structure is documented below.
      */
-    readonly encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
      */
-    readonly instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string>;
     /**
      * A unique identifier for the database, which cannot be changed after
      * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * An explanation of the status of the database.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }
 
 /**
@@ -212,29 +212,29 @@ export interface DatabaseArgs {
      * execute atomically with the creation of the database: if there is an
      * error in any statement, the database is not created.
      */
-    readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database
      * Structure is documented below.
      */
-    readonly encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
      */
-    readonly instance: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
     /**
      * A unique identifier for the database, which cannot be changed after
      * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

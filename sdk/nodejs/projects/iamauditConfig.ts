@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *         role: "roles/compute.admin",
  *     }],
- * }, { async: true }));
+ * }));
  * const project = new gcp.projects.IAMPolicy("project", {
  *     policyData: admin.policyData,
  *     project: "your-project-id",
@@ -281,21 +281,21 @@ export interface IAMAuditConfigState {
     /**
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
-    readonly auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
+    auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
 }
 
 /**
@@ -305,15 +305,15 @@ export interface IAMAuditConfigArgs {
     /**
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
-    readonly auditLogConfigs: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
+    auditLogConfigs: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
 }

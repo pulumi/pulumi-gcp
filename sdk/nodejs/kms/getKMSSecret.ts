@@ -39,17 +39,17 @@ export interface GetKMSSecretArgs {
     /**
      * The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
      */
-    readonly additionalAuthenticatedData?: string;
+    additionalAuthenticatedData?: string;
     /**
      * The ciphertext to be decrypted, encoded in base64
      */
-    readonly ciphertext: string;
+    ciphertext: string;
     /**
      * The id of the CryptoKey that will be used to
      * decrypt the provided ciphertext. This is represented by the format
      * `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
      */
-    readonly cryptoKey: string;
+    cryptoKey: string;
 }
 
 /**

@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * const neg1 = pulumi.output(gcp.compute.getNetworkEndpointGroup({
  *     name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
  *     zone: "us-central1-a",
- * }, { async: true }));
+ * }));
  * const neg2 = pulumi.output(gcp.compute.getNetworkEndpointGroup({
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> {
@@ -50,20 +50,20 @@ export interface GetNetworkEndpointGroupArgs {
      * The Network Endpoint Group name.
      * Provide either this or a `selfLink`.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the project to list versions in.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The Network Endpoint Group self\_link.
      */
-    readonly selfLink?: string;
+    selfLink?: string;
     /**
      * The Network Endpoint Group availability zone.
      */
-    readonly zone?: string;
+    zone?: string;
 }
 
 /**

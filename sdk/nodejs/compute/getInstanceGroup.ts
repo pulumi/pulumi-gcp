@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const all = pulumi.output(gcp.compute.getInstanceGroup({
  *     name: "instance-group-name",
  *     zone: "us-central1-a",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
@@ -44,21 +44,21 @@ export interface GetInstanceGroupArgs {
     /**
      * The name of the instance group. Either `name` or `selfLink` must be provided.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The self link of the instance group. Either `name` or `selfLink` must be provided.
      */
-    readonly selfLink?: string;
+    selfLink?: string;
     /**
      * The zone of the instance group. If referencing the instance group by name
      * and `zone` is not provided, the provider zone is used.
      */
-    readonly zone?: string;
+    zone?: string;
 }
 
 /**

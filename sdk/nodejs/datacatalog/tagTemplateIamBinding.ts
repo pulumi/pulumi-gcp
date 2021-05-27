@@ -91,23 +91,23 @@ export class TagTemplateIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TagTemplateIamBinding resources.
  */
 export interface TagTemplateIamBindingState {
-    readonly condition?: pulumi.Input<inputs.datacatalog.TagTemplateIamBindingCondition>;
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly role?: pulumi.Input<string>;
-    readonly tagTemplate?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.datacatalog.TagTemplateIamBindingCondition>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
+    tagTemplate?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a TagTemplateIamBinding resource.
  */
 export interface TagTemplateIamBindingArgs {
-    readonly condition?: pulumi.Input<inputs.datacatalog.TagTemplateIamBindingCondition>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly role: pulumi.Input<string>;
-    readonly tagTemplate: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.datacatalog.TagTemplateIamBindingCondition>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    role: pulumi.Input<string>;
+    tagTemplate: pulumi.Input<string>;
 }

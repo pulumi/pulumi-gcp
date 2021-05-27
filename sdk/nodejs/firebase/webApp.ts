@@ -112,20 +112,20 @@ export interface WebAppState {
      * Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
      * token, as the data format is not specified.
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -135,10 +135,10 @@ export interface WebAppArgs {
     /**
      * The user-assigned display name of the App.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

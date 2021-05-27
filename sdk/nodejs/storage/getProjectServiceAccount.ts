@@ -94,12 +94,12 @@ export interface GetProjectServiceAccountArgs {
     /**
      * The project the unique service account was created for. If it is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The project the lookup originates from. This field is used if you are making the request
      * from a different account than the one you are finding the service account for.
      */
-    readonly userProject?: string;
+    userProject?: string;
 }
 
 /**

@@ -210,56 +210,56 @@ export interface ConnectorState {
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    readonly ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
-    readonly machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector.
      */
-    readonly maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number>;
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
-    readonly maxThroughput?: pulumi.Input<number>;
+    maxThroughput?: pulumi.Input<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector.
      */
-    readonly minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
-    readonly minThroughput?: pulumi.Input<number>;
+    minThroughput?: pulumi.Input<number>;
     /**
      * The name of the resource (Max 25 characters).
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of the VPC network. Required if `ipCidrRange` is set.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The fully qualified name of this VPC connector
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * State of the VPC access connector.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The subnet in which to house the connector
      */
-    readonly subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
+    subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
 }
 
 /**
@@ -269,46 +269,46 @@ export interface ConnectorArgs {
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    readonly ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
-    readonly machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector.
      */
-    readonly maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number>;
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
-    readonly maxThroughput?: pulumi.Input<number>;
+    maxThroughput?: pulumi.Input<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector.
      */
-    readonly minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
-    readonly minThroughput?: pulumi.Input<number>;
+    minThroughput?: pulumi.Input<number>;
     /**
      * The name of the resource (Max 25 characters).
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of the VPC network. Required if `ipCidrRange` is set.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The subnet in which to house the connector
      */
-    readonly subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
+    subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
 }

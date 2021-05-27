@@ -197,11 +197,11 @@ export interface TargetHttpProxyState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -211,30 +211,30 @@ export interface TargetHttpProxyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    readonly proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean>;
     /**
      * The unique identifier for the resource.
      */
-    readonly proxyId?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<number>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      */
-    readonly urlMap?: pulumi.Input<string>;
+    urlMap?: pulumi.Input<string>;
 }
 
 /**
@@ -244,7 +244,7 @@ export interface TargetHttpProxyArgs {
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -254,20 +254,20 @@ export interface TargetHttpProxyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    readonly proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      */
-    readonly urlMap: pulumi.Input<string>;
+    urlMap: pulumi.Input<string>;
 }

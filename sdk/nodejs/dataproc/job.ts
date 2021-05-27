@@ -223,71 +223,71 @@ export interface JobState {
     /**
      * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
      */
-    readonly driverControlsFilesUri?: pulumi.Input<string>;
+    driverControlsFilesUri?: pulumi.Input<string>;
     /**
      * A URI pointing to the location of the stdout of the job's driver program.
      */
-    readonly driverOutputResourceUri?: pulumi.Input<string>;
+    driverOutputResourceUri?: pulumi.Input<string>;
     /**
      * By default, you can only delete inactive jobs within
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
      */
-    readonly forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * The config of Hadoop job
      */
-    readonly hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
+    hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
     /**
      * The config of hive job
      */
-    readonly hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
+    hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The config of pag job.
      */
-    readonly pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
+    pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
     /**
      * The config of job placement.
      */
-    readonly placement?: pulumi.Input<inputs.dataproc.JobPlacement>;
+    placement?: pulumi.Input<inputs.dataproc.JobPlacement>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The config of pySpark job.
      */
-    readonly pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
+    pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
     /**
      * The reference of the job
      */
-    readonly reference?: pulumi.Input<inputs.dataproc.JobReference>;
+    reference?: pulumi.Input<inputs.dataproc.JobReference>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Optional. Job scheduling configuration.
      */
-    readonly scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
+    scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
     /**
      * The config of the Spark job.
      */
-    readonly sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
+    sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
     /**
      * The config of SparkSql job
      */
-    readonly sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
+    sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
     /**
      * The status of the job.
      */
-    readonly statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[]>;
 }
 
 /**
@@ -299,55 +299,55 @@ export interface JobArgs {
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
      */
-    readonly forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * The config of Hadoop job
      */
-    readonly hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
+    hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
     /**
      * The config of hive job
      */
-    readonly hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
+    hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The config of pag job.
      */
-    readonly pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
+    pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
     /**
      * The config of job placement.
      */
-    readonly placement: pulumi.Input<inputs.dataproc.JobPlacement>;
+    placement: pulumi.Input<inputs.dataproc.JobPlacement>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The config of pySpark job.
      */
-    readonly pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
+    pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
     /**
      * The reference of the job
      */
-    readonly reference?: pulumi.Input<inputs.dataproc.JobReference>;
+    reference?: pulumi.Input<inputs.dataproc.JobReference>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Optional. Job scheduling configuration.
      */
-    readonly scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
+    scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
     /**
      * The config of the Spark job.
      */
-    readonly sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
+    sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
     /**
      * The config of SparkSql job
      */
-    readonly sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
+    sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
 }

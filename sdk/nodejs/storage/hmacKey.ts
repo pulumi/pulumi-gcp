@@ -156,34 +156,34 @@ export interface HmacKeyState {
     /**
      * The access ID of the HMAC Key.
      */
-    readonly accessId?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * HMAC secret key material.
      */
-    readonly secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * The email address of the key's associated service account.
      */
-    readonly serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string>;
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
      * Possible values are `ACTIVE` and `INACTIVE`.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * 'The creation time of the HMAC key in RFC 3339 format. '
      */
-    readonly timeCreated?: pulumi.Input<string>;
+    timeCreated?: pulumi.Input<string>;
     /**
      * 'The last modification time of the HMAC key metadata in RFC 3339 format.'
      */
-    readonly updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
 }
 
 /**
@@ -194,15 +194,15 @@ export interface HmacKeyArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The email address of the key's associated service account.
      */
-    readonly serviceAccountEmail: pulumi.Input<string>;
+    serviceAccountEmail: pulumi.Input<string>;
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
      * Possible values are `ACTIVE` and `INACTIVE`.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }

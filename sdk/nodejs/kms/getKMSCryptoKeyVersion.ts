@@ -53,11 +53,11 @@ export interface GetKMSCryptoKeyVersionArgs {
     /**
      * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
      */
-    readonly cryptoKey: string;
+    cryptoKey: string;
     /**
      * The version number for this CryptoKeyVersion. Defaults to `1`.
      */
-    readonly version?: number;
+    version?: number;
 }
 
 /**

@@ -252,28 +252,28 @@ export interface WebTypeAppEngingIamMemberState {
     /**
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamMemberCondition>;
+    condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
@@ -283,22 +283,22 @@ export interface WebTypeAppEngingIamMemberArgs {
     /**
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
-    readonly appId: pulumi.Input<string>;
+    appId: pulumi.Input<string>;
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamMemberCondition>;
-    readonly member: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamMemberCondition>;
+    member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

@@ -147,22 +147,22 @@ export interface SchemaState {
      * This should contain a string representing the full definition of the schema
      * that is a valid schema definition of the type specified in type.
      */
-    readonly definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -174,20 +174,20 @@ export interface SchemaArgs {
      * This should contain a string representing the full definition of the schema
      * that is a valid schema definition of the type specified in type.
      */
-    readonly definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

@@ -38,7 +38,7 @@ export interface GetRuleArgs {
     /**
      * The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

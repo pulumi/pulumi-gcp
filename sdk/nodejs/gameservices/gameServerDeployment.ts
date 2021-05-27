@@ -144,31 +144,31 @@ export interface GameServerDeploymentState {
     /**
      * A unique id for the deployment.
      */
-    readonly deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string>;
     /**
      * Human readable description of the game server deployment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The labels associated with this game server deployment. Each label is a
      * key-value pair.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the Deployment.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource id of the game server deployment, eg:
      * 'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
      * 'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -178,23 +178,23 @@ export interface GameServerDeploymentArgs {
     /**
      * A unique id for the deployment.
      */
-    readonly deploymentId: pulumi.Input<string>;
+    deploymentId: pulumi.Input<string>;
     /**
      * Human readable description of the game server deployment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The labels associated with this game server deployment. Each label is a
      * key-value pair.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the Deployment.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

@@ -125,39 +125,39 @@ export interface RegistryState {
     /**
      * List of public key certificates to authenticate devices.
      */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
     /**
      * List of configurations for event notifications, such as PubSub topics to publish device events to.
      */
-    readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
+    eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP.
      */
-    readonly httpConfig?: pulumi.Input<{[key: string]: any}>;
+    httpConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * The default logging verbosity for activity from devices in this registry. Specifies which events should be written to
      * logs. For example, if the LogLevel is ERROR, only events that terminate in errors will be logged. LogLevel is inclusive;
      * enabling INFO logging will also enable ERROR logging. Default value: "NONE" Possible values: ["NONE", "ERROR", "INFO",
      * "DEBUG"]
      */
-    readonly logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<string>;
     /**
      * Activate or deactivate MQTT.
      */
-    readonly mqttConfig?: pulumi.Input<{[key: string]: any}>;
+    mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the created registry should reside. If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A PubSub topic to publish device state updates.
      */
-    readonly stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
+    stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -167,37 +167,37 @@ export interface RegistryArgs {
     /**
      * List of public key certificates to authenticate devices.
      */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
     /**
      * List of configurations for event notifications, such as PubSub topics to publish device events to.
      */
-    readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
+    eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP.
      */
-    readonly httpConfig?: pulumi.Input<{[key: string]: any}>;
+    httpConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * The default logging verbosity for activity from devices in this registry. Specifies which events should be written to
      * logs. For example, if the LogLevel is ERROR, only events that terminate in errors will be logged. LogLevel is inclusive;
      * enabling INFO logging will also enable ERROR logging. Default value: "NONE" Possible values: ["NONE", "ERROR", "INFO",
      * "DEBUG"]
      */
-    readonly logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<string>;
     /**
      * Activate or deactivate MQTT.
      */
-    readonly mqttConfig?: pulumi.Input<{[key: string]: any}>;
+    mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the created registry should reside. If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A PubSub topic to publish device state updates.
      */
-    readonly stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
+    stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
 }

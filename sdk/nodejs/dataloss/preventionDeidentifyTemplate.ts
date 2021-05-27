@@ -200,19 +200,19 @@ export interface PreventionDeidentifyTemplateState {
      * Configuration of the deidentify template
      * Structure is documented below.
      */
-    readonly deidentifyConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig>;
+    deidentifyConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig>;
     /**
      * A description of the template.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * User set display name of the template.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Name of the information type.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The parent of the template in any of the following formats:
      * * `projects/{{project}}`
@@ -220,7 +220,7 @@ export interface PreventionDeidentifyTemplateState {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
 }
 
 /**
@@ -231,15 +231,15 @@ export interface PreventionDeidentifyTemplateArgs {
      * Configuration of the deidentify template
      * Structure is documented below.
      */
-    readonly deidentifyConfig: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig>;
+    deidentifyConfig: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig>;
     /**
      * A description of the template.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * User set display name of the template.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The parent of the template in any of the following formats:
      * * `projects/{{project}}`
@@ -247,5 +247,5 @@ export interface PreventionDeidentifyTemplateArgs {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
 }

@@ -202,77 +202,77 @@ export interface BucketObjectState {
     /**
      * The name of the containing bucket.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
      * directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
      */
-    readonly cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string>;
     /**
      * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
      */
-    readonly contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string>;
     /**
      * [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
      */
-    readonly contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string>;
     /**
      * [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
      */
-    readonly contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string>;
     /**
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
-    readonly crc32c?: pulumi.Input<string>;
-    readonly detectMd5hash?: pulumi.Input<string>;
+    crc32c?: pulumi.Input<string>;
+    detectMd5hash?: pulumi.Input<string>;
     /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      */
-    readonly kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
-    readonly md5hash?: pulumi.Input<string>;
+    md5hash?: pulumi.Input<string>;
     /**
      * (Computed) A url reference to download this object.
      */
-    readonly mediaLink?: pulumi.Input<string>;
+    mediaLink?: pulumi.Input<string>;
     /**
      * User-provided metadata, in key/value pairs.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
      * `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
      */
-    readonly outputName?: pulumi.Input<string>;
+    outputName?: pulumi.Input<string>;
     /**
      * (Computed) A url reference to this object.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      */
-    readonly source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
+    source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
-    readonly storageClass?: pulumi.Input<string>;
+    storageClass?: pulumi.Input<string>;
 }
 
 /**
@@ -282,54 +282,54 @@ export interface BucketObjectArgs {
     /**
      * The name of the containing bucket.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
      * directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
      */
-    readonly cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string>;
     /**
      * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
      */
-    readonly contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string>;
     /**
      * [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
      */
-    readonly contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string>;
     /**
      * [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
      */
-    readonly contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string>;
     /**
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
-    readonly contentType?: pulumi.Input<string>;
-    readonly detectMd5hash?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
+    detectMd5hash?: pulumi.Input<string>;
     /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      */
-    readonly kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * User-provided metadata, in key/value pairs.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      */
-    readonly source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
+    source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
-    readonly storageClass?: pulumi.Input<string>;
+    storageClass?: pulumi.Input<string>;
 }

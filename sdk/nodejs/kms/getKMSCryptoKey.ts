@@ -51,12 +51,12 @@ export interface GetKMSCryptoKeyArgs {
     /**
      * The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
      */
-    readonly keyRing: string;
+    keyRing: string;
     /**
      * The CryptoKey's name.
      * A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

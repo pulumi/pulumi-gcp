@@ -137,27 +137,27 @@ export interface FolderExclusionState {
     /**
      * A human-readable description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
      * accepted.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * The name of the logging exclusion.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -167,25 +167,25 @@ export interface FolderExclusionArgs {
     /**
      * A human-readable description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    readonly filter: pulumi.Input<string>;
+    filter: pulumi.Input<string>;
     /**
      * The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
      * accepted.
      */
-    readonly folder: pulumi.Input<string>;
+    folder: pulumi.Input<string>;
     /**
      * The name of the logging exclusion.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

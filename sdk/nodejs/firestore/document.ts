@@ -192,41 +192,41 @@ export interface DocumentState {
     /**
      * The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
      */
-    readonly collection?: pulumi.Input<string>;
+    collection?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 format.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * The client-assigned document ID to use for this document during creation.
      */
-    readonly documentId?: pulumi.Input<string>;
+    documentId?: pulumi.Input<string>;
     /**
      * The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
      */
-    readonly fields?: pulumi.Input<string>;
+    fields?: pulumi.Input<string>;
     /**
      * A server defined name for this index. Format:
      * 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A relative path to the collection this document exists within
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Last update timestamp in RFC3339 format.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }
 
 /**
@@ -236,22 +236,22 @@ export interface DocumentArgs {
     /**
      * The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
      */
-    readonly collection: pulumi.Input<string>;
+    collection: pulumi.Input<string>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * The client-assigned document ID to use for this document during creation.
      */
-    readonly documentId: pulumi.Input<string>;
+    documentId: pulumi.Input<string>;
     /**
      * The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
      */
-    readonly fields: pulumi.Input<string>;
+    fields: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

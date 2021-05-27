@@ -130,12 +130,12 @@ export interface ProjectMetadataState {
     /**
      * A series of key value pairs.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -145,10 +145,10 @@ export interface ProjectMetadataArgs {
     /**
      * A series of key value pairs.
      */
-    readonly metadata: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

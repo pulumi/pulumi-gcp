@@ -165,28 +165,28 @@ export interface LiteSubscriptionState {
      * The settings for this subscription's message delivery.
      * Structure is documented below.
      */
-    readonly deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
+    deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
     /**
      * Name of the subscription.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the pubsub lite topic.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A reference to a Topic resource.
      */
-    readonly topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string>;
     /**
      * The zone of the pubsub lite topic.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -197,26 +197,26 @@ export interface LiteSubscriptionArgs {
      * The settings for this subscription's message delivery.
      * Structure is documented below.
      */
-    readonly deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
+    deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
     /**
      * Name of the subscription.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the pubsub lite topic.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A reference to a Topic resource.
      */
-    readonly topic: pulumi.Input<string>;
+    topic: pulumi.Input<string>;
     /**
      * The zone of the pubsub lite topic.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

@@ -224,53 +224,53 @@ export interface NodeGroupState {
      * group autoscaler to automatically manage the sizes of your node groups.
      * Structure is documented below.
      */
-    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
+    autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional textual description of the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
-    readonly initialSize?: pulumi.Input<number>;
+    initialSize?: pulumi.Input<number>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
-    readonly maintenancePolicy?: pulumi.Input<string>;
+    maintenancePolicy?: pulumi.Input<string>;
     /**
      * contains properties for the timeframe of maintenance
      * Structure is documented below.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
     /**
      * Name of the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The URL of the node template to which this node group belongs.
      */
-    readonly nodeTemplate?: pulumi.Input<string>;
+    nodeTemplate?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * Zone where this node group is located
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -282,43 +282,43 @@ export interface NodeGroupArgs {
      * group autoscaler to automatically manage the sizes of your node groups.
      * Structure is documented below.
      */
-    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
+    autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
     /**
      * An optional textual description of the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
-    readonly initialSize?: pulumi.Input<number>;
+    initialSize?: pulumi.Input<number>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
-    readonly maintenancePolicy?: pulumi.Input<string>;
+    maintenancePolicy?: pulumi.Input<string>;
     /**
      * contains properties for the timeframe of maintenance
      * Structure is documented below.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
     /**
      * Name of the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The URL of the node template to which this node group belongs.
      */
-    readonly nodeTemplate: pulumi.Input<string>;
+    nodeTemplate: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * Zone where this node group is located
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

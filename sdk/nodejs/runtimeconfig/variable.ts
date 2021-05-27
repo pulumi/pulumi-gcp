@@ -128,31 +128,31 @@ export interface VariableState {
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the RuntimeConfig resource containing this
      * variable.
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * or `value` - (Required) The content to associate with the variable.
      * Exactly one of `text` or `variable` must be specified. If `text` is specified,
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
      */
-    readonly text?: pulumi.Input<string>;
+    text?: pulumi.Input<string>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds, representing when the variable was last updated.
      * Example: "2016-10-09T12:33:37.578138407Z".
      */
-    readonly updateTime?: pulumi.Input<string>;
-    readonly value?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -163,23 +163,23 @@ export interface VariableArgs {
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the RuntimeConfig resource containing this
      * variable.
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * or `value` - (Required) The content to associate with the variable.
      * Exactly one of `text` or `variable` must be specified. If `text` is specified,
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
      */
-    readonly text?: pulumi.Input<string>;
-    readonly value?: pulumi.Input<string>;
+    text?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }

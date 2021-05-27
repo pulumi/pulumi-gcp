@@ -146,31 +146,31 @@ export interface BillingAccountBucketConfigState {
     /**
      * The parent resource that contains the logging bucket.
      */
-    readonly billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string>;
     /**
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
-    readonly bucketId?: pulumi.Input<string>;
+    bucketId?: pulumi.Input<string>;
     /**
      * Describes this bucket.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
-    readonly lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string>;
     /**
      * The location of the bucket.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
-    readonly retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number>;
 }
 
 /**
@@ -180,21 +180,21 @@ export interface BillingAccountBucketConfigArgs {
     /**
      * The parent resource that contains the logging bucket.
      */
-    readonly billingAccount: pulumi.Input<string>;
+    billingAccount: pulumi.Input<string>;
     /**
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
-    readonly bucketId: pulumi.Input<string>;
+    bucketId: pulumi.Input<string>;
     /**
      * Describes this bucket.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The location of the bucket.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
-    readonly retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number>;
 }
