@@ -614,26 +614,26 @@ export interface ForwardingRuleState {
      * with this forwarding rule. Used with backend service. Cannot be set
      * if port or portRange are set.
      */
-    readonly allPorts?: pulumi.Input<boolean>;
+    allPorts?: pulumi.Input<boolean>;
     /**
      * If true, clients can access ILB from all regions.
      * Otherwise only allows from the local region the ILB is located at.
      */
-    readonly allowGlobalAccess?: pulumi.Input<boolean>;
+    allowGlobalAccess?: pulumi.Input<boolean>;
     /**
      * A BackendService to receive the matched traffic. This is used only
      * for INTERNAL load balancing.
      */
-    readonly backendService?: pulumi.Input<string>;
+    backendService?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP address that this forwarding rule serves. When a client sends
      * traffic to this IP address, the forwarding rule directs the traffic to
@@ -649,14 +649,14 @@ export interface ForwardingRuleState {
      * For Private Service Connect forwarding rules that forward traffic to
      * Google APIs, IP address must be provided.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
      * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * Indicates whether or not this load balancer can be used
      * as a collector for packet mirroring. To prevent mirroring loops,
@@ -665,15 +665,15 @@ export interface ForwardingRuleState {
      * can only be set to true for load balancers that have their
      * loadBalancingScheme set to INTERNAL.
      */
-    readonly isMirroringCollector?: pulumi.Input<boolean>;
+    isMirroringCollector?: pulumi.Input<boolean>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
-    readonly labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This signifies what the ForwardingRule will be used for and can be
      * EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
@@ -685,7 +685,7 @@ export interface ForwardingRuleState {
      * Default value is `EXTERNAL`.
      * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
-    readonly loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -695,20 +695,20 @@ export interface ForwardingRuleState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * For internal load balancing, this field identifies the network that
      * the load balanced IP should belong to for this Forwarding Rule. If
      * this field is not specified, the default network will be used.
      * This field is only used for INTERNAL load balancing.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * Possible values are `PREMIUM` and `STANDARD`.
      */
-    readonly networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<string>;
     /**
      * This field is used along with the target field for TargetHttpProxy,
      * TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -727,7 +727,7 @@ export interface ForwardingRuleState {
      * 1883, 5222
      * * TargetVpnGateway: 500, 4500
      */
-    readonly portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string>;
     /**
      * This field is used along with the backendService field for internal
      * load balancing.
@@ -737,21 +737,21 @@ export interface ForwardingRuleState {
      * forwarding rule.
      * You may specify a maximum of up to 5 ports.
      */
-    readonly ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A reference to the region where the regional forwarding rule resides.
      * This field is not applicable to global forwarding rules.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service
@@ -764,11 +764,11 @@ export interface ForwardingRuleState {
      * character, which cannot be a dash.
      * This field is only used for INTERNAL load balancing.
      */
-    readonly serviceLabel?: pulumi.Input<string>;
+    serviceLabel?: pulumi.Input<string>;
     /**
      * The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * The subnetwork that the load balanced IP should belong to for this
      * Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -776,14 +776,14 @@ export interface ForwardingRuleState {
      * optional. However, if the network is in custom subnet mode, a
      * subnetwork must be specified.
      */
-    readonly subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string>;
     /**
      * The URL of the target resource to receive the matched traffic.
      * The target must live in the same region as the forwarding rule.
      * The forwarded traffic must be of a type appropriate to the target
      * object.
      */
-    readonly target?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
 }
 
 /**
@@ -797,22 +797,22 @@ export interface ForwardingRuleArgs {
      * with this forwarding rule. Used with backend service. Cannot be set
      * if port or portRange are set.
      */
-    readonly allPorts?: pulumi.Input<boolean>;
+    allPorts?: pulumi.Input<boolean>;
     /**
      * If true, clients can access ILB from all regions.
      * Otherwise only allows from the local region the ILB is located at.
      */
-    readonly allowGlobalAccess?: pulumi.Input<boolean>;
+    allowGlobalAccess?: pulumi.Input<boolean>;
     /**
      * A BackendService to receive the matched traffic. This is used only
      * for INTERNAL load balancing.
      */
-    readonly backendService?: pulumi.Input<string>;
+    backendService?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP address that this forwarding rule serves. When a client sends
      * traffic to this IP address, the forwarding rule directs the traffic to
@@ -828,14 +828,14 @@ export interface ForwardingRuleArgs {
      * For Private Service Connect forwarding rules that forward traffic to
      * Google APIs, IP address must be provided.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
      * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * Indicates whether or not this load balancer can be used
      * as a collector for packet mirroring. To prevent mirroring loops,
@@ -844,11 +844,11 @@ export interface ForwardingRuleArgs {
      * can only be set to true for load balancers that have their
      * loadBalancingScheme set to INTERNAL.
      */
-    readonly isMirroringCollector?: pulumi.Input<boolean>;
+    isMirroringCollector?: pulumi.Input<boolean>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This signifies what the ForwardingRule will be used for and can be
      * EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
@@ -860,7 +860,7 @@ export interface ForwardingRuleArgs {
      * Default value is `EXTERNAL`.
      * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
-    readonly loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -870,20 +870,20 @@ export interface ForwardingRuleArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * For internal load balancing, this field identifies the network that
      * the load balanced IP should belong to for this Forwarding Rule. If
      * this field is not specified, the default network will be used.
      * This field is only used for INTERNAL load balancing.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * Possible values are `PREMIUM` and `STANDARD`.
      */
-    readonly networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<string>;
     /**
      * This field is used along with the target field for TargetHttpProxy,
      * TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -902,7 +902,7 @@ export interface ForwardingRuleArgs {
      * 1883, 5222
      * * TargetVpnGateway: 500, 4500
      */
-    readonly portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string>;
     /**
      * This field is used along with the backendService field for internal
      * load balancing.
@@ -912,17 +912,17 @@ export interface ForwardingRuleArgs {
      * forwarding rule.
      * You may specify a maximum of up to 5 ports.
      */
-    readonly ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A reference to the region where the regional forwarding rule resides.
      * This field is not applicable to global forwarding rules.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service
@@ -935,7 +935,7 @@ export interface ForwardingRuleArgs {
      * character, which cannot be a dash.
      * This field is only used for INTERNAL load balancing.
      */
-    readonly serviceLabel?: pulumi.Input<string>;
+    serviceLabel?: pulumi.Input<string>;
     /**
      * The subnetwork that the load balanced IP should belong to for this
      * Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -943,12 +943,12 @@ export interface ForwardingRuleArgs {
      * optional. However, if the network is in custom subnet mode, a
      * subnetwork must be specified.
      */
-    readonly subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string>;
     /**
      * The URL of the target resource to receive the matched traffic.
      * The target must live in the same region as the forwarding rule.
      * The forwarded traffic must be of a type appropriate to the target
      * object.
      */
-    readonly target?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
 }

@@ -190,29 +190,29 @@ export interface ClusterIAMMemberState {
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
-    readonly cluster?: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
+    cluster?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
@@ -222,23 +222,23 @@ export interface ClusterIAMMemberArgs {
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
-    readonly cluster: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
-    readonly member: pulumi.Input<string>;
+    cluster: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
+    member: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

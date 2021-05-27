@@ -185,50 +185,50 @@ export class EntryGroupIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EntryGroupIamBinding resources.
  */
 export interface EntryGroupIamBindingState {
-    readonly condition?: pulumi.Input<inputs.datacatalog.EntryGroupIamBindingCondition>;
+    condition?: pulumi.Input<inputs.datacatalog.EntryGroupIamBindingCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly entryGroup?: pulumi.Input<string>;
+    entryGroup?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a EntryGroupIamBinding resource.
  */
 export interface EntryGroupIamBindingArgs {
-    readonly condition?: pulumi.Input<inputs.datacatalog.EntryGroupIamBindingCondition>;
+    condition?: pulumi.Input<inputs.datacatalog.EntryGroupIamBindingCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly entryGroup: pulumi.Input<string>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    entryGroup: pulumi.Input<string>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

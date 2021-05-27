@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const run_service = pulumi.output(gcp.runtimeconfig.getVariable({
  *     name: "prod-variables/hostname",
  *     parent: "my-service",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVariable(args: GetVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetVariableResult> {
@@ -46,16 +46,16 @@ export interface GetVariableArgs {
     /**
      * The name of the Runtime Configurator configuration.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the RuntimeConfig resource containing this variable.
      */
-    readonly parent: string;
+    parent: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

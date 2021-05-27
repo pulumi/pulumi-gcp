@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *             role: "roles/storage.objectViewer",
  *         },
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define IAM policies to apply to other resources.
@@ -70,13 +70,13 @@ export interface GetIAMPolicyArgs {
     /**
      * A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
      */
-    readonly auditConfigs?: inputs.organizations.GetIAMPolicyAuditConfig[];
+    auditConfigs?: inputs.organizations.GetIAMPolicyAuditConfig[];
     /**
      * A nested configuration block (described below)
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
      */
-    readonly bindings?: inputs.organizations.GetIAMPolicyBinding[];
+    bindings?: inputs.organizations.GetIAMPolicyBinding[];
 }
 
 /**

@@ -134,26 +134,26 @@ export interface CustomServiceState {
     /**
      * Name used for UI elements listing this Service.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.
      * Structure is documented below.
      */
-    readonly telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
+    telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
 }
 
 /**
@@ -163,20 +163,20 @@ export interface CustomServiceArgs {
     /**
      * Name used for UI elements listing this Service.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.
      * Structure is documented below.
      */
-    readonly telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
+    telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
 }

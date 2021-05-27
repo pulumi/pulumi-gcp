@@ -76,12 +76,12 @@ export interface GetAppEngineServiceArgs {
      * The ID of the App Engine module underlying this
      * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
      */
-    readonly moduleId: string;
+    moduleId: string;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

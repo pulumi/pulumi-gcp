@@ -176,11 +176,11 @@ export interface FolderSinkState {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    readonly bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
+    bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
     /**
      * A description of this exclusion.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -189,39 +189,39 @@ export interface FolderSinkState {
      * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
-    readonly destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string>;
     /**
      * If set to True, then this exclusion is disabled and it does not exclude any log entries.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
-    readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[]>;
     /**
      * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
      * accepted.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * Whether or not to include children folders in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
-    readonly includeChildren?: pulumi.Input<boolean>;
+    includeChildren?: pulumi.Input<boolean>;
     /**
      * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The identity associated with this sink. This identity must be granted write access to the
      * configured `destination`.
      */
-    readonly writerIdentity?: pulumi.Input<string>;
+    writerIdentity?: pulumi.Input<string>;
 }
 
 /**
@@ -231,11 +231,11 @@ export interface FolderSinkArgs {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    readonly bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
+    bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
     /**
      * A description of this exclusion.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -244,32 +244,32 @@ export interface FolderSinkArgs {
      * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
-    readonly destination: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
     /**
      * If set to True, then this exclusion is disabled and it does not exclude any log entries.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
-    readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[]>;
     /**
      * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
      * accepted.
      */
-    readonly folder: pulumi.Input<string>;
+    folder: pulumi.Input<string>;
     /**
      * Whether or not to include children folders in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
-    readonly includeChildren?: pulumi.Input<boolean>;
+    includeChildren?: pulumi.Input<boolean>;
     /**
      * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

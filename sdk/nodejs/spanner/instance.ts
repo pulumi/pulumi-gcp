@@ -191,41 +191,41 @@ export interface InstanceState {
      * In order to obtain a valid list please consult the
      * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
-    readonly config?: pulumi.Input<string>;
+    config?: pulumi.Input<string>;
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * When deleting a spanner instance, this boolean option will delete all backups of this instance.
      * This must be set to true if you created a backup manually in the console.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The number of nodes allocated to this instance.
      */
-    readonly numNodes?: pulumi.Input<number>;
+    numNodes?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Instance status: 'CREATING' or 'READY'.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }
 
 /**
@@ -240,35 +240,35 @@ export interface InstanceArgs {
      * In order to obtain a valid list please consult the
      * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
-    readonly config: pulumi.Input<string>;
+    config: pulumi.Input<string>;
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * When deleting a spanner instance, this boolean option will delete all backups of this instance.
      * This must be set to true if you created a backup manually in the console.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The number of nodes allocated to this instance.
      */
-    readonly numNodes?: pulumi.Input<number>;
+    numNodes?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

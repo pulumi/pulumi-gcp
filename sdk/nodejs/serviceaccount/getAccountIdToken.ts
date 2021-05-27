@@ -45,19 +45,19 @@ export interface GetAccountIdTokenArgs {
     /**
      * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
      */
-    readonly delegates?: string[];
+    delegates?: string[];
     /**
      * Include the verified email in the claim. Used only when using impersonation mode.
      */
-    readonly includeEmail?: boolean;
+    includeEmail?: boolean;
     /**
      * The audience claim for the `idToken`.
      */
-    readonly targetAudience: string;
+    targetAudience: string;
     /**
      * The email of the service account being impersonated.  Used only when using impersonation mode.
      */
-    readonly targetServiceAccount?: string;
+    targetServiceAccount?: string;
 }
 
 /**

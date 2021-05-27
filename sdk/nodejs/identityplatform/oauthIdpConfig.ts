@@ -151,32 +151,32 @@ export interface OauthIdpConfigState {
     /**
      * The client id of an OAuth client.
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
-    readonly clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * Human friendly display name.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * For OIDC Idps, the issuer identifier.
      */
-    readonly issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string>;
     /**
      * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -186,30 +186,30 @@ export interface OauthIdpConfigArgs {
     /**
      * The client id of an OAuth client.
      */
-    readonly clientId: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
     /**
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
-    readonly clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * Human friendly display name.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * For OIDC Idps, the issuer identifier.
      */
-    readonly issuer: pulumi.Input<string>;
+    issuer: pulumi.Input<string>;
     /**
      * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

@@ -209,48 +209,48 @@ export interface RoutineState {
      * Input/output argument of a function or a stored procedure.
      * Structure is documented below.
      */
-    readonly arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
+    arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
     /**
      * The time when this routine was created, in milliseconds since the epoch.
      */
-    readonly creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number>;
     /**
      * The ID of the dataset containing this routine
      */
-    readonly datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string>;
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      */
-    readonly definitionBody?: pulumi.Input<string>;
+    definitionBody?: pulumi.Input<string>;
     /**
      * The description of the routine if defined.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The determinism level of the JavaScript UDF if defined.
      * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
      */
-    readonly determinismLevel?: pulumi.Input<string>;
+    determinismLevel?: pulumi.Input<string>;
     /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
-    readonly importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
+    importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The language of the routine.
      * Possible values are `SQL` and `JAVASCRIPT`.
      */
-    readonly language?: pulumi.Input<string>;
+    language?: pulumi.Input<string>;
     /**
      * The time when this routine was modified, in milliseconds since the epoch.
      */
-    readonly lastModifiedTime?: pulumi.Input<number>;
+    lastModifiedTime?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
@@ -262,16 +262,16 @@ export interface RoutineState {
      * cannot suppress the recurring diff this causes. As a workaround, we recommend using
      * the schema as returned by the API.
      */
-    readonly returnType?: pulumi.Input<string>;
+    returnType?: pulumi.Input<string>;
     /**
      * The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
      */
-    readonly routineId?: pulumi.Input<string>;
+    routineId?: pulumi.Input<string>;
     /**
      * The type of routine.
      * Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
      */
-    readonly routineType?: pulumi.Input<string>;
+    routineType?: pulumi.Input<string>;
 }
 
 /**
@@ -282,40 +282,40 @@ export interface RoutineArgs {
      * Input/output argument of a function or a stored procedure.
      * Structure is documented below.
      */
-    readonly arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
+    arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
     /**
      * The ID of the dataset containing this routine
      */
-    readonly datasetId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      */
-    readonly definitionBody: pulumi.Input<string>;
+    definitionBody: pulumi.Input<string>;
     /**
      * The description of the routine if defined.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The determinism level of the JavaScript UDF if defined.
      * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
      */
-    readonly determinismLevel?: pulumi.Input<string>;
+    determinismLevel?: pulumi.Input<string>;
     /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
-    readonly importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
+    importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The language of the routine.
      * Possible values are `SQL` and `JAVASCRIPT`.
      */
-    readonly language?: pulumi.Input<string>;
+    language?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
@@ -327,14 +327,14 @@ export interface RoutineArgs {
      * cannot suppress the recurring diff this causes. As a workaround, we recommend using
      * the schema as returned by the API.
      */
-    readonly returnType?: pulumi.Input<string>;
+    returnType?: pulumi.Input<string>;
     /**
      * The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
      */
-    readonly routineId: pulumi.Input<string>;
+    routineId: pulumi.Input<string>;
     /**
      * The type of routine.
      * Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
      */
-    readonly routineType?: pulumi.Input<string>;
+    routineType?: pulumi.Input<string>;
 }

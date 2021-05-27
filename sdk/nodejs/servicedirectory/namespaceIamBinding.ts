@@ -167,38 +167,38 @@ export class NamespaceIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NamespaceIamBinding resources.
  */
 export interface NamespaceIamBindingState {
-    readonly condition?: pulumi.Input<inputs.servicedirectory.NamespaceIamBindingCondition>;
+    condition?: pulumi.Input<inputs.servicedirectory.NamespaceIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.servicedirectory.NamespaceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a NamespaceIamBinding resource.
  */
 export interface NamespaceIamBindingArgs {
-    readonly condition?: pulumi.Input<inputs.servicedirectory.NamespaceIamBindingCondition>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    condition?: pulumi.Input<inputs.servicedirectory.NamespaceIamBindingCondition>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.servicedirectory.NamespaceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

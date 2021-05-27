@@ -48,12 +48,12 @@ export interface GetNodeTypesArgs {
      * Should match the project the nodes of this type will be deployed to.
      * Defaults to the project that the provider is authenticated with.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
      * instead.
      */
-    readonly zone?: string;
+    zone?: string;
 }
 
 /**

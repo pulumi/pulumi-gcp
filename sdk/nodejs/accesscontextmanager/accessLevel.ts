@@ -169,32 +169,32 @@ export interface AccessLevelState {
      * A set of predefined conditions for the access level and a combining function.
      * Structure is documented below.
      */
-    readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
+    basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
      * See CEL spec at: https://github.com/google/cel-spec.
      * Structure is documented below.
      */
-    readonly custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
+    custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
     /**
      * Description of the expression
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * Title for the expression, i.e. a short string describing its purpose.
      */
-    readonly title?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }
 
 /**
@@ -205,30 +205,30 @@ export interface AccessLevelArgs {
      * A set of predefined conditions for the access level and a combining function.
      * Structure is documented below.
      */
-    readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
+    basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
      * See CEL spec at: https://github.com/google/cel-spec.
      * Structure is documented below.
      */
-    readonly custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
+    custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
     /**
      * Description of the expression
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
     /**
      * Title for the expression, i.e. a short string describing its purpose.
      */
-    readonly title: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

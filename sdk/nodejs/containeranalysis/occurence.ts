@@ -177,45 +177,45 @@ export interface OccurenceState {
      * which authority this attestation was intended to sign.
      * Structure is documented below.
      */
-    readonly attestation?: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
+    attestation?: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
     /**
      * The time when the repository was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
      * in list requests.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the occurrence.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The analysis note associated with this occurrence, in the form of
      * projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
      * filter in list requests.
      */
-    readonly noteName?: pulumi.Input<string>;
+    noteName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
-    readonly remediation?: pulumi.Input<string>;
+    remediation?: pulumi.Input<string>;
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
      * https://gcr.io/project/image@sha256:123abc for a Docker image.
      */
-    readonly resourceUri?: pulumi.Input<string>;
+    resourceUri?: pulumi.Input<string>;
     /**
      * The time when the repository was last updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }
 
 /**
@@ -233,26 +233,26 @@ export interface OccurenceArgs {
      * which authority this attestation was intended to sign.
      * Structure is documented below.
      */
-    readonly attestation: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
+    attestation: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
     /**
      * The analysis note associated with this occurrence, in the form of
      * projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
      * filter in list requests.
      */
-    readonly noteName: pulumi.Input<string>;
+    noteName: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
-    readonly remediation?: pulumi.Input<string>;
+    remediation?: pulumi.Input<string>;
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
      * https://gcr.io/project/image@sha256:123abc for a Docker image.
      */
-    readonly resourceUri: pulumi.Input<string>;
+    resourceUri: pulumi.Input<string>;
 }

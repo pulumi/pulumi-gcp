@@ -188,21 +188,21 @@ export interface AttestorState {
      * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
      * Structure is documented below.
      */
-    readonly attestationAuthorityNote?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
+    attestationAuthorityNote?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
      * A descriptive comment. This field may be updated. The field may be
      * displayed in chooser dialogs.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The resource name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -213,19 +213,19 @@ export interface AttestorArgs {
      * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
      * Structure is documented below.
      */
-    readonly attestationAuthorityNote: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
+    attestationAuthorityNote: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
      * A descriptive comment. This field may be updated. The field may be
      * displayed in chooser dialogs.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The resource name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

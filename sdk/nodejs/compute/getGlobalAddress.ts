@@ -49,12 +49,12 @@ export interface GetGlobalAddressArgs {
     /**
      * A unique name for the resource, required by GCE.
      */
-    readonly name: string;
+    name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

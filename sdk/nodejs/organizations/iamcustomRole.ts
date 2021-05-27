@@ -167,37 +167,37 @@ export interface IAMCustomRoleState {
     /**
      * (Optional) The current deleted state of the role.
      */
-    readonly deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean>;
     /**
      * A human-readable description for the role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
-    readonly permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role id to use for this role.
      */
-    readonly roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
      * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
      */
-    readonly stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string>;
     /**
      * A human-readable title for the role.
      */
-    readonly title?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }
 
 /**
@@ -207,27 +207,27 @@ export interface IAMCustomRoleArgs {
     /**
      * A human-readable description for the role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
     /**
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
-    readonly permissions: pulumi.Input<pulumi.Input<string>[]>;
+    permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role id to use for this role.
      */
-    readonly roleId: pulumi.Input<string>;
+    roleId: pulumi.Input<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
      * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
      */
-    readonly stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string>;
     /**
      * A human-readable title for the role.
      */
-    readonly title: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

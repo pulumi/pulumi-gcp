@@ -140,12 +140,12 @@ export interface ApplicationUrlDispatchRulesState {
      * Rules to match an HTTP request and dispatch that request to a service.
      * Structure is documented below.
      */
-    readonly dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
+    dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -156,10 +156,10 @@ export interface ApplicationUrlDispatchRulesArgs {
      * Rules to match an HTTP request and dispatch that request to a service.
      * Structure is documented below.
      */
-    readonly dispatchRules: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
+    dispatchRules: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

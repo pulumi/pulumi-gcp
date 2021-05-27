@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const run_service = pulumi.output(gcp.runtimeconfig.getConfig({
  *     name: "my-service",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigResult> {
@@ -44,12 +44,12 @@ export interface GetConfigArgs {
     /**
      * The name of the Runtime Configurator configuration.
      */
-    readonly name: string;
+    name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

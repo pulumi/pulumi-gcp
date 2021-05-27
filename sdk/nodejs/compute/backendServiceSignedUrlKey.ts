@@ -163,22 +163,22 @@ export interface BackendServiceSignedUrlKeyState {
     /**
      * The backend service this signed URL key belongs.
      */
-    readonly backendService?: pulumi.Input<string>;
+    backendService?: pulumi.Input<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
      * valid RFC 4648 Section 5 base64url encoded string.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly keyValue?: pulumi.Input<string>;
+    keyValue?: pulumi.Input<string>;
     /**
      * Name of the signed URL key.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -188,20 +188,20 @@ export interface BackendServiceSignedUrlKeyArgs {
     /**
      * The backend service this signed URL key belongs.
      */
-    readonly backendService: pulumi.Input<string>;
+    backendService: pulumi.Input<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
      * valid RFC 4648 Section 5 base64url encoded string.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly keyValue: pulumi.Input<string>;
+    keyValue: pulumi.Input<string>;
     /**
      * Name of the signed URL key.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

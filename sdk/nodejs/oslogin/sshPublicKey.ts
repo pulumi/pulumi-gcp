@@ -135,23 +135,23 @@ export interface SshPublicKeyState {
     /**
      * An expiration time in microseconds since epoch.
      */
-    readonly expirationTimeUsec?: pulumi.Input<string>;
+    expirationTimeUsec?: pulumi.Input<string>;
     /**
      * The SHA-256 fingerprint of the SSH public key.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * Public key text in SSH format, defined by RFC4253 section 6.6.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The project ID of the Google Cloud Platform project.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The user email.
      */
-    readonly user?: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }
 
 /**
@@ -161,17 +161,17 @@ export interface SshPublicKeyArgs {
     /**
      * An expiration time in microseconds since epoch.
      */
-    readonly expirationTimeUsec?: pulumi.Input<string>;
+    expirationTimeUsec?: pulumi.Input<string>;
     /**
      * Public key text in SSH format, defined by RFC4253 section 6.6.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The project ID of the Google Cloud Platform project.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The user email.
      */
-    readonly user: pulumi.Input<string>;
+    user: pulumi.Input<string>;
 }

@@ -137,26 +137,26 @@ export interface DatasetState {
     /**
      * The location for the Dataset.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name for the Dataset.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The fully qualified name of this dataset
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
      * "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
      * (e.g., HL7 messages) where no explicit timezone is specified.
      */
-    readonly timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string>;
 }
 
 /**
@@ -166,20 +166,20 @@ export interface DatasetArgs {
     /**
      * The location for the Dataset.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The resource name for the Dataset.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
      * "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
      * (e.g., HL7 messages) where no explicit timezone is specified.
      */
-    readonly timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string>;
 }

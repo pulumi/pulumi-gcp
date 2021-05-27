@@ -48,12 +48,12 @@ export interface GetImageVersionsArgs {
      * The ID of the project to list versions in.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The location to list versions in.
      * If it is not provider, the provider region is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

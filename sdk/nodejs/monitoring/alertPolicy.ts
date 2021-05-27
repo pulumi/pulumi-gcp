@@ -215,7 +215,7 @@ export interface AlertPolicyState {
      * determine if an incident should be opened.
      * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
      */
-    readonly combiner?: pulumi.Input<string>;
+    combiner?: pulumi.Input<string>;
     /**
      * A list of conditions for the policy. The conditions are combined by
      * AND or OR according to the combiner field. If the combined conditions
@@ -223,12 +223,12 @@ export interface AlertPolicyState {
      * one to six conditions.
      * Structure is documented below.
      */
-    readonly conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     /**
      * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
      * ignored.
      */
-    readonly creationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>[]>;
+    creationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>[]>;
     /**
      * A short name or phrase used to identify the
      * condition in dashboards, notifications, and
@@ -236,7 +236,7 @@ export interface AlertPolicyState {
      * display name for multiple conditions in the same
      * policy.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Documentation that is included with notifications and incidents related
      * to this policy. Best practice is for the documentation to include information
@@ -245,11 +245,11 @@ export interface AlertPolicyState {
      * limited capacity might not show this documentation.
      * Structure is documented below.
      */
-    readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
+    documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     /**
      * Whether or not the policy is enabled. The default is true.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * -
      * The unique resource name for this condition.
@@ -259,7 +259,7 @@ export interface AlertPolicyState {
      * the condition is created as part of a new or updated alerting
      * policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Identifies the notification channels to which notifications should be
      * sent when incidents are opened or closed or when new violations occur
@@ -269,12 +269,12 @@ export interface AlertPolicyState {
      * entries in this field is
      * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      */
-    readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -282,7 +282,7 @@ export interface AlertPolicyState {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -294,7 +294,7 @@ export interface AlertPolicyArgs {
      * determine if an incident should be opened.
      * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
      */
-    readonly combiner: pulumi.Input<string>;
+    combiner: pulumi.Input<string>;
     /**
      * A list of conditions for the policy. The conditions are combined by
      * AND or OR according to the combiner field. If the combined conditions
@@ -302,7 +302,7 @@ export interface AlertPolicyArgs {
      * one to six conditions.
      * Structure is documented below.
      */
-    readonly conditions: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
+    conditions: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     /**
      * A short name or phrase used to identify the
      * condition in dashboards, notifications, and
@@ -310,7 +310,7 @@ export interface AlertPolicyArgs {
      * display name for multiple conditions in the same
      * policy.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Documentation that is included with notifications and incidents related
      * to this policy. Best practice is for the documentation to include information
@@ -319,11 +319,11 @@ export interface AlertPolicyArgs {
      * limited capacity might not show this documentation.
      * Structure is documented below.
      */
-    readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
+    documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     /**
      * Whether or not the policy is enabled. The default is true.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Identifies the notification channels to which notifications should be
      * sent when incidents are opened or closed or when new violations occur
@@ -333,12 +333,12 @@ export interface AlertPolicyArgs {
      * entries in this field is
      * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      */
-    readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -346,5 +346,5 @@ export interface AlertPolicyArgs {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -194,30 +194,30 @@ export interface NetworkEndpointState {
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
      */
-    readonly instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string>;
     /**
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
      */
-    readonly networkEndpointGroup?: pulumi.Input<string>;
+    networkEndpointGroup?: pulumi.Input<string>;
     /**
      * Port number of network endpoint.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Zone where the containing network endpoint group is located.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -229,28 +229,28 @@ export interface NetworkEndpointArgs {
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
      */
-    readonly instance: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
     /**
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
      */
-    readonly ipAddress: pulumi.Input<string>;
+    ipAddress: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
      */
-    readonly networkEndpointGroup: pulumi.Input<string>;
+    networkEndpointGroup: pulumi.Input<string>;
     /**
      * Port number of network endpoint.
      */
-    readonly port: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Zone where the containing network endpoint group is located.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

@@ -43,11 +43,11 @@ export interface GetOrganizationArgs {
     /**
      * The domain name of the Organization.
      */
-    readonly domain?: string;
+    domain?: string;
     /**
      * The Organization's numeric ID, including an optional `organizations/` prefix.
      */
-    readonly organization?: string;
+    organization?: string;
 }
 
 /**

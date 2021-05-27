@@ -154,36 +154,36 @@ export interface AccountState {
      * must be 6-30 characters long, and match the regular expression `a-z`
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The e-mail address of the service account. This value
      * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
      * that would grant the service account privileges.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The fully-qualified name of the service account.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The unique id of the service account.
      */
-    readonly uniqueId?: pulumi.Input<string>;
+    uniqueId?: pulumi.Input<string>;
 }
 
 /**
@@ -196,20 +196,20 @@ export interface AccountArgs {
      * must be 6-30 characters long, and match the regular expression `a-z`
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

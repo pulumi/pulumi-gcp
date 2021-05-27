@@ -204,20 +204,20 @@ export interface RouterState {
      * BGP information specific to this router.
      * Structure is documented below.
      */
-    readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
+    bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * User-specified description for the IP range.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
      * Interconnect feature). Not currently available publicly.
      */
-    readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
+    encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -226,24 +226,24 @@ export interface RouterState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A reference to the network to which this router belongs.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where the router resides.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -254,16 +254,16 @@ export interface RouterArgs {
      * BGP information specific to this router.
      * Structure is documented below.
      */
-    readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
+    bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     /**
      * User-specified description for the IP range.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
      * Interconnect feature). Not currently available publicly.
      */
-    readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
+    encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -272,18 +272,18 @@ export interface RouterArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A reference to the network to which this router belongs.
      */
-    readonly network: pulumi.Input<string>;
+    network: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where the router resides.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

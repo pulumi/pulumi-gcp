@@ -268,7 +268,7 @@ export interface ConnectivityTestState {
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. Destination specification of the Connectivity Test.
      * You can use a combination of destination IP address, Compute
@@ -286,30 +286,30 @@ export interface ConnectivityTestState {
      * don't intend to test.
      * Structure is documented below.
      */
-    readonly destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
+    destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unique name for the connectivity test.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
      * boundaries.
      */
-    readonly relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required. Source specification of the Connectivity Test.
      * You can use a combination of source IP address, virtual machine
@@ -331,7 +331,7 @@ export interface ConnectivityTestState {
      * you don't intend to test.
      * Structure is documented below.
      */
-    readonly source?: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
+    source?: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
 }
 
 /**
@@ -342,7 +342,7 @@ export interface ConnectivityTestArgs {
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. Destination specification of the Connectivity Test.
      * You can use a combination of destination IP address, Compute
@@ -360,30 +360,30 @@ export interface ConnectivityTestArgs {
      * don't intend to test.
      * Structure is documented below.
      */
-    readonly destination: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
+    destination: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unique name for the connectivity test.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
      * boundaries.
      */
-    readonly relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required. Source specification of the Connectivity Test.
      * You can use a combination of source IP address, virtual machine
@@ -405,5 +405,5 @@ export interface ConnectivityTestArgs {
      * you don't intend to test.
      * Structure is documented below.
      */
-    readonly source: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
+    source: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
 }

@@ -250,22 +250,22 @@ export interface IAMBindingState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.serviceAccount.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.serviceAccount.IAMBindingCondition>;
     /**
      * (Computed) The etag of the service account IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The fully-qualified name of the service account to apply policy to.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
 }
 
 /**
@@ -276,16 +276,16 @@ export interface IAMBindingArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.serviceAccount.IAMBindingCondition>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    condition?: pulumi.Input<inputs.serviceAccount.IAMBindingCondition>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * The fully-qualified name of the service account to apply policy to.
      */
-    readonly serviceAccountId: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
 }

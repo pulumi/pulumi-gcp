@@ -81,19 +81,19 @@ export class TagTemplateIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TagTemplateIamPolicy resources.
  */
 export interface TagTemplateIamPolicyState {
-    readonly etag?: pulumi.Input<string>;
-    readonly policyData?: pulumi.Input<string>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly tagTemplate?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    tagTemplate?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a TagTemplateIamPolicy resource.
  */
 export interface TagTemplateIamPolicyArgs {
-    readonly policyData: pulumi.Input<string>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly tagTemplate: pulumi.Input<string>;
+    policyData: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    tagTemplate: pulumi.Input<string>;
 }

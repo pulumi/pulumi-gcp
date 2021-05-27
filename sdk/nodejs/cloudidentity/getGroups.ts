@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const groups = pulumi.output(gcp.cloudidentity.getGroups({
  *     parent: "customers/A01b123xz",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
@@ -41,7 +41,7 @@ export interface GetGroupsArgs {
     /**
      * The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
      */
-    readonly parent: string;
+    parent: string;
 }
 
 /**

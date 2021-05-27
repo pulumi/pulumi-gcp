@@ -229,49 +229,49 @@ export interface InstanceState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * A description of the instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * File system shares on the instance. For this version, only a
      * single file share is supported.
      * Structure is documented below.
      */
-    readonly fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
+    fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the fileshare (16 characters or less)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version,
      * only a single network is supported.
      * Structure is documented below.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
      */
-    readonly tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
     /**
      * The name of the Filestore zone of the instance.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -281,39 +281,39 @@ export interface InstanceArgs {
     /**
      * A description of the instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * File system shares on the instance. For this version, only a
      * single file share is supported.
      * Structure is documented below.
      */
-    readonly fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
+    fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the fileshare (16 characters or less)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version,
      * only a single network is supported.
      * Structure is documented below.
      */
-    readonly networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
      */
-    readonly tier: pulumi.Input<string>;
+    tier: pulumi.Input<string>;
     /**
      * The name of the Filestore zone of the instance.
      */
-    readonly zone: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

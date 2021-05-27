@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const available = pulumi.output(gcp.cloudrun.getLocations({ async: true }));
+ * const available = pulumi.output(gcp.cloudrun.getLocations());
  * ```
  */
 export function getLocations(args?: GetLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetLocationsResult> {
@@ -45,7 +45,7 @@ export interface GetLocationsArgs {
      * The project to list versions for. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

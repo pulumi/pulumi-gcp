@@ -186,73 +186,73 @@ export interface DatasetState {
      * An array of objects that define dataset access for one or more entities.
      * Structure is documented below.
      */
-    readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
+    accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     /**
      * The time when this dataset was created, in milliseconds since the epoch.
      */
-    readonly creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number>;
     /**
      * The ID of the dataset containing this table.
      */
-    readonly datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string>;
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
      * Structure is documented below.
      */
-    readonly defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
+    defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
      */
-    readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
+    defaultPartitionExpirationMs?: pulumi.Input<number>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
      */
-    readonly defaultTableExpirationMs?: pulumi.Input<number>;
+    defaultTableExpirationMs?: pulumi.Input<number>;
     /**
      * If set to `true`, delete all the tables in the
      * dataset when destroying the resource; otherwise,
      * destroying the resource will fail if tables are present.
      */
-    readonly deleteContentsOnDestroy?: pulumi.Input<boolean>;
+    deleteContentsOnDestroy?: pulumi.Input<boolean>;
     /**
      * A user-friendly description of the dataset
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A hash of the resource.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * A descriptive name for the dataset
      */
-    readonly friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
      */
-    readonly lastModifiedTime?: pulumi.Input<number>;
+    lastModifiedTime?: pulumi.Input<number>;
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -263,55 +263,55 @@ export interface DatasetArgs {
      * An array of objects that define dataset access for one or more entities.
      * Structure is documented below.
      */
-    readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
+    accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     /**
      * The ID of the dataset containing this table.
      */
-    readonly datasetId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
      * Structure is documented below.
      */
-    readonly defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
+    defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
      */
-    readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
+    defaultPartitionExpirationMs?: pulumi.Input<number>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
      */
-    readonly defaultTableExpirationMs?: pulumi.Input<number>;
+    defaultTableExpirationMs?: pulumi.Input<number>;
     /**
      * If set to `true`, delete all the tables in the
      * dataset when destroying the resource; otherwise,
      * destroying the resource will fail if tables are present.
      */
-    readonly deleteContentsOnDestroy?: pulumi.Input<boolean>;
+    deleteContentsOnDestroy?: pulumi.Input<boolean>;
     /**
      * A user-friendly description of the dataset
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A descriptive name for the dataset
      */
-    readonly friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

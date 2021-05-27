@@ -147,24 +147,24 @@ export interface GlobalNetworkEndpointState {
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
-    readonly fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string>;
     /**
      * The global network endpoint group this endpoint is part of.
      */
-    readonly globalNetworkEndpointGroup?: pulumi.Input<string>;
+    globalNetworkEndpointGroup?: pulumi.Input<string>;
     /**
      * IPv4 address external endpoint.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * Port number of the external endpoint.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -175,22 +175,22 @@ export interface GlobalNetworkEndpointArgs {
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
-    readonly fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string>;
     /**
      * The global network endpoint group this endpoint is part of.
      */
-    readonly globalNetworkEndpointGroup: pulumi.Input<string>;
+    globalNetworkEndpointGroup: pulumi.Input<string>;
     /**
      * IPv4 address external endpoint.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * Port number of the external endpoint.
      */
-    readonly port: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

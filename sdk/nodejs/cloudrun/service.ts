@@ -462,30 +462,30 @@ export interface ServiceState {
      * (For legacy support, if `template.metadata.name` is unset in state while
      * this field is set to false, the revision name will still autogenerate.)
      */
-    readonly autogenerateRevisionName?: pulumi.Input<boolean>;
+    autogenerateRevisionName?: pulumi.Input<boolean>;
     /**
      * The location of the cloud run instance. eg us-central1
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
      * Structure is documented below.
      */
-    readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
+    metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
      * Volume's name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The current status of the Service.
      */
-    readonly statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatus>[]>;
     /**
      * template holds the latest specification for the Revision to
      * be stamped out. The template references the container image, and may also
@@ -498,13 +498,13 @@ export interface ServiceState {
      * responsible for materializing the container image from source.
      * Structure is documented below.
      */
-    readonly template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
+    template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      */
-    readonly traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
+    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }
 
 /**
@@ -518,26 +518,26 @@ export interface ServiceArgs {
      * (For legacy support, if `template.metadata.name` is unset in state while
      * this field is set to false, the revision name will still autogenerate.)
      */
-    readonly autogenerateRevisionName?: pulumi.Input<boolean>;
+    autogenerateRevisionName?: pulumi.Input<boolean>;
     /**
      * The location of the cloud run instance. eg us-central1
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
      * Structure is documented below.
      */
-    readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
+    metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
      * Volume's name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * template holds the latest specification for the Revision to
      * be stamped out. The template references the container image, and may also
@@ -550,11 +550,11 @@ export interface ServiceArgs {
      * responsible for materializing the container image from source.
      * Structure is documented below.
      */
-    readonly template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
+    template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      */
-    readonly traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
+    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }

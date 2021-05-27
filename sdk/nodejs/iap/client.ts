@@ -127,19 +127,19 @@ export interface ClientState {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
      */
-    readonly brand?: pulumi.Input<string>;
+    brand?: pulumi.Input<string>;
     /**
      * Output only. Unique identifier of the OAuth client.
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * Human-friendly name given to the OAuth client.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Output only. Client secret of the OAuth client.
      */
-    readonly secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
 }
 
 /**
@@ -151,9 +151,9 @@ export interface ClientArgs {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
      */
-    readonly brand: pulumi.Input<string>;
+    brand: pulumi.Input<string>;
     /**
      * Human-friendly name given to the OAuth client.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
 }

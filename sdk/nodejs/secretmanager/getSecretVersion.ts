@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const basic = pulumi.output(gcp.secretmanager.getSecretVersion({
  *     secret: "my-secret",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> {
@@ -42,16 +42,16 @@ export interface GetSecretVersionArgs {
      * The project to get the secret version for. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The secret to get the secret version for.
      */
-    readonly secret: string;
+    secret: string;
     /**
      * The version of the secret to get. If it
      * is not provided, the latest version is retrieved.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**

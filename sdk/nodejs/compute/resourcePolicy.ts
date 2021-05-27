@@ -228,17 +228,17 @@ export interface ResourcePolicyState {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
-    readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
+    groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
     /**
      * Resource policy for scheduling instance operations.
      * Structure is documented below.
      */
-    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
+    instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -248,25 +248,25 @@ export interface ResourcePolicyState {
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where resource policy resides.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Policy for creating snapshots of persistent disks.
      * Structure is documented below.
      */
-    readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
+    snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }
 
 /**
@@ -276,17 +276,17 @@ export interface ResourcePolicyArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
-    readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
+    groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
     /**
      * Resource policy for scheduling instance operations.
      * Structure is documented below.
      */
-    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
+    instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -296,19 +296,19 @@ export interface ResourcePolicyArgs {
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where resource policy resides.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Policy for creating snapshots of persistent disks.
      * Structure is documented below.
      */
-    readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
+    snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }

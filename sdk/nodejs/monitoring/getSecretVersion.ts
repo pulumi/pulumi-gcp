@@ -26,9 +26,9 @@ export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getSecretVersion.
  */
 export interface GetSecretVersionArgs {
-    readonly project?: string;
-    readonly secret: string;
-    readonly version?: string;
+    project?: string;
+    secret: string;
+    version?: string;
 }
 
 /**

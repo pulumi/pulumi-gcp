@@ -376,7 +376,7 @@ export interface HaVpnGatewayState {
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -386,29 +386,29 @@ export interface HaVpnGatewayState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region this gateway should sit in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * A list of interfaces on this VPN gateway.
      * Structure is documented below.
      */
-    readonly vpnInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.HaVpnGatewayVpnInterface>[]>;
+    vpnInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.HaVpnGatewayVpnInterface>[]>;
 }
 
 /**
@@ -418,7 +418,7 @@ export interface HaVpnGatewayArgs {
     /**
      * An optional description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -428,23 +428,23 @@ export interface HaVpnGatewayArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
      */
-    readonly network: pulumi.Input<string>;
+    network: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region this gateway should sit in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of interfaces on this VPN gateway.
      * Structure is documented below.
      */
-    readonly vpnInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.HaVpnGatewayVpnInterface>[]>;
+    vpnInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.HaVpnGatewayVpnInterface>[]>;
 }

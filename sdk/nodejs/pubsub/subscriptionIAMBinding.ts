@@ -178,48 +178,48 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubscriptionIAMBinding resources.
  */
 export interface SubscriptionIAMBindingState {
-    readonly condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The subscription name or id to bind to attach IAM policy to.
      */
-    readonly subscription?: pulumi.Input<string>;
+    subscription?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a SubscriptionIAMBinding resource.
  */
 export interface SubscriptionIAMBindingArgs {
-    readonly condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * The subscription name or id to bind to attach IAM policy to.
      */
-    readonly subscription: pulumi.Input<string>;
+    subscription: pulumi.Input<string>;
 }

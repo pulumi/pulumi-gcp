@@ -43,11 +43,11 @@ export function getRegistryImage(args: GetRegistryImageArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getRegistryImage.
  */
 export interface GetRegistryImageArgs {
-    readonly digest?: string;
-    readonly name: string;
-    readonly project?: string;
-    readonly region?: string;
-    readonly tag?: string;
+    digest?: string;
+    name: string;
+    project?: string;
+    region?: string;
+    tag?: string;
 }
 
 /**

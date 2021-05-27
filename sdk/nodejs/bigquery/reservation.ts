@@ -144,26 +144,26 @@ export interface ReservationState {
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
      */
-    readonly ignoreIdleSlots?: pulumi.Input<boolean>;
+    ignoreIdleSlots?: pulumi.Input<boolean>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
      * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      */
-    readonly slotCapacity?: pulumi.Input<number>;
+    slotCapacity?: pulumi.Input<number>;
 }
 
 /**
@@ -175,24 +175,24 @@ export interface ReservationArgs {
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
      */
-    readonly ignoreIdleSlots?: pulumi.Input<boolean>;
+    ignoreIdleSlots?: pulumi.Input<boolean>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
      * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      */
-    readonly slotCapacity: pulumi.Input<number>;
+    slotCapacity: pulumi.Input<number>;
 }

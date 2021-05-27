@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const objectViewer = pulumi.output(gcp.serviceAccount.getAccount({
  *     accountId: "object-viewer",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
@@ -41,12 +41,12 @@ export interface GetAccountArgs {
     /**
      * The Google service account ID. This be one of:
      */
-    readonly accountId: string;
+    accountId: string;
     /**
      * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

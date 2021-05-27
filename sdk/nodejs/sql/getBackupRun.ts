@@ -43,16 +43,16 @@ export interface GetBackupRunArgs {
      * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
      * If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
      */
-    readonly backupId?: number;
+    backupId?: number;
     /**
      * The name of the instance the backup is taken from.
      */
-    readonly instance: string;
+    instance: string;
     /**
      * Toggles use of the most recent backup run if multiple backups exist for a 
      * Cloud SQL instance.
      */
-    readonly mostRecent?: boolean;
+    mostRecent?: boolean;
 }
 
 /**

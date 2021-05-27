@@ -88,25 +88,25 @@ export class IAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMMember resources.
  */
 export interface IAMMemberState {
-    readonly condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization in which you want to manage the audit logging config.
      */
-    readonly orgId?: pulumi.Input<string>;
-    readonly role?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a IAMMember resource.
  */
 export interface IAMMemberArgs {
-    readonly condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
-    readonly member: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
+    member: pulumi.Input<string>;
     /**
      * The numeric ID of the organization in which you want to manage the audit logging config.
      */
-    readonly orgId: pulumi.Input<string>;
-    readonly role: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

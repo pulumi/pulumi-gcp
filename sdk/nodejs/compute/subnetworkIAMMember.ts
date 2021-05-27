@@ -268,34 +268,34 @@ export interface SubnetworkIAMMemberState {
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The GCP region for this subnetwork.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string>;
 }
 
 /**
@@ -306,28 +306,28 @@ export interface SubnetworkIAMMemberArgs {
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
-    readonly member: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
+    member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The GCP region for this subnetwork.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly subnetwork: pulumi.Input<string>;
+    subnetwork: pulumi.Input<string>;
 }

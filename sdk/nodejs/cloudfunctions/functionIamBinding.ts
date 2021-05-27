@@ -91,23 +91,23 @@ export class FunctionIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FunctionIamBinding resources.
  */
 export interface FunctionIamBindingState {
-    readonly cloudFunction?: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.cloudfunctions.FunctionIamBindingCondition>;
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly role?: pulumi.Input<string>;
+    cloudFunction?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.cloudfunctions.FunctionIamBindingCondition>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a FunctionIamBinding resource.
  */
 export interface FunctionIamBindingArgs {
-    readonly cloudFunction: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.cloudfunctions.FunctionIamBindingCondition>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly role: pulumi.Input<string>;
+    cloudFunction: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.cloudfunctions.FunctionIamBindingCondition>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

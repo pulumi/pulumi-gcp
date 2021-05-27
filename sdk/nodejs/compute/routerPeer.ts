@@ -232,7 +232,7 @@ export interface RouterPeerState {
      * Default value is `DEFAULT`.
      * Possible values are `DEFAULT` and `CUSTOM`.
      */
-    readonly advertiseMode?: pulumi.Input<string>;
+    advertiseMode?: pulumi.Input<string>;
     /**
      * User-specified list of prefix groups to advertise in custom
      * mode, which can take one of the following options:
@@ -240,7 +240,7 @@ export interface RouterPeerState {
      * * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
      * * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
      */
-    readonly advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-specified list of individual IP ranges to advertise in
      * custom mode. This field can only be populated if advertiseMode
@@ -249,28 +249,28 @@ export interface RouterPeerState {
      * Leave this field blank to advertise no custom IP ranges.
      * Structure is documented below.
      */
-    readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
+    advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**
      * The priority of routes advertised to this BGP peer.
      * Where there is more than one matching route of maximum
      * length, the routes with the lowest priority value win.
      */
-    readonly advertisedRoutePriority?: pulumi.Input<number>;
+    advertisedRoutePriority?: pulumi.Input<number>;
     /**
      * Name of the interface the BGP peer is associated with.
      */
-    readonly interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string>;
     /**
      * IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
      * you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
      * specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
      * of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
      */
-    readonly managementType?: pulumi.Input<string>;
+    managementType?: pulumi.Input<string>;
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -279,31 +279,31 @@ export interface RouterPeerState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Peer BGP Autonomous System Number (ASN).
      * Each BGP interface may use a different value.
      */
-    readonly peerAsn?: pulumi.Input<number>;
+    peerAsn?: pulumi.Input<number>;
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
      * Only IPv4 is supported.
      */
-    readonly peerIpAddress?: pulumi.Input<string>;
+    peerIpAddress?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where the router and BgpPeer reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      */
-    readonly router?: pulumi.Input<string>;
+    router?: pulumi.Input<string>;
 }
 
 /**
@@ -316,7 +316,7 @@ export interface RouterPeerArgs {
      * Default value is `DEFAULT`.
      * Possible values are `DEFAULT` and `CUSTOM`.
      */
-    readonly advertiseMode?: pulumi.Input<string>;
+    advertiseMode?: pulumi.Input<string>;
     /**
      * User-specified list of prefix groups to advertise in custom
      * mode, which can take one of the following options:
@@ -324,7 +324,7 @@ export interface RouterPeerArgs {
      * * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
      * * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
      */
-    readonly advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-specified list of individual IP ranges to advertise in
      * custom mode. This field can only be populated if advertiseMode
@@ -333,17 +333,17 @@ export interface RouterPeerArgs {
      * Leave this field blank to advertise no custom IP ranges.
      * Structure is documented below.
      */
-    readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
+    advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**
      * The priority of routes advertised to this BGP peer.
      * Where there is more than one matching route of maximum
      * length, the routes with the lowest priority value win.
      */
-    readonly advertisedRoutePriority?: pulumi.Input<number>;
+    advertisedRoutePriority?: pulumi.Input<number>;
     /**
      * Name of the interface the BGP peer is associated with.
      */
-    readonly interface: pulumi.Input<string>;
+    interface: pulumi.Input<string>;
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -352,29 +352,29 @@ export interface RouterPeerArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Peer BGP Autonomous System Number (ASN).
      * Each BGP interface may use a different value.
      */
-    readonly peerAsn: pulumi.Input<number>;
+    peerAsn: pulumi.Input<number>;
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
      * Only IPv4 is supported.
      */
-    readonly peerIpAddress: pulumi.Input<string>;
+    peerIpAddress: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region where the router and BgpPeer reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      */
-    readonly router: pulumi.Input<string>;
+    router: pulumi.Input<string>;
 }

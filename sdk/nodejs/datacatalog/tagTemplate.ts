@@ -184,34 +184,34 @@ export interface TagTemplateState {
     /**
      * The display name for this template.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
      * Structure is documented below.
      */
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
+    fields?: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
     /**
      * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
      */
-    readonly forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * -
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Template location region.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The id of the tag template to create.
      */
-    readonly tagTemplateId?: pulumi.Input<string>;
+    tagTemplateId?: pulumi.Input<string>;
 }
 
 /**
@@ -221,27 +221,27 @@ export interface TagTemplateArgs {
     /**
      * The display name for this template.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
      * Structure is documented below.
      */
-    readonly fields: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
+    fields: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
     /**
      * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
      */
-    readonly forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Template location region.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The id of the tag template to create.
      */
-    readonly tagTemplateId: pulumi.Input<string>;
+    tagTemplateId: pulumi.Input<string>;
 }

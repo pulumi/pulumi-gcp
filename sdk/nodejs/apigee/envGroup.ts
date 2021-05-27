@@ -108,16 +108,16 @@ export interface EnvGroupState {
     /**
      * Hostnames of the environment group.
      */
-    readonly hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource ID of the environment group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Apigee Organization associated with the Apigee environment group,
      * in the format `organizations/{{org_name}}`.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
 }
 
 /**
@@ -127,14 +127,14 @@ export interface EnvGroupArgs {
     /**
      * Hostnames of the environment group.
      */
-    readonly hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource ID of the environment group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Apigee Organization associated with the Apigee environment group,
      * in the format `organizations/{{org_name}}`.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
 }

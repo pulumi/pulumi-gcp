@@ -171,53 +171,53 @@ export interface OrganizationSecurityPolicyRuleState {
      * The Action to perform when the client connection triggers the rule. Can currently be either
      * "allow", "deny" or "gotoNext".
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * A description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
      * Possible values are `INGRESS` and `EGRESS`.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
      */
-    readonly enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    readonly match?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatch>;
+    match?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatch>;
     /**
      * The ID of the OrganizationSecurityPolicy this rule applies to.
      */
-    readonly policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    readonly preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean>;
     /**
      * An integer indicating the priority of a rule in the list. The priority must be a value
      * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
      * highest priority and 2147483647 is the lowest prority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs
      * within the organization will receive the rule.
      */
-    readonly targetResources?: pulumi.Input<pulumi.Input<string>[]>;
+    targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */
-    readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -228,51 +228,51 @@ export interface OrganizationSecurityPolicyRuleArgs {
      * The Action to perform when the client connection triggers the rule. Can currently be either
      * "allow", "deny" or "gotoNext".
      */
-    readonly action: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * A description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
      * Possible values are `INGRESS` and `EGRESS`.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
      */
-    readonly enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    readonly match: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatch>;
+    match: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatch>;
     /**
      * The ID of the OrganizationSecurityPolicy this rule applies to.
      */
-    readonly policyId: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    readonly preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean>;
     /**
      * An integer indicating the priority of a rule in the list. The priority must be a value
      * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
      * highest priority and 2147483647 is the lowest prority.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs
      * within the organization will receive the rule.
      */
-    readonly targetResources?: pulumi.Input<pulumi.Input<string>[]>;
+    targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */
-    readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -195,7 +195,7 @@ export interface ProjectState {
      * will still need to have 1 network slot available to create the project successfully, even if
      * you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
      */
-    readonly autoCreateNetwork?: pulumi.Input<boolean>;
+    autoCreateNetwork?: pulumi.Input<boolean>;
     /**
      * The alphanumeric ID of the billing account this project
      * belongs to. The user or service account performing this operation with the provider
@@ -203,7 +203,7 @@ export interface ProjectState {
      * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
      * for more details.
      */
-    readonly billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string>;
     /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
@@ -211,19 +211,19 @@ export interface ProjectState {
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the project.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The display name of the project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The numeric identifier of the project.
      */
-    readonly number?: pulumi.Input<string>;
+    number?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
@@ -232,16 +232,16 @@ export interface ProjectState {
      * this forces the project to be migrated to the newly specified
      * organization.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * The project ID. Changing this forces a new project to be created.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * If true, the resource can be deleted
      * without deleting the Project via the Google API.
      */
-    readonly skipDelete?: pulumi.Input<boolean>;
+    skipDelete?: pulumi.Input<boolean>;
 }
 
 /**
@@ -254,7 +254,7 @@ export interface ProjectArgs {
      * will still need to have 1 network slot available to create the project successfully, even if
      * you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
      */
-    readonly autoCreateNetwork?: pulumi.Input<boolean>;
+    autoCreateNetwork?: pulumi.Input<boolean>;
     /**
      * The alphanumeric ID of the billing account this project
      * belongs to. The user or service account performing this operation with the provider
@@ -262,7 +262,7 @@ export interface ProjectArgs {
      * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
      * for more details.
      */
-    readonly billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string>;
     /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
@@ -270,15 +270,15 @@ export interface ProjectArgs {
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the project.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The display name of the project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
@@ -287,14 +287,14 @@ export interface ProjectArgs {
      * this forces the project to be migrated to the newly specified
      * organization.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * The project ID. Changing this forces a new project to be created.
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * If true, the resource can be deleted
      * without deleting the Project via the Google API.
      */
-    readonly skipDelete?: pulumi.Input<boolean>;
+    skipDelete?: pulumi.Input<boolean>;
 }

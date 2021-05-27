@@ -32,11 +32,11 @@ export interface GetCaCertsArgs {
     /**
      * The name or self link of the instance.
      */
-    readonly instance: string;
+    instance: string;
     /**
      * The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

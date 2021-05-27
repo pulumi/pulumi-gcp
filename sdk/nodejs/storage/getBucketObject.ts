@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const picture = pulumi.output(gcp.storage.getBucketObject({
  *     bucket: "image-store",
  *     name: "folder/butterfly01.jpg",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
@@ -47,11 +47,11 @@ export interface GetBucketObjectArgs {
     /**
      * The name of the containing bucket.
      */
-    readonly bucket?: string;
+    bucket?: string;
     /**
      * The name of the object.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

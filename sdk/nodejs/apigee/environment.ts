@@ -114,20 +114,20 @@ export interface EnvironmentState {
     /**
      * Description of the environment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of the environment.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The resource ID of the environment.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
 }
 
 /**
@@ -137,18 +137,18 @@ export interface EnvironmentArgs {
     /**
      * Description of the environment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of the environment.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The resource ID of the environment.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
 }

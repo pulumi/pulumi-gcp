@@ -30,16 +30,16 @@ export interface GetEnvironmentArgs {
     /**
      * Name of the environment.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The location or Compute Engine region of the environment.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

@@ -212,45 +212,45 @@ export class WorkflowTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkflowTemplate resources.
  */
 export interface WorkflowTemplateState {
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
-    readonly dagTimeout?: pulumi.Input<string>;
+    dagTimeout?: pulumi.Input<string>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
-    readonly jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
+    jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
      * The `secondaryWorkerConfig` block supports:
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
     /**
      * Required. WorkflowTemplate scheduling information.
      */
-    readonly placement?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
+    placement?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
     /**
      * The project for the resource
      */
-    readonly project?: pulumi.Input<string>;
-    readonly updateTime?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
      */
-    readonly version?: pulumi.Input<number>;
+    version?: pulumi.Input<number>;
 }
 
 /**
@@ -260,38 +260,38 @@ export interface WorkflowTemplateArgs {
     /**
      * (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
-    readonly dagTimeout?: pulumi.Input<string>;
+    dagTimeout?: pulumi.Input<string>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
-    readonly jobs: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
+    jobs: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
      * The `secondaryWorkerConfig` block supports:
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
     /**
      * Required. WorkflowTemplate scheduling information.
      */
-    readonly placement: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
+    placement: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
     /**
      * The project for the resource
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
      */
-    readonly version?: pulumi.Input<number>;
+    version?: pulumi.Input<number>;
 }

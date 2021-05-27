@@ -75,15 +75,15 @@ export class IAMPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMPolicy resources.
  */
 export interface IAMPolicyState {
-    readonly etag?: pulumi.Input<string>;
-    readonly folder?: pulumi.Input<string>;
-    readonly policyData?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a IAMPolicy resource.
  */
 export interface IAMPolicyArgs {
-    readonly folder: pulumi.Input<string>;
-    readonly policyData: pulumi.Input<string>;
+    folder: pulumi.Input<string>;
+    policyData: pulumi.Input<string>;
 }

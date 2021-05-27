@@ -108,12 +108,12 @@ export interface ProjectDefaultNetworkTierState {
      * The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
      */
-    readonly networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -124,10 +124,10 @@ export interface ProjectDefaultNetworkTierArgs {
      * The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
      */
-    readonly networkTier: pulumi.Input<string>;
+    networkTier: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

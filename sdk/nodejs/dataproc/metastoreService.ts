@@ -203,68 +203,68 @@ export interface MetastoreServiceState {
     /**
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      */
-    readonly artifactGcsUri?: pulumi.Input<string>;
+    artifactGcsUri?: pulumi.Input<string>;
     /**
      * The URI of the endpoint used to access the metastore service.
      */
-    readonly endpointUri?: pulumi.Input<string>;
+    endpointUri?: pulumi.Input<string>;
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      * Structure is documented below.
      */
-    readonly hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
+    hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
     /**
      * User-defined labels for the metastore service.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
      * Structure is documented below.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
     /**
      * The relative resource name of the metastore service.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * The current state of the metastore service.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Additional information about the current state of the metastore service, if available.
      */
-    readonly stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string>;
     /**
      * The tier of the service.
      * Possible values are `DEVELOPER` and `ENTERPRISE`.
      */
-    readonly tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
 }
 
 /**
@@ -275,45 +275,45 @@ export interface MetastoreServiceArgs {
      * Configuration information specific to running Hive metastore software as the metastore service.
      * Structure is documented below.
      */
-    readonly hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
+    hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
     /**
      * User-defined labels for the metastore service.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
      * Structure is documented below.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      */
-    readonly serviceId: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
     /**
      * The tier of the service.
      * Possible values are `DEVELOPER` and `ENTERPRISE`.
      */
-    readonly tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
 }

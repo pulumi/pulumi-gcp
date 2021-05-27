@@ -156,12 +156,12 @@ export interface ServicePerimetersState {
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
      * Structure is documented below.
      */
-    readonly servicePerimeters?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeter>[]>;
+    servicePerimeters?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeter>[]>;
 }
 
 /**
@@ -172,10 +172,10 @@ export interface ServicePerimetersArgs {
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
     /**
      * The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
      * Structure is documented below.
      */
-    readonly servicePerimeters?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeter>[]>;
+    servicePerimeters?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeter>[]>;
 }

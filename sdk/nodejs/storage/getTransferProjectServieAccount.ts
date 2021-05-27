@@ -39,7 +39,7 @@ export interface GetTransferProjectServieAccountArgs {
     /**
      * The project ID. If it is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

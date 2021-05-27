@@ -136,22 +136,22 @@ export interface KeyRingState {
      * The location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name for the KeyRing.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
      *
      * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -162,14 +162,14 @@ export interface KeyRingArgs {
      * The location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The resource name for the KeyRing.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

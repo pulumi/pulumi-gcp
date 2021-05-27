@@ -249,25 +249,25 @@ export interface KeyRingIAMMemberState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}` or
      * `{location_name}/{key_ring_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    readonly keyRingId?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    keyRingId?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
@@ -278,19 +278,19 @@ export interface KeyRingIAMMemberArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}` or
      * `{location_name}/{key_ring_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    readonly keyRingId: pulumi.Input<string>;
-    readonly member: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

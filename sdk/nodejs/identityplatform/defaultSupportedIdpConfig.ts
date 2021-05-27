@@ -157,15 +157,15 @@ export interface DefaultSupportedIdpConfigState {
     /**
      * OAuth client ID
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * OAuth client secret
      */
-    readonly clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * If this IDP allows the user to sign in
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * ID of the IDP. Possible values include:
      * * `apple.com`
@@ -179,16 +179,16 @@ export interface DefaultSupportedIdpConfigState {
      * * `twitter.com`
      * * `yahoo.com`
      */
-    readonly idpId?: pulumi.Input<string>;
+    idpId?: pulumi.Input<string>;
     /**
      * The name of the DefaultSupportedIdpConfig resource
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -198,15 +198,15 @@ export interface DefaultSupportedIdpConfigArgs {
     /**
      * OAuth client ID
      */
-    readonly clientId: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
     /**
      * OAuth client secret
      */
-    readonly clientSecret: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
     /**
      * If this IDP allows the user to sign in
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * ID of the IDP. Possible values include:
      * * `apple.com`
@@ -220,10 +220,10 @@ export interface DefaultSupportedIdpConfigArgs {
      * * `twitter.com`
      * * `yahoo.com`
      */
-    readonly idpId: pulumi.Input<string>;
+    idpId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

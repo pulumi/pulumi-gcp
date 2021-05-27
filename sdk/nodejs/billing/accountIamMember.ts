@@ -85,19 +85,19 @@ export class AccountIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccountIamMember resources.
  */
 export interface AccountIamMemberState {
-    readonly billingAccountId?: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition>;
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
-    readonly role?: pulumi.Input<string>;
+    billingAccountId?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a AccountIamMember resource.
  */
 export interface AccountIamMemberArgs {
-    readonly billingAccountId: pulumi.Input<string>;
-    readonly condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition>;
-    readonly member: pulumi.Input<string>;
-    readonly role: pulumi.Input<string>;
+    billingAccountId: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition>;
+    member: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

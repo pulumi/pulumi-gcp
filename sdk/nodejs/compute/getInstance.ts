@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const appserver = pulumi.output(gcp.compute.getInstance({
  *     name: "primary-application-server",
  *     zone: "us-central1-a",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
@@ -47,23 +47,23 @@ export interface GetInstanceArgs {
     /**
      * The name of the instance. One of `name` or `selfLink` must be provided.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the project in which the resource belongs.
      * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The self link of the instance. One of `name` or `selfLink` must be provided.
      */
-    readonly selfLink?: string;
+    selfLink?: string;
     /**
      * The zone of the instance. If `selfLink` is provided, this
      * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      */
-    readonly zone?: string;
+    zone?: string;
 }
 
 /**

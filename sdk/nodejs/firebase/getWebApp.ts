@@ -28,7 +28,7 @@ export interface GetWebAppArgs {
     /**
      * The appIp of name of the Firebase webApp.
      */
-    readonly appId: string;
+    appId: string;
 }
 
 /**

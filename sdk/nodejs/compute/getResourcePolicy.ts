@@ -40,15 +40,15 @@ export interface GetResourcePolicyArgs {
     /**
      * The name of the Resource Policy.
      */
-    readonly name: string;
+    name: string;
     /**
      * Project from which to list the Resource Policy. Defaults to project declared in the provider.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * Region where the Resource Policy resides.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

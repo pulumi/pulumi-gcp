@@ -42,11 +42,11 @@ export interface GetKMSSecretCiphertextArgs {
      * encrypt the provided plaintext. This is represented by the format
      * `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
      */
-    readonly cryptoKey: string;
+    cryptoKey: string;
     /**
      * The plaintext to be encrypted
      */
-    readonly plaintext: string;
+    plaintext: string;
 }
 
 /**

@@ -151,36 +151,36 @@ export interface GatewayState {
      * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
      * When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
      */
-    readonly apiConfig?: pulumi.Input<string>;
+    apiConfig?: pulumi.Input<string>;
     /**
      * The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
      */
-    readonly defaultHostname?: pulumi.Input<string>;
+    defaultHostname?: pulumi.Input<string>;
     /**
      * A user-visible name for the API.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
      */
-    readonly gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the gateway for the API.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -191,26 +191,26 @@ export interface GatewayArgs {
      * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
      * When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
      */
-    readonly apiConfig: pulumi.Input<string>;
+    apiConfig: pulumi.Input<string>;
     /**
      * A user-visible name for the API.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
      */
-    readonly gatewayId: pulumi.Input<string>;
+    gatewayId: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region of the gateway for the API.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

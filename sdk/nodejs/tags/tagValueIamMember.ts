@@ -175,38 +175,38 @@ export class TagValueIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TagValueIamMember resources.
  */
 export interface TagValueIamMemberState {
-    readonly condition?: pulumi.Input<inputs.tags.TagValueIamMemberCondition>;
+    condition?: pulumi.Input<inputs.tags.TagValueIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly tagValue?: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a TagValueIamMember resource.
  */
 export interface TagValueIamMemberArgs {
-    readonly condition?: pulumi.Input<inputs.tags.TagValueIamMemberCondition>;
-    readonly member: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.tags.TagValueIamMemberCondition>;
+    member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly tagValue: pulumi.Input<string>;
+    tagValue: pulumi.Input<string>;
 }

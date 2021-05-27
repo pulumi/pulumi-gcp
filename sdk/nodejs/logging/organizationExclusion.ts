@@ -133,26 +133,26 @@ export interface OrganizationExclusionState {
     /**
      * A human-readable description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * The name of the logging exclusion.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The organization to create the exclusion in.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
 }
 
 /**
@@ -162,24 +162,24 @@ export interface OrganizationExclusionArgs {
     /**
      * A human-readable description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    readonly filter: pulumi.Input<string>;
+    filter: pulumi.Input<string>;
     /**
      * The name of the logging exclusion.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The organization to create the exclusion in.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
 }

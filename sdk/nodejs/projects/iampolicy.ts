@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *         role: "roles/compute.admin",
  *     }],
- * }, { async: true }));
+ * }));
  * const project = new gcp.projects.IAMPolicy("project", {
  *     policyData: admin.policyData,
  *     project: "your-project-id",
@@ -276,19 +276,19 @@ export interface IAMPolicyState {
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the project. The policy will be
      * merged with any existing policy applied to the project.
      */
-    readonly policyData?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -300,11 +300,11 @@ export interface IAMPolicyArgs {
      * the IAM policy that will be applied to the project. The policy will be
      * merged with any existing policy applied to the project.
      */
-    readonly policyData: pulumi.Input<string>;
+    policyData: pulumi.Input<string>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

@@ -185,48 +185,48 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIAMBinding resources.
  */
 export interface InstanceIAMBindingState {
-    readonly condition?: pulumi.Input<inputs.spanner.InstanceIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.spanner.InstanceIAMBindingCondition>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The name of the instance.
      */
-    readonly instance?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    instance?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a InstanceIAMBinding resource.
  */
 export interface InstanceIAMBindingArgs {
-    readonly condition?: pulumi.Input<inputs.spanner.InstanceIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.spanner.InstanceIAMBindingCondition>;
     /**
      * The name of the instance.
      */
-    readonly instance: pulumi.Input<string>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    instance: pulumi.Input<string>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

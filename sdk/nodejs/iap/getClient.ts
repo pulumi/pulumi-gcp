@@ -44,11 +44,11 @@ export interface GetClientArgs {
     /**
      * The name of the brand.
      */
-    readonly brand: string;
+    brand: string;
     /**
      * The clientId of the brand.
      */
-    readonly clientId: string;
+    clientId: string;
 }
 
 /**

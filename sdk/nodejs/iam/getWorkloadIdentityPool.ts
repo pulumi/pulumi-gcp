@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const foo = pulumi.output(gcp.iam.getWorkloadIdentityPool({
  *     workloadIdentityPoolId: "foo-pool",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadIdentityPoolResult> {
@@ -41,12 +41,12 @@ export interface GetWorkloadIdentityPoolArgs {
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
     /**
      * The id of the pool which is the
      * final component of the resource name.
      */
-    readonly workloadIdentityPoolId: string;
+    workloadIdentityPoolId: string;
 }
 
 /**

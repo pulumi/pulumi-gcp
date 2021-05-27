@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const my_ssl_policy = pulumi.output(gcp.compute.getSSLPolicy({
  *     name: "production-ssl-policy",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
@@ -41,12 +41,12 @@ export interface GetSSLPolicyArgs {
     /**
      * The name of the SSL Policy.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

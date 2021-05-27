@@ -208,32 +208,32 @@ export interface TopicState {
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
-    readonly kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Topic.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
      * constraints are in effect.
      * Structure is documented below.
      */
-    readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
+    messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Settings for validating messages published against a schema.
      * Structure is documented below.
      */
-    readonly schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
+    schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
 }
 
 /**
@@ -247,30 +247,30 @@ export interface TopicArgs {
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
-    readonly kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Topic.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
      * constraints are in effect.
      * Structure is documented below.
      */
-    readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
+    messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Settings for validating messages published against a schema.
      * Structure is documented below.
      */
-    readonly schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
+    schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
 }

@@ -225,18 +225,18 @@ export interface RegistryState {
      * List of public key certificates to authenticate devices.
      * The structure is documented below.
      */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.RegistryCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.iot.RegistryCredential>[]>;
     /**
      * List of configurations for event notifications, such as PubSub topics
      * to publish device events to.
      * Structure is documented below.
      */
-    readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.iot.RegistryEventNotificationConfigItem>[]>;
+    eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.iot.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP.
      * The structure is documented below.
      */
-    readonly httpConfig?: pulumi.Input<{[key: string]: any}>;
+    httpConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * The default logging verbosity for activity from devices in this
      * registry. Specifies which events should be written to logs. For
@@ -246,31 +246,31 @@ export interface RegistryState {
      * Default value is `NONE`.
      * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
-    readonly logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<string>;
     /**
      * Activate or deactivate MQTT.
      * The structure is documented below.
      */
-    readonly mqttConfig?: pulumi.Input<{[key: string]: any}>;
+    mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the created registry should reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A PubSub topic to publish device state updates.
      * The structure is documented below.
      */
-    readonly stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
+    stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -281,18 +281,18 @@ export interface RegistryArgs {
      * List of public key certificates to authenticate devices.
      * The structure is documented below.
      */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.RegistryCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.iot.RegistryCredential>[]>;
     /**
      * List of configurations for event notifications, such as PubSub topics
      * to publish device events to.
      * Structure is documented below.
      */
-    readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.iot.RegistryEventNotificationConfigItem>[]>;
+    eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.iot.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP.
      * The structure is documented below.
      */
-    readonly httpConfig?: pulumi.Input<{[key: string]: any}>;
+    httpConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * The default logging verbosity for activity from devices in this
      * registry. Specifies which events should be written to logs. For
@@ -302,29 +302,29 @@ export interface RegistryArgs {
      * Default value is `NONE`.
      * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
-    readonly logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<string>;
     /**
      * Activate or deactivate MQTT.
      * The structure is documented below.
      */
-    readonly mqttConfig?: pulumi.Input<{[key: string]: any}>;
+    mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the created registry should reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A PubSub topic to publish device state updates.
      * The structure is documented below.
      */
-    readonly stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
+    stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
 }

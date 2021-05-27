@@ -34,19 +34,19 @@ export interface GetAccountAccessTokenArgs {
     /**
      * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
      */
-    readonly delegates?: string[];
+    delegates?: string[];
     /**
      * Lifetime of the impersonated token (defaults to its max: `3600s`).
      */
-    readonly lifetime?: string;
+    lifetime?: string;
     /**
      * The scopes the new credential should have (e.g. `["cloud-platform"]`)
      */
-    readonly scopes: string[];
+    scopes: string[];
     /**
      * The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
      */
-    readonly targetServiceAccount: string;
+    targetServiceAccount: string;
 }
 
 /**

@@ -305,37 +305,37 @@ export interface SubnetworkState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
      * creation time.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      *
      * @deprecated This field is not useful for users, and has been removed as an output.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * The gateway address for default routes to reach destination addresses outside this subnetwork.
      */
-    readonly gatewayAddress?: pulumi.Input<string>;
+    gatewayAddress?: pulumi.Input<string>;
     /**
      * The range of IP addresses belonging to this subnetwork secondary
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
      */
-    readonly ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
      * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
      * Structure is documented below.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     /**
      * The name of the resource, provided by the client when initially
      * creating the resource. The name must be 1-63 characters long, and
@@ -345,26 +345,26 @@ export interface SubnetworkState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
-    readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
+    privateIpGoogleAccess?: pulumi.Input<boolean>;
     /**
      * The private IPv6 google access type for the VMs in this subnet.
      */
-    readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
+    privateIpv6GoogleAccess?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The purpose of the resource. This field can be either PRIVATE
      * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
@@ -373,11 +373,11 @@ export interface SubnetworkState {
      * purpose defaults to PRIVATE.
      * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * The GCP region for this subnetwork.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role of subnetwork. Currently, this field is only used when
      * purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -386,18 +386,18 @@ export interface SubnetworkState {
      * is ready to be promoted to ACTIVE or is currently draining.
      * Possible values are `ACTIVE` and `BACKUP`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges. Structure is documented below.
      */
-    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
+    secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -409,21 +409,21 @@ export interface SubnetworkArgs {
      * you create the resource. This field can be set only at resource
      * creation time.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The range of IP addresses belonging to this subnetwork secondary
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
      */
-    readonly ipCidrRange: pulumi.Input<string>;
+    ipCidrRange: pulumi.Input<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
      * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
      * Structure is documented below.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     /**
      * The name of the resource, provided by the client when initially
      * creating the resource. The name must be 1-63 characters long, and
@@ -433,26 +433,26 @@ export interface SubnetworkArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      */
-    readonly network: pulumi.Input<string>;
+    network: pulumi.Input<string>;
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
-    readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
+    privateIpGoogleAccess?: pulumi.Input<boolean>;
     /**
      * The private IPv6 google access type for the VMs in this subnet.
      */
-    readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
+    privateIpv6GoogleAccess?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The purpose of the resource. This field can be either PRIVATE
      * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
@@ -461,11 +461,11 @@ export interface SubnetworkArgs {
      * purpose defaults to PRIVATE.
      * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * The GCP region for this subnetwork.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role of subnetwork. Currently, this field is only used when
      * purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -474,12 +474,12 @@ export interface SubnetworkArgs {
      * is ready to be promoted to ACTIVE or is currently draining.
      * Possible values are `ACTIVE` and `BACKUP`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges. Structure is documented below.
      */
-    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
+    secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
 }

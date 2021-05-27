@@ -288,7 +288,7 @@ export interface Hl7StoreState {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    readonly dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -299,12 +299,12 @@ export interface Hl7StoreState {
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name for the Hl7V2Store.
      * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * -
      * (Optional, Deprecated)
@@ -313,23 +313,23 @@ export interface Hl7StoreState {
      *
      * @deprecated This field has been replaced by notificationConfigs
      */
-    readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
     /**
      * A list of notification configs. Each configuration uses a filter to determine whether to publish a
      * message (both Ingest & Create) on the corresponding notification destination. Only the message name
      * is sent as part of the notification. Supplied by the client.
      * Structure is documented below.
      */
-    readonly notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
     /**
      * A nested object resource
      * Structure is documented below.
      */
-    readonly parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
+    parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
     /**
      * The fully qualified name of this dataset
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -340,7 +340,7 @@ export interface Hl7StoreArgs {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    readonly dataset: pulumi.Input<string>;
+    dataset: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -351,12 +351,12 @@ export interface Hl7StoreArgs {
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name for the Hl7V2Store.
      * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * -
      * (Optional, Deprecated)
@@ -365,17 +365,17 @@ export interface Hl7StoreArgs {
      *
      * @deprecated This field has been replaced by notificationConfigs
      */
-    readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
     /**
      * A list of notification configs. Each configuration uses a filter to determine whether to publish a
      * message (both Ingest & Create) on the corresponding notification destination. Only the message name
      * is sent as part of the notification. Supplied by the client.
      * Structure is documented below.
      */
-    readonly notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
     /**
      * A nested object resource
      * Structure is documented below.
      */
-    readonly parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
+    parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
 }

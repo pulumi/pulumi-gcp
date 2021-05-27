@@ -203,37 +203,37 @@ export interface ConsumerQuotaOverrideState {
     /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
-    readonly dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The limit on the metric, e.g. `/project/region`.
      */
-    readonly limit?: pulumi.Input<string>;
+    limit?: pulumi.Input<string>;
     /**
      * The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
      */
-    readonly metric?: pulumi.Input<string>;
+    metric?: pulumi.Input<string>;
     /**
      * The server-generated name of the quota override.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
      */
-    readonly overrideValue?: pulumi.Input<string>;
+    overrideValue?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
 }
 
 /**
@@ -243,31 +243,31 @@ export interface ConsumerQuotaOverrideArgs {
     /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
-    readonly dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The limit on the metric, e.g. `/project/region`.
      */
-    readonly limit: pulumi.Input<string>;
+    limit: pulumi.Input<string>;
     /**
      * The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
      */
-    readonly metric: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
     /**
      * The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
      */
-    readonly overrideValue: pulumi.Input<string>;
+    overrideValue: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
 }

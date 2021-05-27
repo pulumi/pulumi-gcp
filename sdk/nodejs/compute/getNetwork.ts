@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const my_network = pulumi.output(gcp.compute.getNetwork({
  *     name: "default-us-east1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
@@ -40,12 +40,12 @@ export interface GetNetworkArgs {
     /**
      * The name of the network.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

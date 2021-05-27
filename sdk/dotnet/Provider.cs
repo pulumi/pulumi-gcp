@@ -18,6 +18,289 @@ namespace Pulumi.Gcp
     [GcpResourceType("pulumi:providers:gcp")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("accessApprovalCustomEndpoint")]
+        public Output<string?> AccessApprovalCustomEndpoint { get; private set; } = null!;
+
+        [Output("accessContextManagerCustomEndpoint")]
+        public Output<string?> AccessContextManagerCustomEndpoint { get; private set; } = null!;
+
+        [Output("accessToken")]
+        public Output<string?> AccessToken { get; private set; } = null!;
+
+        [Output("activeDirectoryCustomEndpoint")]
+        public Output<string?> ActiveDirectoryCustomEndpoint { get; private set; } = null!;
+
+        [Output("apiGatewayCustomEndpoint")]
+        public Output<string?> ApiGatewayCustomEndpoint { get; private set; } = null!;
+
+        [Output("apigeeCustomEndpoint")]
+        public Output<string?> ApigeeCustomEndpoint { get; private set; } = null!;
+
+        [Output("appEngineCustomEndpoint")]
+        public Output<string?> AppEngineCustomEndpoint { get; private set; } = null!;
+
+        [Output("artifactRegistryCustomEndpoint")]
+        public Output<string?> ArtifactRegistryCustomEndpoint { get; private set; } = null!;
+
+        [Output("bigQueryCustomEndpoint")]
+        public Output<string?> BigQueryCustomEndpoint { get; private set; } = null!;
+
+        [Output("bigqueryConnectionCustomEndpoint")]
+        public Output<string?> BigqueryConnectionCustomEndpoint { get; private set; } = null!;
+
+        [Output("bigqueryDataTransferCustomEndpoint")]
+        public Output<string?> BigqueryDataTransferCustomEndpoint { get; private set; } = null!;
+
+        [Output("bigqueryReservationCustomEndpoint")]
+        public Output<string?> BigqueryReservationCustomEndpoint { get; private set; } = null!;
+
+        [Output("bigtableCustomEndpoint")]
+        public Output<string?> BigtableCustomEndpoint { get; private set; } = null!;
+
+        [Output("billingCustomEndpoint")]
+        public Output<string?> BillingCustomEndpoint { get; private set; } = null!;
+
+        [Output("billingProject")]
+        public Output<string?> BillingProject { get; private set; } = null!;
+
+        [Output("binaryAuthorizationCustomEndpoint")]
+        public Output<string?> BinaryAuthorizationCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudAssetCustomEndpoint")]
+        public Output<string?> CloudAssetCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudBillingCustomEndpoint")]
+        public Output<string?> CloudBillingCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudBuildCustomEndpoint")]
+        public Output<string?> CloudBuildCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudFunctionsCustomEndpoint")]
+        public Output<string?> CloudFunctionsCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudIdentityCustomEndpoint")]
+        public Output<string?> CloudIdentityCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudIotCustomEndpoint")]
+        public Output<string?> CloudIotCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudRunCustomEndpoint")]
+        public Output<string?> CloudRunCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudSchedulerCustomEndpoint")]
+        public Output<string?> CloudSchedulerCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudTasksCustomEndpoint")]
+        public Output<string?> CloudTasksCustomEndpoint { get; private set; } = null!;
+
+        [Output("composerCustomEndpoint")]
+        public Output<string?> ComposerCustomEndpoint { get; private set; } = null!;
+
+        [Output("computeBetaCustomEndpoint")]
+        public Output<string?> ComputeBetaCustomEndpoint { get; private set; } = null!;
+
+        [Output("computeCustomEndpoint")]
+        public Output<string?> ComputeCustomEndpoint { get; private set; } = null!;
+
+        [Output("containerAnalysisCustomEndpoint")]
+        public Output<string?> ContainerAnalysisCustomEndpoint { get; private set; } = null!;
+
+        [Output("containerBetaCustomEndpoint")]
+        public Output<string?> ContainerBetaCustomEndpoint { get; private set; } = null!;
+
+        [Output("containerCustomEndpoint")]
+        public Output<string?> ContainerCustomEndpoint { get; private set; } = null!;
+
+        [Output("credentials")]
+        public Output<string?> Credentials { get; private set; } = null!;
+
+        [Output("dataCatalogCustomEndpoint")]
+        public Output<string?> DataCatalogCustomEndpoint { get; private set; } = null!;
+
+        [Output("dataFusionCustomEndpoint")]
+        public Output<string?> DataFusionCustomEndpoint { get; private set; } = null!;
+
+        [Output("dataLossPreventionCustomEndpoint")]
+        public Output<string?> DataLossPreventionCustomEndpoint { get; private set; } = null!;
+
+        [Output("dataflowCustomEndpoint")]
+        public Output<string?> DataflowCustomEndpoint { get; private set; } = null!;
+
+        [Output("dataprocBetaCustomEndpoint")]
+        public Output<string?> DataprocBetaCustomEndpoint { get; private set; } = null!;
+
+        [Output("dataprocCustomEndpoint")]
+        public Output<string?> DataprocCustomEndpoint { get; private set; } = null!;
+
+        [Output("dataprocMetastoreCustomEndpoint")]
+        public Output<string?> DataprocMetastoreCustomEndpoint { get; private set; } = null!;
+
+        [Output("datastoreCustomEndpoint")]
+        public Output<string?> DatastoreCustomEndpoint { get; private set; } = null!;
+
+        [Output("deploymentManagerCustomEndpoint")]
+        public Output<string?> DeploymentManagerCustomEndpoint { get; private set; } = null!;
+
+        [Output("dialogflowCustomEndpoint")]
+        public Output<string?> DialogflowCustomEndpoint { get; private set; } = null!;
+
+        [Output("dnsCustomEndpoint")]
+        public Output<string?> DnsCustomEndpoint { get; private set; } = null!;
+
+        [Output("essentialContactsCustomEndpoint")]
+        public Output<string?> EssentialContactsCustomEndpoint { get; private set; } = null!;
+
+        [Output("eventarcCustomEndpoint")]
+        public Output<string?> EventarcCustomEndpoint { get; private set; } = null!;
+
+        [Output("filestoreCustomEndpoint")]
+        public Output<string?> FilestoreCustomEndpoint { get; private set; } = null!;
+
+        [Output("firebaseCustomEndpoint")]
+        public Output<string?> FirebaseCustomEndpoint { get; private set; } = null!;
+
+        [Output("firestoreCustomEndpoint")]
+        public Output<string?> FirestoreCustomEndpoint { get; private set; } = null!;
+
+        [Output("gameServicesCustomEndpoint")]
+        public Output<string?> GameServicesCustomEndpoint { get; private set; } = null!;
+
+        [Output("gkeHubCustomEndpoint")]
+        public Output<string?> GkeHubCustomEndpoint { get; private set; } = null!;
+
+        [Output("healthcareCustomEndpoint")]
+        public Output<string?> HealthcareCustomEndpoint { get; private set; } = null!;
+
+        [Output("iamBetaCustomEndpoint")]
+        public Output<string?> IamBetaCustomEndpoint { get; private set; } = null!;
+
+        [Output("iamCredentialsCustomEndpoint")]
+        public Output<string?> IamCredentialsCustomEndpoint { get; private set; } = null!;
+
+        [Output("iamCustomEndpoint")]
+        public Output<string?> IamCustomEndpoint { get; private set; } = null!;
+
+        [Output("iapCustomEndpoint")]
+        public Output<string?> IapCustomEndpoint { get; private set; } = null!;
+
+        [Output("identityPlatformCustomEndpoint")]
+        public Output<string?> IdentityPlatformCustomEndpoint { get; private set; } = null!;
+
+        [Output("impersonateServiceAccount")]
+        public Output<string?> ImpersonateServiceAccount { get; private set; } = null!;
+
+        [Output("kmsCustomEndpoint")]
+        public Output<string?> KmsCustomEndpoint { get; private set; } = null!;
+
+        [Output("loggingCustomEndpoint")]
+        public Output<string?> LoggingCustomEndpoint { get; private set; } = null!;
+
+        [Output("memcacheCustomEndpoint")]
+        public Output<string?> MemcacheCustomEndpoint { get; private set; } = null!;
+
+        [Output("mlEngineCustomEndpoint")]
+        public Output<string?> MlEngineCustomEndpoint { get; private set; } = null!;
+
+        [Output("monitoringCustomEndpoint")]
+        public Output<string?> MonitoringCustomEndpoint { get; private set; } = null!;
+
+        [Output("networkManagementCustomEndpoint")]
+        public Output<string?> NetworkManagementCustomEndpoint { get; private set; } = null!;
+
+        [Output("notebooksCustomEndpoint")]
+        public Output<string?> NotebooksCustomEndpoint { get; private set; } = null!;
+
+        [Output("osConfigCustomEndpoint")]
+        public Output<string?> OsConfigCustomEndpoint { get; private set; } = null!;
+
+        [Output("osLoginCustomEndpoint")]
+        public Output<string?> OsLoginCustomEndpoint { get; private set; } = null!;
+
+        [Output("privatecaCustomEndpoint")]
+        public Output<string?> PrivatecaCustomEndpoint { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string?> Project { get; private set; } = null!;
+
+        [Output("pubsubCustomEndpoint")]
+        public Output<string?> PubsubCustomEndpoint { get; private set; } = null!;
+
+        [Output("pubsubLiteCustomEndpoint")]
+        public Output<string?> PubsubLiteCustomEndpoint { get; private set; } = null!;
+
+        [Output("redisCustomEndpoint")]
+        public Output<string?> RedisCustomEndpoint { get; private set; } = null!;
+
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        [Output("requestTimeout")]
+        public Output<string?> RequestTimeout { get; private set; } = null!;
+
+        [Output("resourceManagerCustomEndpoint")]
+        public Output<string?> ResourceManagerCustomEndpoint { get; private set; } = null!;
+
+        [Output("resourceManagerV2CustomEndpoint")]
+        public Output<string?> ResourceManagerV2CustomEndpoint { get; private set; } = null!;
+
+        [Output("runtimeConfigCustomEndpoint")]
+        public Output<string?> RuntimeConfigCustomEndpoint { get; private set; } = null!;
+
+        [Output("runtimeconfigCustomEndpoint")]
+        public Output<string?> RuntimeconfigCustomEndpoint { get; private set; } = null!;
+
+        [Output("secretManagerCustomEndpoint")]
+        public Output<string?> SecretManagerCustomEndpoint { get; private set; } = null!;
+
+        [Output("securityCenterCustomEndpoint")]
+        public Output<string?> SecurityCenterCustomEndpoint { get; private set; } = null!;
+
+        [Output("securityScannerCustomEndpoint")]
+        public Output<string?> SecurityScannerCustomEndpoint { get; private set; } = null!;
+
+        [Output("serviceDirectoryCustomEndpoint")]
+        public Output<string?> ServiceDirectoryCustomEndpoint { get; private set; } = null!;
+
+        [Output("serviceManagementCustomEndpoint")]
+        public Output<string?> ServiceManagementCustomEndpoint { get; private set; } = null!;
+
+        [Output("serviceNetworkingCustomEndpoint")]
+        public Output<string?> ServiceNetworkingCustomEndpoint { get; private set; } = null!;
+
+        [Output("serviceUsageCustomEndpoint")]
+        public Output<string?> ServiceUsageCustomEndpoint { get; private set; } = null!;
+
+        [Output("sourceRepoCustomEndpoint")]
+        public Output<string?> SourceRepoCustomEndpoint { get; private set; } = null!;
+
+        [Output("spannerCustomEndpoint")]
+        public Output<string?> SpannerCustomEndpoint { get; private set; } = null!;
+
+        [Output("sqlCustomEndpoint")]
+        public Output<string?> SqlCustomEndpoint { get; private set; } = null!;
+
+        [Output("storageCustomEndpoint")]
+        public Output<string?> StorageCustomEndpoint { get; private set; } = null!;
+
+        [Output("storageTransferCustomEndpoint")]
+        public Output<string?> StorageTransferCustomEndpoint { get; private set; } = null!;
+
+        [Output("tagsCustomEndpoint")]
+        public Output<string?> TagsCustomEndpoint { get; private set; } = null!;
+
+        [Output("tpuCustomEndpoint")]
+        public Output<string?> TpuCustomEndpoint { get; private set; } = null!;
+
+        [Output("vpcAccessCustomEndpoint")]
+        public Output<string?> VpcAccessCustomEndpoint { get; private set; } = null!;
+
+        [Output("workflowsCustomEndpoint")]
+        public Output<string?> WorkflowsCustomEndpoint { get; private set; } = null!;
+
+        [Output("zone")]
+        public Output<string?> Zone { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

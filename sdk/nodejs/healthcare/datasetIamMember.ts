@@ -184,44 +184,44 @@ export class DatasetIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatasetIamMember resources.
  */
 export interface DatasetIamMemberState {
-    readonly condition?: pulumi.Input<inputs.healthcare.DatasetIamMemberCondition>;
+    condition?: pulumi.Input<inputs.healthcare.DatasetIamMemberCondition>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
      * `{location_name}/{dataset_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    readonly datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the dataset's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a DatasetIamMember resource.
  */
 export interface DatasetIamMemberArgs {
-    readonly condition?: pulumi.Input<inputs.healthcare.DatasetIamMemberCondition>;
+    condition?: pulumi.Input<inputs.healthcare.DatasetIamMemberCondition>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
      * `{location_name}/{dataset_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    readonly datasetId: pulumi.Input<string>;
-    readonly member: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

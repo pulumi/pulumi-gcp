@@ -213,40 +213,40 @@ export interface TransferJobState {
     /**
      * When the Transfer Job was created.
      */
-    readonly creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string>;
     /**
      * When the Transfer Job was deleted.
      */
-    readonly deletionTime?: pulumi.Input<string>;
+    deletionTime?: pulumi.Input<string>;
     /**
      * Unique description to identify the Transfer Job.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * When the Transfer Job was last modified.
      */
-    readonly lastModificationTime?: pulumi.Input<string>;
+    lastModificationTime?: pulumi.Input<string>;
     /**
      * The name of the Transfer Job.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      */
-    readonly schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
+    schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
      */
-    readonly transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
+    transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }
 
 /**
@@ -256,22 +256,22 @@ export interface TransferJobArgs {
     /**
      * Unique description to identify the Transfer Job.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      */
-    readonly schedule: pulumi.Input<inputs.storage.TransferJobSchedule>;
+    schedule: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
      */
-    readonly transferSpec: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
+    transferSpec: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }

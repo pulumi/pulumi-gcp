@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const my_pubsub_topic = pulumi.output(gcp.pubsub.getTopic({
  *     name: "my-pubsub-topic",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
@@ -42,12 +42,12 @@ export interface GetTopicArgs {
     /**
      * The name of the Cloud Pub/Sub Topic.
      */
-    readonly name: string;
+    name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

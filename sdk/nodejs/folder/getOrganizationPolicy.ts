@@ -44,11 +44,11 @@ export interface GetOrganizationPolicyArgs {
     /**
      * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
-    readonly constraint: string;
+    constraint: string;
     /**
      * The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
      */
-    readonly folder: string;
+    folder: string;
 }
 
 /**

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const healthChceck = pulumi.output(gcp.compute.getHealthCheck({
  *     name: "my-hc",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getHealthCheck(args: GetHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckResult> {
@@ -40,12 +40,12 @@ export interface GetHealthCheckArgs {
     /**
      * Name of the resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

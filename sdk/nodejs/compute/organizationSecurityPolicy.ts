@@ -133,24 +133,24 @@ export interface OrganizationSecurityPolicyState {
     /**
      * A textual description for the organization security policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A textual name of the security policy.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string>;
     /**
      * The type indicates the intended use of the security policy.
      * For organization security policies, the only supported type
@@ -158,7 +158,7 @@ export interface OrganizationSecurityPolicyState {
      * Default value is `FIREWALL`.
      * Possible values are `FIREWALL`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -168,16 +168,16 @@ export interface OrganizationSecurityPolicyArgs {
     /**
      * A textual description for the organization security policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A textual name of the security policy.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
     /**
      * The type indicates the intended use of the security policy.
      * For organization security policies, the only supported type
@@ -185,5 +185,5 @@ export interface OrganizationSecurityPolicyArgs {
      * Default value is `FIREWALL`.
      * Possible values are `FIREWALL`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

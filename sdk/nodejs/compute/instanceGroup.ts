@@ -236,46 +236,46 @@ export interface InstanceGroupState {
      * An optional textual description of the instance
      * group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of instances in the group. They should be given
      * as either selfLink or id. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
-    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name which the port will be mapped to.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
      * fails. Defaults to the network where the instances are in (if neither
      * `network` nor `instances` is specified, this field will be blank).
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The number of instances in the group.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The zone that this instance group should be created in.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -286,36 +286,36 @@ export interface InstanceGroupArgs {
      * An optional textual description of the instance
      * group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of instances in the group. They should be given
      * as either selfLink or id. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
-    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name which the port will be mapped to.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
      * fails. Defaults to the network where the instances are in (if neither
      * `network` nor `instances` is specified, this field will be blank).
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The zone that this instance group should be created in.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

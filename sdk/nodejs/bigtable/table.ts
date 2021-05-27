@@ -145,26 +145,26 @@ export interface TableState {
     /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
-    readonly columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
+    columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
     /**
      * The name of the Bigtable instance.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The name of the table.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      */
-    readonly splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -174,24 +174,24 @@ export interface TableArgs {
     /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
-    readonly columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
+    columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
     /**
      * The name of the Bigtable instance.
      */
-    readonly instanceName: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
     /**
      * The name of the table.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      */
-    readonly splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }

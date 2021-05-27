@@ -189,50 +189,50 @@ export class ConsentStoreIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConsentStoreIamBinding resources.
  */
 export interface ConsentStoreIamBindingState {
-    readonly condition?: pulumi.Input<inputs.healthcare.ConsentStoreIamBindingCondition>;
+    condition?: pulumi.Input<inputs.healthcare.ConsentStoreIamBindingCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly consentStoreId?: pulumi.Input<string>;
+    consentStoreId?: pulumi.Input<string>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    etag?: pulumi.Input<string>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.ConsentStoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ConsentStoreIamBinding resource.
  */
 export interface ConsentStoreIamBindingArgs {
-    readonly condition?: pulumi.Input<inputs.healthcare.ConsentStoreIamBindingCondition>;
+    condition?: pulumi.Input<inputs.healthcare.ConsentStoreIamBindingCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly consentStoreId: pulumi.Input<string>;
+    consentStoreId: pulumi.Input<string>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      * Used to find the parent resource to bind the IAM policy to
      */
-    readonly dataset: pulumi.Input<string>;
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    dataset: pulumi.Input<string>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.ConsentStoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

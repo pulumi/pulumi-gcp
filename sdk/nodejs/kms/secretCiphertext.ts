@@ -152,21 +152,21 @@ export interface SecretCiphertextState {
      * The additional authenticated data used for integrity checks during encryption and decryption.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly additionalAuthenticatedData?: pulumi.Input<string>;
+    additionalAuthenticatedData?: pulumi.Input<string>;
     /**
      * Contains the result of encrypting the provided plaintext, encoded in base64.
      */
-    readonly ciphertext?: pulumi.Input<string>;
+    ciphertext?: pulumi.Input<string>;
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
      */
-    readonly cryptoKey?: pulumi.Input<string>;
+    cryptoKey?: pulumi.Input<string>;
     /**
      * The plaintext to be encrypted.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly plaintext?: pulumi.Input<string>;
+    plaintext?: pulumi.Input<string>;
 }
 
 /**
@@ -177,15 +177,15 @@ export interface SecretCiphertextArgs {
      * The additional authenticated data used for integrity checks during encryption and decryption.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly additionalAuthenticatedData?: pulumi.Input<string>;
+    additionalAuthenticatedData?: pulumi.Input<string>;
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
      */
-    readonly cryptoKey: pulumi.Input<string>;
+    cryptoKey: pulumi.Input<string>;
     /**
      * The plaintext to be encrypted.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly plaintext: pulumi.Input<string>;
+    plaintext: pulumi.Input<string>;
 }

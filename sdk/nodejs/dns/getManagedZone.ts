@@ -49,11 +49,11 @@ export interface GetManagedZoneArgs {
     /**
      * A unique name for the resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the project for the Google Cloud DNS zone.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

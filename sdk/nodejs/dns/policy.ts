@@ -178,37 +178,37 @@ export interface PolicyState {
      * Names such as .internal are not available when an alternative name server is specified.
      * Structure is documented below.
      */
-    readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
+    alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
      * by VMs or applications over VPN connections. When enabled, a
      * virtual IP address will be allocated from each of the sub-networks
      * that are bound to this policy.
      */
-    readonly enableInboundForwarding?: pulumi.Input<boolean>;
+    enableInboundForwarding?: pulumi.Input<boolean>;
     /**
      * Controls whether logging is enabled for the networks bound to this policy.
      * Defaults to no logging if not set.
      */
-    readonly enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean>;
     /**
      * User assigned name for this policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of network names specifying networks to which this policy is applied.
      * Structure is documented below.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -221,35 +221,35 @@ export interface PolicyArgs {
      * Names such as .internal are not available when an alternative name server is specified.
      * Structure is documented below.
      */
-    readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
+    alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
      * by VMs or applications over VPN connections. When enabled, a
      * virtual IP address will be allocated from each of the sub-networks
      * that are bound to this policy.
      */
-    readonly enableInboundForwarding?: pulumi.Input<boolean>;
+    enableInboundForwarding?: pulumi.Input<boolean>;
     /**
      * Controls whether logging is enabled for the networks bound to this policy.
      * Defaults to no logging if not set.
      */
-    readonly enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean>;
     /**
      * User assigned name for this policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of network names specifying networks to which this policy is applied.
      * Structure is documented below.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

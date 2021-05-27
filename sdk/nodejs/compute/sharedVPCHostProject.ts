@@ -109,7 +109,7 @@ export interface SharedVPCHostProjectState {
     /**
      * The ID of the project that will serve as a Shared VPC host project
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -119,5 +119,5 @@ export interface SharedVPCHostProjectArgs {
     /**
      * The ID of the project that will serve as a Shared VPC host project
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

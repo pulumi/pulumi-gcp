@@ -278,7 +278,7 @@ export interface RegionInstanceGroupManagerState {
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
-    readonly autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
+    autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
     /**
      * The base instance name to use for
      * instances in this group. The value must be a valid
@@ -287,81 +287,81 @@ export interface RegionInstanceGroupManagerState {
      * appending a hyphen and a random four-character string to the base instance
      * name.
      */
-    readonly baseInstanceName?: pulumi.Input<string>;
+    baseInstanceName?: pulumi.Input<string>;
     /**
      * An optional textual description of the instance
      * group manager.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
      */
-    readonly distributionPolicyTargetShape?: pulumi.Input<string>;
+    distributionPolicyTargetShape?: pulumi.Input<string>;
     /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      */
-    readonly distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
+    distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The fingerprint of the instance group manager.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * The full URL of the instance group created by the manager.
      */
-    readonly instanceGroup?: pulumi.Input<string>;
+    instanceGroup?: pulumi.Input<string>;
     /**
      * - Version name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The URL of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */
-    readonly statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
+    statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
     /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
      */
-    readonly targetPools?: pulumi.Input<pulumi.Input<string>[]>;
+    targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      */
-    readonly targetSize?: pulumi.Input<number>;
+    targetSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
-    readonly updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
+    updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
     /**
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
      */
-    readonly versions?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, the provider will
      * continue trying until it times out.
      */
-    readonly waitForInstances?: pulumi.Input<boolean>;
+    waitForInstances?: pulumi.Input<boolean>;
 }
 
 /**
@@ -372,7 +372,7 @@ export interface RegionInstanceGroupManagerArgs {
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
-    readonly autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
+    autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
     /**
      * The base instance name to use for
      * instances in this group. The value must be a valid
@@ -381,67 +381,67 @@ export interface RegionInstanceGroupManagerArgs {
      * appending a hyphen and a random four-character string to the base instance
      * name.
      */
-    readonly baseInstanceName: pulumi.Input<string>;
+    baseInstanceName: pulumi.Input<string>;
     /**
      * An optional textual description of the instance
      * group manager.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
      */
-    readonly distributionPolicyTargetShape?: pulumi.Input<string>;
+    distributionPolicyTargetShape?: pulumi.Input<string>;
     /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      */
-    readonly distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
+    distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * - Version name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */
-    readonly statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
+    statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
     /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
      */
-    readonly targetPools?: pulumi.Input<pulumi.Input<string>[]>;
+    targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      */
-    readonly targetSize?: pulumi.Input<number>;
+    targetSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
-    readonly updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
+    updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
     /**
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
      */
-    readonly versions: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
+    versions: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, the provider will
      * continue trying until it times out.
      */
-    readonly waitForInstances?: pulumi.Input<boolean>;
+    waitForInstances?: pulumi.Input<boolean>;
 }

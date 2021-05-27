@@ -293,93 +293,93 @@ export interface FunctionState {
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
-    readonly availableMemoryMb?: pulumi.Input<number>;
+    availableMemoryMb?: pulumi.Input<number>;
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    readonly buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
+    buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * Description of the function.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
-    readonly entryPoint?: pulumi.Input<string>;
+    entryPoint?: pulumi.Input<string>;
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
+    eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
-    readonly httpsTriggerUrl?: pulumi.Input<string>;
+    httpsTriggerUrl?: pulumi.Input<string>;
     /**
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
      */
-    readonly ingressSettings?: pulumi.Input<string>;
+    ingressSettings?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
-    readonly maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
-    readonly runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
-    readonly serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string>;
     /**
      * The GCS bucket containing the zip archive which contains the function.
      */
-    readonly sourceArchiveBucket?: pulumi.Input<string>;
+    sourceArchiveBucket?: pulumi.Input<string>;
     /**
      * The source archive object (file) in archive bucket.
      */
-    readonly sourceArchiveObject?: pulumi.Input<string>;
+    sourceArchiveObject?: pulumi.Input<string>;
     /**
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
-    readonly sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
+    sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
-    readonly triggerHttp?: pulumi.Input<boolean>;
+    triggerHttp?: pulumi.Input<boolean>;
     /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
-    readonly vpcConnector?: pulumi.Input<string>;
+    vpcConnector?: pulumi.Input<string>;
     /**
      * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
      */
-    readonly vpcConnectorEgressSettings?: pulumi.Input<string>;
+    vpcConnectorEgressSettings?: pulumi.Input<string>;
 }
 
 /**
@@ -389,91 +389,91 @@ export interface FunctionArgs {
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
-    readonly availableMemoryMb?: pulumi.Input<number>;
+    availableMemoryMb?: pulumi.Input<number>;
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    readonly buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
+    buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * Description of the function.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
-    readonly entryPoint?: pulumi.Input<string>;
+    entryPoint?: pulumi.Input<string>;
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
+    eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
-    readonly httpsTriggerUrl?: pulumi.Input<string>;
+    httpsTriggerUrl?: pulumi.Input<string>;
     /**
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
      */
-    readonly ingressSettings?: pulumi.Input<string>;
+    ingressSettings?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
-    readonly maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
-    readonly runtime: pulumi.Input<string>;
+    runtime: pulumi.Input<string>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
-    readonly serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string>;
     /**
      * The GCS bucket containing the zip archive which contains the function.
      */
-    readonly sourceArchiveBucket?: pulumi.Input<string>;
+    sourceArchiveBucket?: pulumi.Input<string>;
     /**
      * The source archive object (file) in archive bucket.
      */
-    readonly sourceArchiveObject?: pulumi.Input<string>;
+    sourceArchiveObject?: pulumi.Input<string>;
     /**
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
-    readonly sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
+    sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
-    readonly triggerHttp?: pulumi.Input<boolean>;
+    triggerHttp?: pulumi.Input<boolean>;
     /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
-    readonly vpcConnector?: pulumi.Input<string>;
+    vpcConnector?: pulumi.Input<string>;
     /**
      * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
      */
-    readonly vpcConnectorEgressSettings?: pulumi.Input<string>;
+    vpcConnectorEgressSettings?: pulumi.Input<string>;
 }

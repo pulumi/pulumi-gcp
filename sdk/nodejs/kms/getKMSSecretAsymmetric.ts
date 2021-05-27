@@ -27,17 +27,17 @@ export interface GetKMSSecretAsymmetricArgs {
     /**
      * The ciphertext to be decrypted, encoded in base64
      */
-    readonly ciphertext: string;
+    ciphertext: string;
     /**
      * The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
      */
-    readonly crc32?: string;
+    crc32?: string;
     /**
      * The id of the CryptoKey version that will be used to
      * decrypt the provided ciphertext. This is represented by the format
      * `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
      */
-    readonly cryptoKeyVersion: string;
+    cryptoKeyVersion: string;
 }
 
 /**

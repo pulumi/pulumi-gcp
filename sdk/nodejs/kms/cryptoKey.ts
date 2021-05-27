@@ -186,15 +186,15 @@ export interface CryptoKeyState {
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
-    readonly keyRing?: pulumi.Input<string>;
+    keyRing?: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name for the CryptoKey.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -202,30 +202,30 @@ export interface CryptoKeyState {
      * Default value is `ENCRYPT_DECRYPT`.
      * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
      * The first rotation will take place after the specified period. The rotation period has
      * the format of a decimal number with up to 9 fractional digits, followed by the
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
-    readonly rotationPeriod?: pulumi.Input<string>;
+    rotationPeriod?: pulumi.Input<string>;
     /**
      * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
      *
      * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
-    readonly skipInitialVersionCreation?: pulumi.Input<boolean>;
+    skipInitialVersionCreation?: pulumi.Input<boolean>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
-    readonly versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
+    versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
 }
 
 /**
@@ -236,15 +236,15 @@ export interface CryptoKeyArgs {
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
-    readonly keyRing: pulumi.Input<string>;
+    keyRing: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name for the CryptoKey.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -252,22 +252,22 @@ export interface CryptoKeyArgs {
      * Default value is `ENCRYPT_DECRYPT`.
      * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
      * The first rotation will take place after the specified period. The rotation period has
      * the format of a decimal number with up to 9 fractional digits, followed by the
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
-    readonly rotationPeriod?: pulumi.Input<string>;
+    rotationPeriod?: pulumi.Input<string>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
-    readonly skipInitialVersionCreation?: pulumi.Input<boolean>;
+    skipInitialVersionCreation?: pulumi.Input<boolean>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
-    readonly versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
+    versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
 }

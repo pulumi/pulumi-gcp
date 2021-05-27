@@ -181,39 +181,39 @@ export interface UserState {
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      */
-    readonly deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The host the user can connect from. This is only supported
      * for MySQL instances. Don't set this field for PostgreSQL instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    readonly instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string>;
     /**
      * The name of the user. Changing this forces a new resource
      * to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password for the user. Can be updated. For Postgres
      * instances this is a Required field.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
      * include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -225,37 +225,37 @@ export interface UserArgs {
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      */
-    readonly deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The host the user can connect from. This is only supported
      * for MySQL instances. Don't set this field for PostgreSQL instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    readonly instance: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
     /**
      * The name of the user. Changing this forces a new resource
      * to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password for the user. Can be updated. For Postgres
      * instances this is a Required field.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
      * include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

@@ -215,33 +215,33 @@ export interface ClusterState {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    readonly clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
     /**
      * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
      * terraform apply
      */
-    readonly gracefulDecommissionTimeout?: pulumi.Input<string>;
+    gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
      * which is the name of the cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the cluster, unique within the project and
      * zone.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the `cluster` will exist. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the cluster and associated nodes will be created in.
      * Defaults to `global`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -252,31 +252,31 @@ export interface ClusterArgs {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    readonly clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
     /**
      * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
      * terraform apply
      */
-    readonly gracefulDecommissionTimeout?: pulumi.Input<string>;
+    gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
      * which is the name of the cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the cluster, unique within the project and
      * zone.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the `cluster` will exist. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The region in which the cluster and associated nodes will be created in.
      * Defaults to `global`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

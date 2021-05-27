@@ -369,90 +369,90 @@ export interface InstanceState {
      * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
-    readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
+    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk?: pulumi.Input<inputs.compute.InstanceBootDisk>;
+    bootDisk?: pulumi.Input<inputs.compute.InstanceBootDisk>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
      * This defaults to false.
      */
-    readonly canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean>;
     /**
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
-    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**
      * The CPU platform used by this instance.
      */
-    readonly cpuPlatform?: pulumi.Input<string>;
+    cpuPlatform?: pulumi.Input<string>;
     /**
      * Current status of the instance.
      */
-    readonly currentStatus?: pulumi.Input<string>;
+    currentStatus?: pulumi.Input<string>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * A brief description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Desired status of the instance. Either
      * `"RUNNING"` or `"TERMINATED"`.
      */
-    readonly desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string>;
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
      * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * The server-assigned unique identifier of this instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The unique fingerprint of the labels.
      */
-    readonly labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string>;
     /**
      * A map of key/value label pairs to assign to the instance.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The machine type to create.
      */
-    readonly machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
      * Add them to your config in order to keep them attached to your instance.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The unique fingerprint of the metadata.
      */
-    readonly metadataFingerprint?: pulumi.Input<string>;
+    metadataFingerprint?: pulumi.Input<string>;
     /**
      * An alternative to using the
      * startup-script metadata key, except this one forces the instance to be
@@ -466,70 +466,70 @@ export interface InstanceState {
      * destroy/recreate operation.  You may want to modify your state file manually
      * using `pulumi stack` commands, depending on your use case.
      */
-    readonly metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string>;
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
-    readonly resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
+    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
     /**
      * The URI of the created resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**
      * A list of network tags to attach to the instance.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The unique fingerprint of the tags.
      */
-    readonly tagsFingerprint?: pulumi.Input<string>;
+    tagsFingerprint?: pulumi.Input<string>;
     /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -540,70 +540,70 @@ export interface InstanceArgs {
      * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
-    readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
+    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk: pulumi.Input<inputs.compute.InstanceBootDisk>;
+    bootDisk: pulumi.Input<inputs.compute.InstanceBootDisk>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
      * This defaults to false.
      */
-    readonly canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean>;
     /**
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
-    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * A brief description of this resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Desired status of the instance. Either
      * `"RUNNING"` or `"TERMINATED"`.
      */
-    readonly desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string>;
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
      * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * A map of key/value label pairs to assign to the instance.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The machine type to create.
      */
-    readonly machineType: pulumi.Input<string>;
+    machineType: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
      * Add them to your config in order to keep them attached to your instance.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An alternative to using the
      * startup-script metadata key, except this one forces the instance to be
@@ -617,60 +617,60 @@ export interface InstanceArgs {
      * destroy/recreate operation.  You may want to modify your state file manually
      * using `pulumi stack` commands, depending on your use case.
      */
-    readonly metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string>;
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
+    networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
-    readonly resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
+    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**
      * A list of network tags to attach to the instance.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

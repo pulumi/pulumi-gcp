@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const department1 = pulumi.output(gcp.organizations.getActiveFolder({
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> {
@@ -41,11 +41,11 @@ export interface GetActiveFolderArgs {
     /**
      * The folder's display name.
      */
-    readonly displayName: string;
+    displayName: string;
     /**
      * The resource name of the parent Folder or Organization.
      */
-    readonly parent: string;
+    parent: string;
 }
 
 /**

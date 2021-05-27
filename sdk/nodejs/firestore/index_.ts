@@ -168,11 +168,11 @@ export interface IndexState {
     /**
      * The collection being indexed.
      */
-    readonly collection?: pulumi.Input<string>;
+    collection?: pulumi.Input<string>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * The fields supported by this index. The last field entry is always for
      * the field path `__name__`. If, on creation, `__name__` was not
@@ -182,23 +182,23 @@ export interface IndexState {
      * ordered `"ASCENDING"` (unless explicitly specified otherwise).
      * Structure is documented below.
      */
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
+    fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     /**
      * A server defined name for this index. Format:
      * 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
      * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
      */
-    readonly queryScope?: pulumi.Input<string>;
+    queryScope?: pulumi.Input<string>;
 }
 
 /**
@@ -208,11 +208,11 @@ export interface IndexArgs {
     /**
      * The collection being indexed.
      */
-    readonly collection: pulumi.Input<string>;
+    collection: pulumi.Input<string>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * The fields supported by this index. The last field entry is always for
      * the field path `__name__`. If, on creation, `__name__` was not
@@ -222,16 +222,16 @@ export interface IndexArgs {
      * ordered `"ASCENDING"` (unless explicitly specified otherwise).
      * Structure is documented below.
      */
-    readonly fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
+    fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
      * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
      */
-    readonly queryScope?: pulumi.Input<string>;
+    queryScope?: pulumi.Input<string>;
 }

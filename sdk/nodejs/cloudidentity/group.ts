@@ -183,21 +183,21 @@ export interface GroupState {
     /**
      * The time when the Group was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * An extended description to help users determine the purpose of a Group.
      * Must not be longer than 4,096 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name of the Group.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * EntityKey of the Group.
      * Structure is documented below.
      */
-    readonly groupKey?: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
+    groupKey?: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
     /**
      * The initial configuration options for creating a Group.
      * See the
@@ -206,29 +206,29 @@ export interface GroupState {
      * Default value is `EMPTY`.
      * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
      */
-    readonly initialGroupConfig?: pulumi.Input<string>;
+    initialGroupConfig?: pulumi.Input<string>;
     /**
      * The labels that apply to the Group.
      * Must not contain more than one entry. Must contain the entry
      * 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
      * 'system/groups/external': '' if the Group is an external-identity-mapped group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The resource name of the entity under which this Group resides in the
      * Cloud Identity resource hierarchy.
      * Must be of the form identitysources/{identity_source_id} for external-identity-mapped
      * groups or customers/{customer_id} for Google Groups.
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * The time when the Group was last updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }
 
 /**
@@ -239,16 +239,16 @@ export interface GroupArgs {
      * An extended description to help users determine the purpose of a Group.
      * Must not be longer than 4,096 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name of the Group.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * EntityKey of the Group.
      * Structure is documented below.
      */
-    readonly groupKey: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
+    groupKey: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
     /**
      * The initial configuration options for creating a Group.
      * See the
@@ -257,19 +257,19 @@ export interface GroupArgs {
      * Default value is `EMPTY`.
      * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
      */
-    readonly initialGroupConfig?: pulumi.Input<string>;
+    initialGroupConfig?: pulumi.Input<string>;
     /**
      * The labels that apply to the Group.
      * Must not contain more than one entry. Must contain the entry
      * 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
      * 'system/groups/external': '' if the Group is an external-identity-mapped group.
      */
-    readonly labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name of the entity under which this Group resides in the
      * Cloud Identity resource hierarchy.
      * Must be of the form identitysources/{identity_source_id} for external-identity-mapped
      * groups or customers/{customer_id} for Google Groups.
      */
-    readonly parent: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
 }

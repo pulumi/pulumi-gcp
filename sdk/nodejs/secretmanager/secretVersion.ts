@@ -142,28 +142,28 @@ export interface SecretVersionState {
     /**
      * The time at which the Secret was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The time at which the Secret was destroyed. Only present if state is DESTROYED.
      */
-    readonly destroyTime?: pulumi.Input<string>;
+    destroyTime?: pulumi.Input<string>;
     /**
      * The current state of the SecretVersion.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Secret Manager secret resource
      */
-    readonly secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly secretData?: pulumi.Input<string>;
+    secretData?: pulumi.Input<string>;
 }
 
 /**
@@ -173,14 +173,14 @@ export interface SecretVersionArgs {
     /**
      * The current state of the SecretVersion.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Secret Manager secret resource
      */
-    readonly secret: pulumi.Input<string>;
+    secret: pulumi.Input<string>;
     /**
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly secretData: pulumi.Input<string>;
+    secretData: pulumi.Input<string>;
 }

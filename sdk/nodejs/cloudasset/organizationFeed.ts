@@ -172,7 +172,7 @@ export interface OrganizationFeedState {
      * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
      * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
-    readonly assetNames?: pulumi.Input<pulumi.Input<string>[]>;
+    assetNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of types of the assets to receive updates. You must specify either or both of assetNames
      * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -180,13 +180,13 @@ export interface OrganizationFeedState {
      * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
-    readonly assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project whose identity will be used when sending messages to the
      * destination pubsub topic. It also specifies the project for API
      * enablement check, quota, and billing.
      */
-    readonly billingProject?: pulumi.Input<string>;
+    billingProject?: pulumi.Input<string>;
     /**
      * A condition which determines whether an asset update should be published. If specified, an asset
      * will be returned only when the expression evaluates to true. When set, expression field
@@ -195,29 +195,29 @@ export interface OrganizationFeedState {
      * condition are optional.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.cloudasset.OrganizationFeedCondition>;
+    condition?: pulumi.Input<inputs.cloudasset.OrganizationFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
      */
-    readonly feedId?: pulumi.Input<string>;
+    feedId?: pulumi.Input<string>;
     /**
      * Output configuration for asset feed destination.
      * Structure is documented below.
      */
-    readonly feedOutputConfig?: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfig>;
+    feedOutputConfig?: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfig>;
     /**
      * The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The organization this feed should be created in.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
 }
 
 /**
@@ -230,7 +230,7 @@ export interface OrganizationFeedArgs {
      * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
      * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
-    readonly assetNames?: pulumi.Input<pulumi.Input<string>[]>;
+    assetNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of types of the assets to receive updates. You must specify either or both of assetNames
      * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -238,13 +238,13 @@ export interface OrganizationFeedArgs {
      * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
-    readonly assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project whose identity will be used when sending messages to the
      * destination pubsub topic. It also specifies the project for API
      * enablement check, quota, and billing.
      */
-    readonly billingProject: pulumi.Input<string>;
+    billingProject: pulumi.Input<string>;
     /**
      * A condition which determines whether an asset update should be published. If specified, an asset
      * will be returned only when the expression evaluates to true. When set, expression field
@@ -253,23 +253,23 @@ export interface OrganizationFeedArgs {
      * condition are optional.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.cloudasset.OrganizationFeedCondition>;
+    condition?: pulumi.Input<inputs.cloudasset.OrganizationFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
      */
-    readonly feedId: pulumi.Input<string>;
+    feedId: pulumi.Input<string>;
     /**
      * Output configuration for asset feed destination.
      * Structure is documented below.
      */
-    readonly feedOutputConfig: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfig>;
+    feedOutputConfig: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfig>;
     /**
      * The organization this feed should be created in.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
 }

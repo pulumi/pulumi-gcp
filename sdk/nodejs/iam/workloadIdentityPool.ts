@@ -171,27 +171,27 @@ export interface WorkloadIdentityPoolState {
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
      * existing tokens to access resources. If the pool is re-enabled, existing tokens grant
      * access again.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * A display name for the pool. Cannot exceed 32 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The resource name of the pool as
      * 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
      * Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
@@ -199,13 +199,13 @@ export interface WorkloadIdentityPoolState {
      * pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
      * tokens to access resources. If the pool is undeleted, existing tokens grant access again.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    readonly workloadIdentityPoolId?: pulumi.Input<string>;
+    workloadIdentityPoolId?: pulumi.Input<string>;
 }
 
 /**
@@ -215,26 +215,26 @@ export interface WorkloadIdentityPoolArgs {
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
      * existing tokens to access resources. If the pool is re-enabled, existing tokens grant
      * access again.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * A display name for the pool. Cannot exceed 32 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    readonly workloadIdentityPoolId: pulumi.Input<string>;
+    workloadIdentityPoolId: pulumi.Input<string>;
 }

@@ -44,11 +44,11 @@ export interface GetFolderArgs {
     /**
      * The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
      */
-    readonly folder: string;
+    folder: string;
     /**
      * `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
      */
-    readonly lookupOrganization?: boolean;
+    lookupOrganization?: boolean;
 }
 
 /**

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const run_service = pulumi.output(gcp.cloudrun.getService({
  *     location: "us-central1",
  *     name: "my-service",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
@@ -44,16 +44,16 @@ export interface GetServiceArgs {
     /**
      * The location of the cloud run instance. eg us-central1
      */
-    readonly location: string;
+    location: string;
     /**
      * The name of the Cloud Run Service.
      */
-    readonly name: string;
+    name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

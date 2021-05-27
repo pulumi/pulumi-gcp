@@ -174,37 +174,37 @@ export interface TenantInboundSamlConfigState {
     /**
      * Human friendly display name.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * SAML IdP configuration when the project acts as the relying party
      * Structure is documented below.
      */
-    readonly idpConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
+    idpConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
     /**
      * The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
      * hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
      * alphanumeric character, and have at least 2 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
      * and accept an authentication assertion issued by a SAML identity provider.
      * Structure is documented below.
      */
-    readonly spConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig>;
+    spConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig>;
     /**
      * The name of the tenant where this inbound SAML config resource exists
      */
-    readonly tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string>;
 }
 
 /**
@@ -214,35 +214,35 @@ export interface TenantInboundSamlConfigArgs {
     /**
      * Human friendly display name.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * SAML IdP configuration when the project acts as the relying party
      * Structure is documented below.
      */
-    readonly idpConfig: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
+    idpConfig: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
     /**
      * The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
      * hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
      * alphanumeric character, and have at least 2 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
      * and accept an authentication assertion issued by a SAML identity provider.
      * Structure is documented below.
      */
-    readonly spConfig: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig>;
+    spConfig: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig>;
     /**
      * The name of the tenant where this inbound SAML config resource exists
      */
-    readonly tenant: pulumi.Input<string>;
+    tenant: pulumi.Input<string>;
 }

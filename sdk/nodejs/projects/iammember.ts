@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *         role: "roles/compute.admin",
  *     }],
- * }, { async: true }));
+ * }));
  * const project = new gcp.projects.IAMPolicy("project", {
  *     policyData: admin.policyData,
  *     project: "your-project-id",
@@ -288,24 +288,24 @@ export interface IAMMemberState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
+    condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly member?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
@@ -316,18 +316,18 @@ export interface IAMMemberArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    readonly condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
-    readonly member: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
+    member: pulumi.Input<string>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
 }

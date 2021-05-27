@@ -165,33 +165,33 @@ export interface RecordSetState {
     /**
      * Identifies the managed zone addressed by this request.
      */
-    readonly managedZone?: pulumi.Input<string>;
+    managedZone?: pulumi.Input<string>;
     /**
      * For example, www.example.com.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
      * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
      * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
      * string (e.g. "first255characters\"\"morecharacters").
      */
-    readonly rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of seconds that this ResourceRecordSet can be cached by
      * resolvers.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * One of valid DNS resource types.
      * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -201,31 +201,31 @@ export interface RecordSetArgs {
     /**
      * Identifies the managed zone addressed by this request.
      */
-    readonly managedZone: pulumi.Input<string>;
+    managedZone: pulumi.Input<string>;
     /**
      * For example, www.example.com.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
      * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
      * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
      * string (e.g. "first255characters\"\"morecharacters").
      */
-    readonly rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of seconds that this ResourceRecordSet can be cached by
      * resolvers.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * One of valid DNS resource types.
      * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

@@ -50,15 +50,15 @@ export interface GetBucketObjectContentArgs {
     /**
      * The name of the containing bucket.
      */
-    readonly bucket: string;
+    bucket: string;
     /**
      * (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
      */
-    readonly content?: string;
+    content?: string;
     /**
      * The name of the object.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

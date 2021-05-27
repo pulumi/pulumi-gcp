@@ -51,18 +51,18 @@ export interface GetImageArgs {
     /**
      * The family name of the image.
      */
-    readonly family?: string;
-    readonly filter?: string;
+    family?: string;
+    filter?: string;
     /**
      * The name of the image.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
      * [public base image][pubimg], be sure to specify the correct Image Project.
      */
-    readonly project?: string;
+    project?: string;
 }
 
 /**

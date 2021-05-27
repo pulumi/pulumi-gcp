@@ -124,19 +124,19 @@ export interface IamAuditConfigState {
     /**
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
-    readonly auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
+    auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
      * The etag of iam policy
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization in which you want to manage the audit logging config.
      */
-    readonly orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
 }
 
 /**
@@ -146,13 +146,13 @@ export interface IamAuditConfigArgs {
     /**
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
-    readonly auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
+    auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
      * The numeric ID of the organization in which you want to manage the audit logging config.
      */
-    readonly orgId: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
     /**
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
 }
