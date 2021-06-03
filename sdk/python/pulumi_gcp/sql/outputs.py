@@ -484,6 +484,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "database_flags"
         elif key == "diskAutoresize":
             suggest = "disk_autoresize"
+        elif key == "diskAutoresizeLimit":
+            suggest = "disk_autoresize_limit"
         elif key == "diskSize":
             suggest = "disk_size"
         elif key == "diskType":
@@ -523,6 +525,7 @@ class DatabaseInstanceSettings(dict):
                  crash_safe_replication: Optional[bool] = None,
                  database_flags: Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
                  disk_autoresize: Optional[bool] = None,
+                 disk_autoresize_limit: Optional[int] = None,
                  disk_size: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  insights_config: Optional['outputs.DatabaseInstanceSettingsInsightsConfig'] = None,
@@ -577,6 +580,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "database_flags", database_flags)
         if disk_autoresize is not None:
             pulumi.set(__self__, "disk_autoresize", disk_autoresize)
+        if disk_autoresize_limit is not None:
+            pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
@@ -668,6 +673,11 @@ class DatabaseInstanceSettings(dict):
         Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
+
+    @property
+    @pulumi.getter(name="diskAutoresizeLimit")
+    def disk_autoresize_limit(self) -> Optional[int]:
+        return pulumi.get(self, "disk_autoresize_limit")
 
     @property
     @pulumi.getter(name="diskSize")
@@ -1608,6 +1618,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  crash_safe_replication: bool,
                  database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
                  disk_autoresize: bool,
+                 disk_autoresize_limit: int,
                  disk_size: int,
                  disk_type: str,
                  insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
@@ -1631,6 +1642,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param bool crash_safe_replication: (Deprecated) This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
         :param bool disk_autoresize: Configuration to increase storage size automatically.
+        :param int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased.
         :param int disk_size: The size of data disk, in GB.
         :param str disk_type: The type of data disk.
         :param str pricing_plan: Pricing plan for this instance.
@@ -1646,6 +1658,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "crash_safe_replication", crash_safe_replication)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "disk_autoresize", disk_autoresize)
+        pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "insights_configs", insights_configs)
@@ -1713,6 +1726,14 @@ class GetDatabaseInstanceSettingResult(dict):
         Configuration to increase storage size automatically.
         """
         return pulumi.get(self, "disk_autoresize")
+
+    @property
+    @pulumi.getter(name="diskAutoresizeLimit")
+    def disk_autoresize_limit(self) -> int:
+        """
+        The maximum size, in GB, to which storage capacity can be automatically increased.
+        """
+        return pulumi.get(self, "disk_autoresize_limit")
 
     @property
     @pulumi.getter(name="diskSize")

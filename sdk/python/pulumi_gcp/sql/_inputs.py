@@ -443,6 +443,7 @@ class DatabaseInstanceSettingsArgs:
                  crash_safe_replication: Optional[pulumi.Input[bool]] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
+                 disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
@@ -503,6 +504,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "database_flags", database_flags)
         if disk_autoresize is not None:
             pulumi.set(__self__, "disk_autoresize", disk_autoresize)
+        if disk_autoresize_limit is not None:
+            pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
@@ -629,6 +632,15 @@ class DatabaseInstanceSettingsArgs:
     @disk_autoresize.setter
     def disk_autoresize(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disk_autoresize", value)
+
+    @property
+    @pulumi.getter(name="diskAutoresizeLimit")
+    def disk_autoresize_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "disk_autoresize_limit")
+
+    @disk_autoresize_limit.setter
+    def disk_autoresize_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_autoresize_limit", value)
 
     @property
     @pulumi.getter(name="diskSize")

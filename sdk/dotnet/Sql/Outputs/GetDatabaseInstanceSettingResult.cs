@@ -42,6 +42,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool DiskAutoresize;
         /// <summary>
+        /// The maximum size, in GB, to which storage capacity can be automatically increased.
+        /// </summary>
+        public readonly int DiskAutoresizeLimit;
+        /// <summary>
         /// The size of data disk, in GB.
         /// </summary>
         public readonly int DiskSize;
@@ -88,6 +92,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool diskAutoresize,
 
+            int diskAutoresizeLimit,
+
             int diskSize,
 
             string diskType,
@@ -117,6 +123,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             CrashSafeReplication = crashSafeReplication;
             DatabaseFlags = databaseFlags;
             DiskAutoresize = diskAutoresize;
+            DiskAutoresizeLimit = diskAutoresizeLimit;
             DiskSize = diskSize;
             DiskType = diskType;
             InsightsConfigs = insightsConfigs;

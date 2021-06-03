@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         /// </summary>
         public readonly bool? DiskAutoresize;
+        public readonly int? DiskAutoresizeLimit;
         /// <summary>
         /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
         /// </summary>
@@ -97,6 +98,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool? diskAutoresize,
 
+            int? diskAutoresizeLimit,
+
             int? diskSize,
 
             string? diskType,
@@ -126,6 +129,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             CrashSafeReplication = crashSafeReplication;
             DatabaseFlags = databaseFlags;
             DiskAutoresize = diskAutoresize;
+            DiskAutoresizeLimit = diskAutoresizeLimit;
             DiskSize = diskSize;
             DiskType = diskType;
             InsightsConfig = insightsConfig;
