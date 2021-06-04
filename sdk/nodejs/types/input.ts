@@ -22965,6 +22965,7 @@ export namespace sql {
          * Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
          */
         diskAutoresize?: pulumi.Input<boolean>;
+        diskAutoresizeLimit?: pulumi.Input<number>;
         /**
          * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
          */

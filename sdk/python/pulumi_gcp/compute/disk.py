@@ -24,6 +24,7 @@ class DiskArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
@@ -73,6 +74,7 @@ class DiskArgs:
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -127,6 +129,8 @@ class DiskArgs:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if size is not None:
@@ -282,6 +286,18 @@ class DiskArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how many IOPS must be provisioned for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -410,6 +426,7 @@ class _DiskState:
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
@@ -467,6 +484,7 @@ class _DiskState:
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -537,6 +555,8 @@ class _DiskState:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link is not None:
@@ -748,6 +768,18 @@ class _DiskState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how many IOPS must be provisioned for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -926,6 +958,7 @@ class Disk(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
@@ -1039,6 +1072,7 @@ class Disk(pulumi.CustomResource):
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -1168,6 +1202,7 @@ class Disk(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
@@ -1196,6 +1231,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
             __props__.__dict__["project"] = project
+            __props__.__dict__["provisioned_iops"] = provisioned_iops
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot"] = snapshot
@@ -1234,6 +1270,7 @@ class Disk(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            provisioned_iops: Optional[pulumi.Input[int]] = None,
             resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
@@ -1296,6 +1333,7 @@ class Disk(pulumi.CustomResource):
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -1357,6 +1395,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
         __props__.__dict__["project"] = project
+        __props__.__dict__["provisioned_iops"] = provisioned_iops
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["size"] = size
@@ -1504,6 +1543,14 @@ class Disk(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Output[Optional[int]]:
+        """
+        Indicates how many IOPS must be provisioned for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="resourcePolicies")

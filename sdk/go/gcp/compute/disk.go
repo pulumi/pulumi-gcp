@@ -144,6 +144,8 @@ type Disk struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops pulumi.IntPtrOutput `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -286,6 +288,8 @@ type diskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -400,6 +404,8 @@ type DiskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops pulumi.IntPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -510,6 +516,8 @@ type diskArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -605,6 +613,8 @@ type DiskArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops pulumi.IntPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than

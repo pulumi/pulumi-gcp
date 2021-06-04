@@ -24714,6 +24714,7 @@ export namespace sql {
          * Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
          */
         diskAutoresize?: boolean;
+        diskAutoresizeLimit?: number;
         /**
          * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
          */
@@ -25027,6 +25028,10 @@ export namespace sql {
          * Configuration to increase storage size automatically.
          */
         diskAutoresize: boolean;
+        /**
+         * The maximum size, in GB, to which storage capacity can be automatically increased.
+         */
+        diskAutoresizeLimit: number;
         /**
          * The size of data disk, in GB.
          */

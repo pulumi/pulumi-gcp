@@ -947,7 +947,8 @@ type DatabaseInstanceSettings struct {
 	CrashSafeReplication *bool                                  `pulumi:"crashSafeReplication"`
 	DatabaseFlags        []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
 	// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
-	DiskAutoresize *bool `pulumi:"diskAutoresize"`
+	DiskAutoresize      *bool `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit *int  `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
 	DiskSize *int `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
@@ -1012,7 +1013,8 @@ type DatabaseInstanceSettingsArgs struct {
 	CrashSafeReplication pulumi.BoolPtrInput                            `pulumi:"crashSafeReplication"`
 	DatabaseFlags        DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
 	// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
-	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
+	DiskAutoresize      pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit pulumi.IntPtrInput  `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
@@ -1164,6 +1166,10 @@ func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettings
 // Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
 func (o DatabaseInstanceSettingsOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) DiskAutoresizeLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskAutoresizeLimit }).(pulumi.IntPtrOutput)
 }
 
 // The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
@@ -1326,6 +1332,15 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput
 		}
 		return v.DiskAutoresize
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresizeLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskAutoresizeLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 // The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
@@ -3604,6 +3619,8 @@ type GetDatabaseInstanceSetting struct {
 	DatabaseFlags        []GetDatabaseInstanceSettingDatabaseFlag `pulumi:"databaseFlags"`
 	// Configuration to increase storage size automatically.
 	DiskAutoresize bool `pulumi:"diskAutoresize"`
+	// The maximum size, in GB, to which storage capacity can be automatically increased.
+	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB.
 	DiskSize int `pulumi:"diskSize"`
 	// The type of data disk.
@@ -3654,6 +3671,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	DatabaseFlags        GetDatabaseInstanceSettingDatabaseFlagArrayInput `pulumi:"databaseFlags"`
 	// Configuration to increase storage size automatically.
 	DiskAutoresize pulumi.BoolInput `pulumi:"diskAutoresize"`
+	// The maximum size, in GB, to which storage capacity can be automatically increased.
+	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
 	// The type of data disk.
@@ -3764,6 +3783,11 @@ func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSet
 // Configuration to increase storage size automatically.
 func (o GetDatabaseInstanceSettingOutput) DiskAutoresize() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.DiskAutoresize }).(pulumi.BoolOutput)
+}
+
+// The maximum size, in GB, to which storage capacity can be automatically increased.
+func (o GetDatabaseInstanceSettingOutput) DiskAutoresizeLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskAutoresizeLimit }).(pulumi.IntOutput)
 }
 
 // The size of data disk, in GB.

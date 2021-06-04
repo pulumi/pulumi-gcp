@@ -71,6 +71,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
 
+        [Input("diskAutoresizeLimit")]
+        public Input<int>? DiskAutoresizeLimit { get; set; }
+
         /// <summary>
         /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
         /// </summary>

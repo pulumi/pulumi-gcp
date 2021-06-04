@@ -181,6 +181,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Indicates how many IOPS must be provisioned for the disk.
+     */
+    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -283,6 +287,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["provisionedIops"] = state ? state.provisionedIops : undefined;
             inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["size"] = state ? state.size : undefined;
@@ -305,6 +310,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshot"] = args ? args.snapshot : undefined;
@@ -415,6 +421,10 @@ export interface DiskState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Indicates how many IOPS must be provisioned for the disk.
+     */
+    provisionedIops?: pulumi.Input<number>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
@@ -564,6 +574,10 @@ export interface DiskArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Indicates how many IOPS must be provisioned for the disk.
+     */
+    provisionedIops?: pulumi.Input<number>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the

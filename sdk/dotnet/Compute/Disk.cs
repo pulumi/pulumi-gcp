@@ -195,6 +195,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates how many IOPS must be provisioned for the disk.
+        /// </summary>
+        [Output("provisionedIops")]
+        public Output<int?> ProvisionedIops { get; private set; } = null!;
+
+        /// <summary>
         /// Resource policies applied to this disk for automatic snapshot creations.
         /// ~&gt;**NOTE** This value does not support updating the
         /// resource policy, as resource policies can not be updated more than
@@ -429,6 +435,12 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Indicates how many IOPS must be provisioned for the disk.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
 
@@ -626,6 +638,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Indicates how many IOPS must be provisioned for the disk.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
 
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
