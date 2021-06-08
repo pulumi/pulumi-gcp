@@ -131,6 +131,8 @@ type InstanceFromTemplate struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceFromTemplateReservationAffinityOutput `pulumi:"reservationAffinity"`
 	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
 	// instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringOutput `pulumi:"resourcePolicies"`
@@ -242,6 +244,8 @@ type instanceFromTemplateState struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity *InstanceFromTemplateReservationAffinity `pulumi:"reservationAffinity"`
 	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
 	// instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
@@ -322,6 +326,8 @@ type InstanceFromTemplateState struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceFromTemplateReservationAffinityPtrInput
 	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
 	// instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
@@ -396,6 +402,8 @@ type instanceFromTemplateArgs struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity *InstanceFromTemplateReservationAffinity `pulumi:"reservationAffinity"`
 	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
 	// instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
@@ -463,6 +471,8 @@ type InstanceFromTemplateArgs struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceFromTemplateReservationAffinityPtrInput
 	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
 	// instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput

@@ -108,6 +108,8 @@ type InstanceGroupManager struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
+	// The status of this managed instance group.
+	Statuses InstanceGroupManagerStatusArrayOutput `pulumi:"statuses"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -124,6 +126,11 @@ type InstanceGroupManager struct {
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrOutput `pulumi:"waitForInstances"`
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus pulumi.StringPtrOutput `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -194,6 +201,8 @@ type instanceGroupManagerState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks []InstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
+	// The status of this managed instance group.
+	Statuses []InstanceGroupManagerStatus `pulumi:"statuses"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -210,6 +219,11 @@ type instanceGroupManagerState struct {
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
 	Zone *string `pulumi:"zone"`
@@ -246,6 +260,8 @@ type InstanceGroupManagerState struct {
 	SelfLink pulumi.StringPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayInput
+	// The status of this managed instance group.
+	Statuses InstanceGroupManagerStatusArrayInput
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -262,6 +278,11 @@ type InstanceGroupManagerState struct {
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus pulumi.StringPtrInput
 	// The zone that instances in this group should be created
 	// in.
 	Zone pulumi.StringPtrInput
@@ -311,6 +332,11 @@ type instanceGroupManagerArgs struct {
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
 	Zone *string `pulumi:"zone"`
@@ -357,6 +383,11 @@ type InstanceGroupManagerArgs struct {
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus pulumi.StringPtrInput
 	// The zone that instances in this group should be created
 	// in.
 	Zone pulumi.StringPtrInput

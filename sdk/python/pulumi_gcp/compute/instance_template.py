@@ -32,6 +32,7 @@ class InstanceTemplateArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
                  scheduling: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']] = None,
                  service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
@@ -76,6 +77,7 @@ class InstanceTemplateArgs:
                region where that resource resides. For example, a custom `subnetwork`
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
+        :param pulumi.Input['InstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input['InstanceTemplateServiceAccountArgs'] service_account: Service account to attach to the instance. Structure is documented below.
@@ -115,6 +117,8 @@ class InstanceTemplateArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
         if service_account is not None:
@@ -350,6 +354,18 @@ class InstanceTemplateArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]:
+        """
+        Specifies the reservations that this instance can consume from.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
+    @property
     @pulumi.getter
     def scheduling(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]:
         """
@@ -421,6 +437,7 @@ class _InstanceTemplateState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
                  scheduling: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
@@ -468,6 +485,7 @@ class _InstanceTemplateState:
                region where that resource resides. For example, a custom `subnetwork`
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
+        :param pulumi.Input['InstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -513,6 +531,8 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
         if self_link is not None:
@@ -764,6 +784,18 @@ class _InstanceTemplateState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]:
+        """
+        Specifies the reservations that this instance can consume from.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
+    @property
     @pulumi.getter
     def scheduling(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]:
         """
@@ -860,6 +892,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']]] = None,
@@ -1044,6 +1077,7 @@ class InstanceTemplate(pulumi.CustomResource):
                region where that resource resides. For example, a custom `subnetwork`
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']] service_account: Service account to attach to the instance. Structure is documented below.
@@ -1228,6 +1262,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']]] = None,
@@ -1265,6 +1300,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
@@ -1300,6 +1336,7 @@ class InstanceTemplate(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
@@ -1352,6 +1389,7 @@ class InstanceTemplate(pulumi.CustomResource):
                region where that resource resides. For example, a custom `subnetwork`
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1383,6 +1421,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["service_account"] = service_account
@@ -1555,6 +1594,14 @@ class InstanceTemplate(pulumi.CustomResource):
         Provider if no value is given.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Output[Optional['outputs.InstanceTemplateReservationAffinity']]:
+        """
+        Specifies the reservations that this instance can consume from.
+        """
+        return pulumi.get(self, "reservation_affinity")
 
     @property
     @pulumi.getter

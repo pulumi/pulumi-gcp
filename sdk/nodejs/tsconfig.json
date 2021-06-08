@@ -331,6 +331,7 @@
         "deploymentmanager/index.ts",
         "diagflow/agent.ts",
         "diagflow/entityType.ts",
+        "diagflow/fulfillment.ts",
         "diagflow/index.ts",
         "diagflow/intent.ts",
         "dns/getKeys.ts",

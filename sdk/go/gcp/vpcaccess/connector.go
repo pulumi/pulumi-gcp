@@ -111,7 +111,7 @@ type Connector struct {
 	MachineType pulumi.StringPtrOutput `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
 	MaxInstances pulumi.IntOutput `pulumi:"maxInstances"`
-	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
 	MaxThroughput pulumi.IntPtrOutput `pulumi:"maxThroughput"`
 	// Minimum value of instances in autoscaling group underlying the connector.
 	MinInstances pulumi.IntOutput `pulumi:"minInstances"`
@@ -169,7 +169,7 @@ type connectorState struct {
 	MachineType *string `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
 	MaxInstances *int `pulumi:"maxInstances"`
-	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
 	MaxThroughput *int `pulumi:"maxThroughput"`
 	// Minimum value of instances in autoscaling group underlying the connector.
 	MinInstances *int `pulumi:"minInstances"`
@@ -199,7 +199,7 @@ type ConnectorState struct {
 	MachineType pulumi.StringPtrInput
 	// Maximum value of instances in autoscaling group underlying the connector.
 	MaxInstances pulumi.IntPtrInput
-	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
 	MaxThroughput pulumi.IntPtrInput
 	// Minimum value of instances in autoscaling group underlying the connector.
 	MinInstances pulumi.IntPtrInput
@@ -233,7 +233,7 @@ type connectorArgs struct {
 	MachineType *string `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
 	MaxInstances *int `pulumi:"maxInstances"`
-	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
 	MaxThroughput *int `pulumi:"maxThroughput"`
 	// Minimum value of instances in autoscaling group underlying the connector.
 	MinInstances *int `pulumi:"minInstances"`
@@ -260,7 +260,7 @@ type ConnectorArgs struct {
 	MachineType pulumi.StringPtrInput
 	// Maximum value of instances in autoscaling group underlying the connector.
 	MaxInstances pulumi.IntPtrInput
-	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
 	MaxThroughput pulumi.IntPtrInput
 	// Minimum value of instances in autoscaling group underlying the connector.
 	MinInstances pulumi.IntPtrInput

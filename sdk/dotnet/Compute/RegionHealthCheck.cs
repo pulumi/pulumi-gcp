@@ -455,7 +455,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionHealthCheckHttpsHealthCheck?> HttpsHealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// Configure logging on this health check.  Structure is documented below.
+        /// Configure logging on this health check.
+        /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.RegionHealthCheckLogConfig?> LogConfig { get; private set; } = null!;
@@ -623,7 +624,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionHealthCheckHttpsHealthCheckArgs>? HttpsHealthCheck { get; set; }
 
         /// <summary>
-        /// Configure logging on this health check.  Structure is documented below.
+        /// Configure logging on this health check.
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RegionHealthCheckLogConfigArgs>? LogConfig { get; set; }
@@ -746,7 +748,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionHealthCheckHttpsHealthCheckGetArgs>? HttpsHealthCheck { get; set; }
 
         /// <summary>
-        /// Configure logging on this health check.  Structure is documented below.
+        /// Configure logging on this health check.
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RegionHealthCheckLogConfigGetArgs>? LogConfig { get; set; }

@@ -440,7 +440,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> NodeVersion { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        /// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.ClusterNotificationConfig> NotificationConfig { get; private set; } = null!;
@@ -449,8 +449,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Operation { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v3.69.0
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -924,14 +923,13 @@ namespace Pulumi.Gcp.Container
         public Input<string>? NodeVersion { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        /// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.ClusterNotificationConfigArgs>? NotificationConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v3.69.0
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1382,7 +1380,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? NodeVersion { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        /// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.ClusterNotificationConfigGetArgs>? NotificationConfig { get; set; }
@@ -1391,8 +1389,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Operation { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v3.69.0
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>

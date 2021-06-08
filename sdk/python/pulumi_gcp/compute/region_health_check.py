@@ -46,7 +46,8 @@ class RegionHealthCheckArgs:
                Structure is documented below.
         :param pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckLogConfigArgs'] log_config: Configure logging on this health check.  Structure is documented below.
+        :param pulumi.Input['RegionHealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -194,7 +195,8 @@ class RegionHealthCheckArgs:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Optional[pulumi.Input['RegionHealthCheckLogConfigArgs']]:
         """
-        Configure logging on this health check.  Structure is documented below.
+        Configure logging on this health check.
+        Structure is documented below.
         """
         return pulumi.get(self, "log_config")
 
@@ -338,7 +340,8 @@ class _RegionHealthCheckState:
                Structure is documented below.
         :param pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckLogConfigArgs'] log_config: Configure logging on this health check.  Structure is documented below.
+        :param pulumi.Input['RegionHealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -506,7 +509,8 @@ class _RegionHealthCheckState:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Optional[pulumi.Input['RegionHealthCheckLogConfigArgs']]:
         """
-        Configure logging on this health check.  Structure is documented below.
+        Configure logging on this health check.
+        Structure is documented below.
         """
         return pulumi.get(self, "log_config")
 
@@ -927,7 +931,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckHttpsHealthCheckArgs']] https_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionHealthCheckLogConfigArgs']] log_config: Configure logging on this health check.  Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['RegionHealthCheckLogConfigArgs']] log_config: Configure logging on this health check.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -1319,7 +1324,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckHttpsHealthCheckArgs']] https_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionHealthCheckLogConfigArgs']] log_config: Configure logging on this health check.  Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['RegionHealthCheckLogConfigArgs']] log_config: Configure logging on this health check.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -1442,7 +1448,8 @@ class RegionHealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="logConfig")
     def log_config(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckLogConfig']]:
         """
-        Configure logging on this health check.  Structure is documented below.
+        Configure logging on this health check.
+        Structure is documented below.
         """
         return pulumi.get(self, "log_config")
 

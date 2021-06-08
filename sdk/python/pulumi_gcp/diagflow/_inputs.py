@@ -10,6 +10,8 @@ from .. import _utilities
 
 __all__ = [
     'EntityTypeEntityArgs',
+    'FulfillmentFeatureArgs',
+    'FulfillmentGenericWebServiceArgs',
     'IntentFollowupIntentInfoArgs',
 ]
 
@@ -64,6 +66,102 @@ class EntityTypeEntityArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class FulfillmentFeatureArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] type: The type of the feature that enabled for fulfillment.
+               * SMALLTALK: Fulfillment is enabled for SmallTalk.
+               Possible values are `SMALLTALK`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the feature that enabled for fulfillment.
+        * SMALLTALK: Fulfillment is enabled for SmallTalk.
+        Possible values are `SMALLTALK`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class FulfillmentGenericWebServiceArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 password: Optional[pulumi.Input[str]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: The fulfillment URI for receiving POST requests. It must use https protocol.
+        :param pulumi.Input[str] password: The password for HTTP Basic authentication.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_headers: The HTTP request headers to send together with fulfillment requests.
+        :param pulumi.Input[str] username: The user name for HTTP Basic authentication.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The fulfillment URI for receiving POST requests. It must use https protocol.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The HTTP request headers to send together with fulfillment requests.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @request_headers.setter
+    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "request_headers", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user name for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type

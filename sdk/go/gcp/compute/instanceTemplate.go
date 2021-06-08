@@ -284,6 +284,8 @@ type InstanceTemplate struct {
 	// resource is tied to a specific region. Defaults to the region of the
 	// Provider if no value is given.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceTemplateReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling InstanceTemplateSchedulingOutput `pulumi:"scheduling"`
@@ -392,6 +394,8 @@ type instanceTemplateState struct {
 	// resource is tied to a specific region. Defaults to the region of the
 	// Provider if no value is given.
 	Region *string `pulumi:"region"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling *InstanceTemplateScheduling `pulumi:"scheduling"`
@@ -466,6 +470,8 @@ type InstanceTemplateState struct {
 	// resource is tied to a specific region. Defaults to the region of the
 	// Provider if no value is given.
 	Region pulumi.StringPtrInput
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling InstanceTemplateSchedulingPtrInput
@@ -542,6 +548,8 @@ type instanceTemplateArgs struct {
 	// resource is tied to a specific region. Defaults to the region of the
 	// Provider if no value is given.
 	Region *string `pulumi:"region"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling *InstanceTemplateScheduling `pulumi:"scheduling"`
@@ -611,6 +619,8 @@ type InstanceTemplateArgs struct {
 	// resource is tied to a specific region. Defaults to the region of the
 	// Provider if no value is given.
 	Region pulumi.StringPtrInput
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling InstanceTemplateSchedulingPtrInput

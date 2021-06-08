@@ -78,6 +78,8 @@ __all__ = [
     'InstanceFromMachineImageNetworkInterfaceArgs',
     'InstanceFromMachineImageNetworkInterfaceAccessConfigArgs',
     'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromMachineImageReservationAffinityArgs',
+    'InstanceFromMachineImageReservationAffinitySpecificReservationArgs',
     'InstanceFromMachineImageSchedulingArgs',
     'InstanceFromMachineImageSchedulingNodeAffinityArgs',
     'InstanceFromMachineImageScratchDiskArgs',
@@ -91,6 +93,8 @@ __all__ = [
     'InstanceFromTemplateNetworkInterfaceArgs',
     'InstanceFromTemplateNetworkInterfaceAccessConfigArgs',
     'InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromTemplateReservationAffinityArgs',
+    'InstanceFromTemplateReservationAffinitySpecificReservationArgs',
     'InstanceFromTemplateSchedulingArgs',
     'InstanceFromTemplateSchedulingNodeAffinityArgs',
     'InstanceFromTemplateScratchDiskArgs',
@@ -99,6 +103,10 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPoliciesArgs',
     'InstanceGroupManagerNamedPortArgs',
     'InstanceGroupManagerStatefulDiskArgs',
+    'InstanceGroupManagerStatusArgs',
+    'InstanceGroupManagerStatusStatefulArgs',
+    'InstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
+    'InstanceGroupManagerStatusVersionTargetArgs',
     'InstanceGroupManagerUpdatePolicyArgs',
     'InstanceGroupManagerVersionArgs',
     'InstanceGroupManagerVersionTargetSizeArgs',
@@ -109,6 +117,8 @@ __all__ = [
     'InstanceNetworkInterfaceArgs',
     'InstanceNetworkInterfaceAccessConfigArgs',
     'InstanceNetworkInterfaceAliasIpRangeArgs',
+    'InstanceReservationAffinityArgs',
+    'InstanceReservationAffinitySpecificReservationArgs',
     'InstanceSchedulingArgs',
     'InstanceSchedulingNodeAffinityArgs',
     'InstanceScratchDiskArgs',
@@ -121,6 +131,8 @@ __all__ = [
     'InstanceTemplateNetworkInterfaceArgs',
     'InstanceTemplateNetworkInterfaceAccessConfigArgs',
     'InstanceTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceTemplateReservationAffinityArgs',
+    'InstanceTemplateReservationAffinitySpecificReservationArgs',
     'InstanceTemplateSchedulingArgs',
     'InstanceTemplateSchedulingNodeAffinityArgs',
     'InstanceTemplateServiceAccountArgs',
@@ -183,6 +195,10 @@ __all__ = [
     'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
     'RegionInstanceGroupManagerNamedPortArgs',
     'RegionInstanceGroupManagerStatefulDiskArgs',
+    'RegionInstanceGroupManagerStatusArgs',
+    'RegionInstanceGroupManagerStatusStatefulArgs',
+    'RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
+    'RegionInstanceGroupManagerStatusVersionTargetArgs',
     'RegionInstanceGroupManagerUpdatePolicyArgs',
     'RegionInstanceGroupManagerVersionArgs',
     'RegionInstanceGroupManagerVersionTargetSizeArgs',
@@ -6047,6 +6063,61 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
+class InstanceFromMachineImageReservationAffinityArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 specific_reservation: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']] = None):
+        pulumi.set(__self__, "type", type)
+        if specific_reservation is not None:
+            pulumi.set(__self__, "specific_reservation", specific_reservation)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']]:
+        return pulumi.get(self, "specific_reservation")
+
+    @specific_reservation.setter
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']]):
+        pulumi.set(self, "specific_reservation", value)
+
+
+@pulumi.input_type
+class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
 class InstanceFromMachineImageSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
@@ -6686,6 +6757,61 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
+class InstanceFromTemplateReservationAffinityArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 specific_reservation: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']] = None):
+        pulumi.set(__self__, "type", type)
+        if specific_reservation is not None:
+            pulumi.set(__self__, "specific_reservation", specific_reservation)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']]:
+        return pulumi.get(self, "specific_reservation")
+
+    @specific_reservation.setter
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']]):
+        pulumi.set(self, "specific_reservation", value)
+
+
+@pulumi.input_type
+class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
 class InstanceFromTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
@@ -6987,6 +7113,140 @@ class InstanceGroupManagerStatefulDiskArgs:
     @delete_rule.setter
     def delete_rule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_rule", value)
+
+
+@pulumi.input_type
+class InstanceGroupManagerStatusArgs:
+    def __init__(__self__, *,
+                 is_stable: Optional[pulumi.Input[bool]] = None,
+                 statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]] = None,
+                 version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]] statefuls: Stateful status of the given Instance Group Manager.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+        if is_stable is not None:
+            pulumi.set(__self__, "is_stable", is_stable)
+        if statefuls is not None:
+            pulumi.set(__self__, "statefuls", statefuls)
+        if version_targets is not None:
+            pulumi.set(__self__, "version_targets", version_targets)
+
+    @property
+    @pulumi.getter(name="isStable")
+    def is_stable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        """
+        return pulumi.get(self, "is_stable")
+
+    @is_stable.setter
+    def is_stable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_stable", value)
+
+    @property
+    @pulumi.getter
+    def statefuls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]]:
+        """
+        Stateful status of the given Instance Group Manager.
+        """
+        return pulumi.get(self, "statefuls")
+
+    @statefuls.setter
+    def statefuls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]]):
+        pulumi.set(self, "statefuls", value)
+
+    @property
+    @pulumi.getter(name="versionTargets")
+    def version_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]]:
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+        return pulumi.get(self, "version_targets")
+
+    @version_targets.setter
+    def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]]):
+        pulumi.set(self, "version_targets", value)
+
+
+@pulumi.input_type
+class InstanceGroupManagerStatusStatefulArgs:
+    def __init__(__self__, *,
+                 has_stateful_config: Optional[pulumi.Input[bool]] = None,
+                 per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instance.
+        """
+        if has_stateful_config is not None:
+            pulumi.set(__self__, "has_stateful_config", has_stateful_config)
+        if per_instance_configs is not None:
+            pulumi.set(__self__, "per_instance_configs", per_instance_configs)
+
+    @property
+    @pulumi.getter(name="hasStatefulConfig")
+    def has_stateful_config(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        """
+        return pulumi.get(self, "has_stateful_config")
+
+    @has_stateful_config.setter
+    def has_stateful_config(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "has_stateful_config", value)
+
+    @property
+    @pulumi.getter(name="perInstanceConfigs")
+    def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]:
+        """
+        Status of per-instance configs on the instance.
+        """
+        return pulumi.get(self, "per_instance_configs")
+
+    @per_instance_configs.setter
+    def per_instance_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]):
+        pulumi.set(self, "per_instance_configs", value)
+
+
+@pulumi.input_type
+class InstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
+    def __init__(__self__, *,
+                 all_effective: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] all_effective: A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+        """
+        if all_effective is not None:
+            pulumi.set(__self__, "all_effective", all_effective)
+
+    @property
+    @pulumi.getter(name="allEffective")
+    def all_effective(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+        """
+        return pulumi.get(self, "all_effective")
+
+    @all_effective.setter
+    def all_effective(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "all_effective", value)
+
+
+@pulumi.input_type
+class InstanceGroupManagerStatusVersionTargetArgs:
+    def __init__(__self__, *,
+                 is_reached: Optional[pulumi.Input[bool]] = None):
+        if is_reached is not None:
+            pulumi.set(__self__, "is_reached", is_reached)
+
+    @property
+    @pulumi.getter(name="isReached")
+    def is_reached(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_reached")
+
+    @is_reached.setter
+    def is_reached(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_reached", value)
 
 
 @pulumi.input_type
@@ -7681,6 +7941,77 @@ class InstanceNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceReservationAffinityArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 specific_reservation: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']] = None):
+        """
+        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "type", type)
+        if specific_reservation is not None:
+            pulumi.set(__self__, "specific_reservation", specific_reservation)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']]:
+        return pulumi.get(self, "specific_reservation")
+
+    @specific_reservation.setter
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']]):
+        pulumi.set(self, "specific_reservation", value)
+
+
+@pulumi.input_type
+class InstanceReservationAffinitySpecificReservationArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] key: The key for the node affinity label.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values for the node affinity label.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The key for the node affinity label.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The values for the node affinity label.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
@@ -8593,6 +8924,73 @@ class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceTemplateReservationAffinityArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 specific_reservation: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']] = None):
+        """
+        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "type", type)
+        if specific_reservation is not None:
+            pulumi.set(__self__, "specific_reservation", specific_reservation)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']]:
+        return pulumi.get(self, "specific_reservation")
+
+    @specific_reservation.setter
+    def specific_reservation(self, value: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']]):
+        pulumi.set(self, "specific_reservation", value)
+
+
+@pulumi.input_type
+class InstanceTemplateReservationAffinitySpecificReservationArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] key: The key for the node affinity label.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The key for the node affinity label.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
@@ -13201,6 +13599,140 @@ class RegionInstanceGroupManagerStatefulDiskArgs:
     @delete_rule.setter
     def delete_rule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_rule", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerStatusArgs:
+    def __init__(__self__, *,
+                 is_stable: Optional[pulumi.Input[bool]] = None,
+                 statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]] = None,
+                 version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]] statefuls: Stateful status of the given Instance Group Manager.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+        if is_stable is not None:
+            pulumi.set(__self__, "is_stable", is_stable)
+        if statefuls is not None:
+            pulumi.set(__self__, "statefuls", statefuls)
+        if version_targets is not None:
+            pulumi.set(__self__, "version_targets", version_targets)
+
+    @property
+    @pulumi.getter(name="isStable")
+    def is_stable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        """
+        return pulumi.get(self, "is_stable")
+
+    @is_stable.setter
+    def is_stable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_stable", value)
+
+    @property
+    @pulumi.getter
+    def statefuls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]]:
+        """
+        Stateful status of the given Instance Group Manager.
+        """
+        return pulumi.get(self, "statefuls")
+
+    @statefuls.setter
+    def statefuls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]]):
+        pulumi.set(self, "statefuls", value)
+
+    @property
+    @pulumi.getter(name="versionTargets")
+    def version_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]]:
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+        return pulumi.get(self, "version_targets")
+
+    @version_targets.setter
+    def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]]):
+        pulumi.set(self, "version_targets", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerStatusStatefulArgs:
+    def __init__(__self__, *,
+                 has_stateful_config: Optional[pulumi.Input[bool]] = None,
+                 per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instance.
+        """
+        if has_stateful_config is not None:
+            pulumi.set(__self__, "has_stateful_config", has_stateful_config)
+        if per_instance_configs is not None:
+            pulumi.set(__self__, "per_instance_configs", per_instance_configs)
+
+    @property
+    @pulumi.getter(name="hasStatefulConfig")
+    def has_stateful_config(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        """
+        return pulumi.get(self, "has_stateful_config")
+
+    @has_stateful_config.setter
+    def has_stateful_config(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "has_stateful_config", value)
+
+    @property
+    @pulumi.getter(name="perInstanceConfigs")
+    def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]:
+        """
+        Status of per-instance configs on the instance.
+        """
+        return pulumi.get(self, "per_instance_configs")
+
+    @per_instance_configs.setter
+    def per_instance_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]):
+        pulumi.set(self, "per_instance_configs", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
+    def __init__(__self__, *,
+                 all_effective: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] all_effective: A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+        """
+        if all_effective is not None:
+            pulumi.set(__self__, "all_effective", all_effective)
+
+    @property
+    @pulumi.getter(name="allEffective")
+    def all_effective(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+        """
+        return pulumi.get(self, "all_effective")
+
+    @all_effective.setter
+    def all_effective(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "all_effective", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerStatusVersionTargetArgs:
+    def __init__(__self__, *,
+                 is_reached: Optional[pulumi.Input[bool]] = None):
+        if is_reached is not None:
+            pulumi.set(__self__, "is_reached", is_reached)
+
+    @property
+    @pulumi.getter(name="isReached")
+    def is_reached(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_reached")
+
+    @is_reached.setter
+    def is_reached(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_reached", value)
 
 
 @pulumi.input_type

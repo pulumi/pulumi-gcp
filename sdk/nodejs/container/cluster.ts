@@ -391,13 +391,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeVersion!: pulumi.Output<string>;
     /**
-     * ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+     * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.container.ClusterNotificationConfig>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
-     * ) Configuration for the
-     * >>>>>>> v3.69.0
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -872,13 +871,12 @@ export interface ClusterState {
      */
     nodeVersion?: pulumi.Input<string>;
     /**
-     * ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+     * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     operation?: pulumi.Input<string>;
     /**
-     * ) Configuration for the
-     * >>>>>>> v3.69.0
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1200,12 +1198,11 @@ export interface ClusterArgs {
      */
     nodeVersion?: pulumi.Input<string>;
     /**
-     * ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+     * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     /**
-     * ) Configuration for the
-     * >>>>>>> v3.69.0
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */

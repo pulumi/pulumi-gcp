@@ -7690,6 +7690,16 @@ export namespace compute {
         subnetworkRangeName?: pulumi.Input<string>;
     }
 
+    export interface InstanceFromMachineImageReservationAffinity {
+        specificReservation?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinitySpecificReservation>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageReservationAffinitySpecificReservation {
+        key: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface InstanceFromMachineImageScheduling {
         automaticRestart?: pulumi.Input<boolean>;
         minNodeCpus?: pulumi.Input<number>;
@@ -7781,6 +7791,16 @@ export namespace compute {
         subnetworkRangeName?: pulumi.Input<string>;
     }
 
+    export interface InstanceFromTemplateReservationAffinity {
+        specificReservation?: pulumi.Input<inputs.compute.InstanceFromTemplateReservationAffinitySpecificReservation>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateReservationAffinitySpecificReservation {
+        key: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface InstanceFromTemplateScheduling {
         automaticRestart?: pulumi.Input<boolean>;
         minNodeCpus?: pulumi.Input<number>;
@@ -7843,6 +7863,43 @@ export namespace compute {
          * , The device name of the disk to be attached.
          */
         deviceName: pulumi.Input<string>;
+    }
+
+    export interface InstanceGroupManagerStatus {
+        /**
+         * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+         */
+        isStable?: pulumi.Input<boolean>;
+        /**
+         * Stateful status of the given Instance Group Manager.
+         */
+        statefuls?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusStateful>[]>;
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
+        versionTargets?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusVersionTarget>[]>;
+    }
+
+    export interface InstanceGroupManagerStatusStateful {
+        /**
+         * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+         */
+        hasStatefulConfig?: pulumi.Input<boolean>;
+        /**
+         * Status of per-instance configs on the instance.
+         */
+        perInstanceConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusStatefulPerInstanceConfig>[]>;
+    }
+
+    export interface InstanceGroupManagerStatusStatefulPerInstanceConfig {
+        /**
+         * A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+         */
+        allEffective?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceGroupManagerStatusVersionTarget {
+        isReached?: pulumi.Input<boolean>;
     }
 
     export interface InstanceGroupManagerUpdatePolicy {
@@ -8047,6 +8104,25 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceReservationAffinity {
+        specificReservation?: pulumi.Input<inputs.compute.InstanceReservationAffinitySpecificReservation>;
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface InstanceReservationAffinitySpecificReservation {
+        /**
+         * The key for the node affinity label.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The values for the node affinity label.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface InstanceScheduling {
@@ -8320,6 +8396,22 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceTemplateReservationAffinity {
+        specificReservation?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinitySpecificReservation>;
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface InstanceTemplateReservationAffinitySpecificReservation {
+        /**
+         * The key for the node affinity label.
+         */
+        key: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface InstanceTemplateScheduling {
@@ -9765,6 +9857,43 @@ export namespace compute {
          * , The device name of the disk to be attached.
          */
         deviceName: pulumi.Input<string>;
+    }
+
+    export interface RegionInstanceGroupManagerStatus {
+        /**
+         * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+         */
+        isStable?: pulumi.Input<boolean>;
+        /**
+         * Stateful status of the given Instance Group Manager.
+         */
+        statefuls?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusStateful>[]>;
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
+        versionTargets?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusVersionTarget>[]>;
+    }
+
+    export interface RegionInstanceGroupManagerStatusStateful {
+        /**
+         * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+         */
+        hasStatefulConfig?: pulumi.Input<boolean>;
+        /**
+         * Status of per-instance configs on the instance.
+         */
+        perInstanceConfigs?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusStatefulPerInstanceConfig>[]>;
+    }
+
+    export interface RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+        /**
+         * A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+         */
+        allEffective?: pulumi.Input<boolean>;
+    }
+
+    export interface RegionInstanceGroupManagerStatusVersionTarget {
+        isReached?: pulumi.Input<boolean>;
     }
 
     export interface RegionInstanceGroupManagerUpdatePolicy {
@@ -18046,6 +18175,34 @@ export namespace diagflow {
          * * A string that can contain references to other entity types (with or without aliases).
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface FulfillmentFeature {
+        /**
+         * The type of the feature that enabled for fulfillment.
+         * * SMALLTALK: Fulfillment is enabled for SmallTalk.
+         * Possible values are `SMALLTALK`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface FulfillmentGenericWebService {
+        /**
+         * The password for HTTP Basic authentication.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * The HTTP request headers to send together with fulfillment requests.
+         */
+        requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The fulfillment URI for receiving POST requests. It must use https protocol.
+         */
+        uri: pulumi.Input<string>;
+        /**
+         * The user name for HTTP Basic authentication.
+         */
+        username?: pulumi.Input<string>;
     }
 
     export interface IntentFollowupIntentInfo {

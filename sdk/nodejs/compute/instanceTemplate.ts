@@ -309,6 +309,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Specifies the reservations that this instance can consume from.
+     */
+    public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceTemplateReservationAffinity | undefined>;
+    /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
@@ -366,6 +370,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             inputs["scheduling"] = state ? state.scheduling : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
@@ -397,6 +402,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
@@ -509,6 +515,10 @@ export interface InstanceTemplateState {
      * Provider if no value is given.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Specifies the reservations that this instance can consume from.
+     */
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
@@ -630,6 +640,10 @@ export interface InstanceTemplateArgs {
      * Provider if no value is given.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Specifies the reservations that this instance can consume from.
+     */
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.

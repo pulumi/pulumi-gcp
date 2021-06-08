@@ -7821,6 +7821,19 @@ export namespace compute {
         subnetworkRangeName: string;
     }
 
+    export interface GetInstanceReservationAffinity {
+        specificReservations: outputs.compute.GetInstanceReservationAffinitySpecificReservation[];
+        /**
+         * The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface GetInstanceReservationAffinitySpecificReservation {
+        key: string;
+        values: string[];
+    }
+
     export interface GetInstanceScheduling {
         /**
          * Specifies if the instance should be
@@ -8045,6 +8058,22 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName: string;
+    }
+
+    export interface GetInstanceTemplateReservationAffinity {
+        specificReservations: outputs.compute.GetInstanceTemplateReservationAffinitySpecificReservation[];
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface GetInstanceTemplateReservationAffinitySpecificReservation {
+        /**
+         * The key for the node affinity label.
+         */
+        key: string;
+        values: string[];
     }
 
     export interface GetInstanceTemplateScheduling {
@@ -8801,6 +8830,16 @@ export namespace compute {
         subnetworkRangeName: string;
     }
 
+    export interface InstanceFromMachineImageReservationAffinity {
+        specificReservation: outputs.compute.InstanceFromMachineImageReservationAffinitySpecificReservation;
+        type: string;
+    }
+
+    export interface InstanceFromMachineImageReservationAffinitySpecificReservation {
+        key: string;
+        values: string[];
+    }
+
     export interface InstanceFromMachineImageScheduling {
         automaticRestart: boolean;
         minNodeCpus: number;
@@ -8892,6 +8931,16 @@ export namespace compute {
         subnetworkRangeName: string;
     }
 
+    export interface InstanceFromTemplateReservationAffinity {
+        specificReservation: outputs.compute.InstanceFromTemplateReservationAffinitySpecificReservation;
+        type: string;
+    }
+
+    export interface InstanceFromTemplateReservationAffinitySpecificReservation {
+        key: string;
+        values: string[];
+    }
+
     export interface InstanceFromTemplateScheduling {
         automaticRestart: boolean;
         minNodeCpus: number;
@@ -8954,6 +9003,43 @@ export namespace compute {
          * , The device name of the disk to be attached.
          */
         deviceName: string;
+    }
+
+    export interface InstanceGroupManagerStatus {
+        /**
+         * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+         */
+        isStable: boolean;
+        /**
+         * Stateful status of the given Instance Group Manager.
+         */
+        statefuls: outputs.compute.InstanceGroupManagerStatusStateful[];
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
+        versionTargets: outputs.compute.InstanceGroupManagerStatusVersionTarget[];
+    }
+
+    export interface InstanceGroupManagerStatusStateful {
+        /**
+         * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+         */
+        hasStatefulConfig: boolean;
+        /**
+         * Status of per-instance configs on the instance.
+         */
+        perInstanceConfigs: outputs.compute.InstanceGroupManagerStatusStatefulPerInstanceConfig[];
+    }
+
+    export interface InstanceGroupManagerStatusStatefulPerInstanceConfig {
+        /**
+         * A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+         */
+        allEffective: boolean;
+    }
+
+    export interface InstanceGroupManagerStatusVersionTarget {
+        isReached: boolean;
     }
 
     export interface InstanceGroupManagerUpdatePolicy {
@@ -9158,6 +9244,25 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: string;
+    }
+
+    export interface InstanceReservationAffinity {
+        specificReservation?: outputs.compute.InstanceReservationAffinitySpecificReservation;
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface InstanceReservationAffinitySpecificReservation {
+        /**
+         * The key for the node affinity label.
+         */
+        key: string;
+        /**
+         * The values for the node affinity label.
+         */
+        values: string[];
     }
 
     export interface InstanceScheduling {
@@ -9431,6 +9536,22 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: string;
+    }
+
+    export interface InstanceTemplateReservationAffinity {
+        specificReservation?: outputs.compute.InstanceTemplateReservationAffinitySpecificReservation;
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface InstanceTemplateReservationAffinitySpecificReservation {
+        /**
+         * The key for the node affinity label.
+         */
+        key: string;
+        values: string[];
     }
 
     export interface InstanceTemplateScheduling {
@@ -10876,6 +10997,43 @@ export namespace compute {
          * , The device name of the disk to be attached.
          */
         deviceName: string;
+    }
+
+    export interface RegionInstanceGroupManagerStatus {
+        /**
+         * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+         */
+        isStable: boolean;
+        /**
+         * Stateful status of the given Instance Group Manager.
+         */
+        statefuls: outputs.compute.RegionInstanceGroupManagerStatusStateful[];
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
+        versionTargets: outputs.compute.RegionInstanceGroupManagerStatusVersionTarget[];
+    }
+
+    export interface RegionInstanceGroupManagerStatusStateful {
+        /**
+         * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+         */
+        hasStatefulConfig: boolean;
+        /**
+         * Status of per-instance configs on the instance.
+         */
+        perInstanceConfigs: outputs.compute.RegionInstanceGroupManagerStatusStatefulPerInstanceConfig[];
+    }
+
+    export interface RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+        /**
+         * A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+         */
+        allEffective: boolean;
+    }
+
+    export interface RegionInstanceGroupManagerStatusVersionTarget {
+        isReached: boolean;
     }
 
     export interface RegionInstanceGroupManagerUpdatePolicy {
@@ -19514,6 +19672,34 @@ export namespace diagflow {
          * * A string that can contain references to other entity types (with or without aliases).
          */
         value: string;
+    }
+
+    export interface FulfillmentFeature {
+        /**
+         * The type of the feature that enabled for fulfillment.
+         * * SMALLTALK: Fulfillment is enabled for SmallTalk.
+         * Possible values are `SMALLTALK`.
+         */
+        type: string;
+    }
+
+    export interface FulfillmentGenericWebService {
+        /**
+         * The password for HTTP Basic authentication.
+         */
+        password?: string;
+        /**
+         * The HTTP request headers to send together with fulfillment requests.
+         */
+        requestHeaders?: {[key: string]: string};
+        /**
+         * The fulfillment URI for receiving POST requests. It must use https protocol.
+         */
+        uri: string;
+        /**
+         * The user name for HTTP Basic authentication.
+         */
+        username?: string;
     }
 
     export interface IntentFollowupIntentInfo {

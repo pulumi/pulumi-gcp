@@ -20,7 +20,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
@@ -96,6 +96,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if reservation_affinities and not isinstance(reservation_affinities, list):
+            raise TypeError("Expected argument 'reservation_affinities' to be a list")
+        pulumi.set(__self__, "reservation_affinities", reservation_affinities)
         if resource_policies and not isinstance(resource_policies, list):
             raise TypeError("Expected argument 'resource_policies' to be a list")
         pulumi.set(__self__, "resource_policies", resource_policies)
@@ -298,6 +301,11 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="reservationAffinities")
+    def reservation_affinities(self) -> Sequence['outputs.GetInstanceReservationAffinityResult']:
+        return pulumi.get(self, "reservation_affinities")
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
         return pulumi.get(self, "resource_policies")
@@ -395,6 +403,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             network_interfaces=self.network_interfaces,
             project=self.project,
+            reservation_affinities=self.reservation_affinities,
             resource_policies=self.resource_policies,
             schedulings=self.schedulings,
             scratch_disks=self.scratch_disks,
@@ -474,6 +483,7 @@ def get_instance(name: Optional[str] = None,
         name=__ret__.name,
         network_interfaces=__ret__.network_interfaces,
         project=__ret__.project,
+        reservation_affinities=__ret__.reservation_affinities,
         resource_policies=__ret__.resource_policies,
         schedulings=__ret__.schedulings,
         scratch_disks=__ret__.scratch_disks,

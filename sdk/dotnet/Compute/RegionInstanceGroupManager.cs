@@ -219,6 +219,12 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
 
         /// <summary>
+        /// The status of this managed instance group.
+        /// </summary>
+        [Output("statuses")]
+        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatus>> Statuses { get; private set; } = null!;
+
+        /// <summary>
         /// The full URL of all target pools to which new
         /// instances in the group are added. Updating the target pools attribute does
         /// not affect existing instances.
@@ -253,6 +259,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("waitForInstances")]
         public Output<bool?> WaitForInstances { get; private set; } = null!;
+
+        /// <summary>
+        /// When used with `wait_for_instances` it specifies the status to wait for.
+        /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+        /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+        /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+        /// </summary>
+        [Output("waitForInstancesStatus")]
+        public Output<string?> WaitForInstancesStatus { get; private set; } = null!;
 
 
         /// <summary>
@@ -436,6 +451,15 @@ namespace Pulumi.Gcp.Compute
         [Input("waitForInstances")]
         public Input<bool>? WaitForInstances { get; set; }
 
+        /// <summary>
+        /// When used with `wait_for_instances` it specifies the status to wait for.
+        /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+        /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+        /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+        /// </summary>
+        [Input("waitForInstancesStatus")]
+        public Input<string>? WaitForInstancesStatus { get; set; }
+
         public RegionInstanceGroupManagerArgs()
         {
         }
@@ -549,6 +573,18 @@ namespace Pulumi.Gcp.Compute
             set => _statefulDisks = value;
         }
 
+        [Input("statuses")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatusGetArgs>? _statuses;
+
+        /// <summary>
+        /// The status of this managed instance group.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatusGetArgs> Statuses
+        {
+            get => _statuses ?? (_statuses = new InputList<Inputs.RegionInstanceGroupManagerStatusGetArgs>());
+            set => _statuses = value;
+        }
+
         [Input("targetPools")]
         private InputList<string>? _targetPools;
 
@@ -596,6 +632,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("waitForInstances")]
         public Input<bool>? WaitForInstances { get; set; }
+
+        /// <summary>
+        /// When used with `wait_for_instances` it specifies the status to wait for.
+        /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+        /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+        /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+        /// </summary>
+        [Input("waitForInstancesStatus")]
+        public Input<string>? WaitForInstancesStatus { get; set; }
 
         public RegionInstanceGroupManagerState()
         {

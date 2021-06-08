@@ -172,6 +172,7 @@ export interface GetInstanceTemplateResult {
      * Provider if no value is given.
      */
     readonly region: string;
+    readonly reservationAffinities: outputs.compute.GetInstanceTemplateReservationAffinity[];
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.

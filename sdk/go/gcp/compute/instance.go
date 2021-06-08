@@ -175,6 +175,8 @@ type Instance struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -314,6 +316,8 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -416,6 +420,8 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceReservationAffinityPtrInput
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
@@ -512,6 +518,8 @@ type instanceArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -601,6 +609,8 @@ type InstanceArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity InstanceReservationAffinityPtrInput
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about

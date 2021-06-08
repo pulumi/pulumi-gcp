@@ -2120,6 +2120,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/fulfillment",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/fulfillment:Fulfillment": "Fulfillment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/intent",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {

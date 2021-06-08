@@ -13449,6 +13449,294 @@ func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput) Index(i
 	}).(InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput)
 }
 
+type InstanceFromMachineImageReservationAffinity struct {
+	SpecificReservation *InstanceFromMachineImageReservationAffinitySpecificReservation `pulumi:"specificReservation"`
+	Type                string                                                          `pulumi:"type"`
+}
+
+// InstanceFromMachineImageReservationAffinityInput is an input type that accepts InstanceFromMachineImageReservationAffinityArgs and InstanceFromMachineImageReservationAffinityOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageReservationAffinityInput` via:
+//
+//          InstanceFromMachineImageReservationAffinityArgs{...}
+type InstanceFromMachineImageReservationAffinityInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageReservationAffinityOutput() InstanceFromMachineImageReservationAffinityOutput
+	ToInstanceFromMachineImageReservationAffinityOutputWithContext(context.Context) InstanceFromMachineImageReservationAffinityOutput
+}
+
+type InstanceFromMachineImageReservationAffinityArgs struct {
+	SpecificReservation InstanceFromMachineImageReservationAffinitySpecificReservationPtrInput `pulumi:"specificReservation"`
+	Type                pulumi.StringInput                                                     `pulumi:"type"`
+}
+
+func (InstanceFromMachineImageReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageReservationAffinity)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageReservationAffinityArgs) ToInstanceFromMachineImageReservationAffinityOutput() InstanceFromMachineImageReservationAffinityOutput {
+	return i.ToInstanceFromMachineImageReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageReservationAffinityArgs) ToInstanceFromMachineImageReservationAffinityOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageReservationAffinityOutput)
+}
+
+func (i InstanceFromMachineImageReservationAffinityArgs) ToInstanceFromMachineImageReservationAffinityPtrOutput() InstanceFromMachineImageReservationAffinityPtrOutput {
+	return i.ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageReservationAffinityArgs) ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageReservationAffinityOutput).ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageReservationAffinityPtrInput is an input type that accepts InstanceFromMachineImageReservationAffinityArgs, InstanceFromMachineImageReservationAffinityPtr and InstanceFromMachineImageReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageReservationAffinityPtrInput` via:
+//
+//          InstanceFromMachineImageReservationAffinityArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageReservationAffinityPtrOutput() InstanceFromMachineImageReservationAffinityPtrOutput
+	ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(context.Context) InstanceFromMachineImageReservationAffinityPtrOutput
+}
+
+type instanceFromMachineImageReservationAffinityPtrType InstanceFromMachineImageReservationAffinityArgs
+
+func InstanceFromMachineImageReservationAffinityPtr(v *InstanceFromMachineImageReservationAffinityArgs) InstanceFromMachineImageReservationAffinityPtrInput {
+	return (*instanceFromMachineImageReservationAffinityPtrType)(v)
+}
+
+func (*instanceFromMachineImageReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageReservationAffinity)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageReservationAffinityPtrType) ToInstanceFromMachineImageReservationAffinityPtrOutput() InstanceFromMachineImageReservationAffinityPtrOutput {
+	return i.ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageReservationAffinityPtrType) ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageReservationAffinityPtrOutput)
+}
+
+type InstanceFromMachineImageReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageReservationAffinityOutput) ToInstanceFromMachineImageReservationAffinityOutput() InstanceFromMachineImageReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinityOutput) ToInstanceFromMachineImageReservationAffinityOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinityOutput) ToInstanceFromMachineImageReservationAffinityPtrOutput() InstanceFromMachineImageReservationAffinityPtrOutput {
+	return o.ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageReservationAffinityOutput) ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinityPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageReservationAffinity) *InstanceFromMachineImageReservationAffinity {
+		return &v
+	}).(InstanceFromMachineImageReservationAffinityPtrOutput)
+}
+func (o InstanceFromMachineImageReservationAffinityOutput) SpecificReservation() InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageReservationAffinity) *InstanceFromMachineImageReservationAffinitySpecificReservation {
+		return v.SpecificReservation
+	}).(InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput)
+}
+
+func (o InstanceFromMachineImageReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InstanceFromMachineImageReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageReservationAffinityPtrOutput) ToInstanceFromMachineImageReservationAffinityPtrOutput() InstanceFromMachineImageReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinityPtrOutput) ToInstanceFromMachineImageReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinityPtrOutput) Elem() InstanceFromMachineImageReservationAffinityOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageReservationAffinity) InstanceFromMachineImageReservationAffinity {
+		return *v
+	}).(InstanceFromMachineImageReservationAffinityOutput)
+}
+
+func (o InstanceFromMachineImageReservationAffinityPtrOutput) SpecificReservation() InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageReservationAffinity) *InstanceFromMachineImageReservationAffinitySpecificReservation {
+		if v == nil {
+			return nil
+		}
+		return v.SpecificReservation
+	}).(InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput)
+}
+
+func (o InstanceFromMachineImageReservationAffinityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromMachineImageReservationAffinitySpecificReservation struct {
+	Key    string   `pulumi:"key"`
+	Values []string `pulumi:"values"`
+}
+
+// InstanceFromMachineImageReservationAffinitySpecificReservationInput is an input type that accepts InstanceFromMachineImageReservationAffinitySpecificReservationArgs and InstanceFromMachineImageReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageReservationAffinitySpecificReservationInput` via:
+//
+//          InstanceFromMachineImageReservationAffinitySpecificReservationArgs{...}
+type InstanceFromMachineImageReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageReservationAffinitySpecificReservationOutput() InstanceFromMachineImageReservationAffinitySpecificReservationOutput
+	ToInstanceFromMachineImageReservationAffinitySpecificReservationOutputWithContext(context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationOutput
+}
+
+type InstanceFromMachineImageReservationAffinitySpecificReservationArgs struct {
+	Key    pulumi.StringInput      `pulumi:"key"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (InstanceFromMachineImageReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageReservationAffinitySpecificReservationArgs) ToInstanceFromMachineImageReservationAffinitySpecificReservationOutput() InstanceFromMachineImageReservationAffinitySpecificReservationOutput {
+	return i.ToInstanceFromMachineImageReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageReservationAffinitySpecificReservationArgs) ToInstanceFromMachineImageReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageReservationAffinitySpecificReservationOutput)
+}
+
+func (i InstanceFromMachineImageReservationAffinitySpecificReservationArgs) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput() InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageReservationAffinitySpecificReservationArgs) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageReservationAffinitySpecificReservationOutput).ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageReservationAffinitySpecificReservationPtrInput is an input type that accepts InstanceFromMachineImageReservationAffinitySpecificReservationArgs, InstanceFromMachineImageReservationAffinitySpecificReservationPtr and InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageReservationAffinitySpecificReservationPtrInput` via:
+//
+//          InstanceFromMachineImageReservationAffinitySpecificReservationArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageReservationAffinitySpecificReservationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput() InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput
+	ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput
+}
+
+type instanceFromMachineImageReservationAffinitySpecificReservationPtrType InstanceFromMachineImageReservationAffinitySpecificReservationArgs
+
+func InstanceFromMachineImageReservationAffinitySpecificReservationPtr(v *InstanceFromMachineImageReservationAffinitySpecificReservationArgs) InstanceFromMachineImageReservationAffinitySpecificReservationPtrInput {
+	return (*instanceFromMachineImageReservationAffinitySpecificReservationPtrType)(v)
+}
+
+func (*instanceFromMachineImageReservationAffinitySpecificReservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageReservationAffinitySpecificReservationPtrType) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput() InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageReservationAffinitySpecificReservationPtrType) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput)
+}
+
+type InstanceFromMachineImageReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationOutput) ToInstanceFromMachineImageReservationAffinitySpecificReservationOutput() InstanceFromMachineImageReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationOutput) ToInstanceFromMachineImageReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationOutput) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput() InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return o.ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationOutput) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageReservationAffinitySpecificReservation) *InstanceFromMachineImageReservationAffinitySpecificReservation {
+		return &v
+	}).(InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput)
+}
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput() InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput) ToInstanceFromMachineImageReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput) Elem() InstanceFromMachineImageReservationAffinitySpecificReservationOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageReservationAffinitySpecificReservation) InstanceFromMachineImageReservationAffinitySpecificReservation {
+		return *v
+	}).(InstanceFromMachineImageReservationAffinitySpecificReservationOutput)
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageReservationAffinitySpecificReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageReservationAffinitySpecificReservation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type InstanceFromMachineImageScheduling struct {
 	AutomaticRestart  *bool                                            `pulumi:"automaticRestart"`
 	MinNodeCpus       *int                                             `pulumi:"minNodeCpus"`
@@ -15246,6 +15534,292 @@ func (o InstanceFromTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pul
 	}).(InstanceFromTemplateNetworkInterfaceAliasIpRangeOutput)
 }
 
+type InstanceFromTemplateReservationAffinity struct {
+	SpecificReservation *InstanceFromTemplateReservationAffinitySpecificReservation `pulumi:"specificReservation"`
+	Type                string                                                      `pulumi:"type"`
+}
+
+// InstanceFromTemplateReservationAffinityInput is an input type that accepts InstanceFromTemplateReservationAffinityArgs and InstanceFromTemplateReservationAffinityOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateReservationAffinityInput` via:
+//
+//          InstanceFromTemplateReservationAffinityArgs{...}
+type InstanceFromTemplateReservationAffinityInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateReservationAffinityOutput() InstanceFromTemplateReservationAffinityOutput
+	ToInstanceFromTemplateReservationAffinityOutputWithContext(context.Context) InstanceFromTemplateReservationAffinityOutput
+}
+
+type InstanceFromTemplateReservationAffinityArgs struct {
+	SpecificReservation InstanceFromTemplateReservationAffinitySpecificReservationPtrInput `pulumi:"specificReservation"`
+	Type                pulumi.StringInput                                                 `pulumi:"type"`
+}
+
+func (InstanceFromTemplateReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i InstanceFromTemplateReservationAffinityArgs) ToInstanceFromTemplateReservationAffinityOutput() InstanceFromTemplateReservationAffinityOutput {
+	return i.ToInstanceFromTemplateReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateReservationAffinityArgs) ToInstanceFromTemplateReservationAffinityOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateReservationAffinityOutput)
+}
+
+func (i InstanceFromTemplateReservationAffinityArgs) ToInstanceFromTemplateReservationAffinityPtrOutput() InstanceFromTemplateReservationAffinityPtrOutput {
+	return i.ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateReservationAffinityArgs) ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateReservationAffinityOutput).ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// InstanceFromTemplateReservationAffinityPtrInput is an input type that accepts InstanceFromTemplateReservationAffinityArgs, InstanceFromTemplateReservationAffinityPtr and InstanceFromTemplateReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateReservationAffinityPtrInput` via:
+//
+//          InstanceFromTemplateReservationAffinityArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromTemplateReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateReservationAffinityPtrOutput() InstanceFromTemplateReservationAffinityPtrOutput
+	ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(context.Context) InstanceFromTemplateReservationAffinityPtrOutput
+}
+
+type instanceFromTemplateReservationAffinityPtrType InstanceFromTemplateReservationAffinityArgs
+
+func InstanceFromTemplateReservationAffinityPtr(v *InstanceFromTemplateReservationAffinityArgs) InstanceFromTemplateReservationAffinityPtrInput {
+	return (*instanceFromTemplateReservationAffinityPtrType)(v)
+}
+
+func (*instanceFromTemplateReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i *instanceFromTemplateReservationAffinityPtrType) ToInstanceFromTemplateReservationAffinityPtrOutput() InstanceFromTemplateReservationAffinityPtrOutput {
+	return i.ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromTemplateReservationAffinityPtrType) ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateReservationAffinityPtrOutput)
+}
+
+type InstanceFromTemplateReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateReservationAffinityOutput) ToInstanceFromTemplateReservationAffinityOutput() InstanceFromTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinityOutput) ToInstanceFromTemplateReservationAffinityOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinityOutput) ToInstanceFromTemplateReservationAffinityPtrOutput() InstanceFromTemplateReservationAffinityPtrOutput {
+	return o.ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromTemplateReservationAffinityOutput) ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinityPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateReservationAffinity) *InstanceFromTemplateReservationAffinity {
+		return &v
+	}).(InstanceFromTemplateReservationAffinityPtrOutput)
+}
+func (o InstanceFromTemplateReservationAffinityOutput) SpecificReservation() InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateReservationAffinity) *InstanceFromTemplateReservationAffinitySpecificReservation {
+		return v.SpecificReservation
+	}).(InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+func (o InstanceFromTemplateReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromTemplateReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InstanceFromTemplateReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateReservationAffinityPtrOutput) ToInstanceFromTemplateReservationAffinityPtrOutput() InstanceFromTemplateReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinityPtrOutput) ToInstanceFromTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinityPtrOutput) Elem() InstanceFromTemplateReservationAffinityOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateReservationAffinity) InstanceFromTemplateReservationAffinity { return *v }).(InstanceFromTemplateReservationAffinityOutput)
+}
+
+func (o InstanceFromTemplateReservationAffinityPtrOutput) SpecificReservation() InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateReservationAffinity) *InstanceFromTemplateReservationAffinitySpecificReservation {
+		if v == nil {
+			return nil
+		}
+		return v.SpecificReservation
+	}).(InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+func (o InstanceFromTemplateReservationAffinityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromTemplateReservationAffinitySpecificReservation struct {
+	Key    string   `pulumi:"key"`
+	Values []string `pulumi:"values"`
+}
+
+// InstanceFromTemplateReservationAffinitySpecificReservationInput is an input type that accepts InstanceFromTemplateReservationAffinitySpecificReservationArgs and InstanceFromTemplateReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateReservationAffinitySpecificReservationInput` via:
+//
+//          InstanceFromTemplateReservationAffinitySpecificReservationArgs{...}
+type InstanceFromTemplateReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateReservationAffinitySpecificReservationOutput() InstanceFromTemplateReservationAffinitySpecificReservationOutput
+	ToInstanceFromTemplateReservationAffinitySpecificReservationOutputWithContext(context.Context) InstanceFromTemplateReservationAffinitySpecificReservationOutput
+}
+
+type InstanceFromTemplateReservationAffinitySpecificReservationArgs struct {
+	Key    pulumi.StringInput      `pulumi:"key"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (InstanceFromTemplateReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i InstanceFromTemplateReservationAffinitySpecificReservationArgs) ToInstanceFromTemplateReservationAffinitySpecificReservationOutput() InstanceFromTemplateReservationAffinitySpecificReservationOutput {
+	return i.ToInstanceFromTemplateReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateReservationAffinitySpecificReservationArgs) ToInstanceFromTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateReservationAffinitySpecificReservationOutput)
+}
+
+func (i InstanceFromTemplateReservationAffinitySpecificReservationArgs) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutput() InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateReservationAffinitySpecificReservationArgs) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateReservationAffinitySpecificReservationOutput).ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx)
+}
+
+// InstanceFromTemplateReservationAffinitySpecificReservationPtrInput is an input type that accepts InstanceFromTemplateReservationAffinitySpecificReservationArgs, InstanceFromTemplateReservationAffinitySpecificReservationPtr and InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateReservationAffinitySpecificReservationPtrInput` via:
+//
+//          InstanceFromTemplateReservationAffinitySpecificReservationArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromTemplateReservationAffinitySpecificReservationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutput() InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput
+	ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Context) InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput
+}
+
+type instanceFromTemplateReservationAffinitySpecificReservationPtrType InstanceFromTemplateReservationAffinitySpecificReservationArgs
+
+func InstanceFromTemplateReservationAffinitySpecificReservationPtr(v *InstanceFromTemplateReservationAffinitySpecificReservationArgs) InstanceFromTemplateReservationAffinitySpecificReservationPtrInput {
+	return (*instanceFromTemplateReservationAffinitySpecificReservationPtrType)(v)
+}
+
+func (*instanceFromTemplateReservationAffinitySpecificReservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i *instanceFromTemplateReservationAffinitySpecificReservationPtrType) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutput() InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromTemplateReservationAffinitySpecificReservationPtrType) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+type InstanceFromTemplateReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationOutput) ToInstanceFromTemplateReservationAffinitySpecificReservationOutput() InstanceFromTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationOutput) ToInstanceFromTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationOutput) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutput() InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationOutput) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateReservationAffinitySpecificReservation) *InstanceFromTemplateReservationAffinitySpecificReservation {
+		return &v
+	}).(InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+func (o InstanceFromTemplateReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceFromTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutput() InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput) ToInstanceFromTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput) Elem() InstanceFromTemplateReservationAffinitySpecificReservationOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateReservationAffinitySpecificReservation) InstanceFromTemplateReservationAffinitySpecificReservation {
+		return *v
+	}).(InstanceFromTemplateReservationAffinitySpecificReservationOutput)
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateReservationAffinitySpecificReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateReservationAffinitySpecificReservation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type InstanceFromTemplateScheduling struct {
 	AutomaticRestart  *bool                                        `pulumi:"automaticRestart"`
 	MinNodeCpus       *int                                         `pulumi:"minNodeCpus"`
@@ -16300,6 +16874,420 @@ func (o InstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerStatefulDisk {
 		return vs[0].([]InstanceGroupManagerStatefulDisk)[vs[1].(int)]
 	}).(InstanceGroupManagerStatefulDiskOutput)
+}
+
+type InstanceGroupManagerStatus struct {
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable *bool `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls []InstanceGroupManagerStatusStateful `pulumi:"statefuls"`
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	VersionTargets []InstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
+}
+
+// InstanceGroupManagerStatusInput is an input type that accepts InstanceGroupManagerStatusArgs and InstanceGroupManagerStatusOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusInput` via:
+//
+//          InstanceGroupManagerStatusArgs{...}
+type InstanceGroupManagerStatusInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusOutput() InstanceGroupManagerStatusOutput
+	ToInstanceGroupManagerStatusOutputWithContext(context.Context) InstanceGroupManagerStatusOutput
+}
+
+type InstanceGroupManagerStatusArgs struct {
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable pulumi.BoolPtrInput `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls InstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	VersionTargets InstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
+}
+
+func (InstanceGroupManagerStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusArgs) ToInstanceGroupManagerStatusOutput() InstanceGroupManagerStatusOutput {
+	return i.ToInstanceGroupManagerStatusOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusArgs) ToInstanceGroupManagerStatusOutputWithContext(ctx context.Context) InstanceGroupManagerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusOutput)
+}
+
+// InstanceGroupManagerStatusArrayInput is an input type that accepts InstanceGroupManagerStatusArray and InstanceGroupManagerStatusArrayOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusArrayInput` via:
+//
+//          InstanceGroupManagerStatusArray{ InstanceGroupManagerStatusArgs{...} }
+type InstanceGroupManagerStatusArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusArrayOutput() InstanceGroupManagerStatusArrayOutput
+	ToInstanceGroupManagerStatusArrayOutputWithContext(context.Context) InstanceGroupManagerStatusArrayOutput
+}
+
+type InstanceGroupManagerStatusArray []InstanceGroupManagerStatusInput
+
+func (InstanceGroupManagerStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusArray) ToInstanceGroupManagerStatusArrayOutput() InstanceGroupManagerStatusArrayOutput {
+	return i.ToInstanceGroupManagerStatusArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusArray) ToInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusArrayOutput)
+}
+
+type InstanceGroupManagerStatusOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusOutput) ToInstanceGroupManagerStatusOutput() InstanceGroupManagerStatusOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusOutput) ToInstanceGroupManagerStatusOutputWithContext(ctx context.Context) InstanceGroupManagerStatusOutput {
+	return o
+}
+
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+func (o InstanceGroupManagerStatusOutput) IsStable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatus) *bool { return v.IsStable }).(pulumi.BoolPtrOutput)
+}
+
+// Stateful status of the given Instance Group Manager.
+func (o InstanceGroupManagerStatusOutput) Statefuls() InstanceGroupManagerStatusStatefulArrayOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatus) []InstanceGroupManagerStatusStateful { return v.Statefuls }).(InstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+func (o InstanceGroupManagerStatusOutput) VersionTargets() InstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatus) []InstanceGroupManagerStatusVersionTarget { return v.VersionTargets }).(InstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type InstanceGroupManagerStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusArrayOutput) ToInstanceGroupManagerStatusArrayOutput() InstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusArrayOutput) ToInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerStatus {
+		return vs[0].([]InstanceGroupManagerStatus)[vs[1].(int)]
+	}).(InstanceGroupManagerStatusOutput)
+}
+
+type InstanceGroupManagerStatusStateful struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig *bool `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instance.
+	PerInstanceConfigs []InstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
+}
+
+// InstanceGroupManagerStatusStatefulInput is an input type that accepts InstanceGroupManagerStatusStatefulArgs and InstanceGroupManagerStatusStatefulOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulInput` via:
+//
+//          InstanceGroupManagerStatusStatefulArgs{...}
+type InstanceGroupManagerStatusStatefulInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusStatefulOutput() InstanceGroupManagerStatusStatefulOutput
+	ToInstanceGroupManagerStatusStatefulOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulOutput
+}
+
+type InstanceGroupManagerStatusStatefulArgs struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig pulumi.BoolPtrInput `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instance.
+	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
+}
+
+func (InstanceGroupManagerStatusStatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusStatefulArgs) ToInstanceGroupManagerStatusStatefulOutput() InstanceGroupManagerStatusStatefulOutput {
+	return i.ToInstanceGroupManagerStatusStatefulOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusStatefulArgs) ToInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulOutput)
+}
+
+// InstanceGroupManagerStatusStatefulArrayInput is an input type that accepts InstanceGroupManagerStatusStatefulArray and InstanceGroupManagerStatusStatefulArrayOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulArrayInput` via:
+//
+//          InstanceGroupManagerStatusStatefulArray{ InstanceGroupManagerStatusStatefulArgs{...} }
+type InstanceGroupManagerStatusStatefulArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusStatefulArrayOutput() InstanceGroupManagerStatusStatefulArrayOutput
+	ToInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulArrayOutput
+}
+
+type InstanceGroupManagerStatusStatefulArray []InstanceGroupManagerStatusStatefulInput
+
+func (InstanceGroupManagerStatusStatefulArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusStatefulArray) ToInstanceGroupManagerStatusStatefulArrayOutput() InstanceGroupManagerStatusStatefulArrayOutput {
+	return i.ToInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusStatefulArray) ToInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+type InstanceGroupManagerStatusStatefulOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusStatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusStatefulOutput) ToInstanceGroupManagerStatusStatefulOutput() InstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusStatefulOutput) ToInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+func (o InstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) *bool { return v.HasStatefulConfig }).(pulumi.BoolPtrOutput)
+}
+
+// Status of per-instance configs on the instance.
+func (o InstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) []InstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return v.PerInstanceConfigs
+	}).(InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type InstanceGroupManagerStatusStatefulArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusStatefulArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusStatefulArrayOutput) ToInstanceGroupManagerStatusStatefulArrayOutput() InstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusStatefulArrayOutput) ToInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusStatefulArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerStatusStatefulOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerStatusStateful {
+		return vs[0].([]InstanceGroupManagerStatusStateful)[vs[1].(int)]
+	}).(InstanceGroupManagerStatusStatefulOutput)
+}
+
+type InstanceGroupManagerStatusStatefulPerInstanceConfig struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+	AllEffective *bool `pulumi:"allEffective"`
+}
+
+// InstanceGroupManagerStatusStatefulPerInstanceConfigInput is an input type that accepts InstanceGroupManagerStatusStatefulPerInstanceConfigArgs and InstanceGroupManagerStatusStatefulPerInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulPerInstanceConfigInput` via:
+//
+//          InstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...}
+type InstanceGroupManagerStatusStatefulPerInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+	ToInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+}
+
+type InstanceGroupManagerStatusStatefulPerInstanceConfigArgs struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+	AllEffective pulumi.BoolPtrInput `pulumi:"allEffective"`
+}
+
+func (InstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return i.ToInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+// InstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput is an input type that accepts InstanceGroupManagerStatusStatefulPerInstanceConfigArray and InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput` via:
+//
+//          InstanceGroupManagerStatusStatefulPerInstanceConfigArray{ InstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...} }
+type InstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+	ToInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+}
+
+type InstanceGroupManagerStatusStatefulPerInstanceConfigArray []InstanceGroupManagerStatusStatefulPerInstanceConfigInput
+
+func (InstanceGroupManagerStatusStatefulPerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return i.ToInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type InstanceGroupManagerStatusStatefulPerInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+func (o InstanceGroupManagerStatusStatefulPerInstanceConfigOutput) AllEffective() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulPerInstanceConfig) *bool { return v.AllEffective }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return vs[0].([]InstanceGroupManagerStatusStatefulPerInstanceConfig)[vs[1].(int)]
+	}).(InstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+type InstanceGroupManagerStatusVersionTarget struct {
+	IsReached *bool `pulumi:"isReached"`
+}
+
+// InstanceGroupManagerStatusVersionTargetInput is an input type that accepts InstanceGroupManagerStatusVersionTargetArgs and InstanceGroupManagerStatusVersionTargetOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusVersionTargetInput` via:
+//
+//          InstanceGroupManagerStatusVersionTargetArgs{...}
+type InstanceGroupManagerStatusVersionTargetInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusVersionTargetOutput() InstanceGroupManagerStatusVersionTargetOutput
+	ToInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Context) InstanceGroupManagerStatusVersionTargetOutput
+}
+
+type InstanceGroupManagerStatusVersionTargetArgs struct {
+	IsReached pulumi.BoolPtrInput `pulumi:"isReached"`
+}
+
+func (InstanceGroupManagerStatusVersionTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusVersionTargetArgs) ToInstanceGroupManagerStatusVersionTargetOutput() InstanceGroupManagerStatusVersionTargetOutput {
+	return i.ToInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusVersionTargetArgs) ToInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusVersionTargetOutput)
+}
+
+// InstanceGroupManagerStatusVersionTargetArrayInput is an input type that accepts InstanceGroupManagerStatusVersionTargetArray and InstanceGroupManagerStatusVersionTargetArrayOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatusVersionTargetArrayInput` via:
+//
+//          InstanceGroupManagerStatusVersionTargetArray{ InstanceGroupManagerStatusVersionTargetArgs{...} }
+type InstanceGroupManagerStatusVersionTargetArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatusVersionTargetArrayOutput() InstanceGroupManagerStatusVersionTargetArrayOutput
+	ToInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Context) InstanceGroupManagerStatusVersionTargetArrayOutput
+}
+
+type InstanceGroupManagerStatusVersionTargetArray []InstanceGroupManagerStatusVersionTargetInput
+
+func (InstanceGroupManagerStatusVersionTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatusVersionTargetArray) ToInstanceGroupManagerStatusVersionTargetArrayOutput() InstanceGroupManagerStatusVersionTargetArrayOutput {
+	return i.ToInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatusVersionTargetArray) ToInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type InstanceGroupManagerStatusVersionTargetOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusVersionTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusVersionTargetOutput) ToInstanceGroupManagerStatusVersionTargetOutput() InstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusVersionTargetOutput) ToInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusVersionTargetOutput) IsReached() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatusVersionTarget) *bool { return v.IsReached }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceGroupManagerStatusVersionTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatusVersionTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatusVersionTargetArrayOutput) ToInstanceGroupManagerStatusVersionTargetArrayOutput() InstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusVersionTargetArrayOutput) ToInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerStatusVersionTarget {
+		return vs[0].([]InstanceGroupManagerStatusVersionTarget)[vs[1].(int)]
+	}).(InstanceGroupManagerStatusVersionTargetOutput)
 }
 
 type InstanceGroupManagerUpdatePolicy struct {
@@ -17853,6 +18841,305 @@ func (o InstanceNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetworkInterfaceAliasIpRange {
 		return vs[0].([]InstanceNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(InstanceNetworkInterfaceAliasIpRangeOutput)
+}
+
+type InstanceReservationAffinity struct {
+	SpecificReservation *InstanceReservationAffinitySpecificReservation `pulumi:"specificReservation"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// InstanceReservationAffinityInput is an input type that accepts InstanceReservationAffinityArgs and InstanceReservationAffinityOutput values.
+// You can construct a concrete instance of `InstanceReservationAffinityInput` via:
+//
+//          InstanceReservationAffinityArgs{...}
+type InstanceReservationAffinityInput interface {
+	pulumi.Input
+
+	ToInstanceReservationAffinityOutput() InstanceReservationAffinityOutput
+	ToInstanceReservationAffinityOutputWithContext(context.Context) InstanceReservationAffinityOutput
+}
+
+type InstanceReservationAffinityArgs struct {
+	SpecificReservation InstanceReservationAffinitySpecificReservationPtrInput `pulumi:"specificReservation"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (InstanceReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityOutput() InstanceReservationAffinityOutput {
+	return i.ToInstanceReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityOutputWithContext(ctx context.Context) InstanceReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityOutput)
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return i.ToInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityOutput).ToInstanceReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// InstanceReservationAffinityPtrInput is an input type that accepts InstanceReservationAffinityArgs, InstanceReservationAffinityPtr and InstanceReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `InstanceReservationAffinityPtrInput` via:
+//
+//          InstanceReservationAffinityArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput
+	ToInstanceReservationAffinityPtrOutputWithContext(context.Context) InstanceReservationAffinityPtrOutput
+}
+
+type instanceReservationAffinityPtrType InstanceReservationAffinityArgs
+
+func InstanceReservationAffinityPtr(v *InstanceReservationAffinityArgs) InstanceReservationAffinityPtrInput {
+	return (*instanceReservationAffinityPtrType)(v)
+}
+
+func (*instanceReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i *instanceReservationAffinityPtrType) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return i.ToInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceReservationAffinityPtrType) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityPtrOutput)
+}
+
+type InstanceReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (InstanceReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityOutput() InstanceReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityOutputWithContext(ctx context.Context) InstanceReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return o.ToInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return o.ApplyT(func(v InstanceReservationAffinity) *InstanceReservationAffinity {
+		return &v
+	}).(InstanceReservationAffinityPtrOutput)
+}
+func (o InstanceReservationAffinityOutput) SpecificReservation() InstanceReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceReservationAffinity) *InstanceReservationAffinitySpecificReservation {
+		return v.SpecificReservation
+	}).(InstanceReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o InstanceReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InstanceReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceReservationAffinityPtrOutput) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityPtrOutput) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityPtrOutput) Elem() InstanceReservationAffinityOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinity) InstanceReservationAffinity { return *v }).(InstanceReservationAffinityOutput)
+}
+
+func (o InstanceReservationAffinityPtrOutput) SpecificReservation() InstanceReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinity) *InstanceReservationAffinitySpecificReservation {
+		if v == nil {
+			return nil
+		}
+		return v.SpecificReservation
+	}).(InstanceReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o InstanceReservationAffinityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceReservationAffinitySpecificReservation struct {
+	// The key for the node affinity label.
+	Key string `pulumi:"key"`
+	// The values for the node affinity label.
+	Values []string `pulumi:"values"`
+}
+
+// InstanceReservationAffinitySpecificReservationInput is an input type that accepts InstanceReservationAffinitySpecificReservationArgs and InstanceReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `InstanceReservationAffinitySpecificReservationInput` via:
+//
+//          InstanceReservationAffinitySpecificReservationArgs{...}
+type InstanceReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToInstanceReservationAffinitySpecificReservationOutput() InstanceReservationAffinitySpecificReservationOutput
+	ToInstanceReservationAffinitySpecificReservationOutputWithContext(context.Context) InstanceReservationAffinitySpecificReservationOutput
+}
+
+type InstanceReservationAffinitySpecificReservationArgs struct {
+	// The key for the node affinity label.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The values for the node affinity label.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (InstanceReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i InstanceReservationAffinitySpecificReservationArgs) ToInstanceReservationAffinitySpecificReservationOutput() InstanceReservationAffinitySpecificReservationOutput {
+	return i.ToInstanceReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i InstanceReservationAffinitySpecificReservationArgs) ToInstanceReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinitySpecificReservationOutput)
+}
+
+func (i InstanceReservationAffinitySpecificReservationArgs) ToInstanceReservationAffinitySpecificReservationPtrOutput() InstanceReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceReservationAffinitySpecificReservationArgs) ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinitySpecificReservationOutput).ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(ctx)
+}
+
+// InstanceReservationAffinitySpecificReservationPtrInput is an input type that accepts InstanceReservationAffinitySpecificReservationArgs, InstanceReservationAffinitySpecificReservationPtr and InstanceReservationAffinitySpecificReservationPtrOutput values.
+// You can construct a concrete instance of `InstanceReservationAffinitySpecificReservationPtrInput` via:
+//
+//          InstanceReservationAffinitySpecificReservationArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceReservationAffinitySpecificReservationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceReservationAffinitySpecificReservationPtrOutput() InstanceReservationAffinitySpecificReservationPtrOutput
+	ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(context.Context) InstanceReservationAffinitySpecificReservationPtrOutput
+}
+
+type instanceReservationAffinitySpecificReservationPtrType InstanceReservationAffinitySpecificReservationArgs
+
+func InstanceReservationAffinitySpecificReservationPtr(v *InstanceReservationAffinitySpecificReservationArgs) InstanceReservationAffinitySpecificReservationPtrInput {
+	return (*instanceReservationAffinitySpecificReservationPtrType)(v)
+}
+
+func (*instanceReservationAffinitySpecificReservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i *instanceReservationAffinitySpecificReservationPtrType) ToInstanceReservationAffinitySpecificReservationPtrOutput() InstanceReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceReservationAffinitySpecificReservationPtrType) ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinitySpecificReservationPtrOutput)
+}
+
+type InstanceReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (InstanceReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceReservationAffinitySpecificReservationOutput) ToInstanceReservationAffinitySpecificReservationOutput() InstanceReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceReservationAffinitySpecificReservationOutput) ToInstanceReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceReservationAffinitySpecificReservationOutput) ToInstanceReservationAffinitySpecificReservationPtrOutput() InstanceReservationAffinitySpecificReservationPtrOutput {
+	return o.ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReservationAffinitySpecificReservationOutput) ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceReservationAffinitySpecificReservation) *InstanceReservationAffinitySpecificReservation {
+		return &v
+	}).(InstanceReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The key for the node affinity label.
+func (o InstanceReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The values for the node affinity label.
+func (o InstanceReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type InstanceReservationAffinitySpecificReservationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceReservationAffinitySpecificReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceReservationAffinitySpecificReservationPtrOutput) ToInstanceReservationAffinitySpecificReservationPtrOutput() InstanceReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceReservationAffinitySpecificReservationPtrOutput) ToInstanceReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceReservationAffinitySpecificReservationPtrOutput) Elem() InstanceReservationAffinitySpecificReservationOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinitySpecificReservation) InstanceReservationAffinitySpecificReservation {
+		return *v
+	}).(InstanceReservationAffinitySpecificReservationOutput)
+}
+
+// The key for the node affinity label.
+func (o InstanceReservationAffinitySpecificReservationPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinitySpecificReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The values for the node affinity label.
+func (o InstanceReservationAffinitySpecificReservationPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinitySpecificReservation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type InstanceScheduling struct {
@@ -19760,6 +21047,301 @@ func (o InstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceTemplateNetworkInterfaceAliasIpRange {
 		return vs[0].([]InstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(InstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type InstanceTemplateReservationAffinity struct {
+	SpecificReservation *InstanceTemplateReservationAffinitySpecificReservation `pulumi:"specificReservation"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// InstanceTemplateReservationAffinityInput is an input type that accepts InstanceTemplateReservationAffinityArgs and InstanceTemplateReservationAffinityOutput values.
+// You can construct a concrete instance of `InstanceTemplateReservationAffinityInput` via:
+//
+//          InstanceTemplateReservationAffinityArgs{...}
+type InstanceTemplateReservationAffinityInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateReservationAffinityOutput() InstanceTemplateReservationAffinityOutput
+	ToInstanceTemplateReservationAffinityOutputWithContext(context.Context) InstanceTemplateReservationAffinityOutput
+}
+
+type InstanceTemplateReservationAffinityArgs struct {
+	SpecificReservation InstanceTemplateReservationAffinitySpecificReservationPtrInput `pulumi:"specificReservation"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (InstanceTemplateReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i InstanceTemplateReservationAffinityArgs) ToInstanceTemplateReservationAffinityOutput() InstanceTemplateReservationAffinityOutput {
+	return i.ToInstanceTemplateReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateReservationAffinityArgs) ToInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateReservationAffinityOutput)
+}
+
+func (i InstanceTemplateReservationAffinityArgs) ToInstanceTemplateReservationAffinityPtrOutput() InstanceTemplateReservationAffinityPtrOutput {
+	return i.ToInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateReservationAffinityArgs) ToInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateReservationAffinityOutput).ToInstanceTemplateReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// InstanceTemplateReservationAffinityPtrInput is an input type that accepts InstanceTemplateReservationAffinityArgs, InstanceTemplateReservationAffinityPtr and InstanceTemplateReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `InstanceTemplateReservationAffinityPtrInput` via:
+//
+//          InstanceTemplateReservationAffinityArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTemplateReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateReservationAffinityPtrOutput() InstanceTemplateReservationAffinityPtrOutput
+	ToInstanceTemplateReservationAffinityPtrOutputWithContext(context.Context) InstanceTemplateReservationAffinityPtrOutput
+}
+
+type instanceTemplateReservationAffinityPtrType InstanceTemplateReservationAffinityArgs
+
+func InstanceTemplateReservationAffinityPtr(v *InstanceTemplateReservationAffinityArgs) InstanceTemplateReservationAffinityPtrInput {
+	return (*instanceTemplateReservationAffinityPtrType)(v)
+}
+
+func (*instanceTemplateReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i *instanceTemplateReservationAffinityPtrType) ToInstanceTemplateReservationAffinityPtrOutput() InstanceTemplateReservationAffinityPtrOutput {
+	return i.ToInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTemplateReservationAffinityPtrType) ToInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateReservationAffinityPtrOutput)
+}
+
+type InstanceTemplateReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceTemplateReservationAffinityOutput) ToInstanceTemplateReservationAffinityOutput() InstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinityOutput) ToInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinityOutput) ToInstanceTemplateReservationAffinityPtrOutput() InstanceTemplateReservationAffinityPtrOutput {
+	return o.ToInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTemplateReservationAffinityOutput) ToInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinityPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateReservationAffinity) *InstanceTemplateReservationAffinity {
+		return &v
+	}).(InstanceTemplateReservationAffinityPtrOutput)
+}
+func (o InstanceTemplateReservationAffinityOutput) SpecificReservation() InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateReservationAffinity) *InstanceTemplateReservationAffinitySpecificReservation {
+		return v.SpecificReservation
+	}).(InstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o InstanceTemplateReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceTemplateReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InstanceTemplateReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceTemplateReservationAffinityPtrOutput) ToInstanceTemplateReservationAffinityPtrOutput() InstanceTemplateReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinityPtrOutput) ToInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinityPtrOutput) Elem() InstanceTemplateReservationAffinityOutput {
+	return o.ApplyT(func(v *InstanceTemplateReservationAffinity) InstanceTemplateReservationAffinity { return *v }).(InstanceTemplateReservationAffinityOutput)
+}
+
+func (o InstanceTemplateReservationAffinityPtrOutput) SpecificReservation() InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateReservationAffinity) *InstanceTemplateReservationAffinitySpecificReservation {
+		if v == nil {
+			return nil
+		}
+		return v.SpecificReservation
+	}).(InstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o InstanceTemplateReservationAffinityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceTemplateReservationAffinitySpecificReservation struct {
+	// The key for the node affinity label.
+	Key    string   `pulumi:"key"`
+	Values []string `pulumi:"values"`
+}
+
+// InstanceTemplateReservationAffinitySpecificReservationInput is an input type that accepts InstanceTemplateReservationAffinitySpecificReservationArgs and InstanceTemplateReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `InstanceTemplateReservationAffinitySpecificReservationInput` via:
+//
+//          InstanceTemplateReservationAffinitySpecificReservationArgs{...}
+type InstanceTemplateReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateReservationAffinitySpecificReservationOutput() InstanceTemplateReservationAffinitySpecificReservationOutput
+	ToInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Context) InstanceTemplateReservationAffinitySpecificReservationOutput
+}
+
+type InstanceTemplateReservationAffinitySpecificReservationArgs struct {
+	// The key for the node affinity label.
+	Key    pulumi.StringInput      `pulumi:"key"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (InstanceTemplateReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i InstanceTemplateReservationAffinitySpecificReservationArgs) ToInstanceTemplateReservationAffinitySpecificReservationOutput() InstanceTemplateReservationAffinitySpecificReservationOutput {
+	return i.ToInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateReservationAffinitySpecificReservationArgs) ToInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateReservationAffinitySpecificReservationOutput)
+}
+
+func (i InstanceTemplateReservationAffinitySpecificReservationArgs) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutput() InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateReservationAffinitySpecificReservationArgs) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateReservationAffinitySpecificReservationOutput).ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx)
+}
+
+// InstanceTemplateReservationAffinitySpecificReservationPtrInput is an input type that accepts InstanceTemplateReservationAffinitySpecificReservationArgs, InstanceTemplateReservationAffinitySpecificReservationPtr and InstanceTemplateReservationAffinitySpecificReservationPtrOutput values.
+// You can construct a concrete instance of `InstanceTemplateReservationAffinitySpecificReservationPtrInput` via:
+//
+//          InstanceTemplateReservationAffinitySpecificReservationArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTemplateReservationAffinitySpecificReservationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateReservationAffinitySpecificReservationPtrOutput() InstanceTemplateReservationAffinitySpecificReservationPtrOutput
+	ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Context) InstanceTemplateReservationAffinitySpecificReservationPtrOutput
+}
+
+type instanceTemplateReservationAffinitySpecificReservationPtrType InstanceTemplateReservationAffinitySpecificReservationArgs
+
+func InstanceTemplateReservationAffinitySpecificReservationPtr(v *InstanceTemplateReservationAffinitySpecificReservationArgs) InstanceTemplateReservationAffinitySpecificReservationPtrInput {
+	return (*instanceTemplateReservationAffinitySpecificReservationPtrType)(v)
+}
+
+func (*instanceTemplateReservationAffinitySpecificReservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i *instanceTemplateReservationAffinitySpecificReservationPtrType) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutput() InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return i.ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTemplateReservationAffinitySpecificReservationPtrType) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+type InstanceTemplateReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationOutput) ToInstanceTemplateReservationAffinitySpecificReservationOutput() InstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationOutput) ToInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationOutput) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutput() InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationOutput) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateReservationAffinitySpecificReservation) *InstanceTemplateReservationAffinitySpecificReservation {
+		return &v
+	}).(InstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The key for the node affinity label.
+func (o InstanceTemplateReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type InstanceTemplateReservationAffinitySpecificReservationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateReservationAffinitySpecificReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationPtrOutput) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutput() InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationPtrOutput) ToInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) InstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationPtrOutput) Elem() InstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o.ApplyT(func(v *InstanceTemplateReservationAffinitySpecificReservation) InstanceTemplateReservationAffinitySpecificReservation {
+		return *v
+	}).(InstanceTemplateReservationAffinitySpecificReservationOutput)
+}
+
+// The key for the node affinity label.
+func (o InstanceTemplateReservationAffinitySpecificReservationPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateReservationAffinitySpecificReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceTemplateReservationAffinitySpecificReservationPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceTemplateReservationAffinitySpecificReservation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type InstanceTemplateScheduling struct {
@@ -31687,6 +33269,424 @@ func (o RegionInstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManagerStatefulDisk {
 		return vs[0].([]RegionInstanceGroupManagerStatefulDisk)[vs[1].(int)]
 	}).(RegionInstanceGroupManagerStatefulDiskOutput)
+}
+
+type RegionInstanceGroupManagerStatus struct {
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable *bool `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls []RegionInstanceGroupManagerStatusStateful `pulumi:"statefuls"`
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	VersionTargets []RegionInstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
+}
+
+// RegionInstanceGroupManagerStatusInput is an input type that accepts RegionInstanceGroupManagerStatusArgs and RegionInstanceGroupManagerStatusOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusInput` via:
+//
+//          RegionInstanceGroupManagerStatusArgs{...}
+type RegionInstanceGroupManagerStatusInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusOutput() RegionInstanceGroupManagerStatusOutput
+	ToRegionInstanceGroupManagerStatusOutputWithContext(context.Context) RegionInstanceGroupManagerStatusOutput
+}
+
+type RegionInstanceGroupManagerStatusArgs struct {
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable pulumi.BoolPtrInput `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls RegionInstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	VersionTargets RegionInstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
+}
+
+func (RegionInstanceGroupManagerStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusArgs) ToRegionInstanceGroupManagerStatusOutput() RegionInstanceGroupManagerStatusOutput {
+	return i.ToRegionInstanceGroupManagerStatusOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusArgs) ToRegionInstanceGroupManagerStatusOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusOutput)
+}
+
+// RegionInstanceGroupManagerStatusArrayInput is an input type that accepts RegionInstanceGroupManagerStatusArray and RegionInstanceGroupManagerStatusArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusArrayInput` via:
+//
+//          RegionInstanceGroupManagerStatusArray{ RegionInstanceGroupManagerStatusArgs{...} }
+type RegionInstanceGroupManagerStatusArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusArrayOutput() RegionInstanceGroupManagerStatusArrayOutput
+	ToRegionInstanceGroupManagerStatusArrayOutputWithContext(context.Context) RegionInstanceGroupManagerStatusArrayOutput
+}
+
+type RegionInstanceGroupManagerStatusArray []RegionInstanceGroupManagerStatusInput
+
+func (RegionInstanceGroupManagerStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusArray) ToRegionInstanceGroupManagerStatusArrayOutput() RegionInstanceGroupManagerStatusArrayOutput {
+	return i.ToRegionInstanceGroupManagerStatusArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusArray) ToRegionInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusArrayOutput)
+}
+
+type RegionInstanceGroupManagerStatusOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusOutput) ToRegionInstanceGroupManagerStatusOutput() RegionInstanceGroupManagerStatusOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusOutput) ToRegionInstanceGroupManagerStatusOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusOutput {
+	return o
+}
+
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+func (o RegionInstanceGroupManagerStatusOutput) IsStable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatus) *bool { return v.IsStable }).(pulumi.BoolPtrOutput)
+}
+
+// Stateful status of the given Instance Group Manager.
+func (o RegionInstanceGroupManagerStatusOutput) Statefuls() RegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatus) []RegionInstanceGroupManagerStatusStateful {
+		return v.Statefuls
+	}).(RegionInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+func (o RegionInstanceGroupManagerStatusOutput) VersionTargets() RegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatus) []RegionInstanceGroupManagerStatusVersionTarget {
+		return v.VersionTargets
+	}).(RegionInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type RegionInstanceGroupManagerStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusArrayOutput) ToRegionInstanceGroupManagerStatusArrayOutput() RegionInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusArrayOutput) ToRegionInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) RegionInstanceGroupManagerStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManagerStatus {
+		return vs[0].([]RegionInstanceGroupManagerStatus)[vs[1].(int)]
+	}).(RegionInstanceGroupManagerStatusOutput)
+}
+
+type RegionInstanceGroupManagerStatusStateful struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig *bool `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instance.
+	PerInstanceConfigs []RegionInstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
+}
+
+// RegionInstanceGroupManagerStatusStatefulInput is an input type that accepts RegionInstanceGroupManagerStatusStatefulArgs and RegionInstanceGroupManagerStatusStatefulOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusStatefulInput` via:
+//
+//          RegionInstanceGroupManagerStatusStatefulArgs{...}
+type RegionInstanceGroupManagerStatusStatefulInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusStatefulOutput() RegionInstanceGroupManagerStatusStatefulOutput
+	ToRegionInstanceGroupManagerStatusStatefulOutputWithContext(context.Context) RegionInstanceGroupManagerStatusStatefulOutput
+}
+
+type RegionInstanceGroupManagerStatusStatefulArgs struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig pulumi.BoolPtrInput `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instance.
+	PerInstanceConfigs RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
+}
+
+func (RegionInstanceGroupManagerStatusStatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulArgs) ToRegionInstanceGroupManagerStatusStatefulOutput() RegionInstanceGroupManagerStatusStatefulOutput {
+	return i.ToRegionInstanceGroupManagerStatusStatefulOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulArgs) ToRegionInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusStatefulOutput)
+}
+
+// RegionInstanceGroupManagerStatusStatefulArrayInput is an input type that accepts RegionInstanceGroupManagerStatusStatefulArray and RegionInstanceGroupManagerStatusStatefulArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusStatefulArrayInput` via:
+//
+//          RegionInstanceGroupManagerStatusStatefulArray{ RegionInstanceGroupManagerStatusStatefulArgs{...} }
+type RegionInstanceGroupManagerStatusStatefulArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusStatefulArrayOutput() RegionInstanceGroupManagerStatusStatefulArrayOutput
+	ToRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Context) RegionInstanceGroupManagerStatusStatefulArrayOutput
+}
+
+type RegionInstanceGroupManagerStatusStatefulArray []RegionInstanceGroupManagerStatusStatefulInput
+
+func (RegionInstanceGroupManagerStatusStatefulArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulArray) ToRegionInstanceGroupManagerStatusStatefulArrayOutput() RegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return i.ToRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulArray) ToRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+type RegionInstanceGroupManagerStatusStatefulOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusStatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulOutput) ToRegionInstanceGroupManagerStatusStatefulOutput() RegionInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulOutput) ToRegionInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+func (o RegionInstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatusStateful) *bool { return v.HasStatefulConfig }).(pulumi.BoolPtrOutput)
+}
+
+// Status of per-instance configs on the instance.
+func (o RegionInstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatusStateful) []RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return v.PerInstanceConfigs
+	}).(RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type RegionInstanceGroupManagerStatusStatefulArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusStatefulArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulArrayOutput) ToRegionInstanceGroupManagerStatusStatefulArrayOutput() RegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulArrayOutput) ToRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulArrayOutput) Index(i pulumi.IntInput) RegionInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManagerStatusStateful {
+		return vs[0].([]RegionInstanceGroupManagerStatusStateful)[vs[1].(int)]
+	}).(RegionInstanceGroupManagerStatusStatefulOutput)
+}
+
+type RegionInstanceGroupManagerStatusStatefulPerInstanceConfig struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+	AllEffective *bool `pulumi:"allEffective"`
+}
+
+// RegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput is an input type that accepts RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs and RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput` via:
+//
+//          RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...}
+type RegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+	ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Context) RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+}
+
+type RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+	AllEffective pulumi.BoolPtrInput `pulumi:"allEffective"`
+}
+
+func (RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return i.ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+// RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput is an input type that accepts RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray and RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput` via:
+//
+//          RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray{ RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...} }
+type RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+	ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Context) RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+}
+
+type RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray []RegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput
+
+func (RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return i.ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+func (o RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) AllEffective() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatusStatefulPerInstanceConfig) *bool { return v.AllEffective }).(pulumi.BoolPtrOutput)
+}
+
+type RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) Index(i pulumi.IntInput) RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return vs[0].([]RegionInstanceGroupManagerStatusStatefulPerInstanceConfig)[vs[1].(int)]
+	}).(RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+type RegionInstanceGroupManagerStatusVersionTarget struct {
+	IsReached *bool `pulumi:"isReached"`
+}
+
+// RegionInstanceGroupManagerStatusVersionTargetInput is an input type that accepts RegionInstanceGroupManagerStatusVersionTargetArgs and RegionInstanceGroupManagerStatusVersionTargetOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusVersionTargetInput` via:
+//
+//          RegionInstanceGroupManagerStatusVersionTargetArgs{...}
+type RegionInstanceGroupManagerStatusVersionTargetInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusVersionTargetOutput() RegionInstanceGroupManagerStatusVersionTargetOutput
+	ToRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Context) RegionInstanceGroupManagerStatusVersionTargetOutput
+}
+
+type RegionInstanceGroupManagerStatusVersionTargetArgs struct {
+	IsReached pulumi.BoolPtrInput `pulumi:"isReached"`
+}
+
+func (RegionInstanceGroupManagerStatusVersionTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusVersionTargetArgs) ToRegionInstanceGroupManagerStatusVersionTargetOutput() RegionInstanceGroupManagerStatusVersionTargetOutput {
+	return i.ToRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusVersionTargetArgs) ToRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+// RegionInstanceGroupManagerStatusVersionTargetArrayInput is an input type that accepts RegionInstanceGroupManagerStatusVersionTargetArray and RegionInstanceGroupManagerStatusVersionTargetArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatusVersionTargetArrayInput` via:
+//
+//          RegionInstanceGroupManagerStatusVersionTargetArray{ RegionInstanceGroupManagerStatusVersionTargetArgs{...} }
+type RegionInstanceGroupManagerStatusVersionTargetArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatusVersionTargetArrayOutput() RegionInstanceGroupManagerStatusVersionTargetArrayOutput
+	ToRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Context) RegionInstanceGroupManagerStatusVersionTargetArrayOutput
+}
+
+type RegionInstanceGroupManagerStatusVersionTargetArray []RegionInstanceGroupManagerStatusVersionTargetInput
+
+func (RegionInstanceGroupManagerStatusVersionTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatusVersionTargetArray) ToRegionInstanceGroupManagerStatusVersionTargetArrayOutput() RegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return i.ToRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatusVersionTargetArray) ToRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type RegionInstanceGroupManagerStatusVersionTargetOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusVersionTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusVersionTargetOutput) ToRegionInstanceGroupManagerStatusVersionTargetOutput() RegionInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusVersionTargetOutput) ToRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusVersionTargetOutput) IsReached() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatusVersionTarget) *bool { return v.IsReached }).(pulumi.BoolPtrOutput)
+}
+
+type RegionInstanceGroupManagerStatusVersionTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatusVersionTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatusVersionTargetArrayOutput) ToRegionInstanceGroupManagerStatusVersionTargetArrayOutput() RegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusVersionTargetArrayOutput) ToRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pulumi.IntInput) RegionInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManagerStatusVersionTarget {
+		return vs[0].([]RegionInstanceGroupManagerStatusVersionTarget)[vs[1].(int)]
+	}).(RegionInstanceGroupManagerStatusVersionTargetOutput)
 }
 
 type RegionInstanceGroupManagerUpdatePolicy struct {
@@ -67572,6 +69572,211 @@ func (o GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 	}).(GetInstanceNetworkInterfaceAliasIpRangeOutput)
 }
 
+type GetInstanceReservationAffinity struct {
+	SpecificReservations []GetInstanceReservationAffinitySpecificReservation `pulumi:"specificReservations"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceReservationAffinityInput is an input type that accepts GetInstanceReservationAffinityArgs and GetInstanceReservationAffinityOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinityInput` via:
+//
+//          GetInstanceReservationAffinityArgs{...}
+type GetInstanceReservationAffinityInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinityOutput() GetInstanceReservationAffinityOutput
+	ToGetInstanceReservationAffinityOutputWithContext(context.Context) GetInstanceReservationAffinityOutput
+}
+
+type GetInstanceReservationAffinityArgs struct {
+	SpecificReservations GetInstanceReservationAffinitySpecificReservationArrayInput `pulumi:"specificReservations"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinityArgs) ToGetInstanceReservationAffinityOutput() GetInstanceReservationAffinityOutput {
+	return i.ToGetInstanceReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinityArgs) ToGetInstanceReservationAffinityOutputWithContext(ctx context.Context) GetInstanceReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinityOutput)
+}
+
+// GetInstanceReservationAffinityArrayInput is an input type that accepts GetInstanceReservationAffinityArray and GetInstanceReservationAffinityArrayOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinityArrayInput` via:
+//
+//          GetInstanceReservationAffinityArray{ GetInstanceReservationAffinityArgs{...} }
+type GetInstanceReservationAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinityArrayOutput() GetInstanceReservationAffinityArrayOutput
+	ToGetInstanceReservationAffinityArrayOutputWithContext(context.Context) GetInstanceReservationAffinityArrayOutput
+}
+
+type GetInstanceReservationAffinityArray []GetInstanceReservationAffinityInput
+
+func (GetInstanceReservationAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinityArray) ToGetInstanceReservationAffinityArrayOutput() GetInstanceReservationAffinityArrayOutput {
+	return i.ToGetInstanceReservationAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinityArray) ToGetInstanceReservationAffinityArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinityArrayOutput)
+}
+
+type GetInstanceReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinityOutput) ToGetInstanceReservationAffinityOutput() GetInstanceReservationAffinityOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityOutput) ToGetInstanceReservationAffinityOutputWithContext(ctx context.Context) GetInstanceReservationAffinityOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityOutput) SpecificReservations() GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinity) []GetInstanceReservationAffinitySpecificReservation {
+		return v.SpecificReservations
+	}).(GetInstanceReservationAffinitySpecificReservationArrayOutput)
+}
+
+// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceReservationAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinityArrayOutput) ToGetInstanceReservationAffinityArrayOutput() GetInstanceReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityArrayOutput) ToGetInstanceReservationAffinityArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityArrayOutput) Index(i pulumi.IntInput) GetInstanceReservationAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceReservationAffinity {
+		return vs[0].([]GetInstanceReservationAffinity)[vs[1].(int)]
+	}).(GetInstanceReservationAffinityOutput)
+}
+
+type GetInstanceReservationAffinitySpecificReservation struct {
+	Key    string   `pulumi:"key"`
+	Values []string `pulumi:"values"`
+}
+
+// GetInstanceReservationAffinitySpecificReservationInput is an input type that accepts GetInstanceReservationAffinitySpecificReservationArgs and GetInstanceReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinitySpecificReservationInput` via:
+//
+//          GetInstanceReservationAffinitySpecificReservationArgs{...}
+type GetInstanceReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinitySpecificReservationOutput() GetInstanceReservationAffinitySpecificReservationOutput
+	ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(context.Context) GetInstanceReservationAffinitySpecificReservationOutput
+}
+
+type GetInstanceReservationAffinitySpecificReservationArgs struct {
+	Key    pulumi.StringInput      `pulumi:"key"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetInstanceReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArgs) ToGetInstanceReservationAffinitySpecificReservationOutput() GetInstanceReservationAffinitySpecificReservationOutput {
+	return i.ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArgs) ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinitySpecificReservationOutput)
+}
+
+// GetInstanceReservationAffinitySpecificReservationArrayInput is an input type that accepts GetInstanceReservationAffinitySpecificReservationArray and GetInstanceReservationAffinitySpecificReservationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinitySpecificReservationArrayInput` via:
+//
+//          GetInstanceReservationAffinitySpecificReservationArray{ GetInstanceReservationAffinitySpecificReservationArgs{...} }
+type GetInstanceReservationAffinitySpecificReservationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinitySpecificReservationArrayOutput() GetInstanceReservationAffinitySpecificReservationArrayOutput
+	ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(context.Context) GetInstanceReservationAffinitySpecificReservationArrayOutput
+}
+
+type GetInstanceReservationAffinitySpecificReservationArray []GetInstanceReservationAffinitySpecificReservationInput
+
+func (GetInstanceReservationAffinitySpecificReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArray) ToGetInstanceReservationAffinitySpecificReservationArrayOutput() GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return i.ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArray) ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinitySpecificReservationArrayOutput)
+}
+
+type GetInstanceReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) ToGetInstanceReservationAffinitySpecificReservationOutput() GetInstanceReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceReservationAffinitySpecificReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinitySpecificReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationArrayOutput) ToGetInstanceReservationAffinitySpecificReservationArrayOutput() GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationArrayOutput) ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationArrayOutput) Index(i pulumi.IntInput) GetInstanceReservationAffinitySpecificReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceReservationAffinitySpecificReservation {
+		return vs[0].([]GetInstanceReservationAffinitySpecificReservation)[vs[1].(int)]
+	}).(GetInstanceReservationAffinitySpecificReservationOutput)
+}
+
 type GetInstanceScheduling struct {
 	// Specifies if the instance should be
 	// restarted if it was terminated by Compute Engine (not a user).
@@ -69139,6 +71344,214 @@ func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkInterfaceAliasIpRange {
 		return vs[0].([]GetInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetInstanceTemplateReservationAffinity struct {
+	SpecificReservations []GetInstanceTemplateReservationAffinitySpecificReservation `pulumi:"specificReservations"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceTemplateReservationAffinityInput is an input type that accepts GetInstanceTemplateReservationAffinityArgs and GetInstanceTemplateReservationAffinityOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateReservationAffinityInput` via:
+//
+//          GetInstanceTemplateReservationAffinityArgs{...}
+type GetInstanceTemplateReservationAffinityInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateReservationAffinityOutput() GetInstanceTemplateReservationAffinityOutput
+	ToGetInstanceTemplateReservationAffinityOutputWithContext(context.Context) GetInstanceTemplateReservationAffinityOutput
+}
+
+type GetInstanceTemplateReservationAffinityArgs struct {
+	SpecificReservations GetInstanceTemplateReservationAffinitySpecificReservationArrayInput `pulumi:"specificReservations"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceTemplateReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateReservationAffinityArgs) ToGetInstanceTemplateReservationAffinityOutput() GetInstanceTemplateReservationAffinityOutput {
+	return i.ToGetInstanceTemplateReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateReservationAffinityArgs) ToGetInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateReservationAffinityOutput)
+}
+
+// GetInstanceTemplateReservationAffinityArrayInput is an input type that accepts GetInstanceTemplateReservationAffinityArray and GetInstanceTemplateReservationAffinityArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateReservationAffinityArrayInput` via:
+//
+//          GetInstanceTemplateReservationAffinityArray{ GetInstanceTemplateReservationAffinityArgs{...} }
+type GetInstanceTemplateReservationAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateReservationAffinityArrayOutput() GetInstanceTemplateReservationAffinityArrayOutput
+	ToGetInstanceTemplateReservationAffinityArrayOutputWithContext(context.Context) GetInstanceTemplateReservationAffinityArrayOutput
+}
+
+type GetInstanceTemplateReservationAffinityArray []GetInstanceTemplateReservationAffinityInput
+
+func (GetInstanceTemplateReservationAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateReservationAffinityArray) ToGetInstanceTemplateReservationAffinityArrayOutput() GetInstanceTemplateReservationAffinityArrayOutput {
+	return i.ToGetInstanceTemplateReservationAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateReservationAffinityArray) ToGetInstanceTemplateReservationAffinityArrayOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateReservationAffinityArrayOutput)
+}
+
+type GetInstanceTemplateReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateReservationAffinityOutput) ToGetInstanceTemplateReservationAffinityOutput() GetInstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o GetInstanceTemplateReservationAffinityOutput) ToGetInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o GetInstanceTemplateReservationAffinityOutput) SpecificReservations() GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateReservationAffinity) []GetInstanceTemplateReservationAffinitySpecificReservation {
+		return v.SpecificReservations
+	}).(GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceTemplateReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateReservationAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateReservationAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateReservationAffinityArrayOutput) ToGetInstanceTemplateReservationAffinityArrayOutput() GetInstanceTemplateReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateReservationAffinityArrayOutput) ToGetInstanceTemplateReservationAffinityArrayOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateReservationAffinityArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateReservationAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateReservationAffinity {
+		return vs[0].([]GetInstanceTemplateReservationAffinity)[vs[1].(int)]
+	}).(GetInstanceTemplateReservationAffinityOutput)
+}
+
+type GetInstanceTemplateReservationAffinitySpecificReservation struct {
+	// The key for the node affinity label.
+	Key    string   `pulumi:"key"`
+	Values []string `pulumi:"values"`
+}
+
+// GetInstanceTemplateReservationAffinitySpecificReservationInput is an input type that accepts GetInstanceTemplateReservationAffinitySpecificReservationArgs and GetInstanceTemplateReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateReservationAffinitySpecificReservationInput` via:
+//
+//          GetInstanceTemplateReservationAffinitySpecificReservationArgs{...}
+type GetInstanceTemplateReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateReservationAffinitySpecificReservationOutput() GetInstanceTemplateReservationAffinitySpecificReservationOutput
+	ToGetInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Context) GetInstanceTemplateReservationAffinitySpecificReservationOutput
+}
+
+type GetInstanceTemplateReservationAffinitySpecificReservationArgs struct {
+	// The key for the node affinity label.
+	Key    pulumi.StringInput      `pulumi:"key"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetInstanceTemplateReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateReservationAffinitySpecificReservationArgs) ToGetInstanceTemplateReservationAffinitySpecificReservationOutput() GetInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return i.ToGetInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateReservationAffinitySpecificReservationArgs) ToGetInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateReservationAffinitySpecificReservationOutput)
+}
+
+// GetInstanceTemplateReservationAffinitySpecificReservationArrayInput is an input type that accepts GetInstanceTemplateReservationAffinitySpecificReservationArray and GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateReservationAffinitySpecificReservationArrayInput` via:
+//
+//          GetInstanceTemplateReservationAffinitySpecificReservationArray{ GetInstanceTemplateReservationAffinitySpecificReservationArgs{...} }
+type GetInstanceTemplateReservationAffinitySpecificReservationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateReservationAffinitySpecificReservationArrayOutput() GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput
+	ToGetInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(context.Context) GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput
+}
+
+type GetInstanceTemplateReservationAffinitySpecificReservationArray []GetInstanceTemplateReservationAffinitySpecificReservationInput
+
+func (GetInstanceTemplateReservationAffinitySpecificReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateReservationAffinitySpecificReservationArray) ToGetInstanceTemplateReservationAffinitySpecificReservationArrayOutput() GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return i.ToGetInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateReservationAffinitySpecificReservationArray) ToGetInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput)
+}
+
+type GetInstanceTemplateReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateReservationAffinitySpecificReservationOutput) ToGetInstanceTemplateReservationAffinitySpecificReservationOutput() GetInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o GetInstanceTemplateReservationAffinitySpecificReservationOutput) ToGetInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+// The key for the node affinity label.
+func (o GetInstanceTemplateReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput) ToGetInstanceTemplateReservationAffinitySpecificReservationArrayOutput() GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput) ToGetInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateReservationAffinitySpecificReservation {
+		return vs[0].([]GetInstanceTemplateReservationAffinitySpecificReservation)[vs[1].(int)]
+	}).(GetInstanceTemplateReservationAffinitySpecificReservationOutput)
 }
 
 type GetInstanceTemplateScheduling struct {
@@ -71564,6 +73977,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageReservationAffinityOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageReservationAffinitySpecificReservationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageSchedulingOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageSchedulingNodeAffinityOutput{})
@@ -71590,6 +74007,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceFromTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateReservationAffinityOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateReservationAffinitySpecificReservationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateSchedulingOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateSchedulingNodeAffinityOutput{})
@@ -71606,6 +74027,14 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatefulDiskOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatefulDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusVersionTargetOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatusVersionTargetArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionOutput{})
@@ -71626,6 +74055,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceReservationAffinityOutput{})
+	pulumi.RegisterOutputType(InstanceReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(InstanceReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(InstanceReservationAffinitySpecificReservationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSchedulingOutput{})
 	pulumi.RegisterOutputType(InstanceSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSchedulingNodeAffinityOutput{})
@@ -71650,6 +74083,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateReservationAffinityOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateReservationAffinitySpecificReservationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSchedulingOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSchedulingNodeAffinityOutput{})
@@ -71774,6 +74211,14 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatefulDiskOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatefulDiskArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusStatefulOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusStatefulArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusVersionTargetOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatusVersionTargetArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerUpdatePolicyOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionOutput{})
@@ -72193,6 +74638,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinityOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinitySpecificReservationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingNodeAffinityOutput{})
@@ -72217,6 +74666,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinityOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingNodeAffinityOutput{})

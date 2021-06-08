@@ -341,7 +341,8 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpsHealthCheck | undefined>;
     /**
-     * Configure logging on this health check.  Structure is documented below.
+     * Configure logging on this health check.
+     * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.HealthCheckLogConfig>;
     /**
@@ -490,7 +491,8 @@ export interface HealthCheckState {
      */
     httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
     /**
-     * Configure logging on this health check.  Structure is documented below.
+     * Configure logging on this health check.
+     * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig>;
     /**
@@ -579,7 +581,8 @@ export interface HealthCheckArgs {
      */
     httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
     /**
-     * Configure logging on this health check.  Structure is documented below.
+     * Configure logging on this health check.
+     * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig>;
     /**
