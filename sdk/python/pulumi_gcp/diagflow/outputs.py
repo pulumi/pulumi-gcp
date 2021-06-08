@@ -10,6 +10,8 @@ from .. import _utilities
 
 __all__ = [
     'EntityTypeEntity',
+    'FulfillmentFeature',
+    'FulfillmentGenericWebService',
     'IntentFollowupIntentInfo',
 ]
 
@@ -56,6 +58,99 @@ class EntityTypeEntity(dict):
         * A string that can contain references to other entity types (with or without aliases).
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class FulfillmentFeature(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: The type of the feature that enabled for fulfillment.
+               * SMALLTALK: Fulfillment is enabled for SmallTalk.
+               Possible values are `SMALLTALK`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the feature that enabled for fulfillment.
+        * SMALLTALK: Fulfillment is enabled for SmallTalk.
+        Possible values are `SMALLTALK`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class FulfillmentGenericWebService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeaders":
+            suggest = "request_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FulfillmentGenericWebService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FulfillmentGenericWebService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FulfillmentGenericWebService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uri: str,
+                 password: Optional[str] = None,
+                 request_headers: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param str uri: The fulfillment URI for receiving POST requests. It must use https protocol.
+        :param str password: The password for HTTP Basic authentication.
+        :param Mapping[str, str] request_headers: The HTTP request headers to send together with fulfillment requests.
+        :param str username: The user name for HTTP Basic authentication.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The fulfillment URI for receiving POST requests. It must use https protocol.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[Mapping[str, str]]:
+        """
+        The HTTP request headers to send together with fulfillment requests.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The user name for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type

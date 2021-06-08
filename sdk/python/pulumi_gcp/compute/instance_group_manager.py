@@ -27,6 +27,7 @@ class InstanceGroupManagerArgs:
                  target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
+                 wait_for_instances_status: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceGroupManager resource.
@@ -57,6 +58,10 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
+        :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
+               When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+               set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+               instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
         """
@@ -82,6 +87,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "update_policy", update_policy)
         if wait_for_instances is not None:
             pulumi.set(__self__, "wait_for_instances", wait_for_instances)
+        if wait_for_instances_status is not None:
+            pulumi.set(__self__, "wait_for_instances_status", wait_for_instances_status)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -245,6 +252,21 @@ class InstanceGroupManagerArgs:
         pulumi.set(self, "wait_for_instances", value)
 
     @property
+    @pulumi.getter(name="waitForInstancesStatus")
+    def wait_for_instances_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        When used with `wait_for_instances` it specifies the status to wait for.
+        When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+        set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+        instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+        """
+        return pulumi.get(self, "wait_for_instances_status")
+
+    @wait_for_instances_status.setter
+    def wait_for_instances_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait_for_instances_status", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -272,11 +294,13 @@ class _InstanceGroupManagerState:
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
+                 wait_for_instances_status: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupManager resources.
@@ -299,6 +323,7 @@ class _InstanceGroupManagerState:
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusArgs']]] statuses: The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -310,6 +335,10 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
+        :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
+               When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+               set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+               instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
         """
@@ -335,6 +364,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "self_link", self_link)
         if stateful_disks is not None:
             pulumi.set(__self__, "stateful_disks", stateful_disks)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
         if target_pools is not None:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
@@ -345,6 +376,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "versions", versions)
         if wait_for_instances is not None:
             pulumi.set(__self__, "wait_for_instances", wait_for_instances)
+        if wait_for_instances_status is not None:
+            pulumi.set(__self__, "wait_for_instances_status", wait_for_instances_status)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -487,6 +520,18 @@ class _InstanceGroupManagerState:
         pulumi.set(self, "stateful_disks", value)
 
     @property
+    @pulumi.getter
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusArgs']]]]:
+        """
+        The status of this managed instance group.
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+    @property
     @pulumi.getter(name="targetPools")
     def target_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -553,6 +598,21 @@ class _InstanceGroupManagerState:
         pulumi.set(self, "wait_for_instances", value)
 
     @property
+    @pulumi.getter(name="waitForInstancesStatus")
+    def wait_for_instances_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        When used with `wait_for_instances` it specifies the status to wait for.
+        When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+        set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+        instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+        """
+        return pulumi.get(self, "wait_for_instances_status")
+
+    @wait_for_instances_status.setter
+    def wait_for_instances_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait_for_instances_status", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -583,6 +643,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
+                 wait_for_instances_status: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -700,6 +761,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
+        :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
+               When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+               set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+               instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
         """
@@ -822,6 +887,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
+                 wait_for_instances_status: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -851,11 +917,13 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError("Missing required property 'versions'")
             __props__.__dict__["versions"] = versions
             __props__.__dict__["wait_for_instances"] = wait_for_instances
+            __props__.__dict__["wait_for_instances_status"] = wait_for_instances_status
             __props__.__dict__["zone"] = zone
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["instance_group"] = None
             __props__.__dict__["operation"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["statuses"] = None
         super(InstanceGroupManager, __self__).__init__(
             'gcp:compute/instanceGroupManager:InstanceGroupManager',
             resource_name,
@@ -877,11 +945,13 @@ class InstanceGroupManager(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']]]]] = None,
             target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             target_size: Optional[pulumi.Input[int]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
             versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
             wait_for_instances: Optional[pulumi.Input[bool]] = None,
+            wait_for_instances_status: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'InstanceGroupManager':
         """
         Get an existing InstanceGroupManager resource's state with the given name, id, and optional extra
@@ -909,6 +979,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']]]] statuses: The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -920,6 +991,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
+        :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
+               When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+               set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+               instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
         """
@@ -938,11 +1013,13 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stateful_disks"] = stateful_disks
+        __props__.__dict__["statuses"] = statuses
         __props__.__dict__["target_pools"] = target_pools
         __props__.__dict__["target_size"] = target_size
         __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["versions"] = versions
         __props__.__dict__["wait_for_instances"] = wait_for_instances
+        __props__.__dict__["wait_for_instances_status"] = wait_for_instances_status
         __props__.__dict__["zone"] = zone
         return InstanceGroupManager(resource_name, opts=opts, __props__=__props__)
 
@@ -1041,6 +1118,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         return pulumi.get(self, "stateful_disks")
 
     @property
+    @pulumi.getter
+    def statuses(self) -> pulumi.Output[Sequence['outputs.InstanceGroupManagerStatus']]:
+        """
+        The status of this managed instance group.
+        """
+        return pulumi.get(self, "statuses")
+
+    @property
     @pulumi.getter(name="targetPools")
     def target_pools(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -1085,6 +1170,17 @@ class InstanceGroupManager(pulumi.CustomResource):
         continue trying until it times out.
         """
         return pulumi.get(self, "wait_for_instances")
+
+    @property
+    @pulumi.getter(name="waitForInstancesStatus")
+    def wait_for_instances_status(self) -> pulumi.Output[Optional[str]]:
+        """
+        When used with `wait_for_instances` it specifies the status to wait for.
+        When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+        set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+        instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+        """
+        return pulumi.get(self, "wait_for_instances_status")
 
     @property
     @pulumi.getter

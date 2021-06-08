@@ -103,9 +103,10 @@ type LookupInstanceResult struct {
 	MinCpuPlatform string  `pulumi:"minCpuPlatform"`
 	Name           *string `pulumi:"name"`
 	// The networks attached to the instance. Structure is documented below.
-	NetworkInterfaces []GetInstanceNetworkInterface `pulumi:"networkInterfaces"`
-	Project           *string                       `pulumi:"project"`
-	ResourcePolicies  []string                      `pulumi:"resourcePolicies"`
+	NetworkInterfaces     []GetInstanceNetworkInterface    `pulumi:"networkInterfaces"`
+	Project               *string                          `pulumi:"project"`
+	ReservationAffinities []GetInstanceReservationAffinity `pulumi:"reservationAffinities"`
+	ResourcePolicies      []string                         `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Schedulings []GetInstanceScheduling `pulumi:"schedulings"`
 	// The scratch disks attached to the instance. Structure is documented below.

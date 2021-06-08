@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .agent import *
 from .entity_type import *
+from .fulfillment import *
 from .intent import *
 from ._inputs import *
 from . import outputs

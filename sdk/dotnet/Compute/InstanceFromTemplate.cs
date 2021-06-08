@@ -228,6 +228,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the reservations that this instance can consume from.
+        /// </summary>
+        [Output("reservationAffinity")]
+        public Output<Outputs.InstanceFromTemplateReservationAffinity> ReservationAffinity { get; private set; } = null!;
+
+        /// <summary>
         /// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
         /// instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
@@ -487,6 +493,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Specifies the reservations that this instance can consume from.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.InstanceFromTemplateReservationAffinityArgs>? ReservationAffinity { get; set; }
+
+        /// <summary>
         /// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
         /// instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
@@ -735,6 +747,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Specifies the reservations that this instance can consume from.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.InstanceFromTemplateReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
         /// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the

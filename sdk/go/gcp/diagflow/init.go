@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Agent{}
 	case "gcp:diagflow/entityType:EntityType":
 		r = &EntityType{}
+	case "gcp:diagflow/fulfillment:Fulfillment":
+		r = &Fulfillment{}
 	case "gcp:diagflow/intent:Intent":
 		r = &Intent{}
 	default:
@@ -48,6 +50,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"diagflow/entityType",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/fulfillment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -341,7 +341,8 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckHttpsHealthCheck | undefined>;
     /**
-     * Configure logging on this health check.  Structure is documented below.
+     * Configure logging on this health check.
+     * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.RegionHealthCheckLogConfig | undefined>;
     /**
@@ -497,7 +498,8 @@ export interface RegionHealthCheckState {
      */
     httpsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpsHealthCheck>;
     /**
-     * Configure logging on this health check.  Structure is documented below.
+     * Configure logging on this health check.
+     * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.RegionHealthCheckLogConfig>;
     /**
@@ -591,7 +593,8 @@ export interface RegionHealthCheckArgs {
      */
     httpsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpsHealthCheck>;
     /**
-     * Configure logging on this health check.  Structure is documented below.
+     * Configure logging on this health check.
+     * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.RegionHealthCheckLogConfig>;
     /**

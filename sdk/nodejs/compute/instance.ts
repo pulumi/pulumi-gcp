@@ -221,6 +221,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Specifies the reservations that this instance can consume from.
+     */
+    public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceReservationAffinity | undefined>;
+    /**
      * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     public readonly resourcePolicies!: pulumi.Output<string | undefined>;
@@ -300,6 +304,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             inputs["scheduling"] = state ? state.scheduling : undefined;
             inputs["scratchDisks"] = state ? state.scratchDisks : undefined;
@@ -339,6 +344,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["scratchDisks"] = args ? args.scratchDisks : undefined;
@@ -488,6 +494,10 @@ export interface InstanceState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Specifies the reservations that this instance can consume from.
+     */
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**
      * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
@@ -639,6 +649,10 @@ export interface InstanceArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Specifies the reservations that this instance can consume from.
+     */
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**
      * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */

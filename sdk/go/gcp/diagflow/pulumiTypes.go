@@ -140,6 +140,297 @@ func (o EntityTypeEntityArrayOutput) Index(i pulumi.IntInput) EntityTypeEntityOu
 	}).(EntityTypeEntityOutput)
 }
 
+type FulfillmentFeature struct {
+	// The type of the feature that enabled for fulfillment.
+	// * SMALLTALK: Fulfillment is enabled for SmallTalk.
+	//   Possible values are `SMALLTALK`.
+	Type string `pulumi:"type"`
+}
+
+// FulfillmentFeatureInput is an input type that accepts FulfillmentFeatureArgs and FulfillmentFeatureOutput values.
+// You can construct a concrete instance of `FulfillmentFeatureInput` via:
+//
+//          FulfillmentFeatureArgs{...}
+type FulfillmentFeatureInput interface {
+	pulumi.Input
+
+	ToFulfillmentFeatureOutput() FulfillmentFeatureOutput
+	ToFulfillmentFeatureOutputWithContext(context.Context) FulfillmentFeatureOutput
+}
+
+type FulfillmentFeatureArgs struct {
+	// The type of the feature that enabled for fulfillment.
+	// * SMALLTALK: Fulfillment is enabled for SmallTalk.
+	//   Possible values are `SMALLTALK`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (FulfillmentFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FulfillmentFeature)(nil)).Elem()
+}
+
+func (i FulfillmentFeatureArgs) ToFulfillmentFeatureOutput() FulfillmentFeatureOutput {
+	return i.ToFulfillmentFeatureOutputWithContext(context.Background())
+}
+
+func (i FulfillmentFeatureArgs) ToFulfillmentFeatureOutputWithContext(ctx context.Context) FulfillmentFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentFeatureOutput)
+}
+
+// FulfillmentFeatureArrayInput is an input type that accepts FulfillmentFeatureArray and FulfillmentFeatureArrayOutput values.
+// You can construct a concrete instance of `FulfillmentFeatureArrayInput` via:
+//
+//          FulfillmentFeatureArray{ FulfillmentFeatureArgs{...} }
+type FulfillmentFeatureArrayInput interface {
+	pulumi.Input
+
+	ToFulfillmentFeatureArrayOutput() FulfillmentFeatureArrayOutput
+	ToFulfillmentFeatureArrayOutputWithContext(context.Context) FulfillmentFeatureArrayOutput
+}
+
+type FulfillmentFeatureArray []FulfillmentFeatureInput
+
+func (FulfillmentFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FulfillmentFeature)(nil)).Elem()
+}
+
+func (i FulfillmentFeatureArray) ToFulfillmentFeatureArrayOutput() FulfillmentFeatureArrayOutput {
+	return i.ToFulfillmentFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i FulfillmentFeatureArray) ToFulfillmentFeatureArrayOutputWithContext(ctx context.Context) FulfillmentFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentFeatureArrayOutput)
+}
+
+type FulfillmentFeatureOutput struct{ *pulumi.OutputState }
+
+func (FulfillmentFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FulfillmentFeature)(nil)).Elem()
+}
+
+func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutput() FulfillmentFeatureOutput {
+	return o
+}
+
+func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutputWithContext(ctx context.Context) FulfillmentFeatureOutput {
+	return o
+}
+
+// The type of the feature that enabled for fulfillment.
+// * SMALLTALK: Fulfillment is enabled for SmallTalk.
+//   Possible values are `SMALLTALK`.
+func (o FulfillmentFeatureOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FulfillmentFeature) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type FulfillmentFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (FulfillmentFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FulfillmentFeature)(nil)).Elem()
+}
+
+func (o FulfillmentFeatureArrayOutput) ToFulfillmentFeatureArrayOutput() FulfillmentFeatureArrayOutput {
+	return o
+}
+
+func (o FulfillmentFeatureArrayOutput) ToFulfillmentFeatureArrayOutputWithContext(ctx context.Context) FulfillmentFeatureArrayOutput {
+	return o
+}
+
+func (o FulfillmentFeatureArrayOutput) Index(i pulumi.IntInput) FulfillmentFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FulfillmentFeature {
+		return vs[0].([]FulfillmentFeature)[vs[1].(int)]
+	}).(FulfillmentFeatureOutput)
+}
+
+type FulfillmentGenericWebService struct {
+	// The password for HTTP Basic authentication.
+	Password *string `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests.
+	RequestHeaders map[string]string `pulumi:"requestHeaders"`
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri string `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username *string `pulumi:"username"`
+}
+
+// FulfillmentGenericWebServiceInput is an input type that accepts FulfillmentGenericWebServiceArgs and FulfillmentGenericWebServiceOutput values.
+// You can construct a concrete instance of `FulfillmentGenericWebServiceInput` via:
+//
+//          FulfillmentGenericWebServiceArgs{...}
+type FulfillmentGenericWebServiceInput interface {
+	pulumi.Input
+
+	ToFulfillmentGenericWebServiceOutput() FulfillmentGenericWebServiceOutput
+	ToFulfillmentGenericWebServiceOutputWithContext(context.Context) FulfillmentGenericWebServiceOutput
+}
+
+type FulfillmentGenericWebServiceArgs struct {
+	// The password for HTTP Basic authentication.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests.
+	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (FulfillmentGenericWebServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServiceOutput() FulfillmentGenericWebServiceOutput {
+	return i.ToFulfillmentGenericWebServiceOutputWithContext(context.Background())
+}
+
+func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServiceOutputWithContext(ctx context.Context) FulfillmentGenericWebServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentGenericWebServiceOutput)
+}
+
+func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServicePtrOutput() FulfillmentGenericWebServicePtrOutput {
+	return i.ToFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) FulfillmentGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentGenericWebServiceOutput).ToFulfillmentGenericWebServicePtrOutputWithContext(ctx)
+}
+
+// FulfillmentGenericWebServicePtrInput is an input type that accepts FulfillmentGenericWebServiceArgs, FulfillmentGenericWebServicePtr and FulfillmentGenericWebServicePtrOutput values.
+// You can construct a concrete instance of `FulfillmentGenericWebServicePtrInput` via:
+//
+//          FulfillmentGenericWebServiceArgs{...}
+//
+//  or:
+//
+//          nil
+type FulfillmentGenericWebServicePtrInput interface {
+	pulumi.Input
+
+	ToFulfillmentGenericWebServicePtrOutput() FulfillmentGenericWebServicePtrOutput
+	ToFulfillmentGenericWebServicePtrOutputWithContext(context.Context) FulfillmentGenericWebServicePtrOutput
+}
+
+type fulfillmentGenericWebServicePtrType FulfillmentGenericWebServiceArgs
+
+func FulfillmentGenericWebServicePtr(v *FulfillmentGenericWebServiceArgs) FulfillmentGenericWebServicePtrInput {
+	return (*fulfillmentGenericWebServicePtrType)(v)
+}
+
+func (*fulfillmentGenericWebServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (i *fulfillmentGenericWebServicePtrType) ToFulfillmentGenericWebServicePtrOutput() FulfillmentGenericWebServicePtrOutput {
+	return i.ToFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i *fulfillmentGenericWebServicePtrType) ToFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) FulfillmentGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentGenericWebServicePtrOutput)
+}
+
+type FulfillmentGenericWebServiceOutput struct{ *pulumi.OutputState }
+
+func (FulfillmentGenericWebServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServiceOutput() FulfillmentGenericWebServiceOutput {
+	return o
+}
+
+func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServiceOutputWithContext(ctx context.Context) FulfillmentGenericWebServiceOutput {
+	return o
+}
+
+func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServicePtrOutput() FulfillmentGenericWebServicePtrOutput {
+	return o.ToFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) FulfillmentGenericWebServicePtrOutput {
+	return o.ApplyT(func(v FulfillmentGenericWebService) *FulfillmentGenericWebService {
+		return &v
+	}).(FulfillmentGenericWebServicePtrOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o FulfillmentGenericWebServiceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FulfillmentGenericWebService) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests.
+func (o FulfillmentGenericWebServiceOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FulfillmentGenericWebService) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
+}
+
+// The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o FulfillmentGenericWebServiceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v FulfillmentGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o FulfillmentGenericWebServiceOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FulfillmentGenericWebService) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type FulfillmentGenericWebServicePtrOutput struct{ *pulumi.OutputState }
+
+func (FulfillmentGenericWebServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (o FulfillmentGenericWebServicePtrOutput) ToFulfillmentGenericWebServicePtrOutput() FulfillmentGenericWebServicePtrOutput {
+	return o
+}
+
+func (o FulfillmentGenericWebServicePtrOutput) ToFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) FulfillmentGenericWebServicePtrOutput {
+	return o
+}
+
+func (o FulfillmentGenericWebServicePtrOutput) Elem() FulfillmentGenericWebServiceOutput {
+	return o.ApplyT(func(v *FulfillmentGenericWebService) FulfillmentGenericWebService { return *v }).(FulfillmentGenericWebServiceOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o FulfillmentGenericWebServicePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests.
+func (o FulfillmentGenericWebServicePtrOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FulfillmentGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o FulfillmentGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o FulfillmentGenericWebServicePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type IntentFollowupIntentInfo struct {
 	FollowupIntentName *string `pulumi:"followupIntentName"`
 	// The unique identifier of the parent intent in the chain of followup intents.
@@ -249,6 +540,10 @@ func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFoll
 func init() {
 	pulumi.RegisterOutputType(EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityArrayOutput{})
+	pulumi.RegisterOutputType(FulfillmentFeatureOutput{})
+	pulumi.RegisterOutputType(FulfillmentFeatureArrayOutput{})
+	pulumi.RegisterOutputType(FulfillmentGenericWebServiceOutput{})
+	pulumi.RegisterOutputType(FulfillmentGenericWebServicePtrOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoArrayOutput{})
 }

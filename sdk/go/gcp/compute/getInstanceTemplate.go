@@ -97,7 +97,8 @@ type LookupInstanceTemplateResult struct {
 	// region where that resource resides. For example, a custom `subnetwork`
 	// resource is tied to a specific region. Defaults to the region of the
 	// Provider if no value is given.
-	Region string `pulumi:"region"`
+	Region                string                                   `pulumi:"region"`
+	ReservationAffinities []GetInstanceTemplateReservationAffinity `pulumi:"reservationAffinities"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Schedulings []GetInstanceTemplateScheduling `pulumi:"schedulings"`

@@ -191,9 +191,8 @@ class ClusterArgs:
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
-               >>>>>>> v3.69.0
+        :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -849,7 +848,7 @@ class ClusterArgs:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['ClusterNotificationConfigArgs']]:
         """
-        ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         """
         return pulumi.get(self, "notification_config")
 
@@ -861,8 +860,7 @@ class ClusterArgs:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        ) Configuration for the
-        >>>>>>> v3.69.0
+        Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -1206,9 +1204,8 @@ class _ClusterState:
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
-               >>>>>>> v3.69.0
+        :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -1939,7 +1936,7 @@ class _ClusterState:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['ClusterNotificationConfigArgs']]:
         """
-        ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         """
         return pulumi.get(self, "notification_config")
 
@@ -1960,8 +1957,7 @@ class _ClusterState:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        ) Configuration for the
-        >>>>>>> v3.69.0
+        Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -2400,9 +2396,8 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: ) Configuration for the
-               >>>>>>> v3.69.0
+        :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -2844,9 +2839,8 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: ) Configuration for the
-               >>>>>>> v3.69.0
+        :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -3366,7 +3360,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> pulumi.Output['outputs.ClusterNotificationConfig']:
         """
-        ) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         """
         return pulumi.get(self, "notification_config")
 
@@ -3379,8 +3373,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> pulumi.Output[Optional['outputs.ClusterPodSecurityPolicyConfig']]:
         """
-        ) Configuration for the
-        >>>>>>> v3.69.0
+        Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """

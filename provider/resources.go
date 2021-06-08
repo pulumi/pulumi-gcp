@@ -1603,6 +1603,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dialogflow_agent":       {Tok: gcpResource(gcpDiagflow, "Agent")},
 			"google_dialogflow_intent":      {Tok: gcpResource(gcpDiagflow, "Intent")},
 			"google_dialogflow_entity_type": {Tok: gcpResource(gcpDiagflow, "EntityType")},
+			"google_dialogflow_fulfillment": {Tok: gcpResource(gcpDiagflow, "Fulfillment")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},

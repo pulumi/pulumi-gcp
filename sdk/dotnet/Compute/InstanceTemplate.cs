@@ -349,6 +349,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the reservations that this instance can consume from.
+        /// </summary>
+        [Output("reservationAffinity")]
+        public Output<Outputs.InstanceTemplateReservationAffinity?> ReservationAffinity { get; private set; } = null!;
+
+        /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
         /// </summary>
@@ -586,6 +592,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Specifies the reservations that this instance can consume from.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.InstanceTemplateReservationAffinityArgs>? ReservationAffinity { get; set; }
+
+        /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
         /// </summary>
@@ -782,6 +794,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Specifies the reservations that this instance can consume from.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.InstanceTemplateReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
         /// The scheduling strategy to use. More details about

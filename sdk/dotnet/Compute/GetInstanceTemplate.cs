@@ -159,6 +159,7 @@ namespace Pulumi.Gcp.Compute
         /// Provider if no value is given.
         /// </summary>
         public readonly string Region;
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateReservationAffinityResult> ReservationAffinities;
         /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
@@ -230,6 +231,8 @@ namespace Pulumi.Gcp.Compute
 
             string region,
 
+            ImmutableArray<Outputs.GetInstanceTemplateReservationAffinityResult> reservationAffinities,
+
             ImmutableArray<Outputs.GetInstanceTemplateSchedulingResult> schedulings,
 
             string selfLink,
@@ -263,6 +266,7 @@ namespace Pulumi.Gcp.Compute
             NetworkInterfaces = networkInterfaces;
             Project = project;
             Region = region;
+            ReservationAffinities = reservationAffinities;
             Schedulings = schedulings;
             SelfLink = selfLink;
             ServiceAccounts = serviceAccounts;

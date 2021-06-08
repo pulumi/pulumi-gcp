@@ -105,6 +105,8 @@ type RegionInstanceGroupManager struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
+	// The status of this managed instance group.
+	Statuses RegionInstanceGroupManagerStatusArrayOutput `pulumi:"statuses"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -121,6 +123,11 @@ type RegionInstanceGroupManager struct {
 	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrOutput `pulumi:"waitForInstances"`
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus pulumi.StringPtrOutput `pulumi:"waitForInstancesStatus"`
 }
 
 // NewRegionInstanceGroupManager registers a new resource with the given unique name, arguments, and options.
@@ -194,6 +201,8 @@ type regionInstanceGroupManagerState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
+	// The status of this managed instance group.
+	Statuses []RegionInstanceGroupManagerStatus `pulumi:"statuses"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -210,6 +219,11 @@ type regionInstanceGroupManagerState struct {
 	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 }
 
 type RegionInstanceGroupManagerState struct {
@@ -249,6 +263,8 @@ type RegionInstanceGroupManagerState struct {
 	SelfLink pulumi.StringPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
+	// The status of this managed instance group.
+	Statuses RegionInstanceGroupManagerStatusArrayInput
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -265,6 +281,11 @@ type RegionInstanceGroupManagerState struct {
 	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus pulumi.StringPtrInput
 }
 
 func (RegionInstanceGroupManagerState) ElementType() reflect.Type {
@@ -318,6 +339,11 @@ type regionInstanceGroupManagerArgs struct {
 	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 }
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
@@ -368,6 +394,11 @@ type RegionInstanceGroupManagerArgs struct {
 	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
+	// When used with `waitForInstances` it specifies the status to wait for.
+	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+	// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+	// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+	WaitForInstancesStatus pulumi.StringPtrInput
 }
 
 func (RegionInstanceGroupManagerArgs) ElementType() reflect.Type {

@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Output<int> MaxInstances { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         /// </summary>
         [Output("maxThroughput")]
         public Output<int?> MaxThroughput { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<int>? MaxInstances { get; set; }
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<int>? MaxInstances { get; set; }
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }

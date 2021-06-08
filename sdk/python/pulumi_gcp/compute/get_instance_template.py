@@ -20,7 +20,7 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, reservation_affinities=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if can_ip_forward and not isinstance(can_ip_forward, bool):
             raise TypeError("Expected argument 'can_ip_forward' to be a bool")
         pulumi.set(__self__, "can_ip_forward", can_ip_forward)
@@ -84,6 +84,9 @@ class GetInstanceTemplateResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if reservation_affinities and not isinstance(reservation_affinities, list):
+            raise TypeError("Expected argument 'reservation_affinities' to be a list")
+        pulumi.set(__self__, "reservation_affinities", reservation_affinities)
         if schedulings and not isinstance(schedulings, list):
             raise TypeError("Expected argument 'schedulings' to be a list")
         pulumi.set(__self__, "schedulings", schedulings)
@@ -287,6 +290,11 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="reservationAffinities")
+    def reservation_affinities(self) -> Sequence['outputs.GetInstanceTemplateReservationAffinityResult']:
+        return pulumi.get(self, "reservation_affinities")
+
+    @property
     @pulumi.getter
     def schedulings(self) -> Sequence['outputs.GetInstanceTemplateSchedulingResult']:
         """
@@ -364,6 +372,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             network_interfaces=self.network_interfaces,
             project=self.project,
             region=self.region,
+            reservation_affinities=self.reservation_affinities,
             schedulings=self.schedulings,
             self_link=self.self_link,
             service_accounts=self.service_accounts,
@@ -425,6 +434,7 @@ def get_instance_template(filter: Optional[str] = None,
         network_interfaces=__ret__.network_interfaces,
         project=__ret__.project,
         region=__ret__.region,
+        reservation_affinities=__ret__.reservation_affinities,
         schedulings=__ret__.schedulings,
         self_link=__ret__.self_link,
         service_accounts=__ret__.service_accounts,

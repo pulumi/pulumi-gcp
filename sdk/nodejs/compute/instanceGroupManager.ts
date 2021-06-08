@@ -174,6 +174,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly statefulDisks!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulDisk[] | undefined>;
     /**
+     * The status of this managed instance group.
+     */
+    public /*out*/ readonly statuses!: pulumi.Output<outputs.compute.InstanceGroupManagerStatus[]>;
+    /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
@@ -199,6 +203,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * continue trying until it times out.
      */
     public readonly waitForInstances!: pulumi.Output<boolean | undefined>;
+    /**
+     * When used with `waitForInstances` it specifies the status to wait for.
+     * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+     * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+     * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+     */
+    public readonly waitForInstancesStatus!: pulumi.Output<string | undefined>;
     /**
      * The zone that instances in this group should be created
      * in.
@@ -229,11 +240,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["statefulDisks"] = state ? state.statefulDisks : undefined;
+            inputs["statuses"] = state ? state.statuses : undefined;
             inputs["targetPools"] = state ? state.targetPools : undefined;
             inputs["targetSize"] = state ? state.targetSize : undefined;
             inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             inputs["versions"] = state ? state.versions : undefined;
             inputs["waitForInstances"] = state ? state.waitForInstances : undefined;
+            inputs["waitForInstancesStatus"] = state ? state.waitForInstancesStatus : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupManagerArgs | undefined;
@@ -255,11 +268,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["versions"] = args ? args.versions : undefined;
             inputs["waitForInstances"] = args ? args.waitForInstances : undefined;
+            inputs["waitForInstancesStatus"] = args ? args.waitForInstancesStatus : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["instanceGroup"] = undefined /*out*/;
             inputs["operation"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["statuses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -323,6 +338,10 @@ export interface InstanceGroupManagerState {
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
     /**
+     * The status of this managed instance group.
+     */
+    statuses?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatus>[]>;
+    /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
@@ -348,6 +367,13 @@ export interface InstanceGroupManagerState {
      * continue trying until it times out.
      */
     waitForInstances?: pulumi.Input<boolean>;
+    /**
+     * When used with `waitForInstances` it specifies the status to wait for.
+     * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+     * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+     * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+     */
+    waitForInstancesStatus?: pulumi.Input<string>;
     /**
      * The zone that instances in this group should be created
      * in.
@@ -422,6 +448,13 @@ export interface InstanceGroupManagerArgs {
      * continue trying until it times out.
      */
     waitForInstances?: pulumi.Input<boolean>;
+    /**
+     * When used with `waitForInstances` it specifies the status to wait for.
+     * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
+     * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
+     * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
+     */
+    waitForInstancesStatus?: pulumi.Input<string>;
     /**
      * The zone that instances in this group should be created
      * in.
