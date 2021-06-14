@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 5.8.1 (2021-06-14)
+* Ensure `gcp.pubsub.Schema` is packaged as part of the Go SDK
+
 ## 5.8.0 (2021-06-08)
 * Upgrade to v3.71.0 of the Google Beta Terraform Provider
 
