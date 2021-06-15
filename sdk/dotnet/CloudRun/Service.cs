@@ -364,7 +364,7 @@ namespace Pulumi.Gcp.CloudRun
     ///                 Annotations = 
     ///                 {
     ///                     { "generated-by", "magic-modules" },
-    ///                     { "run.googleapis.com/launch-stage", "ALPHA" },
+    ///                     { "run.googleapis.com/launch-stage", "BETA" },
     ///                 },
     ///             },
     ///             Traffics = 
@@ -479,7 +479,7 @@ namespace Pulumi.Gcp.CloudRun
     ///                 Annotations = 
     ///                 {
     ///                     { "generated-by", "magic-modules" },
-    ///                     { "run.googleapis.com/launch-stage", "ALPHA" },
+    ///                     { "run.googleapis.com/launch-stage", "BETA" },
     ///                 },
     ///             },
     ///             Traffics = 

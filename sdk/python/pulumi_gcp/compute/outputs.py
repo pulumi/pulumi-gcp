@@ -4091,6 +4091,12 @@ class HaVpnGatewayVpnInterface(dict):
                  ip_address: Optional[str] = None):
         """
         :param int id: The numeric ID of this VPN gateway interface.
+        :param str interconnect_attachment: URL of the interconnect attachment resource. When the value
+               of this field is present, the VPN Gateway will be used for
+               IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+               traffic for this VPN Gateway interface will go through the
+               specified interconnect attachment resource.
+               Not currently available publicly.
         :param str ip_address: -
                The external IP address for this VPN gateway interface.
         """
@@ -4112,6 +4118,14 @@ class HaVpnGatewayVpnInterface(dict):
     @property
     @pulumi.getter(name="interconnectAttachment")
     def interconnect_attachment(self) -> Optional[str]:
+        """
+        URL of the interconnect attachment resource. When the value
+        of this field is present, the VPN Gateway will be used for
+        IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+        traffic for this VPN Gateway interface will go through the
+        specified interconnect attachment resource.
+        Not currently available publicly.
+        """
         return pulumi.get(self, "interconnect_attachment")
 
     @property

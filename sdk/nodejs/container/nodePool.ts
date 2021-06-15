@@ -27,8 +27,7 @@ import * as utilities from "../utilities";
  *     initialNodeCount: 1,
  * });
  * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
- *     location: "us-central1",
- *     cluster: primary.name,
+ *     cluster: primary.id,
  *     nodeCount: 1,
  *     nodeConfig: {
  *         preemptible: true,
@@ -62,8 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const np = new gcp.container.NodePool("np", {
- *     location: "us-central1-a",
- *     cluster: primary.name,
+ *     cluster: primary.id,
  *     nodeConfig: {
  *         machineType: "e2-medium",
  *         serviceAccount: _default.email,
@@ -122,7 +120,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -273,7 +271,7 @@ export interface NodePoolState {
      */
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -367,7 +365,7 @@ export interface NodePoolArgs {
      */
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      */
     cluster: pulumi.Input<string>;
     /**

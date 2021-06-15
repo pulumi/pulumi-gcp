@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.TransferJobTransferSpecAwsS3DataSourceGetArgs>? AwsS3DataSource { get; set; }
 
         /// <summary>
+        /// An Azure Blob Storage data source. Structure documented below.
+        /// </summary>
+        [Input("azureBlobStorageDataSource")]
+        public Input<Inputs.TransferJobTransferSpecAzureBlobStorageDataSourceGetArgs>? AzureBlobStorageDataSource { get; set; }
+
+        /// <summary>
         /// A Google Cloud Storage data sink. Structure documented below.
         /// </summary>
         [Input("gcsDataSink")]
@@ -31,7 +37,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.TransferJobTransferSpecGcsDataSourceGetArgs>? GcsDataSource { get; set; }
 
         /// <summary>
-        /// An HTTP URL data source. Structure documented below.
+        /// A HTTP URL data source. Structure documented below.
         /// </summary>
         [Input("httpDataSource")]
         public Input<Inputs.TransferJobTransferSpecHttpDataSourceGetArgs>? HttpDataSource { get; set; }

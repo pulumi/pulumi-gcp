@@ -8855,7 +8855,13 @@ func (o GlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pulumi
 
 type HaVpnGatewayVpnInterface struct {
 	// The numeric ID of this VPN gateway interface.
-	Id                     *int    `pulumi:"id"`
+	Id *int `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value
+	// of this field is present, the VPN Gateway will be used for
+	// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+	// traffic for this VPN Gateway interface will go through the
+	// specified interconnect attachment resource.
+	// Not currently available publicly.
 	InterconnectAttachment *string `pulumi:"interconnectAttachment"`
 	// -
 	// The external IP address for this VPN gateway interface.
@@ -8875,7 +8881,13 @@ type HaVpnGatewayVpnInterfaceInput interface {
 
 type HaVpnGatewayVpnInterfaceArgs struct {
 	// The numeric ID of this VPN gateway interface.
-	Id                     pulumi.IntPtrInput    `pulumi:"id"`
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value
+	// of this field is present, the VPN Gateway will be used for
+	// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+	// traffic for this VPN Gateway interface will go through the
+	// specified interconnect attachment resource.
+	// Not currently available publicly.
 	InterconnectAttachment pulumi.StringPtrInput `pulumi:"interconnectAttachment"`
 	// -
 	// The external IP address for this VPN gateway interface.
@@ -8938,6 +8950,12 @@ func (o HaVpnGatewayVpnInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HaVpnGatewayVpnInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// URL of the interconnect attachment resource. When the value
+// of this field is present, the VPN Gateway will be used for
+// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+// traffic for this VPN Gateway interface will go through the
+// specified interconnect attachment resource.
+// Not currently available publicly.
 func (o HaVpnGatewayVpnInterfaceOutput) InterconnectAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HaVpnGatewayVpnInterface) *string { return v.InterconnectAttachment }).(pulumi.StringPtrOutput)
 }

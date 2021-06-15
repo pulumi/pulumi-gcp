@@ -16,7 +16,7 @@ import (
 // To get more information about Google Cloud Storage Transfer, see:
 //
 // * [Overview](https://cloud.google.com/storage-transfer/docs/overview)
-// * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
+// * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs)
 // * How-to Guides
 //     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
 //

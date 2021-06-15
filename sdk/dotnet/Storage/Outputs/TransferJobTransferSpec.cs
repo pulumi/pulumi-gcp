@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecAwsS3DataSource? AwsS3DataSource;
         /// <summary>
+        /// An Azure Blob Storage data source. Structure documented below.
+        /// </summary>
+        public readonly Outputs.TransferJobTransferSpecAzureBlobStorageDataSource? AzureBlobStorageDataSource;
+        /// <summary>
         /// A Google Cloud Storage data sink. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecGcsDataSink? GcsDataSink;
@@ -26,7 +30,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecGcsDataSource? GcsDataSource;
         /// <summary>
-        /// An HTTP URL data source. Structure documented below.
+        /// A HTTP URL data source. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecHttpDataSource? HttpDataSource;
         /// <summary>
@@ -42,6 +46,8 @@ namespace Pulumi.Gcp.Storage.Outputs
         private TransferJobTransferSpec(
             Outputs.TransferJobTransferSpecAwsS3DataSource? awsS3DataSource,
 
+            Outputs.TransferJobTransferSpecAzureBlobStorageDataSource? azureBlobStorageDataSource,
+
             Outputs.TransferJobTransferSpecGcsDataSink? gcsDataSink,
 
             Outputs.TransferJobTransferSpecGcsDataSource? gcsDataSource,
@@ -53,6 +59,7 @@ namespace Pulumi.Gcp.Storage.Outputs
             Outputs.TransferJobTransferSpecTransferOptions? transferOptions)
         {
             AwsS3DataSource = awsS3DataSource;
+            AzureBlobStorageDataSource = azureBlobStorageDataSource;
             GcsDataSink = gcsDataSink;
             GcsDataSource = gcsDataSource;
             HttpDataSource = httpDataSource;

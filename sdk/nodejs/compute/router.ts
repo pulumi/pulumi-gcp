@@ -45,17 +45,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
  * const encrypted_interconnect_router = new gcp.compute.Router("encrypted-interconnect-router", {
  *     network: network.name,
  *     encryptedInterconnectRouter: true,
  *     bgp: {
  *         asn: 64514,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

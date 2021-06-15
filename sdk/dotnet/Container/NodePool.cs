@@ -38,8 +38,7 @@ namespace Pulumi.Gcp.Container
     ///         });
     ///         var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new Gcp.Container.NodePoolArgs
     ///         {
-    ///             Location = "us-central1",
-    ///             Cluster = primary.Name,
+    ///             Cluster = primary.Id,
     ///             NodeCount = 1,
     ///             NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
     ///             {
@@ -80,7 +79,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolAutoscaling?> Autoscaling { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -246,7 +245,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -370,7 +369,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }

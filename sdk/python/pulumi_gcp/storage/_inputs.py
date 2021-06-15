@@ -29,6 +29,8 @@ __all__ = [
     'TransferJobTransferSpecArgs',
     'TransferJobTransferSpecAwsS3DataSourceArgs',
     'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceArgs',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs',
     'TransferJobTransferSpecGcsDataSinkArgs',
     'TransferJobTransferSpecGcsDataSourceArgs',
     'TransferJobTransferSpecHttpDataSourceArgs',
@@ -885,6 +887,7 @@ class TransferJobScheduleStartTimeOfDayArgs:
 class TransferJobTransferSpecArgs:
     def __init__(__self__, *,
                  aws_s3_data_source: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']] = None,
+                 azure_blob_storage_data_source: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']] = None,
                  gcs_data_sink: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']] = None,
                  gcs_data_source: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']] = None,
                  http_data_source: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']] = None,
@@ -892,14 +895,17 @@ class TransferJobTransferSpecArgs:
                  transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']] = None):
         """
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs'] aws_s3_data_source: An AWS S3 data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs'] azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs'] gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs'] gcs_data_source: A Google Cloud Storage data source. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs'] http_data_source: An HTTP URL data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs'] http_data_source: A HTTP URL data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecTransferOptionsArgs'] transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
             pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
+        if azure_blob_storage_data_source is not None:
+            pulumi.set(__self__, "azure_blob_storage_data_source", azure_blob_storage_data_source)
         if gcs_data_sink is not None:
             pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
         if gcs_data_source is not None:
@@ -922,6 +928,18 @@ class TransferJobTransferSpecArgs:
     @aws_s3_data_source.setter
     def aws_s3_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']]):
         pulumi.set(self, "aws_s3_data_source", value)
+
+    @property
+    @pulumi.getter(name="azureBlobStorageDataSource")
+    def azure_blob_storage_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]:
+        """
+        An Azure Blob Storage data source. Structure documented below.
+        """
+        return pulumi.get(self, "azure_blob_storage_data_source")
+
+    @azure_blob_storage_data_source.setter
+    def azure_blob_storage_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]):
+        pulumi.set(self, "azure_blob_storage_data_source", value)
 
     @property
     @pulumi.getter(name="gcsDataSink")
@@ -951,7 +969,7 @@ class TransferJobTransferSpecArgs:
     @pulumi.getter(name="httpDataSource")
     def http_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']]:
         """
-        An HTTP URL data source. Structure documented below.
+        A HTTP URL data source. Structure documented below.
         """
         return pulumi.get(self, "http_data_source")
 
@@ -1056,6 +1074,96 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs:
     @secret_access_key.setter
     def secret_access_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_access_key", value)
+
+
+@pulumi.input_type
+class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
+    def __init__(__self__, *,
+                 azure_credentials: pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs'],
+                 container: pulumi.Input[str],
+                 storage_account: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs'] azure_credentials: Credentials used to authenticate API requests to Azure block.
+        :param pulumi.Input[str] container: The container to transfer from the Azure Storage account.`
+        :param pulumi.Input[str] storage_account: The name of the Azure Storage account.
+        :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        pulumi.set(__self__, "azure_credentials", azure_credentials)
+        pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "storage_account", storage_account)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="azureCredentials")
+    def azure_credentials(self) -> pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']:
+        """
+        Credentials used to authenticate API requests to Azure block.
+        """
+        return pulumi.get(self, "azure_credentials")
+
+    @azure_credentials.setter
+    def azure_credentials(self, value: pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']):
+        pulumi.set(self, "azure_credentials", value)
+
+    @property
+    @pulumi.getter
+    def container(self) -> pulumi.Input[str]:
+        """
+        The container to transfer from the Azure Storage account.`
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container", value)
+
+    @property
+    @pulumi.getter(name="storageAccount")
+    def storage_account(self) -> pulumi.Input[str]:
+        """
+        The name of the Azure Storage account.
+        """
+        return pulumi.get(self, "storage_account")
+
+    @storage_account.setter
+    def storage_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage_account", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs:
+    def __init__(__self__, *,
+                 sas_token: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] sas_token: Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        """
+        pulumi.set(__self__, "sas_token", sas_token)
+
+    @property
+    @pulumi.getter(name="sasToken")
+    def sas_token(self) -> pulumi.Input[str]:
+        """
+        Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        """
+        return pulumi.get(self, "sas_token")
+
+    @sas_token.setter
+    def sas_token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sas_token", value)
 
 
 @pulumi.input_type

@@ -8291,6 +8291,14 @@ export namespace compute {
          * The numeric ID of this VPN gateway interface.
          */
         id?: number;
+        /**
+         * URL of the interconnect attachment resource. When the value
+         * of this field is present, the VPN Gateway will be used for
+         * IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+         * traffic for this VPN Gateway interface will go through the
+         * specified interconnect attachment resource.
+         * Not currently available publicly.
+         */
         interconnectAttachment?: string;
         /**
          * -
@@ -25601,6 +25609,10 @@ export namespace storage {
          */
         awsS3DataSource?: outputs.storage.TransferJobTransferSpecAwsS3DataSource;
         /**
+         * An Azure Blob Storage data source. Structure documented below.
+         */
+        azureBlobStorageDataSource?: outputs.storage.TransferJobTransferSpecAzureBlobStorageDataSource;
+        /**
          * A Google Cloud Storage data sink. Structure documented below.
          */
         gcsDataSink?: outputs.storage.TransferJobTransferSpecGcsDataSink;
@@ -25609,7 +25621,7 @@ export namespace storage {
          */
         gcsDataSource?: outputs.storage.TransferJobTransferSpecGcsDataSource;
         /**
-         * An HTTP URL data source. Structure documented below.
+         * A HTTP URL data source. Structure documented below.
          */
         httpDataSource?: outputs.storage.TransferJobTransferSpecHttpDataSource;
         /**
@@ -25642,6 +25654,32 @@ export namespace storage {
          * AWS Secret Access Key.
          */
         secretAccessKey: string;
+    }
+
+    export interface TransferJobTransferSpecAzureBlobStorageDataSource {
+        /**
+         * Credentials used to authenticate API requests to Azure block.
+         */
+        azureCredentials: outputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials;
+        /**
+         * The container to transfer from the Azure Storage account.`
+         */
+        container: string;
+        /**
+         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+         */
+        path: string;
+        /**
+         * The name of the Azure Storage account.
+         */
+        storageAccount: string;
+    }
+
+    export interface TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+        /**
+         * Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+         */
+        sasToken: string;
     }
 
     export interface TransferJobTransferSpecGcsDataSink {

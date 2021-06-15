@@ -159,9 +159,6 @@ namespace Pulumi.Gcp.Compute
     ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
     ///         {
     ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var ipsec_interconnect_address = new Gcp.Compute.Address("ipsec-interconnect-address", new Gcp.Compute.AddressArgs
     ///         {
@@ -170,9 +167,6 @@ namespace Pulumi.Gcp.Compute
     ///             Address = "192.168.1.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -255,8 +249,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-        /// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        /// The URL of the network in which to reserve the address. This field
+        /// can only be used with INTERNAL type with the VPC_PEERING and
+        /// IPSEC_INTERCONNECT purposes.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
@@ -289,7 +284,7 @@ namespace Pulumi.Gcp.Compute
         /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        /// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        /// * IPSEC_INTERCONNECT for addresses created from a private IP range
         /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
         /// Interconnect configuration. These addresses are regional resources.
         /// This should only be set when using an Internal address.
@@ -418,8 +413,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-        /// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        /// The URL of the network in which to reserve the address. This field
+        /// can only be used with INTERNAL type with the VPC_PEERING and
+        /// IPSEC_INTERCONNECT purposes.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -452,7 +448,7 @@ namespace Pulumi.Gcp.Compute
         /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        /// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        /// * IPSEC_INTERCONNECT for addresses created from a private IP range
         /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
         /// Interconnect configuration. These addresses are regional resources.
         /// This should only be set when using an Internal address.
@@ -542,8 +538,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-        /// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        /// The URL of the network in which to reserve the address. This field
+        /// can only be used with INTERNAL type with the VPC_PEERING and
+        /// IPSEC_INTERCONNECT purposes.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -576,7 +573,7 @@ namespace Pulumi.Gcp.Compute
         /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        /// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        /// * IPSEC_INTERCONNECT for addresses created from a private IP range
         /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
         /// Interconnect configuration. These addresses are regional resources.
         /// This should only be set when using an Internal address.

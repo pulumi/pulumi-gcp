@@ -31,7 +31,7 @@ class NodePoolArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodePool resource.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
@@ -105,7 +105,7 @@ class NodePoolArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         """
         return pulumi.get(self, "cluster")
 
@@ -320,7 +320,7 @@ class _NodePoolState:
         Input properties used for looking up and filtering NodePool resources.
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -411,7 +411,7 @@ class _NodePoolState:
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         """
         return pulumi.get(self, "cluster")
 
@@ -651,8 +651,7 @@ class NodePool(pulumi.CustomResource):
             remove_default_node_pool=True,
             initial_node_count=1)
         primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
-            location="us-central1",
-            cluster=primary.name,
+            cluster=primary.id,
             node_count=1,
             node_config=gcp.container.NodePoolNodeConfigArgs(
                 preemptible=True,
@@ -678,7 +677,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -744,8 +743,7 @@ class NodePool(pulumi.CustomResource):
             remove_default_node_pool=True,
             initial_node_count=1)
         primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
-            location="us-central1",
-            cluster=primary.name,
+            cluster=primary.id,
             node_count=1,
             node_config=gcp.container.NodePoolNodeConfigArgs(
                 preemptible=True,
@@ -861,7 +859,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -937,7 +935,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         """
         return pulumi.get(self, "cluster")
 

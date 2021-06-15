@@ -2380,11 +2380,13 @@ func (o TransferJobScheduleStartTimeOfDayPtrOutput) Seconds() pulumi.IntPtrOutpu
 type TransferJobTransferSpec struct {
 	// An AWS S3 data source. Structure documented below.
 	AwsS3DataSource *TransferJobTransferSpecAwsS3DataSource `pulumi:"awsS3DataSource"`
+	// An Azure Blob Storage data source. Structure documented below.
+	AzureBlobStorageDataSource *TransferJobTransferSpecAzureBlobStorageDataSource `pulumi:"azureBlobStorageDataSource"`
 	// A Google Cloud Storage data sink. Structure documented below.
 	GcsDataSink *TransferJobTransferSpecGcsDataSink `pulumi:"gcsDataSink"`
 	// A Google Cloud Storage data source. Structure documented below.
 	GcsDataSource *TransferJobTransferSpecGcsDataSource `pulumi:"gcsDataSource"`
-	// An HTTP URL data source. Structure documented below.
+	// A HTTP URL data source. Structure documented below.
 	HttpDataSource *TransferJobTransferSpecHttpDataSource `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 	ObjectConditions *TransferJobTransferSpecObjectConditions `pulumi:"objectConditions"`
@@ -2406,11 +2408,13 @@ type TransferJobTransferSpecInput interface {
 type TransferJobTransferSpecArgs struct {
 	// An AWS S3 data source. Structure documented below.
 	AwsS3DataSource TransferJobTransferSpecAwsS3DataSourcePtrInput `pulumi:"awsS3DataSource"`
+	// An Azure Blob Storage data source. Structure documented below.
+	AzureBlobStorageDataSource TransferJobTransferSpecAzureBlobStorageDataSourcePtrInput `pulumi:"azureBlobStorageDataSource"`
 	// A Google Cloud Storage data sink. Structure documented below.
 	GcsDataSink TransferJobTransferSpecGcsDataSinkPtrInput `pulumi:"gcsDataSink"`
 	// A Google Cloud Storage data source. Structure documented below.
 	GcsDataSource TransferJobTransferSpecGcsDataSourcePtrInput `pulumi:"gcsDataSource"`
-	// An HTTP URL data source. Structure documented below.
+	// A HTTP URL data source. Structure documented below.
 	HttpDataSource TransferJobTransferSpecHttpDataSourcePtrInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 	ObjectConditions TransferJobTransferSpecObjectConditionsPtrInput `pulumi:"objectConditions"`
@@ -2500,6 +2504,13 @@ func (o TransferJobTransferSpecOutput) AwsS3DataSource() TransferJobTransferSpec
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
+// An Azure Blob Storage data source. Structure documented below.
+func (o TransferJobTransferSpecOutput) AzureBlobStorageDataSource() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAzureBlobStorageDataSource {
+		return v.AzureBlobStorageDataSource
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
+}
+
 // A Google Cloud Storage data sink. Structure documented below.
 func (o TransferJobTransferSpecOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
@@ -2510,7 +2521,7 @@ func (o TransferJobTransferSpecOutput) GcsDataSource() TransferJobTransferSpecGc
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
-// An HTTP URL data source. Structure documented below.
+// A HTTP URL data source. Structure documented below.
 func (o TransferJobTransferSpecOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
@@ -2553,6 +2564,16 @@ func (o TransferJobTransferSpecPtrOutput) AwsS3DataSource() TransferJobTransferS
 	}).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
+// An Azure Blob Storage data source. Structure documented below.
+func (o TransferJobTransferSpecPtrOutput) AzureBlobStorageDataSource() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecAzureBlobStorageDataSource {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlobStorageDataSource
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
+}
+
 // A Google Cloud Storage data sink. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink {
@@ -2573,7 +2594,7 @@ func (o TransferJobTransferSpecPtrOutput) GcsDataSource() TransferJobTransferSpe
 	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
-// An HTTP URL data source. Structure documented below.
+// A HTTP URL data source. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource {
 		if v == nil {
@@ -2904,6 +2925,331 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) SecretAcces
 			return nil
 		}
 		return &v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSource struct {
+	// Credentials used to authenticate API requests to Azure block.
+	AzureCredentials TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials `pulumi:"azureCredentials"`
+	// The container to transfer from the Azure Storage account.`
+	Container string `pulumi:"container"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path *string `pulumi:"path"`
+	// The name of the Azure Storage account.
+	StorageAccount string `pulumi:"storageAccount"`
+}
+
+// TransferJobTransferSpecAzureBlobStorageDataSourceInput is an input type that accepts TransferJobTransferSpecAzureBlobStorageDataSourceArgs and TransferJobTransferSpecAzureBlobStorageDataSourceOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAzureBlobStorageDataSourceInput` via:
+//
+//          TransferJobTransferSpecAzureBlobStorageDataSourceArgs{...}
+type TransferJobTransferSpecAzureBlobStorageDataSourceInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceOutput() TransferJobTransferSpecAzureBlobStorageDataSourceOutput
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceOutputWithContext(context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceOutput
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceArgs struct {
+	// Credentials used to authenticate API requests to Azure block.
+	AzureCredentials TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput `pulumi:"azureCredentials"`
+	// The container to transfer from the Azure Storage account.`
+	Container pulumi.StringInput `pulumi:"container"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The name of the Azure Storage account.
+	StorageAccount pulumi.StringInput `pulumi:"storageAccount"`
+}
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSource)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceOutput() TransferJobTransferSpecAzureBlobStorageDataSourceOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourceOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceOutput)
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceOutput).ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecAzureBlobStorageDataSourcePtrInput is an input type that accepts TransferJobTransferSpecAzureBlobStorageDataSourceArgs, TransferJobTransferSpecAzureBlobStorageDataSourcePtr and TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAzureBlobStorageDataSourcePtrInput` via:
+//
+//          TransferJobTransferSpecAzureBlobStorageDataSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferJobTransferSpecAzureBlobStorageDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput
+	ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(context.Context) TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput
+}
+
+type transferJobTransferSpecAzureBlobStorageDataSourcePtrType TransferJobTransferSpecAzureBlobStorageDataSourceArgs
+
+func TransferJobTransferSpecAzureBlobStorageDataSourcePtr(v *TransferJobTransferSpecAzureBlobStorageDataSourceArgs) TransferJobTransferSpecAzureBlobStorageDataSourcePtrInput {
+	return (*transferJobTransferSpecAzureBlobStorageDataSourcePtrType)(v)
+}
+
+func (*transferJobTransferSpecAzureBlobStorageDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAzureBlobStorageDataSource)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecAzureBlobStorageDataSourcePtrType) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecAzureBlobStorageDataSourcePtrType) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSource)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceOutput() TransferJobTransferSpecAzureBlobStorageDataSourceOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return o.ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSource {
+		return &v
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
+}
+
+// Credentials used to authenticate API requests to Azure block.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+		return v.AzureCredentials
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
+}
+
+// The container to transfer from the Azure Storage account.`
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) Container() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) string { return v.Container }).(pulumi.StringOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Azure Storage account.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) StorageAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) string { return v.StorageAccount }).(pulumi.StringOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAzureBlobStorageDataSource)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Elem() TransferJobTransferSpecAzureBlobStorageDataSourceOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) TransferJobTransferSpecAzureBlobStorageDataSource {
+		return *v
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceOutput)
+}
+
+// Credentials used to authenticate API requests to Azure block.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureCredentials
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput)
+}
+
+// The container to transfer from the Azure Storage account.`
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Container() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Container
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Azure Storage account.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials struct {
+	// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	SasToken string `pulumi:"sasToken"`
+}
+
+// TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput is an input type that accepts TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs and TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput` via:
+//
+//          TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs{...}
+type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutputWithContext(context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs struct {
+	// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	SasToken pulumi.StringInput `pulumi:"sasToken"`
+}
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput).ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput is an input type that accepts TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs, TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtr and TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput` via:
+//
+//          TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput
+}
+
+type transferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrType TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs
+
+func TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtr(v *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput {
+	return (*transferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrType)(v)
+}
+
+func (*transferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrType) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrType) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return o.ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+		return &v
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput)
+}
+
+// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) SasToken() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) string { return v.SasToken }).(pulumi.StringOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) Elem() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+		return *v
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
+}
+
+// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SasToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3700,6 +4046,10 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourceOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSinkOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSinkPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSourceOutput{})

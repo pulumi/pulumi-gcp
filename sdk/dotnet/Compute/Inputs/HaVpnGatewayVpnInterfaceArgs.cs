@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("id")]
         public Input<int>? Id { get; set; }
 
+        /// <summary>
+        /// URL of the interconnect attachment resource. When the value
+        /// of this field is present, the VPN Gateway will be used for
+        /// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+        /// traffic for this VPN Gateway interface will go through the
+        /// specified interconnect attachment resource.
+        /// Not currently available publicly.
+        /// </summary>
         [Input("interconnectAttachment")]
         public Input<string>? InterconnectAttachment { get; set; }
 

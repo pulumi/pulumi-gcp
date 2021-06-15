@@ -98,17 +98,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
  * const ipsec_interconnect_address = new gcp.compute.Address("ipsec-interconnect-address", {
  *     addressType: "INTERNAL",
  *     purpose: "IPSEC_INTERCONNECT",
  *     address: "192.168.1.0",
  *     prefixLength: 29,
  *     network: network.selfLink,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -199,8 +195,9 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-     * VPC_PEERING and IPSEC_INTERCONNECT purposes.
+     * The URL of the network in which to reserve the address. This field
+     * can only be used with INTERNAL type with the VPC_PEERING and
+     * IPSEC_INTERCONNECT purposes.
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
@@ -225,7 +222,7 @@ export class Address extends pulumi.CustomResource {
      * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
      * internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
-     * * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+     * * IPSEC_INTERCONNECT for addresses created from a private IP range
      * that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
      * Interconnect configuration. These addresses are regional resources.
      * This should only be set when using an Internal address.
@@ -350,8 +347,9 @@ export interface AddressState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-     * VPC_PEERING and IPSEC_INTERCONNECT purposes.
+     * The URL of the network in which to reserve the address. This field
+     * can only be used with INTERNAL type with the VPC_PEERING and
+     * IPSEC_INTERCONNECT purposes.
      */
     network?: pulumi.Input<string>;
     /**
@@ -376,7 +374,7 @@ export interface AddressState {
      * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
      * internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
-     * * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+     * * IPSEC_INTERCONNECT for addresses created from a private IP range
      * that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
      * Interconnect configuration. These addresses are regional resources.
      * This should only be set when using an Internal address.
@@ -439,8 +437,9 @@ export interface AddressArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-     * VPC_PEERING and IPSEC_INTERCONNECT purposes.
+     * The URL of the network in which to reserve the address. This field
+     * can only be used with INTERNAL type with the VPC_PEERING and
+     * IPSEC_INTERCONNECT purposes.
      */
     network?: pulumi.Input<string>;
     /**
@@ -465,7 +464,7 @@ export interface AddressArgs {
      * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
      * internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
-     * * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+     * * IPSEC_INTERCONNECT for addresses created from a private IP range
      * that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
      * Interconnect configuration. These addresses are regional resources.
      * This should only be set when using an Internal address.

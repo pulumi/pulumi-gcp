@@ -232,7 +232,7 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         annotations: {
  *             "generated-by": "magic-modules",
- *             "run.googleapis.com/launch-stage": "ALPHA",
+ *             "run.googleapis.com/launch-stage": "BETA",
  *         },
  *     },
  *     traffics: [{
@@ -300,7 +300,7 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         annotations: {
  *             "generated-by": "magic-modules",
- *             "run.googleapis.com/launch-stage": "ALPHA",
+ *             "run.googleapis.com/launch-stage": "BETA",
  *         },
  *     },
  *     traffics: [{
