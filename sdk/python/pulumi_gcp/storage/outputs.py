@@ -30,6 +30,8 @@ __all__ = [
     'TransferJobTransferSpec',
     'TransferJobTransferSpecAwsS3DataSource',
     'TransferJobTransferSpecAwsS3DataSourceAwsAccessKey',
+    'TransferJobTransferSpecAzureBlobStorageDataSource',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials',
     'TransferJobTransferSpecGcsDataSink',
     'TransferJobTransferSpecGcsDataSource',
     'TransferJobTransferSpecHttpDataSource',
@@ -893,6 +895,8 @@ class TransferJobTransferSpec(dict):
         suggest = None
         if key == "awsS3DataSource":
             suggest = "aws_s3_data_source"
+        elif key == "azureBlobStorageDataSource":
+            suggest = "azure_blob_storage_data_source"
         elif key == "gcsDataSink":
             suggest = "gcs_data_sink"
         elif key == "gcsDataSource":
@@ -917,6 +921,7 @@ class TransferJobTransferSpec(dict):
 
     def __init__(__self__, *,
                  aws_s3_data_source: Optional['outputs.TransferJobTransferSpecAwsS3DataSource'] = None,
+                 azure_blob_storage_data_source: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSource'] = None,
                  gcs_data_sink: Optional['outputs.TransferJobTransferSpecGcsDataSink'] = None,
                  gcs_data_source: Optional['outputs.TransferJobTransferSpecGcsDataSource'] = None,
                  http_data_source: Optional['outputs.TransferJobTransferSpecHttpDataSource'] = None,
@@ -924,14 +929,17 @@ class TransferJobTransferSpec(dict):
                  transfer_options: Optional['outputs.TransferJobTransferSpecTransferOptions'] = None):
         """
         :param 'TransferJobTransferSpecAwsS3DataSourceArgs' aws_s3_data_source: An AWS S3 data source. Structure documented below.
+        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceArgs' azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
         :param 'TransferJobTransferSpecGcsDataSinkArgs' gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
         :param 'TransferJobTransferSpecGcsDataSourceArgs' gcs_data_source: A Google Cloud Storage data source. Structure documented below.
-        :param 'TransferJobTransferSpecHttpDataSourceArgs' http_data_source: An HTTP URL data source. Structure documented below.
+        :param 'TransferJobTransferSpecHttpDataSourceArgs' http_data_source: A HTTP URL data source. Structure documented below.
         :param 'TransferJobTransferSpecObjectConditionsArgs' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         :param 'TransferJobTransferSpecTransferOptionsArgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
             pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
+        if azure_blob_storage_data_source is not None:
+            pulumi.set(__self__, "azure_blob_storage_data_source", azure_blob_storage_data_source)
         if gcs_data_sink is not None:
             pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
         if gcs_data_source is not None:
@@ -950,6 +958,14 @@ class TransferJobTransferSpec(dict):
         An AWS S3 data source. Structure documented below.
         """
         return pulumi.get(self, "aws_s3_data_source")
+
+    @property
+    @pulumi.getter(name="azureBlobStorageDataSource")
+    def azure_blob_storage_data_source(self) -> Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSource']:
+        """
+        An Azure Blob Storage data source. Structure documented below.
+        """
+        return pulumi.get(self, "azure_blob_storage_data_source")
 
     @property
     @pulumi.getter(name="gcsDataSink")
@@ -971,7 +987,7 @@ class TransferJobTransferSpec(dict):
     @pulumi.getter(name="httpDataSource")
     def http_data_source(self) -> Optional['outputs.TransferJobTransferSpecHttpDataSource']:
         """
-        An HTTP URL data source. Structure documented below.
+        A HTTP URL data source. Structure documented below.
         """
         return pulumi.get(self, "http_data_source")
 
@@ -1086,6 +1102,112 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(dict):
         AWS Secret Access Key.
         """
         return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
+class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureCredentials":
+            suggest = "azure_credentials"
+        elif key == "storageAccount":
+            suggest = "storage_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAzureBlobStorageDataSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecAzureBlobStorageDataSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecAzureBlobStorageDataSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 azure_credentials: 'outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials',
+                 container: str,
+                 storage_account: str,
+                 path: Optional[str] = None):
+        """
+        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs' azure_credentials: Credentials used to authenticate API requests to Azure block.
+        :param str container: The container to transfer from the Azure Storage account.`
+        :param str storage_account: The name of the Azure Storage account.
+        :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        pulumi.set(__self__, "azure_credentials", azure_credentials)
+        pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "storage_account", storage_account)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="azureCredentials")
+    def azure_credentials(self) -> 'outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials':
+        """
+        Credentials used to authenticate API requests to Azure block.
+        """
+        return pulumi.get(self, "azure_credentials")
+
+    @property
+    @pulumi.getter
+    def container(self) -> str:
+        """
+        The container to transfer from the Azure Storage account.`
+        """
+        return pulumi.get(self, "container")
+
+    @property
+    @pulumi.getter(name="storageAccount")
+    def storage_account(self) -> str:
+        """
+        The name of the Azure Storage account.
+        """
+        return pulumi.get(self, "storage_account")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sasToken":
+            suggest = "sas_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sas_token: str):
+        """
+        :param str sas_token: Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        """
+        pulumi.set(__self__, "sas_token", sas_token)
+
+    @property
+    @pulumi.getter(name="sasToken")
+    def sas_token(self) -> str:
+        """
+        Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        """
+        return pulumi.get(self, "sas_token")
 
 
 @pulumi.output_type

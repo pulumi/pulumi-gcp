@@ -346,7 +346,7 @@ import (
 // 			Metadata: &cloudrun.ServiceMetadataArgs{
 // 				Annotations: pulumi.StringMap{
 // 					"generated-by":                    pulumi.String("magic-modules"),
-// 					"run.googleapis.com/launch-stage": pulumi.String("ALPHA"),
+// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
 // 				},
 // 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{
@@ -446,7 +446,7 @@ import (
 // 			Metadata: &cloudrun.ServiceMetadataArgs{
 // 				Annotations: pulumi.StringMap{
 // 					"generated-by":                    pulumi.String("magic-modules"),
-// 					"run.googleapis.com/launch-stage": pulumi.String("ALPHA"),
+// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
 // 				},
 // 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{

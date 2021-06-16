@@ -430,43 +430,37 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
         address1 = gcp.compute.Address("address1",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         attachment1 = gcp.compute.InterconnectAttachment("attachment1",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
-            ipsec_internal_addresses=[address1.self_link],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ipsec_internal_addresses=[address1.self_link])
         address2 = gcp.compute.Address("address2",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.2.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         attachment2 = gcp.compute.InterconnectAttachment("attachment2",
             edge_availability_domain="AVAILABILITY_DOMAIN_2",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
-            ipsec_internal_addresses=[address2.self_link],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ipsec_internal_addresses=[address2.self_link])
         vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
             network=network.id,
             vpn_interfaces=[
@@ -478,8 +472,7 @@ class HaVpnGateway(pulumi.CustomResource):
                     id=1,
                     interconnect_attachment=attachment2.self_link,
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import
@@ -676,43 +669,37 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
         address1 = gcp.compute.Address("address1",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         attachment1 = gcp.compute.InterconnectAttachment("attachment1",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
-            ipsec_internal_addresses=[address1.self_link],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ipsec_internal_addresses=[address1.self_link])
         address2 = gcp.compute.Address("address2",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.2.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         attachment2 = gcp.compute.InterconnectAttachment("attachment2",
             edge_availability_domain="AVAILABILITY_DOMAIN_2",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
-            ipsec_internal_addresses=[address2.self_link],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ipsec_internal_addresses=[address2.self_link])
         vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
             network=network.id,
             vpn_interfaces=[
@@ -724,8 +711,7 @@ class HaVpnGateway(pulumi.CustomResource):
                     id=1,
                     interconnect_attachment=attachment2.self_link,
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import

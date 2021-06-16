@@ -60,9 +60,6 @@ namespace Pulumi.Gcp.Compute
     ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
     ///         {
     ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var address = new Gcp.Compute.Address("address", new Gcp.Compute.AddressArgs
     ///         {
@@ -71,9 +68,6 @@ namespace Pulumi.Gcp.Compute
     ///             Address = "192.168.1.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
     ///         {
@@ -83,9 +77,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Asn = 16550,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var ipsec_encrypted_interconnect_attachment = new Gcp.Compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", new Gcp.Compute.InterconnectAttachmentArgs
     ///         {
@@ -97,9 +88,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 address.SelfLink,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -195,12 +183,19 @@ namespace Pulumi.Gcp.Compute
         public Output<string> EdgeAvailabilityDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
-        /// that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
-        /// attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
-        /// gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
-        /// Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
-        /// values: ["NONE", "IPSEC"]
+        /// Indicates the user-supplied encryption option of this interconnect
+        /// attachment:
+        /// NONE is the default value, which means that the attachment carries
+        /// unencrypted traffic. VMs can send traffic to, or receive traffic
+        /// from, this type of attachment.
+        /// IPSEC indicates that the attachment carries only traffic encrypted by
+        /// an IPsec device such as an HA VPN gateway. VMs cannot directly send
+        /// traffic to, or receive traffic from, such an attachment. To use
+        /// IPsec-encrypted Cloud Interconnect create the attachment using this
+        /// option.
+        /// Not currently available publicly.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE` and `IPSEC`.
         /// </summary>
         [Output("encryption")]
         public Output<string?> Encryption { get; private set; } = null!;
@@ -221,14 +216,22 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Interconnect { get; private set; } = null!;
 
         /// <summary>
-        /// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
-        /// the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
-        /// interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
-        /// address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
-        /// paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
-        /// from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
-        /// attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
-        /// the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+        /// URL of addresses that have been reserved for the interconnect
+        /// attachment, Used only for interconnect attachment that has the
+        /// encryption option as IPSEC.
+        /// The addresses must be RFC 1918 IP address ranges. When creating HA
+        /// VPN gateway over the interconnect attachment, if the attachment is
+        /// configured to use an RFC 1918 IP address, then the VPN gateway's IP
+        /// address will be allocated from the IP address range specified
+        /// here.
+        /// For example, if the HA VPN gateway's interface 0 is paired to this
+        /// interconnect attachment, then an RFC 1918 IP address for the VPN
+        /// gateway interface 0 will be allocated from the IP address specified
+        /// for this interconnect attachment.
+        /// If this field is not specified for interconnect attachment that has
+        /// encryption option as IPSEC, later on when creating HA VPN gateway on
+        /// this interconnect attachment, the HA VPN gateway's IP address will be
+        /// allocated from regional external IP address pool.
         /// </summary>
         [Output("ipsecInternalAddresses")]
         public Output<ImmutableArray<string>> IpsecInternalAddresses { get; private set; } = null!;
@@ -421,12 +424,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? EdgeAvailabilityDomain { get; set; }
 
         /// <summary>
-        /// Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
-        /// that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
-        /// attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
-        /// gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
-        /// Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
-        /// values: ["NONE", "IPSEC"]
+        /// Indicates the user-supplied encryption option of this interconnect
+        /// attachment:
+        /// NONE is the default value, which means that the attachment carries
+        /// unencrypted traffic. VMs can send traffic to, or receive traffic
+        /// from, this type of attachment.
+        /// IPSEC indicates that the attachment carries only traffic encrypted by
+        /// an IPsec device such as an HA VPN gateway. VMs cannot directly send
+        /// traffic to, or receive traffic from, such an attachment. To use
+        /// IPsec-encrypted Cloud Interconnect create the attachment using this
+        /// option.
+        /// Not currently available publicly.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE` and `IPSEC`.
         /// </summary>
         [Input("encryption")]
         public Input<string>? Encryption { get; set; }
@@ -443,14 +453,22 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _ipsecInternalAddresses;
 
         /// <summary>
-        /// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
-        /// the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
-        /// interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
-        /// address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
-        /// paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
-        /// from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
-        /// attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
-        /// the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+        /// URL of addresses that have been reserved for the interconnect
+        /// attachment, Used only for interconnect attachment that has the
+        /// encryption option as IPSEC.
+        /// The addresses must be RFC 1918 IP address ranges. When creating HA
+        /// VPN gateway over the interconnect attachment, if the attachment is
+        /// configured to use an RFC 1918 IP address, then the VPN gateway's IP
+        /// address will be allocated from the IP address range specified
+        /// here.
+        /// For example, if the HA VPN gateway's interface 0 is paired to this
+        /// interconnect attachment, then an RFC 1918 IP address for the VPN
+        /// gateway interface 0 will be allocated from the IP address specified
+        /// for this interconnect attachment.
+        /// If this field is not specified for interconnect attachment that has
+        /// encryption option as IPSEC, later on when creating HA VPN gateway on
+        /// this interconnect attachment, the HA VPN gateway's IP address will be
+        /// allocated from regional external IP address pool.
         /// </summary>
         public InputList<string> IpsecInternalAddresses
         {
@@ -592,12 +610,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? EdgeAvailabilityDomain { get; set; }
 
         /// <summary>
-        /// Indicates the user-supplied encryption option of this interconnect attachment: NONE is the default value, which means
-        /// that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of
-        /// attachment. IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN
-        /// gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
-        /// Interconnect create the attachment using this option. Not currently available publicly. Default value: "NONE" Possible
-        /// values: ["NONE", "IPSEC"]
+        /// Indicates the user-supplied encryption option of this interconnect
+        /// attachment:
+        /// NONE is the default value, which means that the attachment carries
+        /// unencrypted traffic. VMs can send traffic to, or receive traffic
+        /// from, this type of attachment.
+        /// IPSEC indicates that the attachment carries only traffic encrypted by
+        /// an IPsec device such as an HA VPN gateway. VMs cannot directly send
+        /// traffic to, or receive traffic from, such an attachment. To use
+        /// IPsec-encrypted Cloud Interconnect create the attachment using this
+        /// option.
+        /// Not currently available publicly.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE` and `IPSEC`.
         /// </summary>
         [Input("encryption")]
         public Input<string>? Encryption { get; set; }
@@ -621,14 +646,22 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _ipsecInternalAddresses;
 
         /// <summary>
-        /// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has
-        /// the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the
-        /// interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway's IP
-        /// address will be allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is
-        /// paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
-        /// from the IP address specified for this interconnect attachment. If this field is not specified for interconnect
-        /// attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment,
-        /// the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+        /// URL of addresses that have been reserved for the interconnect
+        /// attachment, Used only for interconnect attachment that has the
+        /// encryption option as IPSEC.
+        /// The addresses must be RFC 1918 IP address ranges. When creating HA
+        /// VPN gateway over the interconnect attachment, if the attachment is
+        /// configured to use an RFC 1918 IP address, then the VPN gateway's IP
+        /// address will be allocated from the IP address range specified
+        /// here.
+        /// For example, if the HA VPN gateway's interface 0 is paired to this
+        /// interconnect attachment, then an RFC 1918 IP address for the VPN
+        /// gateway interface 0 will be allocated from the IP address specified
+        /// for this interconnect attachment.
+        /// If this field is not specified for interconnect attachment that has
+        /// encryption option as IPSEC, later on when creating HA VPN gateway on
+        /// this interconnect attachment, the HA VPN gateway's IP address will be
+        /// allocated from regional external IP address pool.
         /// </summary>
         public InputList<string> IpsecInternalAddresses
         {

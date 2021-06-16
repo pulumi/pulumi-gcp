@@ -177,7 +177,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -187,7 +187,7 @@ import (
 // 			Address:      pulumi.String("192.168.1.0"),
 // 			PrefixLength: pulumi.Int(29),
 // 			Network:      network.SelfLink,
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -242,8 +242,9 @@ type Address struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-	// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+	// The URL of the network in which to reserve the address. This field
+	// can only be used with INTERNAL type with the VPC_PEERING and
+	// IPSEC_INTERCONNECT purposes.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
@@ -260,7 +261,7 @@ type Address struct {
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
 	//   This should only be set when using an Internal address.
@@ -332,8 +333,9 @@ type addressState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-	// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+	// The URL of the network in which to reserve the address. This field
+	// can only be used with INTERNAL type with the VPC_PEERING and
+	// IPSEC_INTERCONNECT purposes.
 	Network *string `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
@@ -350,7 +352,7 @@ type addressState struct {
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
 	//   This should only be set when using an Internal address.
@@ -394,8 +396,9 @@ type AddressState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-	// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+	// The URL of the network in which to reserve the address. This field
+	// can only be used with INTERNAL type with the VPC_PEERING and
+	// IPSEC_INTERCONNECT purposes.
 	Network pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
@@ -412,7 +415,7 @@ type AddressState struct {
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
 	//   This should only be set when using an Internal address.
@@ -456,8 +459,9 @@ type addressArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-	// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+	// The URL of the network in which to reserve the address. This field
+	// can only be used with INTERNAL type with the VPC_PEERING and
+	// IPSEC_INTERCONNECT purposes.
 	Network *string `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
@@ -474,7 +478,7 @@ type addressArgs struct {
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
 	//   This should only be set when using an Internal address.
@@ -511,8 +515,9 @@ type AddressArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-	// VPC_PEERING and IPSEC_INTERCONNECT purposes.
+	// The URL of the network in which to reserve the address. This field
+	// can only be used with INTERNAL type with the VPC_PEERING and
+	// IPSEC_INTERCONNECT purposes.
 	Network pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
@@ -529,7 +534,7 @@ type AddressArgs struct {
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
 	//   This should only be set when using an Internal address.

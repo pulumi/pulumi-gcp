@@ -45,8 +45,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
-// 			Location:  pulumi.String("us-central1"),
-// 			Cluster:   primary.Name,
+// 			Cluster:   primary.ID(),
 // 			NodeCount: pulumi.Int(1),
 // 			NodeConfig: &container.NodePoolNodeConfigArgs{
 // 				Preemptible:    pulumi.Bool(true),
@@ -82,7 +81,7 @@ type NodePool struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrOutput `pulumi:"autoscaling"`
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -174,7 +173,7 @@ type nodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster *string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -235,7 +234,7 @@ type NodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster pulumi.StringPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -300,7 +299,7 @@ type nodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -359,7 +358,7 @@ type NodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster pulumi.StringInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing

@@ -42,8 +42,9 @@ class AddressArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-               VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
+               can only be used with INTERNAL type with the VPC_PEERING and
+               IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
@@ -56,7 +57,7 @@ class AddressArgs:
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
                internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
-               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               * IPSEC_INTERCONNECT for addresses created from a private IP range
                that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
                Interconnect configuration. These addresses are regional resources.
                This should only be set when using an Internal address.
@@ -166,8 +167,9 @@ class AddressArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-        VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        The URL of the network in which to reserve the address. This field
+        can only be used with INTERNAL type with the VPC_PEERING and
+        IPSEC_INTERCONNECT purposes.
         """
         return pulumi.get(self, "network")
 
@@ -224,7 +226,7 @@ class AddressArgs:
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        * IPSEC_INTERCONNECT for addresses created from a private IP range
         that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
         Interconnect configuration. These addresses are regional resources.
         This should only be set when using an Internal address.
@@ -302,8 +304,9 @@ class _AddressState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-               VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
+               can only be used with INTERNAL type with the VPC_PEERING and
+               IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
@@ -316,7 +319,7 @@ class _AddressState:
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
                internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
-               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               * IPSEC_INTERCONNECT for addresses created from a private IP range
                that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
                Interconnect configuration. These addresses are regional resources.
                This should only be set when using an Internal address.
@@ -460,8 +463,9 @@ class _AddressState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-        VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        The URL of the network in which to reserve the address. This field
+        can only be used with INTERNAL type with the VPC_PEERING and
+        IPSEC_INTERCONNECT purposes.
         """
         return pulumi.get(self, "network")
 
@@ -518,7 +522,7 @@ class _AddressState:
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        * IPSEC_INTERCONNECT for addresses created from a private IP range
         that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
         Interconnect configuration. These addresses are regional resources.
         This should only be set when using an Internal address.
@@ -688,15 +692,13 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
         ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         ```
 
         ## Import
@@ -736,8 +738,9 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-               VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
+               can only be used with INTERNAL type with the VPC_PEERING and
+               IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
@@ -750,7 +753,7 @@ class Address(pulumi.CustomResource):
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
                internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
-               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               * IPSEC_INTERCONNECT for addresses created from a private IP range
                that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
                Interconnect configuration. These addresses are regional resources.
                This should only be set when using an Internal address.
@@ -855,15 +858,13 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
         ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         ```
 
         ## Import
@@ -991,8 +992,9 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-               VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
+               can only be used with INTERNAL type with the VPC_PEERING and
+               IPSEC_INTERCONNECT purposes.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                Possible values are `PREMIUM` and `STANDARD`.
@@ -1005,7 +1007,7 @@ class Address(pulumi.CustomResource):
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
                internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
-               * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+               * IPSEC_INTERCONNECT for addresses created from a private IP range
                that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
                Interconnect configuration. These addresses are regional resources.
                This should only be set when using an Internal address.
@@ -1110,8 +1112,9 @@ class Address(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[Optional[str]]:
         """
-        The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the
-        VPC_PEERING and IPSEC_INTERCONNECT purposes.
+        The URL of the network in which to reserve the address. This field
+        can only be used with INTERNAL type with the VPC_PEERING and
+        IPSEC_INTERCONNECT purposes.
         """
         return pulumi.get(self, "network")
 
@@ -1152,7 +1155,7 @@ class Address(pulumi.CustomResource):
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        * IPSEC_INTERCONNECT (Beta only) for addresses created from a private IP range
+        * IPSEC_INTERCONNECT for addresses created from a private IP range
         that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
         Interconnect configuration. These addresses are regional resources.
         This should only be set when using an Internal address.

@@ -7151,6 +7151,14 @@ export namespace compute {
          * The numeric ID of this VPN gateway interface.
          */
         id?: pulumi.Input<number>;
+        /**
+         * URL of the interconnect attachment resource. When the value
+         * of this field is present, the VPN Gateway will be used for
+         * IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+         * traffic for this VPN Gateway interface will go through the
+         * specified interconnect attachment resource.
+         * Not currently available publicly.
+         */
         interconnectAttachment?: pulumi.Input<string>;
         /**
          * -
@@ -23548,6 +23556,10 @@ export namespace storage {
          */
         awsS3DataSource?: pulumi.Input<inputs.storage.TransferJobTransferSpecAwsS3DataSource>;
         /**
+         * An Azure Blob Storage data source. Structure documented below.
+         */
+        azureBlobStorageDataSource?: pulumi.Input<inputs.storage.TransferJobTransferSpecAzureBlobStorageDataSource>;
+        /**
          * A Google Cloud Storage data sink. Structure documented below.
          */
         gcsDataSink?: pulumi.Input<inputs.storage.TransferJobTransferSpecGcsDataSink>;
@@ -23556,7 +23568,7 @@ export namespace storage {
          */
         gcsDataSource?: pulumi.Input<inputs.storage.TransferJobTransferSpecGcsDataSource>;
         /**
-         * An HTTP URL data source. Structure documented below.
+         * A HTTP URL data source. Structure documented below.
          */
         httpDataSource?: pulumi.Input<inputs.storage.TransferJobTransferSpecHttpDataSource>;
         /**
@@ -23589,6 +23601,32 @@ export namespace storage {
          * AWS Secret Access Key.
          */
         secretAccessKey: pulumi.Input<string>;
+    }
+
+    export interface TransferJobTransferSpecAzureBlobStorageDataSource {
+        /**
+         * Credentials used to authenticate API requests to Azure block.
+         */
+        azureCredentials: pulumi.Input<inputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials>;
+        /**
+         * The container to transfer from the Azure Storage account.`
+         */
+        container: pulumi.Input<string>;
+        /**
+         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * The name of the Azure Storage account.
+         */
+        storageAccount: pulumi.Input<string>;
+    }
+
+    export interface TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+        /**
+         * Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+         */
+        sasToken: pulumi.Input<string>;
     }
 
     export interface TransferJobTransferSpecGcsDataSink {

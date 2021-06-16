@@ -563,7 +563,7 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "ALPHA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -623,7 +623,7 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "ALPHA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -896,7 +896,7 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "ALPHA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -956,7 +956,7 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "ALPHA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
