@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.72.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 5.9.0 (2021-06-16)
+* Upgrade to v3.72.0 of the Google Beta Terraform Provider
 
 ## 5.8.1 (2021-06-14)
 * Ensure `gcp.pubsub.Schema` is packaged as part of the Go SDK
