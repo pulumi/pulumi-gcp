@@ -852,6 +852,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_organization_security_policy": {
 				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicy"),
 			},
+			"google_compute_service_attachment": {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -1035,7 +1036,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_pubsub_lite_subscription": {Tok: gcpResource(gcpPubSub, "LiteSubscription")},
 			"google_pubsub_lite_topic":        {Tok: gcpResource(gcpPubSub, "LiteTopic")},
-			"google_pubsub_schema":        {Tok: gcpResource(gcpPubSub, "Schema")},
+			"google_pubsub_schema":            {Tok: gcpResource(gcpPubSub, "Schema")},
 
 			// Redis resources
 			"google_redis_instance": {Tok: gcpResource(gcpRedis, "Instance")},
@@ -1604,6 +1605,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dialogflow_intent":      {Tok: gcpResource(gcpDiagflow, "Intent")},
 			"google_dialogflow_entity_type": {Tok: gcpResource(gcpDiagflow, "EntityType")},
 			"google_dialogflow_fulfillment": {Tok: gcpResource(gcpDiagflow, "Fulfillment")},
+			"google_dialogflow_cx_agent":    {Tok: gcpResource(gcpDiagflow, "CxAgent")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},
@@ -1969,7 +1971,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// gke hub
-			"google_gke_hub_membership": {Tok: gcpResource(gcpGkeHub, "Membership")},
+			"google_gke_hub_membership":         {Tok: gcpResource(gcpGkeHub, "Membership")},
+			"google_gke_hub_feature":            {Tok: gcpResource(gcpGkeHub, "Feature")},
+			"google_gke_hub_feature_membership": {Tok: gcpResource(gcpGkeHub, "FeatureMembership")},
 
 			// tags
 			"google_tags_tag_key":     {Tok: gcpResource(gcpTags, "TagKey")},
@@ -2526,8 +2530,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
 		},

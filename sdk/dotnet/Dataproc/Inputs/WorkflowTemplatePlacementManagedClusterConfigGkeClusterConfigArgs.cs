@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         /// <summary>
         /// Optional. A target for the deployment.
-        /// The `namespaced_gke_deployment_target` block supports:
         /// </summary>
         [Input("namespacedGkeDeploymentTarget")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs>? NamespacedGkeDeploymentTarget { get; set; }

@@ -68,7 +68,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// -
         /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        /// The `accelerators` block supports:
         /// </summary>
         public InputList<Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs> ManagedGroupConfigs
         {

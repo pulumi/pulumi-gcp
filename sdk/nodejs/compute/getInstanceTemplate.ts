@@ -73,6 +73,7 @@ export interface GetInstanceTemplateArgs {
  * A collection of values returned by getInstanceTemplate.
  */
 export interface GetInstanceTemplateResult {
+    readonly advancedMachineFeatures: outputs.compute.GetInstanceTemplateAdvancedMachineFeature[];
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
@@ -158,6 +159,11 @@ export interface GetInstanceTemplateResult {
      * Structure is documented below.
      */
     readonly networkInterfaces: outputs.compute.GetInstanceTemplateNetworkInterface[];
+    /**
+     * The network performance configuration setting
+     * for the instance, if set. Structure is documented below.
+     */
+    readonly networkPerformanceConfigs: outputs.compute.GetInstanceTemplateNetworkPerformanceConfig[];
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

@@ -94,6 +94,8 @@ namespace Pulumi.Gcp
 
         public static string? DialogflowCustomEndpoint { get; set; } = __config.Get("dialogflowCustomEndpoint");
 
+        public static string? DialogflowCxCustomEndpoint { get; set; } = __config.Get("dialogflowCxCustomEndpoint");
+
         public static string? DnsCustomEndpoint { get; set; } = __config.Get("dnsCustomEndpoint");
 
         public static string? EssentialContactsCustomEndpoint { get; set; } = __config.Get("essentialContactsCustomEndpoint");
@@ -109,6 +111,8 @@ namespace Pulumi.Gcp
         public static string? GameServicesCustomEndpoint { get; set; } = __config.Get("gameServicesCustomEndpoint");
 
         public static string? GkeHubCustomEndpoint { get; set; } = __config.Get("gkeHubCustomEndpoint");
+
+        public static string? GkehubFeatureCustomEndpoint { get; set; } = __config.Get("gkehubFeatureCustomEndpoint");
 
         public static string? HealthcareCustomEndpoint { get; set; } = __config.Get("healthcareCustomEndpoint");
 

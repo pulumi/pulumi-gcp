@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         /// <summary>
         /// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-        /// The `reservation_affinity` block supports:
         /// </summary>
         [Input("nodeGroup", required: true)]
         public Input<string> NodeGroup { get; set; } = null!;

@@ -13467,6 +13467,134 @@ func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput) Index(i
 	}).(InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput)
 }
 
+type InstanceFromMachineImageNetworkPerformanceConfig struct {
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// InstanceFromMachineImageNetworkPerformanceConfigInput is an input type that accepts InstanceFromMachineImageNetworkPerformanceConfigArgs and InstanceFromMachineImageNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkPerformanceConfigInput` via:
+//
+//          InstanceFromMachineImageNetworkPerformanceConfigArgs{...}
+type InstanceFromMachineImageNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkPerformanceConfigOutput() InstanceFromMachineImageNetworkPerformanceConfigOutput
+	ToInstanceFromMachineImageNetworkPerformanceConfigOutputWithContext(context.Context) InstanceFromMachineImageNetworkPerformanceConfigOutput
+}
+
+type InstanceFromMachineImageNetworkPerformanceConfigArgs struct {
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (InstanceFromMachineImageNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageNetworkPerformanceConfigArgs) ToInstanceFromMachineImageNetworkPerformanceConfigOutput() InstanceFromMachineImageNetworkPerformanceConfigOutput {
+	return i.ToInstanceFromMachineImageNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkPerformanceConfigArgs) ToInstanceFromMachineImageNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkPerformanceConfigOutput)
+}
+
+func (i InstanceFromMachineImageNetworkPerformanceConfigArgs) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutput() InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkPerformanceConfigArgs) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkPerformanceConfigOutput).ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageNetworkPerformanceConfigPtrInput is an input type that accepts InstanceFromMachineImageNetworkPerformanceConfigArgs, InstanceFromMachineImageNetworkPerformanceConfigPtr and InstanceFromMachineImageNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkPerformanceConfigPtrInput` via:
+//
+//          InstanceFromMachineImageNetworkPerformanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutput() InstanceFromMachineImageNetworkPerformanceConfigPtrOutput
+	ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(context.Context) InstanceFromMachineImageNetworkPerformanceConfigPtrOutput
+}
+
+type instanceFromMachineImageNetworkPerformanceConfigPtrType InstanceFromMachineImageNetworkPerformanceConfigArgs
+
+func InstanceFromMachineImageNetworkPerformanceConfigPtr(v *InstanceFromMachineImageNetworkPerformanceConfigArgs) InstanceFromMachineImageNetworkPerformanceConfigPtrInput {
+	return (*instanceFromMachineImageNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*instanceFromMachineImageNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageNetworkPerformanceConfigPtrType) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutput() InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageNetworkPerformanceConfigPtrType) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkPerformanceConfigPtrOutput)
+}
+
+type InstanceFromMachineImageNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigOutput) ToInstanceFromMachineImageNetworkPerformanceConfigOutput() InstanceFromMachineImageNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigOutput) ToInstanceFromMachineImageNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigOutput) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutput() InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return o.ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigOutput) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkPerformanceConfig) *InstanceFromMachineImageNetworkPerformanceConfig {
+		return &v
+	}).(InstanceFromMachineImageNetworkPerformanceConfigPtrOutput)
+}
+func (o InstanceFromMachineImageNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type InstanceFromMachineImageNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigPtrOutput) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutput() InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigPtrOutput) ToInstanceFromMachineImageNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigPtrOutput) Elem() InstanceFromMachineImageNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageNetworkPerformanceConfig) InstanceFromMachineImageNetworkPerformanceConfig {
+		return *v
+	}).(InstanceFromMachineImageNetworkPerformanceConfigOutput)
+}
+
+func (o InstanceFromMachineImageNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceFromMachineImageReservationAffinity struct {
 	SpecificReservation *InstanceFromMachineImageReservationAffinitySpecificReservation `pulumi:"specificReservation"`
 	Type                string                                                          `pulumi:"type"`
@@ -15550,6 +15678,134 @@ func (o InstanceFromTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromTemplateNetworkInterfaceAliasIpRange {
 		return vs[0].([]InstanceFromTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(InstanceFromTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type InstanceFromTemplateNetworkPerformanceConfig struct {
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// InstanceFromTemplateNetworkPerformanceConfigInput is an input type that accepts InstanceFromTemplateNetworkPerformanceConfigArgs and InstanceFromTemplateNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateNetworkPerformanceConfigInput` via:
+//
+//          InstanceFromTemplateNetworkPerformanceConfigArgs{...}
+type InstanceFromTemplateNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateNetworkPerformanceConfigOutput() InstanceFromTemplateNetworkPerformanceConfigOutput
+	ToInstanceFromTemplateNetworkPerformanceConfigOutputWithContext(context.Context) InstanceFromTemplateNetworkPerformanceConfigOutput
+}
+
+type InstanceFromTemplateNetworkPerformanceConfigArgs struct {
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (InstanceFromTemplateNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i InstanceFromTemplateNetworkPerformanceConfigArgs) ToInstanceFromTemplateNetworkPerformanceConfigOutput() InstanceFromTemplateNetworkPerformanceConfigOutput {
+	return i.ToInstanceFromTemplateNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateNetworkPerformanceConfigArgs) ToInstanceFromTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceFromTemplateNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateNetworkPerformanceConfigOutput)
+}
+
+func (i InstanceFromTemplateNetworkPerformanceConfigArgs) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutput() InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateNetworkPerformanceConfigArgs) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateNetworkPerformanceConfigOutput).ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceFromTemplateNetworkPerformanceConfigPtrInput is an input type that accepts InstanceFromTemplateNetworkPerformanceConfigArgs, InstanceFromTemplateNetworkPerformanceConfigPtr and InstanceFromTemplateNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateNetworkPerformanceConfigPtrInput` via:
+//
+//          InstanceFromTemplateNetworkPerformanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromTemplateNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateNetworkPerformanceConfigPtrOutput() InstanceFromTemplateNetworkPerformanceConfigPtrOutput
+	ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Context) InstanceFromTemplateNetworkPerformanceConfigPtrOutput
+}
+
+type instanceFromTemplateNetworkPerformanceConfigPtrType InstanceFromTemplateNetworkPerformanceConfigArgs
+
+func InstanceFromTemplateNetworkPerformanceConfigPtr(v *InstanceFromTemplateNetworkPerformanceConfigArgs) InstanceFromTemplateNetworkPerformanceConfigPtrInput {
+	return (*instanceFromTemplateNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*instanceFromTemplateNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *instanceFromTemplateNetworkPerformanceConfigPtrType) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutput() InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromTemplateNetworkPerformanceConfigPtrType) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateNetworkPerformanceConfigPtrOutput)
+}
+
+type InstanceFromTemplateNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigOutput) ToInstanceFromTemplateNetworkPerformanceConfigOutput() InstanceFromTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigOutput) ToInstanceFromTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceFromTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigOutput) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutput() InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return o.ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigOutput) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateNetworkPerformanceConfig) *InstanceFromTemplateNetworkPerformanceConfig {
+		return &v
+	}).(InstanceFromTemplateNetworkPerformanceConfigPtrOutput)
+}
+func (o InstanceFromTemplateNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromTemplateNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type InstanceFromTemplateNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigPtrOutput) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutput() InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigPtrOutput) ToInstanceFromTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigPtrOutput) Elem() InstanceFromTemplateNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateNetworkPerformanceConfig) InstanceFromTemplateNetworkPerformanceConfig {
+		return *v
+	}).(InstanceFromTemplateNetworkPerformanceConfigOutput)
+}
+
+func (o InstanceFromTemplateNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceFromTemplateReservationAffinity struct {
@@ -18861,6 +19117,141 @@ func (o InstanceNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput
 	}).(InstanceNetworkInterfaceAliasIpRangeOutput)
 }
 
+type InstanceNetworkPerformanceConfig struct {
+	// The egress bandwidth tier to enable.
+	// Possible values: TIER_1, DEFAULT
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// InstanceNetworkPerformanceConfigInput is an input type that accepts InstanceNetworkPerformanceConfigArgs and InstanceNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `InstanceNetworkPerformanceConfigInput` via:
+//
+//          InstanceNetworkPerformanceConfigArgs{...}
+type InstanceNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPerformanceConfigOutput() InstanceNetworkPerformanceConfigOutput
+	ToInstanceNetworkPerformanceConfigOutputWithContext(context.Context) InstanceNetworkPerformanceConfigOutput
+}
+
+type InstanceNetworkPerformanceConfigArgs struct {
+	// The egress bandwidth tier to enable.
+	// Possible values: TIER_1, DEFAULT
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (InstanceNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i InstanceNetworkPerformanceConfigArgs) ToInstanceNetworkPerformanceConfigOutput() InstanceNetworkPerformanceConfigOutput {
+	return i.ToInstanceNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPerformanceConfigArgs) ToInstanceNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPerformanceConfigOutput)
+}
+
+func (i InstanceNetworkPerformanceConfigArgs) ToInstanceNetworkPerformanceConfigPtrOutput() InstanceNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPerformanceConfigArgs) ToInstanceNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPerformanceConfigOutput).ToInstanceNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPerformanceConfigPtrInput is an input type that accepts InstanceNetworkPerformanceConfigArgs, InstanceNetworkPerformanceConfigPtr and InstanceNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPerformanceConfigPtrInput` via:
+//
+//          InstanceNetworkPerformanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPerformanceConfigPtrOutput() InstanceNetworkPerformanceConfigPtrOutput
+	ToInstanceNetworkPerformanceConfigPtrOutputWithContext(context.Context) InstanceNetworkPerformanceConfigPtrOutput
+}
+
+type instanceNetworkPerformanceConfigPtrType InstanceNetworkPerformanceConfigArgs
+
+func InstanceNetworkPerformanceConfigPtr(v *InstanceNetworkPerformanceConfigArgs) InstanceNetworkPerformanceConfigPtrInput {
+	return (*instanceNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*instanceNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *instanceNetworkPerformanceConfigPtrType) ToInstanceNetworkPerformanceConfigPtrOutput() InstanceNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPerformanceConfigPtrType) ToInstanceNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPerformanceConfigPtrOutput)
+}
+
+type InstanceNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkPerformanceConfigOutput) ToInstanceNetworkPerformanceConfigOutput() InstanceNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkPerformanceConfigOutput) ToInstanceNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkPerformanceConfigOutput) ToInstanceNetworkPerformanceConfigPtrOutput() InstanceNetworkPerformanceConfigPtrOutput {
+	return o.ToInstanceNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPerformanceConfigOutput) ToInstanceNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPerformanceConfig) *InstanceNetworkPerformanceConfig {
+		return &v
+	}).(InstanceNetworkPerformanceConfigPtrOutput)
+}
+
+// The egress bandwidth tier to enable.
+// Possible values: TIER_1, DEFAULT
+func (o InstanceNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type InstanceNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkPerformanceConfigPtrOutput) ToInstanceNetworkPerformanceConfigPtrOutput() InstanceNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPerformanceConfigPtrOutput) ToInstanceNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPerformanceConfigPtrOutput) Elem() InstanceNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *InstanceNetworkPerformanceConfig) InstanceNetworkPerformanceConfig { return *v }).(InstanceNetworkPerformanceConfigOutput)
+}
+
+// The egress bandwidth tier to enable.
+// Possible values: TIER_1, DEFAULT
+func (o InstanceNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceReservationAffinity struct {
 	SpecificReservation *InstanceReservationAffinitySpecificReservation `pulumi:"specificReservation"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -19165,7 +19556,8 @@ type InstanceScheduling struct {
 	// restarted if it was terminated by Compute Engine (not a user).
 	// Defaults to true.
 	AutomaticRestart *bool `pulumi:"automaticRestart"`
-	MinNodeCpus      *int  `pulumi:"minNodeCpus"`
+	// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+	MinNodeCpus *int `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -19198,7 +19590,8 @@ type InstanceSchedulingArgs struct {
 	// restarted if it was terminated by Compute Engine (not a user).
 	// Defaults to true.
 	AutomaticRestart pulumi.BoolPtrInput `pulumi:"automaticRestart"`
-	MinNodeCpus      pulumi.IntPtrInput  `pulumi:"minNodeCpus"`
+	// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+	MinNodeCpus pulumi.IntPtrInput `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -19299,6 +19692,7 @@ func (o InstanceSchedulingOutput) AutomaticRestart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceScheduling) *bool { return v.AutomaticRestart }).(pulumi.BoolPtrOutput)
 }
 
+// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
 func (o InstanceSchedulingOutput) MinNodeCpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceScheduling) *int { return v.MinNodeCpus }).(pulumi.IntPtrOutput)
 }
@@ -19356,6 +19750,7 @@ func (o InstanceSchedulingPtrOutput) AutomaticRestart() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
 func (o InstanceSchedulingPtrOutput) MinNodeCpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceScheduling) *int {
 		if v == nil {
@@ -19967,6 +20362,156 @@ func (o InstanceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutp
 		}
 		return v.EnableVtpm
 	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceTemplateAdvancedMachineFeatures struct {
+	// Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+	ThreadsPerCore *int `pulumi:"threadsPerCore"`
+}
+
+// InstanceTemplateAdvancedMachineFeaturesInput is an input type that accepts InstanceTemplateAdvancedMachineFeaturesArgs and InstanceTemplateAdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `InstanceTemplateAdvancedMachineFeaturesInput` via:
+//
+//          InstanceTemplateAdvancedMachineFeaturesArgs{...}
+type InstanceTemplateAdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateAdvancedMachineFeaturesOutput() InstanceTemplateAdvancedMachineFeaturesOutput
+	ToInstanceTemplateAdvancedMachineFeaturesOutputWithContext(context.Context) InstanceTemplateAdvancedMachineFeaturesOutput
+}
+
+type InstanceTemplateAdvancedMachineFeaturesArgs struct {
+	// Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
+}
+
+func (InstanceTemplateAdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i InstanceTemplateAdvancedMachineFeaturesArgs) ToInstanceTemplateAdvancedMachineFeaturesOutput() InstanceTemplateAdvancedMachineFeaturesOutput {
+	return i.ToInstanceTemplateAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateAdvancedMachineFeaturesArgs) ToInstanceTemplateAdvancedMachineFeaturesOutputWithContext(ctx context.Context) InstanceTemplateAdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateAdvancedMachineFeaturesOutput)
+}
+
+func (i InstanceTemplateAdvancedMachineFeaturesArgs) ToInstanceTemplateAdvancedMachineFeaturesPtrOutput() InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return i.ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateAdvancedMachineFeaturesArgs) ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateAdvancedMachineFeaturesOutput).ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// InstanceTemplateAdvancedMachineFeaturesPtrInput is an input type that accepts InstanceTemplateAdvancedMachineFeaturesArgs, InstanceTemplateAdvancedMachineFeaturesPtr and InstanceTemplateAdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `InstanceTemplateAdvancedMachineFeaturesPtrInput` via:
+//
+//          InstanceTemplateAdvancedMachineFeaturesArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTemplateAdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateAdvancedMachineFeaturesPtrOutput() InstanceTemplateAdvancedMachineFeaturesPtrOutput
+	ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(context.Context) InstanceTemplateAdvancedMachineFeaturesPtrOutput
+}
+
+type instanceTemplateAdvancedMachineFeaturesPtrType InstanceTemplateAdvancedMachineFeaturesArgs
+
+func InstanceTemplateAdvancedMachineFeaturesPtr(v *InstanceTemplateAdvancedMachineFeaturesArgs) InstanceTemplateAdvancedMachineFeaturesPtrInput {
+	return (*instanceTemplateAdvancedMachineFeaturesPtrType)(v)
+}
+
+func (*instanceTemplateAdvancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *instanceTemplateAdvancedMachineFeaturesPtrType) ToInstanceTemplateAdvancedMachineFeaturesPtrOutput() InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return i.ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTemplateAdvancedMachineFeaturesPtrType) ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateAdvancedMachineFeaturesPtrOutput)
+}
+
+type InstanceTemplateAdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateAdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o InstanceTemplateAdvancedMachineFeaturesOutput) ToInstanceTemplateAdvancedMachineFeaturesOutput() InstanceTemplateAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o InstanceTemplateAdvancedMachineFeaturesOutput) ToInstanceTemplateAdvancedMachineFeaturesOutputWithContext(ctx context.Context) InstanceTemplateAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o InstanceTemplateAdvancedMachineFeaturesOutput) ToInstanceTemplateAdvancedMachineFeaturesPtrOutput() InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return o.ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTemplateAdvancedMachineFeaturesOutput) ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateAdvancedMachineFeatures) *InstanceTemplateAdvancedMachineFeatures {
+		return &v
+	}).(InstanceTemplateAdvancedMachineFeaturesPtrOutput)
+}
+
+// Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+func (o InstanceTemplateAdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
+// he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+func (o InstanceTemplateAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateAdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
+}
+
+type InstanceTemplateAdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateAdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) ToInstanceTemplateAdvancedMachineFeaturesPtrOutput() InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) ToInstanceTemplateAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) InstanceTemplateAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) Elem() InstanceTemplateAdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *InstanceTemplateAdvancedMachineFeatures) InstanceTemplateAdvancedMachineFeatures { return *v }).(InstanceTemplateAdvancedMachineFeaturesOutput)
+}
+
+// Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateAdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateAdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
 }
 
 type InstanceTemplateConfidentialInstanceConfig struct {
@@ -21065,6 +21610,137 @@ func (o InstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceTemplateNetworkInterfaceAliasIpRange {
 		return vs[0].([]InstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(InstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type InstanceTemplateNetworkPerformanceConfig struct {
+	// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// InstanceTemplateNetworkPerformanceConfigInput is an input type that accepts InstanceTemplateNetworkPerformanceConfigArgs and InstanceTemplateNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `InstanceTemplateNetworkPerformanceConfigInput` via:
+//
+//          InstanceTemplateNetworkPerformanceConfigArgs{...}
+type InstanceTemplateNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateNetworkPerformanceConfigOutput() InstanceTemplateNetworkPerformanceConfigOutput
+	ToInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Context) InstanceTemplateNetworkPerformanceConfigOutput
+}
+
+type InstanceTemplateNetworkPerformanceConfigArgs struct {
+	// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (InstanceTemplateNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i InstanceTemplateNetworkPerformanceConfigArgs) ToInstanceTemplateNetworkPerformanceConfigOutput() InstanceTemplateNetworkPerformanceConfigOutput {
+	return i.ToInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateNetworkPerformanceConfigArgs) ToInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceTemplateNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateNetworkPerformanceConfigOutput)
+}
+
+func (i InstanceTemplateNetworkPerformanceConfigArgs) ToInstanceTemplateNetworkPerformanceConfigPtrOutput() InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateNetworkPerformanceConfigArgs) ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateNetworkPerformanceConfigOutput).ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceTemplateNetworkPerformanceConfigPtrInput is an input type that accepts InstanceTemplateNetworkPerformanceConfigArgs, InstanceTemplateNetworkPerformanceConfigPtr and InstanceTemplateNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceTemplateNetworkPerformanceConfigPtrInput` via:
+//
+//          InstanceTemplateNetworkPerformanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTemplateNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateNetworkPerformanceConfigPtrOutput() InstanceTemplateNetworkPerformanceConfigPtrOutput
+	ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Context) InstanceTemplateNetworkPerformanceConfigPtrOutput
+}
+
+type instanceTemplateNetworkPerformanceConfigPtrType InstanceTemplateNetworkPerformanceConfigArgs
+
+func InstanceTemplateNetworkPerformanceConfigPtr(v *InstanceTemplateNetworkPerformanceConfigArgs) InstanceTemplateNetworkPerformanceConfigPtrInput {
+	return (*instanceTemplateNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*instanceTemplateNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *instanceTemplateNetworkPerformanceConfigPtrType) ToInstanceTemplateNetworkPerformanceConfigPtrOutput() InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return i.ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTemplateNetworkPerformanceConfigPtrType) ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateNetworkPerformanceConfigPtrOutput)
+}
+
+type InstanceTemplateNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceTemplateNetworkPerformanceConfigOutput) ToInstanceTemplateNetworkPerformanceConfigOutput() InstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceTemplateNetworkPerformanceConfigOutput) ToInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) InstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o InstanceTemplateNetworkPerformanceConfigOutput) ToInstanceTemplateNetworkPerformanceConfigPtrOutput() InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o.ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTemplateNetworkPerformanceConfigOutput) ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateNetworkPerformanceConfig) *InstanceTemplateNetworkPerformanceConfig {
+		return &v
+	}).(InstanceTemplateNetworkPerformanceConfigPtrOutput)
+}
+
+// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+func (o InstanceTemplateNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceTemplateNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type InstanceTemplateNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o InstanceTemplateNetworkPerformanceConfigPtrOutput) ToInstanceTemplateNetworkPerformanceConfigPtrOutput() InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateNetworkPerformanceConfigPtrOutput) ToInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateNetworkPerformanceConfigPtrOutput) Elem() InstanceTemplateNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *InstanceTemplateNetworkPerformanceConfig) InstanceTemplateNetworkPerformanceConfig { return *v }).(InstanceTemplateNetworkPerformanceConfigOutput)
+}
+
+// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+func (o InstanceTemplateNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceTemplateReservationAffinity struct {
@@ -47762,6 +48438,291 @@ func (o RouterPeerAdvertisedIpRangeArrayOutput) Index(i pulumi.IntInput) RouterP
 	}).(RouterPeerAdvertisedIpRangeOutput)
 }
 
+type SecurityPolicyAdaptiveProtectionConfig struct {
+	// ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	Layer7DdosDefenseConfig *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig `pulumi:"layer7DdosDefenseConfig"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigArgs and SecurityPolicyAdaptiveProtectionConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigInput` via:
+//
+//          SecurityPolicyAdaptiveProtectionConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigOutput() SecurityPolicyAdaptiveProtectionConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigArgs struct {
+	// ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	Layer7DdosDefenseConfig SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput `pulumi:"layer7DdosDefenseConfig"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigOutput() SecurityPolicyAdaptiveProtectionConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigOutput).ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigPtrInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigArgs, SecurityPolicyAdaptiveProtectionConfigPtr and SecurityPolicyAdaptiveProtectionConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigPtrInput` via:
+//
+//          SecurityPolicyAdaptiveProtectionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyAdaptiveProtectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput
+	ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput
+}
+
+type securityPolicyAdaptiveProtectionConfigPtrType SecurityPolicyAdaptiveProtectionConfigArgs
+
+func SecurityPolicyAdaptiveProtectionConfigPtr(v *SecurityPolicyAdaptiveProtectionConfigArgs) SecurityPolicyAdaptiveProtectionConfigPtrInput {
+	return (*securityPolicyAdaptiveProtectionConfigPtrType)(v)
+}
+
+func (*securityPolicyAdaptiveProtectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigOutput() SecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o.ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfig {
+		return &v
+	}).(SecurityPolicyAdaptiveProtectionConfigPtrOutput)
+}
+
+// ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) Layer7DdosDefenseConfig() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return v.Layer7DdosDefenseConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfig) SecurityPolicyAdaptiveProtectionConfig { return *v }).(SecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+// ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Layer7DdosDefenseConfig() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Layer7DdosDefenseConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
+	// ) If set to true, enables CAAP for L7 DDoS detection.
+	Enable *bool `pulumi:"enable"`
+	// ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	RuleVisibility *string `pulumi:"ruleVisibility"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput` via:
+//
+//          SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
+	// ) If set to true, enables CAAP for L7 DDoS detection.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	RuleVisibility pulumi.StringPtrInput `pulumi:"ruleVisibility"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput).ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs, SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtr and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput` via:
+//
+//          SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput
+}
+
+type securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs
+
+func SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtr(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput {
+	return (*securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType)(v)
+}
+
+func (*securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return &v
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+// ) If set to true, enables CAAP for L7 DDoS detection.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) RuleVisibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *string { return v.RuleVisibility }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return *v
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+// ) If set to true, enables CAAP for L7 DDoS detection.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) RuleVisibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuleVisibility
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityPolicyRule struct {
 	// Action to take when `match` matches the request. Valid values:
 	// * "allow" : allow access to target
@@ -48929,6 +49890,215 @@ func (o SecurityScanConfigSchedulePtrOutput) ScheduleTime() pulumi.StringPtrOutp
 		}
 		return v.ScheduleTime
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentConnectedEndpoint struct {
+	Endpoint *string `pulumi:"endpoint"`
+	Status   *string `pulumi:"status"`
+}
+
+// ServiceAttachmentConnectedEndpointInput is an input type that accepts ServiceAttachmentConnectedEndpointArgs and ServiceAttachmentConnectedEndpointOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointInput` via:
+//
+//          ServiceAttachmentConnectedEndpointArgs{...}
+type ServiceAttachmentConnectedEndpointInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput
+	ToServiceAttachmentConnectedEndpointOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointOutput
+}
+
+type ServiceAttachmentConnectedEndpointArgs struct {
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	Status   pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ServiceAttachmentConnectedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointArgs) ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput {
+	return i.ToServiceAttachmentConnectedEndpointOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointArgs) ToServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointOutput)
+}
+
+// ServiceAttachmentConnectedEndpointArrayInput is an input type that accepts ServiceAttachmentConnectedEndpointArray and ServiceAttachmentConnectedEndpointArrayOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointArrayInput` via:
+//
+//          ServiceAttachmentConnectedEndpointArray{ ServiceAttachmentConnectedEndpointArgs{...} }
+type ServiceAttachmentConnectedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput
+	ToServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointArrayOutput
+}
+
+type ServiceAttachmentConnectedEndpointArray []ServiceAttachmentConnectedEndpointInput
+
+func (ServiceAttachmentConnectedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointArray) ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput {
+	return i.ToServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointArray) ToServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointArrayOutput)
+}
+
+type ServiceAttachmentConnectedEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) ToServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentConnectedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) ToServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentConnectedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConnectedEndpoint {
+		return vs[0].([]ServiceAttachmentConnectedEndpoint)[vs[1].(int)]
+	}).(ServiceAttachmentConnectedEndpointOutput)
+}
+
+type ServiceAttachmentConsumerAcceptList struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// A project that is allowed to connect to this service attachment.
+	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
+}
+
+// ServiceAttachmentConsumerAcceptListInput is an input type that accepts ServiceAttachmentConsumerAcceptListArgs and ServiceAttachmentConsumerAcceptListOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConsumerAcceptListInput` via:
+//
+//          ServiceAttachmentConsumerAcceptListArgs{...}
+type ServiceAttachmentConsumerAcceptListInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConsumerAcceptListOutput() ServiceAttachmentConsumerAcceptListOutput
+	ToServiceAttachmentConsumerAcceptListOutputWithContext(context.Context) ServiceAttachmentConsumerAcceptListOutput
+}
+
+type ServiceAttachmentConsumerAcceptListArgs struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// A project that is allowed to connect to this service attachment.
+	ProjectIdOrNum pulumi.StringInput `pulumi:"projectIdOrNum"`
+}
+
+func (ServiceAttachmentConsumerAcceptListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConsumerAcceptListArgs) ToServiceAttachmentConsumerAcceptListOutput() ServiceAttachmentConsumerAcceptListOutput {
+	return i.ToServiceAttachmentConsumerAcceptListOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConsumerAcceptListArgs) ToServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerAcceptListOutput)
+}
+
+// ServiceAttachmentConsumerAcceptListArrayInput is an input type that accepts ServiceAttachmentConsumerAcceptListArray and ServiceAttachmentConsumerAcceptListArrayOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConsumerAcceptListArrayInput` via:
+//
+//          ServiceAttachmentConsumerAcceptListArray{ ServiceAttachmentConsumerAcceptListArgs{...} }
+type ServiceAttachmentConsumerAcceptListArrayInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConsumerAcceptListArrayOutput() ServiceAttachmentConsumerAcceptListArrayOutput
+	ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Context) ServiceAttachmentConsumerAcceptListArrayOutput
+}
+
+type ServiceAttachmentConsumerAcceptListArray []ServiceAttachmentConsumerAcceptListInput
+
+func (ServiceAttachmentConsumerAcceptListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConsumerAcceptListArray) ToServiceAttachmentConsumerAcceptListArrayOutput() ServiceAttachmentConsumerAcceptListArrayOutput {
+	return i.ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConsumerAcceptListArray) ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerAcceptListArrayOutput)
+}
+
+type ServiceAttachmentConsumerAcceptListOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConsumerAcceptListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConsumerAcceptListOutput) ToServiceAttachmentConsumerAcceptListOutput() ServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+func (o ServiceAttachmentConsumerAcceptListOutput) ToServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+// The number of consumer forwarding rules the consumer project can
+// create.
+func (o ServiceAttachmentConsumerAcceptListOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerAcceptList) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// A project that is allowed to connect to this service attachment.
+func (o ServiceAttachmentConsumerAcceptListOutput) ProjectIdOrNum() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerAcceptList) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
+}
+
+type ServiceAttachmentConsumerAcceptListArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConsumerAcceptListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConsumerAcceptListArrayOutput) ToServiceAttachmentConsumerAcceptListArrayOutput() ServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConsumerAcceptListArrayOutput) ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConsumerAcceptListArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConsumerAcceptList {
+		return vs[0].([]ServiceAttachmentConsumerAcceptList)[vs[1].(int)]
+	}).(ServiceAttachmentConsumerAcceptListOutput)
 }
 
 type SnapshotSnapshotEncryptionKey struct {
@@ -69590,6 +70760,103 @@ func (o GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 	}).(GetInstanceNetworkInterfaceAliasIpRangeOutput)
 }
 
+type GetInstanceNetworkPerformanceConfig struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// GetInstanceNetworkPerformanceConfigInput is an input type that accepts GetInstanceNetworkPerformanceConfigArgs and GetInstanceNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkPerformanceConfigInput` via:
+//
+//          GetInstanceNetworkPerformanceConfigArgs{...}
+type GetInstanceNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkPerformanceConfigOutput() GetInstanceNetworkPerformanceConfigOutput
+	ToGetInstanceNetworkPerformanceConfigOutputWithContext(context.Context) GetInstanceNetworkPerformanceConfigOutput
+}
+
+type GetInstanceNetworkPerformanceConfigArgs struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (GetInstanceNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkPerformanceConfigArgs) ToGetInstanceNetworkPerformanceConfigOutput() GetInstanceNetworkPerformanceConfigOutput {
+	return i.ToGetInstanceNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkPerformanceConfigArgs) ToGetInstanceNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkPerformanceConfigOutput)
+}
+
+// GetInstanceNetworkPerformanceConfigArrayInput is an input type that accepts GetInstanceNetworkPerformanceConfigArray and GetInstanceNetworkPerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkPerformanceConfigArrayInput` via:
+//
+//          GetInstanceNetworkPerformanceConfigArray{ GetInstanceNetworkPerformanceConfigArgs{...} }
+type GetInstanceNetworkPerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkPerformanceConfigArrayOutput() GetInstanceNetworkPerformanceConfigArrayOutput
+	ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(context.Context) GetInstanceNetworkPerformanceConfigArrayOutput
+}
+
+type GetInstanceNetworkPerformanceConfigArray []GetInstanceNetworkPerformanceConfigInput
+
+func (GetInstanceNetworkPerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkPerformanceConfigArray) ToGetInstanceNetworkPerformanceConfigArrayOutput() GetInstanceNetworkPerformanceConfigArrayOutput {
+	return i.ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkPerformanceConfigArray) ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkPerformanceConfigArrayOutput)
+}
+
+type GetInstanceNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkPerformanceConfigOutput) ToGetInstanceNetworkPerformanceConfigOutput() GetInstanceNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPerformanceConfigOutput) ToGetInstanceNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigOutput {
+	return o
+}
+
+// The egress bandwidth tier for the instance.
+func (o GetInstanceNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkPerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkPerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkPerformanceConfigArrayOutput) ToGetInstanceNetworkPerformanceConfigArrayOutput() GetInstanceNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPerformanceConfigArrayOutput) ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkPerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkPerformanceConfig {
+		return vs[0].([]GetInstanceNetworkPerformanceConfig)[vs[1].(int)]
+	}).(GetInstanceNetworkPerformanceConfigOutput)
+}
+
 type GetInstanceReservationAffinity struct {
 	SpecificReservations []GetInstanceReservationAffinitySpecificReservation `pulumi:"specificReservations"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -70344,6 +71611,106 @@ func (o GetInstanceShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceShieldedInstanceConfig {
 		return vs[0].([]GetInstanceShieldedInstanceConfig)[vs[1].(int)]
 	}).(GetInstanceShieldedInstanceConfigOutput)
+}
+
+type GetInstanceTemplateAdvancedMachineFeature struct {
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	ThreadsPerCore             int  `pulumi:"threadsPerCore"`
+}
+
+// GetInstanceTemplateAdvancedMachineFeatureInput is an input type that accepts GetInstanceTemplateAdvancedMachineFeatureArgs and GetInstanceTemplateAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateAdvancedMachineFeatureInput` via:
+//
+//          GetInstanceTemplateAdvancedMachineFeatureArgs{...}
+type GetInstanceTemplateAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateAdvancedMachineFeatureOutput() GetInstanceTemplateAdvancedMachineFeatureOutput
+	ToGetInstanceTemplateAdvancedMachineFeatureOutputWithContext(context.Context) GetInstanceTemplateAdvancedMachineFeatureOutput
+}
+
+type GetInstanceTemplateAdvancedMachineFeatureArgs struct {
+	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	ThreadsPerCore             pulumi.IntInput  `pulumi:"threadsPerCore"`
+}
+
+func (GetInstanceTemplateAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateAdvancedMachineFeatureArgs) ToGetInstanceTemplateAdvancedMachineFeatureOutput() GetInstanceTemplateAdvancedMachineFeatureOutput {
+	return i.ToGetInstanceTemplateAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateAdvancedMachineFeatureArgs) ToGetInstanceTemplateAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetInstanceTemplateAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateAdvancedMachineFeatureOutput)
+}
+
+// GetInstanceTemplateAdvancedMachineFeatureArrayInput is an input type that accepts GetInstanceTemplateAdvancedMachineFeatureArray and GetInstanceTemplateAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateAdvancedMachineFeatureArrayInput` via:
+//
+//          GetInstanceTemplateAdvancedMachineFeatureArray{ GetInstanceTemplateAdvancedMachineFeatureArgs{...} }
+type GetInstanceTemplateAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateAdvancedMachineFeatureArrayOutput() GetInstanceTemplateAdvancedMachineFeatureArrayOutput
+	ToGetInstanceTemplateAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetInstanceTemplateAdvancedMachineFeatureArrayOutput
+}
+
+type GetInstanceTemplateAdvancedMachineFeatureArray []GetInstanceTemplateAdvancedMachineFeatureInput
+
+func (GetInstanceTemplateAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateAdvancedMachineFeatureArray) ToGetInstanceTemplateAdvancedMachineFeatureArrayOutput() GetInstanceTemplateAdvancedMachineFeatureArrayOutput {
+	return i.ToGetInstanceTemplateAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateAdvancedMachineFeatureArray) ToGetInstanceTemplateAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetInstanceTemplateAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateAdvancedMachineFeatureArrayOutput)
+}
+
+type GetInstanceTemplateAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateAdvancedMachineFeatureOutput) ToGetInstanceTemplateAdvancedMachineFeatureOutput() GetInstanceTemplateAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetInstanceTemplateAdvancedMachineFeatureOutput) ToGetInstanceTemplateAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetInstanceTemplateAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetInstanceTemplateAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceTemplateAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type GetInstanceTemplateAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateAdvancedMachineFeatureArrayOutput) ToGetInstanceTemplateAdvancedMachineFeatureArrayOutput() GetInstanceTemplateAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateAdvancedMachineFeatureArrayOutput) ToGetInstanceTemplateAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetInstanceTemplateAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateAdvancedMachineFeature {
+		return vs[0].([]GetInstanceTemplateAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetInstanceTemplateAdvancedMachineFeatureOutput)
 }
 
 type GetInstanceTemplateConfidentialInstanceConfig struct {
@@ -71362,6 +72729,103 @@ func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkInterfaceAliasIpRange {
 		return vs[0].([]GetInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetInstanceTemplateNetworkPerformanceConfig struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// GetInstanceTemplateNetworkPerformanceConfigInput is an input type that accepts GetInstanceTemplateNetworkPerformanceConfigArgs and GetInstanceTemplateNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkPerformanceConfigInput` via:
+//
+//          GetInstanceTemplateNetworkPerformanceConfigArgs{...}
+type GetInstanceTemplateNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkPerformanceConfigOutput() GetInstanceTemplateNetworkPerformanceConfigOutput
+	ToGetInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Context) GetInstanceTemplateNetworkPerformanceConfigOutput
+}
+
+type GetInstanceTemplateNetworkPerformanceConfigArgs struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (GetInstanceTemplateNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkPerformanceConfigArgs) ToGetInstanceTemplateNetworkPerformanceConfigOutput() GetInstanceTemplateNetworkPerformanceConfigOutput {
+	return i.ToGetInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkPerformanceConfigArgs) ToGetInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkPerformanceConfigOutput)
+}
+
+// GetInstanceTemplateNetworkPerformanceConfigArrayInput is an input type that accepts GetInstanceTemplateNetworkPerformanceConfigArray and GetInstanceTemplateNetworkPerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkPerformanceConfigArrayInput` via:
+//
+//          GetInstanceTemplateNetworkPerformanceConfigArray{ GetInstanceTemplateNetworkPerformanceConfigArgs{...} }
+type GetInstanceTemplateNetworkPerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkPerformanceConfigArrayOutput() GetInstanceTemplateNetworkPerformanceConfigArrayOutput
+	ToGetInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(context.Context) GetInstanceTemplateNetworkPerformanceConfigArrayOutput
+}
+
+type GetInstanceTemplateNetworkPerformanceConfigArray []GetInstanceTemplateNetworkPerformanceConfigInput
+
+func (GetInstanceTemplateNetworkPerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkPerformanceConfigArray) ToGetInstanceTemplateNetworkPerformanceConfigArrayOutput() GetInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return i.ToGetInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkPerformanceConfigArray) ToGetInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkPerformanceConfigArrayOutput)
+}
+
+type GetInstanceTemplateNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkPerformanceConfigOutput) ToGetInstanceTemplateNetworkPerformanceConfigOutput() GetInstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkPerformanceConfigOutput) ToGetInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+// The egress bandwidth tier for the instance.
+func (o GetInstanceTemplateNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateNetworkPerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkPerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkPerformanceConfigArrayOutput) ToGetInstanceTemplateNetworkPerformanceConfigArrayOutput() GetInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkPerformanceConfigArrayOutput) ToGetInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateNetworkPerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkPerformanceConfig {
+		return vs[0].([]GetInstanceTemplateNetworkPerformanceConfig)[vs[1].(int)]
+	}).(GetInstanceTemplateNetworkPerformanceConfigOutput)
 }
 
 type GetInstanceTemplateReservationAffinity struct {
@@ -73995,6 +75459,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageReservationAffinityOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageReservationAffinitySpecificReservationOutput{})
@@ -74025,6 +75491,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceFromTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateNetworkPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateReservationAffinityOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateReservationAffinitySpecificReservationOutput{})
@@ -74073,6 +75541,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReservationAffinityOutput{})
 	pulumi.RegisterOutputType(InstanceReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReservationAffinitySpecificReservationOutput{})
@@ -74087,6 +75557,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateAdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateConfidentialInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateDiskOutput{})
@@ -74101,6 +75573,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateNetworkPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateReservationAffinityOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateReservationAffinitySpecificReservationOutput{})
@@ -74391,6 +75865,10 @@ func init() {
 	pulumi.RegisterOutputType(RouterNatSubnetworkArrayOutput{})
 	pulumi.RegisterOutputType(RouterPeerAdvertisedIpRangeOutput{})
 	pulumi.RegisterOutputType(RouterPeerAdvertisedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatchOutput{})
@@ -74406,6 +75884,10 @@ func init() {
 	pulumi.RegisterOutputType(SecurityScanConfigAuthenticationGoogleAccountPtrOutput{})
 	pulumi.RegisterOutputType(SecurityScanConfigScheduleOutput{})
 	pulumi.RegisterOutputType(SecurityScanConfigSchedulePtrOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConsumerAcceptListOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConsumerAcceptListArrayOutput{})
 	pulumi.RegisterOutputType(SnapshotSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(SnapshotSnapshotEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotSourceDiskEncryptionKeyOutput{})
@@ -74656,6 +76138,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkPerformanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceReservationAffinityOutput{})
 	pulumi.RegisterOutputType(GetInstanceReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceReservationAffinitySpecificReservationOutput{})
@@ -74670,6 +76154,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateConfidentialInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateConfidentialInstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateDiskOutput{})
@@ -74684,6 +76170,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkPerformanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinityOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateReservationAffinitySpecificReservationOutput{})

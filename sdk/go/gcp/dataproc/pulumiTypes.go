@@ -8909,7 +8909,6 @@ type WorkflowTemplateJob struct {
 	// Optional. Job is a Hive job.
 	HiveJob *WorkflowTemplateJobHiveJob `pulumi:"hiveJob"`
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-	// The `secondaryWorkerConfig` block supports:
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob *WorkflowTemplateJobPigJob `pulumi:"pigJob"`
@@ -8928,7 +8927,6 @@ type WorkflowTemplateJob struct {
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob *WorkflowTemplateJobSparkSqlJob `pulumi:"sparkSqlJob"`
 	// Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	// The `placement` block supports:
 	StepId string `pulumi:"stepId"`
 }
 
@@ -8949,7 +8947,6 @@ type WorkflowTemplateJobArgs struct {
 	// Optional. Job is a Hive job.
 	HiveJob WorkflowTemplateJobHiveJobPtrInput `pulumi:"hiveJob"`
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-	// The `secondaryWorkerConfig` block supports:
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob WorkflowTemplateJobPigJobPtrInput `pulumi:"pigJob"`
@@ -8968,7 +8965,6 @@ type WorkflowTemplateJobArgs struct {
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob WorkflowTemplateJobSparkSqlJobPtrInput `pulumi:"sparkSqlJob"`
 	// Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	// The `placement` block supports:
 	StepId pulumi.StringInput `pulumi:"stepId"`
 }
 
@@ -9034,7 +9030,6 @@ func (o WorkflowTemplateJobOutput) HiveJob() WorkflowTemplateJobHiveJobPtrOutput
 }
 
 // Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-// The `secondaryWorkerConfig` block supports:
 func (o WorkflowTemplateJobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJob) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -9080,7 +9075,6 @@ func (o WorkflowTemplateJobOutput) SparkSqlJob() WorkflowTemplateJobSparkSqlJobP
 }
 
 // Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-// The `placement` block supports:
 func (o WorkflowTemplateJobOutput) StepId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTemplateJob) string { return v.StepId }).(pulumi.StringOutput)
 }
@@ -9373,7 +9367,6 @@ func (o WorkflowTemplateJobHadoopJobPtrOutput) Properties() pulumi.StringMapOutp
 
 type WorkflowTemplateJobHadoopJobLoggingConfig struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -9390,7 +9383,6 @@ type WorkflowTemplateJobHadoopJobLoggingConfigInput interface {
 
 type WorkflowTemplateJobHadoopJobLoggingConfigArgs struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -9472,7 +9464,6 @@ func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHa
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobHadoopJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -9498,7 +9489,6 @@ func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) Elem() WorkflowTempl
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJobLoggingConfig) map[string]string {
 		if v == nil {
@@ -9520,7 +9510,6 @@ type WorkflowTemplateJobHiveJob struct {
 	// A list of queries.
 	QueryList *WorkflowTemplateJobHiveJobQueryList `pulumi:"queryList"`
 	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-	// The `loggingConfig` block supports:
 	ScriptVariables map[string]string `pulumi:"scriptVariables"`
 }
 
@@ -9547,7 +9536,6 @@ type WorkflowTemplateJobHiveJobArgs struct {
 	// A list of queries.
 	QueryList WorkflowTemplateJobHiveJobQueryListPtrInput `pulumi:"queryList"`
 	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-	// The `loggingConfig` block supports:
 	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
 }
 
@@ -9654,7 +9642,6 @@ func (o WorkflowTemplateJobHiveJobOutput) QueryList() WorkflowTemplateJobHiveJob
 }
 
 // Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobHiveJobOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
 }
@@ -9728,7 +9715,6 @@ func (o WorkflowTemplateJobHiveJobPtrOutput) QueryList() WorkflowTemplateJobHive
 }
 
 // Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobHiveJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) map[string]string {
 		if v == nil {
@@ -9740,7 +9726,6 @@ func (o WorkflowTemplateJobHiveJobPtrOutput) ScriptVariables() pulumi.StringMapO
 
 type WorkflowTemplateJobHiveJobQueryList struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries []string `pulumi:"queries"`
 }
 
@@ -9757,7 +9742,6 @@ type WorkflowTemplateJobHiveJobQueryListInput interface {
 
 type WorkflowTemplateJobHiveJobQueryListArgs struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries pulumi.StringArrayInput `pulumi:"queries"`
 }
 
@@ -9839,7 +9823,6 @@ func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQ
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobHiveJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobHiveJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
 }
@@ -9863,7 +9846,6 @@ func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) Elem() WorkflowTemplateJob
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobHiveJobQueryList) []string {
 		if v == nil {
@@ -9887,7 +9869,6 @@ type WorkflowTemplateJobPigJob struct {
 	// A list of queries.
 	QueryList *WorkflowTemplateJobPigJobQueryList `pulumi:"queryList"`
 	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-	// The `loggingConfig` block supports:
 	ScriptVariables map[string]string `pulumi:"scriptVariables"`
 }
 
@@ -9916,7 +9897,6 @@ type WorkflowTemplateJobPigJobArgs struct {
 	// A list of queries.
 	QueryList WorkflowTemplateJobPigJobQueryListPtrInput `pulumi:"queryList"`
 	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-	// The `loggingConfig` block supports:
 	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
 }
 
@@ -10028,7 +10008,6 @@ func (o WorkflowTemplateJobPigJobOutput) QueryList() WorkflowTemplateJobPigJobQu
 }
 
 // Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobPigJobOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPigJob) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
 }
@@ -10112,7 +10091,6 @@ func (o WorkflowTemplateJobPigJobPtrOutput) QueryList() WorkflowTemplateJobPigJo
 }
 
 // Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobPigJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) map[string]string {
 		if v == nil {
@@ -10124,7 +10102,6 @@ func (o WorkflowTemplateJobPigJobPtrOutput) ScriptVariables() pulumi.StringMapOu
 
 type WorkflowTemplateJobPigJobLoggingConfig struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -10141,7 +10118,6 @@ type WorkflowTemplateJobPigJobLoggingConfigInput interface {
 
 type WorkflowTemplateJobPigJobLoggingConfigArgs struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -10223,7 +10199,6 @@ func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJo
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobPigJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPigJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -10247,7 +10222,6 @@ func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) Elem() WorkflowTemplate
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPigJobLoggingConfig) map[string]string {
 		if v == nil {
@@ -10259,7 +10233,6 @@ func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) DriverLogLevels() pulum
 
 type WorkflowTemplateJobPigJobQueryList struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries []string `pulumi:"queries"`
 }
 
@@ -10276,7 +10249,6 @@ type WorkflowTemplateJobPigJobQueryListInput interface {
 
 type WorkflowTemplateJobPigJobQueryListArgs struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries pulumi.StringArrayInput `pulumi:"queries"`
 }
 
@@ -10358,7 +10330,6 @@ func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQue
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobPigJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPigJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
 }
@@ -10382,7 +10353,6 @@ func (o WorkflowTemplateJobPigJobQueryListPtrOutput) Elem() WorkflowTemplateJobP
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobPigJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPigJobQueryList) []string {
 		if v == nil {
@@ -10641,7 +10611,6 @@ func (o WorkflowTemplateJobPrestoJobPtrOutput) QueryList() WorkflowTemplateJobPr
 
 type WorkflowTemplateJobPrestoJobLoggingConfig struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -10658,7 +10627,6 @@ type WorkflowTemplateJobPrestoJobLoggingConfigInput interface {
 
 type WorkflowTemplateJobPrestoJobLoggingConfigArgs struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -10740,7 +10708,6 @@ func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPr
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -10766,7 +10733,6 @@ func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) Elem() WorkflowTempl
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobLoggingConfig) map[string]string {
 		if v == nil {
@@ -10778,7 +10744,6 @@ func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) DriverLogLevels() pu
 
 type WorkflowTemplateJobPrestoJobQueryList struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries []string `pulumi:"queries"`
 }
 
@@ -10795,7 +10760,6 @@ type WorkflowTemplateJobPrestoJobQueryListInput interface {
 
 type WorkflowTemplateJobPrestoJobQueryListArgs struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries pulumi.StringArrayInput `pulumi:"queries"`
 }
 
@@ -10877,7 +10841,6 @@ func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPresto
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobPrestoJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
 }
@@ -10901,7 +10864,6 @@ func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) Elem() WorkflowTemplateJ
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobQueryList) []string {
 		if v == nil {
@@ -10927,7 +10889,6 @@ type WorkflowTemplateJobPysparkJob struct {
 	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties map[string]string `pulumi:"properties"`
 	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-	// The `loggingConfig` block supports:
 	PythonFileUris []string `pulumi:"pythonFileUris"`
 }
 
@@ -10958,7 +10919,6 @@ type WorkflowTemplateJobPysparkJobArgs struct {
 	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-	// The `loggingConfig` block supports:
 	PythonFileUris pulumi.StringArrayInput `pulumi:"pythonFileUris"`
 }
 
@@ -11077,7 +11037,6 @@ func (o WorkflowTemplateJobPysparkJobOutput) Properties() pulumi.StringMapOutput
 }
 
 // Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobPysparkJobOutput) PythonFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) []string { return v.PythonFileUris }).(pulumi.StringArrayOutput)
 }
@@ -11171,7 +11130,6 @@ func (o WorkflowTemplateJobPysparkJobPtrOutput) Properties() pulumi.StringMapOut
 }
 
 // Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobPysparkJobPtrOutput) PythonFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) []string {
 		if v == nil {
@@ -11183,7 +11141,6 @@ func (o WorkflowTemplateJobPysparkJobPtrOutput) PythonFileUris() pulumi.StringAr
 
 type WorkflowTemplateJobPysparkJobLoggingConfig struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -11200,7 +11157,6 @@ type WorkflowTemplateJobPysparkJobLoggingConfigInput interface {
 
 type WorkflowTemplateJobPysparkJobLoggingConfigArgs struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -11282,7 +11238,6 @@ func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobP
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobPysparkJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -11308,7 +11263,6 @@ func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) Elem() WorkflowTemp
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJobLoggingConfig) map[string]string {
 		if v == nil {
@@ -11322,7 +11276,6 @@ type WorkflowTemplateJobScheduling struct {
 	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
 	MaxFailuresPerHour *int `pulumi:"maxFailuresPerHour"`
 	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-	// The `sparkJob` block supports:
 	MaxFailuresTotal *int `pulumi:"maxFailuresTotal"`
 }
 
@@ -11341,7 +11294,6 @@ type WorkflowTemplateJobSchedulingArgs struct {
 	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
 	MaxFailuresPerHour pulumi.IntPtrInput `pulumi:"maxFailuresPerHour"`
 	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-	// The `sparkJob` block supports:
 	MaxFailuresTotal pulumi.IntPtrInput `pulumi:"maxFailuresTotal"`
 }
 
@@ -11428,7 +11380,6 @@ func (o WorkflowTemplateJobSchedulingOutput) MaxFailuresPerHour() pulumi.IntPtrO
 }
 
 // Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-// The `sparkJob` block supports:
 func (o WorkflowTemplateJobSchedulingOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobScheduling) *int { return v.MaxFailuresTotal }).(pulumi.IntPtrOutput)
 }
@@ -11462,7 +11413,6 @@ func (o WorkflowTemplateJobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntP
 }
 
 // Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-// The `sparkJob` block supports:
 func (o WorkflowTemplateJobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobScheduling) *int {
 		if v == nil {
@@ -11738,7 +11688,6 @@ func (o WorkflowTemplateJobSparkJobPtrOutput) Properties() pulumi.StringMapOutpu
 
 type WorkflowTemplateJobSparkJobLoggingConfig struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -11755,7 +11704,6 @@ type WorkflowTemplateJobSparkJobLoggingConfigInput interface {
 
 type WorkflowTemplateJobSparkJobLoggingConfigArgs struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -11837,7 +11785,6 @@ func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSpa
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -11861,7 +11808,6 @@ func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) Elem() WorkflowTempla
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobSparkJobLoggingConfig) map[string]string {
 		if v == nil {
@@ -12101,7 +12047,6 @@ func (o WorkflowTemplateJobSparkRJobPtrOutput) Properties() pulumi.StringMapOutp
 
 type WorkflowTemplateJobSparkRJobLoggingConfig struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -12118,7 +12063,6 @@ type WorkflowTemplateJobSparkRJobLoggingConfigInput interface {
 
 type WorkflowTemplateJobSparkRJobLoggingConfigArgs struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -12200,7 +12144,6 @@ func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSp
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkRJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -12226,7 +12169,6 @@ func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) Elem() WorkflowTempl
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJobLoggingConfig) map[string]string {
 		if v == nil {
@@ -12248,7 +12190,6 @@ type WorkflowTemplateJobSparkSqlJob struct {
 	// A list of queries.
 	QueryList *WorkflowTemplateJobSparkSqlJobQueryList `pulumi:"queryList"`
 	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-	// The `loggingConfig` block supports:
 	ScriptVariables map[string]string `pulumi:"scriptVariables"`
 }
 
@@ -12275,7 +12216,6 @@ type WorkflowTemplateJobSparkSqlJobArgs struct {
 	// A list of queries.
 	QueryList WorkflowTemplateJobSparkSqlJobQueryListPtrInput `pulumi:"queryList"`
 	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-	// The `loggingConfig` block supports:
 	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
 }
 
@@ -12384,7 +12324,6 @@ func (o WorkflowTemplateJobSparkSqlJobOutput) QueryList() WorkflowTemplateJobSpa
 }
 
 // Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobSparkSqlJobOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
 }
@@ -12458,7 +12397,6 @@ func (o WorkflowTemplateJobSparkSqlJobPtrOutput) QueryList() WorkflowTemplateJob
 }
 
 // Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-// The `loggingConfig` block supports:
 func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) map[string]string {
 		if v == nil {
@@ -12470,7 +12408,6 @@ func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ScriptVariables() pulumi.String
 
 type WorkflowTemplateJobSparkSqlJobLoggingConfig struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -12487,7 +12424,6 @@ type WorkflowTemplateJobSparkSqlJobLoggingConfigInput interface {
 
 type WorkflowTemplateJobSparkSqlJobLoggingConfigArgs struct {
 	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	// The `queryList` block supports:
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -12569,7 +12505,6 @@ func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJob
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -12595,7 +12530,6 @@ func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) Elem() WorkflowTem
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-// The `queryList` block supports:
 func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobLoggingConfig) map[string]string {
 		if v == nil {
@@ -12607,7 +12541,6 @@ func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) DriverLogLevels() 
 
 type WorkflowTemplateJobSparkSqlJobQueryList struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries []string `pulumi:"queries"`
 }
 
@@ -12624,7 +12557,6 @@ type WorkflowTemplateJobSparkSqlJobQueryListInput interface {
 
 type WorkflowTemplateJobSparkSqlJobQueryListArgs struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-	// The `parameters` block supports:
 	Queries pulumi.StringArrayInput `pulumi:"queries"`
 }
 
@@ -12706,7 +12638,6 @@ func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSpar
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
 }
@@ -12730,7 +12661,6 @@ func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) Elem() WorkflowTemplat
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-// The `parameters` block supports:
 func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobQueryList) []string {
 		if v == nil {
@@ -12748,7 +12678,6 @@ type WorkflowTemplateParameter struct {
 	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
 	Name string `pulumi:"name"`
 	// Optional. Validation rules to be applied to this parameter's value.
-	// The `validation` block supports:
 	Validation *WorkflowTemplateParameterValidation `pulumi:"validation"`
 }
 
@@ -12771,7 +12700,6 @@ type WorkflowTemplateParameterArgs struct {
 	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. Validation rules to be applied to this parameter's value.
-	// The `validation` block supports:
 	Validation WorkflowTemplateParameterValidationPtrInput `pulumi:"validation"`
 }
 
@@ -12842,7 +12770,6 @@ func (o WorkflowTemplateParameterOutput) Name() pulumi.StringOutput {
 }
 
 // Optional. Validation rules to be applied to this parameter's value.
-// The `validation` block supports:
 func (o WorkflowTemplateParameterOutput) Validation() WorkflowTemplateParameterValidationPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplateParameter) *WorkflowTemplateParameterValidation { return v.Validation }).(WorkflowTemplateParameterValidationPtrOutput)
 }
@@ -12871,7 +12798,6 @@ type WorkflowTemplateParameterValidation struct {
 	// Validation based on regular expressions.
 	Regex *WorkflowTemplateParameterValidationRegex `pulumi:"regex"`
 	// Optional. Corresponds to the label values of reservation resource.
-	// The `gkeClusterConfig` block supports:
 	Values *WorkflowTemplateParameterValidationValues `pulumi:"values"`
 }
 
@@ -12890,7 +12816,6 @@ type WorkflowTemplateParameterValidationArgs struct {
 	// Validation based on regular expressions.
 	Regex WorkflowTemplateParameterValidationRegexPtrInput `pulumi:"regex"`
 	// Optional. Corresponds to the label values of reservation resource.
-	// The `gkeClusterConfig` block supports:
 	Values WorkflowTemplateParameterValidationValuesPtrInput `pulumi:"values"`
 }
 
@@ -12977,7 +12902,6 @@ func (o WorkflowTemplateParameterValidationOutput) Regex() WorkflowTemplateParam
 }
 
 // Optional. Corresponds to the label values of reservation resource.
-// The `gkeClusterConfig` block supports:
 func (o WorkflowTemplateParameterValidationOutput) Values() WorkflowTemplateParameterValidationValuesPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidationValues {
 		return v.Values
@@ -13013,7 +12937,6 @@ func (o WorkflowTemplateParameterValidationPtrOutput) Regex() WorkflowTemplatePa
 }
 
 // Optional. Corresponds to the label values of reservation resource.
-// The `gkeClusterConfig` block supports:
 func (o WorkflowTemplateParameterValidationPtrOutput) Values() WorkflowTemplateParameterValidationValuesPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidationValues {
 		if v == nil {
@@ -13025,7 +12948,6 @@ func (o WorkflowTemplateParameterValidationPtrOutput) Values() WorkflowTemplateP
 
 type WorkflowTemplateParameterValidationRegex struct {
 	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-	// The `values` block supports:
 	Regexes []string `pulumi:"regexes"`
 }
 
@@ -13042,7 +12964,6 @@ type WorkflowTemplateParameterValidationRegexInput interface {
 
 type WorkflowTemplateParameterValidationRegexArgs struct {
 	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-	// The `values` block supports:
 	Regexes pulumi.StringArrayInput `pulumi:"regexes"`
 }
 
@@ -13124,7 +13045,6 @@ func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParame
 }
 
 // Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-// The `values` block supports:
 func (o WorkflowTemplateParameterValidationRegexOutput) Regexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateParameterValidationRegex) []string { return v.Regexes }).(pulumi.StringArrayOutput)
 }
@@ -13148,7 +13068,6 @@ func (o WorkflowTemplateParameterValidationRegexPtrOutput) Elem() WorkflowTempla
 }
 
 // Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-// The `values` block supports:
 func (o WorkflowTemplateParameterValidationRegexPtrOutput) Regexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplateParameterValidationRegex) []string {
 		if v == nil {
@@ -13160,7 +13079,6 @@ func (o WorkflowTemplateParameterValidationRegexPtrOutput) Regexes() pulumi.Stri
 
 type WorkflowTemplateParameterValidationValues struct {
 	// Optional. Corresponds to the label values of reservation resource.
-	// The `gkeClusterConfig` block supports:
 	Values []string `pulumi:"values"`
 }
 
@@ -13177,7 +13095,6 @@ type WorkflowTemplateParameterValidationValuesInput interface {
 
 type WorkflowTemplateParameterValidationValuesArgs struct {
 	// Optional. Corresponds to the label values of reservation resource.
-	// The `gkeClusterConfig` block supports:
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -13259,7 +13176,6 @@ func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParam
 }
 
 // Optional. Corresponds to the label values of reservation resource.
-// The `gkeClusterConfig` block supports:
 func (o WorkflowTemplateParameterValidationValuesOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplateParameterValidationValues) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -13285,7 +13201,6 @@ func (o WorkflowTemplateParameterValidationValuesPtrOutput) Elem() WorkflowTempl
 }
 
 // Optional. Corresponds to the label values of reservation resource.
-// The `gkeClusterConfig` block supports:
 func (o WorkflowTemplateParameterValidationValuesPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplateParameterValidationValues) []string {
 		if v == nil {
@@ -13299,7 +13214,6 @@ type WorkflowTemplatePlacement struct {
 	// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
 	ClusterSelector *WorkflowTemplatePlacementClusterSelector `pulumi:"clusterSelector"`
 	// A cluster that is managed by the workflow.
-	// The `config` block supports:
 	ManagedCluster *WorkflowTemplatePlacementManagedCluster `pulumi:"managedCluster"`
 }
 
@@ -13318,7 +13232,6 @@ type WorkflowTemplatePlacementArgs struct {
 	// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
 	ClusterSelector WorkflowTemplatePlacementClusterSelectorPtrInput `pulumi:"clusterSelector"`
 	// A cluster that is managed by the workflow.
-	// The `config` block supports:
 	ManagedCluster WorkflowTemplatePlacementManagedClusterPtrInput `pulumi:"managedCluster"`
 }
 
@@ -13405,7 +13318,6 @@ func (o WorkflowTemplatePlacementOutput) ClusterSelector() WorkflowTemplatePlace
 }
 
 // A cluster that is managed by the workflow.
-// The `config` block supports:
 func (o WorkflowTemplatePlacementOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster { return v.ManagedCluster }).(WorkflowTemplatePlacementManagedClusterPtrOutput)
 }
@@ -13439,7 +13351,6 @@ func (o WorkflowTemplatePlacementPtrOutput) ClusterSelector() WorkflowTemplatePl
 }
 
 // A cluster that is managed by the workflow.
-// The `config` block supports:
 func (o WorkflowTemplatePlacementPtrOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster {
 		if v == nil {
@@ -13453,7 +13364,6 @@ type WorkflowTemplatePlacementClusterSelector struct {
 	// Required. The cluster labels. Cluster must have all labels to match.
 	ClusterLabels map[string]string `pulumi:"clusterLabels"`
 	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-	// The `nodeGroupAffinity` block supports:
 	Zone *string `pulumi:"zone"`
 }
 
@@ -13472,7 +13382,6 @@ type WorkflowTemplatePlacementClusterSelectorArgs struct {
 	// Required. The cluster labels. Cluster must have all labels to match.
 	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
 	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-	// The `nodeGroupAffinity` block supports:
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
@@ -13559,7 +13468,6 @@ func (o WorkflowTemplatePlacementClusterSelectorOutput) ClusterLabels() pulumi.S
 }
 
 // Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-// The `nodeGroupAffinity` block supports:
 func (o WorkflowTemplatePlacementClusterSelectorOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementClusterSelector) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -13593,7 +13501,6 @@ func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ClusterLabels() pulum
 }
 
 // Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-// The `nodeGroupAffinity` block supports:
 func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementClusterSelector) *string {
 		if v == nil {
@@ -13609,7 +13516,6 @@ type WorkflowTemplatePlacementManagedCluster struct {
 	// Required. The cluster configuration.
 	Config WorkflowTemplatePlacementManagedClusterConfig `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-	// The `secondaryWorkerConfig` block supports:
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -13630,7 +13536,6 @@ type WorkflowTemplatePlacementManagedClusterArgs struct {
 	// Required. The cluster configuration.
 	Config WorkflowTemplatePlacementManagedClusterConfigInput `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-	// The `secondaryWorkerConfig` block supports:
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -13724,7 +13629,6 @@ func (o WorkflowTemplatePlacementManagedClusterOutput) Config() WorkflowTemplate
 }
 
 // Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-// The `secondaryWorkerConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -13768,7 +13672,6 @@ func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Config() WorkflowTempl
 }
 
 // Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-// The `secondaryWorkerConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) map[string]string {
 		if v == nil {
@@ -14205,7 +14108,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) WorkerConfig() W
 
 type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig struct {
 	// Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-	// The `encryptionConfig` block supports:
 	Policy *string `pulumi:"policy"`
 }
 
@@ -14222,7 +14124,6 @@ type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigInput interfa
 
 type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs struct {
 	// Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-	// The `encryptionConfig` block supports:
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
 }
 
@@ -14304,7 +14205,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) To
 }
 
 // Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-// The `encryptionConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -14330,7 +14230,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
 }
 
 // Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-// The `encryptionConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *string {
 		if v == nil {
@@ -14342,7 +14241,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
 
 type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig struct {
 	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-	// The `endpointConfig` block supports:
 	GcePdKmsKeyName *string `pulumi:"gcePdKmsKeyName"`
 }
 
@@ -14359,7 +14257,6 @@ type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigInput interfac
 
 type WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs struct {
 	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-	// The `endpointConfig` block supports:
 	GcePdKmsKeyName pulumi.StringPtrInput `pulumi:"gcePdKmsKeyName"`
 }
 
@@ -14441,7 +14338,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToW
 }
 
 // Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-// The `endpointConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *string {
 		return v.GcePdKmsKeyName
@@ -14469,7 +14365,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) 
 }
 
 // Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-// The `endpointConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *string {
 		if v == nil {
@@ -14484,7 +14379,6 @@ type WorkflowTemplatePlacementManagedClusterConfigEndpointConfig struct {
 	EnableHttpPortAccess *bool `pulumi:"enableHttpPortAccess"`
 	// -
 	// Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
-	// The `gceClusterConfig` block supports:
 	HttpPorts map[string]string `pulumi:"httpPorts"`
 }
 
@@ -14504,7 +14398,6 @@ type WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs struct {
 	EnableHttpPortAccess pulumi.BoolPtrInput `pulumi:"enableHttpPortAccess"`
 	// -
 	// Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
-	// The `gceClusterConfig` block supports:
 	HttpPorts pulumi.StringMapInput `pulumi:"httpPorts"`
 }
 
@@ -14594,7 +14487,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) Enabl
 
 // -
 // Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
-// The `gceClusterConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) HttpPorts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) map[string]string {
 		return v.HttpPorts
@@ -14633,7 +14525,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) En
 
 // -
 // Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
-// The `gceClusterConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) HttpPorts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) map[string]string {
 		if v == nil {
@@ -14665,7 +14556,6 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig struct {
 	// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 	Tags []string `pulumi:"tags"`
 	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-	// The `nodeGroupAffinity` block supports:
 	Zone *string `pulumi:"zone"`
 }
 
@@ -14702,7 +14592,6 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs struct {
 	// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-	// The `nodeGroupAffinity` block supports:
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
@@ -14844,7 +14733,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Tag
 }
 
 // Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-// The `nodeGroupAffinity` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -14970,7 +14858,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 }
 
 // Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-// The `nodeGroupAffinity` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
 		if v == nil {
@@ -14981,7 +14868,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity struct {
-	// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+	// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
 	NodeGroup string `pulumi:"nodeGroup"`
 }
 
@@ -14997,7 +14884,7 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffin
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs struct {
-	// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+	// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
 	NodeGroup pulumi.StringInput `pulumi:"nodeGroup"`
 }
 
@@ -15078,7 +14965,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAf
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
 }
 
-// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) NodeGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) string {
 		return v.NodeGroup
@@ -15105,7 +14992,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAf
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput)
 }
 
-// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1` The  `reservationAffinity` block supports:
+// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) NodeGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) *string {
 		if v == nil {
@@ -15121,7 +15008,6 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAff
 	// Optional. Corresponds to the label key of reservation resource.
 	Key *string `pulumi:"key"`
 	// Optional. Corresponds to the label values of reservation resource.
-	// The `gkeClusterConfig` block supports:
 	Values []string `pulumi:"values"`
 }
 
@@ -15142,7 +15028,6 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAff
 	// Optional. Corresponds to the label key of reservation resource.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Optional. Corresponds to the label values of reservation resource.
-	// The `gkeClusterConfig` block supports:
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -15238,7 +15123,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 }
 
 // Optional. Corresponds to the label values of reservation resource.
-// The `gkeClusterConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) []string {
 		return v.Values
@@ -15286,7 +15170,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 }
 
 // Optional. Corresponds to the label values of reservation resource.
-// The `gkeClusterConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) []string {
 		if v == nil {
@@ -15298,7 +15181,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 
 type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig struct {
 	// Optional. A target for the deployment.
-	// The `namespacedGkeDeploymentTarget` block supports:
 	NamespacedGkeDeploymentTarget *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget `pulumi:"namespacedGkeDeploymentTarget"`
 }
 
@@ -15315,7 +15197,6 @@ type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigInput interfac
 
 type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs struct {
 	// Optional. A target for the deployment.
-	// The `namespacedGkeDeploymentTarget` block supports:
 	NamespacedGkeDeploymentTarget WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrInput `pulumi:"namespacedGkeDeploymentTarget"`
 }
 
@@ -15397,7 +15278,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToW
 }
 
 // Optional. A target for the deployment.
-// The `namespacedGkeDeploymentTarget` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) NamespacedGkeDeploymentTarget() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
 		return v.NamespacedGkeDeploymentTarget
@@ -15425,7 +15305,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) 
 }
 
 // Optional. A target for the deployment.
-// The `namespacedGkeDeploymentTarget` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) NamespacedGkeDeploymentTarget() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
 		if v == nil {
@@ -15439,7 +15318,6 @@ type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeD
 	// Optional. A namespace within the GKE cluster to deploy into.
 	ClusterNamespace *string `pulumi:"clusterNamespace"`
 	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-	// The `initializationActions` block supports:
 	TargetGkeCluster *string `pulumi:"targetGkeCluster"`
 }
 
@@ -15458,7 +15336,6 @@ type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeD
 	// Optional. A namespace within the GKE cluster to deploy into.
 	ClusterNamespace pulumi.StringPtrInput `pulumi:"clusterNamespace"`
 	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-	// The `initializationActions` block supports:
 	TargetGkeCluster pulumi.StringPtrInput `pulumi:"targetGkeCluster"`
 }
 
@@ -15547,7 +15424,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 }
 
 // Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-// The `initializationActions` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) TargetGkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *string {
 		return v.TargetGkeCluster
@@ -15585,7 +15461,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 }
 
 // Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-// The `initializationActions` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) TargetGkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *string {
 		if v == nil {
@@ -15599,7 +15474,6 @@ type WorkflowTemplatePlacementManagedClusterConfigInitializationAction struct {
 	// Required. Cloud Storage URI of executable file.
 	ExecutableFile *string `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
-	// The `lifecycleConfig` block supports:
 	ExecutionTimeout *string `pulumi:"executionTimeout"`
 }
 
@@ -15618,7 +15492,6 @@ type WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs struc
 	// Required. Cloud Storage URI of executable file.
 	ExecutableFile pulumi.StringPtrInput `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
-	// The `lifecycleConfig` block supports:
 	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
 }
 
@@ -15681,7 +15554,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput)
 }
 
 // Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
-// The `lifecycleConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ExecutionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigInitializationAction) *string {
 		return v.ExecutionTimeout
@@ -15717,7 +15589,6 @@ type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig struct {
 	IdleDeleteTtl *string `pulumi:"idleDeleteTtl"`
 	// -
 	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	// The `metastoreConfig` block supports:
 	IdleStartTime *string `pulumi:"idleStartTime"`
 }
 
@@ -15741,7 +15612,6 @@ type WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs struct {
 	IdleDeleteTtl pulumi.StringPtrInput `pulumi:"idleDeleteTtl"`
 	// -
 	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	// The `metastoreConfig` block supports:
 	IdleStartTime pulumi.StringPtrInput `pulumi:"idleStartTime"`
 }
 
@@ -15839,7 +15709,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) Idle
 
 // -
 // Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-// The `metastoreConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) IdleStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string { return v.IdleStartTime }).(pulumi.StringPtrOutput)
 }
@@ -15896,7 +15765,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) I
 
 // -
 // Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-// The `metastoreConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) IdleStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *string {
 		if v == nil {
@@ -15923,7 +15791,6 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// -
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	// The `accelerators` block supports:
 	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
@@ -15961,7 +15828,6 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// -
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	// The `accelerators` block supports:
 	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
@@ -16086,7 +15952,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) Machine
 
 // -
 // Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-// The `accelerators` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
 		return v.ManagedGroupConfigs
@@ -16192,7 +16057,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Mach
 
 // -
 // Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-// The `accelerators` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
 		if v == nil {
@@ -16236,7 +16100,6 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator struct
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
 	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-	// The `diskConfig` block supports:
 	AcceleratorType *string `pulumi:"acceleratorType"`
 }
 
@@ -16255,7 +16118,6 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs st
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
 	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-	// The `diskConfig` block supports:
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 }
 
@@ -16318,7 +16180,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutp
 }
 
 // Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-// The `diskConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator) *string {
 		return v.AcceleratorType
@@ -16351,7 +16212,6 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig struct 
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-	// The `autoscalingConfig` block supports:
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -16372,7 +16232,6 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs str
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-	// The `autoscalingConfig` block supports:
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -16468,7 +16327,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutpu
 }
 
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-// The `autoscalingConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
 		return v.NumLocalSsds
@@ -16516,7 +16374,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 }
 
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-// The `autoscalingConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
 		if v == nil {
@@ -16632,7 +16489,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupCon
 
 type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig struct {
 	// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-	// The `securityConfig` block supports:
 	DataprocMetastoreService string `pulumi:"dataprocMetastoreService"`
 }
 
@@ -16649,7 +16505,6 @@ type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigInput interface
 
 type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs struct {
 	// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-	// The `securityConfig` block supports:
 	DataprocMetastoreService pulumi.StringInput `pulumi:"dataprocMetastoreService"`
 }
 
@@ -16731,7 +16586,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWo
 }
 
 // Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-// The `securityConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) DataprocMetastoreService() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) string {
 		return v.DataprocMetastoreService
@@ -16759,7 +16613,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) E
 }
 
 // Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-// The `securityConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) *string {
 		if v == nil {
@@ -16786,7 +16639,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// -
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	// The `accelerators` block supports:
 	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
@@ -16824,7 +16676,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs stru
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// -
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	// The `accelerators` block supports:
 	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
@@ -16955,7 +16806,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput
 
 // -
 // Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-// The `accelerators` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
 		return v.ManagedGroupConfigs
@@ -17065,7 +16915,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 
 // -
 // Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-// The `accelerators` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
 		if v == nil {
@@ -17109,7 +16958,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerat
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
 	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-	// The `diskConfig` block supports:
 	AcceleratorType *string `pulumi:"acceleratorType"`
 }
 
@@ -17128,7 +16976,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerat
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
 	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-	// The `diskConfig` block supports:
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 }
 
@@ -17191,7 +17038,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccele
 }
 
 // Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-// The `diskConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator) *string {
 		return v.AcceleratorType
@@ -17224,7 +17070,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfi
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-	// The `autoscalingConfig` block supports:
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -17245,7 +17090,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfi
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-	// The `autoscalingConfig` block supports:
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -17341,7 +17185,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 }
 
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-// The `autoscalingConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
 		return v.NumLocalSsds
@@ -17389,7 +17232,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 }
 
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-// The `autoscalingConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -17505,7 +17347,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManage
 
 type WorkflowTemplatePlacementManagedClusterConfigSecurityConfig struct {
 	// Kerberos related configuration.
-	// The `kerberosConfig` block supports:
 	KerberosConfig *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig `pulumi:"kerberosConfig"`
 }
 
@@ -17522,7 +17363,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigInput interface 
 
 type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs struct {
 	// Kerberos related configuration.
-	// The `kerberosConfig` block supports:
 	KerberosConfig WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrInput `pulumi:"kerberosConfig"`
 }
 
@@ -17604,7 +17444,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWor
 }
 
 // Kerberos related configuration.
-// The `kerberosConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) KerberosConfig() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
 		return v.KerberosConfig
@@ -17632,7 +17471,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) El
 }
 
 // Kerberos related configuration.
-// The `kerberosConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) KerberosConfig() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
 		if v == nil {
@@ -17672,7 +17510,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig s
 	// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
 	Truststore *string `pulumi:"truststore"`
 	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
-	// The `softwareConfig` block supports:
 	TruststorePassword *string `pulumi:"truststorePassword"`
 }
 
@@ -17717,7 +17554,6 @@ type WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigAr
 	// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
 	Truststore pulumi.StringPtrInput `pulumi:"truststore"`
 	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
-	// The `softwareConfig` block supports:
 	TruststorePassword pulumi.StringPtrInput `pulumi:"truststorePassword"`
 }
 
@@ -17897,7 +17733,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 }
 
 // Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
-// The `softwareConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) TruststorePassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
 		return v.TruststorePassword
@@ -18065,7 +17900,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 }
 
 // Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
-// The `softwareConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) TruststorePassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *string {
 		if v == nil {
@@ -18246,7 +18080,6 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// -
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	// The `accelerators` block supports:
 	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
@@ -18284,7 +18117,6 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// -
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	// The `accelerators` block supports:
 	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
@@ -18409,7 +18241,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) Machine
 
 // -
 // Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-// The `accelerators` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
 		return v.ManagedGroupConfigs
@@ -18515,7 +18346,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Mach
 
 // -
 // Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-// The `accelerators` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
 		if v == nil {
@@ -18559,7 +18389,6 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator struct
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
 	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-	// The `diskConfig` block supports:
 	AcceleratorType *string `pulumi:"acceleratorType"`
 }
 
@@ -18578,7 +18407,6 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs st
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
 	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-	// The `diskConfig` block supports:
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 }
 
@@ -18641,7 +18469,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutp
 }
 
 // Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-// The `diskConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator) *string {
 		return v.AcceleratorType
@@ -18674,7 +18501,6 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig struct 
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-	// The `autoscalingConfig` block supports:
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -18695,7 +18521,6 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs str
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-	// The `autoscalingConfig` block supports:
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -18791,7 +18616,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutpu
 }
 
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-// The `autoscalingConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
 		return v.NumLocalSsds
@@ -18839,7 +18663,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 }
 
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-// The `autoscalingConfig` block supports:
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
 		if v == nil {

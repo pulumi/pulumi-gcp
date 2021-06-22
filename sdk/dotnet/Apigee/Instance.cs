@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The size of the CIDR block range that will be reserved by the instance.
-        /// Possible values are `SLASH_16` and `SLASH_20`.
+        /// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         /// </summary>
         [Output("peeringCidrRange")]
         public Output<string?> PeeringCidrRange { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The size of the CIDR block range that will be reserved by the instance.
-        /// Possible values are `SLASH_16` and `SLASH_20`.
+        /// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         /// </summary>
         [Input("peeringCidrRange")]
         public Input<string>? PeeringCidrRange { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The size of the CIDR block range that will be reserved by the instance.
-        /// Possible values are `SLASH_16` and `SLASH_20`.
+        /// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         /// </summary>
         [Input("peeringCidrRange")]
         public Input<string>? PeeringCidrRange { get; set; }

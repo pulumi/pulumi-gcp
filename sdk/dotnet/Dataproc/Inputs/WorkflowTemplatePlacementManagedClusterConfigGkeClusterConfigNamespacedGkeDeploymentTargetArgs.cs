@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-        /// The `initialization_actions` block supports:
         /// </summary>
         [Input("targetGkeCluster")]
         public Input<string>? TargetGkeCluster { get; set; }

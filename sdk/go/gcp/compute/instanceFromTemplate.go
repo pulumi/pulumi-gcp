@@ -128,6 +128,9 @@ type InstanceFromTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromTemplateNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -241,6 +244,9 @@ type instanceFromTemplateState struct {
 	Name *string `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces []InstanceFromTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -323,6 +329,9 @@ type InstanceFromTemplateState struct {
 	Name pulumi.StringPtrInput
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromTemplateNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -399,6 +408,9 @@ type instanceFromTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces []InstanceFromTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -468,6 +480,9 @@ type InstanceFromTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromTemplateNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput

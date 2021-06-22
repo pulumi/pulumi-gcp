@@ -5,15 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./feature";
+export * from "./featureMembership";
 export * from "./membership";
 
 // Import resources to register:
+import { Feature } from "./feature";
+import { FeatureMembership } from "./featureMembership";
 import { Membership } from "./membership";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:gkehub/feature:Feature":
+                return new Feature(name, <any>undefined, { urn })
+            case "gcp:gkehub/featureMembership:FeatureMembership":
+                return new FeatureMembership(name, <any>undefined, { urn })
             case "gcp:gkehub/membership:Membership":
                 return new Membership(name, <any>undefined, { urn })
             default:
@@ -21,4 +29,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "gkehub/feature", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/featureMembership", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membership", _module)

@@ -7698,6 +7698,10 @@ export namespace compute {
         subnetworkRangeName?: pulumi.Input<string>;
     }
 
+    export interface InstanceFromMachineImageNetworkPerformanceConfig {
+        totalEgressBandwidthTier: pulumi.Input<string>;
+    }
+
     export interface InstanceFromMachineImageReservationAffinity {
         specificReservation?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinitySpecificReservation>;
         type: pulumi.Input<string>;
@@ -7797,6 +7801,10 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterfaceAliasIpRange {
         ipCidrRange: pulumi.Input<string>;
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateNetworkPerformanceConfig {
+        totalEgressBandwidthTier: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateReservationAffinity {
@@ -8114,6 +8122,14 @@ export namespace compute {
         subnetworkRangeName?: pulumi.Input<string>;
     }
 
+    export interface InstanceNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable.
+         * Possible values: TIER_1, DEFAULT
+         */
+        totalEgressBandwidthTier: pulumi.Input<string>;
+    }
+
     export interface InstanceReservationAffinity {
         specificReservation?: pulumi.Input<inputs.compute.InstanceReservationAffinitySpecificReservation>;
         /**
@@ -8140,6 +8156,9 @@ export namespace compute {
          * Defaults to true.
          */
         automaticRestart?: pulumi.Input<boolean>;
+        /**
+         * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+         */
         minNodeCpus?: pulumi.Input<number>;
         /**
          * Specifies node affinities or anti-affinities
@@ -8218,6 +8237,17 @@ export namespace compute {
          * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          */
         enableVtpm?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceTemplateAdvancedMachineFeatures {
+        /**
+         * Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+         */
+        enableNestedVirtualization?: pulumi.Input<boolean>;
+        /**
+         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         */
+        threadsPerCore?: pulumi.Input<number>;
     }
 
     export interface InstanceTemplateConfidentialInstanceConfig {
@@ -8404,6 +8434,13 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceTemplateNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+         */
+        totalEgressBandwidthTier: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateReservationAffinity {
@@ -11667,6 +11704,24 @@ export namespace compute {
         range: pulumi.Input<string>;
     }
 
+    export interface SecurityPolicyAdaptiveProtectionConfig {
+        /**
+         * ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+         */
+        layer7DdosDefenseConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig>;
+    }
+
+    export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+        /**
+         * ) If set to true, enables CAAP for L7 DDoS detection.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+         */
+        ruleVisibility?: pulumi.Input<string>;
+    }
+
     export interface SecurityPolicyRule {
         /**
          * Action to take when `match` matches the request. Valid values:
@@ -11787,6 +11842,23 @@ export namespace compute {
          * which means the scan will be scheduled to start immediately.
          */
         scheduleTime?: pulumi.Input<string>;
+    }
+
+    export interface ServiceAttachmentConnectedEndpoint {
+        endpoint?: pulumi.Input<string>;
+        status?: pulumi.Input<string>;
+    }
+
+    export interface ServiceAttachmentConsumerAcceptList {
+        /**
+         * The number of consumer forwarding rules the consumer project can
+         * create.
+         */
+        connectionLimit: pulumi.Input<number>;
+        /**
+         * A project that is allowed to connect to this service attachment.
+         */
+        projectIdOrNum: pulumi.Input<string>;
     }
 
     export interface SnapshotSnapshotEncryptionKey {
@@ -17073,7 +17145,6 @@ export namespace dataproc {
         hiveJob?: pulumi.Input<inputs.dataproc.WorkflowTemplateJobHiveJob>;
         /**
          * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-         * The `secondaryWorkerConfig` block supports:
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -17110,7 +17181,6 @@ export namespace dataproc {
         sparkSqlJob?: pulumi.Input<inputs.dataproc.WorkflowTemplateJobSparkSqlJob>;
         /**
          * Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-         * The `placement` block supports:
          */
         stepId: pulumi.Input<string>;
     }
@@ -17153,7 +17223,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobHadoopJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17181,7 +17250,6 @@ export namespace dataproc {
         queryList?: pulumi.Input<inputs.dataproc.WorkflowTemplateJobHiveJobQueryList>;
         /**
          * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-         * The `loggingConfig` block supports:
          */
         scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17189,7 +17257,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobHiveJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17221,7 +17288,6 @@ export namespace dataproc {
         queryList?: pulumi.Input<inputs.dataproc.WorkflowTemplateJobPigJobQueryList>;
         /**
          * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-         * The `loggingConfig` block supports:
          */
         scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17229,7 +17295,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPigJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17237,7 +17302,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPigJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17276,7 +17340,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPrestoJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17284,7 +17347,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPrestoJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17320,7 +17382,6 @@ export namespace dataproc {
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-         * The `loggingConfig` block supports:
          */
         pythonFileUris?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17328,7 +17389,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPysparkJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17340,7 +17400,6 @@ export namespace dataproc {
         maxFailuresPerHour?: pulumi.Input<number>;
         /**
          * Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-         * The `sparkJob` block supports:
          */
         maxFailuresTotal?: pulumi.Input<number>;
     }
@@ -17383,7 +17442,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17418,7 +17476,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkRJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17446,7 +17503,6 @@ export namespace dataproc {
         queryList?: pulumi.Input<inputs.dataproc.WorkflowTemplateJobSparkSqlJobQueryList>;
         /**
          * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-         * The `loggingConfig` block supports:
          */
         scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17454,7 +17510,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkSqlJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17462,7 +17517,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkSqlJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17482,7 +17536,6 @@ export namespace dataproc {
         name: pulumi.Input<string>;
         /**
          * Optional. Validation rules to be applied to this parameter's value.
-         * The `validation` block supports:
          */
         validation?: pulumi.Input<inputs.dataproc.WorkflowTemplateParameterValidation>;
     }
@@ -17494,7 +17547,6 @@ export namespace dataproc {
         regex?: pulumi.Input<inputs.dataproc.WorkflowTemplateParameterValidationRegex>;
         /**
          * Optional. Corresponds to the label values of reservation resource.
-         * The `gkeClusterConfig` block supports:
          */
         values?: pulumi.Input<inputs.dataproc.WorkflowTemplateParameterValidationValues>;
     }
@@ -17502,7 +17554,6 @@ export namespace dataproc {
     export interface WorkflowTemplateParameterValidationRegex {
         /**
          * Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-         * The `values` block supports:
          */
         regexes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17510,7 +17561,6 @@ export namespace dataproc {
     export interface WorkflowTemplateParameterValidationValues {
         /**
          * Optional. Corresponds to the label values of reservation resource.
-         * The `gkeClusterConfig` block supports:
          */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17522,7 +17572,6 @@ export namespace dataproc {
         clusterSelector?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementClusterSelector>;
         /**
          * A cluster that is managed by the workflow.
-         * The `config` block supports:
          */
         managedCluster?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedCluster>;
     }
@@ -17534,7 +17583,6 @@ export namespace dataproc {
         clusterLabels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-         * The `nodeGroupAffinity` block supports:
          */
         zone?: pulumi.Input<string>;
     }
@@ -17550,7 +17598,6 @@ export namespace dataproc {
         config: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfig>;
         /**
          * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-         * The `secondaryWorkerConfig` block supports:
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17621,7 +17668,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
         /**
          * Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-         * The `encryptionConfig` block supports:
          */
         policy?: pulumi.Input<string>;
     }
@@ -17629,7 +17675,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
         /**
          * Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-         * The `endpointConfig` block supports:
          */
         gcePdKmsKeyName?: pulumi.Input<string>;
     }
@@ -17642,7 +17687,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
-         * The `gceClusterConfig` block supports:
          */
         httpPorts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -17690,7 +17734,6 @@ export namespace dataproc {
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-         * The `nodeGroupAffinity` block supports:
          */
         zone?: pulumi.Input<string>;
     }
@@ -17698,7 +17741,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
         /**
          * Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-         * The `reservationAffinity` block supports:
          */
         nodeGroup: pulumi.Input<string>;
     }
@@ -17714,7 +17756,6 @@ export namespace dataproc {
         key?: pulumi.Input<string>;
         /**
          * Optional. Corresponds to the label values of reservation resource.
-         * The `gkeClusterConfig` block supports:
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17722,7 +17763,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
         /**
          * Optional. A target for the deployment.
-         * The `namespacedGkeDeploymentTarget` block supports:
          */
         namespacedGkeDeploymentTarget?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget>;
     }
@@ -17734,7 +17774,6 @@ export namespace dataproc {
         clusterNamespace?: pulumi.Input<string>;
         /**
          * Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-         * The `initializationActions` block supports:
          */
         targetGkeCluster?: pulumi.Input<string>;
     }
@@ -17746,7 +17785,6 @@ export namespace dataproc {
         executableFile?: pulumi.Input<string>;
         /**
          * Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
-         * The `lifecycleConfig` block supports:
          */
         executionTimeout?: pulumi.Input<string>;
     }
@@ -17767,7 +17805,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-         * The `metastoreConfig` block supports:
          */
         idleStartTime?: pulumi.Input<string>;
     }
@@ -17802,7 +17839,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-         * The `accelerators` block supports:
          */
         managedGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>[]>;
         /**
@@ -17826,7 +17862,6 @@ export namespace dataproc {
         acceleratorCount?: pulumi.Input<number>;
         /**
          * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-         * The `diskConfig` block supports:
          */
         acceleratorType?: pulumi.Input<string>;
     }
@@ -17842,7 +17877,6 @@ export namespace dataproc {
         bootDiskType?: pulumi.Input<string>;
         /**
          * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-         * The `autoscalingConfig` block supports:
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -17855,7 +17889,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
         /**
          * Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-         * The `securityConfig` block supports:
          */
         dataprocMetastoreService: pulumi.Input<string>;
     }
@@ -17890,7 +17923,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-         * The `accelerators` block supports:
          */
         managedGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig>[]>;
         /**
@@ -17914,7 +17946,6 @@ export namespace dataproc {
         acceleratorCount?: pulumi.Input<number>;
         /**
          * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-         * The `diskConfig` block supports:
          */
         acceleratorType?: pulumi.Input<string>;
     }
@@ -17930,7 +17961,6 @@ export namespace dataproc {
         bootDiskType?: pulumi.Input<string>;
         /**
          * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-         * The `autoscalingConfig` block supports:
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -17943,7 +17973,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
         /**
          * Kerberos related configuration.
-         * The `kerberosConfig` block supports:
          */
         kerberosConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig>;
     }
@@ -18007,7 +18036,6 @@ export namespace dataproc {
         truststore?: pulumi.Input<string>;
         /**
          * Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
-         * The `softwareConfig` block supports:
          */
         truststorePassword?: pulumi.Input<string>;
     }
@@ -18053,7 +18081,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-         * The `accelerators` block supports:
          */
         managedGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig>[]>;
         /**
@@ -18077,7 +18104,6 @@ export namespace dataproc {
         acceleratorCount?: pulumi.Input<number>;
         /**
          * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-         * The `diskConfig` block supports:
          */
         acceleratorType?: pulumi.Input<string>;
     }
@@ -18093,7 +18119,6 @@ export namespace dataproc {
         bootDiskType?: pulumi.Input<string>;
         /**
          * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-         * The `autoscalingConfig` block supports:
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -18166,6 +18191,13 @@ export namespace deploymentmanager {
 }
 
 export namespace diagflow {
+    export interface CxAgentSpeechToTextSettings {
+        /**
+         * Whether to use speech adaptation for speech recognition.
+         */
+        enableSpeechAdaptation?: pulumi.Input<boolean>;
+    }
+
     export interface EntityTypeEntity {
         /**
          * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
@@ -18456,7 +18488,6 @@ export namespace eventarc {
     export interface TriggerTransport {
         /**
          * The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-         * The `pubsub` block supports:
          */
         pubsubs?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransportPubsub>[]>;
     }
@@ -18805,11 +18836,137 @@ export namespace gameservices {
 }
 
 export namespace gkehub {
-    export interface MembershipAuthority {
+    export interface FeatureMembershipConfigmanagement {
         /**
-         * A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-         * with length <2000 characters.
+         * Binauthz conifguration for the cluster.
          */
+        binauthz?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementBinauthz>;
+        /**
+         * Config Sync configuration for the cluster.
+         */
+        configSync?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSync>;
+        /**
+         * Hierarchy Controller configuration for the cluster.
+         */
+        hierarchyController?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementHierarchyController>;
+        /**
+         * Policy Controller configuration for the cluster.
+         */
+        policyController?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementPolicyController>;
+        /**
+         * Version of ACM installed.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface FeatureMembershipConfigmanagementBinauthz {
+        /**
+         * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSync {
+        /**
+         * -
+         * (Optional)
+         */
+        git?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit>;
+        /**
+         * Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+         */
+        sourceFormat?: pulumi.Input<string>;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSyncGit {
+        /**
+         * URL for the HTTPS proxy to be used when communicating with the Git repo.
+         */
+        httpsProxy?: pulumi.Input<string>;
+        /**
+         * The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+         */
+        policyDir?: pulumi.Input<string>;
+        /**
+         * Type of secret configured for access to the Git repo.
+         */
+        secretType?: pulumi.Input<string>;
+        /**
+         * The branch of the repository to sync from. Default: master.
+         */
+        syncBranch?: pulumi.Input<string>;
+        /**
+         * The URL of the Git repository to use as the source of truth.
+         */
+        syncRepo?: pulumi.Input<string>;
+        /**
+         * Git revision (tag or hash) to check out. Default HEAD.
+         */
+        syncRev?: pulumi.Input<string>;
+        /**
+         * Period in seconds between consecutive syncs. Default: 15.
+         */
+        syncWaitSecs?: pulumi.Input<string>;
+    }
+
+    export interface FeatureMembershipConfigmanagementHierarchyController {
+        /**
+         * Whether hierarchical resource quota is enabled in this cluster.
+         */
+        enableHierarchicalResourceQuota?: pulumi.Input<boolean>;
+        /**
+         * Whether pod tree labels are enabled in this cluster.
+         */
+        enablePodTreeLabels?: pulumi.Input<boolean>;
+        /**
+         * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface FeatureMembershipConfigmanagementPolicyController {
+        /**
+         * Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+         */
+        auditIntervalSeconds?: pulumi.Input<string>;
+        /**
+         * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+         */
+        exemptableNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Logs all denies and dry run failures.
+         */
+        logDeniesEnabled?: pulumi.Input<boolean>;
+        /**
+         * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+         */
+        referentialRulesEnabled?: pulumi.Input<boolean>;
+        /**
+         * Installs the default template library along with Policy Controller.
+         */
+        templateLibraryInstalled?: pulumi.Input<boolean>;
+    }
+
+    export interface FeatureSpec {
+        /**
+         * Multicluster Ingress-specific spec.
+         * The `multiclusteringress` block supports:
+         */
+        multiclusteringress?: pulumi.Input<inputs.gkehub.FeatureSpecMulticlusteringress>;
+    }
+
+    export interface FeatureSpecMulticlusteringress {
+        /**
+         * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+         */
+        configMembership?: pulumi.Input<string>;
+    }
+
+    export interface MembershipAuthority {
         issuer: pulumi.Input<string>;
     }
 

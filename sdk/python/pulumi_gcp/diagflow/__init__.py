@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .agent import *
+from .cx_agent import *
 from .entity_type import *
 from .fulfillment import *
 from .intent import *

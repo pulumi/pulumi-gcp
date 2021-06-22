@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:gkehub/feature:Feature":
+		r = &Feature{}
+	case "gcp:gkehub/featureMembership:FeatureMembership":
+		r = &FeatureMembership{}
 	case "gcp:gkehub/membership:Membership":
 		r = &Membership{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/feature",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/featureMembership",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkehub/membership",

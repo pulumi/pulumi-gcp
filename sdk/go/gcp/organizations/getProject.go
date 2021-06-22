@@ -53,11 +53,12 @@ type LookupProjectResult struct {
 	BillingAccount    string `pulumi:"billingAccount"`
 	FolderId          string `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	Labels     map[string]string `pulumi:"labels"`
-	Name       string            `pulumi:"name"`
-	Number     string            `pulumi:"number"`
-	OrgId      string            `pulumi:"orgId"`
-	ProjectId  *string           `pulumi:"projectId"`
-	SkipDelete bool              `pulumi:"skipDelete"`
+	Id     string            `pulumi:"id"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
+	// The numeric identifier of the project.
+	Number     string  `pulumi:"number"`
+	OrgId      string  `pulumi:"orgId"`
+	ProjectId  *string `pulumi:"projectId"`
+	SkipDelete bool    `pulumi:"skipDelete"`
 }

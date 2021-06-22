@@ -269,6 +269,16 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
+        /// Configures network performance settings for the instance. Structure is
+        /// documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        /// in order for this setting to take effect.
+        /// </summary>
+        [Output("networkPerformanceConfig")]
+        public Output<Outputs.InstanceNetworkPerformanceConfig?> NetworkPerformanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -552,6 +562,16 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Configures network performance settings for the instance. Structure is
+        /// documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        /// in order for this setting to take effect.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.InstanceNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -824,6 +844,16 @@ namespace Pulumi.Gcp.Compute
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceNetworkInterfaceGetArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// Configures network performance settings for the instance. Structure is
+        /// documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        /// in order for this setting to take effect.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.InstanceNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it

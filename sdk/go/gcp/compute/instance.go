@@ -172,6 +172,12 @@ type Instance struct {
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
 	NetworkInterfaces InstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. Structure is
+	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrOutput `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -313,6 +319,12 @@ type instanceState struct {
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. Structure is
+	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig *InstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -417,6 +429,12 @@ type InstanceState struct {
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance. Structure is
+	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -515,6 +533,12 @@ type instanceArgs struct {
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. Structure is
+	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig *InstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -606,6 +630,12 @@ type InstanceArgs struct {
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance. Structure is
+	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

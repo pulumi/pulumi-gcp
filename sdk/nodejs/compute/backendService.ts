@@ -143,15 +143,11 @@ import * as utilities from "../utilities";
  * const externalProxy = new gcp.compute.GlobalNetworkEndpointGroup("externalProxy", {
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  *     defaultPort: "443",
- * }, {
- *     provider: google_beta,
  * });
  * const proxy = new gcp.compute.GlobalNetworkEndpoint("proxy", {
  *     globalNetworkEndpointGroup: externalProxy.id,
  *     fqdn: "test.example.com",
  *     port: externalProxy.defaultPort,
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     enableCdn: true,
@@ -162,8 +158,6 @@ import * as utilities from "../utilities";
  *     backends: [{
  *         group: externalProxy.id,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

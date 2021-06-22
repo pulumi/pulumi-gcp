@@ -43,7 +43,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
         /// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-        /// The `logging_config` block supports:
         /// </summary>
         public readonly ImmutableArray<string> PythonFileUris;
 

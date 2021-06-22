@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string Name;
         /// <summary>
         /// Optional. Validation rules to be applied to this parameter's value.
-        /// The `validation` block supports:
         /// </summary>
         public readonly Outputs.WorkflowTemplateParameterValidation? Validation;
 

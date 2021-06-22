@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Optional. A target for the deployment.
-        /// The `namespaced_gke_deployment_target` block supports:
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget? NamespacedGkeDeploymentTarget;
 

@@ -10,6 +10,137 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type CxAgentSpeechToTextSettings struct {
+	// Whether to use speech adaptation for speech recognition.
+	EnableSpeechAdaptation *bool `pulumi:"enableSpeechAdaptation"`
+}
+
+// CxAgentSpeechToTextSettingsInput is an input type that accepts CxAgentSpeechToTextSettingsArgs and CxAgentSpeechToTextSettingsOutput values.
+// You can construct a concrete instance of `CxAgentSpeechToTextSettingsInput` via:
+//
+//          CxAgentSpeechToTextSettingsArgs{...}
+type CxAgentSpeechToTextSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentSpeechToTextSettingsOutput() CxAgentSpeechToTextSettingsOutput
+	ToCxAgentSpeechToTextSettingsOutputWithContext(context.Context) CxAgentSpeechToTextSettingsOutput
+}
+
+type CxAgentSpeechToTextSettingsArgs struct {
+	// Whether to use speech adaptation for speech recognition.
+	EnableSpeechAdaptation pulumi.BoolPtrInput `pulumi:"enableSpeechAdaptation"`
+}
+
+func (CxAgentSpeechToTextSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentSpeechToTextSettings)(nil)).Elem()
+}
+
+func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsOutput() CxAgentSpeechToTextSettingsOutput {
+	return i.ToCxAgentSpeechToTextSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentSpeechToTextSettingsOutput)
+}
+
+func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsPtrOutput() CxAgentSpeechToTextSettingsPtrOutput {
+	return i.ToCxAgentSpeechToTextSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentSpeechToTextSettingsOutput).ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentSpeechToTextSettingsPtrInput is an input type that accepts CxAgentSpeechToTextSettingsArgs, CxAgentSpeechToTextSettingsPtr and CxAgentSpeechToTextSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentSpeechToTextSettingsPtrInput` via:
+//
+//          CxAgentSpeechToTextSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type CxAgentSpeechToTextSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentSpeechToTextSettingsPtrOutput() CxAgentSpeechToTextSettingsPtrOutput
+	ToCxAgentSpeechToTextSettingsPtrOutputWithContext(context.Context) CxAgentSpeechToTextSettingsPtrOutput
+}
+
+type cxAgentSpeechToTextSettingsPtrType CxAgentSpeechToTextSettingsArgs
+
+func CxAgentSpeechToTextSettingsPtr(v *CxAgentSpeechToTextSettingsArgs) CxAgentSpeechToTextSettingsPtrInput {
+	return (*cxAgentSpeechToTextSettingsPtrType)(v)
+}
+
+func (*cxAgentSpeechToTextSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentSpeechToTextSettings)(nil)).Elem()
+}
+
+func (i *cxAgentSpeechToTextSettingsPtrType) ToCxAgentSpeechToTextSettingsPtrOutput() CxAgentSpeechToTextSettingsPtrOutput {
+	return i.ToCxAgentSpeechToTextSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentSpeechToTextSettingsPtrType) ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentSpeechToTextSettingsPtrOutput)
+}
+
+type CxAgentSpeechToTextSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentSpeechToTextSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentSpeechToTextSettings)(nil)).Elem()
+}
+
+func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsOutput() CxAgentSpeechToTextSettingsOutput {
+	return o
+}
+
+func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsOutput {
+	return o
+}
+
+func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsPtrOutput() CxAgentSpeechToTextSettingsPtrOutput {
+	return o.ToCxAgentSpeechToTextSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsPtrOutput {
+	return o.ApplyT(func(v CxAgentSpeechToTextSettings) *CxAgentSpeechToTextSettings {
+		return &v
+	}).(CxAgentSpeechToTextSettingsPtrOutput)
+}
+
+// Whether to use speech adaptation for speech recognition.
+func (o CxAgentSpeechToTextSettingsOutput) EnableSpeechAdaptation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxAgentSpeechToTextSettings) *bool { return v.EnableSpeechAdaptation }).(pulumi.BoolPtrOutput)
+}
+
+type CxAgentSpeechToTextSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentSpeechToTextSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentSpeechToTextSettings)(nil)).Elem()
+}
+
+func (o CxAgentSpeechToTextSettingsPtrOutput) ToCxAgentSpeechToTextSettingsPtrOutput() CxAgentSpeechToTextSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentSpeechToTextSettingsPtrOutput) ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentSpeechToTextSettingsPtrOutput) Elem() CxAgentSpeechToTextSettingsOutput {
+	return o.ApplyT(func(v *CxAgentSpeechToTextSettings) CxAgentSpeechToTextSettings { return *v }).(CxAgentSpeechToTextSettingsOutput)
+}
+
+// Whether to use speech adaptation for speech recognition.
+func (o CxAgentSpeechToTextSettingsPtrOutput) EnableSpeechAdaptation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgentSpeechToTextSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSpeechAdaptation
+	}).(pulumi.BoolPtrOutput)
+}
+
 type EntityTypeEntity struct {
 	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
 	// could be green onions.
@@ -538,6 +669,8 @@ func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFoll
 }
 
 func init() {
+	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentFeatureOutput{})

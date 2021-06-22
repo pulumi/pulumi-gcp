@@ -78,6 +78,7 @@ __all__ = [
     'InstanceFromMachineImageNetworkInterfaceArgs',
     'InstanceFromMachineImageNetworkInterfaceAccessConfigArgs',
     'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromMachineImageNetworkPerformanceConfigArgs',
     'InstanceFromMachineImageReservationAffinityArgs',
     'InstanceFromMachineImageReservationAffinitySpecificReservationArgs',
     'InstanceFromMachineImageSchedulingArgs',
@@ -93,6 +94,7 @@ __all__ = [
     'InstanceFromTemplateNetworkInterfaceArgs',
     'InstanceFromTemplateNetworkInterfaceAccessConfigArgs',
     'InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromTemplateNetworkPerformanceConfigArgs',
     'InstanceFromTemplateReservationAffinityArgs',
     'InstanceFromTemplateReservationAffinitySpecificReservationArgs',
     'InstanceFromTemplateSchedulingArgs',
@@ -117,6 +119,7 @@ __all__ = [
     'InstanceNetworkInterfaceArgs',
     'InstanceNetworkInterfaceAccessConfigArgs',
     'InstanceNetworkInterfaceAliasIpRangeArgs',
+    'InstanceNetworkPerformanceConfigArgs',
     'InstanceReservationAffinityArgs',
     'InstanceReservationAffinitySpecificReservationArgs',
     'InstanceSchedulingArgs',
@@ -124,6 +127,7 @@ __all__ = [
     'InstanceScratchDiskArgs',
     'InstanceServiceAccountArgs',
     'InstanceShieldedInstanceConfigArgs',
+    'InstanceTemplateAdvancedMachineFeaturesArgs',
     'InstanceTemplateConfidentialInstanceConfigArgs',
     'InstanceTemplateDiskArgs',
     'InstanceTemplateDiskDiskEncryptionKeyArgs',
@@ -131,6 +135,7 @@ __all__ = [
     'InstanceTemplateNetworkInterfaceArgs',
     'InstanceTemplateNetworkInterfaceAccessConfigArgs',
     'InstanceTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceTemplateNetworkPerformanceConfigArgs',
     'InstanceTemplateReservationAffinityArgs',
     'InstanceTemplateReservationAffinitySpecificReservationArgs',
     'InstanceTemplateSchedulingArgs',
@@ -276,6 +281,8 @@ __all__ = [
     'RouterNatLogConfigArgs',
     'RouterNatSubnetworkArgs',
     'RouterPeerAdvertisedIpRangeArgs',
+    'SecurityPolicyAdaptiveProtectionConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyRuleArgs',
     'SecurityPolicyRuleMatchArgs',
     'SecurityPolicyRuleMatchConfigArgs',
@@ -284,6 +291,8 @@ __all__ = [
     'SecurityScanConfigAuthenticationCustomAccountArgs',
     'SecurityScanConfigAuthenticationGoogleAccountArgs',
     'SecurityScanConfigScheduleArgs',
+    'ServiceAttachmentConnectedEndpointArgs',
+    'ServiceAttachmentConsumerAcceptListArgs',
     'SnapshotSnapshotEncryptionKeyArgs',
     'SnapshotSourceDiskEncryptionKeyArgs',
     'SubnetworkIAMBindingConditionArgs',
@@ -6077,6 +6086,22 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
+class InstanceFromMachineImageNetworkPerformanceConfigArgs:
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: pulumi.Input[str]):
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+    @total_egress_bandwidth_tier.setter
+    def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "total_egress_bandwidth_tier", value)
+
+
+@pulumi.input_type
 class InstanceFromMachineImageReservationAffinityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
@@ -6768,6 +6793,22 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceFromTemplateNetworkPerformanceConfigArgs:
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: pulumi.Input[str]):
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+    @total_egress_bandwidth_tier.setter
+    def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "total_egress_bandwidth_tier", value)
 
 
 @pulumi.input_type
@@ -7958,6 +7999,30 @@ class InstanceNetworkInterfaceAliasIpRangeArgs:
 
 
 @pulumi.input_type
+class InstanceNetworkPerformanceConfigArgs:
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] total_egress_bandwidth_tier: The egress bandwidth tier to enable.
+               Possible values: TIER_1, DEFAULT
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> pulumi.Input[str]:
+        """
+        The egress bandwidth tier to enable.
+        Possible values: TIER_1, DEFAULT
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+    @total_egress_bandwidth_tier.setter
+    def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "total_egress_bandwidth_tier", value)
+
+
+@pulumi.input_type
 class InstanceReservationAffinityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
@@ -8040,6 +8105,7 @@ class InstanceSchedulingArgs:
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
+        :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -8080,6 +8146,9 @@ class InstanceSchedulingArgs:
     @property
     @pulumi.getter(name="minNodeCpus")
     def min_node_cpus(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+        """
         return pulumi.get(self, "min_node_cpus")
 
     @min_node_cpus.setter
@@ -8314,6 +8383,45 @@ class InstanceShieldedInstanceConfigArgs:
     @enable_vtpm.setter
     def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_vtpm", value)
+
+
+@pulumi.input_type
+class InstanceTemplateAdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 threads_per_core: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        :param pulumi.Input[int] threads_per_core: he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -8938,6 +9046,28 @@ class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceTemplateNetworkPerformanceConfigArgs:
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] total_egress_bandwidth_tier: The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> pulumi.Input[str]:
+        """
+        The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+    @total_egress_bandwidth_tier.setter
+    def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "total_egress_bandwidth_tier", value)
 
 
 @pulumi.input_type
@@ -19300,6 +19430,68 @@ class RouterPeerAdvertisedIpRangeArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyAdaptiveProtectionConfigArgs:
+    def __init__(__self__, *,
+                 layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']] = None):
+        """
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_config: ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+        if layer7_ddos_defense_config is not None:
+            pulumi.set(__self__, "layer7_ddos_defense_config", layer7_ddos_defense_config)
+
+    @property
+    @pulumi.getter(name="layer7DdosDefenseConfig")
+    def layer7_ddos_defense_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']]:
+        """
+        ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+        return pulumi.get(self, "layer7_ddos_defense_config")
+
+    @layer7_ddos_defense_config.setter
+    def layer7_ddos_defense_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']]):
+        pulumi.set(self, "layer7_ddos_defense_config", value)
+
+
+@pulumi.input_type
+class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 rule_visibility: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enable: ) If set to true, enables CAAP for L7 DDoS detection.
+        :param pulumi.Input[str] rule_visibility: ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if rule_visibility is not None:
+            pulumi.set(__self__, "rule_visibility", rule_visibility)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        ) If set to true, enables CAAP for L7 DDoS detection.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="ruleVisibility")
+    def rule_visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        """
+        return pulumi.get(self, "rule_visibility")
+
+    @rule_visibility.setter
+    def rule_visibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_visibility", value)
+
+
+@pulumi.input_type
 class SecurityPolicyRuleArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
@@ -19690,6 +19882,74 @@ class SecurityScanConfigScheduleArgs:
     @schedule_time.setter
     def schedule_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule_time", value)
+
+
+@pulumi.input_type
+class ServiceAttachmentConnectedEndpointArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class ServiceAttachmentConsumerAcceptListArgs:
+    def __init__(__self__, *,
+                 connection_limit: pulumi.Input[int],
+                 project_id_or_num: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] connection_limit: The number of consumer forwarding rules the consumer project can
+               create.
+        :param pulumi.Input[str] project_id_or_num: A project that is allowed to connect to this service attachment.
+        """
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+
+    @property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> pulumi.Input[int]:
+        """
+        The number of consumer forwarding rules the consumer project can
+        create.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @connection_limit.setter
+    def connection_limit(self, value: pulumi.Input[int]):
+        pulumi.set(self, "connection_limit", value)
+
+    @property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> pulumi.Input[str]:
+        """
+        A project that is allowed to connect to this service attachment.
+        """
+        return pulumi.get(self, "project_id_or_num")
+
+    @project_id_or_num.setter
+    def project_id_or_num(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id_or_num", value)
 
 
 @pulumi.input_type

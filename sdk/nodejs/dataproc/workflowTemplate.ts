@@ -125,7 +125,6 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     public readonly jobs!: pulumi.Output<outputs.dataproc.WorkflowTemplateJob[]>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-     * The `secondaryWorkerConfig` block supports:
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -223,7 +222,6 @@ export interface WorkflowTemplateState {
     jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-     * The `secondaryWorkerConfig` block supports:
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -267,7 +265,6 @@ export interface WorkflowTemplateArgs {
     jobs: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-     * The `secondaryWorkerConfig` block supports:
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

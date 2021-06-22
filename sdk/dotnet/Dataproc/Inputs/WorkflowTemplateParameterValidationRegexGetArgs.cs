@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-        /// The `values` block supports:
         /// </summary>
         public InputList<string> Regexes
         {

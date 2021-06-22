@@ -118,6 +118,7 @@ export * from "./routerNat";
 export * from "./routerPeer";
 export * from "./securityPolicy";
 export * from "./securityScanConfig";
+export * from "./serviceAttachment";
 export * from "./sharedVPCHostProject";
 export * from "./sharedVPCServiceProject";
 export * from "./snapshot";
@@ -225,6 +226,7 @@ import { SSLCertificate } from "./sslcertificate";
 import { SSLPolicy } from "./sslpolicy";
 import { SecurityPolicy } from "./securityPolicy";
 import { SecurityScanConfig } from "./securityScanConfig";
+import { ServiceAttachment } from "./serviceAttachment";
 import { SharedVPCHostProject } from "./sharedVPCHostProject";
 import { SharedVPCServiceProject } from "./sharedVPCServiceProject";
 import { Snapshot } from "./snapshot";
@@ -419,6 +421,8 @@ const _module = {
                 return new SecurityPolicy(name, <any>undefined, { urn })
             case "gcp:compute/securityScanConfig:SecurityScanConfig":
                 return new SecurityScanConfig(name, <any>undefined, { urn })
+            case "gcp:compute/serviceAttachment:ServiceAttachment":
+                return new ServiceAttachment(name, <any>undefined, { urn })
             case "gcp:compute/sharedVPCHostProject:SharedVPCHostProject":
                 return new SharedVPCHostProject(name, <any>undefined, { urn })
             case "gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject":
@@ -544,6 +548,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/sSLCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sSLPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/securityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/securityScanConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/serviceAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sharedVPCHostProject", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sharedVPCServiceProject", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshot", _module)

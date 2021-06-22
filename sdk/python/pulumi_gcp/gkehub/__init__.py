@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .feature import *
+from .feature_membership import *
 from .membership import *
 from ._inputs import *
 from . import outputs

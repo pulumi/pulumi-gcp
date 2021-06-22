@@ -9,11 +9,35 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'CxAgentSpeechToTextSettingsArgs',
     'EntityTypeEntityArgs',
     'FulfillmentFeatureArgs',
     'FulfillmentGenericWebServiceArgs',
     'IntentFollowupIntentInfoArgs',
 ]
+
+@pulumi.input_type
+class CxAgentSpeechToTextSettingsArgs:
+    def __init__(__self__, *,
+                 enable_speech_adaptation: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_speech_adaptation: Whether to use speech adaptation for speech recognition.
+        """
+        if enable_speech_adaptation is not None:
+            pulumi.set(__self__, "enable_speech_adaptation", enable_speech_adaptation)
+
+    @property
+    @pulumi.getter(name="enableSpeechAdaptation")
+    def enable_speech_adaptation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use speech adaptation for speech recognition.
+        """
+        return pulumi.get(self, "enable_speech_adaptation")
+
+    @enable_speech_adaptation.setter
+    def enable_speech_adaptation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_speech_adaptation", value)
+
 
 @pulumi.input_type
 class EntityTypeEntityArgs:

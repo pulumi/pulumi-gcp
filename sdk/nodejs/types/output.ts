@@ -7821,6 +7821,13 @@ export namespace compute {
         subnetworkRangeName: string;
     }
 
+    export interface GetInstanceNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier for the instance.
+         */
+        totalEgressBandwidthTier: string;
+    }
+
     export interface GetInstanceReservationAffinity {
         specificReservations: outputs.compute.GetInstanceReservationAffinitySpecificReservation[];
         /**
@@ -7882,6 +7889,11 @@ export namespace compute {
         enableIntegrityMonitoring: boolean;
         enableSecureBoot: boolean;
         enableVtpm: boolean;
+    }
+
+    export interface GetInstanceTemplateAdvancedMachineFeature {
+        enableNestedVirtualization: boolean;
+        threadsPerCore: number;
     }
 
     export interface GetInstanceTemplateConfidentialInstanceConfig {
@@ -8058,6 +8070,13 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName: string;
+    }
+
+    export interface GetInstanceTemplateNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier for the instance.
+         */
+        totalEgressBandwidthTier: string;
     }
 
     export interface GetInstanceTemplateReservationAffinity {
@@ -8838,6 +8857,10 @@ export namespace compute {
         subnetworkRangeName: string;
     }
 
+    export interface InstanceFromMachineImageNetworkPerformanceConfig {
+        totalEgressBandwidthTier: string;
+    }
+
     export interface InstanceFromMachineImageReservationAffinity {
         specificReservation: outputs.compute.InstanceFromMachineImageReservationAffinitySpecificReservation;
         type: string;
@@ -8937,6 +8960,10 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterfaceAliasIpRange {
         ipCidrRange: string;
         subnetworkRangeName: string;
+    }
+
+    export interface InstanceFromTemplateNetworkPerformanceConfig {
+        totalEgressBandwidthTier: string;
     }
 
     export interface InstanceFromTemplateReservationAffinity {
@@ -9254,6 +9281,14 @@ export namespace compute {
         subnetworkRangeName?: string;
     }
 
+    export interface InstanceNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable.
+         * Possible values: TIER_1, DEFAULT
+         */
+        totalEgressBandwidthTier: string;
+    }
+
     export interface InstanceReservationAffinity {
         specificReservation?: outputs.compute.InstanceReservationAffinitySpecificReservation;
         /**
@@ -9280,6 +9315,9 @@ export namespace compute {
          * Defaults to true.
          */
         automaticRestart?: boolean;
+        /**
+         * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+         */
         minNodeCpus?: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -9358,6 +9396,17 @@ export namespace compute {
          * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          */
         enableVtpm?: boolean;
+    }
+
+    export interface InstanceTemplateAdvancedMachineFeatures {
+        /**
+         * Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+         */
+        enableNestedVirtualization?: boolean;
+        /**
+         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         */
+        threadsPerCore?: number;
     }
 
     export interface InstanceTemplateConfidentialInstanceConfig {
@@ -9544,6 +9593,13 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: string;
+    }
+
+    export interface InstanceTemplateNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+         */
+        totalEgressBandwidthTier: string;
     }
 
     export interface InstanceTemplateReservationAffinity {
@@ -12807,6 +12863,24 @@ export namespace compute {
         range: string;
     }
 
+    export interface SecurityPolicyAdaptiveProtectionConfig {
+        /**
+         * ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+         */
+        layer7DdosDefenseConfig?: outputs.compute.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig;
+    }
+
+    export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+        /**
+         * ) If set to true, enables CAAP for L7 DDoS detection.
+         */
+        enable?: boolean;
+        /**
+         * ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+         */
+        ruleVisibility?: string;
+    }
+
     export interface SecurityPolicyRule {
         /**
          * Action to take when `match` matches the request. Valid values:
@@ -12927,6 +13001,23 @@ export namespace compute {
          * which means the scan will be scheduled to start immediately.
          */
         scheduleTime?: string;
+    }
+
+    export interface ServiceAttachmentConnectedEndpoint {
+        endpoint: string;
+        status: string;
+    }
+
+    export interface ServiceAttachmentConsumerAcceptList {
+        /**
+         * The number of consumer forwarding rules the consumer project can
+         * create.
+         */
+        connectionLimit: number;
+        /**
+         * A project that is allowed to connect to this service attachment.
+         */
+        projectIdOrNum: string;
     }
 
     export interface SnapshotSnapshotEncryptionKey {
@@ -18570,7 +18661,6 @@ export namespace dataproc {
         hiveJob?: outputs.dataproc.WorkflowTemplateJobHiveJob;
         /**
          * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-         * The `secondaryWorkerConfig` block supports:
          */
         labels?: {[key: string]: string};
         /**
@@ -18607,7 +18697,6 @@ export namespace dataproc {
         sparkSqlJob?: outputs.dataproc.WorkflowTemplateJobSparkSqlJob;
         /**
          * Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-         * The `placement` block supports:
          */
         stepId: string;
     }
@@ -18650,7 +18739,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobHadoopJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: {[key: string]: string};
     }
@@ -18678,7 +18766,6 @@ export namespace dataproc {
         queryList?: outputs.dataproc.WorkflowTemplateJobHiveJobQueryList;
         /**
          * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-         * The `loggingConfig` block supports:
          */
         scriptVariables?: {[key: string]: string};
     }
@@ -18686,7 +18773,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobHiveJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: string[];
     }
@@ -18718,7 +18804,6 @@ export namespace dataproc {
         queryList?: outputs.dataproc.WorkflowTemplateJobPigJobQueryList;
         /**
          * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-         * The `loggingConfig` block supports:
          */
         scriptVariables?: {[key: string]: string};
     }
@@ -18726,7 +18811,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPigJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: {[key: string]: string};
     }
@@ -18734,7 +18818,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPigJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: string[];
     }
@@ -18773,7 +18856,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPrestoJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: {[key: string]: string};
     }
@@ -18781,7 +18863,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPrestoJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: string[];
     }
@@ -18817,7 +18898,6 @@ export namespace dataproc {
         properties?: {[key: string]: string};
         /**
          * Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-         * The `loggingConfig` block supports:
          */
         pythonFileUris?: string[];
     }
@@ -18825,7 +18905,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobPysparkJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: {[key: string]: string};
     }
@@ -18837,7 +18916,6 @@ export namespace dataproc {
         maxFailuresPerHour?: number;
         /**
          * Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-         * The `sparkJob` block supports:
          */
         maxFailuresTotal?: number;
     }
@@ -18880,7 +18958,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: {[key: string]: string};
     }
@@ -18915,7 +18992,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkRJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: {[key: string]: string};
     }
@@ -18943,7 +19019,6 @@ export namespace dataproc {
         queryList?: outputs.dataproc.WorkflowTemplateJobSparkSqlJobQueryList;
         /**
          * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-         * The `loggingConfig` block supports:
          */
         scriptVariables?: {[key: string]: string};
     }
@@ -18951,7 +19026,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkSqlJobLoggingConfig {
         /**
          * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-         * The `queryList` block supports:
          */
         driverLogLevels?: {[key: string]: string};
     }
@@ -18959,7 +19033,6 @@ export namespace dataproc {
     export interface WorkflowTemplateJobSparkSqlJobQueryList {
         /**
          * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-         * The `parameters` block supports:
          */
         queries: string[];
     }
@@ -18979,7 +19052,6 @@ export namespace dataproc {
         name: string;
         /**
          * Optional. Validation rules to be applied to this parameter's value.
-         * The `validation` block supports:
          */
         validation?: outputs.dataproc.WorkflowTemplateParameterValidation;
     }
@@ -18991,7 +19063,6 @@ export namespace dataproc {
         regex?: outputs.dataproc.WorkflowTemplateParameterValidationRegex;
         /**
          * Optional. Corresponds to the label values of reservation resource.
-         * The `gkeClusterConfig` block supports:
          */
         values?: outputs.dataproc.WorkflowTemplateParameterValidationValues;
     }
@@ -18999,7 +19070,6 @@ export namespace dataproc {
     export interface WorkflowTemplateParameterValidationRegex {
         /**
          * Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-         * The `values` block supports:
          */
         regexes: string[];
     }
@@ -19007,7 +19077,6 @@ export namespace dataproc {
     export interface WorkflowTemplateParameterValidationValues {
         /**
          * Optional. Corresponds to the label values of reservation resource.
-         * The `gkeClusterConfig` block supports:
          */
         values: string[];
     }
@@ -19019,7 +19088,6 @@ export namespace dataproc {
         clusterSelector?: outputs.dataproc.WorkflowTemplatePlacementClusterSelector;
         /**
          * A cluster that is managed by the workflow.
-         * The `config` block supports:
          */
         managedCluster?: outputs.dataproc.WorkflowTemplatePlacementManagedCluster;
     }
@@ -19031,7 +19099,6 @@ export namespace dataproc {
         clusterLabels: {[key: string]: string};
         /**
          * Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-         * The `nodeGroupAffinity` block supports:
          */
         zone: string;
     }
@@ -19047,7 +19114,6 @@ export namespace dataproc {
         config: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfig;
         /**
          * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-         * The `secondaryWorkerConfig` block supports:
          */
         labels?: {[key: string]: string};
     }
@@ -19118,7 +19184,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
         /**
          * Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-         * The `encryptionConfig` block supports:
          */
         policy?: string;
     }
@@ -19126,7 +19191,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
         /**
          * Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-         * The `endpointConfig` block supports:
          */
         gcePdKmsKeyName?: string;
     }
@@ -19139,7 +19203,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
-         * The `gceClusterConfig` block supports:
          */
         httpPorts: {[key: string]: string};
     }
@@ -19187,7 +19250,6 @@ export namespace dataproc {
         tags?: string[];
         /**
          * Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-         * The `nodeGroupAffinity` block supports:
          */
         zone: string;
     }
@@ -19195,7 +19257,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
         /**
          * Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-         * The `reservationAffinity` block supports:
          */
         nodeGroup: string;
     }
@@ -19211,7 +19272,6 @@ export namespace dataproc {
         key?: string;
         /**
          * Optional. Corresponds to the label values of reservation resource.
-         * The `gkeClusterConfig` block supports:
          */
         values?: string[];
     }
@@ -19219,7 +19279,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
         /**
          * Optional. A target for the deployment.
-         * The `namespacedGkeDeploymentTarget` block supports:
          */
         namespacedGkeDeploymentTarget?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget;
     }
@@ -19231,7 +19290,6 @@ export namespace dataproc {
         clusterNamespace?: string;
         /**
          * Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-         * The `initializationActions` block supports:
          */
         targetGkeCluster?: string;
     }
@@ -19243,7 +19301,6 @@ export namespace dataproc {
         executableFile?: string;
         /**
          * Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
-         * The `lifecycleConfig` block supports:
          */
         executionTimeout?: string;
     }
@@ -19264,7 +19321,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-         * The `metastoreConfig` block supports:
          */
         idleStartTime: string;
     }
@@ -19299,7 +19355,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-         * The `accelerators` block supports:
          */
         managedGroupConfigs: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig[];
         /**
@@ -19323,7 +19378,6 @@ export namespace dataproc {
         acceleratorCount?: number;
         /**
          * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-         * The `diskConfig` block supports:
          */
         acceleratorType?: string;
     }
@@ -19339,7 +19393,6 @@ export namespace dataproc {
         bootDiskType?: string;
         /**
          * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-         * The `autoscalingConfig` block supports:
          */
         numLocalSsds: number;
     }
@@ -19352,7 +19405,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
         /**
          * Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-         * The `securityConfig` block supports:
          */
         dataprocMetastoreService: string;
     }
@@ -19387,7 +19439,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-         * The `accelerators` block supports:
          */
         managedGroupConfigs: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig[];
         /**
@@ -19411,7 +19462,6 @@ export namespace dataproc {
         acceleratorCount?: number;
         /**
          * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-         * The `diskConfig` block supports:
          */
         acceleratorType?: string;
     }
@@ -19427,7 +19477,6 @@ export namespace dataproc {
         bootDiskType?: string;
         /**
          * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-         * The `autoscalingConfig` block supports:
          */
         numLocalSsds: number;
     }
@@ -19440,7 +19489,6 @@ export namespace dataproc {
     export interface WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
         /**
          * Kerberos related configuration.
-         * The `kerberosConfig` block supports:
          */
         kerberosConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig;
     }
@@ -19504,7 +19552,6 @@ export namespace dataproc {
         truststore?: string;
         /**
          * Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
-         * The `softwareConfig` block supports:
          */
         truststorePassword?: string;
     }
@@ -19550,7 +19597,6 @@ export namespace dataproc {
         /**
          * -
          * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-         * The `accelerators` block supports:
          */
         managedGroupConfigs: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig[];
         /**
@@ -19574,7 +19620,6 @@ export namespace dataproc {
         acceleratorCount?: number;
         /**
          * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-         * The `diskConfig` block supports:
          */
         acceleratorType?: string;
     }
@@ -19590,7 +19635,6 @@ export namespace dataproc {
         bootDiskType?: string;
         /**
          * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-         * The `autoscalingConfig` block supports:
          */
         numLocalSsds: number;
     }
@@ -19663,6 +19707,13 @@ export namespace deploymentmanager {
 }
 
 export namespace diagflow {
+    export interface CxAgentSpeechToTextSettings {
+        /**
+         * Whether to use speech adaptation for speech recognition.
+         */
+        enableSpeechAdaptation?: boolean;
+    }
+
     export interface EntityTypeEntity {
         /**
          * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
@@ -20057,7 +20108,6 @@ export namespace eventarc {
     export interface TriggerTransport {
         /**
          * The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-         * The `pubsub` block supports:
          */
         pubsubs?: outputs.eventarc.TriggerTransportPubsub[];
     }
@@ -20439,11 +20489,137 @@ export namespace gameservices {
 }
 
 export namespace gkehub {
-    export interface MembershipAuthority {
+    export interface FeatureMembershipConfigmanagement {
         /**
-         * A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-         * with length <2000 characters.
+         * Binauthz conifguration for the cluster.
          */
+        binauthz?: outputs.gkehub.FeatureMembershipConfigmanagementBinauthz;
+        /**
+         * Config Sync configuration for the cluster.
+         */
+        configSync?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSync;
+        /**
+         * Hierarchy Controller configuration for the cluster.
+         */
+        hierarchyController?: outputs.gkehub.FeatureMembershipConfigmanagementHierarchyController;
+        /**
+         * Policy Controller configuration for the cluster.
+         */
+        policyController?: outputs.gkehub.FeatureMembershipConfigmanagementPolicyController;
+        /**
+         * Version of ACM installed.
+         */
+        version?: string;
+    }
+
+    export interface FeatureMembershipConfigmanagementBinauthz {
+        /**
+         * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         */
+        enabled?: boolean;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSync {
+        /**
+         * -
+         * (Optional)
+         */
+        git?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit;
+        /**
+         * Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+         */
+        sourceFormat?: string;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSyncGit {
+        /**
+         * URL for the HTTPS proxy to be used when communicating with the Git repo.
+         */
+        httpsProxy?: string;
+        /**
+         * The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+         */
+        policyDir?: string;
+        /**
+         * Type of secret configured for access to the Git repo.
+         */
+        secretType?: string;
+        /**
+         * The branch of the repository to sync from. Default: master.
+         */
+        syncBranch?: string;
+        /**
+         * The URL of the Git repository to use as the source of truth.
+         */
+        syncRepo?: string;
+        /**
+         * Git revision (tag or hash) to check out. Default HEAD.
+         */
+        syncRev?: string;
+        /**
+         * Period in seconds between consecutive syncs. Default: 15.
+         */
+        syncWaitSecs?: string;
+    }
+
+    export interface FeatureMembershipConfigmanagementHierarchyController {
+        /**
+         * Whether hierarchical resource quota is enabled in this cluster.
+         */
+        enableHierarchicalResourceQuota?: boolean;
+        /**
+         * Whether pod tree labels are enabled in this cluster.
+         */
+        enablePodTreeLabels?: boolean;
+        /**
+         * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         */
+        enabled?: boolean;
+    }
+
+    export interface FeatureMembershipConfigmanagementPolicyController {
+        /**
+         * Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+         */
+        auditIntervalSeconds?: string;
+        /**
+         * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         */
+        enabled?: boolean;
+        /**
+         * The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+         */
+        exemptableNamespaces?: string[];
+        /**
+         * Logs all denies and dry run failures.
+         */
+        logDeniesEnabled?: boolean;
+        /**
+         * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+         */
+        referentialRulesEnabled?: boolean;
+        /**
+         * Installs the default template library along with Policy Controller.
+         */
+        templateLibraryInstalled?: boolean;
+    }
+
+    export interface FeatureSpec {
+        /**
+         * Multicluster Ingress-specific spec.
+         * The `multiclusteringress` block supports:
+         */
+        multiclusteringress?: outputs.gkehub.FeatureSpecMulticlusteringress;
+    }
+
+    export interface FeatureSpecMulticlusteringress {
+        /**
+         * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+         */
+        configMembership?: string;
+    }
+
+    export interface MembershipAuthority {
         issuer: string;
     }
 

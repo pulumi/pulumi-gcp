@@ -216,6 +216,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
     }
 
     /**
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     */
+    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceTemplateAdvancedMachineFeatures>;
+    /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
      */
@@ -295,6 +299,15 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceTemplateNetworkInterface[] | undefined>;
     /**
+     * Configures network performance settings for the instance created from the
+     * template. Structure is documented below. **Note**: `machineType`
+     * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+     * in order for this setting to take effect.
+     */
+    public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceTemplateNetworkPerformanceConfig | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -352,6 +365,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceTemplateState | undefined;
+            inputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
             inputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -368,6 +382,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            inputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
@@ -385,6 +400,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             if ((!args || args.machineType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
+            inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -400,6 +416,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            inputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
@@ -422,6 +439,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceTemplate resources.
  */
 export interface InstanceTemplateState {
+    /**
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
@@ -502,6 +523,15 @@ export interface InstanceTemplateState {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
     /**
+     * Configures network performance settings for the instance created from the
+     * template. Structure is documented below. **Note**: `machineType`
+     * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+     * in order for this setting to take effect.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateNetworkPerformanceConfig>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -551,6 +581,10 @@ export interface InstanceTemplateState {
  * The set of arguments for constructing a InstanceTemplate resource.
  */
 export interface InstanceTemplateArgs {
+    /**
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
@@ -626,6 +660,15 @@ export interface InstanceTemplateArgs {
      * Structure is documented below.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
+    /**
+     * Configures network performance settings for the instance created from the
+     * template. Structure is documented below. **Note**: `machineType`
+     * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+     * in order for this setting to take effect.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateNetworkPerformanceConfig>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

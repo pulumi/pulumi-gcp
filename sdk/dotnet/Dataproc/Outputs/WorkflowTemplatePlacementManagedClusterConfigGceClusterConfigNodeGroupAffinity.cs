@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-        /// The `reservation_affinity` block supports:
         /// </summary>
         public readonly string NodeGroup;
 

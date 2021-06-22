@@ -220,6 +220,12 @@ namespace Pulumi.Gcp.Compute
     public partial class InstanceTemplate : Pulumi.CustomResource
     {
         /// <summary>
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        /// </summary>
+        [Output("advancedMachineFeatures")]
+        public Output<Outputs.InstanceTemplateAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to allow sending and receiving of
         /// packets with non-matching source or destination IPs. This defaults to false.
         /// </summary>
@@ -331,6 +337,17 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceTemplateNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
+        /// Configures network performance settings for the instance created from the
+        /// template. Structure is documented below. **Note**: `machine_type`
+        /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        /// in order for this setting to take effect.
+        /// </summary>
+        [Output("networkPerformanceConfig")]
+        public Output<Outputs.InstanceTemplateNetworkPerformanceConfig?> NetworkPerformanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -438,6 +455,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.InstanceTemplateAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
         /// <summary>
         /// Whether to allow sending and receiving of
         /// packets with non-matching source or destination IPs. This defaults to false.
@@ -574,6 +597,17 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Configures network performance settings for the instance created from the
+        /// template. Structure is documented below. **Note**: `machine_type`
+        /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        /// in order for this setting to take effect.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.InstanceTemplateNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -636,6 +670,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.InstanceTemplateAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
+
         /// <summary>
         /// Whether to allow sending and receiving of
         /// packets with non-matching source or destination IPs. This defaults to false.
@@ -776,6 +816,17 @@ namespace Pulumi.Gcp.Compute
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceTemplateNetworkInterfaceGetArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// Configures network performance settings for the instance created from the
+        /// template. Structure is documented below. **Note**: `machine_type`
+        /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        /// in order for this setting to take effect.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.InstanceTemplateNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it

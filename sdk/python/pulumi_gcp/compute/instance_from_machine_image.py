@@ -32,6 +32,7 @@ class InstanceFromMachineImageArgs:
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]]] = None,
+                 network_performance_config: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -65,6 +66,8 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -110,6 +113,8 @@ class InstanceFromMachineImageArgs:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
@@ -338,6 +343,19 @@ class InstanceFromMachineImageArgs:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']]:
+        """
+        Configures network performance settings for the instance. If not specified, the instance will be created with its
+        default network performance configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -463,6 +481,7 @@ class _InstanceFromMachineImageState:
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]]] = None,
+                 network_performance_config: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -505,6 +524,8 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -568,6 +589,8 @@ class _InstanceFromMachineImageState:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
@@ -875,6 +898,19 @@ class _InstanceFromMachineImageState:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']]:
+        """
+        Configures network performance settings for the instance. If not specified, the instance will be created with its
+        default network performance configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1044,6 +1080,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1103,6 +1140,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -1180,6 +1219,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1217,6 +1257,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["min_cpu_platform"] = min_cpu_platform
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["network_performance_config"] = network_performance_config
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
@@ -1271,6 +1312,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             min_cpu_platform: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
+            network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1318,6 +1360,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -1362,6 +1406,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["min_cpu_platform"] = min_cpu_platform
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["network_performance_config"] = network_performance_config
         __props__.__dict__["project"] = project
         __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["resource_policies"] = resource_policies
@@ -1564,6 +1609,15 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         The networks attached to the instance.
         """
         return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> pulumi.Output['outputs.InstanceFromMachineImageNetworkPerformanceConfig']:
+        """
+        Configures network performance settings for the instance. If not specified, the instance will be created with its
+        default network performance configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
 
     @property
     @pulumi.getter

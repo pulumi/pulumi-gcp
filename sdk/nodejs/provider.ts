@@ -68,6 +68,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly datastoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly deploymentManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly dialogflowCxCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dnsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly essentialContactsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly eventarcCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -76,6 +77,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly firestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gameServicesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly healthcareCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamBetaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamCredentialsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -175,6 +177,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
             inputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             inputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
+            inputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
             inputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             inputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             inputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
@@ -183,6 +186,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
             inputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
             inputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
+            inputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
             inputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
             inputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
             inputs["iamCredentialsCustomEndpoint"] = args ? args.iamCredentialsCustomEndpoint : undefined;
@@ -285,6 +289,7 @@ export interface ProviderArgs {
     datastoreCustomEndpoint?: pulumi.Input<string>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
+    dialogflowCxCustomEndpoint?: pulumi.Input<string>;
     dnsCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
     eventarcCustomEndpoint?: pulumi.Input<string>;
@@ -293,6 +298,7 @@ export interface ProviderArgs {
     firestoreCustomEndpoint?: pulumi.Input<string>;
     gameServicesCustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;
+    gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
     iamBetaCustomEndpoint?: pulumi.Input<string>;
     iamCredentialsCustomEndpoint?: pulumi.Input<string>;

@@ -37,6 +37,7 @@ type LookupInstanceTemplateArgs struct {
 
 // A collection of values returned by getInstanceTemplate.
 type LookupInstanceTemplateResult struct {
+	AdvancedMachineFeatures []GetInstanceTemplateAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward bool `pulumi:"canIpForward"`
@@ -88,6 +89,9 @@ type LookupInstanceTemplateResult struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces []GetInstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	// The network performance configuration setting
+	// for the instance, if set. Structure is documented below.
+	NetworkPerformanceConfigs []GetInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project string `pulumi:"project"`

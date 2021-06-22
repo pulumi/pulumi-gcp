@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Defaults to true.
         /// </summary>
         public readonly bool? AutomaticRestart;
+        /// <summary>
+        /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+        /// </summary>
         public readonly int? MinNodeCpus;
         /// <summary>
         /// Specifies node affinities or anti-affinities

@@ -216,6 +216,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceNetworkInterface[]>;
     /**
+     * Configures network performance settings for the instance. Structure is
+     * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+     * in order for this setting to take effect.
+     */
+    public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceNetworkPerformanceConfig | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -303,6 +311,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            inputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
@@ -343,6 +352,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            inputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
@@ -489,6 +499,14 @@ export interface InstanceState {
      * be specified multiple times. Structure is documented below.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
+    /**
+     * Configures network performance settings for the instance. Structure is
+     * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+     * in order for this setting to take effect.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -644,6 +662,14 @@ export interface InstanceArgs {
      * be specified multiple times. Structure is documented below.
      */
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
+    /**
+     * Configures network performance settings for the instance. Structure is
+     * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+     * in order for this setting to take effect.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

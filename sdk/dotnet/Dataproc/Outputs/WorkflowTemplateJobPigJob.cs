@@ -39,7 +39,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly Outputs.WorkflowTemplateJobPigJobQueryList? QueryList;
         /// <summary>
         /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-        /// The `logging_config` block supports:
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 

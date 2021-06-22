@@ -194,6 +194,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceFromMachineImageNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
+        /// Configures network performance settings for the instance. If not specified, the instance will be created with its
+        /// default network performance configuration.
+        /// </summary>
+        [Output("networkPerformanceConfig")]
+        public Output<Outputs.InstanceFromMachineImageNetworkPerformanceConfig> NetworkPerformanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
         /// self_link nor project are provided, the provider project is used.
         /// </summary>
@@ -439,6 +446,13 @@ namespace Pulumi.Gcp.Compute
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceFromMachineImageNetworkInterfaceArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// Configures network performance settings for the instance. If not specified, the instance will be created with its
+        /// default network performance configuration.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.InstanceFromMachineImageNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
@@ -689,6 +703,13 @@ namespace Pulumi.Gcp.Compute
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceFromMachineImageNetworkInterfaceGetArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// Configures network performance settings for the instance. If not specified, the instance will be created with its
+        /// default network performance configuration.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.InstanceFromMachineImageNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

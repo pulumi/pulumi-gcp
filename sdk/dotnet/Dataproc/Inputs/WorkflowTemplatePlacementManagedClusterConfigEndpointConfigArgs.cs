@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// -
         /// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-        /// The `gce_cluster_config` block supports:
         /// </summary>
         public InputMap<string> HttpPorts
         {

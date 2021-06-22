@@ -59,7 +59,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-        /// The `logging_config` block supports:
         /// </summary>
         public InputMap<string> ScriptVariables
         {

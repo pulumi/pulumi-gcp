@@ -70,6 +70,9 @@ namespace Pulumi.Gcp.Organizations
         public readonly string Id;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
+        /// <summary>
+        /// The numeric identifier of the project.
+        /// </summary>
         public readonly string Number;
         public readonly string OrgId;
         public readonly string? ProjectId;

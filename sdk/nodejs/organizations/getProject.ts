@@ -57,6 +57,9 @@ export interface GetProjectResult {
     readonly id: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
+    /**
+     * The numeric identifier of the project.
+     */
     readonly number: string;
     readonly orgId: string;
     readonly projectId?: string;

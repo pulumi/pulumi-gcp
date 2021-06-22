@@ -57,6 +57,7 @@ class ProviderArgs:
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -65,6 +66,7 @@ class ProviderArgs:
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -201,6 +203,8 @@ class ProviderArgs:
             pulumi.set(__self__, "deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
         if dialogflow_custom_endpoint is not None:
             pulumi.set(__self__, "dialogflow_custom_endpoint", dialogflow_custom_endpoint)
+        if dialogflow_cx_custom_endpoint is not None:
+            pulumi.set(__self__, "dialogflow_cx_custom_endpoint", dialogflow_cx_custom_endpoint)
         if dns_custom_endpoint is not None:
             pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
         if essential_contacts_custom_endpoint is not None:
@@ -217,6 +221,8 @@ class ProviderArgs:
             pulumi.set(__self__, "game_services_custom_endpoint", game_services_custom_endpoint)
         if gke_hub_custom_endpoint is not None:
             pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
+        if gkehub_feature_custom_endpoint is not None:
+            pulumi.set(__self__, "gkehub_feature_custom_endpoint", gkehub_feature_custom_endpoint)
         if healthcare_custom_endpoint is not None:
             pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
         if iam_beta_custom_endpoint is not None:
@@ -706,6 +712,15 @@ class ProviderArgs:
         pulumi.set(self, "dialogflow_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="dialogflowCxCustomEndpoint")
+    def dialogflow_cx_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dialogflow_cx_custom_endpoint")
+
+    @dialogflow_cx_custom_endpoint.setter
+    def dialogflow_cx_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dialogflow_cx_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="dnsCustomEndpoint")
     def dns_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dns_custom_endpoint")
@@ -776,6 +791,15 @@ class ProviderArgs:
     @gke_hub_custom_endpoint.setter
     def gke_hub_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gke_hub_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="gkehubFeatureCustomEndpoint")
+    def gkehub_feature_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gkehub_feature_custom_endpoint")
+
+    @gkehub_feature_custom_endpoint.setter
+    def gkehub_feature_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gkehub_feature_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="healthcareCustomEndpoint")
@@ -1249,6 +1273,7 @@ class Provider(pulumi.ProviderResource):
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1257,6 +1282,7 @@ class Provider(pulumi.ProviderResource):
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1384,6 +1410,7 @@ class Provider(pulumi.ProviderResource):
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1392,6 +1419,7 @@ class Provider(pulumi.ProviderResource):
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1494,6 +1522,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
+            __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["essential_contacts_custom_endpoint"] = essential_contacts_custom_endpoint
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
@@ -1502,6 +1531,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
             __props__.__dict__["game_services_custom_endpoint"] = game_services_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
+            __props__.__dict__["gkehub_feature_custom_endpoint"] = gkehub_feature_custom_endpoint
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
             __props__.__dict__["iam_beta_custom_endpoint"] = iam_beta_custom_endpoint
             __props__.__dict__["iam_credentials_custom_endpoint"] = iam_credentials_custom_endpoint
@@ -1772,6 +1802,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "dialogflow_custom_endpoint")
 
     @property
+    @pulumi.getter(name="dialogflowCxCustomEndpoint")
+    def dialogflow_cx_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "dialogflow_cx_custom_endpoint")
+
+    @property
     @pulumi.getter(name="dnsCustomEndpoint")
     def dns_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dns_custom_endpoint")
@@ -1810,6 +1845,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="gkeHubCustomEndpoint")
     def gke_hub_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "gke_hub_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="gkehubFeatureCustomEndpoint")
+    def gkehub_feature_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "gkehub_feature_custom_endpoint")
 
     @property
     @pulumi.getter(name="healthcareCustomEndpoint")

@@ -13,10 +13,6 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class MembershipAuthority
     {
-        /// <summary>
-        /// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-        /// with length &lt;2000 characters.
-        /// </summary>
         public readonly string Issuer;
 
         [OutputConstructor]

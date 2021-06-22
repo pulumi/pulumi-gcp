@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
 
+        /// <summary>
+        /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+        /// </summary>
         [Input("minNodeCpus")]
         public Input<int>? MinNodeCpus { get; set; }
 

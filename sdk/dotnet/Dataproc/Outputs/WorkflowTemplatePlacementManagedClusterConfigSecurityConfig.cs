@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Kerberos related configuration.
-        /// The `kerberos_config` block supports:
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig? KerberosConfig;
 

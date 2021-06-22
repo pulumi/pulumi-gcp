@@ -144,6 +144,9 @@ namespace Pulumi.Gcp
         [Output("dialogflowCustomEndpoint")]
         public Output<string?> DialogflowCustomEndpoint { get; private set; } = null!;
 
+        [Output("dialogflowCxCustomEndpoint")]
+        public Output<string?> DialogflowCxCustomEndpoint { get; private set; } = null!;
+
         [Output("dnsCustomEndpoint")]
         public Output<string?> DnsCustomEndpoint { get; private set; } = null!;
 
@@ -167,6 +170,9 @@ namespace Pulumi.Gcp
 
         [Output("gkeHubCustomEndpoint")]
         public Output<string?> GkeHubCustomEndpoint { get; private set; } = null!;
+
+        [Output("gkehubFeatureCustomEndpoint")]
+        public Output<string?> GkehubFeatureCustomEndpoint { get; private set; } = null!;
 
         [Output("healthcareCustomEndpoint")]
         public Output<string?> HealthcareCustomEndpoint { get; private set; } = null!;
@@ -457,6 +463,9 @@ namespace Pulumi.Gcp
         [Input("dialogflowCustomEndpoint")]
         public Input<string>? DialogflowCustomEndpoint { get; set; }
 
+        [Input("dialogflowCxCustomEndpoint")]
+        public Input<string>? DialogflowCxCustomEndpoint { get; set; }
+
         [Input("dnsCustomEndpoint")]
         public Input<string>? DnsCustomEndpoint { get; set; }
 
@@ -480,6 +489,9 @@ namespace Pulumi.Gcp
 
         [Input("gkeHubCustomEndpoint")]
         public Input<string>? GkeHubCustomEndpoint { get; set; }
+
+        [Input("gkehubFeatureCustomEndpoint")]
+        public Input<string>? GkehubFeatureCustomEndpoint { get; set; }
 
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }

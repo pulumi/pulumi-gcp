@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Optional. Corresponds to the label values of reservation resource.
-        /// The `gke_cluster_config` block supports:
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

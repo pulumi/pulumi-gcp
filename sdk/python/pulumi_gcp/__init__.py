@@ -1624,6 +1624,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/serviceAttachment",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/serviceAttachment:ServiceAttachment": "ServiceAttachment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/sharedVPCHostProject",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -2112,6 +2120,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxAgent",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxAgent:CxAgent": "CxAgent"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/entityType",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -2340,6 +2356,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.gameservices",
   "classes": {
    "gcp:gameservices/realm:Realm": "Realm"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/feature",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/feature:Feature": "Feature"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/featureMembership",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/featureMembership:FeatureMembership": "FeatureMembership"
   }
  },
  {

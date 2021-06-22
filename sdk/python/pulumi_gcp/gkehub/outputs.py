@@ -10,28 +10,528 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'FeatureMembershipConfigmanagement',
+    'FeatureMembershipConfigmanagementBinauthz',
+    'FeatureMembershipConfigmanagementConfigSync',
+    'FeatureMembershipConfigmanagementConfigSyncGit',
+    'FeatureMembershipConfigmanagementHierarchyController',
+    'FeatureMembershipConfigmanagementPolicyController',
+    'FeatureSpec',
+    'FeatureSpecMulticlusteringress',
     'MembershipAuthority',
     'MembershipEndpoint',
     'MembershipEndpointGkeCluster',
 ]
 
 @pulumi.output_type
+class FeatureMembershipConfigmanagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configSync":
+            suggest = "config_sync"
+        elif key == "hierarchyController":
+            suggest = "hierarchy_controller"
+        elif key == "policyController":
+            suggest = "policy_controller"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipConfigmanagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipConfigmanagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipConfigmanagement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 binauthz: Optional['outputs.FeatureMembershipConfigmanagementBinauthz'] = None,
+                 config_sync: Optional['outputs.FeatureMembershipConfigmanagementConfigSync'] = None,
+                 hierarchy_controller: Optional['outputs.FeatureMembershipConfigmanagementHierarchyController'] = None,
+                 policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
+                 version: Optional[str] = None):
+        """
+        :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: Binauthz conifguration for the cluster.
+        :param 'FeatureMembershipConfigmanagementConfigSyncArgs' config_sync: Config Sync configuration for the cluster.
+        :param 'FeatureMembershipConfigmanagementHierarchyControllerArgs' hierarchy_controller: Hierarchy Controller configuration for the cluster.
+        :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster.
+        :param str version: Version of ACM installed.
+        """
+        if binauthz is not None:
+            pulumi.set(__self__, "binauthz", binauthz)
+        if config_sync is not None:
+            pulumi.set(__self__, "config_sync", config_sync)
+        if hierarchy_controller is not None:
+            pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+        if policy_controller is not None:
+            pulumi.set(__self__, "policy_controller", policy_controller)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def binauthz(self) -> Optional['outputs.FeatureMembershipConfigmanagementBinauthz']:
+        """
+        Binauthz conifguration for the cluster.
+        """
+        return pulumi.get(self, "binauthz")
+
+    @property
+    @pulumi.getter(name="configSync")
+    def config_sync(self) -> Optional['outputs.FeatureMembershipConfigmanagementConfigSync']:
+        """
+        Config Sync configuration for the cluster.
+        """
+        return pulumi.get(self, "config_sync")
+
+    @property
+    @pulumi.getter(name="hierarchyController")
+    def hierarchy_controller(self) -> Optional['outputs.FeatureMembershipConfigmanagementHierarchyController']:
+        """
+        Hierarchy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "hierarchy_controller")
+
+    @property
+    @pulumi.getter(name="policyController")
+    def policy_controller(self) -> Optional['outputs.FeatureMembershipConfigmanagementPolicyController']:
+        """
+        Policy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "policy_controller")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of ACM installed.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class FeatureMembershipConfigmanagementBinauthz(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class FeatureMembershipConfigmanagementConfigSync(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceFormat":
+            suggest = "source_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipConfigmanagementConfigSync. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipConfigmanagementConfigSync.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipConfigmanagementConfigSync.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 git: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit'] = None,
+                 source_format: Optional[str] = None):
+        """
+        :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: -
+               (Optional)
+        :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        """
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if source_format is not None:
+            pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit']:
+        """
+        -
+        (Optional)
+        """
+        return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter(name="sourceFormat")
+    def source_format(self) -> Optional[str]:
+        """
+        Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        """
+        return pulumi.get(self, "source_format")
+
+
+@pulumi.output_type
+class FeatureMembershipConfigmanagementConfigSyncGit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpsProxy":
+            suggest = "https_proxy"
+        elif key == "policyDir":
+            suggest = "policy_dir"
+        elif key == "secretType":
+            suggest = "secret_type"
+        elif key == "syncBranch":
+            suggest = "sync_branch"
+        elif key == "syncRepo":
+            suggest = "sync_repo"
+        elif key == "syncRev":
+            suggest = "sync_rev"
+        elif key == "syncWaitSecs":
+            suggest = "sync_wait_secs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipConfigmanagementConfigSyncGit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipConfigmanagementConfigSyncGit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipConfigmanagementConfigSyncGit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 https_proxy: Optional[str] = None,
+                 policy_dir: Optional[str] = None,
+                 secret_type: Optional[str] = None,
+                 sync_branch: Optional[str] = None,
+                 sync_repo: Optional[str] = None,
+                 sync_rev: Optional[str] = None,
+                 sync_wait_secs: Optional[str] = None):
+        """
+        :param str https_proxy: URL for the HTTPS proxy to be used when communicating with the Git repo.
+        :param str policy_dir: The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        :param str secret_type: Type of secret configured for access to the Git repo.
+        :param str sync_branch: The branch of the repository to sync from. Default: master.
+        :param str sync_repo: The URL of the Git repository to use as the source of truth.
+        :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD.
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
+        """
+        if https_proxy is not None:
+            pulumi.set(__self__, "https_proxy", https_proxy)
+        if policy_dir is not None:
+            pulumi.set(__self__, "policy_dir", policy_dir)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+        if sync_branch is not None:
+            pulumi.set(__self__, "sync_branch", sync_branch)
+        if sync_repo is not None:
+            pulumi.set(__self__, "sync_repo", sync_repo)
+        if sync_rev is not None:
+            pulumi.set(__self__, "sync_rev", sync_rev)
+        if sync_wait_secs is not None:
+            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> Optional[str]:
+        """
+        URL for the HTTPS proxy to be used when communicating with the Git repo.
+        """
+        return pulumi.get(self, "https_proxy")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> Optional[str]:
+        """
+        The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[str]:
+        """
+        Type of secret configured for access to the Git repo.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="syncBranch")
+    def sync_branch(self) -> Optional[str]:
+        """
+        The branch of the repository to sync from. Default: master.
+        """
+        return pulumi.get(self, "sync_branch")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> Optional[str]:
+        """
+        The URL of the Git repository to use as the source of truth.
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncRev")
+    def sync_rev(self) -> Optional[str]:
+        """
+        Git revision (tag or hash) to check out. Default HEAD.
+        """
+        return pulumi.get(self, "sync_rev")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> Optional[str]:
+        """
+        Period in seconds between consecutive syncs. Default: 15.
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+
+@pulumi.output_type
+class FeatureMembershipConfigmanagementHierarchyController(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableHierarchicalResourceQuota":
+            suggest = "enable_hierarchical_resource_quota"
+        elif key == "enablePodTreeLabels":
+            suggest = "enable_pod_tree_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipConfigmanagementHierarchyController. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipConfigmanagementHierarchyController.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipConfigmanagementHierarchyController.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_hierarchical_resource_quota: Optional[bool] = None,
+                 enable_pod_tree_labels: Optional[bool] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enable_hierarchical_resource_quota: Whether hierarchical resource quota is enabled in this cluster.
+        :param bool enable_pod_tree_labels: Whether pod tree labels are enabled in this cluster.
+        :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        if enable_hierarchical_resource_quota is not None:
+            pulumi.set(__self__, "enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
+        if enable_pod_tree_labels is not None:
+            pulumi.set(__self__, "enable_pod_tree_labels", enable_pod_tree_labels)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="enableHierarchicalResourceQuota")
+    def enable_hierarchical_resource_quota(self) -> Optional[bool]:
+        """
+        Whether hierarchical resource quota is enabled in this cluster.
+        """
+        return pulumi.get(self, "enable_hierarchical_resource_quota")
+
+    @property
+    @pulumi.getter(name="enablePodTreeLabels")
+    def enable_pod_tree_labels(self) -> Optional[bool]:
+        """
+        Whether pod tree labels are enabled in this cluster.
+        """
+        return pulumi.get(self, "enable_pod_tree_labels")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class FeatureMembershipConfigmanagementPolicyController(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditIntervalSeconds":
+            suggest = "audit_interval_seconds"
+        elif key == "exemptableNamespaces":
+            suggest = "exemptable_namespaces"
+        elif key == "logDeniesEnabled":
+            suggest = "log_denies_enabled"
+        elif key == "referentialRulesEnabled":
+            suggest = "referential_rules_enabled"
+        elif key == "templateLibraryInstalled":
+            suggest = "template_library_installed"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipConfigmanagementPolicyController. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipConfigmanagementPolicyController.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipConfigmanagementPolicyController.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_interval_seconds: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 exemptable_namespaces: Optional[Sequence[str]] = None,
+                 log_denies_enabled: Optional[bool] = None,
+                 referential_rules_enabled: Optional[bool] = None,
+                 template_library_installed: Optional[bool] = None):
+        """
+        :param str audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param bool log_denies_enabled: Logs all denies and dry run failures.
+        :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        :param bool template_library_installed: Installs the default template library along with Policy Controller.
+        """
+        if audit_interval_seconds is not None:
+            pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exemptable_namespaces is not None:
+            pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        if log_denies_enabled is not None:
+            pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        if referential_rules_enabled is not None:
+            pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+        if template_library_installed is not None:
+            pulumi.set(__self__, "template_library_installed", template_library_installed)
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> Optional[str]:
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> Optional[bool]:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> Optional[bool]:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+    @property
+    @pulumi.getter(name="templateLibraryInstalled")
+    def template_library_installed(self) -> Optional[bool]:
+        """
+        Installs the default template library along with Policy Controller.
+        """
+        return pulumi.get(self, "template_library_installed")
+
+
+@pulumi.output_type
+class FeatureSpec(dict):
+    def __init__(__self__, *,
+                 multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None):
+        """
+        :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
+               The `multiclusteringress` block supports:
+        """
+        if multiclusteringress is not None:
+            pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def multiclusteringress(self) -> Optional['outputs.FeatureSpecMulticlusteringress']:
+        """
+        Multicluster Ingress-specific spec.
+        The `multiclusteringress` block supports:
+        """
+        return pulumi.get(self, "multiclusteringress")
+
+
+@pulumi.output_type
+class FeatureSpecMulticlusteringress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMembership":
+            suggest = "config_membership"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecMulticlusteringress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecMulticlusteringress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecMulticlusteringress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_membership: Optional[str] = None):
+        """
+        :param str config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        if config_membership is not None:
+            pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter(name="configMembership")
+    def config_membership(self) -> Optional[str]:
+        """
+        Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
 class MembershipAuthority(dict):
     def __init__(__self__, *,
                  issuer: str):
-        """
-        :param str issuer: A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-               with length <2000 characters.
-        """
         pulumi.set(__self__, "issuer", issuer)
 
     @property
     @pulumi.getter
     def issuer(self) -> str:
-        """
-        A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-        with length <2000 characters.
-        """
         return pulumi.get(self, "issuer")
 
 

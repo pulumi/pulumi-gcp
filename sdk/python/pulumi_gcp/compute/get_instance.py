@@ -20,7 +20,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, project=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
@@ -93,6 +93,9 @@ class GetInstanceResult:
         if network_interfaces and not isinstance(network_interfaces, list):
             raise TypeError("Expected argument 'network_interfaces' to be a list")
         pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_configs and not isinstance(network_performance_configs, list):
+            raise TypeError("Expected argument 'network_performance_configs' to be a list")
+        pulumi.set(__self__, "network_performance_configs", network_performance_configs)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -296,6 +299,14 @@ class GetInstanceResult:
         return pulumi.get(self, "network_interfaces")
 
     @property
+    @pulumi.getter(name="networkPerformanceConfigs")
+    def network_performance_configs(self) -> Sequence['outputs.GetInstanceNetworkPerformanceConfigResult']:
+        """
+        The network performance configuration setting for the instance, if set. Structure is documented below.
+        """
+        return pulumi.get(self, "network_performance_configs")
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
@@ -402,6 +413,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             min_cpu_platform=self.min_cpu_platform,
             name=self.name,
             network_interfaces=self.network_interfaces,
+            network_performance_configs=self.network_performance_configs,
             project=self.project,
             reservation_affinities=self.reservation_affinities,
             resource_policies=self.resource_policies,
@@ -482,6 +494,7 @@ def get_instance(name: Optional[str] = None,
         min_cpu_platform=__ret__.min_cpu_platform,
         name=__ret__.name,
         network_interfaces=__ret__.network_interfaces,
+        network_performance_configs=__ret__.network_performance_configs,
         project=__ret__.project,
         reservation_affinities=__ret__.reservation_affinities,
         resource_policies=__ret__.resource_policies,
