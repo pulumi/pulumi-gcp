@@ -53,6 +53,7 @@ __all__ = [
     'datastore_custom_endpoint',
     'deployment_manager_custom_endpoint',
     'dialogflow_custom_endpoint',
+    'dialogflow_cx_custom_endpoint',
     'dns_custom_endpoint',
     'essential_contacts_custom_endpoint',
     'eventarc_custom_endpoint',
@@ -61,6 +62,7 @@ __all__ = [
     'firestore_custom_endpoint',
     'game_services_custom_endpoint',
     'gke_hub_custom_endpoint',
+    'gkehub_feature_custom_endpoint',
     'healthcare_custom_endpoint',
     'iam_beta_custom_endpoint',
     'iam_credentials_custom_endpoint',
@@ -198,6 +200,8 @@ deployment_manager_custom_endpoint = __config__.get('deploymentManagerCustomEndp
 
 dialogflow_custom_endpoint = __config__.get('dialogflowCustomEndpoint')
 
+dialogflow_cx_custom_endpoint = __config__.get('dialogflowCxCustomEndpoint')
+
 dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
 
 essential_contacts_custom_endpoint = __config__.get('essentialContactsCustomEndpoint')
@@ -213,6 +217,8 @@ firestore_custom_endpoint = __config__.get('firestoreCustomEndpoint')
 game_services_custom_endpoint = __config__.get('gameServicesCustomEndpoint')
 
 gke_hub_custom_endpoint = __config__.get('gkeHubCustomEndpoint')
+
+gkehub_feature_custom_endpoint = __config__.get('gkehubFeatureCustomEndpoint')
 
 healthcare_custom_endpoint = __config__.get('healthcareCustomEndpoint')
 

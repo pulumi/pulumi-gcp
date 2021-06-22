@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string? BootDiskType;
         /// <summary>
         /// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-        /// The `autoscaling_config` block supports:
         /// </summary>
         public readonly int? NumLocalSsds;
 

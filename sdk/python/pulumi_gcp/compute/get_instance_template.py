@@ -20,7 +20,10 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, reservation_affinities=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, region=None, reservation_affinities=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+        if advanced_machine_features and not isinstance(advanced_machine_features, list):
+            raise TypeError("Expected argument 'advanced_machine_features' to be a list")
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if can_ip_forward and not isinstance(can_ip_forward, bool):
             raise TypeError("Expected argument 'can_ip_forward' to be a bool")
         pulumi.set(__self__, "can_ip_forward", can_ip_forward)
@@ -78,6 +81,9 @@ class GetInstanceTemplateResult:
         if network_interfaces and not isinstance(network_interfaces, list):
             raise TypeError("Expected argument 'network_interfaces' to be a list")
         pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_configs and not isinstance(network_performance_configs, list):
+            raise TypeError("Expected argument 'network_performance_configs' to be a list")
+        pulumi.set(__self__, "network_performance_configs", network_performance_configs)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -105,6 +111,11 @@ class GetInstanceTemplateResult:
         if tags_fingerprint and not isinstance(tags_fingerprint, str):
             raise TypeError("Expected argument 'tags_fingerprint' to be a str")
         pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Sequence['outputs.GetInstanceTemplateAdvancedMachineFeatureResult']:
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="canIpForward")
@@ -268,6 +279,15 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "network_interfaces")
 
     @property
+    @pulumi.getter(name="networkPerformanceConfigs")
+    def network_performance_configs(self) -> Sequence['outputs.GetInstanceTemplateNetworkPerformanceConfigResult']:
+        """
+        The network performance configuration setting
+        for the instance, if set. Structure is documented below.
+        """
+        return pulumi.get(self, "network_performance_configs")
+
+    @property
     @pulumi.getter
     def project(self) -> str:
         """
@@ -351,6 +371,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
         if False:
             yield self
         return GetInstanceTemplateResult(
+            advanced_machine_features=self.advanced_machine_features,
             can_ip_forward=self.can_ip_forward,
             confidential_instance_configs=self.confidential_instance_configs,
             description=self.description,
@@ -370,6 +391,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             name=self.name,
             name_prefix=self.name_prefix,
             network_interfaces=self.network_interfaces,
+            network_performance_configs=self.network_performance_configs,
             project=self.project,
             region=self.region,
             reservation_affinities=self.reservation_affinities,
@@ -413,6 +435,7 @@ def get_instance_template(filter: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceTemplate:getInstanceTemplate', __args__, opts=opts, typ=GetInstanceTemplateResult).value
 
     return AwaitableGetInstanceTemplateResult(
+        advanced_machine_features=__ret__.advanced_machine_features,
         can_ip_forward=__ret__.can_ip_forward,
         confidential_instance_configs=__ret__.confidential_instance_configs,
         description=__ret__.description,
@@ -432,6 +455,7 @@ def get_instance_template(filter: Optional[str] = None,
         name=__ret__.name,
         name_prefix=__ret__.name_prefix,
         network_interfaces=__ret__.network_interfaces,
+        network_performance_configs=__ret__.network_performance_configs,
         project=__ret__.project,
         region=__ret__.region,
         reservation_affinities=__ret__.reservation_affinities,

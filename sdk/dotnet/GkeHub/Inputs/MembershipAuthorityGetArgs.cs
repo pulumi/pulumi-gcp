@@ -12,10 +12,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class MembershipAuthorityGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-        /// with length &lt;2000 characters.
-        /// </summary>
         [Input("issuer", required: true)]
         public Input<string> Issuer { get; set; } = null!;
 

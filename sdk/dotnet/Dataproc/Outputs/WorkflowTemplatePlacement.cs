@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly Outputs.WorkflowTemplatePlacementClusterSelector? ClusterSelector;
         /// <summary>
         /// A cluster that is managed by the workflow.
-        /// The `config` block supports:
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedCluster? ManagedCluster;
 

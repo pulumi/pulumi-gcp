@@ -227,6 +227,8 @@ import (
 type InstanceTemplate struct {
 	pulumi.CustomResourceState
 
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
@@ -274,6 +276,13 @@ type InstanceTemplate struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces InstanceTemplateNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance created from the
+	// template. Structure is documented below. **Note**: `machineType`
+	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig InstanceTemplateNetworkPerformanceConfigPtrOutput `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -337,6 +346,8 @@ func GetInstanceTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceTemplate resources.
 type instanceTemplateState struct {
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	AdvancedMachineFeatures *InstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
@@ -384,6 +395,13 @@ type instanceTemplateState struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces []InstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance created from the
+	// template. Structure is documented below. **Note**: `machineType`
+	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig *InstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -413,6 +431,8 @@ type instanceTemplateState struct {
 }
 
 type InstanceTemplateState struct {
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesPtrInput
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
@@ -460,6 +480,13 @@ type InstanceTemplateState struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces InstanceTemplateNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance created from the
+	// template. Structure is documented below. **Note**: `machineType`
+	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig InstanceTemplateNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -493,6 +520,8 @@ func (InstanceTemplateState) ElementType() reflect.Type {
 }
 
 type instanceTemplateArgs struct {
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	AdvancedMachineFeatures *InstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
@@ -538,6 +567,13 @@ type instanceTemplateArgs struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces []InstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance created from the
+	// template. Structure is documented below. **Note**: `machineType`
+	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig *InstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -564,6 +600,8 @@ type instanceTemplateArgs struct {
 
 // The set of arguments for constructing a InstanceTemplate resource.
 type InstanceTemplateArgs struct {
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesPtrInput
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
@@ -609,6 +647,13 @@ type InstanceTemplateArgs struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces InstanceTemplateNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance created from the
+	// template. Structure is documented below. **Note**: `machineType`
+	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+	// in order for this setting to take effect.
+	NetworkPerformanceConfig InstanceTemplateNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

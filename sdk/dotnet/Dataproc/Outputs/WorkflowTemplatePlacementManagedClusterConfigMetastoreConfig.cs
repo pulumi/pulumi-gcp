@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-        /// The `security_config` block supports:
         /// </summary>
         public readonly string DataprocMetastoreService;
 

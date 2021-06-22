@@ -418,7 +418,6 @@ func (o TriggerMatchingCriteriaArrayOutput) Index(i pulumi.IntInput) TriggerMatc
 
 type TriggerTransport struct {
 	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-	// The `pubsub` block supports:
 	Pubsubs []TriggerTransportPubsub `pulumi:"pubsubs"`
 }
 
@@ -435,7 +434,6 @@ type TriggerTransportInput interface {
 
 type TriggerTransportArgs struct {
 	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-	// The `pubsub` block supports:
 	Pubsubs TriggerTransportPubsubArrayInput `pulumi:"pubsubs"`
 }
 
@@ -491,7 +489,6 @@ func (o TriggerTransportOutput) ToTriggerTransportOutputWithContext(ctx context.
 }
 
 // The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-// The `pubsub` block supports:
 func (o TriggerTransportOutput) Pubsubs() TriggerTransportPubsubArrayOutput {
 	return o.ApplyT(func(v TriggerTransport) []TriggerTransportPubsub { return v.Pubsubs }).(TriggerTransportPubsubArrayOutput)
 }

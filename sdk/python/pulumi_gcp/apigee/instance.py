@@ -33,7 +33,7 @@ class InstanceArgs:
         :param pulumi.Input[str] display_name: Display name of the instance.
         :param pulumi.Input[str] name: Resource ID of the instance.
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance.
-               Possible values are `SLASH_16` and `SLASH_20`.
+               Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "org_id", org_id)
@@ -129,7 +129,7 @@ class InstanceArgs:
     def peering_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
         The size of the CIDR block range that will be reserved by the instance.
-        Possible values are `SLASH_16` and `SLASH_20`.
+        Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         """
         return pulumi.get(self, "peering_cidr_range")
 
@@ -164,7 +164,7 @@ class _InstanceState:
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance.
-               Possible values are `SLASH_16` and `SLASH_20`.
+               Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         :param pulumi.Input[str] port: Output only. Port number of the exposed Apigee endpoint.
         """
         if description is not None:
@@ -279,7 +279,7 @@ class _InstanceState:
     def peering_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
         The size of the CIDR block range that will be reserved by the instance.
-        Possible values are `SLASH_16` and `SLASH_20`.
+        Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         """
         return pulumi.get(self, "peering_cidr_range")
 
@@ -349,7 +349,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance.
-               Possible values are `SLASH_16` and `SLASH_20`.
+               Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         """
         ...
     @overload
@@ -465,7 +465,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance.
-               Possible values are `SLASH_16` and `SLASH_20`.
+               Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         :param pulumi.Input[str] port: Output only. Port number of the exposed Apigee endpoint.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -548,7 +548,7 @@ class Instance(pulumi.CustomResource):
     def peering_cidr_range(self) -> pulumi.Output[Optional[str]]:
         """
         The size of the CIDR block range that will be reserved by the instance.
-        Possible values are `SLASH_16` and `SLASH_20`.
+        Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_23`.
         """
         return pulumi.get(self, "peering_cidr_range")
 

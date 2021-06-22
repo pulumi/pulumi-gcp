@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-        /// The `encryption_config` block supports:
         /// </summary>
         public readonly string? Policy;
 

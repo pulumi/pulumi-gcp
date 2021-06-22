@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetInstanceTemplateResult
     {
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateAdvancedMachineFeatureResult> AdvancedMachineFeatures;
         /// <summary>
         /// Whether to allow sending and receiving of
         /// packets with non-matching source or destination IPs. This defaults to false.
@@ -146,6 +147,11 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceResult> NetworkInterfaces;
         /// <summary>
+        /// The network performance configuration setting
+        /// for the instance, if set. Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkPerformanceConfigResult> NetworkPerformanceConfigs;
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -189,6 +195,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetInstanceTemplateResult(
+            ImmutableArray<Outputs.GetInstanceTemplateAdvancedMachineFeatureResult> advancedMachineFeatures,
+
             bool canIpForward,
 
             ImmutableArray<Outputs.GetInstanceTemplateConfidentialInstanceConfigResult> confidentialInstanceConfigs,
@@ -227,6 +235,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceResult> networkInterfaces,
 
+            ImmutableArray<Outputs.GetInstanceTemplateNetworkPerformanceConfigResult> networkPerformanceConfigs,
+
             string project,
 
             string region,
@@ -245,6 +255,7 @@ namespace Pulumi.Gcp.Compute
 
             string tagsFingerprint)
         {
+            AdvancedMachineFeatures = advancedMachineFeatures;
             CanIpForward = canIpForward;
             ConfidentialInstanceConfigs = confidentialInstanceConfigs;
             Description = description;
@@ -264,6 +275,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             NamePrefix = namePrefix;
             NetworkInterfaces = networkInterfaces;
+            NetworkPerformanceConfigs = networkPerformanceConfigs;
             Project = project;
             Region = region;
             ReservationAffinities = reservationAffinities;

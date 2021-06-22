@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly int? MaxFailuresPerHour;
         /// <summary>
         /// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-        /// The `spark_job` block supports:
         /// </summary>
         public readonly int? MaxFailuresTotal;
 

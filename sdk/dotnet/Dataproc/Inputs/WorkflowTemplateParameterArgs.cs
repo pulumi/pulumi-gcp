@@ -38,7 +38,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Optional. Validation rules to be applied to this parameter's value.
-        /// The `validation` block supports:
         /// </summary>
         [Input("validation")]
         public Input<Inputs.WorkflowTemplateParameterValidationArgs>? Validation { get; set; }

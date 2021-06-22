@@ -10,9 +10,1427 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type FeatureMembershipConfigmanagement struct {
+	// Binauthz conifguration for the cluster.
+	Binauthz *FeatureMembershipConfigmanagementBinauthz `pulumi:"binauthz"`
+	// Config Sync configuration for the cluster.
+	ConfigSync *FeatureMembershipConfigmanagementConfigSync `pulumi:"configSync"`
+	// Hierarchy Controller configuration for the cluster.
+	HierarchyController *FeatureMembershipConfigmanagementHierarchyController `pulumi:"hierarchyController"`
+	// Policy Controller configuration for the cluster.
+	PolicyController *FeatureMembershipConfigmanagementPolicyController `pulumi:"policyController"`
+	// Version of ACM installed.
+	Version *string `pulumi:"version"`
+}
+
+// FeatureMembershipConfigmanagementInput is an input type that accepts FeatureMembershipConfigmanagementArgs and FeatureMembershipConfigmanagementOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementInput` via:
+//
+//          FeatureMembershipConfigmanagementArgs{...}
+type FeatureMembershipConfigmanagementInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementOutput() FeatureMembershipConfigmanagementOutput
+	ToFeatureMembershipConfigmanagementOutputWithContext(context.Context) FeatureMembershipConfigmanagementOutput
+}
+
+type FeatureMembershipConfigmanagementArgs struct {
+	// Binauthz conifguration for the cluster.
+	Binauthz FeatureMembershipConfigmanagementBinauthzPtrInput `pulumi:"binauthz"`
+	// Config Sync configuration for the cluster.
+	ConfigSync FeatureMembershipConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
+	// Hierarchy Controller configuration for the cluster.
+	HierarchyController FeatureMembershipConfigmanagementHierarchyControllerPtrInput `pulumi:"hierarchyController"`
+	// Policy Controller configuration for the cluster.
+	PolicyController FeatureMembershipConfigmanagementPolicyControllerPtrInput `pulumi:"policyController"`
+	// Version of ACM installed.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (FeatureMembershipConfigmanagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagement)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementOutput() FeatureMembershipConfigmanagementOutput {
+	return i.ToFeatureMembershipConfigmanagementOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementOutput)
+}
+
+func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementOutput).ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementPtrInput is an input type that accepts FeatureMembershipConfigmanagementArgs, FeatureMembershipConfigmanagementPtr and FeatureMembershipConfigmanagementPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementPtrInput` via:
+//
+//          FeatureMembershipConfigmanagementArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureMembershipConfigmanagementPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput
+	ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementPtrOutput
+}
+
+type featureMembershipConfigmanagementPtrType FeatureMembershipConfigmanagementArgs
+
+func FeatureMembershipConfigmanagementPtr(v *FeatureMembershipConfigmanagementArgs) FeatureMembershipConfigmanagementPtrInput {
+	return (*featureMembershipConfigmanagementPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagement)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementPtrType) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementPtrType) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagement)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementOutput() FeatureMembershipConfigmanagementOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagement {
+		return &v
+	}).(FeatureMembershipConfigmanagementPtrOutput)
+}
+
+// Binauthz conifguration for the cluster.
+func (o FeatureMembershipConfigmanagementOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
+		return v.Binauthz
+	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
+}
+
+// Config Sync configuration for the cluster.
+func (o FeatureMembershipConfigmanagementOutput) ConfigSync() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementConfigSync {
+		return v.ConfigSync
+	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
+}
+
+// Hierarchy Controller configuration for the cluster.
+func (o FeatureMembershipConfigmanagementOutput) HierarchyController() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementHierarchyController {
+		return v.HierarchyController
+	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
+}
+
+// Policy Controller configuration for the cluster.
+func (o FeatureMembershipConfigmanagementOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
+		return v.PolicyController
+	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
+}
+
+// Version of ACM installed.
+func (o FeatureMembershipConfigmanagementOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagement)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConfigmanagementOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) FeatureMembershipConfigmanagement { return *v }).(FeatureMembershipConfigmanagementOutput)
+}
+
+// Binauthz conifguration for the cluster.
+func (o FeatureMembershipConfigmanagementPtrOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
+		if v == nil {
+			return nil
+		}
+		return v.Binauthz
+	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
+}
+
+// Config Sync configuration for the cluster.
+func (o FeatureMembershipConfigmanagementPtrOutput) ConfigSync() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementConfigSync {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigSync
+	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
+}
+
+// Hierarchy Controller configuration for the cluster.
+func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementHierarchyController {
+		if v == nil {
+			return nil
+		}
+		return v.HierarchyController
+	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
+}
+
+// Policy Controller configuration for the cluster.
+func (o FeatureMembershipConfigmanagementPtrOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyController
+	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
+}
+
+// Version of ACM installed.
+func (o FeatureMembershipConfigmanagementPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementBinauthz struct {
+	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// FeatureMembershipConfigmanagementBinauthzInput is an input type that accepts FeatureMembershipConfigmanagementBinauthzArgs and FeatureMembershipConfigmanagementBinauthzOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementBinauthzInput` via:
+//
+//          FeatureMembershipConfigmanagementBinauthzArgs{...}
+type FeatureMembershipConfigmanagementBinauthzInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementBinauthzOutput() FeatureMembershipConfigmanagementBinauthzOutput
+	ToFeatureMembershipConfigmanagementBinauthzOutputWithContext(context.Context) FeatureMembershipConfigmanagementBinauthzOutput
+}
+
+type FeatureMembershipConfigmanagementBinauthzArgs struct {
+	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (FeatureMembershipConfigmanagementBinauthzArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementBinauthz)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfigmanagementBinauthzOutput() FeatureMembershipConfigmanagementBinauthzOutput {
+	return i.ToFeatureMembershipConfigmanagementBinauthzOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfigmanagementBinauthzOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementBinauthzOutput)
+}
+
+func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfigmanagementBinauthzPtrOutput() FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementBinauthzOutput).ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementBinauthzPtrInput is an input type that accepts FeatureMembershipConfigmanagementBinauthzArgs, FeatureMembershipConfigmanagementBinauthzPtr and FeatureMembershipConfigmanagementBinauthzPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementBinauthzPtrInput` via:
+//
+//          FeatureMembershipConfigmanagementBinauthzArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureMembershipConfigmanagementBinauthzPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementBinauthzPtrOutput() FeatureMembershipConfigmanagementBinauthzPtrOutput
+	ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput
+}
+
+type featureMembershipConfigmanagementBinauthzPtrType FeatureMembershipConfigmanagementBinauthzArgs
+
+func FeatureMembershipConfigmanagementBinauthzPtr(v *FeatureMembershipConfigmanagementBinauthzArgs) FeatureMembershipConfigmanagementBinauthzPtrInput {
+	return (*featureMembershipConfigmanagementBinauthzPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementBinauthzPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementBinauthz)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementBinauthzPtrType) ToFeatureMembershipConfigmanagementBinauthzPtrOutput() FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementBinauthzPtrType) ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementBinauthzOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementBinauthzOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementBinauthz)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConfigmanagementBinauthzOutput() FeatureMembershipConfigmanagementBinauthzOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConfigmanagementBinauthzOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConfigmanagementBinauthzPtrOutput() FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementBinauthz) *FeatureMembershipConfigmanagementBinauthz {
+		return &v
+	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
+}
+
+// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+func (o FeatureMembershipConfigmanagementBinauthzOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementBinauthz) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementBinauthzPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementBinauthzPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementBinauthz)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToFeatureMembershipConfigmanagementBinauthzPtrOutput() FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Elem() FeatureMembershipConfigmanagementBinauthzOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementBinauthz) FeatureMembershipConfigmanagementBinauthz {
+		return *v
+	}).(FeatureMembershipConfigmanagementBinauthzOutput)
+}
+
+// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementBinauthz) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSync struct {
+	// -
+	// (Optional)
+	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
+	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+	SourceFormat *string `pulumi:"sourceFormat"`
+}
+
+// FeatureMembershipConfigmanagementConfigSyncInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncArgs and FeatureMembershipConfigmanagementConfigSyncOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncInput` via:
+//
+//          FeatureMembershipConfigmanagementConfigSyncArgs{...}
+type FeatureMembershipConfigmanagementConfigSyncInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncOutput() FeatureMembershipConfigmanagementConfigSyncOutput
+	ToFeatureMembershipConfigmanagementConfigSyncOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncOutput
+}
+
+type FeatureMembershipConfigmanagementConfigSyncArgs struct {
+	// -
+	// (Optional)
+	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
+}
+
+func (FeatureMembershipConfigmanagementConfigSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConfigmanagementConfigSyncOutput() FeatureMembershipConfigmanagementConfigSyncOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConfigmanagementConfigSyncOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOutput)
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConfigmanagementConfigSyncPtrOutput() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOutput).ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementConfigSyncPtrInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncArgs, FeatureMembershipConfigmanagementConfigSyncPtr and FeatureMembershipConfigmanagementConfigSyncPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncPtrInput` via:
+//
+//          FeatureMembershipConfigmanagementConfigSyncArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureMembershipConfigmanagementConfigSyncPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncPtrOutput() FeatureMembershipConfigmanagementConfigSyncPtrOutput
+	ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncPtrOutput
+}
+
+type featureMembershipConfigmanagementConfigSyncPtrType FeatureMembershipConfigmanagementConfigSyncArgs
+
+func FeatureMembershipConfigmanagementConfigSyncPtr(v *FeatureMembershipConfigmanagementConfigSyncArgs) FeatureMembershipConfigmanagementConfigSyncPtrInput {
+	return (*featureMembershipConfigmanagementConfigSyncPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementConfigSyncPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementConfigSyncPtrType) ToFeatureMembershipConfigmanagementConfigSyncPtrOutput() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementConfigSyncPtrType) ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipConfigmanagementConfigSyncOutput() FeatureMembershipConfigmanagementConfigSyncOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipConfigmanagementConfigSyncOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipConfigmanagementConfigSyncPtrOutput() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSync {
+		return &v
+	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
+}
+
+// -
+// (Optional)
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
+		return v.Git
+	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) SourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncPtrOutput() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) FeatureMembershipConfigmanagementConfigSync {
+		return *v
+	}).(FeatureMembershipConfigmanagementConfigSyncOutput)
+}
+
+// -
+// (Optional)
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
+		if v == nil {
+			return nil
+		}
+		return v.Git
+	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) SourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncGit struct {
+	// URL for the HTTPS proxy to be used when communicating with the Git repo.
+	HttpsProxy *string `pulumi:"httpsProxy"`
+	// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+	PolicyDir *string `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo.
+	SecretType *string `pulumi:"secretType"`
+	// The branch of the repository to sync from. Default: master.
+	SyncBranch *string `pulumi:"syncBranch"`
+	// The URL of the Git repository to use as the source of truth.
+	SyncRepo *string `pulumi:"syncRepo"`
+	// Git revision (tag or hash) to check out. Default HEAD.
+	SyncRev *string `pulumi:"syncRev"`
+	// Period in seconds between consecutive syncs. Default: 15.
+	SyncWaitSecs *string `pulumi:"syncWaitSecs"`
+}
+
+// FeatureMembershipConfigmanagementConfigSyncGitInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncGitArgs and FeatureMembershipConfigmanagementConfigSyncGitOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncGitInput` via:
+//
+//          FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
+type FeatureMembershipConfigmanagementConfigSyncGitInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncGitOutput() FeatureMembershipConfigmanagementConfigSyncGitOutput
+	ToFeatureMembershipConfigmanagementConfigSyncGitOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncGitOutput
+}
+
+type FeatureMembershipConfigmanagementConfigSyncGitArgs struct {
+	// URL for the HTTPS proxy to be used when communicating with the Git repo.
+	HttpsProxy pulumi.StringPtrInput `pulumi:"httpsProxy"`
+	// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+	PolicyDir pulumi.StringPtrInput `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo.
+	SecretType pulumi.StringPtrInput `pulumi:"secretType"`
+	// The branch of the repository to sync from. Default: master.
+	SyncBranch pulumi.StringPtrInput `pulumi:"syncBranch"`
+	// The URL of the Git repository to use as the source of truth.
+	SyncRepo pulumi.StringPtrInput `pulumi:"syncRepo"`
+	// Git revision (tag or hash) to check out. Default HEAD.
+	SyncRev pulumi.StringPtrInput `pulumi:"syncRev"`
+	// Period in seconds between consecutive syncs. Default: 15.
+	SyncWaitSecs pulumi.StringPtrInput `pulumi:"syncWaitSecs"`
+}
+
+func (FeatureMembershipConfigmanagementConfigSyncGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipConfigmanagementConfigSyncGitOutput() FeatureMembershipConfigmanagementConfigSyncGitOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncGitOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipConfigmanagementConfigSyncGitOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutput() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncGitOutput).ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementConfigSyncGitPtrInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncGitArgs, FeatureMembershipConfigmanagementConfigSyncGitPtr and FeatureMembershipConfigmanagementConfigSyncGitPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncGitPtrInput` via:
+//
+//          FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureMembershipConfigmanagementConfigSyncGitPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutput() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput
+	ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput
+}
+
+type featureMembershipConfigmanagementConfigSyncGitPtrType FeatureMembershipConfigmanagementConfigSyncGitArgs
+
+func FeatureMembershipConfigmanagementConfigSyncGitPtr(v *FeatureMembershipConfigmanagementConfigSyncGitArgs) FeatureMembershipConfigmanagementConfigSyncGitPtrInput {
+	return (*featureMembershipConfigmanagementConfigSyncGitPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementConfigSyncGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementConfigSyncGitPtrType) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutput() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementConfigSyncGitPtrType) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncGitOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershipConfigmanagementConfigSyncGitOutput() FeatureMembershipConfigmanagementConfigSyncGitOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershipConfigmanagementConfigSyncGitOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutput() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *FeatureMembershipConfigmanagementConfigSyncGit {
+		return &v
+	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// URL for the HTTPS proxy to be used when communicating with the Git repo.
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
+}
+
+// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.PolicyDir }).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the Git repo.
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SecretType }).(pulumi.StringPtrOutput)
+}
+
+// The branch of the repository to sync from. Default: master.
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncBranch }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Git repository to use as the source of truth.
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncRepo }).(pulumi.StringPtrOutput)
+}
+
+// Git revision (tag or hash) to check out. Default HEAD.
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncRev }).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15.
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncWaitSecs }).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncGitPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutput() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncGitOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) FeatureMembershipConfigmanagementConfigSyncGit {
+		return *v
+	}).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
+}
+
+// URL for the HTTPS proxy to be used when communicating with the Git repo.
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsProxy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the Git repo.
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The branch of the repository to sync from. Default: master.
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Git repository to use as the source of truth.
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncRepo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git revision (tag or hash) to check out. Default HEAD.
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15.
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncWaitSecs
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementHierarchyController struct {
+	// Whether hierarchical resource quota is enabled in this cluster.
+	EnableHierarchicalResourceQuota *bool `pulumi:"enableHierarchicalResourceQuota"`
+	// Whether pod tree labels are enabled in this cluster.
+	EnablePodTreeLabels *bool `pulumi:"enablePodTreeLabels"`
+	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// FeatureMembershipConfigmanagementHierarchyControllerInput is an input type that accepts FeatureMembershipConfigmanagementHierarchyControllerArgs and FeatureMembershipConfigmanagementHierarchyControllerOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementHierarchyControllerInput` via:
+//
+//          FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
+type FeatureMembershipConfigmanagementHierarchyControllerInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementHierarchyControllerOutput() FeatureMembershipConfigmanagementHierarchyControllerOutput
+	ToFeatureMembershipConfigmanagementHierarchyControllerOutputWithContext(context.Context) FeatureMembershipConfigmanagementHierarchyControllerOutput
+}
+
+type FeatureMembershipConfigmanagementHierarchyControllerArgs struct {
+	// Whether hierarchical resource quota is enabled in this cluster.
+	EnableHierarchicalResourceQuota pulumi.BoolPtrInput `pulumi:"enableHierarchicalResourceQuota"`
+	// Whether pod tree labels are enabled in this cluster.
+	EnablePodTreeLabels pulumi.BoolPtrInput `pulumi:"enablePodTreeLabels"`
+	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (FeatureMembershipConfigmanagementHierarchyControllerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementHierarchyController)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembershipConfigmanagementHierarchyControllerOutput() FeatureMembershipConfigmanagementHierarchyControllerOutput {
+	return i.ToFeatureMembershipConfigmanagementHierarchyControllerOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembershipConfigmanagementHierarchyControllerOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementHierarchyControllerOutput)
+}
+
+func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutput() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementHierarchyControllerOutput).ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementHierarchyControllerPtrInput is an input type that accepts FeatureMembershipConfigmanagementHierarchyControllerArgs, FeatureMembershipConfigmanagementHierarchyControllerPtr and FeatureMembershipConfigmanagementHierarchyControllerPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementHierarchyControllerPtrInput` via:
+//
+//          FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureMembershipConfigmanagementHierarchyControllerPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutput() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput
+	ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput
+}
+
+type featureMembershipConfigmanagementHierarchyControllerPtrType FeatureMembershipConfigmanagementHierarchyControllerArgs
+
+func FeatureMembershipConfigmanagementHierarchyControllerPtr(v *FeatureMembershipConfigmanagementHierarchyControllerArgs) FeatureMembershipConfigmanagementHierarchyControllerPtrInput {
+	return (*featureMembershipConfigmanagementHierarchyControllerPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementHierarchyControllerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementHierarchyController)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementHierarchyControllerPtrType) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutput() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementHierarchyControllerPtrType) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementHierarchyControllerOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementHierarchyControllerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementHierarchyController)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMembershipConfigmanagementHierarchyControllerOutput() FeatureMembershipConfigmanagementHierarchyControllerOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMembershipConfigmanagementHierarchyControllerOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutput() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementHierarchyController) *FeatureMembershipConfigmanagementHierarchyController {
+		return &v
+	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
+}
+
+// Whether hierarchical resource quota is enabled in this cluster.
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) EnableHierarchicalResourceQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementHierarchyController) *bool {
+		return v.EnableHierarchicalResourceQuota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether pod tree labels are enabled in this cluster.
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) EnablePodTreeLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementHierarchyController) *bool { return v.EnablePodTreeLabels }).(pulumi.BoolPtrOutput)
+}
+
+// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementHierarchyController) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementHierarchyControllerPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementHierarchyController)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutput() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementHierarchyControllerOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementHierarchyController) FeatureMembershipConfigmanagementHierarchyController {
+		return *v
+	}).(FeatureMembershipConfigmanagementHierarchyControllerOutput)
+}
+
+// Whether hierarchical resource quota is enabled in this cluster.
+func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) EnableHierarchicalResourceQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementHierarchyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHierarchicalResourceQuota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether pod tree labels are enabled in this cluster.
+func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) EnablePodTreeLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementHierarchyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePodTreeLabels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementHierarchyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementPolicyController struct {
+	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds *string `pulumi:"auditIntervalSeconds"`
+	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+	Enabled *bool `pulumi:"enabled"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled *bool `pulumi:"logDeniesEnabled"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled *bool `pulumi:"referentialRulesEnabled"`
+	// Installs the default template library along with Policy Controller.
+	TemplateLibraryInstalled *bool `pulumi:"templateLibraryInstalled"`
+}
+
+// FeatureMembershipConfigmanagementPolicyControllerInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerArgs and FeatureMembershipConfigmanagementPolicyControllerOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerInput` via:
+//
+//          FeatureMembershipConfigmanagementPolicyControllerArgs{...}
+type FeatureMembershipConfigmanagementPolicyControllerInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementPolicyControllerOutput() FeatureMembershipConfigmanagementPolicyControllerOutput
+	ToFeatureMembershipConfigmanagementPolicyControllerOutputWithContext(context.Context) FeatureMembershipConfigmanagementPolicyControllerOutput
+}
+
+type FeatureMembershipConfigmanagementPolicyControllerArgs struct {
+	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds pulumi.StringPtrInput `pulumi:"auditIntervalSeconds"`
+	// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled pulumi.BoolPtrInput `pulumi:"logDeniesEnabled"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled pulumi.BoolPtrInput `pulumi:"referentialRulesEnabled"`
+	// Installs the default template library along with Policy Controller.
+	TemplateLibraryInstalled pulumi.BoolPtrInput `pulumi:"templateLibraryInstalled"`
+}
+
+func (FeatureMembershipConfigmanagementPolicyControllerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyController)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembershipConfigmanagementPolicyControllerOutput() FeatureMembershipConfigmanagementPolicyControllerOutput {
+	return i.ToFeatureMembershipConfigmanagementPolicyControllerOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembershipConfigmanagementPolicyControllerOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerOutput)
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutput() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerOutput).ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementPolicyControllerPtrInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerArgs, FeatureMembershipConfigmanagementPolicyControllerPtr and FeatureMembershipConfigmanagementPolicyControllerPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerPtrInput` via:
+//
+//          FeatureMembershipConfigmanagementPolicyControllerArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureMembershipConfigmanagementPolicyControllerPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementPolicyControllerPtrOutput() FeatureMembershipConfigmanagementPolicyControllerPtrOutput
+	ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput
+}
+
+type featureMembershipConfigmanagementPolicyControllerPtrType FeatureMembershipConfigmanagementPolicyControllerArgs
+
+func FeatureMembershipConfigmanagementPolicyControllerPtr(v *FeatureMembershipConfigmanagementPolicyControllerArgs) FeatureMembershipConfigmanagementPolicyControllerPtrInput {
+	return (*featureMembershipConfigmanagementPolicyControllerPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementPolicyControllerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementPolicyController)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementPolicyControllerPtrType) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutput() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementPolicyControllerPtrType) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementPolicyControllerOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementPolicyControllerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyController)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMembershipConfigmanagementPolicyControllerOutput() FeatureMembershipConfigmanagementPolicyControllerOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMembershipConfigmanagementPolicyControllerOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutput() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyController {
+		return &v
+	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
+}
+
+// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) AuditIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *string { return v.AuditIntervalSeconds }).(pulumi.StringPtrOutput)
+}
+
+// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ExemptableNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) []string { return v.ExemptableNamespaces }).(pulumi.StringArrayOutput)
+}
+
+// Logs all denies and dry run failures.
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) LogDeniesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.LogDeniesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.ReferentialRulesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Installs the default template library along with Policy Controller.
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) TemplateLibraryInstalled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.TemplateLibraryInstalled }).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementPolicyControllerPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementPolicyController)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutput() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementPolicyControllerOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) FeatureMembershipConfigmanagementPolicyController {
+		return *v
+	}).(FeatureMembershipConfigmanagementPolicyControllerOutput)
+}
+
+// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) AuditIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuditIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ExemptableNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExemptableNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Logs all denies and dry run failures.
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) LogDeniesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogDeniesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReferentialRulesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Installs the default template library along with Policy Controller.
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) TemplateLibraryInstalled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateLibraryInstalled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureSpec struct {
+	// Multicluster Ingress-specific spec.
+	// The `multiclusteringress` block supports:
+	Multiclusteringress *FeatureSpecMulticlusteringress `pulumi:"multiclusteringress"`
+}
+
+// FeatureSpecInput is an input type that accepts FeatureSpecArgs and FeatureSpecOutput values.
+// You can construct a concrete instance of `FeatureSpecInput` via:
+//
+//          FeatureSpecArgs{...}
+type FeatureSpecInput interface {
+	pulumi.Input
+
+	ToFeatureSpecOutput() FeatureSpecOutput
+	ToFeatureSpecOutputWithContext(context.Context) FeatureSpecOutput
+}
+
+type FeatureSpecArgs struct {
+	// Multicluster Ingress-specific spec.
+	// The `multiclusteringress` block supports:
+	Multiclusteringress FeatureSpecMulticlusteringressPtrInput `pulumi:"multiclusteringress"`
+}
+
+func (FeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpec)(nil)).Elem()
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecOutput() FeatureSpecOutput {
+	return i.ToFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecOutputWithContext(ctx context.Context) FeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecOutput)
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return i.ToFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecOutput).ToFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecPtrInput is an input type that accepts FeatureSpecArgs, FeatureSpecPtr and FeatureSpecPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecPtrInput` via:
+//
+//          FeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecPtrOutput() FeatureSpecPtrOutput
+	ToFeatureSpecPtrOutputWithContext(context.Context) FeatureSpecPtrOutput
+}
+
+type featureSpecPtrType FeatureSpecArgs
+
+func FeatureSpecPtr(v *FeatureSpecArgs) FeatureSpecPtrInput {
+	return (*featureSpecPtrType)(v)
+}
+
+func (*featureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpec)(nil)).Elem()
+}
+
+func (i *featureSpecPtrType) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return i.ToFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecPtrType) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecPtrOutput)
+}
+
+type FeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpec)(nil)).Elem()
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecOutput() FeatureSpecOutput {
+	return o
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecOutputWithContext(ctx context.Context) FeatureSpecOutput {
+	return o
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return o.ToFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *FeatureSpec {
+		return &v
+	}).(FeatureSpecPtrOutput)
+}
+
+// Multicluster Ingress-specific spec.
+// The `multiclusteringress` block supports:
+func (o FeatureSpecOutput) Multiclusteringress() FeatureSpecMulticlusteringressPtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *FeatureSpecMulticlusteringress { return v.Multiclusteringress }).(FeatureSpecMulticlusteringressPtrOutput)
+}
+
+type FeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpec)(nil)).Elem()
+}
+
+func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return o
+}
+
+func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return o
+}
+
+func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
+	return o.ApplyT(func(v *FeatureSpec) FeatureSpec { return *v }).(FeatureSpecOutput)
+}
+
+// Multicluster Ingress-specific spec.
+// The `multiclusteringress` block supports:
+func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringressPtrOutput {
+	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecMulticlusteringress {
+		if v == nil {
+			return nil
+		}
+		return v.Multiclusteringress
+	}).(FeatureSpecMulticlusteringressPtrOutput)
+}
+
+type FeatureSpecMulticlusteringress struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership *string `pulumi:"configMembership"`
+}
+
+// FeatureSpecMulticlusteringressInput is an input type that accepts FeatureSpecMulticlusteringressArgs and FeatureSpecMulticlusteringressOutput values.
+// You can construct a concrete instance of `FeatureSpecMulticlusteringressInput` via:
+//
+//          FeatureSpecMulticlusteringressArgs{...}
+type FeatureSpecMulticlusteringressInput interface {
+	pulumi.Input
+
+	ToFeatureSpecMulticlusteringressOutput() FeatureSpecMulticlusteringressOutput
+	ToFeatureSpecMulticlusteringressOutputWithContext(context.Context) FeatureSpecMulticlusteringressOutput
+}
+
+type FeatureSpecMulticlusteringressArgs struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
+}
+
+func (FeatureSpecMulticlusteringressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressOutput() FeatureSpecMulticlusteringressOutput {
+	return i.ToFeatureSpecMulticlusteringressOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecMulticlusteringressOutput)
+}
+
+func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressPtrOutput() FeatureSpecMulticlusteringressPtrOutput {
+	return i.ToFeatureSpecMulticlusteringressPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecMulticlusteringressOutput).ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecMulticlusteringressPtrInput is an input type that accepts FeatureSpecMulticlusteringressArgs, FeatureSpecMulticlusteringressPtr and FeatureSpecMulticlusteringressPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecMulticlusteringressPtrInput` via:
+//
+//          FeatureSpecMulticlusteringressArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureSpecMulticlusteringressPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecMulticlusteringressPtrOutput() FeatureSpecMulticlusteringressPtrOutput
+	ToFeatureSpecMulticlusteringressPtrOutputWithContext(context.Context) FeatureSpecMulticlusteringressPtrOutput
+}
+
+type featureSpecMulticlusteringressPtrType FeatureSpecMulticlusteringressArgs
+
+func FeatureSpecMulticlusteringressPtr(v *FeatureSpecMulticlusteringressArgs) FeatureSpecMulticlusteringressPtrInput {
+	return (*featureSpecMulticlusteringressPtrType)(v)
+}
+
+func (*featureSpecMulticlusteringressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (i *featureSpecMulticlusteringressPtrType) ToFeatureSpecMulticlusteringressPtrOutput() FeatureSpecMulticlusteringressPtrOutput {
+	return i.ToFeatureSpecMulticlusteringressPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecMulticlusteringressPtrType) ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecMulticlusteringressPtrOutput)
+}
+
+type FeatureSpecMulticlusteringressOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecMulticlusteringressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressOutput() FeatureSpecMulticlusteringressOutput {
+	return o
+}
+
+func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressOutput {
+	return o
+}
+
+func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressPtrOutput() FeatureSpecMulticlusteringressPtrOutput {
+	return o.ToFeatureSpecMulticlusteringressPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressPtrOutput {
+	return o.ApplyT(func(v FeatureSpecMulticlusteringress) *FeatureSpecMulticlusteringress {
+		return &v
+	}).(FeatureSpecMulticlusteringressPtrOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o FeatureSpecMulticlusteringressOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureSpecMulticlusteringress) *string { return v.ConfigMembership }).(pulumi.StringPtrOutput)
+}
+
+type FeatureSpecMulticlusteringressPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecMulticlusteringressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (o FeatureSpecMulticlusteringressPtrOutput) ToFeatureSpecMulticlusteringressPtrOutput() FeatureSpecMulticlusteringressPtrOutput {
+	return o
+}
+
+func (o FeatureSpecMulticlusteringressPtrOutput) ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressPtrOutput {
+	return o
+}
+
+func (o FeatureSpecMulticlusteringressPtrOutput) Elem() FeatureSpecMulticlusteringressOutput {
+	return o.ApplyT(func(v *FeatureSpecMulticlusteringress) FeatureSpecMulticlusteringress { return *v }).(FeatureSpecMulticlusteringressOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o FeatureSpecMulticlusteringressPtrOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecMulticlusteringress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigMembership
+	}).(pulumi.StringPtrOutput)
+}
+
 type MembershipAuthority struct {
-	// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-	// with length <2000 characters.
 	Issuer string `pulumi:"issuer"`
 }
 
@@ -28,8 +1446,6 @@ type MembershipAuthorityInput interface {
 }
 
 type MembershipAuthorityArgs struct {
-	// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-	// with length <2000 characters.
 	Issuer pulumi.StringInput `pulumi:"issuer"`
 }
 
@@ -109,9 +1525,6 @@ func (o MembershipAuthorityOutput) ToMembershipAuthorityPtrOutputWithContext(ctx
 		return &v
 	}).(MembershipAuthorityPtrOutput)
 }
-
-// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-// with length <2000 characters.
 func (o MembershipAuthorityOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipAuthority) string { return v.Issuer }).(pulumi.StringOutput)
 }
@@ -134,8 +1547,6 @@ func (o MembershipAuthorityPtrOutput) Elem() MembershipAuthorityOutput {
 	return o.ApplyT(func(v *MembershipAuthority) MembershipAuthority { return *v }).(MembershipAuthorityOutput)
 }
 
-// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
-// with length <2000 characters.
 func (o MembershipAuthorityPtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MembershipAuthority) *string {
 		if v == nil {
@@ -407,6 +1818,22 @@ func (o MembershipEndpointGkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOu
 }
 
 func init() {
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementBinauthzOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementBinauthzPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncGitOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementHierarchyControllerOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecOutput{})
+	pulumi.RegisterOutputType(FeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressOutput{})
+	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressPtrOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointOutput{})

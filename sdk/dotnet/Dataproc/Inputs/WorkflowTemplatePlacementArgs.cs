@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// A cluster that is managed by the workflow.
-        /// The `config` block supports:
         /// </summary>
         [Input("managedCluster")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterArgs>? ManagedCluster { get; set; }

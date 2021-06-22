@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Optional. Corresponds to the label values of reservation resource.
-        /// The `gke_cluster_config` block supports:
         /// </summary>
         [Input("values")]
         public Input<Inputs.WorkflowTemplateParameterValidationValuesArgs>? Values { get; set; }

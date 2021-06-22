@@ -87,6 +87,9 @@ class GetProjectResult:
     @property
     @pulumi.getter
     def number(self) -> str:
+        """
+        The numeric identifier of the project.
+        """
         return pulumi.get(self, "number")
 
     @property

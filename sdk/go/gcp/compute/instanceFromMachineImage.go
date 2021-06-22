@@ -101,6 +101,9 @@ type InstanceFromMachineImage struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromMachineImageNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -214,6 +217,9 @@ type instanceFromMachineImageState struct {
 	Name *string `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces []InstanceFromMachineImageNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -296,6 +302,9 @@ type InstanceFromMachineImageState struct {
 	Name pulumi.StringPtrInput
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromMachineImageNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -368,6 +377,9 @@ type instanceFromMachineImageArgs struct {
 	Name *string `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces []InstanceFromMachineImageNetworkInterface `pulumi:"networkInterfaces"`
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -431,6 +443,9 @@ type InstanceFromMachineImageArgs struct {
 	Name pulumi.StringPtrInput
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromMachineImageNetworkInterfaceArrayInput
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
+	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput

@@ -130,7 +130,6 @@ class TriggerTransport(dict):
                  pubsubs: Optional[Sequence['outputs.TriggerTransportPubsub']] = None):
         """
         :param Sequence['TriggerTransportPubsubArgs'] pubsubs: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-               The `pubsub` block supports:
         """
         if pubsubs is not None:
             pulumi.set(__self__, "pubsubs", pubsubs)
@@ -140,7 +139,6 @@ class TriggerTransport(dict):
     def pubsubs(self) -> Optional[Sequence['outputs.TriggerTransportPubsub']]:
         """
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-        The `pubsub` block supports:
         """
         return pulumi.get(self, "pubsubs")
 

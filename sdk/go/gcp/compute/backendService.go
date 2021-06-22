@@ -234,7 +234,7 @@ import (
 // 		externalProxy, err := compute.NewGlobalNetworkEndpointGroup(ctx, "externalProxy", &compute.GlobalNetworkEndpointGroupArgs{
 // 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 // 			DefaultPort:         pulumi.Int(443),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -242,7 +242,7 @@ import (
 // 			GlobalNetworkEndpointGroup: externalProxy.ID(),
 // 			Fqdn:                       pulumi.String("test.example.com"),
 // 			Port:                       externalProxy.DefaultPort,
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -263,7 +263,7 @@ import (
 // 					Group: externalProxy.ID(),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

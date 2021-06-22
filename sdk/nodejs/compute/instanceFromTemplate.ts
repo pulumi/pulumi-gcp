@@ -177,6 +177,11 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceFromTemplateNetworkInterface[]>;
     /**
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
+     */
+    public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceFromTemplateNetworkPerformanceConfig>;
+    /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
      */
@@ -265,6 +270,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            inputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
@@ -300,6 +306,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            inputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
@@ -426,6 +433,11 @@ export interface InstanceFromTemplateState {
      * The networks attached to the instance.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
+    /**
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateNetworkPerformanceConfig>;
     /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
@@ -561,6 +573,11 @@ export interface InstanceFromTemplateArgs {
      * The networks attached to the instance.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
+    /**
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateNetworkPerformanceConfig>;
     /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.

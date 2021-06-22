@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         /// <summary>
         /// Kerberos related configuration.
-        /// The `kerberos_config` block supports:
         /// </summary>
         [Input("kerberosConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs>? KerberosConfig { get; set; }

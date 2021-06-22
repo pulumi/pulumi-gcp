@@ -89,7 +89,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-        /// The `logging_config` block supports:
         /// </summary>
         public InputList<string> PythonFileUris
         {

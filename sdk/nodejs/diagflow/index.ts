@@ -6,12 +6,14 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./agent";
+export * from "./cxAgent";
 export * from "./entityType";
 export * from "./fulfillment";
 export * from "./intent";
 
 // Import resources to register:
 import { Agent } from "./agent";
+import { CxAgent } from "./cxAgent";
 import { EntityType } from "./entityType";
 import { Fulfillment } from "./fulfillment";
 import { Intent } from "./intent";
@@ -22,6 +24,8 @@ const _module = {
         switch (type) {
             case "gcp:diagflow/agent:Agent":
                 return new Agent(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxAgent:CxAgent":
+                return new CxAgent(name, <any>undefined, { urn })
             case "gcp:diagflow/entityType:EntityType":
                 return new EntityType(name, <any>undefined, { urn })
             case "gcp:diagflow/fulfillment:Fulfillment":
@@ -34,6 +38,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "diagflow/agent", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxAgent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/entityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/fulfillment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/intent", _module)

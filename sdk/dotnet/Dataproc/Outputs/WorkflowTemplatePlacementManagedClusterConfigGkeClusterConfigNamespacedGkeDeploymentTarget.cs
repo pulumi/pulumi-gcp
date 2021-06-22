@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string? ClusterNamespace;
         /// <summary>
         /// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-        /// The `initialization_actions` block supports:
         /// </summary>
         public readonly string? TargetGkeCluster;
 

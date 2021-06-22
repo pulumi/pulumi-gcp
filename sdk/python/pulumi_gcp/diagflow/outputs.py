@@ -9,11 +9,48 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'CxAgentSpeechToTextSettings',
     'EntityTypeEntity',
     'FulfillmentFeature',
     'FulfillmentGenericWebService',
     'IntentFollowupIntentInfo',
 ]
+
+@pulumi.output_type
+class CxAgentSpeechToTextSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableSpeechAdaptation":
+            suggest = "enable_speech_adaptation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentSpeechToTextSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentSpeechToTextSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentSpeechToTextSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_speech_adaptation: Optional[bool] = None):
+        """
+        :param bool enable_speech_adaptation: Whether to use speech adaptation for speech recognition.
+        """
+        if enable_speech_adaptation is not None:
+            pulumi.set(__self__, "enable_speech_adaptation", enable_speech_adaptation)
+
+    @property
+    @pulumi.getter(name="enableSpeechAdaptation")
+    def enable_speech_adaptation(self) -> Optional[bool]:
+        """
+        Whether to use speech adaptation for speech recognition.
+        """
+        return pulumi.get(self, "enable_speech_adaptation")
+
 
 @pulumi.output_type
 class EntityTypeEntity(dict):

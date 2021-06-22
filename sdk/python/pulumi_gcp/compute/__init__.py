@@ -118,6 +118,7 @@ from .router_nat import *
 from .router_peer import *
 from .security_policy import *
 from .security_scan_config import *
+from .service_attachment import *
 from .shared_vpc_host_project import *
 from .shared_vpc_service_project import *
 from .snapshot import *

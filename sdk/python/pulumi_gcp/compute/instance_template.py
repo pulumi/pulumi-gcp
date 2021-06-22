@@ -17,6 +17,7 @@ class InstanceTemplateArgs:
     def __init__(__self__, *,
                  disks: pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]],
                  machine_type: pulumi.Input[str],
+                 advanced_machine_features: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,7 @@ class InstanceTemplateArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
+                 network_performance_config: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
@@ -43,6 +45,7 @@ class InstanceTemplateArgs:
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -69,6 +72,12 @@ class InstanceTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
+        :param pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance created from the
+               template. Structure is documented below. **Note**: `machine_type`
+               must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+               in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: An instance template is a global resource that is not
@@ -87,6 +96,8 @@ class InstanceTemplateArgs:
         """
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "machine_type", machine_type)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if can_ip_forward is not None:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
@@ -113,6 +124,8 @@ class InstanceTemplateArgs:
             pulumi.set(__self__, "name_prefix", name_prefix)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -153,6 +166,18 @@ class InstanceTemplateArgs:
     @machine_type.setter
     def machine_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]:
+        """
+        Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="canIpForward")
@@ -324,6 +349,23 @@ class InstanceTemplateArgs:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]:
+        """
+        Configures network performance settings for the instance created from the
+        template. Structure is documented below. **Note**: `machine_type`
+        must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        in order for this setting to take effect.
+        """
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -419,6 +461,7 @@ class InstanceTemplateArgs:
 @pulumi.input_type
 class _InstanceTemplateState:
     def __init__(__self__, *,
+                 advanced_machine_features: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -435,6 +478,7 @@ class _InstanceTemplateState:
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
+                 network_performance_config: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
@@ -446,6 +490,7 @@ class _InstanceTemplateState:
                  tags_fingerprint: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
+        :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -477,6 +522,12 @@ class _InstanceTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
+        :param pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance created from the
+               template. Structure is documented below. **Note**: `machine_type`
+               must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+               in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: An instance template is a global resource that is not
@@ -495,6 +546,8 @@ class _InstanceTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         """
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if can_ip_forward is not None:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
@@ -527,6 +580,8 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "name_prefix", name_prefix)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -545,6 +600,18 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "tags", tags)
         if tags_fingerprint is not None:
             pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]:
+        """
+        Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="canIpForward")
@@ -754,6 +821,23 @@ class _InstanceTemplateState:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]:
+        """
+        Configures network performance settings for the instance created from the
+        template. Structure is documented below. **Note**: `machine_type`
+        must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        in order for this setting to take effect.
+        """
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -875,6 +959,7 @@ class InstanceTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -890,6 +975,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']]] = None,
@@ -1039,6 +1125,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -1069,6 +1156,12 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance created from the
+               template. Structure is documented below. **Note**: `machine_type`
+               must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+               in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: An instance template is a global resource that is not
@@ -1245,6 +1338,7 @@ class InstanceTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1260,6 +1354,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']]] = None,
@@ -1279,6 +1374,7 @@ class InstanceTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceTemplateArgs.__new__(InstanceTemplateArgs)
 
+            __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["can_ip_forward"] = can_ip_forward
             __props__.__dict__["confidential_instance_config"] = confidential_instance_config
             __props__.__dict__["description"] = description
@@ -1298,6 +1394,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
             __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["network_performance_config"] = network_performance_config
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["reservation_affinity"] = reservation_affinity
@@ -1318,6 +1415,7 @@ class InstanceTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']]] = None,
             can_ip_forward: Optional[pulumi.Input[bool]] = None,
             confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1334,6 +1432,7 @@ class InstanceTemplate(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
+            network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']]] = None,
@@ -1350,6 +1449,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -1381,6 +1481,12 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance created from the
+               template. Structure is documented below. **Note**: `machine_type`
+               must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+               in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: An instance template is a global resource that is not
@@ -1403,6 +1509,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         __props__ = _InstanceTemplateState.__new__(_InstanceTemplateState)
 
+        __props__.__dict__["advanced_machine_features"] = advanced_machine_features
         __props__.__dict__["can_ip_forward"] = can_ip_forward
         __props__.__dict__["confidential_instance_config"] = confidential_instance_config
         __props__.__dict__["description"] = description
@@ -1419,6 +1526,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
         __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["network_performance_config"] = network_performance_config
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["reservation_affinity"] = reservation_affinity
@@ -1429,6 +1537,14 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
         return InstanceTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> pulumi.Output['outputs.InstanceTemplateAdvancedMachineFeatures']:
+        """
+        Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        """
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="canIpForward")
@@ -1572,6 +1688,19 @@ class InstanceTemplate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> pulumi.Output[Optional['outputs.InstanceTemplateNetworkPerformanceConfig']]:
+        """
+        Configures network performance settings for the instance created from the
+        template. Structure is documented below. **Note**: `machine_type`
+        must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+        the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
+        in order for this setting to take effect.
+        """
+        return pulumi.get(self, "network_performance_config")
 
     @property
     @pulumi.getter

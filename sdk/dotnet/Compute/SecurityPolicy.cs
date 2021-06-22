@@ -89,6 +89,12 @@ namespace Pulumi.Gcp.Compute
     public partial class SecurityPolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        /// </summary>
+        [Output("adaptiveProtectionConfig")]
+        public Output<Outputs.SecurityPolicyAdaptiveProtectionConfig?> AdaptiveProtectionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Output("description")]
@@ -174,6 +180,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        /// </summary>
+        [Input("adaptiveProtectionConfig")]
+        public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigArgs>? AdaptiveProtectionConfig { get; set; }
+
+        /// <summary>
         /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Input("description")]
@@ -213,6 +225,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        /// </summary>
+        [Input("adaptiveProtectionConfig")]
+        public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigGetArgs>? AdaptiveProtectionConfig { get; set; }
+
         /// <summary>
         /// An optional description of this rule. Max size is 64.
         /// </summary>

@@ -79,6 +79,7 @@ __all__ = [
     'InstanceFromMachineImageNetworkInterface',
     'InstanceFromMachineImageNetworkInterfaceAccessConfig',
     'InstanceFromMachineImageNetworkInterfaceAliasIpRange',
+    'InstanceFromMachineImageNetworkPerformanceConfig',
     'InstanceFromMachineImageReservationAffinity',
     'InstanceFromMachineImageReservationAffinitySpecificReservation',
     'InstanceFromMachineImageScheduling',
@@ -94,6 +95,7 @@ __all__ = [
     'InstanceFromTemplateNetworkInterface',
     'InstanceFromTemplateNetworkInterfaceAccessConfig',
     'InstanceFromTemplateNetworkInterfaceAliasIpRange',
+    'InstanceFromTemplateNetworkPerformanceConfig',
     'InstanceFromTemplateReservationAffinity',
     'InstanceFromTemplateReservationAffinitySpecificReservation',
     'InstanceFromTemplateScheduling',
@@ -118,6 +120,7 @@ __all__ = [
     'InstanceNetworkInterface',
     'InstanceNetworkInterfaceAccessConfig',
     'InstanceNetworkInterfaceAliasIpRange',
+    'InstanceNetworkPerformanceConfig',
     'InstanceReservationAffinity',
     'InstanceReservationAffinitySpecificReservation',
     'InstanceScheduling',
@@ -125,6 +128,7 @@ __all__ = [
     'InstanceScratchDisk',
     'InstanceServiceAccount',
     'InstanceShieldedInstanceConfig',
+    'InstanceTemplateAdvancedMachineFeatures',
     'InstanceTemplateConfidentialInstanceConfig',
     'InstanceTemplateDisk',
     'InstanceTemplateDiskDiskEncryptionKey',
@@ -132,6 +136,7 @@ __all__ = [
     'InstanceTemplateNetworkInterface',
     'InstanceTemplateNetworkInterfaceAccessConfig',
     'InstanceTemplateNetworkInterfaceAliasIpRange',
+    'InstanceTemplateNetworkPerformanceConfig',
     'InstanceTemplateReservationAffinity',
     'InstanceTemplateReservationAffinitySpecificReservation',
     'InstanceTemplateScheduling',
@@ -277,6 +282,8 @@ __all__ = [
     'RouterNatLogConfig',
     'RouterNatSubnetwork',
     'RouterPeerAdvertisedIpRange',
+    'SecurityPolicyAdaptiveProtectionConfig',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig',
     'SecurityPolicyRule',
     'SecurityPolicyRuleMatch',
     'SecurityPolicyRuleMatchConfig',
@@ -285,6 +292,8 @@ __all__ = [
     'SecurityScanConfigAuthenticationCustomAccount',
     'SecurityScanConfigAuthenticationGoogleAccount',
     'SecurityScanConfigSchedule',
+    'ServiceAttachmentConnectedEndpoint',
+    'ServiceAttachmentConsumerAcceptList',
     'SnapshotSnapshotEncryptionKey',
     'SnapshotSourceDiskEncryptionKey',
     'SubnetworkIAMBindingCondition',
@@ -410,6 +419,7 @@ __all__ = [
     'GetInstanceNetworkInterfaceResult',
     'GetInstanceNetworkInterfaceAccessConfigResult',
     'GetInstanceNetworkInterfaceAliasIpRangeResult',
+    'GetInstanceNetworkPerformanceConfigResult',
     'GetInstanceReservationAffinityResult',
     'GetInstanceReservationAffinitySpecificReservationResult',
     'GetInstanceSchedulingResult',
@@ -417,6 +427,7 @@ __all__ = [
     'GetInstanceScratchDiskResult',
     'GetInstanceServiceAccountResult',
     'GetInstanceShieldedInstanceConfigResult',
+    'GetInstanceTemplateAdvancedMachineFeatureResult',
     'GetInstanceTemplateConfidentialInstanceConfigResult',
     'GetInstanceTemplateDiskResult',
     'GetInstanceTemplateDiskDiskEncryptionKeyResult',
@@ -424,6 +435,7 @@ __all__ = [
     'GetInstanceTemplateNetworkInterfaceResult',
     'GetInstanceTemplateNetworkInterfaceAccessConfigResult',
     'GetInstanceTemplateNetworkInterfaceAliasIpRangeResult',
+    'GetInstanceTemplateNetworkPerformanceConfigResult',
     'GetInstanceTemplateReservationAffinityResult',
     'GetInstanceTemplateReservationAffinitySpecificReservationResult',
     'GetInstanceTemplateSchedulingResult',
@@ -6019,6 +6031,35 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRange(dict):
 
 
 @pulumi.output_type
+class InstanceFromMachineImageNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
 class InstanceFromMachineImageReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6695,6 +6736,35 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRange(dict):
     @pulumi.getter(name="subnetworkRangeName")
     def subnetwork_range_name(self) -> Optional[str]:
         return pulumi.get(self, "subnetwork_range_name")
+
+
+@pulumi.output_type
+class InstanceFromTemplateNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromTemplateNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromTemplateNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type
@@ -7901,6 +7971,43 @@ class InstanceNetworkInterfaceAliasIpRange(dict):
 
 
 @pulumi.output_type
+class InstanceNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        :param str total_egress_bandwidth_tier: The egress bandwidth tier to enable.
+               Possible values: TIER_1, DEFAULT
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        The egress bandwidth tier to enable.
+        Possible values: TIER_1, DEFAULT
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
 class InstanceReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8007,6 +8114,7 @@ class InstanceScheduling(dict):
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
+        :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['InstanceSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -8043,6 +8151,9 @@ class InstanceScheduling(dict):
     @property
     @pulumi.getter(name="minNodeCpus")
     def min_node_cpus(self) -> Optional[int]:
+        """
+        The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+        """
         return pulumi.get(self, "min_node_cpus")
 
     @property
@@ -8246,6 +8357,56 @@ class InstanceShieldedInstanceConfig(dict):
         **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
+class InstanceTemplateAdvancedMachineFeatures(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableNestedVirtualization":
+            suggest = "enable_nested_virtualization"
+        elif key == "threadsPerCore":
+            suggest = "threads_per_core"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceTemplateAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceTemplateAdvancedMachineFeatures.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceTemplateAdvancedMachineFeatures.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_nested_virtualization: Optional[bool] = None,
+                 threads_per_core: Optional[int] = None):
+        """
+        :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        :param int threads_per_core: he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[bool]:
+        """
+        Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[int]:
+        """
+        he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -8876,6 +9037,41 @@ class InstanceTemplateNetworkInterfaceAliasIpRange(dict):
         range. If left unspecified, the primary range of the subnetwork will be used.
         """
         return pulumi.get(self, "subnetwork_range_name")
+
+
+@pulumi.output_type
+class InstanceTemplateNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceTemplateNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceTemplateNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceTemplateNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        :param str total_egress_bandwidth_tier: The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type
@@ -19434,6 +19630,90 @@ class RouterPeerAdvertisedIpRange(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyAdaptiveProtectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layer7DdosDefenseConfig":
+            suggest = "layer7_ddos_defense_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyAdaptiveProtectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyAdaptiveProtectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyAdaptiveProtectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layer7_ddos_defense_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig'] = None):
+        """
+        :param 'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs' layer7_ddos_defense_config: ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+        if layer7_ddos_defense_config is not None:
+            pulumi.set(__self__, "layer7_ddos_defense_config", layer7_ddos_defense_config)
+
+    @property
+    @pulumi.getter(name="layer7DdosDefenseConfig")
+    def layer7_ddos_defense_config(self) -> Optional['outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig']:
+        """
+        ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+        return pulumi.get(self, "layer7_ddos_defense_config")
+
+
+@pulumi.output_type
+class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleVisibility":
+            suggest = "rule_visibility"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable: Optional[bool] = None,
+                 rule_visibility: Optional[str] = None):
+        """
+        :param bool enable: ) If set to true, enables CAAP for L7 DDoS detection.
+        :param str rule_visibility: ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if rule_visibility is not None:
+            pulumi.set(__self__, "rule_visibility", rule_visibility)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        ) If set to true, enables CAAP for L7 DDoS detection.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="ruleVisibility")
+    def rule_visibility(self) -> Optional[str]:
+        """
+        ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        """
+        return pulumi.get(self, "rule_visibility")
+
+
+@pulumi.output_type
 class SecurityPolicyRule(dict):
     def __init__(__self__, *,
                  action: str,
@@ -19837,6 +20117,77 @@ class SecurityScanConfigSchedule(dict):
         which means the scan will be scheduled to start immediately.
         """
         return pulumi.get(self, "schedule_time")
+
+
+@pulumi.output_type
+class ServiceAttachmentConnectedEndpoint(dict):
+    def __init__(__self__, *,
+                 endpoint: Optional[str] = None,
+                 status: Optional[str] = None):
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ServiceAttachmentConsumerAcceptList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionLimit":
+            suggest = "connection_limit"
+        elif key == "projectIdOrNum":
+            suggest = "project_id_or_num"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceAttachmentConsumerAcceptList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceAttachmentConsumerAcceptList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceAttachmentConsumerAcceptList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_limit: int,
+                 project_id_or_num: str):
+        """
+        :param int connection_limit: The number of consumer forwarding rules the consumer project can
+               create.
+        :param str project_id_or_num: A project that is allowed to connect to this service attachment.
+        """
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+
+    @property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> int:
+        """
+        The number of consumer forwarding rules the consumer project can
+        create.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> str:
+        """
+        A project that is allowed to connect to this service attachment.
+        """
+        return pulumi.get(self, "project_id_or_num")
 
 
 @pulumi.output_type
@@ -28104,6 +28455,24 @@ class GetInstanceNetworkInterfaceAliasIpRangeResult(dict):
 
 
 @pulumi.output_type
+class GetInstanceNetworkPerformanceConfigResult(dict):
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        :param str total_egress_bandwidth_tier: The egress bandwidth tier for the instance.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        The egress bandwidth tier for the instance.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
 class GetInstanceReservationAffinityResult(dict):
     def __init__(__self__, *,
                  specific_reservations: Sequence['outputs.GetInstanceReservationAffinitySpecificReservationResult'],
@@ -28304,6 +28673,25 @@ class GetInstanceShieldedInstanceConfigResult(dict):
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> bool:
         return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
+class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
+    def __init__(__self__, *,
+                 enable_nested_virtualization: bool,
+                 threads_per_core: int):
+        pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> bool:
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -28762,6 +29150,24 @@ class GetInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
         range. If left unspecified, the primary range of the subnetwork will be used.
         """
         return pulumi.get(self, "subnetwork_range_name")
+
+
+@pulumi.output_type
+class GetInstanceTemplateNetworkPerformanceConfigResult(dict):
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        :param str total_egress_bandwidth_tier: The egress bandwidth tier for the instance.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        The egress bandwidth tier for the instance.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type

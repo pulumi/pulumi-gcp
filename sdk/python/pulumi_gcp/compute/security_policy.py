@@ -15,12 +15,14 @@ __all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
 @pulumi.input_type
 class SecurityPolicyArgs:
     def __init__(__self__, *,
+                 adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -29,6 +31,8 @@ class SecurityPolicyArgs:
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         """
+        if adaptive_protection_config is not None:
+            pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -37,6 +41,18 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "project", project)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="adaptiveProtectionConfig")
+    def adaptive_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]:
+        """
+        ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+        return pulumi.get(self, "adaptive_protection_config")
+
+    @adaptive_protection_config.setter
+    def adaptive_protection_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]):
+        pulumi.set(self, "adaptive_protection_config", value)
 
     @property
     @pulumi.getter
@@ -93,6 +109,7 @@ class SecurityPolicyArgs:
 @pulumi.input_type
 class _SecurityPolicyState:
     def __init__(__self__, *,
+                 adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -101,6 +118,7 @@ class _SecurityPolicyState:
                  self_link: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicy resources.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
@@ -111,6 +129,8 @@ class _SecurityPolicyState:
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        if adaptive_protection_config is not None:
+            pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fingerprint is not None:
@@ -123,6 +143,18 @@ class _SecurityPolicyState:
             pulumi.set(__self__, "rules", rules)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter(name="adaptiveProtectionConfig")
+    def adaptive_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]:
+        """
+        ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+        return pulumi.get(self, "adaptive_protection_config")
+
+    @adaptive_protection_config.setter
+    def adaptive_protection_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]):
+        pulumi.set(self, "adaptive_protection_config", value)
 
     @property
     @pulumi.getter
@@ -205,6 +237,7 @@ class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -265,6 +298,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -347,6 +381,7 @@ class SecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -363,6 +398,7 @@ class SecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityPolicyArgs.__new__(SecurityPolicyArgs)
 
+            __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -379,6 +415,7 @@ class SecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -392,6 +429,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
@@ -406,6 +444,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         __props__ = _SecurityPolicyState.__new__(_SecurityPolicyState)
 
+        __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
@@ -413,6 +452,14 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
         return SecurityPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="adaptiveProtectionConfig")
+    def adaptive_protection_config(self) -> pulumi.Output[Optional['outputs.SecurityPolicyAdaptiveProtectionConfig']]:
+        """
+        ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+        return pulumi.get(self, "adaptive_protection_config")
 
     @property
     @pulumi.getter

@@ -137,6 +137,9 @@ func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 func GetDialogflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dialogflowCustomEndpoint")
 }
+func GetDialogflowCxCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dialogflowCxCustomEndpoint")
+}
 func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsCustomEndpoint")
 }
@@ -160,6 +163,9 @@ func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeHubCustomEndpoint")
+}
+func GetGkehubFeatureCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:gkehubFeatureCustomEndpoint")
 }
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")

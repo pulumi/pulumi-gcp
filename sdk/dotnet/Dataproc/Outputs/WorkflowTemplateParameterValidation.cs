@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly Outputs.WorkflowTemplateParameterValidationRegex? Regex;
         /// <summary>
         /// Optional. Corresponds to the label values of reservation resource.
-        /// The `gke_cluster_config` block supports:
         /// </summary>
         public readonly Outputs.WorkflowTemplateParameterValidationValues? Values;
 

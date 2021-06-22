@@ -158,6 +158,10 @@ namespace Pulumi.Gcp.Compute
         /// The networks attached to the instance. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceNetworkInterfaceResult> NetworkInterfaces;
+        /// <summary>
+        /// The network performance configuration setting for the instance, if set. Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstanceNetworkPerformanceConfigResult> NetworkPerformanceConfigs;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetInstanceReservationAffinityResult> ReservationAffinities;
         public readonly ImmutableArray<string> ResourcePolicies;
@@ -241,6 +245,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetInstanceNetworkInterfaceResult> networkInterfaces,
 
+            ImmutableArray<Outputs.GetInstanceNetworkPerformanceConfigResult> networkPerformanceConfigs,
+
             string? project,
 
             ImmutableArray<Outputs.GetInstanceReservationAffinityResult> reservationAffinities,
@@ -287,6 +293,7 @@ namespace Pulumi.Gcp.Compute
             MinCpuPlatform = minCpuPlatform;
             Name = name;
             NetworkInterfaces = networkInterfaces;
+            NetworkPerformanceConfigs = networkPerformanceConfigs;
             Project = project;
             ReservationAffinities = reservationAffinities;
             ResourcePolicies = resourcePolicies;

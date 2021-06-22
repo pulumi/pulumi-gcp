@@ -59,6 +59,7 @@ type Provider struct {
 	DatastoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"datastoreCustomEndpoint"`
 	DeploymentManagerCustomEndpoint    pulumi.StringPtrOutput `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint           pulumi.StringPtrOutput `pulumi:"dialogflowCustomEndpoint"`
+	DialogflowCxCustomEndpoint         pulumi.StringPtrOutput `pulumi:"dialogflowCxCustomEndpoint"`
 	DnsCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"dnsCustomEndpoint"`
 	EssentialContactsCustomEndpoint    pulumi.StringPtrOutput `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint             pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
@@ -67,6 +68,7 @@ type Provider struct {
 	FirestoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint         pulumi.StringPtrOutput `pulumi:"gameServicesCustomEndpoint"`
 	GkeHubCustomEndpoint               pulumi.StringPtrOutput `pulumi:"gkeHubCustomEndpoint"`
+	GkehubFeatureCustomEndpoint        pulumi.StringPtrOutput `pulumi:"gkehubFeatureCustomEndpoint"`
 	HealthcareCustomEndpoint           pulumi.StringPtrOutput `pulumi:"healthcareCustomEndpoint"`
 	IamBetaCustomEndpoint              pulumi.StringPtrOutput `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"iamCredentialsCustomEndpoint"`
@@ -181,6 +183,7 @@ type providerArgs struct {
 	DatastoreCustomEndpoint            *string           `pulumi:"datastoreCustomEndpoint"`
 	DeploymentManagerCustomEndpoint    *string           `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint           *string           `pulumi:"dialogflowCustomEndpoint"`
+	DialogflowCxCustomEndpoint         *string           `pulumi:"dialogflowCxCustomEndpoint"`
 	DnsCustomEndpoint                  *string           `pulumi:"dnsCustomEndpoint"`
 	EssentialContactsCustomEndpoint    *string           `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint             *string           `pulumi:"eventarcCustomEndpoint"`
@@ -189,6 +192,7 @@ type providerArgs struct {
 	FirestoreCustomEndpoint            *string           `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint         *string           `pulumi:"gameServicesCustomEndpoint"`
 	GkeHubCustomEndpoint               *string           `pulumi:"gkeHubCustomEndpoint"`
+	GkehubFeatureCustomEndpoint        *string           `pulumi:"gkehubFeatureCustomEndpoint"`
 	HealthcareCustomEndpoint           *string           `pulumi:"healthcareCustomEndpoint"`
 	IamBetaCustomEndpoint              *string           `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       *string           `pulumi:"iamCredentialsCustomEndpoint"`
@@ -283,6 +287,7 @@ type ProviderArgs struct {
 	DatastoreCustomEndpoint            pulumi.StringPtrInput
 	DeploymentManagerCustomEndpoint    pulumi.StringPtrInput
 	DialogflowCustomEndpoint           pulumi.StringPtrInput
+	DialogflowCxCustomEndpoint         pulumi.StringPtrInput
 	DnsCustomEndpoint                  pulumi.StringPtrInput
 	EssentialContactsCustomEndpoint    pulumi.StringPtrInput
 	EventarcCustomEndpoint             pulumi.StringPtrInput
@@ -291,6 +296,7 @@ type ProviderArgs struct {
 	FirestoreCustomEndpoint            pulumi.StringPtrInput
 	GameServicesCustomEndpoint         pulumi.StringPtrInput
 	GkeHubCustomEndpoint               pulumi.StringPtrInput
+	GkehubFeatureCustomEndpoint        pulumi.StringPtrInput
 	HealthcareCustomEndpoint           pulumi.StringPtrInput
 	IamBetaCustomEndpoint              pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint       pulumi.StringPtrInput

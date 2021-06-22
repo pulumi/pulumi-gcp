@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-        /// The `endpoint_config` block supports:
         /// </summary>
         public readonly string? GcePdKmsKeyName;
 

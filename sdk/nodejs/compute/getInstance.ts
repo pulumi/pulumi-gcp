@@ -142,6 +142,10 @@ export interface GetInstanceResult {
      * The networks attached to the instance. Structure is documented below.
      */
     readonly networkInterfaces: outputs.compute.GetInstanceNetworkInterface[];
+    /**
+     * The network performance configuration setting for the instance, if set. Structure is documented below.
+     */
+    readonly networkPerformanceConfigs: outputs.compute.GetInstanceNetworkPerformanceConfig[];
     readonly project?: string;
     readonly reservationAffinities: outputs.compute.GetInstanceReservationAffinity[];
     readonly resourcePolicies: string[];
