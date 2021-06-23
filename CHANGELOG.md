@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Prevent panic in `gcp.sql.DatabaseInstance` when using a Get request to lookup existing Database
 
 ---
 
