@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Prevent panic in `gcp.sql.DatabaseInstance` when using a Get request to lookup existing Database
+_(none)_
 
 ---
+
+## 5.10.1 (2021-06-23)
+* Prevent panic in `gcp.sql.DatabaseInstance` when using a Get request to lookup existing Database
 
 ## 5.10.0 (2021-06-22)
 * Upgrade to v3.73.0 of the Google Beta Terraform Provider
