@@ -68,6 +68,9 @@ func GetCloudBillingCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudBuildCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudBuildCustomEndpoint")
 }
+func GetCloudBuildWorkerPoolCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudBuildWorkerPoolCustomEndpoint")
+}
 func GetCloudFunctionsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudFunctionsCustomEndpoint")
 }
@@ -306,6 +309,9 @@ func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetUserProjectOverride(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gcp:userProjectOverride")
+}
+func GetVertexAiCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:vertexAiCustomEndpoint")
 }
 func GetVpcAccessCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vpcAccessCustomEndpoint")

@@ -76,6 +76,9 @@ type Secret struct {
 
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -85,7 +88,8 @@ type Secret struct {
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -94,8 +98,17 @@ type Secret struct {
 	// after the Secret has been created.
 	// Structure is documented below.
 	Replication SecretReplicationOutput `pulumi:"replication"`
+	// The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+	// Structure is documented below.
+	Rotation SecretRotationPtrOutput `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
+	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+	// Structure is documented below.
+	Topics SecretTopicArrayOutput `pulumi:"topics"`
+	// The TTL for the Secret.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
 }
 
 // NewSecret registers a new resource with the given unique name, arguments, and options.
@@ -135,6 +148,9 @@ func GetSecret(ctx *pulumi.Context,
 type secretState struct {
 	// The time at which the Secret was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime *string `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -144,7 +160,8 @@ type secretState struct {
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -153,13 +170,25 @@ type secretState struct {
 	// after the Secret has been created.
 	// Structure is documented below.
 	Replication *SecretReplication `pulumi:"replication"`
+	// The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+	// Structure is documented below.
+	Rotation *SecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
+	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+	// Structure is documented below.
+	Topics []SecretTopic `pulumi:"topics"`
+	// The TTL for the Secret.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Ttl *string `pulumi:"ttl"`
 }
 
 type SecretState struct {
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringPtrInput
+	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime pulumi.StringPtrInput
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -169,7 +198,8 @@ type SecretState struct {
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
-	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -178,8 +208,17 @@ type SecretState struct {
 	// after the Secret has been created.
 	// Structure is documented below.
 	Replication SecretReplicationPtrInput
+	// The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+	// Structure is documented below.
+	Rotation SecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
+	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+	// Structure is documented below.
+	Topics SecretTopicArrayInput
+	// The TTL for the Secret.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Ttl pulumi.StringPtrInput
 }
 
 func (SecretState) ElementType() reflect.Type {
@@ -187,6 +226,9 @@ func (SecretState) ElementType() reflect.Type {
 }
 
 type secretArgs struct {
+	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime *string `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -203,12 +245,24 @@ type secretArgs struct {
 	// after the Secret has been created.
 	// Structure is documented below.
 	Replication SecretReplication `pulumi:"replication"`
+	// The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+	// Structure is documented below.
+	Rotation *SecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId string `pulumi:"secretId"`
+	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+	// Structure is documented below.
+	Topics []SecretTopic `pulumi:"topics"`
+	// The TTL for the Secret.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Ttl *string `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
+	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime pulumi.StringPtrInput
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -225,8 +279,17 @@ type SecretArgs struct {
 	// after the Secret has been created.
 	// Structure is documented below.
 	Replication SecretReplicationInput
+	// The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+	// Structure is documented below.
+	Rotation SecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringInput
+	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+	// Structure is documented below.
+	Topics SecretTopicArrayInput
+	// The TTL for the Secret.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Ttl pulumi.StringPtrInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {

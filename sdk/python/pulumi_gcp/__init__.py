@@ -84,6 +84,7 @@ if typing.TYPE_CHECKING:
     import pulumi_gcp.storage as storage
     import pulumi_gcp.tags as tags
     import pulumi_gcp.tpu as tpu
+    import pulumi_gcp.vertex as vertex
     import pulumi_gcp.vpcaccess as vpcaccess
     import pulumi_gcp.workflows as workflows
 else:
@@ -160,6 +161,7 @@ else:
     storage = _utilities.lazy_import('pulumi_gcp.storage')
     tags = _utilities.lazy_import('pulumi_gcp.tags')
     tpu = _utilities.lazy_import('pulumi_gcp.tpu')
+    vertex = _utilities.lazy_import('pulumi_gcp.vertex')
     vpcaccess = _utilities.lazy_import('pulumi_gcp.vpcaccess')
     workflows = _utilities.lazy_import('pulumi_gcp.workflows')
 
@@ -436,6 +438,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.appengine",
   "classes": {
    "gcp:appengine/flexibleAppVersion:FlexibleAppVersion": "FlexibleAppVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "appengine/serviceNetworkSettings",
+  "fqn": "pulumi_gcp.appengine",
+  "classes": {
+   "gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings": "ServiceNetworkSettings"
   }
  },
  {
@@ -820,6 +830,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudbuild",
   "classes": {
    "gcp:cloudbuild/trigger:Trigger": "Trigger"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudbuild/workerPool",
+  "fqn": "pulumi_gcp.cloudbuild",
+  "classes": {
+   "gcp:cloudbuild/workerPool:WorkerPool": "WorkerPool"
   }
  },
  {
@@ -3996,6 +4014,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.tpu",
   "classes": {
    "gcp:tpu/node:Node": "Node"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiDataset",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiDataset:AiDataset": "AiDataset"
   }
  },
  {

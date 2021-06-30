@@ -16,6 +16,8 @@ __all__ = [
     'SecretReplicationUserManaged',
     'SecretReplicationUserManagedReplica',
     'SecretReplicationUserManagedReplicaCustomerManagedEncryption',
+    'SecretRotation',
+    'SecretTopic',
 ]
 
 @pulumi.output_type
@@ -224,5 +226,79 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class SecretRotation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nextRotationTime":
+            suggest = "next_rotation_time"
+        elif key == "rotationPeriod":
+            suggest = "rotation_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretRotation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretRotation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretRotation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 next_rotation_time: Optional[str] = None,
+                 rotation_period: Optional[str] = None):
+        """
+        :param str next_rotation_time: Timestamp in UTC at which the Secret is scheduled to rotate.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str rotation_period: The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+               If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+        """
+        if next_rotation_time is not None:
+            pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        if rotation_period is not None:
+            pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> Optional[str]:
+        """
+        Timestamp in UTC at which the Secret is scheduled to rotate.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> Optional[str]:
+        """
+        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+        If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+        """
+        return pulumi.get(self, "rotation_period")
+
+
+@pulumi.output_type
+class SecretTopic(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+               For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+        For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        return pulumi.get(self, "name")
 
 

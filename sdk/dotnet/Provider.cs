@@ -75,6 +75,9 @@ namespace Pulumi.Gcp
         [Output("cloudBuildCustomEndpoint")]
         public Output<string?> CloudBuildCustomEndpoint { get; private set; } = null!;
 
+        [Output("cloudBuildWorkerPoolCustomEndpoint")]
+        public Output<string?> CloudBuildWorkerPoolCustomEndpoint { get; private set; } = null!;
+
         [Output("cloudFunctionsCustomEndpoint")]
         public Output<string?> CloudFunctionsCustomEndpoint { get; private set; } = null!;
 
@@ -297,6 +300,9 @@ namespace Pulumi.Gcp
         [Output("tpuCustomEndpoint")]
         public Output<string?> TpuCustomEndpoint { get; private set; } = null!;
 
+        [Output("vertexAiCustomEndpoint")]
+        public Output<string?> VertexAiCustomEndpoint { get; private set; } = null!;
+
         [Output("vpcAccessCustomEndpoint")]
         public Output<string?> VpcAccessCustomEndpoint { get; private set; } = null!;
 
@@ -393,6 +399,9 @@ namespace Pulumi.Gcp
 
         [Input("cloudBuildCustomEndpoint")]
         public Input<string>? CloudBuildCustomEndpoint { get; set; }
+
+        [Input("cloudBuildWorkerPoolCustomEndpoint")]
+        public Input<string>? CloudBuildWorkerPoolCustomEndpoint { get; set; }
 
         [Input("cloudFunctionsCustomEndpoint")]
         public Input<string>? CloudFunctionsCustomEndpoint { get; set; }
@@ -634,6 +643,9 @@ namespace Pulumi.Gcp
 
         [Input("userProjectOverride", json: true)]
         public Input<bool>? UserProjectOverride { get; set; }
+
+        [Input("vertexAiCustomEndpoint")]
+        public Input<string>? VertexAiCustomEndpoint { get; set; }
 
         [Input("vpcAccessCustomEndpoint")]
         public Input<string>? VpcAccessCustomEndpoint { get; set; }

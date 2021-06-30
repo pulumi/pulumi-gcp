@@ -144,7 +144,7 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="masterInstanceName")
     def master_instance_name(self) -> str:
         """
-        The name of the instance that will act as
+        The name of the existing instance that will act as
         the master in the replication setup.
         """
         return pulumi.get(self, "master_instance_name")

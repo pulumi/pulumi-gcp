@@ -23,7 +23,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
-               quite the same as a region) which defines defines the geographic placement and
+               quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
                is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
                In order to obtain a valid list please consult the
@@ -59,7 +59,7 @@ class InstanceArgs:
     def config(self) -> pulumi.Input[str]:
         """
         The name of the instance's configuration (similar but not
-        quite the same as a region) which defines defines the geographic placement and
+        quite the same as a region) which defines the geographic placement and
         replication of your databases in this instance. It determines where your data
         is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
         In order to obtain a valid list please consult the
@@ -164,7 +164,7 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
-               quite the same as a region) which defines defines the geographic placement and
+               quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
                is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
                In order to obtain a valid list please consult the
@@ -205,7 +205,7 @@ class _InstanceState:
     def config(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the instance's configuration (similar but not
-        quite the same as a region) which defines defines the geographic placement and
+        quite the same as a region) which defines the geographic placement and
         replication of your databases in this instance. It determines where your data
         is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
         In order to obtain a valid list please consult the
@@ -380,7 +380,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
-               quite the same as a region) which defines defines the geographic placement and
+               quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
                is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
                In order to obtain a valid list please consult the
@@ -532,7 +532,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
-               quite the same as a region) which defines defines the geographic placement and
+               quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
                is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
                In order to obtain a valid list please consult the
@@ -570,7 +570,7 @@ class Instance(pulumi.CustomResource):
     def config(self) -> pulumi.Output[str]:
         """
         The name of the instance's configuration (similar but not
-        quite the same as a region) which defines defines the geographic placement and
+        quite the same as a region) which defines the geographic placement and
         replication of your databases in this instance. It determines where your data
         is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
         In order to obtain a valid list please consult the

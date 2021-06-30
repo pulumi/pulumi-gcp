@@ -45,6 +45,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudAssetCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudBillingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudBuildCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly cloudBuildWorkerPoolCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudFunctionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdentityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIotCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -119,6 +120,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly storageTransferCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly vertexAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vpcAccessCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly workflowsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly zone!: pulumi.Output<string | undefined>;
@@ -154,6 +156,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["cloudAssetCustomEndpoint"] = args ? args.cloudAssetCustomEndpoint : undefined;
             inputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
             inputs["cloudBuildCustomEndpoint"] = args ? args.cloudBuildCustomEndpoint : undefined;
+            inputs["cloudBuildWorkerPoolCustomEndpoint"] = args ? args.cloudBuildWorkerPoolCustomEndpoint : undefined;
             inputs["cloudFunctionsCustomEndpoint"] = args ? args.cloudFunctionsCustomEndpoint : undefined;
             inputs["cloudIdentityCustomEndpoint"] = args ? args.cloudIdentityCustomEndpoint : undefined;
             inputs["cloudIotCustomEndpoint"] = args ? args.cloudIotCustomEndpoint : undefined;
@@ -231,6 +234,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["tagsCustomEndpoint"] = args ? args.tagsCustomEndpoint : undefined;
             inputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             inputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
+            inputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
             inputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
             inputs["workflowsCustomEndpoint"] = args ? args.workflowsCustomEndpoint : undefined;
             inputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
@@ -266,6 +270,7 @@ export interface ProviderArgs {
     cloudAssetCustomEndpoint?: pulumi.Input<string>;
     cloudBillingCustomEndpoint?: pulumi.Input<string>;
     cloudBuildCustomEndpoint?: pulumi.Input<string>;
+    cloudBuildWorkerPoolCustomEndpoint?: pulumi.Input<string>;
     cloudFunctionsCustomEndpoint?: pulumi.Input<string>;
     cloudIdentityCustomEndpoint?: pulumi.Input<string>;
     cloudIotCustomEndpoint?: pulumi.Input<string>;
@@ -343,6 +348,7 @@ export interface ProviderArgs {
     tagsCustomEndpoint?: pulumi.Input<string>;
     tpuCustomEndpoint?: pulumi.Input<string>;
     userProjectOverride?: pulumi.Input<boolean>;
+    vertexAiCustomEndpoint?: pulumi.Input<string>;
     vpcAccessCustomEndpoint?: pulumi.Input<string>;
     workflowsCustomEndpoint?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;

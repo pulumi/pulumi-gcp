@@ -75,7 +75,7 @@ export interface GetDatabaseInstanceResult {
     readonly id: string;
     readonly ipAddresses: outputs.sql.GetDatabaseInstanceIpAddress[];
     /**
-     * The name of the instance that will act as
+     * The name of the existing instance that will act as
      * the master in the replication setup.
      */
     readonly masterInstanceName: string;

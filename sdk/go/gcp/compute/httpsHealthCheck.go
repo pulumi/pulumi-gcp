@@ -93,7 +93,7 @@ type HttpsHealthCheck struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request.
-	// The default value is 80.
+	// The default value is 443.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -165,7 +165,7 @@ type httpsHealthCheckState struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request.
-	// The default value is 80.
+	// The default value is 443.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -209,7 +209,7 @@ type HttpsHealthCheckState struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTPS health check request.
-	// The default value is 80.
+	// The default value is 443.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -255,7 +255,7 @@ type httpsHealthCheckArgs struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request.
-	// The default value is 80.
+	// The default value is 443.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -296,7 +296,7 @@ type HttpsHealthCheckArgs struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTPS health check request.
-	// The default value is 80.
+	// The default value is 443.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

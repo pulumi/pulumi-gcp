@@ -290,6 +290,8 @@ class EnvironmentConfigNodeConfig(dict):
             suggest = "ip_allocation_policy"
         elif key == "machineType":
             suggest = "machine_type"
+        elif key == "maxPodsPerNode":
+            suggest = "max_pods_per_node"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "serviceAccount":
@@ -311,6 +313,7 @@ class EnvironmentConfigNodeConfig(dict):
                  disk_size_gb: Optional[int] = None,
                  ip_allocation_policy: Optional['outputs.EnvironmentConfigNodeConfigIpAllocationPolicy'] = None,
                  machine_type: Optional[str] = None,
+                 max_pods_per_node: Optional[int] = None,
                  network: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  service_account: Optional[str] = None,
@@ -357,6 +360,8 @@ class EnvironmentConfigNodeConfig(dict):
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if max_pods_per_node is not None:
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if oauth_scopes is not None:
@@ -408,6 +413,11 @@ class EnvironmentConfigNodeConfig(dict):
         manually changed to a non-standard values.
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> Optional[int]:
+        return pulumi.get(self, "max_pods_per_node")
 
     @property
     @pulumi.getter
@@ -1032,6 +1042,7 @@ class GetEnvironmentConfigNodeConfigResult(dict):
                  disk_size_gb: int,
                  ip_allocation_policies: Sequence['outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult'],
                  machine_type: str,
+                 max_pods_per_node: int,
                  network: str,
                  oauth_scopes: Sequence[str],
                  service_account: str,
@@ -1041,6 +1052,7 @@ class GetEnvironmentConfigNodeConfigResult(dict):
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "ip_allocation_policies", ip_allocation_policies)
         pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "service_account", service_account)
@@ -1062,6 +1074,11 @@ class GetEnvironmentConfigNodeConfigResult(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> int:
+        return pulumi.get(self, "max_pods_per_node")
 
     @property
     @pulumi.getter

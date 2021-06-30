@@ -83,6 +83,13 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
         /// The labels assigned to this Secret.
         /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
         /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -96,7 +103,8 @@ namespace Pulumi.Gcp.SecretManager
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        /// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+        /// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -117,10 +125,31 @@ namespace Pulumi.Gcp.SecretManager
         public Output<Outputs.SecretReplication> Replication { get; private set; } = null!;
 
         /// <summary>
+        /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("rotation")]
+        public Output<Outputs.SecretRotation?> Rotation { get; private set; } = null!;
+
+        /// <summary>
         /// This must be unique within the project.
         /// </summary>
         [Output("secretId")]
         public Output<string> SecretId { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("topics")]
+        public Output<ImmutableArray<Outputs.SecretTopic>> Topics { get; private set; } = null!;
+
+        /// <summary>
+        /// The TTL for the Secret.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        [Output("ttl")]
+        public Output<string?> Ttl { get; private set; } = null!;
 
 
         /// <summary>
@@ -168,6 +197,13 @@ namespace Pulumi.Gcp.SecretManager
 
     public sealed class SecretArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -203,10 +239,37 @@ namespace Pulumi.Gcp.SecretManager
         public Input<Inputs.SecretReplicationArgs> Replication { get; set; } = null!;
 
         /// <summary>
+        /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rotation")]
+        public Input<Inputs.SecretRotationArgs>? Rotation { get; set; }
+
+        /// <summary>
         /// This must be unique within the project.
         /// </summary>
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;
+
+        [Input("topics")]
+        private InputList<Inputs.SecretTopicArgs>? _topics;
+
+        /// <summary>
+        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SecretTopicArgs> Topics
+        {
+            get => _topics ?? (_topics = new InputList<Inputs.SecretTopicArgs>());
+            set => _topics = value;
+        }
+
+        /// <summary>
+        /// The TTL for the Secret.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        [Input("ttl")]
+        public Input<string>? Ttl { get; set; }
 
         public SecretArgs()
         {
@@ -220,6 +283,13 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -241,7 +311,8 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        /// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+        /// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -262,10 +333,37 @@ namespace Pulumi.Gcp.SecretManager
         public Input<Inputs.SecretReplicationGetArgs>? Replication { get; set; }
 
         /// <summary>
+        /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rotation")]
+        public Input<Inputs.SecretRotationGetArgs>? Rotation { get; set; }
+
+        /// <summary>
         /// This must be unique within the project.
         /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
+
+        [Input("topics")]
+        private InputList<Inputs.SecretTopicGetArgs>? _topics;
+
+        /// <summary>
+        /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SecretTopicGetArgs> Topics
+        {
+            get => _topics ?? (_topics = new InputList<Inputs.SecretTopicGetArgs>());
+            set => _topics = value;
+        }
+
+        /// <summary>
+        /// The TTL for the Secret.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        [Input("ttl")]
+        public Input<string>? Ttl { get; set; }
 
         public SecretState()
         {

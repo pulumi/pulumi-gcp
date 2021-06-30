@@ -268,6 +268,8 @@ func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersi
 type InstanceCluster struct {
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId string `pulumi:"clusterId"`
+	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The number of nodes in your Cloud Bigtable cluster.
 	// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
 	// for a `DEVELOPMENT` instance.
@@ -295,6 +297,8 @@ type InstanceClusterInput interface {
 type InstanceClusterArgs struct {
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The number of nodes in your Cloud Bigtable cluster.
 	// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
 	// for a `DEVELOPMENT` instance.
@@ -362,6 +366,11 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 // The ID of the Cloud Bigtable cluster.
 func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceCluster) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCluster) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
 // The number of nodes in your Cloud Bigtable cluster.

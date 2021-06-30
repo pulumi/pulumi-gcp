@@ -115,7 +115,7 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The TCP port number for the HTTPS health check request.
-     * The default value is 80.
+     * The default value is 443.
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -232,7 +232,7 @@ export interface HttpsHealthCheckState {
     name?: pulumi.Input<string>;
     /**
      * The TCP port number for the HTTPS health check request.
-     * The default value is 80.
+     * The default value is 443.
      */
     port?: pulumi.Input<number>;
     /**
@@ -299,7 +299,7 @@ export interface HttpsHealthCheckArgs {
     name?: pulumi.Input<string>;
     /**
      * The TCP port number for the HTTPS health check request.
-     * The default value is 80.
+     * The default value is 443.
      */
     port?: pulumi.Input<number>;
     /**

@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The TCP port number for the HTTPS health check request.
-        /// The default value is 80.
+        /// The default value is 443.
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The TCP port number for the HTTPS health check request.
-        /// The default value is 80.
+        /// The default value is 443.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The TCP port number for the HTTPS health check request.
-        /// The default value is 80.
+        /// The default value is 443.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

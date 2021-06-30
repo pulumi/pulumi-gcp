@@ -17,14 +17,20 @@ class SecretArgs:
     def __init__(__self__, *,
                  replication: pulumi.Input['SecretReplicationArgs'],
                  secret_id: pulumi.Input[str],
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Secret resource.
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -35,13 +41,27 @@ class SecretArgs:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         pulumi.set(__self__, "replication", replication)
         pulumi.set(__self__, "secret_id", secret_id)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if rotation is not None:
+            pulumi.set(__self__, "rotation", rotation)
+        if topics is not None:
+            pulumi.set(__self__, "topics", topics)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter
@@ -68,6 +88,19 @@ class SecretArgs:
     @secret_id.setter
     def secret_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_id", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
 
     @property
     @pulumi.getter
@@ -101,19 +134,64 @@ class SecretArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def rotation(self) -> Optional[pulumi.Input['SecretRotationArgs']]:
+        """
+        The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rotation")
+
+    @rotation.setter
+    def rotation(self, value: Optional[pulumi.Input['SecretRotationArgs']]):
+        pulumi.set(self, "rotation", value)
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]:
+        """
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "topics")
+
+    @topics.setter
+    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]):
+        pulumi.set(self, "topics", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TTL for the Secret.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ttl", value)
+
 
 @pulumi.input_type
 class _SecretState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
-                 secret_id: Optional[pulumi.Input[str]] = None):
+                 rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
+                 secret_id: Optional[pulumi.Input[str]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -122,16 +200,25 @@ class _SecretState:
                No more than 64 labels can be assigned to a given resource.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] name: The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        :param pulumi.Input[str] name: The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+               For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
+        :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -140,8 +227,14 @@ class _SecretState:
             pulumi.set(__self__, "project", project)
         if replication is not None:
             pulumi.set(__self__, "replication", replication)
+        if rotation is not None:
+            pulumi.set(__self__, "rotation", rotation)
         if secret_id is not None:
             pulumi.set(__self__, "secret_id", secret_id)
+        if topics is not None:
+            pulumi.set(__self__, "topics", topics)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter(name="createTime")
@@ -154,6 +247,19 @@ class _SecretState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
 
     @property
     @pulumi.getter
@@ -178,7 +284,8 @@ class _SecretState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+        For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         """
         return pulumi.get(self, "name")
 
@@ -214,6 +321,19 @@ class _SecretState:
         pulumi.set(self, "replication", value)
 
     @property
+    @pulumi.getter
+    def rotation(self) -> Optional[pulumi.Input['SecretRotationArgs']]:
+        """
+        The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rotation")
+
+    @rotation.setter
+    def rotation(self, value: Optional[pulumi.Input['SecretRotationArgs']]):
+        pulumi.set(self, "rotation", value)
+
+    @property
     @pulumi.getter(name="secretId")
     def secret_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -225,16 +345,46 @@ class _SecretState:
     def secret_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_id", value)
 
+    @property
+    @pulumi.getter
+    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]:
+        """
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "topics")
+
+    @topics.setter
+    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]):
+        pulumi.set(self, "topics", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TTL for the Secret.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ttl", value)
+
 
 class Secret(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
+                 rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         A Secret is a logical secret whose value and versions can be accessed.
@@ -287,6 +437,8 @@ class Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -300,7 +452,13 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SecretReplicationArgs']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['SecretRotationArgs']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         ...
     @overload
@@ -372,10 +530,14 @@ class Secret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
+                 rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -388,14 +550,18 @@ class Secret(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretArgs.__new__(SecretArgs)
 
+            __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             if replication is None and not opts.urn:
                 raise TypeError("Missing required property 'replication'")
             __props__.__dict__["replication"] = replication
+            __props__.__dict__["rotation"] = rotation
             if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")
             __props__.__dict__["secret_id"] = secret_id
+            __props__.__dict__["topics"] = topics
+            __props__.__dict__["ttl"] = ttl
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
         super(Secret, __self__).__init__(
@@ -409,11 +575,15 @@ class Secret(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            expire_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
-            secret_id: Optional[pulumi.Input[str]] = None) -> 'Secret':
+            rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
+            secret_id: Optional[pulumi.Input[str]] = None,
+            topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
+            ttl: Optional[pulumi.Input[str]] = None) -> 'Secret':
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -422,6 +592,8 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -430,24 +602,35 @@ class Secret(pulumi.CustomResource):
                No more than 64 labels can be assigned to a given resource.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] name: The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        :param pulumi.Input[str] name: The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+               For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SecretReplicationArgs']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['SecretRotationArgs']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SecretState.__new__(_SecretState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["replication"] = replication
+        __props__.__dict__["rotation"] = rotation
         __props__.__dict__["secret_id"] = secret_id
+        __props__.__dict__["topics"] = topics
+        __props__.__dict__["ttl"] = ttl
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -457,6 +640,15 @@ class Secret(pulumi.CustomResource):
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
@@ -477,7 +669,8 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+        For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         """
         return pulumi.get(self, "name")
 
@@ -501,10 +694,37 @@ class Secret(pulumi.CustomResource):
         return pulumi.get(self, "replication")
 
     @property
+    @pulumi.getter
+    def rotation(self) -> pulumi.Output[Optional['outputs.SecretRotation']]:
+        """
+        The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rotation")
+
+    @property
     @pulumi.getter(name="secretId")
     def secret_id(self) -> pulumi.Output[str]:
         """
         This must be unique within the project.
         """
         return pulumi.get(self, "secret_id")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> pulumi.Output[Optional[Sequence['outputs.SecretTopic']]]:
+        """
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Output[Optional[str]]:
+        """
+        The TTL for the Secret.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "ttl")
 

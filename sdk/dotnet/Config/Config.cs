@@ -48,6 +48,8 @@ namespace Pulumi.Gcp
 
         public static string? CloudBuildCustomEndpoint { get; set; } = __config.Get("cloudBuildCustomEndpoint");
 
+        public static string? CloudBuildWorkerPoolCustomEndpoint { get; set; } = __config.Get("cloudBuildWorkerPoolCustomEndpoint");
+
         public static string? CloudFunctionsCustomEndpoint { get; set; } = __config.Get("cloudFunctionsCustomEndpoint");
 
         public static string? CloudIdentityCustomEndpoint { get; set; } = __config.Get("cloudIdentityCustomEndpoint");
@@ -201,6 +203,8 @@ namespace Pulumi.Gcp
         public static string? TpuCustomEndpoint { get; set; } = __config.Get("tpuCustomEndpoint");
 
         public static bool? UserProjectOverride { get; set; } = __config.GetBoolean("userProjectOverride");
+
+        public static string? VertexAiCustomEndpoint { get; set; } = __config.Get("vertexAiCustomEndpoint");
 
         public static string? VpcAccessCustomEndpoint { get; set; } = __config.Get("vpcAccessCustomEndpoint");
 

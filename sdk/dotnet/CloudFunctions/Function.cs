@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> HttpsTriggerUrl { get; private set; } = null!;
 
         /// <summary>
-        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         /// </summary>
         [Output("ingressSettings")]
         public Output<string?> IngressSettings { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<int?> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         /// </summary>
         [Output("triggerHttp")]
         public Output<bool?> TriggerHttp { get; private set; } = null!;
@@ -365,7 +365,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? HttpsTriggerUrl { get; set; }
 
         /// <summary>
-        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         /// </summary>
         [Input("ingressSettings")]
         public Input<string>? IngressSettings { get; set; }
@@ -445,7 +445,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         /// </summary>
         [Input("triggerHttp")]
         public Input<bool>? TriggerHttp { get; set; }
@@ -524,7 +524,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? HttpsTriggerUrl { get; set; }
 
         /// <summary>
-        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         /// </summary>
         [Input("ingressSettings")]
         public Input<string>? IngressSettings { get; set; }
@@ -604,7 +604,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         /// </summary>
         [Input("triggerHttp")]
         public Input<bool>? TriggerHttp { get; set; }

@@ -160,7 +160,7 @@ type Function struct {
 	EventTrigger FunctionEventTriggerOutput `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
-	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrOutput `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapOutput `pulumi:"labels"`
@@ -186,7 +186,7 @@ type Function struct {
 	SourceRepository FunctionSourceRepositoryPtrOutput `pulumi:"sourceRepository"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
-	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
+	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp pulumi.BoolPtrOutput `pulumi:"triggerHttp"`
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrOutput `pulumi:"vpcConnector"`
@@ -240,7 +240,7 @@ type functionState struct {
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
-	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -266,7 +266,7 @@ type functionState struct {
 	SourceRepository *FunctionSourceRepository `pulumi:"sourceRepository"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout *int `pulumi:"timeout"`
-	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
+	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp *bool `pulumi:"triggerHttp"`
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector *string `pulumi:"vpcConnector"`
@@ -289,7 +289,7 @@ type FunctionState struct {
 	EventTrigger FunctionEventTriggerPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
-	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput
@@ -315,7 +315,7 @@ type FunctionState struct {
 	SourceRepository FunctionSourceRepositoryPtrInput
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrInput
-	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
+	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp pulumi.BoolPtrInput
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrInput
@@ -342,7 +342,7 @@ type functionArgs struct {
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
-	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -368,7 +368,7 @@ type functionArgs struct {
 	SourceRepository *FunctionSourceRepository `pulumi:"sourceRepository"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout *int `pulumi:"timeout"`
-	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
+	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp *bool `pulumi:"triggerHttp"`
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector *string `pulumi:"vpcConnector"`
@@ -392,7 +392,7 @@ type FunctionArgs struct {
 	EventTrigger FunctionEventTriggerPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
-	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput
@@ -418,7 +418,7 @@ type FunctionArgs struct {
 	SourceRepository FunctionSourceRepositoryPtrInput
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrInput
-	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
+	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp pulumi.BoolPtrInput
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrInput

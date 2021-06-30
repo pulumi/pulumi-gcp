@@ -88,6 +88,11 @@ export class Secret extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
      * The labels assigned to this Secret.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
      * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -99,7 +104,8 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+     * The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
+     * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -114,9 +120,24 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly replication!: pulumi.Output<outputs.secretmanager.SecretReplication>;
     /**
+     * The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+     * Structure is documented below.
+     */
+    public readonly rotation!: pulumi.Output<outputs.secretmanager.SecretRotation | undefined>;
+    /**
      * This must be unique within the project.
      */
     public readonly secretId!: pulumi.Output<string>;
+    /**
+     * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+     * Structure is documented below.
+     */
+    public readonly topics!: pulumi.Output<outputs.secretmanager.SecretTopic[] | undefined>;
+    /**
+     * The TTL for the Secret.
+     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+     */
+    public readonly ttl!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -132,11 +153,15 @@ export class Secret extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
+            inputs["expireTime"] = state ? state.expireTime : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["replication"] = state ? state.replication : undefined;
+            inputs["rotation"] = state ? state.rotation : undefined;
             inputs["secretId"] = state ? state.secretId : undefined;
+            inputs["topics"] = state ? state.topics : undefined;
+            inputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
             if ((!args || args.replication === undefined) && !opts.urn) {
@@ -145,10 +170,14 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
+            inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["replication"] = args ? args.replication : undefined;
+            inputs["rotation"] = args ? args.rotation : undefined;
             inputs["secretId"] = args ? args.secretId : undefined;
+            inputs["topics"] = args ? args.topics : undefined;
+            inputs["ttl"] = args ? args.ttl : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
@@ -168,6 +197,11 @@ export interface SecretState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    expireTime?: pulumi.Input<string>;
+    /**
      * The labels assigned to this Secret.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
      * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -179,7 +213,8 @@ export interface SecretState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+     * The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
+     * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
      */
     name?: pulumi.Input<string>;
     /**
@@ -194,15 +229,35 @@ export interface SecretState {
      */
     replication?: pulumi.Input<inputs.secretmanager.SecretReplication>;
     /**
+     * The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+     * Structure is documented below.
+     */
+    rotation?: pulumi.Input<inputs.secretmanager.SecretRotation>;
+    /**
      * This must be unique within the project.
      */
     secretId?: pulumi.Input<string>;
+    /**
+     * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+     * Structure is documented below.
+     */
+    topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretTopic>[]>;
+    /**
+     * The TTL for the Secret.
+     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+     */
+    ttl?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Secret resource.
  */
 export interface SecretArgs {
+    /**
+     * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    expireTime?: pulumi.Input<string>;
     /**
      * The labels assigned to this Secret.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -226,7 +281,22 @@ export interface SecretArgs {
      */
     replication: pulumi.Input<inputs.secretmanager.SecretReplication>;
     /**
+     * The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+     * Structure is documented below.
+     */
+    rotation?: pulumi.Input<inputs.secretmanager.SecretRotation>;
+    /**
      * This must be unique within the project.
      */
     secretId: pulumi.Input<string>;
+    /**
+     * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+     * Structure is documented below.
+     */
+    topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretTopic>[]>;
+    /**
+     * The TTL for the Secret.
+     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+     */
+    ttl?: pulumi.Input<string>;
 }

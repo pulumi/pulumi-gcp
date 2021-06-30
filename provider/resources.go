@@ -95,6 +95,7 @@ const (
 	gcpStorage              = "Storage"              // Storage resources
 	gcpTags                 = "Tags"                 // Tags
 	gcpTPU                  = "Tpu"                  // Tensor Processing Units
+	gcpVertex               = "Vertex"               // Vertex
 	gcpVpcAccess            = "VpcAccess"            // VPC Access
 	gcpWorkflows            = "Workflows"            // Workflows
 )
@@ -237,8 +238,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_app_engine_application_url_dispatch_rules": {
 				Tok: gcpResource(gcpAppEngine, "ApplicationUrlDispatchRules"),
 			},
-			"google_app_engine_service_split_traffic": {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
-			"google_app_engine_flexible_app_version":  {Tok: gcpResource(gcpAppEngine, "FlexibleAppVersion")},
+			"google_app_engine_service_split_traffic":    {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
+			"google_app_engine_flexible_app_version":     {Tok: gcpResource(gcpAppEngine, "FlexibleAppVersion")},
+			"google_app_engine_service_network_settings": {Tok: gcpResource(gcpAppEngine, "ServiceNetworkSettings")},
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -394,6 +396,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloud_build_trigger.html.markdown",
 				},
 			},
+			"google_cloudbuild_worker_pool": {Tok: gcpResource(gcpCloudBuild, "WorkerPool")},
 
 			// Cloud Functions
 			"google_cloudfunctions_function": {
@@ -1213,6 +1216,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// TPU resources
 			"google_tpu_node": {Tok: gcpResource(gcpTPU, "Node")},
+
+			// Vertex
+			"google_vertex_ai_dataset": {Tok: gcpResource(gcpVertex, "AiDataset")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {

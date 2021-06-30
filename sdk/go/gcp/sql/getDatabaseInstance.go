@@ -63,7 +63,7 @@ type LookupDatabaseInstanceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id          string                         `pulumi:"id"`
 	IpAddresses []GetDatabaseInstanceIpAddress `pulumi:"ipAddresses"`
-	// The name of the instance that will act as
+	// The name of the existing instance that will act as
 	// the master in the replication setup.
 	MasterInstanceName string `pulumi:"masterInstanceName"`
 	// A name for this whitelist entry.
