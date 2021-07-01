@@ -95,7 +95,7 @@ type Instance struct {
 	pulumi.CustomResourceState
 
 	// The name of the instance's configuration (similar but not
-	// quite the same as a region) which defines defines the geographic placement and
+	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
 	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
 	// In order to obtain a valid list please consult the
@@ -159,7 +159,7 @@ func GetInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
 	// The name of the instance's configuration (similar but not
-	// quite the same as a region) which defines defines the geographic placement and
+	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
 	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
 	// In order to obtain a valid list please consult the
@@ -189,7 +189,7 @@ type instanceState struct {
 
 type InstanceState struct {
 	// The name of the instance's configuration (similar but not
-	// quite the same as a region) which defines defines the geographic placement and
+	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
 	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
 	// In order to obtain a valid list please consult the
@@ -223,7 +223,7 @@ func (InstanceState) ElementType() reflect.Type {
 
 type instanceArgs struct {
 	// The name of the instance's configuration (similar but not
-	// quite the same as a region) which defines defines the geographic placement and
+	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
 	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
 	// In order to obtain a valid list please consult the
@@ -252,7 +252,7 @@ type instanceArgs struct {
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// The name of the instance's configuration (similar but not
-	// quite the same as a region) which defines defines the geographic placement and
+	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
 	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
 	// In order to obtain a valid list please consult the

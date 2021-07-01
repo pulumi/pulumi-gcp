@@ -345,9 +345,9 @@ class BucketLifecycleRuleCondition(dict):
                  with_state: Optional[str] = None):
         """
         :param int age: Minimum age of an object in days to satisfy this condition.
-        :param str created_before: Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
-        :param str custom_time_before: Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
-        :param int days_since_custom_time: Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+        :param str created_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
+        :param str custom_time_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
+        :param int days_since_custom_time: Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
         :param int days_since_noncurrent_time: Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
         :param Sequence[str] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         :param str noncurrent_time_before: Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
@@ -385,7 +385,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter(name="createdBefore")
     def created_before(self) -> Optional[str]:
         """
-        Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
         """
         return pulumi.get(self, "created_before")
 
@@ -393,7 +393,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter(name="customTimeBefore")
     def custom_time_before(self) -> Optional[str]:
         """
-        Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
         """
         return pulumi.get(self, "custom_time_before")
 
@@ -401,7 +401,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter(name="daysSinceCustomTime")
     def days_since_custom_time(self) -> Optional[int]:
         """
-        Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+        Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
         """
         return pulumi.get(self, "days_since_custom_time")
 

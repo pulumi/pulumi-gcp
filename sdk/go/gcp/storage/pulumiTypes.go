@@ -768,11 +768,11 @@ func (o BucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
 type BucketLifecycleRuleCondition struct {
 	// Minimum age of an object in days to satisfy this condition.
 	Age *int `pulumi:"age"`
-	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
 	CreatedBefore *string `pulumi:"createdBefore"`
-	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
 	CustomTimeBefore *string `pulumi:"customTimeBefore"`
-	// Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+	// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
 	DaysSinceCustomTime *int `pulumi:"daysSinceCustomTime"`
 	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
 	DaysSinceNoncurrentTime *int `pulumi:"daysSinceNoncurrentTime"`
@@ -800,11 +800,11 @@ type BucketLifecycleRuleConditionInput interface {
 type BucketLifecycleRuleConditionArgs struct {
 	// Minimum age of an object in days to satisfy this condition.
 	Age pulumi.IntPtrInput `pulumi:"age"`
-	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
-	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
 	CustomTimeBefore pulumi.StringPtrInput `pulumi:"customTimeBefore"`
-	// Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+	// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
 	DaysSinceCustomTime pulumi.IntPtrInput `pulumi:"daysSinceCustomTime"`
 	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
 	DaysSinceNoncurrentTime pulumi.IntPtrInput `pulumi:"daysSinceNoncurrentTime"`
@@ -849,17 +849,17 @@ func (o BucketLifecycleRuleConditionOutput) Age() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.Age }).(pulumi.IntPtrOutput)
 }
 
-// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
 func (o BucketLifecycleRuleConditionOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
 }
 
-// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
 func (o BucketLifecycleRuleConditionOutput) CustomTimeBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CustomTimeBefore }).(pulumi.StringPtrOutput)
 }
 
-// Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
 func (o BucketLifecycleRuleConditionOutput) DaysSinceCustomTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceCustomTime }).(pulumi.IntPtrOutput)
 }

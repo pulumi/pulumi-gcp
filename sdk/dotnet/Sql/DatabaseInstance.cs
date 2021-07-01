@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Sql
     ///   the above documentation:
     /// * `region`
     /// * `database_version` (if applicable)
-    /// * `tier`\
+    /// * `tier`
     ///   Remove any fields that are not applicable to Second-generation instances:
     /// * `settings.crash_safe_replication`
     /// * `settings.replication_type`
@@ -159,9 +159,7 @@ namespace Pulumi.Gcp.Sql
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>
-        /// The context needed to create this instance as a clone of another instance. When this field is set during
-        /// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-        /// configuration is detailed below.
+        /// Configuration for creating a new instance as a clone of another instance.
         /// </summary>
         [Output("clone")]
         public Output<Outputs.DatabaseInstanceClone?> Clone { get; private set; } = null!;
@@ -215,9 +213,9 @@ namespace Pulumi.Gcp.Sql
         public Output<ImmutableArray<Outputs.DatabaseInstanceIpAddress>> IpAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance that will act as
-        /// the master in the replication setup. Note, this requires the master to have
-        /// `binary_log_enabled` set, as well as existing backups.
+        /// The name of the existing instance that will
+        /// act as the master in the replication setup. Note, this requires the master to
+        /// have `binary_log_enabled` set, as well as existing backups.
         /// </summary>
         [Output("masterInstanceName")]
         public Output<string> MasterInstanceName { get; private set; } = null!;
@@ -266,6 +264,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
+        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
         /// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -349,9 +348,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The context needed to create this instance as a clone of another instance. When this field is set during
-        /// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-        /// configuration is detailed below.
+        /// Configuration for creating a new instance as a clone of another instance.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.DatabaseInstanceCloneArgs>? Clone { get; set; }
@@ -389,9 +386,9 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? EncryptionKeyName { get; set; }
 
         /// <summary>
-        /// The name of the instance that will act as
-        /// the master in the replication setup. Note, this requires the master to have
-        /// `binary_log_enabled` set, as well as existing backups.
+        /// The name of the existing instance that will
+        /// act as the master in the replication setup. Note, this requires the master to
+        /// have `binary_log_enabled` set, as well as existing backups.
         /// </summary>
         [Input("masterInstanceName")]
         public Input<string>? MasterInstanceName { get; set; }
@@ -428,6 +425,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
+        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
         /// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -456,9 +454,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The context needed to create this instance as a clone of another instance. When this field is set during
-        /// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-        /// configuration is detailed below.
+        /// Configuration for creating a new instance as a clone of another instance.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.DatabaseInstanceCloneGetArgs>? Clone { get; set; }
@@ -517,9 +513,9 @@ namespace Pulumi.Gcp.Sql
         }
 
         /// <summary>
-        /// The name of the instance that will act as
-        /// the master in the replication setup. Note, this requires the master to have
-        /// `binary_log_enabled` set, as well as existing backups.
+        /// The name of the existing instance that will
+        /// act as the master in the replication setup. Note, this requires the master to
+        /// have `binary_log_enabled` set, as well as existing backups.
         /// </summary>
         [Input("masterInstanceName")]
         public Input<string>? MasterInstanceName { get; set; }
@@ -568,6 +564,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
+        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
         /// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.

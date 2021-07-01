@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallRule{}
 	case "gcp:appengine/flexibleAppVersion:FlexibleAppVersion":
 		r = &FlexibleAppVersion{}
+	case "gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings":
+		r = &ServiceNetworkSettings{}
 	case "gcp:appengine/standardAppVersion:StandardAppVersion":
 		r = &StandardAppVersion{}
 	default:
@@ -76,6 +78,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"appengine/flexibleAppVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"appengine/serviceNetworkSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -30,6 +30,7 @@ __all__ = [
     'cloud_asset_custom_endpoint',
     'cloud_billing_custom_endpoint',
     'cloud_build_custom_endpoint',
+    'cloud_build_worker_pool_custom_endpoint',
     'cloud_functions_custom_endpoint',
     'cloud_identity_custom_endpoint',
     'cloud_iot_custom_endpoint',
@@ -107,6 +108,7 @@ __all__ = [
     'tags_custom_endpoint',
     'tpu_custom_endpoint',
     'user_project_override',
+    'vertex_ai_custom_endpoint',
     'vpc_access_custom_endpoint',
     'workflows_custom_endpoint',
     'zone',
@@ -153,6 +155,8 @@ cloud_asset_custom_endpoint = __config__.get('cloudAssetCustomEndpoint')
 cloud_billing_custom_endpoint = __config__.get('cloudBillingCustomEndpoint')
 
 cloud_build_custom_endpoint = __config__.get('cloudBuildCustomEndpoint')
+
+cloud_build_worker_pool_custom_endpoint = __config__.get('cloudBuildWorkerPoolCustomEndpoint')
 
 cloud_functions_custom_endpoint = __config__.get('cloudFunctionsCustomEndpoint')
 
@@ -307,6 +311,8 @@ tags_custom_endpoint = __config__.get('tagsCustomEndpoint')
 tpu_custom_endpoint = __config__.get('tpuCustomEndpoint')
 
 user_project_override = __config__.get('userProjectOverride')
+
+vertex_ai_custom_endpoint = __config__.get('vertexAiCustomEndpoint')
 
 vpc_access_custom_endpoint = __config__.get('vpcAccessCustomEndpoint')
 

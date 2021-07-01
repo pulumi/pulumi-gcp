@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceIpAddressResult> IpAddresses;
         /// <summary>
-        /// The name of the instance that will act as
+        /// The name of the existing instance that will act as
         /// the master in the replication setup.
         /// </summary>
         public readonly string MasterInstanceName;

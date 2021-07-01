@@ -25,7 +25,7 @@ import (
 //   the above documentation:
 // * `region`
 // * `databaseVersion` (if applicable)
-// * `tier`\
+// * `tier`
 //   Remove any fields that are not applicable to Second-generation instances:
 // * `settings.crash_safe_replication`
 // * `settings.replication_type`
@@ -156,9 +156,7 @@ import (
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone DatabaseInstanceClonePtrOutput `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -186,9 +184,9 @@ type DatabaseInstance struct {
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringOutput                  `pulumi:"firstIpAddress"`
 	IpAddresses    DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
-	// The name of the instance that will act as
-	// the master in the replication setup. Note, this requires the master to have
-	// `binaryLogEnabled` set, as well as existing backups.
+	// The name of the existing instance that will
+	// act as the master in the replication setup. Note, this requires the master to
+	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringOutput `pulumi:"masterInstanceName"`
 	// A name for this whitelist entry.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -209,6 +207,7 @@ type DatabaseInstance struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
+	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -255,9 +254,7 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -285,9 +282,9 @@ type databaseInstanceState struct {
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress *string                     `pulumi:"firstIpAddress"`
 	IpAddresses    []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
-	// The name of the instance that will act as
-	// the master in the replication setup. Note, this requires the master to have
-	// `binaryLogEnabled` set, as well as existing backups.
+	// The name of the existing instance that will
+	// act as the master in the replication setup. Note, this requires the master to
+	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
 	// A name for this whitelist entry.
 	Name *string `pulumi:"name"`
@@ -308,6 +305,7 @@ type databaseInstanceState struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
+	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -326,9 +324,7 @@ type databaseInstanceState struct {
 }
 
 type DatabaseInstanceState struct {
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone DatabaseInstanceClonePtrInput
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -356,9 +352,9 @@ type DatabaseInstanceState struct {
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringPtrInput
 	IpAddresses    DatabaseInstanceIpAddressArrayInput
-	// The name of the instance that will act as
-	// the master in the replication setup. Note, this requires the master to have
-	// `binaryLogEnabled` set, as well as existing backups.
+	// The name of the existing instance that will
+	// act as the master in the replication setup. Note, this requires the master to
+	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
 	// A name for this whitelist entry.
 	Name pulumi.StringPtrInput
@@ -379,6 +375,7 @@ type DatabaseInstanceState struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// The context needed to restore the database to a backup run. This field will
+	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -401,9 +398,7 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
@@ -425,9 +420,9 @@ type databaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
-	// The name of the instance that will act as
-	// the master in the replication setup. Note, this requires the master to have
-	// `binaryLogEnabled` set, as well as existing backups.
+	// The name of the existing instance that will
+	// act as the master in the replication setup. Note, this requires the master to
+	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
 	// A name for this whitelist entry.
 	Name *string `pulumi:"name"`
@@ -444,6 +439,7 @@ type databaseInstanceArgs struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
+	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -457,9 +453,7 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// The context needed to create this instance as a clone of another instance. When this field is set during
-	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
-	// configuration is detailed below.
+	// Configuration for creating a new instance as a clone of another instance.
 	Clone DatabaseInstanceClonePtrInput
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
@@ -481,9 +475,9 @@ type DatabaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
-	// The name of the instance that will act as
-	// the master in the replication setup. Note, this requires the master to have
-	// `binaryLogEnabled` set, as well as existing backups.
+	// The name of the existing instance that will
+	// act as the master in the replication setup. Note, this requires the master to
+	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
 	// A name for this whitelist entry.
 	Name pulumi.StringPtrInput
@@ -500,6 +494,7 @@ type DatabaseInstanceArgs struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// The context needed to restore the database to a backup run. This field will
+	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.

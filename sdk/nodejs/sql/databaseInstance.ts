@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *   the above documentation:
  * * `region`
  * * `databaseVersion` (if applicable)
- * * `tier`\
+ * * `tier`
  *   Remove any fields that are not applicable to Second-generation instances:
  * * `settings.crash_safe_replication`
  * * `settings.replication_type`
@@ -146,9 +146,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during
-     * resource creation, the provider will attempt to clone another instance as indicated in the context. The
-     * configuration is detailed below.
+     * Configuration for creating a new instance as a clone of another instance.
      */
     public readonly clone!: pulumi.Output<outputs.sql.DatabaseInstanceClone | undefined>;
     /**
@@ -188,9 +186,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
     public /*out*/ readonly ipAddresses!: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
     /**
-     * The name of the instance that will act as
-     * the master in the replication setup. Note, this requires the master to have
-     * `binaryLogEnabled` set, as well as existing backups.
+     * The name of the existing instance that will
+     * act as the master in the replication setup. Note, this requires the master to
+     * have `binaryLogEnabled` set, as well as existing backups.
      */
     public readonly masterInstanceName!: pulumi.Output<string>;
     /**
@@ -225,6 +223,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
      * The context needed to restore the database to a backup run. This field will
+     * <<<<<<< HEAD
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -318,9 +317,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
  */
 export interface DatabaseInstanceState {
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during
-     * resource creation, the provider will attempt to clone another instance as indicated in the context. The
-     * configuration is detailed below.
+     * Configuration for creating a new instance as a clone of another instance.
      */
     clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
     /**
@@ -360,9 +357,9 @@ export interface DatabaseInstanceState {
     firstIpAddress?: pulumi.Input<string>;
     ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[]>;
     /**
-     * The name of the instance that will act as
-     * the master in the replication setup. Note, this requires the master to have
-     * `binaryLogEnabled` set, as well as existing backups.
+     * The name of the existing instance that will
+     * act as the master in the replication setup. Note, this requires the master to
+     * have `binaryLogEnabled` set, as well as existing backups.
      */
     masterInstanceName?: pulumi.Input<string>;
     /**
@@ -397,6 +394,7 @@ export interface DatabaseInstanceState {
     replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
      * The context needed to restore the database to a backup run. This field will
+     * <<<<<<< HEAD
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -428,9 +426,7 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during
-     * resource creation, the provider will attempt to clone another instance as indicated in the context. The
-     * configuration is detailed below.
+     * Configuration for creating a new instance as a clone of another instance.
      */
     clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
     /**
@@ -460,9 +456,9 @@ export interface DatabaseInstanceArgs {
      */
     encryptionKeyName?: pulumi.Input<string>;
     /**
-     * The name of the instance that will act as
-     * the master in the replication setup. Note, this requires the master to have
-     * `binaryLogEnabled` set, as well as existing backups.
+     * The name of the existing instance that will
+     * act as the master in the replication setup. Note, this requires the master to
+     * have `binaryLogEnabled` set, as well as existing backups.
      */
     masterInstanceName?: pulumi.Input<string>;
     /**
@@ -489,6 +485,7 @@ export interface DatabaseInstanceArgs {
     replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
      * The context needed to restore the database to a backup run. This field will
+     * <<<<<<< HEAD
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.

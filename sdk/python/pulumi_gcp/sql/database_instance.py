@@ -29,9 +29,7 @@ class DatabaseInstanceArgs:
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
-        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
-               resource creation, the provider will attempt to clone another instance as indicated in the context. The
-               configuration is detailed below.
+        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: Configuration for creating a new instance as a clone of another instance.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -49,9 +47,9 @@ class DatabaseInstanceArgs:
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-        :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
-               the master in the replication setup. Note, this requires the master to have
-               `binary_log_enabled` set, as well as existing backups.
+        :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
+               act as the master in the replication setup. Note, this requires the master to
+               have `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
         :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
@@ -63,6 +61,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               <<<<<<< HEAD
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -99,9 +98,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['DatabaseInstanceCloneArgs']]:
         """
-        The context needed to create this instance as a clone of another instance. When this field is set during
-        resource creation, the provider will attempt to clone another instance as indicated in the context. The
-        configuration is detailed below.
+        Configuration for creating a new instance as a clone of another instance.
         """
         return pulumi.get(self, "clone")
 
@@ -163,9 +160,9 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="masterInstanceName")
     def master_instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance that will act as
-        the master in the replication setup. Note, this requires the master to have
-        `binary_log_enabled` set, as well as existing backups.
+        The name of the existing instance that will
+        act as the master in the replication setup. Note, this requires the master to
+        have `binary_log_enabled` set, as well as existing backups.
         """
         return pulumi.get(self, "master_instance_name")
 
@@ -232,6 +229,7 @@ class DatabaseInstanceArgs:
     def restore_backup_context(self) -> Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]:
         """
         The context needed to restore the database to a backup run. This field will
+        <<<<<<< HEAD
         cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
         **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
         block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -293,9 +291,7 @@ class _DatabaseInstanceState:
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
-        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
-               resource creation, the provider will attempt to clone another instance as indicated in the context. The
-               configuration is detailed below.
+        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: Configuration for creating a new instance as a clone of another instance.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -316,9 +312,9 @@ class _DatabaseInstanceState:
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
-        :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
-               the master in the replication setup. Note, this requires the master to have
-               `binary_log_enabled` set, as well as existing backups.
+        :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
+               act as the master in the replication setup. Note, this requires the master to
+               have `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
@@ -332,6 +328,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               <<<<<<< HEAD
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -387,9 +384,7 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['DatabaseInstanceCloneArgs']]:
         """
-        The context needed to create this instance as a clone of another instance. When this field is set during
-        resource creation, the provider will attempt to clone another instance as indicated in the context. The
-        configuration is detailed below.
+        Configuration for creating a new instance as a clone of another instance.
         """
         return pulumi.get(self, "clone")
 
@@ -485,9 +480,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="masterInstanceName")
     def master_instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance that will act as
-        the master in the replication setup. Note, this requires the master to have
-        `binary_log_enabled` set, as well as existing backups.
+        The name of the existing instance that will
+        act as the master in the replication setup. Note, this requires the master to
+        have `binary_log_enabled` set, as well as existing backups.
         """
         return pulumi.get(self, "master_instance_name")
 
@@ -578,6 +573,7 @@ class _DatabaseInstanceState:
     def restore_backup_context(self) -> Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]:
         """
         The context needed to restore the database to a backup run. This field will
+        <<<<<<< HEAD
         cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
         **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
         block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -682,7 +678,7 @@ class DatabaseInstance(pulumi.CustomResource):
           the above documentation:
         * `region`
         * `database_version` (if applicable)
-        * `tier`\
+        * `tier`
           Remove any fields that are not applicable to Second-generation instances:
         * `settings.crash_safe_replication`
         * `settings.replication_type`
@@ -769,9 +765,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
-               resource creation, the provider will attempt to clone another instance as indicated in the context. The
-               configuration is detailed below.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: Configuration for creating a new instance as a clone of another instance.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -789,9 +783,9 @@ class DatabaseInstance(pulumi.CustomResource):
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-        :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
-               the master in the replication setup. Note, this requires the master to have
-               `binary_log_enabled` set, as well as existing backups.
+        :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
+               act as the master in the replication setup. Note, this requires the master to
+               have `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
         :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
@@ -803,6 +797,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               <<<<<<< HEAD
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -832,7 +827,7 @@ class DatabaseInstance(pulumi.CustomResource):
           the above documentation:
         * `region`
         * `database_version` (if applicable)
-        * `tier`\
+        * `tier`
           Remove any fields that are not applicable to Second-generation instances:
         * `settings.crash_safe_replication`
         * `settings.replication_type`
@@ -1013,9 +1008,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
-               resource creation, the provider will attempt to clone another instance as indicated in the context. The
-               configuration is detailed below.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: Configuration for creating a new instance as a clone of another instance.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -1036,9 +1029,9 @@ class DatabaseInstance(pulumi.CustomResource):
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
-        :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
-               the master in the replication setup. Note, this requires the master to have
-               `binary_log_enabled` set, as well as existing backups.
+        :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
+               act as the master in the replication setup. Note, this requires the master to
+               have `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
@@ -1052,6 +1045,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               <<<<<<< HEAD
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -1092,9 +1086,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def clone(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceClone']]:
         """
-        The context needed to create this instance as a clone of another instance. When this field is set during
-        resource creation, the provider will attempt to clone another instance as indicated in the context. The
-        configuration is detailed below.
+        Configuration for creating a new instance as a clone of another instance.
         """
         return pulumi.get(self, "clone")
 
@@ -1162,9 +1154,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="masterInstanceName")
     def master_instance_name(self) -> pulumi.Output[str]:
         """
-        The name of the instance that will act as
-        the master in the replication setup. Note, this requires the master to have
-        `binary_log_enabled` set, as well as existing backups.
+        The name of the existing instance that will
+        act as the master in the replication setup. Note, this requires the master to
+        have `binary_log_enabled` set, as well as existing backups.
         """
         return pulumi.get(self, "master_instance_name")
 
@@ -1227,6 +1219,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def restore_backup_context(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceRestoreBackupContext']]:
         """
         The context needed to restore the database to a backup run. This field will
+        <<<<<<< HEAD
         cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
         **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
         block during resource creation/update will trigger the restore action after the resource is created/updated.

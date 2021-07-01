@@ -3464,6 +3464,306 @@ func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkerPoolNetworkConfig struct {
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	PeeredNetwork string `pulumi:"peeredNetwork"`
+}
+
+// WorkerPoolNetworkConfigInput is an input type that accepts WorkerPoolNetworkConfigArgs and WorkerPoolNetworkConfigOutput values.
+// You can construct a concrete instance of `WorkerPoolNetworkConfigInput` via:
+//
+//          WorkerPoolNetworkConfigArgs{...}
+type WorkerPoolNetworkConfigInput interface {
+	pulumi.Input
+
+	ToWorkerPoolNetworkConfigOutput() WorkerPoolNetworkConfigOutput
+	ToWorkerPoolNetworkConfigOutputWithContext(context.Context) WorkerPoolNetworkConfigOutput
+}
+
+type WorkerPoolNetworkConfigArgs struct {
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
+}
+
+func (WorkerPoolNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (i WorkerPoolNetworkConfigArgs) ToWorkerPoolNetworkConfigOutput() WorkerPoolNetworkConfigOutput {
+	return i.ToWorkerPoolNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolNetworkConfigArgs) ToWorkerPoolNetworkConfigOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolNetworkConfigOutput)
+}
+
+func (i WorkerPoolNetworkConfigArgs) ToWorkerPoolNetworkConfigPtrOutput() WorkerPoolNetworkConfigPtrOutput {
+	return i.ToWorkerPoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolNetworkConfigArgs) ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolNetworkConfigOutput).ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolNetworkConfigPtrInput is an input type that accepts WorkerPoolNetworkConfigArgs, WorkerPoolNetworkConfigPtr and WorkerPoolNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolNetworkConfigPtrInput` via:
+//
+//          WorkerPoolNetworkConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkerPoolNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolNetworkConfigPtrOutput() WorkerPoolNetworkConfigPtrOutput
+	ToWorkerPoolNetworkConfigPtrOutputWithContext(context.Context) WorkerPoolNetworkConfigPtrOutput
+}
+
+type workerPoolNetworkConfigPtrType WorkerPoolNetworkConfigArgs
+
+func WorkerPoolNetworkConfigPtr(v *WorkerPoolNetworkConfigArgs) WorkerPoolNetworkConfigPtrInput {
+	return (*workerPoolNetworkConfigPtrType)(v)
+}
+
+func (*workerPoolNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (i *workerPoolNetworkConfigPtrType) ToWorkerPoolNetworkConfigPtrOutput() WorkerPoolNetworkConfigPtrOutput {
+	return i.ToWorkerPoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolNetworkConfigPtrType) ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolNetworkConfigPtrOutput)
+}
+
+type WorkerPoolNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (o WorkerPoolNetworkConfigOutput) ToWorkerPoolNetworkConfigOutput() WorkerPoolNetworkConfigOutput {
+	return o
+}
+
+func (o WorkerPoolNetworkConfigOutput) ToWorkerPoolNetworkConfigOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigOutput {
+	return o
+}
+
+func (o WorkerPoolNetworkConfigOutput) ToWorkerPoolNetworkConfigPtrOutput() WorkerPoolNetworkConfigPtrOutput {
+	return o.ToWorkerPoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolNetworkConfigOutput) ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigPtrOutput {
+	return o.ApplyT(func(v WorkerPoolNetworkConfig) *WorkerPoolNetworkConfig {
+		return &v
+	}).(WorkerPoolNetworkConfigPtrOutput)
+}
+
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+func (o WorkerPoolNetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolNetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+type WorkerPoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (o WorkerPoolNetworkConfigPtrOutput) ToWorkerPoolNetworkConfigPtrOutput() WorkerPoolNetworkConfigPtrOutput {
+	return o
+}
+
+func (o WorkerPoolNetworkConfigPtrOutput) ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigPtrOutput {
+	return o
+}
+
+func (o WorkerPoolNetworkConfigPtrOutput) Elem() WorkerPoolNetworkConfigOutput {
+	return o.ApplyT(func(v *WorkerPoolNetworkConfig) WorkerPoolNetworkConfig { return *v }).(WorkerPoolNetworkConfigOutput)
+}
+
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+func (o WorkerPoolNetworkConfigPtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PeeredNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolWorkerConfig struct {
+	// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+	MachineType *string `pulumi:"machineType"`
+	// If true, workers are created without any public address, which prevents network egress to public IPs.
+	NoExternalIp *bool `pulumi:"noExternalIp"`
+}
+
+// WorkerPoolWorkerConfigInput is an input type that accepts WorkerPoolWorkerConfigArgs and WorkerPoolWorkerConfigOutput values.
+// You can construct a concrete instance of `WorkerPoolWorkerConfigInput` via:
+//
+//          WorkerPoolWorkerConfigArgs{...}
+type WorkerPoolWorkerConfigInput interface {
+	pulumi.Input
+
+	ToWorkerPoolWorkerConfigOutput() WorkerPoolWorkerConfigOutput
+	ToWorkerPoolWorkerConfigOutputWithContext(context.Context) WorkerPoolWorkerConfigOutput
+}
+
+type WorkerPoolWorkerConfigArgs struct {
+	// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// If true, workers are created without any public address, which prevents network egress to public IPs.
+	NoExternalIp pulumi.BoolPtrInput `pulumi:"noExternalIp"`
+}
+
+func (WorkerPoolWorkerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (i WorkerPoolWorkerConfigArgs) ToWorkerPoolWorkerConfigOutput() WorkerPoolWorkerConfigOutput {
+	return i.ToWorkerPoolWorkerConfigOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolWorkerConfigArgs) ToWorkerPoolWorkerConfigOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolWorkerConfigOutput)
+}
+
+func (i WorkerPoolWorkerConfigArgs) ToWorkerPoolWorkerConfigPtrOutput() WorkerPoolWorkerConfigPtrOutput {
+	return i.ToWorkerPoolWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolWorkerConfigArgs) ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolWorkerConfigOutput).ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolWorkerConfigPtrInput is an input type that accepts WorkerPoolWorkerConfigArgs, WorkerPoolWorkerConfigPtr and WorkerPoolWorkerConfigPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolWorkerConfigPtrInput` via:
+//
+//          WorkerPoolWorkerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkerPoolWorkerConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolWorkerConfigPtrOutput() WorkerPoolWorkerConfigPtrOutput
+	ToWorkerPoolWorkerConfigPtrOutputWithContext(context.Context) WorkerPoolWorkerConfigPtrOutput
+}
+
+type workerPoolWorkerConfigPtrType WorkerPoolWorkerConfigArgs
+
+func WorkerPoolWorkerConfigPtr(v *WorkerPoolWorkerConfigArgs) WorkerPoolWorkerConfigPtrInput {
+	return (*workerPoolWorkerConfigPtrType)(v)
+}
+
+func (*workerPoolWorkerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (i *workerPoolWorkerConfigPtrType) ToWorkerPoolWorkerConfigPtrOutput() WorkerPoolWorkerConfigPtrOutput {
+	return i.ToWorkerPoolWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolWorkerConfigPtrType) ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolWorkerConfigPtrOutput)
+}
+
+type WorkerPoolWorkerConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolWorkerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigOutput() WorkerPoolWorkerConfigOutput {
+	return o
+}
+
+func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigOutput {
+	return o
+}
+
+func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigPtrOutput() WorkerPoolWorkerConfigPtrOutput {
+	return o.ToWorkerPoolWorkerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigPtrOutput {
+	return o.ApplyT(func(v WorkerPoolWorkerConfig) *WorkerPoolWorkerConfig {
+		return &v
+	}).(WorkerPoolWorkerConfigPtrOutput)
+}
+
+// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+func (o WorkerPoolWorkerConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolWorkerConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+func (o WorkerPoolWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolWorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// If true, workers are created without any public address, which prevents network egress to public IPs.
+func (o WorkerPoolWorkerConfigOutput) NoExternalIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkerPoolWorkerConfig) *bool { return v.NoExternalIp }).(pulumi.BoolPtrOutput)
+}
+
+type WorkerPoolWorkerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolWorkerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (o WorkerPoolWorkerConfigPtrOutput) ToWorkerPoolWorkerConfigPtrOutput() WorkerPoolWorkerConfigPtrOutput {
+	return o
+}
+
+func (o WorkerPoolWorkerConfigPtrOutput) ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigPtrOutput {
+	return o
+}
+
+func (o WorkerPoolWorkerConfigPtrOutput) Elem() WorkerPoolWorkerConfigOutput {
+	return o.ApplyT(func(v *WorkerPoolWorkerConfig) WorkerPoolWorkerConfig { return *v }).(WorkerPoolWorkerConfigOutput)
+}
+
+// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+func (o WorkerPoolWorkerConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolWorkerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+func (o WorkerPoolWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, workers are created without any public address, which prevents network egress to public IPs.
+func (o WorkerPoolWorkerConfigPtrOutput) NoExternalIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolWorkerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoExternalIp
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TriggerBuildOutput{})
 	pulumi.RegisterOutputType(TriggerBuildPtrOutput{})
@@ -3497,4 +3797,8 @@ func init() {
 	pulumi.RegisterOutputType(TriggerGithubPushPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTriggerTemplateOutput{})
 	pulumi.RegisterOutputType(TriggerTriggerTemplatePtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolNetworkConfigOutput{})
+	pulumi.RegisterOutputType(WorkerPoolNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolWorkerConfigOutput{})
+	pulumi.RegisterOutputType(WorkerPoolWorkerConfigPtrOutput{})
 }

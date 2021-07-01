@@ -2113,6 +2113,15 @@ export namespace appengine {
         name: pulumi.Input<string>;
     }
 
+    export interface ServiceNetworkSettingsNetworkSettings {
+        /**
+         * The ingress settings for version or service.
+         * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+         * Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+         */
+        ingressTrafficAllowed?: pulumi.Input<string>;
+    }
+
     export interface StandardAppVersionAutomaticScaling {
         /**
          * Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
@@ -3360,6 +3369,10 @@ export namespace bigtable {
          * The ID of the Cloud Bigtable cluster.
          */
         clusterId: pulumi.Input<string>;
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+         */
+        kmsKeyName?: pulumi.Input<string>;
         /**
          * The number of nodes in your Cloud Bigtable cluster.
          * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
@@ -4752,6 +4765,28 @@ export namespace cloudbuild {
          */
         tagName?: pulumi.Input<string>;
     }
+
+    export interface WorkerPoolNetworkConfig {
+        /**
+         * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+         */
+        peeredNetwork: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolWorkerConfig {
+        /**
+         * Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+         */
+        diskSizeGb?: pulumi.Input<number>;
+        /**
+         * Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+         */
+        machineType?: pulumi.Input<string>;
+        /**
+         * If true, workers are created without any public address, which prevents network egress to public IPs.
+         */
+        noExternalIp?: pulumi.Input<boolean>;
+    }
 }
 
 export namespace cloudfunctions {
@@ -5795,6 +5830,7 @@ export namespace composer {
          * manually changed to a non-standard values.
          */
         machineType?: pulumi.Input<string>;
+        maxPodsPerNode?: pulumi.Input<number>;
         /**
          * The Compute Engine network to be used for machine
          * communications, specified as a self-link, relative resource name
@@ -23020,6 +23056,27 @@ export namespace secretmanager {
          */
         kmsKeyName: pulumi.Input<string>;
     }
+
+    export interface SecretRotation {
+        /**
+         * Timestamp in UTC at which the Secret is scheduled to rotate.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        nextRotationTime?: pulumi.Input<string>;
+        /**
+         * The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+         * If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
+         */
+        rotationPeriod?: pulumi.Input<string>;
+    }
+
+    export interface SecretTopic {
+        /**
+         * The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
+         * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+         */
+        name: pulumi.Input<string>;
+    }
 }
 
 export namespace serviceAccount {
@@ -23557,15 +23614,15 @@ export namespace storage {
          */
         age?: pulumi.Input<number>;
         /**
-         * Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+         * A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
          */
         createdBefore?: pulumi.Input<string>;
         /**
-         * Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+         * A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
          */
         customTimeBefore?: pulumi.Input<string>;
         /**
-         * Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+         * Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
          */
         daysSinceCustomTime?: pulumi.Input<number>;
         /**
@@ -23880,6 +23937,16 @@ export namespace tpu {
          * Defines whether the TPU instance is preemptible.
          */
         preemptible: pulumi.Input<boolean>;
+    }
+}
+
+export namespace vertex {
+    export interface AiDatasetEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+         * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+         */
+        kmsKeyName?: pulumi.Input<string>;
     }
 }
 

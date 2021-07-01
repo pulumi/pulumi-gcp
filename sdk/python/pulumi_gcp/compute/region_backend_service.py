@@ -1119,8 +1119,7 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port=80,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
             region="us-central1",
             health_checks=[default_region_health_check.id],
@@ -1134,8 +1133,7 @@ class RegionBackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ),
             load_balancing_scheme="EXTERNAL",
-            protocol="HTTP",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            protocol="HTTP")
         ```
         ### Region Backend Service Ilb Round Robin
 
@@ -1418,8 +1416,7 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port=80,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
             region="us-central1",
             health_checks=[default_region_health_check.id],
@@ -1433,8 +1430,7 @@ class RegionBackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ),
             load_balancing_scheme="EXTERNAL",
-            protocol="HTTP",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            protocol="HTTP")
         ```
         ### Region Backend Service Ilb Round Robin
 

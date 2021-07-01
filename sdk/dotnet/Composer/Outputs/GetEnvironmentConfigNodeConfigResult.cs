@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly int DiskSizeGb;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult> IpAllocationPolicies;
         public readonly string MachineType;
+        public readonly int MaxPodsPerNode;
         public readonly string Network;
         public readonly ImmutableArray<string> OauthScopes;
         public readonly string ServiceAccount;
@@ -30,6 +31,8 @@ namespace Pulumi.Gcp.Composer.Outputs
             ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult> ipAllocationPolicies,
 
             string machineType,
+
+            int maxPodsPerNode,
 
             string network,
 
@@ -46,6 +49,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             DiskSizeGb = diskSizeGb;
             IpAllocationPolicies = ipAllocationPolicies;
             MachineType = machineType;
+            MaxPodsPerNode = maxPodsPerNode;
             Network = network;
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;

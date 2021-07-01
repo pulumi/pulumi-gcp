@@ -12,6 +12,7 @@ export * from "./engineSplitTraffic";
 export * from "./firewallRule";
 export * from "./flexibleAppVersion";
 export * from "./getDefaultServiceAccount";
+export * from "./serviceNetworkSettings";
 export * from "./standardAppVersion";
 
 // Import resources to register:
@@ -21,6 +22,7 @@ import { DomainMapping } from "./domainMapping";
 import { EngineSplitTraffic } from "./engineSplitTraffic";
 import { FirewallRule } from "./firewallRule";
 import { FlexibleAppVersion } from "./flexibleAppVersion";
+import { ServiceNetworkSettings } from "./serviceNetworkSettings";
 import { StandardAppVersion } from "./standardAppVersion";
 
 const _module = {
@@ -39,6 +41,8 @@ const _module = {
                 return new FirewallRule(name, <any>undefined, { urn })
             case "gcp:appengine/flexibleAppVersion:FlexibleAppVersion":
                 return new FlexibleAppVersion(name, <any>undefined, { urn })
+            case "gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings":
+                return new ServiceNetworkSettings(name, <any>undefined, { urn })
             case "gcp:appengine/standardAppVersion:StandardAppVersion":
                 return new StandardAppVersion(name, <any>undefined, { urn })
             default:
@@ -52,4 +56,5 @@ pulumi.runtime.registerResourceModule("gcp", "appengine/domainMapping", _module)
 pulumi.runtime.registerResourceModule("gcp", "appengine/engineSplitTraffic", _module)
 pulumi.runtime.registerResourceModule("gcp", "appengine/firewallRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "appengine/flexibleAppVersion", _module)
+pulumi.runtime.registerResourceModule("gcp", "appengine/serviceNetworkSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "appengine/standardAppVersion", _module)

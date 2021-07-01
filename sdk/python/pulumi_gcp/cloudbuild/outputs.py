@@ -26,6 +26,8 @@ __all__ = [
     'TriggerGithubPullRequest',
     'TriggerGithubPush',
     'TriggerTriggerTemplate',
+    'WorkerPoolNetworkConfig',
+    'WorkerPoolWorkerConfig',
 ]
 
 @pulumi.output_type
@@ -1568,5 +1570,104 @@ class TriggerTriggerTemplate(dict):
         described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
+class WorkerPoolNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "peeredNetwork":
+            suggest = "peered_network"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPoolNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPoolNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPoolNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 peered_network: str):
+        """
+        :param str peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        """
+        pulumi.set(__self__, "peered_network", peered_network)
+
+    @property
+    @pulumi.getter(name="peeredNetwork")
+    def peered_network(self) -> str:
+        """
+        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        """
+        return pulumi.get(self, "peered_network")
+
+
+@pulumi.output_type
+class WorkerPoolWorkerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "noExternalIp":
+            suggest = "no_external_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPoolWorkerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPoolWorkerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPoolWorkerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[int] = None,
+                 machine_type: Optional[str] = None,
+                 no_external_ip: Optional[bool] = None):
+        """
+        :param int disk_size_gb: Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        :param str machine_type: Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+        :param bool no_external_ip: If true, workers are created without any public address, which prevents network egress to public IPs.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if no_external_ip is not None:
+            pulumi.set(__self__, "no_external_ip", no_external_ip)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[int]:
+        """
+        Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        """
+        Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="noExternalIp")
+    def no_external_ip(self) -> Optional[bool]:
+        """
+        If true, workers are created without any public address, which prevents network egress to public IPs.
+        """
+        return pulumi.get(self, "no_external_ip")
 
 

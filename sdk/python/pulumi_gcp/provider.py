@@ -34,6 +34,7 @@ class ProviderArgs:
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -111,6 +112,7 @@ class ProviderArgs:
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
+                 vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -157,6 +159,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_billing_custom_endpoint", cloud_billing_custom_endpoint)
         if cloud_build_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_build_custom_endpoint", cloud_build_custom_endpoint)
+        if cloud_build_worker_pool_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_build_worker_pool_custom_endpoint", cloud_build_worker_pool_custom_endpoint)
         if cloud_functions_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_functions_custom_endpoint", cloud_functions_custom_endpoint)
         if cloud_identity_custom_endpoint is not None:
@@ -315,6 +319,8 @@ class ProviderArgs:
             pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
         if user_project_override is not None:
             pulumi.set(__self__, "user_project_override", user_project_override)
+        if vertex_ai_custom_endpoint is not None:
+            pulumi.set(__self__, "vertex_ai_custom_endpoint", vertex_ai_custom_endpoint)
         if vpc_access_custom_endpoint is not None:
             pulumi.set(__self__, "vpc_access_custom_endpoint", vpc_access_custom_endpoint)
         if workflows_custom_endpoint is not None:
@@ -503,6 +509,15 @@ class ProviderArgs:
     @cloud_build_custom_endpoint.setter
     def cloud_build_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_build_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudBuildWorkerPoolCustomEndpoint")
+    def cloud_build_worker_pool_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_build_worker_pool_custom_endpoint")
+
+    @cloud_build_worker_pool_custom_endpoint.setter
+    def cloud_build_worker_pool_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_build_worker_pool_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="cloudFunctionsCustomEndpoint")
@@ -1198,6 +1213,15 @@ class ProviderArgs:
         pulumi.set(self, "user_project_override", value)
 
     @property
+    @pulumi.getter(name="vertexAiCustomEndpoint")
+    def vertex_ai_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vertex_ai_custom_endpoint")
+
+    @vertex_ai_custom_endpoint.setter
+    def vertex_ai_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vertex_ai_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="vpcAccessCustomEndpoint")
     def vpc_access_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "vpc_access_custom_endpoint")
@@ -1250,6 +1274,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1327,6 +1352,7 @@ class Provider(pulumi.ProviderResource):
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
+                 vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1387,6 +1413,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1464,6 +1491,7 @@ class Provider(pulumi.ProviderResource):
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
+                 vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1499,6 +1527,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_asset_custom_endpoint"] = cloud_asset_custom_endpoint
             __props__.__dict__["cloud_billing_custom_endpoint"] = cloud_billing_custom_endpoint
             __props__.__dict__["cloud_build_custom_endpoint"] = cloud_build_custom_endpoint
+            __props__.__dict__["cloud_build_worker_pool_custom_endpoint"] = cloud_build_worker_pool_custom_endpoint
             __props__.__dict__["cloud_functions_custom_endpoint"] = cloud_functions_custom_endpoint
             __props__.__dict__["cloud_identity_custom_endpoint"] = cloud_identity_custom_endpoint
             __props__.__dict__["cloud_iot_custom_endpoint"] = cloud_iot_custom_endpoint
@@ -1580,6 +1609,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["tags_custom_endpoint"] = tags_custom_endpoint
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
+            __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
             __props__.__dict__["vpc_access_custom_endpoint"] = vpc_access_custom_endpoint
             __props__.__dict__["workflows_custom_endpoint"] = workflows_custom_endpoint
             if zone is None:
@@ -1685,6 +1715,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudBuildCustomEndpoint")
     def cloud_build_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_build_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="cloudBuildWorkerPoolCustomEndpoint")
+    def cloud_build_worker_pool_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cloud_build_worker_pool_custom_endpoint")
 
     @property
     @pulumi.getter(name="cloudFunctionsCustomEndpoint")
@@ -2055,6 +2090,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tpuCustomEndpoint")
     def tpu_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "tpu_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="vertexAiCustomEndpoint")
+    def vertex_ai_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "vertex_ai_custom_endpoint")
 
     @property
     @pulumi.getter(name="vpcAccessCustomEndpoint")

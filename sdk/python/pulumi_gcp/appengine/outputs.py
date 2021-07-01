@@ -40,6 +40,7 @@ __all__ = [
     'FlexibleAppVersionResources',
     'FlexibleAppVersionResourcesVolume',
     'FlexibleAppVersionVpcAccessConnector',
+    'ServiceNetworkSettingsNetworkSettings',
     'StandardAppVersionAutomaticScaling',
     'StandardAppVersionAutomaticScalingStandardSchedulerSettings',
     'StandardAppVersionBasicScaling',
@@ -2132,6 +2133,46 @@ class FlexibleAppVersionVpcAccessConnector(dict):
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ServiceNetworkSettingsNetworkSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressTrafficAllowed":
+            suggest = "ingress_traffic_allowed"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNetworkSettingsNetworkSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNetworkSettingsNetworkSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNetworkSettingsNetworkSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ingress_traffic_allowed: Optional[str] = None):
+        """
+        :param str ingress_traffic_allowed: The ingress settings for version or service.
+               Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+               Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+        """
+        if ingress_traffic_allowed is not None:
+            pulumi.set(__self__, "ingress_traffic_allowed", ingress_traffic_allowed)
+
+    @property
+    @pulumi.getter(name="ingressTrafficAllowed")
+    def ingress_traffic_allowed(self) -> Optional[str]:
+        """
+        The ingress settings for version or service.
+        Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+        Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+        """
+        return pulumi.get(self, "ingress_traffic_allowed")
 
 
 @pulumi.output_type

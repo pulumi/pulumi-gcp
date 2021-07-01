@@ -5340,6 +5340,145 @@ func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceNetworkSettingsNetworkSettings struct {
+	// The ingress settings for version or service.
+	// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+	// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+	IngressTrafficAllowed *string `pulumi:"ingressTrafficAllowed"`
+}
+
+// ServiceNetworkSettingsNetworkSettingsInput is an input type that accepts ServiceNetworkSettingsNetworkSettingsArgs and ServiceNetworkSettingsNetworkSettingsOutput values.
+// You can construct a concrete instance of `ServiceNetworkSettingsNetworkSettingsInput` via:
+//
+//          ServiceNetworkSettingsNetworkSettingsArgs{...}
+type ServiceNetworkSettingsNetworkSettingsInput interface {
+	pulumi.Input
+
+	ToServiceNetworkSettingsNetworkSettingsOutput() ServiceNetworkSettingsNetworkSettingsOutput
+	ToServiceNetworkSettingsNetworkSettingsOutputWithContext(context.Context) ServiceNetworkSettingsNetworkSettingsOutput
+}
+
+type ServiceNetworkSettingsNetworkSettingsArgs struct {
+	// The ingress settings for version or service.
+	// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+	// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+	IngressTrafficAllowed pulumi.StringPtrInput `pulumi:"ingressTrafficAllowed"`
+}
+
+func (ServiceNetworkSettingsNetworkSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworkSettingsNetworkSettings)(nil)).Elem()
+}
+
+func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetworkSettingsOutput() ServiceNetworkSettingsNetworkSettingsOutput {
+	return i.ToServiceNetworkSettingsNetworkSettingsOutputWithContext(context.Background())
+}
+
+func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetworkSettingsOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsOutput)
+}
+
+func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return i.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsOutput).ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx)
+}
+
+// ServiceNetworkSettingsNetworkSettingsPtrInput is an input type that accepts ServiceNetworkSettingsNetworkSettingsArgs, ServiceNetworkSettingsNetworkSettingsPtr and ServiceNetworkSettingsNetworkSettingsPtrOutput values.
+// You can construct a concrete instance of `ServiceNetworkSettingsNetworkSettingsPtrInput` via:
+//
+//          ServiceNetworkSettingsNetworkSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceNetworkSettingsNetworkSettingsPtrInput interface {
+	pulumi.Input
+
+	ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput
+	ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput
+}
+
+type serviceNetworkSettingsNetworkSettingsPtrType ServiceNetworkSettingsNetworkSettingsArgs
+
+func ServiceNetworkSettingsNetworkSettingsPtr(v *ServiceNetworkSettingsNetworkSettingsArgs) ServiceNetworkSettingsNetworkSettingsPtrInput {
+	return (*serviceNetworkSettingsNetworkSettingsPtrType)(v)
+}
+
+func (*serviceNetworkSettingsNetworkSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNetworkSettingsNetworkSettings)(nil)).Elem()
+}
+
+func (i *serviceNetworkSettingsNetworkSettingsPtrType) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return i.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceNetworkSettingsNetworkSettingsPtrType) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsPtrOutput)
+}
+
+type ServiceNetworkSettingsNetworkSettingsOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkSettingsNetworkSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworkSettingsNetworkSettings)(nil)).Elem()
+}
+
+func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNetworkSettingsOutput() ServiceNetworkSettingsNetworkSettingsOutput {
+	return o
+}
+
+func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNetworkSettingsOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsOutput {
+	return o
+}
+
+func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return o.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return o.ApplyT(func(v ServiceNetworkSettingsNetworkSettings) *ServiceNetworkSettingsNetworkSettings {
+		return &v
+	}).(ServiceNetworkSettingsNetworkSettingsPtrOutput)
+}
+
+// The ingress settings for version or service.
+// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+func (o ServiceNetworkSettingsNetworkSettingsOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceNetworkSettingsNetworkSettings) *string { return v.IngressTrafficAllowed }).(pulumi.StringPtrOutput)
+}
+
+type ServiceNetworkSettingsNetworkSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkSettingsNetworkSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNetworkSettingsNetworkSettings)(nil)).Elem()
+}
+
+func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return o
+}
+
+func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
+	return o
+}
+
+func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) Elem() ServiceNetworkSettingsNetworkSettingsOutput {
+	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) ServiceNetworkSettingsNetworkSettings { return *v }).(ServiceNetworkSettingsNetworkSettingsOutput)
+}
+
+// The ingress settings for version or service.
+// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IngressTrafficAllowed
+	}).(pulumi.StringPtrOutput)
+}
+
 type StandardAppVersionAutomaticScaling struct {
 	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
 	// Defaults to a runtime-specific value.
@@ -7498,6 +7637,8 @@ func init() {
 	pulumi.RegisterOutputType(FlexibleAppVersionResourcesVolumeArrayOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorPtrOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkSettingsNetworkSettingsOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkSettingsNetworkSettingsPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput{})

@@ -83,6 +83,7 @@ import * as storage from "./storage";
 import * as tags from "./tags";
 import * as tpu from "./tpu";
 import * as types from "./types";
+import * as vertex from "./vertex";
 import * as vpcaccess from "./vpcaccess";
 import * as workflows from "./workflows";
 
@@ -161,6 +162,7 @@ export {
     tags,
     tpu,
     types,
+    vertex,
     vpcaccess,
     workflows,
 };

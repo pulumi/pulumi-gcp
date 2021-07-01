@@ -39,6 +39,7 @@ __all__ = [
     'FlexibleAppVersionResourcesArgs',
     'FlexibleAppVersionResourcesVolumeArgs',
     'FlexibleAppVersionVpcAccessConnectorArgs',
+    'ServiceNetworkSettingsNetworkSettingsArgs',
     'StandardAppVersionAutomaticScalingArgs',
     'StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs',
     'StandardAppVersionBasicScalingArgs',
@@ -2078,6 +2079,33 @@ class FlexibleAppVersionVpcAccessConnectorArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class ServiceNetworkSettingsNetworkSettingsArgs:
+    def __init__(__self__, *,
+                 ingress_traffic_allowed: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ingress_traffic_allowed: The ingress settings for version or service.
+               Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+               Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+        """
+        if ingress_traffic_allowed is not None:
+            pulumi.set(__self__, "ingress_traffic_allowed", ingress_traffic_allowed)
+
+    @property
+    @pulumi.getter(name="ingressTrafficAllowed")
+    def ingress_traffic_allowed(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ingress settings for version or service.
+        Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+        Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+        """
+        return pulumi.get(self, "ingress_traffic_allowed")
+
+    @ingress_traffic_allowed.setter
+    def ingress_traffic_allowed(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingress_traffic_allowed", value)
 
 
 @pulumi.input_type

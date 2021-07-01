@@ -75,6 +75,8 @@ class InstanceCluster(dict):
         suggest = None
         if key == "clusterId":
             suggest = "cluster_id"
+        elif key == "kmsKeyName":
+            suggest = "kms_key_name"
         elif key == "numNodes":
             suggest = "num_nodes"
         elif key == "storageType":
@@ -93,11 +95,13 @@ class InstanceCluster(dict):
 
     def __init__(__self__, *,
                  cluster_id: str,
+                 kms_key_name: Optional[str] = None,
                  num_nodes: Optional[int] = None,
                  storage_type: Optional[str] = None,
                  zone: Optional[str] = None):
         """
         :param str cluster_id: The ID of the Cloud Bigtable cluster.
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
         :param int num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
                for a `DEVELOPMENT` instance.
@@ -108,6 +112,8 @@ class InstanceCluster(dict):
                Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if num_nodes is not None:
             pulumi.set(__self__, "num_nodes", num_nodes)
         if storage_type is not None:
@@ -122,6 +128,14 @@ class InstanceCluster(dict):
         The ID of the Cloud Bigtable cluster.
         """
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter(name="numNodes")

@@ -36,6 +36,7 @@ type Provider struct {
 	CloudAssetCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint         pulumi.StringPtrOutput `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudBuildCustomEndpoint"`
+	CloudBuildWorkerPoolCustomEndpoint pulumi.StringPtrOutput `pulumi:"cloudBuildWorkerPoolCustomEndpoint"`
 	CloudFunctionsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint        pulumi.StringPtrOutput `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIotCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudIotCustomEndpoint"`
@@ -110,6 +111,7 @@ type Provider struct {
 	StorageTransferCustomEndpoint      pulumi.StringPtrOutput `pulumi:"storageTransferCustomEndpoint"`
 	TagsCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"tagsCustomEndpoint"`
 	TpuCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"tpuCustomEndpoint"`
+	VertexAiCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
 	VpcAccessCustomEndpoint            pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
 	WorkflowsCustomEndpoint            pulumi.StringPtrOutput `pulumi:"workflowsCustomEndpoint"`
 	Zone                               pulumi.StringPtrOutput `pulumi:"zone"`
@@ -160,6 +162,7 @@ type providerArgs struct {
 	CloudAssetCustomEndpoint           *string           `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint         *string           `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint           *string           `pulumi:"cloudBuildCustomEndpoint"`
+	CloudBuildWorkerPoolCustomEndpoint *string           `pulumi:"cloudBuildWorkerPoolCustomEndpoint"`
 	CloudFunctionsCustomEndpoint       *string           `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint        *string           `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIotCustomEndpoint             *string           `pulumi:"cloudIotCustomEndpoint"`
@@ -237,6 +240,7 @@ type providerArgs struct {
 	TagsCustomEndpoint                 *string           `pulumi:"tagsCustomEndpoint"`
 	TpuCustomEndpoint                  *string           `pulumi:"tpuCustomEndpoint"`
 	UserProjectOverride                *bool             `pulumi:"userProjectOverride"`
+	VertexAiCustomEndpoint             *string           `pulumi:"vertexAiCustomEndpoint"`
 	VpcAccessCustomEndpoint            *string           `pulumi:"vpcAccessCustomEndpoint"`
 	WorkflowsCustomEndpoint            *string           `pulumi:"workflowsCustomEndpoint"`
 	Zone                               *string           `pulumi:"zone"`
@@ -264,6 +268,7 @@ type ProviderArgs struct {
 	CloudAssetCustomEndpoint           pulumi.StringPtrInput
 	CloudBillingCustomEndpoint         pulumi.StringPtrInput
 	CloudBuildCustomEndpoint           pulumi.StringPtrInput
+	CloudBuildWorkerPoolCustomEndpoint pulumi.StringPtrInput
 	CloudFunctionsCustomEndpoint       pulumi.StringPtrInput
 	CloudIdentityCustomEndpoint        pulumi.StringPtrInput
 	CloudIotCustomEndpoint             pulumi.StringPtrInput
@@ -341,6 +346,7 @@ type ProviderArgs struct {
 	TagsCustomEndpoint                 pulumi.StringPtrInput
 	TpuCustomEndpoint                  pulumi.StringPtrInput
 	UserProjectOverride                pulumi.BoolPtrInput
+	VertexAiCustomEndpoint             pulumi.StringPtrInput
 	VpcAccessCustomEndpoint            pulumi.StringPtrInput
 	WorkflowsCustomEndpoint            pulumi.StringPtrInput
 	Zone                               pulumi.StringPtrInput

@@ -92,7 +92,7 @@ export class Instance extends pulumi.CustomResource {
 
     /**
      * The name of the instance's configuration (similar but not
-     * quite the same as a region) which defines defines the geographic placement and
+     * quite the same as a region) which defines the geographic placement and
      * replication of your databases in this instance. It determines where your data
      * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
      * In order to obtain a valid list please consult the
@@ -185,7 +185,7 @@ export class Instance extends pulumi.CustomResource {
 export interface InstanceState {
     /**
      * The name of the instance's configuration (similar but not
-     * quite the same as a region) which defines defines the geographic placement and
+     * quite the same as a region) which defines the geographic placement and
      * replication of your databases in this instance. It determines where your data
      * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
      * In order to obtain a valid list please consult the
@@ -234,7 +234,7 @@ export interface InstanceState {
 export interface InstanceArgs {
     /**
      * The name of the instance's configuration (similar but not
-     * quite the same as a region) which defines defines the geographic placement and
+     * quite the same as a region) which defines the geographic placement and
      * replication of your databases in this instance. It determines where your data
      * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
      * In order to obtain a valid list please consult the

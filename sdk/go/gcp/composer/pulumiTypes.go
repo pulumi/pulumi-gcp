@@ -620,7 +620,8 @@ type EnvironmentConfigNodeConfig struct {
 	// composer-n1-webserver-4 or composer-n1-webserver-8.
 	// Value custom is returned only in response, if Airflow web server parameters were
 	// manually changed to a non-standard values.
-	MachineType *string `pulumi:"machineType"`
+	MachineType    *string `pulumi:"machineType"`
+	MaxPodsPerNode *int    `pulumi:"maxPodsPerNode"`
 	// The Compute Engine network to be used for machine
 	// communications, specified as a self-link, relative resource name
 	// (e.g. "projects/{project}/global/networks/{network}"), by name.
@@ -675,7 +676,8 @@ type EnvironmentConfigNodeConfigArgs struct {
 	// composer-n1-webserver-4 or composer-n1-webserver-8.
 	// Value custom is returned only in response, if Airflow web server parameters were
 	// manually changed to a non-standard values.
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	MachineType    pulumi.StringPtrInput `pulumi:"machineType"`
+	MaxPodsPerNode pulumi.IntPtrInput    `pulumi:"maxPodsPerNode"`
 	// The Compute Engine network to be used for machine
 	// communications, specified as a self-link, relative resource name
 	// (e.g. "projects/{project}/global/networks/{network}"), by name.
@@ -807,6 +809,10 @@ func (o EnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+func (o EnvironmentConfigNodeConfigOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
+}
+
 // The Compute Engine network to be used for machine
 // communications, specified as a self-link, relative resource name
 // (e.g. "projects/{project}/global/networks/{network}"), by name.
@@ -906,6 +912,15 @@ func (o EnvironmentConfigNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutp
 		}
 		return v.MachineType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigNodeConfigPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPodsPerNode
+	}).(pulumi.IntPtrOutput)
 }
 
 // The Compute Engine network to be used for machine
@@ -2538,6 +2553,7 @@ type GetEnvironmentConfigNodeConfig struct {
 	DiskSizeGb           int                                                `pulumi:"diskSizeGb"`
 	IpAllocationPolicies []GetEnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
 	MachineType          string                                             `pulumi:"machineType"`
+	MaxPodsPerNode       int                                                `pulumi:"maxPodsPerNode"`
 	Network              string                                             `pulumi:"network"`
 	OauthScopes          []string                                           `pulumi:"oauthScopes"`
 	ServiceAccount       string                                             `pulumi:"serviceAccount"`
@@ -2561,6 +2577,7 @@ type GetEnvironmentConfigNodeConfigArgs struct {
 	DiskSizeGb           pulumi.IntInput                                            `pulumi:"diskSizeGb"`
 	IpAllocationPolicies GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput `pulumi:"ipAllocationPolicies"`
 	MachineType          pulumi.StringInput                                         `pulumi:"machineType"`
+	MaxPodsPerNode       pulumi.IntInput                                            `pulumi:"maxPodsPerNode"`
 	Network              pulumi.StringInput                                         `pulumi:"network"`
 	OauthScopes          pulumi.StringArrayInput                                    `pulumi:"oauthScopes"`
 	ServiceAccount       pulumi.StringInput                                         `pulumi:"serviceAccount"`
@@ -2632,6 +2649,10 @@ func (o GetEnvironmentConfigNodeConfigOutput) IpAllocationPolicies() GetEnvironm
 
 func (o GetEnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) MaxPodsPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
 
 func (o GetEnvironmentConfigNodeConfigOutput) Network() pulumi.StringOutput {

@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
+        /// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        /// </summary>
+        public readonly string? KmsKeyName;
+        /// <summary>
         /// The number of nodes in your Cloud Bigtable cluster.
         /// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
         /// for a `DEVELOPMENT` instance.
@@ -39,6 +43,8 @@ namespace Pulumi.Gcp.BigTable.Outputs
         private InstanceCluster(
             string clusterId,
 
+            string? kmsKeyName,
+
             int? numNodes,
 
             string? storageType,
@@ -46,6 +52,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
             string? zone)
         {
             ClusterId = clusterId;
+            KmsKeyName = kmsKeyName;
             NumNodes = numNodes;
             StorageType = storageType;
             Zone = zone;

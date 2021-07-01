@@ -36,6 +36,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        [Input("maxPodsPerNode")]
+        public Input<int>? MaxPodsPerNode { get; set; }
+
         /// <summary>
         /// The Compute Engine network to be used for machine
         /// communications, specified as a self-link, relative resource name

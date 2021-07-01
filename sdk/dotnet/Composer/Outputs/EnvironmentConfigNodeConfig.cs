@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// manually changed to a non-standard values.
         /// </summary>
         public readonly string? MachineType;
+        public readonly int? MaxPodsPerNode;
         /// <summary>
         /// The Compute Engine network to be used for machine
         /// communications, specified as a self-link, relative resource name
@@ -81,6 +82,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string? machineType,
 
+            int? maxPodsPerNode,
+
             string? network,
 
             ImmutableArray<string> oauthScopes,
@@ -96,6 +99,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             DiskSizeGb = diskSizeGb;
             IpAllocationPolicy = ipAllocationPolicy;
             MachineType = machineType;
+            MaxPodsPerNode = maxPodsPerNode;
             Network = network;
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;

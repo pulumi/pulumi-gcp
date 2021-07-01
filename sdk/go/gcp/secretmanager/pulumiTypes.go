@@ -855,6 +855,264 @@ func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) K
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecretRotation struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NextRotationTime *string `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+	// If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
+	RotationPeriod *string `pulumi:"rotationPeriod"`
+}
+
+// SecretRotationInput is an input type that accepts SecretRotationArgs and SecretRotationOutput values.
+// You can construct a concrete instance of `SecretRotationInput` via:
+//
+//          SecretRotationArgs{...}
+type SecretRotationInput interface {
+	pulumi.Input
+
+	ToSecretRotationOutput() SecretRotationOutput
+	ToSecretRotationOutputWithContext(context.Context) SecretRotationOutput
+}
+
+type SecretRotationArgs struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NextRotationTime pulumi.StringPtrInput `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+	// If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
+	RotationPeriod pulumi.StringPtrInput `pulumi:"rotationPeriod"`
+}
+
+func (SecretRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotation)(nil)).Elem()
+}
+
+func (i SecretRotationArgs) ToSecretRotationOutput() SecretRotationOutput {
+	return i.ToSecretRotationOutputWithContext(context.Background())
+}
+
+func (i SecretRotationArgs) ToSecretRotationOutputWithContext(ctx context.Context) SecretRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationOutput)
+}
+
+func (i SecretRotationArgs) ToSecretRotationPtrOutput() SecretRotationPtrOutput {
+	return i.ToSecretRotationPtrOutputWithContext(context.Background())
+}
+
+func (i SecretRotationArgs) ToSecretRotationPtrOutputWithContext(ctx context.Context) SecretRotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationOutput).ToSecretRotationPtrOutputWithContext(ctx)
+}
+
+// SecretRotationPtrInput is an input type that accepts SecretRotationArgs, SecretRotationPtr and SecretRotationPtrOutput values.
+// You can construct a concrete instance of `SecretRotationPtrInput` via:
+//
+//          SecretRotationArgs{...}
+//
+//  or:
+//
+//          nil
+type SecretRotationPtrInput interface {
+	pulumi.Input
+
+	ToSecretRotationPtrOutput() SecretRotationPtrOutput
+	ToSecretRotationPtrOutputWithContext(context.Context) SecretRotationPtrOutput
+}
+
+type secretRotationPtrType SecretRotationArgs
+
+func SecretRotationPtr(v *SecretRotationArgs) SecretRotationPtrInput {
+	return (*secretRotationPtrType)(v)
+}
+
+func (*secretRotationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretRotation)(nil)).Elem()
+}
+
+func (i *secretRotationPtrType) ToSecretRotationPtrOutput() SecretRotationPtrOutput {
+	return i.ToSecretRotationPtrOutputWithContext(context.Background())
+}
+
+func (i *secretRotationPtrType) ToSecretRotationPtrOutputWithContext(ctx context.Context) SecretRotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationPtrOutput)
+}
+
+type SecretRotationOutput struct{ *pulumi.OutputState }
+
+func (SecretRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotation)(nil)).Elem()
+}
+
+func (o SecretRotationOutput) ToSecretRotationOutput() SecretRotationOutput {
+	return o
+}
+
+func (o SecretRotationOutput) ToSecretRotationOutputWithContext(ctx context.Context) SecretRotationOutput {
+	return o
+}
+
+func (o SecretRotationOutput) ToSecretRotationPtrOutput() SecretRotationPtrOutput {
+	return o.ToSecretRotationPtrOutputWithContext(context.Background())
+}
+
+func (o SecretRotationOutput) ToSecretRotationPtrOutputWithContext(ctx context.Context) SecretRotationPtrOutput {
+	return o.ApplyT(func(v SecretRotation) *SecretRotation {
+		return &v
+	}).(SecretRotationPtrOutput)
+}
+
+// Timestamp in UTC at which the Secret is scheduled to rotate.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o SecretRotationOutput) NextRotationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretRotation) *string { return v.NextRotationTime }).(pulumi.StringPtrOutput)
+}
+
+// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+// If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
+func (o SecretRotationOutput) RotationPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretRotation) *string { return v.RotationPeriod }).(pulumi.StringPtrOutput)
+}
+
+type SecretRotationPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretRotationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretRotation)(nil)).Elem()
+}
+
+func (o SecretRotationPtrOutput) ToSecretRotationPtrOutput() SecretRotationPtrOutput {
+	return o
+}
+
+func (o SecretRotationPtrOutput) ToSecretRotationPtrOutputWithContext(ctx context.Context) SecretRotationPtrOutput {
+	return o
+}
+
+func (o SecretRotationPtrOutput) Elem() SecretRotationOutput {
+	return o.ApplyT(func(v *SecretRotation) SecretRotation { return *v }).(SecretRotationOutput)
+}
+
+// Timestamp in UTC at which the Secret is scheduled to rotate.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o SecretRotationPtrOutput) NextRotationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretRotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextRotationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+// If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
+func (o SecretRotationPtrOutput) RotationPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretRotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RotationPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretTopic struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+	Name string `pulumi:"name"`
+}
+
+// SecretTopicInput is an input type that accepts SecretTopicArgs and SecretTopicOutput values.
+// You can construct a concrete instance of `SecretTopicInput` via:
+//
+//          SecretTopicArgs{...}
+type SecretTopicInput interface {
+	pulumi.Input
+
+	ToSecretTopicOutput() SecretTopicOutput
+	ToSecretTopicOutputWithContext(context.Context) SecretTopicOutput
+}
+
+type SecretTopicArgs struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SecretTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretTopic)(nil)).Elem()
+}
+
+func (i SecretTopicArgs) ToSecretTopicOutput() SecretTopicOutput {
+	return i.ToSecretTopicOutputWithContext(context.Background())
+}
+
+func (i SecretTopicArgs) ToSecretTopicOutputWithContext(ctx context.Context) SecretTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretTopicOutput)
+}
+
+// SecretTopicArrayInput is an input type that accepts SecretTopicArray and SecretTopicArrayOutput values.
+// You can construct a concrete instance of `SecretTopicArrayInput` via:
+//
+//          SecretTopicArray{ SecretTopicArgs{...} }
+type SecretTopicArrayInput interface {
+	pulumi.Input
+
+	ToSecretTopicArrayOutput() SecretTopicArrayOutput
+	ToSecretTopicArrayOutputWithContext(context.Context) SecretTopicArrayOutput
+}
+
+type SecretTopicArray []SecretTopicInput
+
+func (SecretTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretTopic)(nil)).Elem()
+}
+
+func (i SecretTopicArray) ToSecretTopicArrayOutput() SecretTopicArrayOutput {
+	return i.ToSecretTopicArrayOutputWithContext(context.Background())
+}
+
+func (i SecretTopicArray) ToSecretTopicArrayOutputWithContext(ctx context.Context) SecretTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretTopicArrayOutput)
+}
+
+type SecretTopicOutput struct{ *pulumi.OutputState }
+
+func (SecretTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretTopic)(nil)).Elem()
+}
+
+func (o SecretTopicOutput) ToSecretTopicOutput() SecretTopicOutput {
+	return o
+}
+
+func (o SecretTopicOutput) ToSecretTopicOutputWithContext(ctx context.Context) SecretTopicOutput {
+	return o
+}
+
+// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+func (o SecretTopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretTopic) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SecretTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretTopic)(nil)).Elem()
+}
+
+func (o SecretTopicArrayOutput) ToSecretTopicArrayOutput() SecretTopicArrayOutput {
+	return o
+}
+
+func (o SecretTopicArrayOutput) ToSecretTopicArrayOutputWithContext(ctx context.Context) SecretTopicArrayOutput {
+	return o
+}
+
+func (o SecretTopicArrayOutput) Index(i pulumi.IntInput) SecretTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretTopic {
+		return vs[0].([]SecretTopic)[vs[1].(int)]
+	}).(SecretTopicOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecretIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(SecretIamBindingConditionPtrOutput{})
@@ -868,4 +1126,8 @@ func init() {
 	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaArrayOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(SecretRotationOutput{})
+	pulumi.RegisterOutputType(SecretRotationPtrOutput{})
+	pulumi.RegisterOutputType(SecretTopicOutput{})
+	pulumi.RegisterOutputType(SecretTopicArrayOutput{})
 }

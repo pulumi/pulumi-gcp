@@ -62,8 +62,6 @@ import * as utilities from "../utilities";
  *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
- * }, {
- *     provider: google_beta,
  * });
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
  *     healthChecks: [defaultHttpHealthCheck.id],
@@ -76,8 +74,6 @@ import * as utilities from "../utilities";
  *         negativeCaching: true,
  *         signedUrlCacheMaxAgeSec: 7200,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Backend Service Traffic Director Round Robin
