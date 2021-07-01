@@ -9,4 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
+
+    public sealed class JobStatusArgs : Pulumi.ResourceArgs
+    {
+        [Input("details")]
+        public Input<string>? Details { get; set; }
+
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("stateStartTime")]
+        public Input<string>? StateStartTime { get; set; }
+
+        [Input("substate")]
+        public Input<string>? Substate { get; set; }
+
+        public JobStatusArgs()
+        {
+        }
+    }
 }

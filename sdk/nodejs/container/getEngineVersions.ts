@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *         password: "adoy.rm",
  *     },
  * });
- * export const stableChannelVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion.STABLE);
+ * export const stableChannelVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
  * ```
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {

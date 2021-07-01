@@ -9,4 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute.Inputs
 {
+
+    public sealed class InstanceFromMachineImageScratchDiskArgs : Pulumi.ResourceArgs
+    {
+        [Input("interface", required: true)]
+        public Input<string> Interface { get; set; } = null!;
+
+        public InstanceFromMachineImageScratchDiskArgs()
+        {
+        }
+    }
 }

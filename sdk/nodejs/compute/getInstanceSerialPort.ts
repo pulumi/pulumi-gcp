@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     zone: zone,
  *     port: 4,
  * }));
- * export const serialOut = serial.contents;
+ * export const serialOut = serial.apply(serial => serial.contents);
  * ```
  */
 export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {

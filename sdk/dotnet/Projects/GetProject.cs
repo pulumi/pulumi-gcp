@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Projects
         ///         }));
         ///         var deletion_candidate = my_org_projects.Apply(my_org_projects =&gt; Output.Create(Gcp.Organizations.GetProject.InvokeAsync(new Gcp.Organizations.GetProjectArgs
         ///         {
-        ///             ProjectId = my_org_projects.Projects[0].ProjectId,
+        ///             ProjectId = my_org_projects.Projects?[0]?.ProjectId,
         ///         })));
         ///     }
         /// 

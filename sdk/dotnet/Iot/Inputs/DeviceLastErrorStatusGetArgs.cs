@@ -13,10 +13,10 @@ namespace Pulumi.Gcp.Iot.Inputs
     public sealed class DeviceLastErrorStatusGetArgs : Pulumi.ResourceArgs
     {
         [Input("details")]
-        private InputList<ImmutableDictionary<string, object>>? _details;
-        public InputList<ImmutableDictionary<string, object>> Details
+        private InputList<ImmutableDictionary<string, Input<object>>>? _details;
+        public InputList<ImmutableDictionary<string, Input<object>>> Details
         {
-            get => _details ?? (_details = new InputList<ImmutableDictionary<string, object>>());
+            get => _details ?? (_details = new InputList<ImmutableDictionary<string, Input<object>>>());
             set => _details = value;
         }
 

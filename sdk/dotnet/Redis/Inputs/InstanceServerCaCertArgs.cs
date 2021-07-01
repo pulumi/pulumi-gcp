@@ -9,4 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Redis.Inputs
 {
+
+    public sealed class InstanceServerCaCertArgs : Pulumi.ResourceArgs
+    {
+        [Input("cert")]
+        public Input<string>? Cert { get; set; }
+
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        [Input("serialNumber")]
+        public Input<string>? SerialNumber { get; set; }
+
+        [Input("sha1Fingerprint")]
+        public Input<string>? Sha1Fingerprint { get; set; }
+
+        public InstanceServerCaCertArgs()
+        {
+        }
+    }
 }

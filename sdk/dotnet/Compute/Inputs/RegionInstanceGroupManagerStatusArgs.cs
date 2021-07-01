@@ -9,4 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute.Inputs
 {
+
+    public sealed class RegionInstanceGroupManagerStatusArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        /// </summary>
+        [Input("isStable")]
+        public Input<bool>? IsStable { get; set; }
+
+        [Input("statefuls")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatusStatefulArgs>? _statefuls;
+
+        /// <summary>
+        /// Stateful status of the given Instance Group Manager.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatusStatefulArgs> Statefuls
+        {
+            get => _statefuls ?? (_statefuls = new InputList<Inputs.RegionInstanceGroupManagerStatusStatefulArgs>());
+            set => _statefuls = value;
+        }
+
+        [Input("versionTargets")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatusVersionTargetArgs>? _versionTargets;
+
+        /// <summary>
+        /// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatusVersionTargetArgs> VersionTargets
+        {
+            get => _versionTargets ?? (_versionTargets = new InputList<Inputs.RegionInstanceGroupManagerStatusVersionTargetArgs>());
+            set => _versionTargets = value;
+        }
+
+        public RegionInstanceGroupManagerStatusArgs()
+        {
+        }
+    }
 }

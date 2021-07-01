@@ -9,4 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs : Pulumi.ResourceArgs
+    {
+        [Input("clientAuth")]
+        public Input<bool>? ClientAuth { get; set; }
+
+        [Input("codeSigning")]
+        public Input<bool>? CodeSigning { get; set; }
+
+        [Input("emailProtection")]
+        public Input<bool>? EmailProtection { get; set; }
+
+        [Input("ocspSigning")]
+        public Input<bool>? OcspSigning { get; set; }
+
+        [Input("serverAuth")]
+        public Input<bool>? ServerAuth { get; set; }
+
+        [Input("timeStamping")]
+        public Input<bool>? TimeStamping { get; set; }
+
+        public CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs()
+        {
+        }
+    }
 }

@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Composer
         ///             {
         ///                 SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
         ///                 {
-        ///                     ImageVersion = all.Apply(all =&gt; all.ImageVersions[0].ImageVersionId),
+        ///                     ImageVersion = all.Apply(all =&gt; all.ImageVersions?[0]?.ImageVersionId),
         ///                 },
         ///             },
         ///         });

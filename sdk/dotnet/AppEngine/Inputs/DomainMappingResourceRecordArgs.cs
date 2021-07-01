@@ -9,4 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
+
+    public sealed class DomainMappingResourceRecordArgs : Pulumi.ResourceArgs
+    {
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("rrdata")]
+        public Input<string>? Rrdata { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        public DomainMappingResourceRecordArgs()
+        {
+        }
+    }
 }

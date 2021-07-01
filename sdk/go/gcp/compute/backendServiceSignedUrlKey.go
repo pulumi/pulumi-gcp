@@ -93,9 +93,9 @@ import (
 // 					Group: webservers.InstanceGroup,
 // 				},
 // 			},
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				_default.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err

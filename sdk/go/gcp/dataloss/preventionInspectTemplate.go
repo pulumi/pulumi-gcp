@@ -57,18 +57,18 @@ import (
 // 					},
 // 				},
 // 				Limits: &dataloss.PreventionInspectTemplateInspectConfigLimitsArgs{
-// 					MaxFindingsPerInfoType: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"infoType": pulumi.StringMap{
-// 								"name": pulumi.String("PERSON_NAME"),
+// 					MaxFindingsPerInfoType: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"infoType": map[string]interface{}{
+// 								"name": "PERSON_NAME",
 // 							},
-// 							"maxFindings": pulumi.String("75"),
+// 							"maxFindings": "75",
 // 						},
-// 						pulumi.Map{
-// 							"infoType": pulumi.StringMap{
-// 								"name": pulumi.String("LAST_NAME"),
+// 						map[string]interface{}{
+// 							"infoType": map[string]interface{}{
+// 								"name": "LAST_NAME",
 // 							},
-// 							"maxFindings": pulumi.String("80"),
+// 							"maxFindings": "80",
 // 						},
 // 					},
 // 					MaxFindingsPerItem:    pulumi.Int(10),
