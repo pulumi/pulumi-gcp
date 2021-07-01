@@ -7,6 +7,9 @@ _(none)_
 ---
 
 ## 5.11.0 (2021-07-01)
+_(none)_
+
+## 5.11.0 (2021-07-01)
 * Upgrade to v3.74.0 of the Google Beta Terraform Provider
 
 ## 5.10.1 (2021-06-23)
