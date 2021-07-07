@@ -39,43 +39,6 @@ import (
 // 	})
 // }
 // ```
-// ### Example Usage - With instances and named ports
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewInstanceGroup(ctx, "webservers", &compute.InstanceGroupArgs{
-// 			Description: pulumi.String("Test instance group"),
-// 			Instances: pulumi.StringArray{
-// 				pulumi.Any(google_compute_instance.Test.Id),
-// 				pulumi.Any(google_compute_instance.Test2.Id),
-// 			},
-// 			NamedPorts: compute.InstanceGroupNamedPortArray{
-// 				&compute.InstanceGroupNamedPortArgs{
-// 					Name: pulumi.String("http"),
-// 					Port: pulumi.Int(8080),
-// 				},
-// 				&compute.InstanceGroupNamedPortArgs{
-// 					Name: pulumi.String("https"),
-// 					Port: pulumi.Int(8443),
-// 				},
-// 			},
-// 			Zone: pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Example Usage - Recreating an instance group in use
 // Recreating an instance group that's in use by another resource will give a
 // `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
@@ -150,9 +113,9 @@ import (
 // 					Group: stagingGroup.ID(),
 // 				},
 // 			},
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				stagingHealth.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err

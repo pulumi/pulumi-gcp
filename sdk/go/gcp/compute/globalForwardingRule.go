@@ -44,9 +44,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -174,9 +174,9 @@ import (
 // 					MaxRatePerInstance: pulumi.Float64(50),
 // 				},
 // 			},
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHealthCheck.ID(),
-// 			},
+// 			}),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err

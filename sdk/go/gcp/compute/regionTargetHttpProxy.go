@@ -47,9 +47,9 @@ import (
 // 			Protocol:            pulumi.String("HTTP"),
 // 			TimeoutSec:          pulumi.Int(10),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultRegionHealthCheck.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err

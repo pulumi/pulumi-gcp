@@ -71,6 +71,80 @@ import (
 // 	})
 // }
 // ```
+// ### Router Nat Manual Ips
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		net, err := compute.NewNetwork(ctx, "net", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+// 			Network:     net.ID(),
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+// 			Region:  subnet.Region,
+// 			Network: net.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var address []*compute.Address
+// 		for key0, _ := range 2 {
+// 			__res, err := compute.NewAddress(ctx, fmt.Sprintf("address-%v", key0), &compute.AddressArgs{
+// 				Region: subnet.Region,
+// 			})
+// 			if err != nil {
+// 				return err
+// 			}
+// 			address = append(address, __res)
+// 		}
+// 		var splat0 pulumi.StringArray
+// 		for _, val0 := range address {
+// 			splat0 = append(splat0, val0.SelfLink)
+// 		}
+// 		_, err = compute.NewRouterNat(ctx, "natManual", &compute.RouterNatArgs{
+// 			Router:                        router.Name,
+// 			Region:                        router.Region,
+// 			NatIpAllocateOption:           pulumi.String("MANUAL_ONLY"),
+// 			NatIps:                        toPulumiStringArray(splat0),
+// 			SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
+// 			Subnetworks: compute.RouterNatSubnetworkArray{
+// 				&compute.RouterNatSubnetworkArgs{
+// 					Name: subnet.ID(),
+// 					SourceIpRangesToNats: pulumi.StringArray{
+// 						pulumi.String("ALL_IP_RANGES"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// func toPulumiStringArray(arr []string) pulumi.StringArray {
+// 	var pulumiArr pulumi.StringArray
+// 	for _, v := range arr {
+// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+// 	}
+// 	return pulumiArr
+// }
+// ```
 //
 // ## Import
 //

@@ -11,39 +11,6 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "generic-tpl-20200107"
-// 		_, err := compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-// 			Name: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt1 := "name != generic-tpl-20200107"
-// 		opt2 := true
-// 		_, err = compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-// 			Filter:     &opt1,
-// 			MostRecent: &opt2,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupInstanceTemplateResult, error) {
 	var rv LookupInstanceTemplateResult
 	err := ctx.Invoke("gcp:compute/getInstanceTemplate:getInstanceTemplate", args, &rv, opts...)

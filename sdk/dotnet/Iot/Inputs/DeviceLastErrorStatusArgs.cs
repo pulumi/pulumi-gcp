@@ -9,25 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iot.Inputs
 {
-
-    public sealed class DeviceLastErrorStatusArgs : Pulumi.ResourceArgs
-    {
-        [Input("details")]
-        private InputList<ImmutableDictionary<string, Input<object>>>? _details;
-        public InputList<ImmutableDictionary<string, Input<object>>> Details
-        {
-            get => _details ?? (_details = new InputList<ImmutableDictionary<string, Input<object>>>());
-            set => _details = value;
-        }
-
-        [Input("message")]
-        public Input<string>? Message { get; set; }
-
-        [Input("number")]
-        public Input<int>? Number { get; set; }
-
-        public DeviceLastErrorStatusArgs()
-        {
-        }
-    }
 }

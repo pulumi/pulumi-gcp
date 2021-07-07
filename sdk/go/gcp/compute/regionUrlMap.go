@@ -43,9 +43,9 @@ import (
 // 			Protocol:            pulumi.String("HTTP"),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 			TimeoutSec:          pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -55,9 +55,9 @@ import (
 // 			Protocol:            pulumi.String("HTTP"),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 			TimeoutSec:          pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -132,9 +132,9 @@ import (
 // 		home, err := compute.NewRegionBackendService(ctx, "home", &compute.RegionBackendServiceArgs{
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
-// 			},
+// 			}),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 		})
 // 		if err != nil {
@@ -283,9 +283,9 @@ import (
 // 		home, err := compute.NewRegionBackendService(ctx, "home", &compute.RegionBackendServiceArgs{
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
-// 			},
+// 			}),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 		})
 // 		if err != nil {
@@ -388,9 +388,9 @@ import (
 // 		home, err := compute.NewRegionBackendService(ctx, "home", &compute.RegionBackendServiceArgs{
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
-// 			},
+// 			}),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 		})
 // 		if err != nil {
@@ -515,9 +515,9 @@ import (
 // 		home, err := compute.NewRegionBackendService(ctx, "home", &compute.RegionBackendServiceArgs{
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				_default.ID(),
-// 			},
+// 			}),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 		})
 // 		if err != nil {

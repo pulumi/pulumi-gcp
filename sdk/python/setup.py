@@ -31,7 +31,7 @@ def readme():
         with open('README.md', encoding='utf-8') as f:
             return f.read()
     except FileNotFoundError:
-        return "gcp Pulumi Package - Development Version"
+            return "gcp Pulumi Package - Development Version"
 
 
 setup(name='pulumi_gcp',

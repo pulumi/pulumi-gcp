@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     filter: "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
  * });
  * const deletion-candidate = my_org_projects.then(my_org_projects => gcp.organizations.getProject({
- *     projectId: my_org_projects.projects?[0]?.projectId,
+ *     projectId: my_org_projects.projects[0].projectId,
  * }));
  * ```
  */

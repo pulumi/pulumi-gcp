@@ -9,14 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute.Inputs
 {
-
-    public sealed class RegionInstanceGroupManagerStatusVersionTargetArgs : Pulumi.ResourceArgs
-    {
-        [Input("isReached")]
-        public Input<bool>? IsReached { get; set; }
-
-        public RegionInstanceGroupManagerStatusVersionTargetArgs()
-        {
-        }
-    }
 }

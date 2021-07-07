@@ -9,14 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
-
-    public sealed class EntryBigqueryTableSpecViewSpecArgs : Pulumi.ResourceArgs
-    {
-        [Input("viewQuery")]
-        public Input<string>? ViewQuery { get; set; }
-
-        public EntryBigqueryTableSpecViewSpecArgs()
-        {
-        }
-    }
 }

@@ -9,23 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iot.Inputs
 {
-
-    public sealed class DeviceConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("binaryData")]
-        public Input<string>? BinaryData { get; set; }
-
-        [Input("cloudUpdateTime")]
-        public Input<string>? CloudUpdateTime { get; set; }
-
-        [Input("deviceAckTime")]
-        public Input<string>? DeviceAckTime { get; set; }
-
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
-        public DeviceConfigArgs()
-        {
-        }
-    }
 }

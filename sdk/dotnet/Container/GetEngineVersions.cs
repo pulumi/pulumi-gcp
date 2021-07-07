@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Container
         ///                 Password = "adoy.rm",
         ///             },
         ///         });
-        ///         this.StableChannelVersion = central1b.Apply(central1b =&gt; central1b.ReleaseChannelDefaultVersion?.STABLE);
+        ///         this.StableChannelVersion = central1b.Apply(central1b =&gt; central1b.ReleaseChannelDefaultVersion.STABLE);
         ///     }
         /// 
         ///     [Output("stableChannelVersion")]

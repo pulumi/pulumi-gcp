@@ -121,8 +121,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
     ///                         Id = version.Apply(version =&gt; version.Id),
     ///                         PkixPublicKey = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs
     ///                         {
-    ///                             PublicKeyPem = version.Apply(version =&gt; version.PublicKeys?[0]?.Pem),
-    ///                             SignatureAlgorithm = version.Apply(version =&gt; version.PublicKeys?[0]?.Algorithm),
+    ///                             PublicKeyPem = version.Apply(version =&gt; version.PublicKeys[0].Pem),
+    ///                             SignatureAlgorithm = version.Apply(version =&gt; version.PublicKeys[0].Algorithm),
     ///                         },
     ///                     },
     ///                 },

@@ -41,9 +41,9 @@ import (
 // 				pulumi.String("us-central1-a/myinstance1"),
 // 				pulumi.String("us-central1-b/myinstance2"),
 // 			},
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHttpHealthCheck.Name,
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err

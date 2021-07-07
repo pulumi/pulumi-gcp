@@ -73,10 +73,10 @@ import * as utilities from "../utilities";
  * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
  *     noteReference: note.name,
  *     publicKeys: [{
- *         id: version.apply(version => version.id),
+ *         id: version.id,
  *         pkixPublicKey: {
- *             publicKeyPem: version.apply(version => version.publicKeys?[0]?.pem),
- *             signatureAlgorithm: version.apply(version => version.publicKeys?[0]?.algorithm),
+ *             publicKeyPem: version.publicKeys[0].pem,
+ *             signatureAlgorithm: version.publicKeys[0].algorithm,
  *         },
  *     }],
  * }});
