@@ -177,6 +177,9 @@ namespace Pulumi.Gcp
         [Output("gkehubFeatureCustomEndpoint")]
         public Output<string?> GkehubFeatureCustomEndpoint { get; private set; } = null!;
 
+        [Output("googlePartnerName")]
+        public Output<string?> GooglePartnerName { get; private set; } = null!;
+
         [Output("healthcareCustomEndpoint")]
         public Output<string?> HealthcareCustomEndpoint { get; private set; } = null!;
 
@@ -475,6 +478,9 @@ namespace Pulumi.Gcp
         [Input("dialogflowCxCustomEndpoint")]
         public Input<string>? DialogflowCxCustomEndpoint { get; set; }
 
+        [Input("disableGooglePartnerName", json: true)]
+        public Input<bool>? DisableGooglePartnerName { get; set; }
+
         [Input("dnsCustomEndpoint")]
         public Input<string>? DnsCustomEndpoint { get; set; }
 
@@ -501,6 +507,9 @@ namespace Pulumi.Gcp
 
         [Input("gkehubFeatureCustomEndpoint")]
         public Input<string>? GkehubFeatureCustomEndpoint { get; set; }
+
+        [Input("googlePartnerName")]
+        public Input<string>? GooglePartnerName { get; set; }
 
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }
