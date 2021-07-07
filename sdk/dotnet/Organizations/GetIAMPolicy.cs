@@ -17,66 +17,6 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
         /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
-        ///         {
-        ///             AuditConfigs = 
-        ///             {
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigArgs
-        ///                 {
-        ///                     AuditLogConfigs = 
-        ///                     {
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
-        ///                         {
-        ///                             ExemptedMembers = 
-        ///                             {
-        ///                                 "user:you@domain.com",
-        ///                             },
-        ///                             LogType = "DATA_READ",
-        ///                         },
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
-        ///                         {
-        ///                             LogType = "DATA_WRITE",
-        ///                         },
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
-        ///                         {
-        ///                             LogType = "ADMIN_READ",
-        ///                         },
-        ///                     },
-        ///                     Service = "cloudkms.googleapis.com",
-        ///                 },
-        ///             },
-        ///             Bindings = 
-        ///             {
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
-        ///                 {
-        ///                     Members = 
-        ///                     {
-        ///                         "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
-        ///                     },
-        ///                     Role = "roles/compute.instanceAdmin",
-        ///                 },
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
-        ///                 {
-        ///                     Members = 
-        ///                     {
-        ///                         "user:alice@gmail.com",
-        ///                     },
-        ///                     Role = "roles/storage.objectViewer",
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
         /// 
         /// This data source is used to define IAM policies to apply to other resources.
         /// Currently, defining a policy through a datasource and referencing that policy

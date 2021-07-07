@@ -20,36 +20,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 //
 // ## Example Usage
-// ### Dlp Stored Info Type Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dataloss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataloss.NewPreventionStoredInfoType(ctx, "basic", &dataloss.PreventionStoredInfoTypeArgs{
-// 			Description: pulumi.String("Description"),
-// 			DisplayName: pulumi.String("Displayname"),
-// 			Parent:      pulumi.String("projects/my-project-name"),
-// 			Regex: &dataloss.PreventionStoredInfoTypeRegexArgs{
-// 				GroupIndexes: pulumi.IntArray{
-// 					pulumi.Int(2),
-// 				},
-// 				Pattern: pulumi.String("patient"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Dlp Stored Info Type Dictionary
 //
 // ```go

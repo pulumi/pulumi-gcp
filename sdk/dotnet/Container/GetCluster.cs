@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.Container
         ///             Name = "my-cluster",
         ///             Location = "us-east1-a",
         ///         }));
-        ///         this.ClusterUsername = myCluster.Apply(myCluster =&gt; myCluster.MasterAuths?[0]?.Username);
-        ///         this.ClusterPassword = myCluster.Apply(myCluster =&gt; myCluster.MasterAuths?[0]?.Password);
+        ///         this.ClusterUsername = myCluster.Apply(myCluster =&gt; myCluster.MasterAuths[0].Username);
+        ///         this.ClusterPassword = myCluster.Apply(myCluster =&gt; myCluster.MasterAuths[0].Password);
         ///         this.Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Endpoint);
         ///         this.InstanceGroupUrls = myCluster.Apply(myCluster =&gt; myCluster.InstanceGroupUrls);
         ///         this.NodeConfig = myCluster.Apply(myCluster =&gt; myCluster.NodeConfigs);

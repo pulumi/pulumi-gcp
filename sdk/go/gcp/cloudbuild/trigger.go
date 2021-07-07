@@ -82,18 +82,18 @@ import (
 // 				Options: &cloudbuild.TriggerBuildOptionsArgs{
 // 					DiskSizeGb:           pulumi.Int(100),
 // 					DynamicSubstitutions: pulumi.Bool(true),
-// 					Env: []string{
-// 						"ekey = evalue",
+// 					Env: pulumi.StringArray{
+// 						pulumi.String("ekey = evalue"),
 // 					},
 // 					LogStreamingOption:    pulumi.String("STREAM_OFF"),
 // 					Logging:               pulumi.String("LEGACY"),
 // 					MachineType:           pulumi.String("N1_HIGHCPU_8"),
 // 					RequestedVerifyOption: pulumi.String("VERIFIED"),
-// 					SecretEnv: []string{
-// 						"secretenv = svalue",
+// 					SecretEnv: pulumi.StringArray{
+// 						pulumi.String("secretenv = svalue"),
 // 					},
-// 					SourceProvenanceHash: []string{
-// 						"MD5",
+// 					SourceProvenanceHash: pulumi.StringArray{
+// 						pulumi.String("MD5"),
 // 					},
 // 					SubstitutionOption: pulumi.String("ALLOW_LOOSE"),
 // 					Volumes: cloudbuild.TriggerBuildOptionsVolumeArray{

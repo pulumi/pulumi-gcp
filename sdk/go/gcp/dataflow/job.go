@@ -28,9 +28,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := dataflow.NewJob(ctx, "bigDataJob", &dataflow.JobArgs{
-// 			Parameters: pulumi.AnyMap{
-// 				"baz": pulumi.Any("qux"),
-// 				"foo": pulumi.Any("bar"),
+// 			Parameters: pulumi.StringMap{
+// 				"baz": pulumi.String("qux"),
+// 				"foo": pulumi.String("bar"),
 // 			},
 // 			TempGcsLocation: pulumi.String("gs://my-bucket/tmp_dir"),
 // 			TemplateGcsPath: pulumi.String("gs://my-bucket/templates/template_file"),
@@ -77,15 +77,15 @@ import (
 // 			TemplateGcsPath:       pulumi.String("gs://my-bucket/templates/template_file"),
 // 			TempGcsLocation:       pulumi.String("gs://my-bucket/tmp_dir"),
 // 			EnableStreamingEngine: pulumi.Bool(true),
-// 			Parameters: pulumi.AnyMap{
+// 			Parameters: pulumi.StringMap{
 // 				"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
 // 					return fmt.Sprintf("%v%v", url, "/*.json"), nil
 // 				}).(pulumi.StringOutput),
 // 				"outputTopic": topic.ID(),
 // 			},
-// 			TransformNameMapping: pulumi.AnyMap{
-// 				"name": pulumi.Any("test_job"),
-// 				"env":  pulumi.Any("test"),
+// 			TransformNameMapping: pulumi.StringMap{
+// 				"name": pulumi.String("test_job"),
+// 				"env":  pulumi.String("test"),
 // 			},
 // 			OnDelete: pulumi.String("cancel"),
 // 		})

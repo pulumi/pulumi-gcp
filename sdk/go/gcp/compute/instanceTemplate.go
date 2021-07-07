@@ -89,9 +89,9 @@ import (
 // 					SourceImage: pulumi.String("debian-cloud/debian-9"),
 // 					AutoDelete:  pulumi.Bool(true),
 // 					Boot:        pulumi.Bool(true),
-// 					ResourcePolicies: pulumi.String{
+// 					ResourcePolicies: pulumi.String(pulumi.String{
 // 						dailyBackup.ID(),
-// 					},
+// 					}),
 // 				},
 // 				&compute.InstanceTemplateDiskArgs{
 // 					Source:     foobar.Name,
@@ -104,8 +104,8 @@ import (
 // 					Network: pulumi.String("default"),
 // 				},
 // 			},
-// 			Metadata: pulumi.AnyMap{
-// 				"foo": pulumi.Any("bar"),
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
 // 			},
 // 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 // 				Email: defaultAccount.Email,

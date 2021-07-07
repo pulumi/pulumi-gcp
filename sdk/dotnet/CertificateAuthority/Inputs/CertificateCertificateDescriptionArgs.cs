@@ -9,49 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
-
-    public sealed class CertificateCertificateDescriptionArgs : Pulumi.ResourceArgs
-    {
-        [Input("aiaIssuingCertificateUrls")]
-        private InputList<string>? _aiaIssuingCertificateUrls;
-        public InputList<string> AiaIssuingCertificateUrls
-        {
-            get => _aiaIssuingCertificateUrls ?? (_aiaIssuingCertificateUrls = new InputList<string>());
-            set => _aiaIssuingCertificateUrls = value;
-        }
-
-        [Input("authorityKeyId")]
-        public Input<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs>? AuthorityKeyId { get; set; }
-
-        [Input("certFingerprint")]
-        public Input<Inputs.CertificateCertificateDescriptionCertFingerprintArgs>? CertFingerprint { get; set; }
-
-        [Input("configValues")]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesArgs>? ConfigValues { get; set; }
-
-        [Input("crlDistributionPoints")]
-        private InputList<string>? _crlDistributionPoints;
-        public InputList<string> CrlDistributionPoints
-        {
-            get => _crlDistributionPoints ?? (_crlDistributionPoints = new InputList<string>());
-            set => _crlDistributionPoints = value;
-        }
-
-        /// <summary>
-        /// A PublicKey describes a public key.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("publicKey", required: true)]
-        public Input<Inputs.CertificateCertificateDescriptionPublicKeyArgs> PublicKey { get; set; } = null!;
-
-        [Input("subjectDescription")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs>? SubjectDescription { get; set; }
-
-        [Input("subjectKeyId")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs>? SubjectKeyId { get; set; }
-
-        public CertificateCertificateDescriptionArgs()
-        {
-        }
-    }
 }

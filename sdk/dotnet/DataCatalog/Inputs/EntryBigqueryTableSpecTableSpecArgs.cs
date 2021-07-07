@@ -9,14 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
-
-    public sealed class EntryBigqueryTableSpecTableSpecArgs : Pulumi.ResourceArgs
-    {
-        [Input("groupedEntry")]
-        public Input<string>? GroupedEntry { get; set; }
-
-        public EntryBigqueryTableSpecTableSpecArgs()
-        {
-        }
-    }
 }

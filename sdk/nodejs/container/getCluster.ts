@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *     name: "my-cluster",
  *     location: "us-east1-a",
  * });
- * export const clusterUsername = myCluster.then(myCluster => myCluster.masterAuths?[0]?.username);
- * export const clusterPassword = myCluster.then(myCluster => myCluster.masterAuths?[0]?.password);
+ * export const clusterUsername = myCluster.then(myCluster => myCluster.masterAuths[0].username);
+ * export const clusterPassword = myCluster.then(myCluster => myCluster.masterAuths[0].password);
  * export const endpoint = myCluster.then(myCluster => myCluster.endpoint);
  * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.instanceGroupUrls);
  * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);

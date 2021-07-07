@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Tpu
         ///         {
         ///             Zone = "us-central1-b",
         ///             AcceleratorType = "v3-8",
-        ///             TensorflowVersion = available.Apply(available =&gt; available.Versions?[0]),
+        ///             TensorflowVersion = available.Apply(available =&gt; available.Versions[0]),
         ///             CidrBlock = "10.2.0.0/29",
         ///         });
         ///     }

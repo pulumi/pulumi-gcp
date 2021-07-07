@@ -47,9 +47,9 @@ import (
 // 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 // 			Region:              pulumi.String("us-central1"),
 // 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				hc.ID(),
-// 			},
+// 			}),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
@@ -90,9 +90,9 @@ import (
 // 		}
 // 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 // 			Region: pulumi.String("us-central1"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				hc.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -178,9 +178,9 @@ import (
 // 		}
 // 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 // 			Region: pulumi.String("us-central1"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				hc.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -410,9 +410,9 @@ import (
 // 			Region:     pulumi.String("us-central1"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultRegionHealthCheck.ID(),
-// 			},
+// 			}),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err

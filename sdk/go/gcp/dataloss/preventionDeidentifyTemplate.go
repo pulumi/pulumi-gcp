@@ -64,9 +64,9 @@ import (
 // 							},
 // 							PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
 // 								CharacterMaskConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{
-// 									CharactersToIgnore: []map[string]interface{}{
-// 										map[string]interface{}{
-// 											"commonCharactersToIgnore": "PUNCTUATION",
+// 									CharactersToIgnore: pulumi.StringMapArray{
+// 										pulumi.StringMap{
+// 											"commonCharactersToIgnore": pulumi.String("PUNCTUATION"),
 // 										},
 // 									},
 // 									MaskingCharacter: pulumi.String("X"),

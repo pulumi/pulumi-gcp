@@ -8,10 +8,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['InstanceGroupNamedPortInitArgs', 'InstanceGroupNamedPort']
+__all__ = ['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPort']
 
 @pulumi.input_type
-class InstanceGroupNamedPortInitArgs:
+class InstanceGroupNamedPortArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[str],
                  port: pulumi.Input[int],
@@ -280,7 +280,7 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceGroupNamedPortInitArgs,
+                 args: InstanceGroupNamedPortArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Mange the named ports setting for a managed instance group without
@@ -346,12 +346,12 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceGroupNamedPortInitArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceGroupNamedPortArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceGroupNamedPortInitArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceGroupNamedPortArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -375,7 +375,7 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceGroupNamedPortInitArgs.__new__(InstanceGroupNamedPortInitArgs)
+            __props__ = InstanceGroupNamedPortArgs.__new__(InstanceGroupNamedPortArgs)
 
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")

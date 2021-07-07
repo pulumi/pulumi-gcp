@@ -9,20 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
-
-    public sealed class EntryBigqueryDateShardedSpecArgs : Pulumi.ResourceArgs
-    {
-        [Input("dataset")]
-        public Input<string>? Dataset { get; set; }
-
-        [Input("shardCount")]
-        public Input<int>? ShardCount { get; set; }
-
-        [Input("tablePrefix")]
-        public Input<string>? TablePrefix { get; set; }
-
-        public EntryBigqueryDateShardedSpecArgs()
-        {
-        }
-    }
 }

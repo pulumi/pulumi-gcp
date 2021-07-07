@@ -50,9 +50,9 @@ import (
 // 			PortName:   pulumi.String("grpc"),
 // 			Protocol:   pulumi.String("GRPC"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHealthCheck.ID(),
-// 			},
+// 			}),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 // 		})
 // 		if err != nil {

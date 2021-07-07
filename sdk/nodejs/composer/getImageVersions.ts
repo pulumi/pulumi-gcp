@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     config: {
  *         softwareConfig: {
- *             imageVersion: all.then(all => all.imageVersions?[0]?.imageVersionId),
+ *             imageVersion: all.then(all => all.imageVersions[0].imageVersionId),
  *         },
  *     },
  * });

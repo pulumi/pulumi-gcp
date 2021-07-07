@@ -37,7 +37,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			SourceRanges: interface{}(ranges.Networks),
+// 			SourceRanges: toPulumiStringArray(ranges.Networks),
 // 			TargetTags: pulumi.StringArray{
 // 				pulumi.String("InstanceBehindLoadBalancer"),
 // 			},
@@ -47,6 +47,13 @@ import (
 // 		}
 // 		return nil
 // 	})
+// }
+// func toPulumiStringArray(arr []string) pulumi.StringArray {
+// 	var pulumiArr pulumi.StringArray
+// 	for _, v := range arr {
+// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+// 	}
+// 	return pulumiArr
 // }
 // ```
 func GetLBIPRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLBIPRangesResult, error) {

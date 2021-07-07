@@ -107,11 +107,11 @@ import (
 // 			TriggerHttp:         pulumi.Bool(true),
 // 			Timeout:             pulumi.Int(60),
 // 			EntryPoint:          pulumi.String("helloGET"),
-// 			Labels: pulumi.AnyMap{
-// 				"my-label": pulumi.Any("my-label-value"),
+// 			Labels: pulumi.StringMap{
+// 				"my-label": pulumi.String("my-label-value"),
 // 			},
-// 			EnvironmentVariables: pulumi.AnyMap{
-// 				"MY_ENV_VAR": pulumi.Any("my-env-var-value"),
+// 			EnvironmentVariables: pulumi.StringMap{
+// 				"MY_ENV_VAR": pulumi.String("my-env-var-value"),
 // 			},
 // 		})
 // 		if err != nil {

@@ -9,17 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms.Inputs
 {
-
-    public sealed class KeyRingImportJobAttestationArgs : Pulumi.ResourceArgs
-    {
-        [Input("content")]
-        public Input<string>? Content { get; set; }
-
-        [Input("format")]
-        public Input<string>? Format { get; set; }
-
-        public KeyRingImportJobAttestationArgs()
-        {
-        }
-    }
 }

@@ -149,7 +149,7 @@ import * as utilities from "../utilities";
  *     enableCdn: true,
  *     timeoutSec: 10,
  *     connectionDrainingTimeoutSec: 10,
- *     customRequestHeaders: [proxy.fqdn.apply(fqdn => `host: ${fqdn}`)],
+ *     customRequestHeaders: [pulumi.interpolate`host: ${proxy.fqdn}`],
  *     customResponseHeaders: ["X-Cache-Hit: {cdn_cache_status}"],
  *     backends: [{
  *         group: externalProxy.id,

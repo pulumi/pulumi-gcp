@@ -44,9 +44,9 @@ import (
 // 		}
 // 		_, err = compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
 // 			Region: pulumi.String("us-central1"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHealthCheck.ID(),
-// 			},
+// 			}),
 // 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 // 			SessionAffinity:              pulumi.String("CLIENT_IP"),
 // 		})
@@ -80,9 +80,9 @@ import (
 // 		}
 // 		_, err = compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
 // 			Region: pulumi.String("us-central1"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultRegionHealthCheck.ID(),
-// 			},
+// 			}),
 // 			EnableCdn: pulumi.Bool(true),
 // 			CdnPolicy: &compute.RegionBackendServiceCdnPolicyArgs{
 // 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -124,9 +124,9 @@ import (
 // 		}
 // 		_, err = compute.NewRegionBackendService(ctx, "_default", &compute.RegionBackendServiceArgs{
 // 			Region: pulumi.String("us-central1"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				healthCheck.ID(),
-// 			},
+// 			}),
 // 			Protocol:            pulumi.String("HTTP"),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 			LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
@@ -161,9 +161,9 @@ import (
 // 		}
 // 		_, err = compute.NewRegionBackendService(ctx, "_default", &compute.RegionBackendServiceArgs{
 // 			Region: pulumi.String("us-central1"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				healthCheck.ID(),
-// 			},
+// 			}),
 // 			Protocol:            pulumi.String("TCP"),
 // 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 // 		}, pulumi.Provider(google_beta))
@@ -196,9 +196,9 @@ import (
 // 		}
 // 		_, err = compute.NewRegionBackendService(ctx, "_default", &compute.RegionBackendServiceArgs{
 // 			Region: pulumi.String("us-central1"),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				healthCheck.ID(),
-// 			},
+// 			}),
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 // 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 // 			SessionAffinity:     pulumi.String("HTTP_COOKIE"),
@@ -320,9 +320,9 @@ import (
 // 			Region:     pulumi.String("us-central1"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultRegionHealthCheck.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err

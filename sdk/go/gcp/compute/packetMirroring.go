@@ -75,9 +75,9 @@ import (
 // 			return err
 // 		}
 // 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
-// 			HealthChecks: pulumi.String{
+// 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHealthCheck.ID(),
-// 			},
+// 			}),
 // 		})
 // 		if err != nil {
 // 			return err

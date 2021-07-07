@@ -56,7 +56,7 @@ def get_env_float(*args):
     return None
 
 
-def _get_semver_version():
+def get_semver_version():
     # __name__ is set to the fully-qualified name of the current module, In our case, it will be
     # <some module>._utilities. <some module> is the module we want to query the version for.
     root_package, *rest = __name__.split('.')
@@ -88,13 +88,8 @@ def _get_semver_version():
     return SemverVersion(major=major, minor=minor, patch=patch, prerelease=prerelease)
 
 
-# Determine the version once and cache the value, which measurably improves program performance.
-_version = _get_semver_version()
-_version_str = str(_version)
-
-
 def get_version():
-    return _version_str
+    return str(get_semver_version())
 
 
 def get_resource_args_opts(resource_args_type, resource_options_type, *args, **kwargs):
@@ -165,12 +160,14 @@ def _lazy_import_temp(fullname):
 
 
 class Package(pulumi.runtime.ResourcePackage):
+    _version = get_semver_version()
+
     def __init__(self, pkg_info):
         super().__init__()
         self.pkg_info = pkg_info
 
     def version(self):
-        return _version
+        return Package._version
 
     def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
         if typ != self.pkg_info['token']:
@@ -180,12 +177,14 @@ class Package(pulumi.runtime.ResourcePackage):
 
 
 class Module(pulumi.runtime.ResourceModule):
+    _version = get_semver_version()
+
     def __init__(self, mod_info):
         super().__init__()
         self.mod_info = mod_info
 
     def version(self):
-        return _version
+        return Module._version
 
     def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
         class_name = self.mod_info['classes'].get(typ, None)
