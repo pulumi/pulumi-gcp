@@ -3,13 +3,10 @@ module github.com/pulumi/pulumi-gcp/provider/v5
 go 1.16
 
 require (
-	github.com/Sirupsen/logrus v1.0.5 // indirect
-	github.com/go-ldap/ldap v3.0.2+incompatible // indirect
 	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.4.0
-	github.com/pulumi/pulumi/pkg/v3 v3.6.0
-	github.com/pulumi/pulumi/sdk/v3 v3.6.0
-	gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d // indirect
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.2.1
+	github.com/pulumi/pulumi/pkg/v3 v3.3.2-0.20210526172205-85142462c7ed
+	github.com/pulumi/pulumi/sdk/v3 v3.3.2-0.20210526172205-85142462c7ed
 )
 
 replace (
