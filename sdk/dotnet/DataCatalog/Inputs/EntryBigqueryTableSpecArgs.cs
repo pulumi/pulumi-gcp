@@ -9,4 +9,30 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
+
+    public sealed class EntryBigqueryTableSpecArgs : Pulumi.ResourceArgs
+    {
+        [Input("tableSourceType")]
+        public Input<string>? TableSourceType { get; set; }
+
+        [Input("tableSpecs")]
+        private InputList<Inputs.EntryBigqueryTableSpecTableSpecArgs>? _tableSpecs;
+        public InputList<Inputs.EntryBigqueryTableSpecTableSpecArgs> TableSpecs
+        {
+            get => _tableSpecs ?? (_tableSpecs = new InputList<Inputs.EntryBigqueryTableSpecTableSpecArgs>());
+            set => _tableSpecs = value;
+        }
+
+        [Input("viewSpecs")]
+        private InputList<Inputs.EntryBigqueryTableSpecViewSpecArgs>? _viewSpecs;
+        public InputList<Inputs.EntryBigqueryTableSpecViewSpecArgs> ViewSpecs
+        {
+            get => _viewSpecs ?? (_viewSpecs = new InputList<Inputs.EntryBigqueryTableSpecViewSpecArgs>());
+            set => _viewSpecs = value;
+        }
+
+        public EntryBigqueryTableSpecArgs()
+        {
+        }
+    }
 }

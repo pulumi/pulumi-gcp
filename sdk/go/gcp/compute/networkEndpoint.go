@@ -82,9 +82,9 @@ import (
 // 			NetworkEndpointGroup: pulumi.Any(google_compute_network_endpoint_group.Neg.Name),
 // 			Instance:             endpoint_instance.Name,
 // 			Port:                 pulumi.Any(google_compute_network_endpoint_group.Neg.Default_port),
-// 			IpAddress: pulumi.String(endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
+// 			IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
 // 				return networkInterfaces[0].NetworkIp, nil
-// 			}).(pulumi.StringOutput)),
+// 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
 // 			return err

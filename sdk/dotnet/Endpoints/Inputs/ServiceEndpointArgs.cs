@@ -9,4 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Endpoints.Inputs
 {
+
+    public sealed class ServiceEndpointArgs : Pulumi.ResourceArgs
+    {
+        [Input("address")]
+        public Input<string>? Address { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public ServiceEndpointArgs()
+        {
+        }
+    }
 }

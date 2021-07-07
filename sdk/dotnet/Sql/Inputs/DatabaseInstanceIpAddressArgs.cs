@@ -9,4 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Sql.Inputs
 {
+
+    public sealed class DatabaseInstanceIpAddressArgs : Pulumi.ResourceArgs
+    {
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        [Input("timeToRetire")]
+        public Input<string>? TimeToRetire { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        public DatabaseInstanceIpAddressArgs()
+        {
+        }
+    }
 }

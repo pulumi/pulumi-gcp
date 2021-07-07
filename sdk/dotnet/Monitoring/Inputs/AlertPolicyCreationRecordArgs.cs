@@ -9,4 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
+
+    public sealed class AlertPolicyCreationRecordArgs : Pulumi.ResourceArgs
+    {
+        [Input("mutateTime")]
+        public Input<string>? MutateTime { get; set; }
+
+        [Input("mutatedBy")]
+        public Input<string>? MutatedBy { get; set; }
+
+        public AlertPolicyCreationRecordArgs()
+        {
+        }
+    }
 }

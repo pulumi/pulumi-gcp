@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const fooDnsKeys = foo.id.apply(id => gcp.dns.getKeys({
  *     managedZone: id,
  * }));
- * export const fooDnsDsRecord = fooDnsKeys.keySigningKeys[0].dsRecord;
+ * export const fooDnsDsRecord = fooDnsKeys.apply(fooDnsKeys => fooDnsKeys.keySigningKeys?[0]?.dsRecord);
  * ```
  */
 export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {

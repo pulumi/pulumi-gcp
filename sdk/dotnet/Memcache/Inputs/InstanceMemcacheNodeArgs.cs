@@ -9,4 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Memcache.Inputs
 {
+
+    public sealed class InstanceMemcacheNodeArgs : Pulumi.ResourceArgs
+    {
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        [Input("nodeId")]
+        public Input<string>? NodeId { get; set; }
+
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
+        public InstanceMemcacheNodeArgs()
+        {
+        }
+    }
 }

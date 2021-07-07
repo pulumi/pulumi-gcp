@@ -14,42 +14,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Provides access to available Google Compute regions for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Threading.Tasks;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var dict = Output.Create(Initialize());
-        ///     }
-        /// 
-        ///     private async Task&lt;IDictionary&lt;string, Output&lt;string&gt;&gt;&gt; Initialize()
-        ///     {
-        ///         var available = await Gcp.Compute.GetRegions.InvokeAsync();
-        ///         var cluster = new List&lt;Gcp.Compute.Subnetwork&gt;();
-        ///         for (var rangeIndex = 0; rangeIndex &lt; available.Names.Length; rangeIndex++)
-        ///         {
-        ///             var range = new { Value = rangeIndex };
-        ///             cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new Gcp.Compute.SubnetworkArgs
-        ///             {
-        ///                 IpCidrRange = $"10.36.{range.Value}.0/24",
-        ///                 Network = "my-network",
-        ///                 Region = available.Names[range.Value],
-        ///             }));
-        ///         }
-        /// 
-        ///         return new Dictionary&lt;string, Output&lt;string&gt;&gt;
-        ///         {
-        ///         };
-        ///     }
-        /// 
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithVersion());

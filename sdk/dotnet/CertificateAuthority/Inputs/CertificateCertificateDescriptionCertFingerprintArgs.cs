@@ -9,4 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionCertFingerprintArgs : Pulumi.ResourceArgs
+    {
+        [Input("sha256Hash")]
+        public Input<string>? Sha256Hash { get; set; }
+
+        public CertificateCertificateDescriptionCertFingerprintArgs()
+        {
+        }
+    }
 }

@@ -45,9 +45,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -77,9 +77,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 			EnableCdn: pulumi.Bool(true),
 // 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 // 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
@@ -113,9 +113,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 			EnableCdn: pulumi.Bool(true),
 // 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 // 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -154,9 +154,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewBackendService(ctx, "_default", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				healthCheck.ID(),
-// 			}),
+// 			},
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 // 			LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
 // 		}, pulumi.Provider(google_beta))
@@ -188,9 +188,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewBackendService(ctx, "_default", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				healthCheck.ID(),
-// 			}),
+// 			},
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 // 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 // 			SessionAffinity:     pulumi.String("HTTP_COOKIE"),

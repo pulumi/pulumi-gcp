@@ -43,9 +43,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				_default.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -149,9 +149,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				_default.ID(),
-// 			}),
+// 			},
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 // 		})
 // 		if err != nil {
@@ -277,9 +277,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				_default.ID(),
-// 			}),
+// 			},
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 // 		})
 // 		if err != nil {
@@ -362,9 +362,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				_default.ID(),
-// 			}),
+// 			},
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 // 		})
 // 		if err != nil {
@@ -517,9 +517,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				_default.ID(),
-// 			}),
+// 			},
 // 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 // 		})
 // 		if err != nil {
@@ -638,9 +638,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -649,9 +649,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -660,9 +660,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -750,9 +750,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -761,9 +761,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -772,9 +772,9 @@ import (
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err

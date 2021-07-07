@@ -9,4 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
+
+    public sealed class ApplicationUrlDispatchRuleArgs : Pulumi.ResourceArgs
+    {
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
+
+        [Input("path")]
+        public Input<string>? Path { get; set; }
+
+        [Input("service")]
+        public Input<string>? Service { get; set; }
+
+        public ApplicationUrlDispatchRuleArgs()
+        {
+        }
+    }
 }

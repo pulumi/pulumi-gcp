@@ -9,4 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute.Inputs
 {
+
+    public sealed class InstanceFromMachineImageBootDiskArgs : Pulumi.ResourceArgs
+    {
+        [Input("autoDelete")]
+        public Input<bool>? AutoDelete { get; set; }
+
+        [Input("deviceName")]
+        public Input<string>? DeviceName { get; set; }
+
+        [Input("diskEncryptionKeyRaw")]
+        public Input<string>? DiskEncryptionKeyRaw { get; set; }
+
+        [Input("diskEncryptionKeySha256")]
+        public Input<string>? DiskEncryptionKeySha256 { get; set; }
+
+        [Input("initializeParams")]
+        public Input<Inputs.InstanceFromMachineImageBootDiskInitializeParamsArgs>? InitializeParams { get; set; }
+
+        [Input("kmsKeySelfLink")]
+        public Input<string>? KmsKeySelfLink { get; set; }
+
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        public InstanceFromMachineImageBootDiskArgs()
+        {
+        }
+    }
 }

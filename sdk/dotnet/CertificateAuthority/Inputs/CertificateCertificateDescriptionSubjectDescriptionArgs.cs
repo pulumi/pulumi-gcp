@@ -9,4 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The common name of the distinguished name.
+        /// </summary>
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
+        [Input("hexSerialNumber")]
+        public Input<string>? HexSerialNumber { get; set; }
+
+        /// <summary>
+        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+        /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+        /// fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        [Input("lifetime")]
+        public Input<string>? Lifetime { get; set; }
+
+        [Input("notAfterTime")]
+        public Input<string>? NotAfterTime { get; set; }
+
+        [Input("notBeforeTime")]
+        public Input<string>? NotBeforeTime { get; set; }
+
+        /// <summary>
+        /// Contains distinguished name fields such as the location and organization.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("subject")]
+        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectArgs>? Subject { get; set; }
+
+        /// <summary>
+        /// The subject alternative name fields.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("subjectAltName")]
+        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs>? SubjectAltName { get; set; }
+
+        public CertificateCertificateDescriptionSubjectDescriptionArgs()
+        {
+        }
+    }
 }
