@@ -79,6 +79,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly gameServicesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly googlePartnerName!: pulumi.Output<string | undefined>;
     public readonly healthcareCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamBetaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamCredentialsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -181,6 +182,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             inputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             inputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
+            inputs["disableGooglePartnerName"] = pulumi.output(args ? args.disableGooglePartnerName : undefined).apply(JSON.stringify);
             inputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             inputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             inputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
@@ -190,6 +192,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
             inputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
             inputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
+            inputs["googlePartnerName"] = args ? args.googlePartnerName : undefined;
             inputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
             inputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
             inputs["iamCredentialsCustomEndpoint"] = args ? args.iamCredentialsCustomEndpoint : undefined;
@@ -295,6 +298,7 @@ export interface ProviderArgs {
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
+    disableGooglePartnerName?: pulumi.Input<boolean>;
     dnsCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
     eventarcCustomEndpoint?: pulumi.Input<string>;
@@ -304,6 +308,7 @@ export interface ProviderArgs {
     gameServicesCustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;
     gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
+    googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
     iamBetaCustomEndpoint?: pulumi.Input<string>;
     iamCredentialsCustomEndpoint?: pulumi.Input<string>;

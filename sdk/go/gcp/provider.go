@@ -70,6 +70,7 @@ type Provider struct {
 	GameServicesCustomEndpoint         pulumi.StringPtrOutput `pulumi:"gameServicesCustomEndpoint"`
 	GkeHubCustomEndpoint               pulumi.StringPtrOutput `pulumi:"gkeHubCustomEndpoint"`
 	GkehubFeatureCustomEndpoint        pulumi.StringPtrOutput `pulumi:"gkehubFeatureCustomEndpoint"`
+	GooglePartnerName                  pulumi.StringPtrOutput `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint           pulumi.StringPtrOutput `pulumi:"healthcareCustomEndpoint"`
 	IamBetaCustomEndpoint              pulumi.StringPtrOutput `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"iamCredentialsCustomEndpoint"`
@@ -187,6 +188,7 @@ type providerArgs struct {
 	DeploymentManagerCustomEndpoint    *string           `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint           *string           `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint         *string           `pulumi:"dialogflowCxCustomEndpoint"`
+	DisableGooglePartnerName           *bool             `pulumi:"disableGooglePartnerName"`
 	DnsCustomEndpoint                  *string           `pulumi:"dnsCustomEndpoint"`
 	EssentialContactsCustomEndpoint    *string           `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint             *string           `pulumi:"eventarcCustomEndpoint"`
@@ -196,6 +198,7 @@ type providerArgs struct {
 	GameServicesCustomEndpoint         *string           `pulumi:"gameServicesCustomEndpoint"`
 	GkeHubCustomEndpoint               *string           `pulumi:"gkeHubCustomEndpoint"`
 	GkehubFeatureCustomEndpoint        *string           `pulumi:"gkehubFeatureCustomEndpoint"`
+	GooglePartnerName                  *string           `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint           *string           `pulumi:"healthcareCustomEndpoint"`
 	IamBetaCustomEndpoint              *string           `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       *string           `pulumi:"iamCredentialsCustomEndpoint"`
@@ -293,6 +296,7 @@ type ProviderArgs struct {
 	DeploymentManagerCustomEndpoint    pulumi.StringPtrInput
 	DialogflowCustomEndpoint           pulumi.StringPtrInput
 	DialogflowCxCustomEndpoint         pulumi.StringPtrInput
+	DisableGooglePartnerName           pulumi.BoolPtrInput
 	DnsCustomEndpoint                  pulumi.StringPtrInput
 	EssentialContactsCustomEndpoint    pulumi.StringPtrInput
 	EventarcCustomEndpoint             pulumi.StringPtrInput
@@ -302,6 +306,7 @@ type ProviderArgs struct {
 	GameServicesCustomEndpoint         pulumi.StringPtrInput
 	GkeHubCustomEndpoint               pulumi.StringPtrInput
 	GkehubFeatureCustomEndpoint        pulumi.StringPtrInput
+	GooglePartnerName                  pulumi.StringPtrInput
 	HealthcareCustomEndpoint           pulumi.StringPtrInput
 	IamBetaCustomEndpoint              pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint       pulumi.StringPtrInput

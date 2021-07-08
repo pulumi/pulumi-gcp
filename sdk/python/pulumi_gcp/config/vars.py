@@ -55,6 +55,7 @@ __all__ = [
     'deployment_manager_custom_endpoint',
     'dialogflow_custom_endpoint',
     'dialogflow_cx_custom_endpoint',
+    'disable_google_partner_name',
     'dns_custom_endpoint',
     'essential_contacts_custom_endpoint',
     'eventarc_custom_endpoint',
@@ -64,6 +65,7 @@ __all__ = [
     'game_services_custom_endpoint',
     'gke_hub_custom_endpoint',
     'gkehub_feature_custom_endpoint',
+    'google_partner_name',
     'healthcare_custom_endpoint',
     'iam_beta_custom_endpoint',
     'iam_credentials_custom_endpoint',
@@ -206,6 +208,8 @@ dialogflow_custom_endpoint = __config__.get('dialogflowCustomEndpoint')
 
 dialogflow_cx_custom_endpoint = __config__.get('dialogflowCxCustomEndpoint')
 
+disable_google_partner_name = __config__.get('disableGooglePartnerName')
+
 dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
 
 essential_contacts_custom_endpoint = __config__.get('essentialContactsCustomEndpoint')
@@ -223,6 +227,8 @@ game_services_custom_endpoint = __config__.get('gameServicesCustomEndpoint')
 gke_hub_custom_endpoint = __config__.get('gkeHubCustomEndpoint')
 
 gkehub_feature_custom_endpoint = __config__.get('gkehubFeatureCustomEndpoint')
+
+google_partner_name = __config__.get('googlePartnerName')
 
 healthcare_custom_endpoint = __config__.get('healthcareCustomEndpoint')
 
