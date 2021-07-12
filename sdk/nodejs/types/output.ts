@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
-export interface ProviderBatching {
-    enableBatching?: boolean;
-    sendAfter?: string;
-}
 export namespace accesscontextmanager {
     export interface AccessLevelBasic {
         /**
@@ -1462,6 +1458,7 @@ export namespace accesscontextmanager {
          */
         enableRestriction?: boolean;
     }
+
 }
 
 export namespace apigateway {
@@ -1535,6 +1532,7 @@ export namespace apigateway {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace appengine {
@@ -2339,6 +2337,7 @@ export namespace appengine {
          */
         name: string;
     }
+
 }
 
 export namespace artifactregistry {
@@ -2353,6 +2352,7 @@ export namespace artifactregistry {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace bigquery {
@@ -3360,6 +3360,7 @@ export namespace bigquery {
          */
         useLegacySql?: boolean;
     }
+
 }
 
 export namespace bigtable {
@@ -3441,6 +3442,7 @@ export namespace bigtable {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace billing {
@@ -3589,6 +3591,7 @@ export namespace billing {
          */
         thresholdPercent: number;
     }
+
 }
 
 export namespace binaryauthorization {
@@ -3755,6 +3758,7 @@ export namespace binaryauthorization {
          */
         requireAttestationsBies?: string[];
     }
+
 }
 
 export namespace certificateauthority {
@@ -4838,6 +4842,7 @@ export namespace certificateauthority {
         revocationState: string;
         revocationTime: string;
     }
+
 }
 
 export namespace cloudasset {
@@ -4951,6 +4956,7 @@ export namespace cloudasset {
          */
         topic: string;
     }
+
 }
 
 export namespace cloudbuild {
@@ -5471,6 +5477,7 @@ export namespace cloudbuild {
          */
         noExternalIp?: boolean;
     }
+
 }
 
 export namespace cloudfunctions {
@@ -5550,6 +5557,7 @@ export namespace cloudfunctions {
          */
         url: string;
     }
+
 }
 
 export namespace cloudidentity {
@@ -6607,6 +6615,7 @@ export namespace cloudscheduler {
          */
         retryCount: number;
     }
+
 }
 
 export namespace cloudtasks {
@@ -6706,6 +6715,7 @@ export namespace cloudtasks {
          */
         samplingRatio: number;
     }
+
 }
 
 export namespace composer {
@@ -7048,6 +7058,7 @@ export namespace composer {
          */
         supportedPythonVersions: string[];
     }
+
 }
 
 export namespace compute {
@@ -15843,6 +15854,7 @@ export namespace compute {
          */
         service: string;
     }
+
 }
 
 export namespace config {
@@ -15850,6 +15862,7 @@ export namespace config {
         enableBatching?: boolean;
         sendAfter?: string;
     }
+
 }
 
 export namespace container {
@@ -17289,6 +17302,7 @@ export namespace container {
          */
         maxUnavailable: number;
     }
+
 }
 
 export namespace containeranalysis {
@@ -17368,6 +17382,7 @@ export namespace containeranalysis {
          */
         signature?: string;
     }
+
 }
 
 export namespace datacatalog {
@@ -17583,6 +17598,7 @@ export namespace datacatalog {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace datafusion {
@@ -17599,6 +17615,7 @@ export namespace datafusion {
          */
         network: string;
     }
+
 }
 
 export namespace dataloss {
@@ -18506,6 +18523,7 @@ export namespace dataloss {
          */
         pattern: string;
     }
+
 }
 
 export namespace dataproc {
@@ -20408,6 +20426,7 @@ export namespace dataproc {
         instanceGroupManagerName: string;
         instanceTemplateName: string;
     }
+
 }
 
 export namespace datastore {
@@ -20422,6 +20441,7 @@ export namespace datastore {
          */
         name: string;
     }
+
 }
 
 export namespace deploymentmanager {
@@ -20469,6 +20489,7 @@ export namespace deploymentmanager {
          */
         name?: string;
     }
+
 }
 
 export namespace diagflow {
@@ -20534,6 +20555,7 @@ export namespace diagflow {
          */
         parentFollowupIntentName?: string;
     }
+
 }
 
 export namespace dns {
@@ -20834,6 +20856,7 @@ export namespace endpoints {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace eventarc {
@@ -20888,6 +20911,7 @@ export namespace eventarc {
          */
         topic?: string;
     }
+
 }
 
 export namespace filestore {
@@ -20966,6 +20990,7 @@ export namespace filestore {
          */
         reservedIpRange: string;
     }
+
 }
 
 export namespace firestore {
@@ -20987,6 +21012,7 @@ export namespace firestore {
          */
         order?: string;
     }
+
 }
 
 export namespace folder {
@@ -21251,6 +21277,7 @@ export namespace gameservices {
     export interface GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
         realms: string[];
     }
+
 }
 
 export namespace gkehub {
@@ -21399,6 +21426,7 @@ export namespace gkehub {
     export interface MembershipEndpointGkeCluster {
         resourceLink: string;
     }
+
 }
 
 export namespace healthcare {
@@ -21607,6 +21635,7 @@ export namespace healthcare {
          */
         version?: string;
     }
+
 }
 
 export namespace iam {
@@ -21668,6 +21697,7 @@ export namespace iam {
          */
         issuerUri: string;
     }
+
 }
 
 export namespace iap {
@@ -21910,6 +21940,7 @@ export namespace iap {
          */
         title: string;
     }
+
 }
 
 export namespace identityplatform {
@@ -22018,6 +22049,7 @@ export namespace identityplatform {
          */
         x509Certificate: string;
     }
+
 }
 
 export namespace iot {
@@ -22108,6 +22140,7 @@ export namespace iot {
          */
         subfolderMatches?: string;
     }
+
 }
 
 export namespace kms {
@@ -22218,6 +22251,7 @@ export namespace kms {
         pubsubTopicName: string;
         subfolderMatches?: string;
     }
+
 }
 
 export namespace logging {
@@ -22451,6 +22485,7 @@ export namespace logging {
          */
         name: string;
     }
+
 }
 
 export namespace memcache {
@@ -22484,6 +22519,7 @@ export namespace memcache {
          */
         memorySizeMb: number;
     }
+
 }
 
 export namespace ml {
@@ -22493,6 +22529,7 @@ export namespace ml {
          */
         name: string;
     }
+
 }
 
 export namespace monitoring {
@@ -23791,6 +23828,7 @@ export namespace networkmanagement {
          */
         projectId?: string;
     }
+
 }
 
 export namespace notebooks {
@@ -23895,6 +23933,7 @@ export namespace notebooks {
          */
         project: string;
     }
+
 }
 
 export namespace organizations {
@@ -25127,6 +25166,7 @@ export namespace osconfig {
          */
         percentage?: number;
     }
+
 }
 
 export namespace projects {
@@ -25497,6 +25537,7 @@ export namespace pubsub {
          */
         schema: string;
     }
+
 }
 
 export namespace redis {
@@ -25515,6 +25556,7 @@ export namespace redis {
         serialNumber: string;
         sha1Fingerprint: string;
     }
+
 }
 
 export namespace runtimeconfig {
@@ -25529,6 +25571,7 @@ export namespace runtimeconfig {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace secretmanager {
@@ -25603,6 +25646,7 @@ export namespace secretmanager {
          */
         name: string;
     }
+
 }
 
 export namespace serviceAccount {
@@ -25635,6 +25679,7 @@ export namespace serviceAccount {
          */
         title: string;
     }
+
 }
 
 export namespace servicedirectory {
@@ -25661,6 +25706,7 @@ export namespace servicedirectory {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace sourcerepo {
@@ -25696,6 +25742,7 @@ export namespace sourcerepo {
          */
         topic: string;
     }
+
 }
 
 export namespace spanner {
@@ -25730,6 +25777,7 @@ export namespace spanner {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace sql {
@@ -26331,6 +26379,7 @@ export namespace sql {
          */
         updateTrack: string;
     }
+
 }
 
 export namespace storage {
@@ -26699,6 +26748,7 @@ export namespace storage {
          */
         overwriteObjectsAlreadyExistingInSink?: boolean;
     }
+
 }
 
 export namespace tags {
@@ -26725,6 +26775,7 @@ export namespace tags {
         expression: string;
         title: string;
     }
+
 }
 
 export namespace tpu {
@@ -26739,6 +26790,7 @@ export namespace tpu {
          */
         preemptible: boolean;
     }
+
 }
 
 export namespace vertex {
@@ -26749,6 +26801,7 @@ export namespace vertex {
          */
         kmsKeyName?: string;
     }
+
 }
 
 export namespace vpcaccess {
@@ -26756,4 +26809,5 @@ export namespace vpcaccess {
         name?: string;
         projectId: string;
     }
+
 }

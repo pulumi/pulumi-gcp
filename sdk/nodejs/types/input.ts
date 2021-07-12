@@ -1462,6 +1462,7 @@ export namespace accesscontextmanager {
          */
         enableRestriction?: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace apigateway {
@@ -2339,6 +2340,7 @@ export namespace appengine {
          */
         name: pulumi.Input<string>;
     }
+
 }
 
 export namespace artifactregistry {
@@ -3360,6 +3362,7 @@ export namespace bigquery {
          */
         useLegacySql?: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace bigtable {
@@ -5592,6 +5595,7 @@ export namespace cloudidentity {
          */
         name: pulumi.Input<string>;
     }
+
 }
 
 export namespace cloudrun {
@@ -6169,6 +6173,7 @@ export namespace cloudrun {
          */
         revisionName?: pulumi.Input<string>;
     }
+
 }
 
 export namespace cloudscheduler {
@@ -14678,6 +14683,7 @@ export namespace compute {
          */
         service: pulumi.Input<string>;
     }
+
 }
 
 export namespace config {
@@ -15767,6 +15773,7 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
+
 }
 
 export namespace containeranalysis {
@@ -19175,6 +19182,7 @@ export namespace dns {
          */
         networkUrl: pulumi.Input<string>;
     }
+
 }
 
 export namespace endpoints {
@@ -19468,6 +19476,7 @@ export namespace folder {
          */
         default: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace gameservices {
@@ -22314,6 +22323,7 @@ export namespace organizations {
          */
         default: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace osconfig {
@@ -23498,6 +23508,7 @@ export namespace projects {
          */
         default: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace pubsub {

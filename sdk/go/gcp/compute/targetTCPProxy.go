@@ -47,9 +47,9 @@ import (
 // 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
 // 			Protocol:   pulumi.String("TCP"),
 // 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				defaultHealthCheck.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err

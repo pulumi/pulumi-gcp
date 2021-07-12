@@ -30,7 +30,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -93,9 +93,9 @@ import (
 // 					Group: webservers.InstanceGroup,
 // 				},
 // 			},
-// 			HealthChecks: pulumi.String(pulumi.String{
+// 			HealthChecks: pulumi.String{
 // 				_default.ID(),
-// 			}),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err

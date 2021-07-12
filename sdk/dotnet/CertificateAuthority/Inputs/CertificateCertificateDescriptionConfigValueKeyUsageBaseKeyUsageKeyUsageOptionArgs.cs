@@ -9,4 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs : Pulumi.ResourceArgs
+    {
+        [Input("certSign")]
+        public Input<bool>? CertSign { get; set; }
+
+        [Input("contentCommitment")]
+        public Input<bool>? ContentCommitment { get; set; }
+
+        [Input("crlSign")]
+        public Input<bool>? CrlSign { get; set; }
+
+        [Input("dataEncipherment")]
+        public Input<bool>? DataEncipherment { get; set; }
+
+        [Input("decipherOnly")]
+        public Input<bool>? DecipherOnly { get; set; }
+
+        [Input("digitalSignature")]
+        public Input<bool>? DigitalSignature { get; set; }
+
+        [Input("encipherOnly")]
+        public Input<bool>? EncipherOnly { get; set; }
+
+        [Input("keyAgreement")]
+        public Input<bool>? KeyAgreement { get; set; }
+
+        [Input("keyEncipherment")]
+        public Input<bool>? KeyEncipherment { get; set; }
+
+        public CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs()
+        {
+        }
+    }
 }

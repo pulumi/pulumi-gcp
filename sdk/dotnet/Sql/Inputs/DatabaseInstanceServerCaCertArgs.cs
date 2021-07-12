@@ -9,4 +9,30 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Sql.Inputs
 {
+
+    public sealed class DatabaseInstanceServerCaCertArgs : Pulumi.ResourceArgs
+    {
+        [Input("cert")]
+        public Input<string>? Cert { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// formatted date time string indicating when this whitelist expires.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<string>? ExpirationTime { get; set; }
+
+        [Input("sha1Fingerprint")]
+        public Input<string>? Sha1Fingerprint { get; set; }
+
+        public DatabaseInstanceServerCaCertArgs()
+        {
+        }
+    }
 }

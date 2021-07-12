@@ -9,4 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs : Pulumi.ResourceArgs
+    {
+        [Input("critical", required: true)]
+        public Input<bool> Critical { get; set; } = null!;
+
+        [Input("obectId", required: true)]
+        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs> ObectId { get; set; } = null!;
+
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs()
+        {
+        }
+    }
 }

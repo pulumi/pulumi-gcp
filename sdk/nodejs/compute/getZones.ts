@@ -8,24 +8,6 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Google Compute zones in a region for a given project.
  * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * export = async () => {
- *     const available = await gcp.compute.getZones({});
- *     const foo: gcp.compute.InstanceGroupManager[];
- *     for (const range = {value: 0}; range.value < available.names.length; range.value++) {
- *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
- *             instanceTemplate: google_compute_instance_template.foobar.self_link,
- *             baseInstanceName: `foobar-${range.value}`,
- *             zone: available.names[range.value],
- *             targetSize: 1,
- *         }));
- *     }
- * }
- * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
