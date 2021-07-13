@@ -99,6 +99,14 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> DetectMd5hash { get; private set; } = null!;
 
         /// <summary>
+        /// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
+        /// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
+        /// will be subject to bucket-level retention (if any).
+        /// </summary>
+        [Output("eventBasedHold")]
+        public Output<bool?> EventBasedHold { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         /// </summary>
         [Output("kmsKeyName")]
@@ -155,6 +163,13 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("storageClass")]
         public Output<string> StorageClass { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
+        /// overwrites.
+        /// </summary>
+        [Output("temporaryHold")]
+        public Output<bool?> TemporaryHold { get; private set; } = null!;
 
 
         /// <summary>
@@ -249,6 +264,14 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? DetectMd5hash { get; set; }
 
         /// <summary>
+        /// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
+        /// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
+        /// will be subject to bucket-level retention (if any).
+        /// </summary>
+        [Input("eventBasedHold")]
+        public Input<bool>? EventBasedHold { get; set; }
+
+        /// <summary>
         /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         /// </summary>
         [Input("kmsKeyName")]
@@ -286,6 +309,13 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
+
+        /// <summary>
+        /// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
+        /// overwrites.
+        /// </summary>
+        [Input("temporaryHold")]
+        public Input<bool>? TemporaryHold { get; set; }
 
         public BucketObjectArgs()
         {
@@ -345,6 +375,14 @@ namespace Pulumi.Gcp.Storage
 
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
+
+        /// <summary>
+        /// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
+        /// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
+        /// will be subject to bucket-level retention (if any).
+        /// </summary>
+        [Input("eventBasedHold")]
+        public Input<bool>? EventBasedHold { get; set; }
 
         /// <summary>
         /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
@@ -409,6 +447,13 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
+
+        /// <summary>
+        /// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
+        /// overwrites.
+        /// </summary>
+        [Input("temporaryHold")]
+        public Input<bool>? TemporaryHold { get; set; }
 
         public BucketObjectState()
         {

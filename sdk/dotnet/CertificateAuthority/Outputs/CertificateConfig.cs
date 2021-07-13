@@ -19,27 +19,27 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// </summary>
         public readonly Outputs.CertificateConfigPublicKey PublicKey;
         /// <summary>
-        /// A resource path to a ReusableConfig in the format
-        /// `projects/*/locations/*/reusableConfigs/*`.
-        /// </summary>
-        public readonly Outputs.CertificateConfigReusableConfig ReusableConfig;
-        /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CertificateConfigSubjectConfig SubjectConfig;
+        /// <summary>
+        /// Describes how some of the technical X.509 fields in a certificate should be populated.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CertificateConfigX509Config X509Config;
 
         [OutputConstructor]
         private CertificateConfig(
             Outputs.CertificateConfigPublicKey publicKey,
 
-            Outputs.CertificateConfigReusableConfig reusableConfig,
+            Outputs.CertificateConfigSubjectConfig subjectConfig,
 
-            Outputs.CertificateConfigSubjectConfig subjectConfig)
+            Outputs.CertificateConfigX509Config x509Config)
         {
             PublicKey = publicKey;
-            ReusableConfig = reusableConfig;
             SubjectConfig = subjectConfig;
+            X509Config = x509Config;
         }
     }
 }

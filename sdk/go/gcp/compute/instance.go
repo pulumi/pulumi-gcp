@@ -100,6 +100,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrOutput `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrOutput `pulumi:"allowStoppingForUpdate"`
@@ -182,7 +184,8 @@ type Instance struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
-	ReservationAffinity InstanceReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
+	// Structure is documented below.
+	ReservationAffinity InstanceReservationAffinityOutput `pulumi:"reservationAffinity"`
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -247,6 +250,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
@@ -329,6 +334,7 @@ type instanceState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
@@ -357,6 +363,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
@@ -439,6 +447,7 @@ type InstanceState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
@@ -471,6 +480,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
@@ -543,6 +554,7 @@ type instanceArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
@@ -568,6 +580,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
@@ -640,6 +654,7 @@ type InstanceArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
 	// -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput

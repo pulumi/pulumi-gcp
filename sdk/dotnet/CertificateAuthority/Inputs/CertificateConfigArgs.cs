@@ -20,18 +20,18 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public Input<Inputs.CertificateConfigPublicKeyArgs> PublicKey { get; set; } = null!;
 
         /// <summary>
-        /// A resource path to a ReusableConfig in the format
-        /// `projects/*/locations/*/reusableConfigs/*`.
-        /// </summary>
-        [Input("reusableConfig", required: true)]
-        public Input<Inputs.CertificateConfigReusableConfigArgs> ReusableConfig { get; set; } = null!;
-
-        /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
         /// Structure is documented below.
         /// </summary>
         [Input("subjectConfig", required: true)]
         public Input<Inputs.CertificateConfigSubjectConfigArgs> SubjectConfig { get; set; } = null!;
+
+        /// <summary>
+        /// Describes how some of the technical X.509 fields in a certificate should be populated.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("x509Config", required: true)]
+        public Input<Inputs.CertificateConfigX509ConfigArgs> X509Config { get; set; } = null!;
 
         public CertificateConfigArgs()
         {

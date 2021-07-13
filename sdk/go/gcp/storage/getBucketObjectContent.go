@@ -71,15 +71,17 @@ type GetBucketObjectContentResult struct {
 	ContentType        string  `pulumi:"contentType"`
 	Crc32c             string  `pulumi:"crc32c"`
 	DetectMd5hash      string  `pulumi:"detectMd5hash"`
+	EventBasedHold     bool    `pulumi:"eventBasedHold"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string            `pulumi:"id"`
-	KmsKeyName   string            `pulumi:"kmsKeyName"`
-	Md5hash      string            `pulumi:"md5hash"`
-	MediaLink    string            `pulumi:"mediaLink"`
-	Metadata     map[string]string `pulumi:"metadata"`
-	Name         string            `pulumi:"name"`
-	OutputName   string            `pulumi:"outputName"`
-	SelfLink     string            `pulumi:"selfLink"`
-	Source       string            `pulumi:"source"`
-	StorageClass string            `pulumi:"storageClass"`
+	Id            string            `pulumi:"id"`
+	KmsKeyName    string            `pulumi:"kmsKeyName"`
+	Md5hash       string            `pulumi:"md5hash"`
+	MediaLink     string            `pulumi:"mediaLink"`
+	Metadata      map[string]string `pulumi:"metadata"`
+	Name          string            `pulumi:"name"`
+	OutputName    string            `pulumi:"outputName"`
+	SelfLink      string            `pulumi:"selfLink"`
+	Source        string            `pulumi:"source"`
+	StorageClass  string            `pulumi:"storageClass"`
+	TemporaryHold bool              `pulumi:"temporaryHold"`
 }

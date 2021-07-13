@@ -10,14 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority
 {
     /// <summary>
-    /// A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+    /// A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
     /// 
     /// &gt; **Note:** The Certificate Authority that is referenced by this resource **must** be
     /// `tier = "ENTERPRISE"`
-    /// 
-    /// &gt; **Warning:** Please remember that all resources created during preview (via this provider)
-    /// will be deleted when CA service transitions to General Availability (GA). Relying on these
-    /// certificate authorities for production traffic is discouraged.
     /// 
     /// ## Example Usage
     /// ### Privateca Certificate Csr
@@ -33,9 +29,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///     {
     ///         var test_ca = new Gcp.CertificateAuthority.Authority("test-ca", new Gcp.CertificateAuthority.AuthorityArgs
     ///         {
+    ///             Pool = "",
     ///             CertificateAuthorityId = "my-certificate-authority",
     ///             Location = "us-central1",
-    ///             Tier = "ENTERPRISE",
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -43,8 +39,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                     {
     ///                         Organization = "HashiCorp",
+    ///                         CommonName = "my-certificate-authority",
     ///                     },
-    ///                     CommonName = "my-certificate-authority",
     ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
     ///                     {
     ///                         DnsNames = 
@@ -53,30 +49,38 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                         },
     ///                     },
     ///                 },
-    ///                 ReusableConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigReusableConfigArgs
+    ///                 X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
     ///                 {
-    ///                     ReusableConfig = "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+    ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                     {
+    ///                         IsCa = true,
+    ///                     },
+    ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                     {
+    ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                         {
+    ///                             CertSign = true,
+    ///                             CrlSign = true,
+    ///                         },
+    ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                         {
+    ///                             ServerAuth = false,
+    ///                         },
+    ///                     },
     ///                 },
     ///             },
     ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///             {
     ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
     ///             },
-    ///             DisableOnDelete = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var @default = new Gcp.CertificateAuthority.Certificate("default", new Gcp.CertificateAuthority.CertificateArgs
     ///         {
-    ///             Project = "my-project-name",
+    ///             Pool = "",
     ///             Location = "us-central1",
     ///             CertificateAuthority = test_ca.CertificateAuthorityId,
     ///             Lifetime = "860s",
     ///             PemCsr = File.ReadAllText("test-fixtures/rsa_csr.pem"),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -88,15 +92,15 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// Certificate can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority}}/certificates/{{name}}
+    ///  $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{certificate_authority}}/{{name}}
+    ///  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{certificate_authority}}/{{name}}
+    ///  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificateauthority/certificate:Certificate")]
@@ -106,7 +110,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// Certificate Authority name.
         /// </summary>
         [Output("certificateAuthority")]
-        public Output<string> CertificateAuthority { get; private set; } = null!;
+        public Output<string?> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
@@ -143,14 +147,14 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string?> Lifetime { get; private set; } = null!;
 
         /// <summary>
-        /// Location of the CertificateAuthority. A full list of valid locations can be found by
-        /// running `gcloud beta privateca locations list`.
+        /// Location of the Certificate. A full list of valid locations can be found by
+        /// running `gcloud privateca locations list`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name for this Certificate .
+        /// The name for this Certificate.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -172,6 +176,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("pemCsr")]
         public Output<string?> PemCsr { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the CaPool this Certificate belongs to.
+        /// </summary>
+        [Output("pool")]
+        public Output<string> Pool { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -242,8 +252,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// Certificate Authority name.
         /// </summary>
-        [Input("certificateAuthority", required: true)]
-        public Input<string> CertificateAuthority { get; set; } = null!;
+        [Input("certificateAuthority")]
+        public Input<string>? CertificateAuthority { get; set; }
 
         /// <summary>
         /// The config used to create a self-signed X.509 certificate or CSR.
@@ -273,14 +283,14 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Lifetime { get; set; }
 
         /// <summary>
-        /// Location of the CertificateAuthority. A full list of valid locations can be found by
-        /// running `gcloud beta privateca locations list`.
+        /// Location of the Certificate. A full list of valid locations can be found by
+        /// running `gcloud privateca locations list`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The name for this Certificate .
+        /// The name for this Certificate.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -290,6 +300,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("pemCsr")]
         public Input<string>? PemCsr { get; set; }
+
+        /// <summary>
+        /// The name of the CaPool this Certificate belongs to.
+        /// </summary>
+        [Input("pool", required: true)]
+        public Input<string> Pool { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -358,14 +374,14 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Lifetime { get; set; }
 
         /// <summary>
-        /// Location of the CertificateAuthority. A full list of valid locations can be found by
-        /// running `gcloud beta privateca locations list`.
+        /// Location of the Certificate. A full list of valid locations can be found by
+        /// running `gcloud privateca locations list`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name for this Certificate .
+        /// The name for this Certificate.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -393,6 +409,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("pemCsr")]
         public Input<string>? PemCsr { get; set; }
+
+        /// <summary>
+        /// The name of the CaPool this Certificate belongs to.
+        /// </summary>
+        [Input("pool")]
+        public Input<string>? Pool { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

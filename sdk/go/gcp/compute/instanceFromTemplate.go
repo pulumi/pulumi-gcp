@@ -77,6 +77,8 @@ import (
 type InstanceFromTemplate struct {
 	pulumi.CustomResourceState
 
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceFromTemplateAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolOutput `pulumi:"allowStoppingForUpdate"`
@@ -193,6 +195,8 @@ func GetInstanceFromTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceFromTemplate resources.
 type instanceFromTemplateState struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *InstanceFromTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
@@ -278,6 +282,8 @@ type instanceFromTemplateState struct {
 }
 
 type InstanceFromTemplateState struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceFromTemplateAdvancedMachineFeaturesPtrInput
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
@@ -367,6 +373,8 @@ func (InstanceFromTemplateState) ElementType() reflect.Type {
 }
 
 type instanceFromTemplateArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *InstanceFromTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
@@ -439,6 +447,8 @@ type instanceFromTemplateArgs struct {
 
 // The set of arguments for constructing a InstanceFromTemplate resource.
 type InstanceFromTemplateArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceFromTemplateAdvancedMachineFeaturesPtrInput
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput

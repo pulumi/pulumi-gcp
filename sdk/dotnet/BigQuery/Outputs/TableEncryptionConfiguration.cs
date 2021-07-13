@@ -21,11 +21,19 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// `gcp.kms.CryptoKeyIAMBinding` resource.
         /// </summary>
         public readonly string KmsKeyName;
+        /// <summary>
+        /// The self link or full name of the kms key version used to encrypt this table.
+        /// </summary>
+        public readonly string? KmsKeyVersion;
 
         [OutputConstructor]
-        private TableEncryptionConfiguration(string kmsKeyName)
+        private TableEncryptionConfiguration(
+            string kmsKeyName,
+
+            string? kmsKeyVersion)
         {
             KmsKeyName = kmsKeyName;
+            KmsKeyVersion = kmsKeyVersion;
         }
     }
 }

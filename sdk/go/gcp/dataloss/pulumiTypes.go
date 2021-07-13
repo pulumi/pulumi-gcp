@@ -514,6 +514,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Replace each input value with a given value.
 	// Structure is documented below.
 	ReplaceConfig *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig `pulumi:"replaceConfig"`
+	// Replace each matching finding with the name of the info type.
+	ReplaceWithInfoTypeConfig *bool `pulumi:"replaceWithInfoTypeConfig"`
 }
 
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput values.
@@ -535,6 +537,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Replace each input value with a given value.
 	// Structure is documented below.
 	ReplaceConfig PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput `pulumi:"replaceConfig"`
+	// Replace each matching finding with the name of the info type.
+	ReplaceWithInfoTypeConfig pulumi.BoolPtrInput `pulumi:"replaceWithInfoTypeConfig"`
 }
 
 func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs) ElementType() reflect.Type {
@@ -578,6 +582,13 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
 		return v.ReplaceConfig
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput)
+}
+
+// Replace each matching finding with the name of the info type.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) ReplaceWithInfoTypeConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation) *bool {
+		return v.ReplaceWithInfoTypeConfig
+	}).(pulumi.BoolPtrOutput)
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig struct {

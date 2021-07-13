@@ -13,9 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceReservationAffinity
     {
+        /// <summary>
+        /// Specifies the label selector for the reservation to use..
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.InstanceReservationAffinitySpecificReservation? SpecificReservation;
         /// <summary>
-        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// The type of reservation from which this instance can consume resources.
         /// </summary>
         public readonly string Type;
 

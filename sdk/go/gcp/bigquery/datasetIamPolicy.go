@@ -45,7 +45,7 @@ import (
 // 		owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 // 			Bindings: []organizations.GetIAMPolicyBinding{
 // 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/dataOwner",
+// 					Role: "roles/bigquery.dataOwner",
 // 					Members: []string{
 // 						"user:jane@example.com",
 // 					},

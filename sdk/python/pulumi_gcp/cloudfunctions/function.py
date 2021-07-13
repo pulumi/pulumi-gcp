@@ -53,7 +53,7 @@ class FunctionArgs:
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -269,7 +269,7 @@ class FunctionArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        Region of function. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
@@ -414,7 +414,7 @@ class _FunctionState:
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -620,7 +620,7 @@ class _FunctionState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        Region of function. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
@@ -867,7 +867,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -1096,7 +1096,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -1237,7 +1237,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        Region of function. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 

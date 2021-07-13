@@ -11,14 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+// A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
 //
 // > **Note:** The Certificate Authority that is referenced by this resource **must** be
 // `tier = "ENTERPRISE"`
-//
-// > **Warning:** Please remember that all resources created during preview (via this provider)
-// will be deleted when CA service transitions to General Availability (GA). Relying on these
-// certificate authorities for production traffic is discouraged.
 //
 // ## Example Usage
 //
@@ -27,21 +23,21 @@ import (
 // Certificate can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority}}/certificates/{{name}}
+//  $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{certificate_authority}}/{{name}}
+//  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{certificate_authority}}/{{name}}
+//  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
 // ```
 type Certificate struct {
 	pulumi.CustomResourceState
 
 	// Certificate Authority name.
-	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
+	CertificateAuthority pulumi.StringPtrOutput `pulumi:"certificateAuthority"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
 	// this field is present.
 	CertificateDescriptions CertificateCertificateDescriptionArrayOutput `pulumi:"certificateDescriptions"`
@@ -56,10 +52,10 @@ type Certificate struct {
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime pulumi.StringPtrOutput `pulumi:"lifetime"`
-	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// Location of the Certificate. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name for this Certificate .
+	// The name for this Certificate.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate pulumi.StringOutput `pulumi:"pemCertificate"`
@@ -67,6 +63,8 @@ type Certificate struct {
 	PemCertificates pulumi.StringArrayOutput `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrOutput `pulumi:"pemCsr"`
+	// The name of the CaPool this Certificate belongs to.
+	Pool pulumi.StringOutput `pulumi:"pool"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -84,11 +82,11 @@ func NewCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CertificateAuthority == nil {
-		return nil, errors.New("invalid value for required argument 'CertificateAuthority'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Pool == nil {
+		return nil, errors.New("invalid value for required argument 'Pool'")
 	}
 	var resource Certificate
 	err := ctx.RegisterResource("gcp:certificateauthority/certificate:Certificate", name, args, &resource, opts...)
@@ -128,10 +126,10 @@ type certificateState struct {
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime *string `pulumi:"lifetime"`
-	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// Location of the Certificate. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location *string `pulumi:"location"`
-	// The name for this Certificate .
+	// The name for this Certificate.
 	Name *string `pulumi:"name"`
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate *string `pulumi:"pemCertificate"`
@@ -139,6 +137,8 @@ type certificateState struct {
 	PemCertificates []string `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr *string `pulumi:"pemCsr"`
+	// The name of the CaPool this Certificate belongs to.
+	Pool *string `pulumi:"pool"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -166,10 +166,10 @@ type CertificateState struct {
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime pulumi.StringPtrInput
-	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// Location of the Certificate. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringPtrInput
-	// The name for this Certificate .
+	// The name for this Certificate.
 	Name pulumi.StringPtrInput
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate pulumi.StringPtrInput
@@ -177,6 +177,8 @@ type CertificateState struct {
 	PemCertificates pulumi.StringArrayInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrInput
+	// The name of the CaPool this Certificate belongs to.
+	Pool pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -193,7 +195,7 @@ func (CertificateState) ElementType() reflect.Type {
 
 type certificateArgs struct {
 	// Certificate Authority name.
-	CertificateAuthority string `pulumi:"certificateAuthority"`
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config *CertificateConfig `pulumi:"config"`
@@ -203,13 +205,15 @@ type certificateArgs struct {
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime *string `pulumi:"lifetime"`
-	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// Location of the Certificate. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location string `pulumi:"location"`
-	// The name for this Certificate .
+	// The name for this Certificate.
 	Name *string `pulumi:"name"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr *string `pulumi:"pemCsr"`
+	// The name of the CaPool this Certificate belongs to.
+	Pool string `pulumi:"pool"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -218,7 +222,7 @@ type certificateArgs struct {
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
 	// Certificate Authority name.
-	CertificateAuthority pulumi.StringInput
+	CertificateAuthority pulumi.StringPtrInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config CertificateConfigPtrInput
@@ -228,13 +232,15 @@ type CertificateArgs struct {
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime pulumi.StringPtrInput
-	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// Location of the Certificate. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringInput
-	// The name for this Certificate .
+	// The name for this Certificate.
 	Name pulumi.StringPtrInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrInput
+	// The name of the CaPool this Certificate belongs to.
+	Pool pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

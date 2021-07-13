@@ -12,12 +12,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
     public sealed class CertificateCertificateDescriptionSubjectDescriptionGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The common name of the distinguished name.
-        /// </summary>
-        [Input("commonName")]
-        public Input<string>? CommonName { get; set; }
-
         [Input("hexSerialNumber")]
         public Input<string>? HexSerialNumber { get; set; }
 
@@ -35,19 +29,31 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         [Input("notBeforeTime")]
         public Input<string>? NotBeforeTime { get; set; }
 
-        /// <summary>
-        /// Contains distinguished name fields such as the location and organization.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("subject")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs>? Subject { get; set; }
+        [Input("subjectAltNames")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameGetArgs>? _subjectAltNames;
 
         /// <summary>
         /// The subject alternative name fields.
         /// Structure is documented below.
         /// </summary>
-        [Input("subjectAltName")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameGetArgs>? SubjectAltName { get; set; }
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameGetArgs> SubjectAltNames
+        {
+            get => _subjectAltNames ?? (_subjectAltNames = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameGetArgs>());
+            set => _subjectAltNames = value;
+        }
+
+        [Input("subjects")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs>? _subjects;
+
+        /// <summary>
+        /// Contains distinguished name fields such as the location and organization.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs> Subjects
+        {
+            get => _subjects ?? (_subjects = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs>());
+            set => _subjects = value;
+        }
 
         public CertificateCertificateDescriptionSubjectDescriptionGetArgs()
         {

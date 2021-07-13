@@ -2592,6 +2592,11 @@ export namespace bigquery {
          * The BigQuery Service Account associated with your project requires access to this encryption key.
          */
         kmsKeyName: pulumi.Input<string>;
+        /**
+         * -
+         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         */
+        kmsKeyVersion?: pulumi.Input<string>;
     }
 
     export interface JobCopyDestinationTable {
@@ -2838,6 +2843,11 @@ export namespace bigquery {
          * The BigQuery Service Account associated with your project requires access to this encryption key.
          */
         kmsKeyName: pulumi.Input<string>;
+        /**
+         * -
+         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         */
+        kmsKeyVersion?: pulumi.Input<string>;
     }
 
     export interface JobLoadDestinationTable {
@@ -2995,6 +3005,11 @@ export namespace bigquery {
          * The BigQuery Service Account associated with your project requires access to this encryption key.
          */
         kmsKeyName: pulumi.Input<string>;
+        /**
+         * -
+         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         */
+        kmsKeyVersion?: pulumi.Input<string>;
     }
 
     export interface JobQueryDestinationTable {
@@ -3103,6 +3118,10 @@ export namespace bigquery {
          * `gcp.kms.CryptoKeyIAMBinding` resource.
          */
         kmsKeyName: pulumi.Input<string>;
+        /**
+         * The self link or full name of the kms key version used to encrypt this table.
+         */
+        kmsKeyVersion?: pulumi.Input<string>;
     }
 
     export interface TableExternalDataConfiguration {
@@ -3746,34 +3765,18 @@ export namespace certificateauthority {
 
     export interface AuthorityConfig {
         /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         * . Alternatively, one of the short names
-         * found by running `gcloud beta privateca reusable-configs list`.
-         */
-        reusableConfig: pulumi.Input<inputs.certificateauthority.AuthorityConfigReusableConfig>;
-        /**
          * Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
          */
         subjectConfig: pulumi.Input<inputs.certificateauthority.AuthorityConfigSubjectConfig>;
-    }
-
-    export interface AuthorityConfigReusableConfig {
         /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         * . Alternatively, one of the short names
-         * found by running `gcloud beta privateca reusable-configs list`.
+         * Describes how some of the technical X.509 fields in a certificate should be populated.
+         * Structure is documented below.
          */
-        reusableConfig: pulumi.Input<string>;
+        x509Config: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509Config>;
     }
 
     export interface AuthorityConfigSubjectConfig {
-        /**
-         * The common name of the distinguished name.
-         */
-        commonName: pulumi.Input<string>;
         /**
          * Contains distinguished name fields such as the location and organization.
          * Structure is documented below.
@@ -3787,6 +3790,10 @@ export namespace certificateauthority {
     }
 
     export interface AuthorityConfigSubjectConfigSubject {
+        /**
+         * The common name of the distinguished name.
+         */
+        commonName: pulumi.Input<string>;
         /**
          * The country code of the subject.
          */
@@ -3836,30 +3843,168 @@ export namespace certificateauthority {
         uris?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface AuthorityIamBindingCondition {
-        description?: pulumi.Input<string>;
-        expression: pulumi.Input<string>;
-        title: pulumi.Input<string>;
+    export interface AuthorityConfigX509Config {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigAdditionalExtension>[]>;
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigCaOptions>;
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsage: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigKeyUsage>;
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigPolicyId>[]>;
     }
 
-    export interface AuthorityIamMemberCondition {
-        description?: pulumi.Input<string>;
-        expression: pulumi.Input<string>;
-        title: pulumi.Input<string>;
+    export interface AuthorityConfigX509ConfigAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical: pulumi.Input<boolean>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectId: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigAdditionalExtensionObjectId>;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value: pulumi.Input<string>;
     }
 
-    export interface AuthorityIssuingOptions {
+    export interface AuthorityConfigX509ConfigAdditionalExtensionObjectId {
         /**
-         * When true, includes a URL to the issuing CA certificate in the "authority
-         * information access" X.509 extension.
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          */
-        includeCaCertUrl?: pulumi.Input<boolean>;
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface AuthorityConfigX509ConfigCaOptions {
         /**
-         * When true, includes a URL to the CRL corresponding to certificates issued from a
-         * CertificateAuthority. CRLs will expire 7 days from their creation. However, we will
-         * rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
+         * the extension will be omitted from the CA certificate.
          */
-        includeCrlAccessUrl?: pulumi.Input<boolean>;
+        isCa: pulumi.Input<boolean>;
+        /**
+         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
+         * value is missing, the max path length will be omitted from the CA certificate.
+         */
+        maxIssuerPathLength?: pulumi.Input<number>;
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsage: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsage>;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsage: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage>;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>[]>;
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: pulumi.Input<boolean>;
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: pulumi.Input<boolean>;
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface AuthorityConfigX509ConfigPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface AuthorityKeySpec {
@@ -3876,19 +4021,328 @@ export namespace certificateauthority {
         cloudKmsKeyVersion?: pulumi.Input<string>;
     }
 
+    export interface CaPoolIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface CaPoolIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface CaPoolIssuancePolicy {
+        /**
+         * IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
+         * Structure is documented below.
+         */
+        allowedIssuanceModes?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyAllowedIssuanceModes>;
+        /**
+         * If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
+         * Otherwise, any key may be used.
+         * Structure is documented below.
+         */
+        allowedKeyTypes?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyAllowedKeyType>[]>;
+        /**
+         * A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
+         * includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
+         * request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
+         * issuance request will fail.
+         * Structure is documented below.
+         */
+        baselineValues?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValues>;
+        /**
+         * Describes constraints on identities that may appear in Certificates issued through this CaPool.
+         * If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
+         * Structure is documented below.
+         */
+        identityConstraints?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyIdentityConstraints>;
+        /**
+         * The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
+         * expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
+         */
+        maximumLifetime?: pulumi.Input<string>;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedIssuanceModes {
+        /**
+         * When true, allows callers to create Certificates by specifying a CertificateConfig.
+         */
+        allowConfigBasedIssuance: pulumi.Input<boolean>;
+        /**
+         * When true, allows callers to create Certificates by specifying a CSR.
+         */
+        allowCsrBasedIssuance: pulumi.Input<boolean>;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedKeyType {
+        /**
+         * Represents an allowed Elliptic Curve key type.
+         * Structure is documented below.
+         */
+        ellipticCurve?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve>;
+        /**
+         * Describes an RSA key that may be used in a Certificate issued from a CaPool.
+         * Structure is documented below.
+         */
+        rsa?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeRsa>;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
+        /**
+         * The algorithm used.
+         * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+         */
+        signatureAlgorithm: pulumi.Input<string>;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedKeyTypeRsa {
+        /**
+         * The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
+         * service will not enforce an explicit upper bound on RSA modulus sizes.
+         */
+        maxModulusSize?: pulumi.Input<string>;
+        /**
+         * The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
+         * service-level min RSA modulus size will continue to apply.
+         */
+        minModulusSize?: pulumi.Input<string>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValues {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtension>[]>;
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptions>;
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsage: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsage>;
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyId>[]>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical: pulumi.Input<boolean>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectId: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId>;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesCaOptions {
+        /**
+         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
+         * the extension will be omitted from the CA certificate.
+         */
+        isCa?: pulumi.Input<boolean>;
+        /**
+         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
+         * value is missing, the max path length will be omitted from the CA certificate.
+         */
+        maxIssuerPathLength?: pulumi.Input<number>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsage: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage>;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsage: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage>;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>[]>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: pulumi.Input<boolean>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: pulumi.Input<boolean>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CaPoolIssuancePolicyIdentityConstraints {
+        /**
+         * If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
+         * Otherwise, the requested SubjectAltNames will be discarded.
+         */
+        allowSubjectAltNamesPassthrough: pulumi.Input<boolean>;
+        /**
+         * If this is set, the Subject field may be copied from a certificate request into the signed certificate.
+         * Otherwise, the requested Subject will be discarded.
+         */
+        allowSubjectPassthrough: pulumi.Input<boolean>;
+        /**
+         * A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
+         * certificate is signed. To see the full allowed syntax and some examples,
+         * see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+         * Structure is documented below.
+         */
+        celExpression?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpression>;
+    }
+
+    export interface CaPoolIssuancePolicyIdentityConstraintsCelExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface CaPoolPublishingOptions {
+        /**
+         * When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
+         * X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
+         * X.509 extension will not be written in issued certificates.
+         */
+        publishCaCert: pulumi.Input<boolean>;
+        /**
+         * When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension
+         * in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not
+         * be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are
+         * also rebuilt shortly after a certificate is revoked.
+         */
+        publishCrl: pulumi.Input<boolean>;
+    }
+
     export interface CertificateCertificateDescription {
         aiaIssuingCertificateUrls?: pulumi.Input<pulumi.Input<string>[]>;
-        authorityKeyId?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId>;
-        certFingerprint?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint>;
-        configValues?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValues>;
+        authorityKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId>[]>;
+        certFingerprints?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint>[]>;
+        configValues?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValue>[]>;
         crlDistributionPoints?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * A PublicKey describes a public key.
          * Structure is documented below.
          */
-        publicKey: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionPublicKey>;
-        subjectDescription?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription>;
-        subjectKeyId?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId>;
+        publicKeys?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionPublicKey>[]>;
+        subjectDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription>[]>;
+        subjectKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId>[]>;
     }
 
     export interface CertificateCertificateDescriptionAuthorityKeyId {
@@ -3899,66 +4353,126 @@ export namespace certificateauthority {
         sha256Hash?: pulumi.Input<string>;
     }
 
-    export interface CertificateCertificateDescriptionConfigValues {
-        keyUsage?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsage>;
+    export interface CertificateCertificateDescriptionConfigValue {
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsage>[]>;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsage {
-        baseKeyUsage?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage>;
-        extendedKeyUsage?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage>;
-        unknownExtendedKeyUsages: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage>[]>;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage>[]>;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage>[]>;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage>[]>;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage {
-        keyUsageOptions?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions>;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage {
+        keyUsageOptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption>[]>;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions {
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption {
+        /**
+         * The key may be used to sign certificates.
+         */
         certSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
         contentCommitment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
         crlSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher data.
+         */
         dataEncipherment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to decipher only.
+         */
         decipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for digital signatures.
+         */
         digitalSignature?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher only.
+         */
         encipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
         keyAgreement?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher other keys.
+         */
         keyEncipherment?: pulumi.Input<boolean>;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage {
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
         clientAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
         codeSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
         emailProtection?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
         ocspSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
         serverAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
         timeStamping?: pulumi.Input<boolean>;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage {
-        obectId: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId>;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage {
+        obectIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId>[]>;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId {
-        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths?: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface CertificateCertificateDescriptionPublicKey {
         /**
+         * The format of the public key. Currently, only PEM format is supported.
+         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         */
+        format?: pulumi.Input<string>;
+        /**
          * Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
          */
         key?: pulumi.Input<string>;
-        /**
-         * Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
-         * Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
-         */
-        type: pulumi.Input<string>;
     }
 
     export interface CertificateCertificateDescriptionSubjectDescription {
-        /**
-         * The common name of the distinguished name.
-         */
-        commonName?: pulumi.Input<string>;
         hexSerialNumber?: pulumi.Input<string>;
         /**
          * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
@@ -3969,18 +4483,22 @@ export namespace certificateauthority {
         notAfterTime?: pulumi.Input<string>;
         notBeforeTime?: pulumi.Input<string>;
         /**
-         * Contains distinguished name fields such as the location and organization.
-         * Structure is documented below.
-         */
-        subject?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubject>;
-        /**
          * The subject alternative name fields.
          * Structure is documented below.
          */
-        subjectAltName?: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>;
+        subjectAltNames?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>[]>;
+        /**
+         * Contains distinguished name fields such as the location and organization.
+         * Structure is documented below.
+         */
+        subjects?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubject>[]>;
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubject {
+        /**
+         * The common name of the distinguished name.
+         */
+        commonName?: pulumi.Input<string>;
         /**
          * The country code of the subject.
          */
@@ -4012,7 +4530,7 @@ export namespace certificateauthority {
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
-        customSans: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>[]>;
+        customSans?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>[]>;
         /**
          * Contains only valid, fully-qualified host names.
          */
@@ -4032,13 +4550,23 @@ export namespace certificateauthority {
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
-        critical: pulumi.Input<boolean>;
-        obectId: pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>;
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical?: pulumi.Input<boolean>;
+        obectIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>[]>;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
         value?: pulumi.Input<string>;
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId {
-        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths?: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface CertificateCertificateDescriptionSubjectKeyId {
@@ -4052,42 +4580,30 @@ export namespace certificateauthority {
          */
         publicKey: pulumi.Input<inputs.certificateauthority.CertificateConfigPublicKey>;
         /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         */
-        reusableConfig: pulumi.Input<inputs.certificateauthority.CertificateConfigReusableConfig>;
-        /**
          * Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
          */
         subjectConfig: pulumi.Input<inputs.certificateauthority.CertificateConfigSubjectConfig>;
+        /**
+         * Describes how some of the technical X.509 fields in a certificate should be populated.
+         * Structure is documented below.
+         */
+        x509Config: pulumi.Input<inputs.certificateauthority.CertificateConfigX509Config>;
     }
 
     export interface CertificateConfigPublicKey {
         /**
+         * The format of the public key. Currently, only PEM format is supported.
+         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         */
+        format: pulumi.Input<string>;
+        /**
          * Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
          */
         key?: pulumi.Input<string>;
-        /**
-         * Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
-         * Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface CertificateConfigReusableConfig {
-        /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         */
-        reusableConfig: pulumi.Input<string>;
     }
 
     export interface CertificateConfigSubjectConfig {
-        /**
-         * The common name of the distinguished name.
-         */
-        commonName: pulumi.Input<string>;
         /**
          * Contains distinguished name fields such as the location and organization.
          * Structure is documented below.
@@ -4101,6 +4617,10 @@ export namespace certificateauthority {
     }
 
     export interface CertificateConfigSubjectConfigSubject {
+        /**
+         * The common name of the distinguished name.
+         */
+        commonName: pulumi.Input<string>;
         /**
          * The country code of the subject.
          */
@@ -4148,6 +4668,170 @@ export namespace certificateauthority {
          * Contains only valid RFC 3986 URIs.
          */
         uris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CertificateConfigX509Config {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigAdditionalExtension>[]>;
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions?: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigCaOptions>;
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsage: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigKeyUsage>;
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigPolicyId>[]>;
+    }
+
+    export interface CertificateConfigX509ConfigAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical: pulumi.Input<boolean>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectId: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigAdditionalExtensionObjectId>;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface CertificateConfigX509ConfigAdditionalExtensionObjectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateConfigX509ConfigCaOptions {
+        /**
+         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
+         * the extension will be omitted from the CA certificate.
+         */
+        isCa?: pulumi.Input<boolean>;
+        /**
+         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
+         * value is missing, the max path length will be omitted from the CA certificate.
+         */
+        maxIssuerPathLength?: pulumi.Input<number>;
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsage: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsage>;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsage: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsage>;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>[]>;
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: pulumi.Input<boolean>;
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: pulumi.Input<boolean>;
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateConfigX509ConfigPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface CertificateRevocationDetail {
@@ -7560,6 +8244,17 @@ export namespace compute {
         source: pulumi.Input<string>;
     }
 
+    export interface InstanceAdvancedMachineFeatures {
+        /**
+         * Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+         */
+        enableNestedVirtualization?: pulumi.Input<boolean>;
+        /**
+         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         */
+        threadsPerCore?: pulumi.Input<number>;
+    }
+
     export interface InstanceAttachedDisk {
         /**
          * Name with which the attached disk will be accessible
@@ -7660,7 +8355,7 @@ export namespace compute {
          */
         size?: pulumi.Input<number>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type?: pulumi.Input<string>;
     }
@@ -7670,6 +8365,11 @@ export namespace compute {
          * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
         enableConfidentialCompute: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceFromMachineImageAdvancedMachineFeatures {
+        enableNestedVirtualization?: pulumi.Input<boolean>;
+        threadsPerCore?: pulumi.Input<number>;
     }
 
     export interface InstanceFromMachineImageAttachedDisk {
@@ -7775,6 +8475,11 @@ export namespace compute {
         enableIntegrityMonitoring?: pulumi.Input<boolean>;
         enableSecureBoot?: pulumi.Input<boolean>;
         enableVtpm?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceFromTemplateAdvancedMachineFeatures {
+        enableNestedVirtualization?: pulumi.Input<boolean>;
+        threadsPerCore?: pulumi.Input<number>;
     }
 
     export interface InstanceFromTemplateAttachedDisk {
@@ -8035,7 +8740,7 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: pulumi.Input<string>;
     }
@@ -8167,20 +8872,24 @@ export namespace compute {
     }
 
     export interface InstanceReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use..
+         * Structure is documented below.
+         */
         specificReservation?: pulumi.Input<inputs.compute.InstanceReservationAffinitySpecificReservation>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: pulumi.Input<string>;
     }
 
     export interface InstanceReservationAffinitySpecificReservation {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: pulumi.Input<string>;
         /**
-         * The values for the node affinity label.
+         * Corresponds to the label values of a reservation resource.
          */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -8220,7 +8929,7 @@ export namespace compute {
 
     export interface InstanceSchedulingNodeAffinity {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: pulumi.Input<string>;
         /**
@@ -8229,7 +8938,7 @@ export namespace compute {
          */
         operator: pulumi.Input<string>;
         /**
-         * The values for the node affinity label.
+         * Corresponds to the label values of a reservation resource.
          */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -8277,7 +8986,7 @@ export namespace compute {
 
     export interface InstanceTemplateAdvancedMachineFeatures {
         /**
-         * Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+         * Defines whether the instance should have nested virtualization enabled. Defaults to false.
          */
         enableNestedVirtualization?: pulumi.Input<boolean>;
         /**
@@ -8368,7 +9077,7 @@ export namespace compute {
          */
         sourceImage?: pulumi.Input<string>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type?: pulumi.Input<string>;
     }
@@ -8386,7 +9095,7 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: pulumi.Input<string>;
     }
@@ -8480,18 +9189,25 @@ export namespace compute {
     }
 
     export interface InstanceTemplateReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use..
+         * Structure is documented below.
+         */
         specificReservation?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinitySpecificReservation>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateReservationAffinitySpecificReservation {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: pulumi.Input<string>;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -8526,7 +9242,7 @@ export namespace compute {
 
     export interface InstanceTemplateSchedulingNodeAffinity {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: pulumi.Input<string>;
         /**
@@ -8534,6 +9250,9 @@ export namespace compute {
          * or `NOT_IN` for anti-affinities.
          */
         operator: pulumi.Input<string>;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -15410,6 +16129,10 @@ export namespace dataloss {
          * Structure is documented below.
          */
         replaceConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig>;
+        /**
+         * Replace each matching finding with the name of the info type.
+         */
+        replaceWithInfoTypeConfig?: pulumi.Input<boolean>;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {

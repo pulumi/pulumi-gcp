@@ -1246,6 +1246,8 @@ github.com/pulumi/terraform-provider-google-beta v0.0.0-20210707163158-09bafe9dd
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20210707163158-09bafe9dd213/go.mod h1:eN68PqFNVqJnYKEJBxiEGDK03ZvOgV+SEjNSAjawMS4=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20210708132737-419924e41547 h1:BkSpYi/4XYSy6zVm5YM2dCaSpmab+6d57f4fe26LMks=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20210708132737-419924e41547/go.mod h1:eN68PqFNVqJnYKEJBxiEGDK03ZvOgV+SEjNSAjawMS4=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20210713093432-cd048da8bf5b h1:BChIEHwQRkDXuvgnCMXzemyMaTg2JIsqj6MLqz1YFyk=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20210713093432-cd048da8bf5b/go.mod h1:eN68PqFNVqJnYKEJBxiEGDK03ZvOgV+SEjNSAjawMS4=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c h1:JoUA0uz9U0FVFq5p4LjEq4C0VgQ0El320s3Ms0V4eww=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/quasilyte/go-ruleguard v0.3.1-0.20210203134552-1b5a410e1cc8/go.mod h1:KsAh3x0e7Fkpgs+Q9pNLS5XpFSvYCEVl5gP9Pp1xp30=

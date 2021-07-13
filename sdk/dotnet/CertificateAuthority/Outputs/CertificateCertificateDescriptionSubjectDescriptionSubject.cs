@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubject
     {
         /// <summary>
+        /// The common name of the distinguished name.
+        /// </summary>
+        public readonly string? CommonName;
+        /// <summary>
         /// The country code of the subject.
         /// </summary>
         public readonly string? CountryCode;
@@ -44,6 +48,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
         [OutputConstructor]
         private CertificateCertificateDescriptionSubjectDescriptionSubject(
+            string? commonName,
+
             string? countryCode,
 
             string? locality,
@@ -58,6 +64,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             string? streetAddress)
         {
+            CommonName = commonName;
             CountryCode = countryCode;
             Locality = locality;
             Organization = organization;

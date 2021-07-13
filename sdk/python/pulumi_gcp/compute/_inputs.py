@@ -66,10 +66,12 @@ __all__ = [
     'ImageIamBindingConditionArgs',
     'ImageIamMemberConditionArgs',
     'ImageRawDiskArgs',
+    'InstanceAdvancedMachineFeaturesArgs',
     'InstanceAttachedDiskArgs',
     'InstanceBootDiskArgs',
     'InstanceBootDiskInitializeParamsArgs',
     'InstanceConfidentialInstanceConfigArgs',
+    'InstanceFromMachineImageAdvancedMachineFeaturesArgs',
     'InstanceFromMachineImageAttachedDiskArgs',
     'InstanceFromMachineImageBootDiskArgs',
     'InstanceFromMachineImageBootDiskInitializeParamsArgs',
@@ -86,6 +88,7 @@ __all__ = [
     'InstanceFromMachineImageScratchDiskArgs',
     'InstanceFromMachineImageServiceAccountArgs',
     'InstanceFromMachineImageShieldedInstanceConfigArgs',
+    'InstanceFromTemplateAdvancedMachineFeaturesArgs',
     'InstanceFromTemplateAttachedDiskArgs',
     'InstanceFromTemplateBootDiskArgs',
     'InstanceFromTemplateBootDiskInitializeParamsArgs',
@@ -5253,6 +5256,45 @@ class ImageRawDiskArgs:
 
 
 @pulumi.input_type
+class InstanceAdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 threads_per_core: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        :param pulumi.Input[int] threads_per_core: he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threads_per_core", value)
+
+
+@pulumi.input_type
 class InstanceAttachedDiskArgs:
     def __init__(__self__, *,
                  source: pulumi.Input[str],
@@ -5543,7 +5585,7 @@ class InstanceBootDiskInitializeParamsArgs:
         :param pulumi.Input[Mapping[str, Any]] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
         """
         if image is not None:
             pulumi.set(__self__, "image", image)
@@ -5603,7 +5645,7 @@ class InstanceBootDiskInitializeParamsArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of reservation from which this instance can consume resources.
         """
         return pulumi.get(self, "type")
 
@@ -5632,6 +5674,35 @@ class InstanceConfidentialInstanceConfigArgs:
     @enable_confidential_compute.setter
     def enable_confidential_compute(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enable_confidential_compute", value)
+
+
+@pulumi.input_type
+class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 threads_per_core: Optional[pulumi.Input[int]] = None):
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -6342,6 +6413,35 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
     @enable_vtpm.setter
     def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_vtpm", value)
+
+
+@pulumi.input_type
+class InstanceFromTemplateAdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 threads_per_core: Optional[pulumi.Input[int]] = None):
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -7580,7 +7680,7 @@ class InstanceGuestAcceleratorArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -7601,7 +7701,7 @@ class InstanceGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of reservation from which this instance can consume resources.
         """
         return pulumi.get(self, "type")
 
@@ -8028,7 +8128,9 @@ class InstanceReservationAffinityArgs:
                  type: pulumi.Input[str],
                  specific_reservation: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']] = None):
         """
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
+        :param pulumi.Input['InstanceReservationAffinitySpecificReservationArgs'] specific_reservation: Specifies the label selector for the reservation to use..
+               Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
         if specific_reservation is not None:
@@ -8038,7 +8140,7 @@ class InstanceReservationAffinityArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of reservation from which this instance can consume resources.
         """
         return pulumi.get(self, "type")
 
@@ -8049,6 +8151,10 @@ class InstanceReservationAffinityArgs:
     @property
     @pulumi.getter(name="specificReservation")
     def specific_reservation(self) -> Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']]:
+        """
+        Specifies the label selector for the reservation to use..
+        Structure is documented below.
+        """
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
@@ -8062,8 +8168,8 @@ class InstanceReservationAffinitySpecificReservationArgs:
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[str] key: The key for the node affinity label.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values for the node affinity label.
+        :param pulumi.Input[str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
@@ -8072,7 +8178,7 @@ class InstanceReservationAffinitySpecificReservationArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The key for the node affinity label.
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
         """
         return pulumi.get(self, "key")
 
@@ -8084,7 +8190,7 @@ class InstanceReservationAffinitySpecificReservationArgs:
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The values for the node affinity label.
+        Corresponds to the label values of a reservation resource.
         """
         return pulumi.get(self, "values")
 
@@ -8207,10 +8313,10 @@ class InstanceSchedulingNodeAffinityArgs:
                  operator: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[str] key: The key for the node affinity label.
+        :param pulumi.Input[str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
         :param pulumi.Input[str] operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values for the node affinity label.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -8220,7 +8326,7 @@ class InstanceSchedulingNodeAffinityArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The key for the node affinity label.
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
         """
         return pulumi.get(self, "key")
 
@@ -8245,7 +8351,7 @@ class InstanceSchedulingNodeAffinityArgs:
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The values for the node affinity label.
+        Corresponds to the label values of a reservation resource.
         """
         return pulumi.get(self, "values")
 
@@ -8391,7 +8497,7 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param pulumi.Input[int] threads_per_core: he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         """
         if enable_nested_virtualization is not None:
@@ -8403,7 +8509,7 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
     @pulumi.getter(name="enableNestedVirtualization")
     def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
         return pulumi.get(self, "enable_nested_virtualization")
 
@@ -8498,7 +8604,7 @@ class InstanceTemplateDiskArgs:
                `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
                `{project}/{image}`, `{family}`, or `{image}`.
                > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
         """
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
@@ -8710,7 +8816,7 @@ class InstanceTemplateDiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of reservation from which this instance can consume resources.
         """
         return pulumi.get(self, "type")
 
@@ -8748,7 +8854,7 @@ class InstanceTemplateGuestAcceleratorArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -8769,7 +8875,7 @@ class InstanceTemplateGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of reservation from which this instance can consume resources.
         """
         return pulumi.get(self, "type")
 
@@ -9076,7 +9182,9 @@ class InstanceTemplateReservationAffinityArgs:
                  type: pulumi.Input[str],
                  specific_reservation: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']] = None):
         """
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
+        :param pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs'] specific_reservation: Specifies the label selector for the reservation to use..
+               Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
         if specific_reservation is not None:
@@ -9086,7 +9194,7 @@ class InstanceTemplateReservationAffinityArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of reservation from which this instance can consume resources.
         """
         return pulumi.get(self, "type")
 
@@ -9097,6 +9205,10 @@ class InstanceTemplateReservationAffinityArgs:
     @property
     @pulumi.getter(name="specificReservation")
     def specific_reservation(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']]:
+        """
+        Specifies the label selector for the reservation to use..
+        Structure is documented below.
+        """
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
@@ -9110,7 +9222,8 @@ class InstanceTemplateReservationAffinitySpecificReservationArgs:
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[str] key: The key for the node affinity label.
+        :param pulumi.Input[str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
@@ -9119,7 +9232,7 @@ class InstanceTemplateReservationAffinitySpecificReservationArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The key for the node affinity label.
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
         """
         return pulumi.get(self, "key")
 
@@ -9130,6 +9243,9 @@ class InstanceTemplateReservationAffinitySpecificReservationArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -9245,9 +9361,10 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
                  operator: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[str] key: The key for the node affinity label.
+        :param pulumi.Input[str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
         :param pulumi.Input[str] operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -9257,7 +9374,7 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The key for the node affinity label.
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
         """
         return pulumi.get(self, "key")
 
@@ -9281,6 +9398,9 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
     @values.setter

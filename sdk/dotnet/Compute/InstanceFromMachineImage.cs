@@ -51,6 +51,12 @@ namespace Pulumi.Gcp.Compute
     public partial class InstanceFromMachineImage : Pulumi.CustomResource
     {
         /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Output("advancedMachineFeatures")]
+        public Output<Outputs.InstanceFromMachineImageAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
         /// stopping the instance without setting this field, the update will fail.
         /// </summary>
@@ -323,6 +329,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceFromMachineImageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.InstanceFromMachineImageAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
+        /// <summary>
         /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
         /// stopping the instance without setting this field, the update will fail.
         /// </summary>
@@ -525,6 +537,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceFromMachineImageState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.InstanceFromMachineImageAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
+
         /// <summary>
         /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
         /// stopping the instance without setting this field, the update will fail.

@@ -221,6 +221,14 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                 info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
                     transformations=[
                         gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="FIRST_NAME",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_with_info_type_config=True,
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
                             info_types=[
                                 gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
                                     name="PHONE_NUMBER",
@@ -331,6 +339,14 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
                 info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
                     transformations=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="FIRST_NAME",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_with_info_type_config=True,
+                            ),
+                        ),
                         gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
                             info_types=[
                                 gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(

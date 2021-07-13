@@ -93,6 +93,12 @@ export class BucketObject extends pulumi.CustomResource {
     public /*out*/ readonly crc32c!: pulumi.Output<string>;
     public readonly detectMd5hash!: pulumi.Output<string | undefined>;
     /**
+     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
+     * signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
+     * will be subject to bucket-level retention (if any).
+     */
+    public readonly eventBasedHold!: pulumi.Output<boolean | undefined>;
+    /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
@@ -132,6 +138,11 @@ export class BucketObject extends pulumi.CustomResource {
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
     public readonly storageClass!: pulumi.Output<string>;
+    /**
+     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
+     * overwrites.
+     */
+    public readonly temporaryHold!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a BucketObject resource with the given unique name, arguments, and options.
@@ -155,6 +166,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentType"] = state ? state.contentType : undefined;
             inputs["crc32c"] = state ? state.crc32c : undefined;
             inputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
+            inputs["eventBasedHold"] = state ? state.eventBasedHold : undefined;
             inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             inputs["md5hash"] = state ? state.md5hash : undefined;
             inputs["mediaLink"] = state ? state.mediaLink : undefined;
@@ -164,6 +176,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["source"] = state ? state.source : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
+            inputs["temporaryHold"] = state ? state.temporaryHold : undefined;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
@@ -177,11 +190,13 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentLanguage"] = args ? args.contentLanguage : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
+            inputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["source"] = args ? args.source : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
+            inputs["temporaryHold"] = args ? args.temporaryHold : undefined;
             inputs["crc32c"] = undefined /*out*/;
             inputs["md5hash"] = undefined /*out*/;
             inputs["mediaLink"] = undefined /*out*/;
@@ -234,6 +249,12 @@ export interface BucketObjectState {
     crc32c?: pulumi.Input<string>;
     detectMd5hash?: pulumi.Input<string>;
     /**
+     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
+     * signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
+     * will be subject to bucket-level retention (if any).
+     */
+    eventBasedHold?: pulumi.Input<boolean>;
+    /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      */
     kmsKeyName?: pulumi.Input<string>;
@@ -273,6 +294,11 @@ export interface BucketObjectState {
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
     storageClass?: pulumi.Input<string>;
+    /**
+     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
+     * overwrites.
+     */
+    temporaryHold?: pulumi.Input<boolean>;
 }
 
 /**
@@ -310,6 +336,12 @@ export interface BucketObjectArgs {
     contentType?: pulumi.Input<string>;
     detectMd5hash?: pulumi.Input<string>;
     /**
+     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
+     * signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
+     * will be subject to bucket-level retention (if any).
+     */
+    eventBasedHold?: pulumi.Input<boolean>;
+    /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      */
     kmsKeyName?: pulumi.Input<string>;
@@ -332,4 +364,9 @@ export interface BucketObjectArgs {
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
     storageClass?: pulumi.Input<string>;
+    /**
+     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
+     * overwrites.
+     */
+    temporaryHold?: pulumi.Input<boolean>;
 }

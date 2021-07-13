@@ -18,6 +18,7 @@ class InstanceArgs:
                  boot_disk: pulumi.Input['InstanceBootDiskArgs'],
                  machine_type: pulumi.Input[str],
                  network_interfaces: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]],
+                 advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
@@ -50,6 +51,7 @@ class InstanceArgs:
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
+        :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -97,6 +99,7 @@ class InstanceArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -114,6 +117,8 @@ class InstanceArgs:
         pulumi.set(__self__, "boot_disk", boot_disk)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
             pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
         if attached_disks is not None:
@@ -202,6 +207,18 @@ class InstanceArgs:
     @network_interfaces.setter
     def network_interfaces(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]):
         pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
@@ -441,6 +458,7 @@ class InstanceArgs:
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
         """
         Specifies the reservations that this instance can consume from.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -542,6 +560,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
                  boot_disk: Optional[pulumi.Input['InstanceBootDiskArgs']] = None,
@@ -579,6 +598,7 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -636,6 +656,7 @@ class _InstanceState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -652,6 +673,8 @@ class _InstanceState:
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
             pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
         if attached_disks is not None:
@@ -722,6 +745,18 @@ class _InstanceState:
             pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
@@ -1059,6 +1094,7 @@ class _InstanceState:
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
         """
         Specifies the reservations that this instance can consume from.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -1186,6 +1222,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
                  boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
@@ -1279,6 +1316,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -1331,6 +1369,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -1428,6 +1467,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
                  boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
@@ -1468,6 +1508,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
             __props__.__dict__["attached_disks"] = attached_disks
             if boot_disk is None and not opts.urn:
@@ -1519,6 +1560,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']]] = None,
             allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
             attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
             boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
@@ -1561,6 +1603,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -1618,6 +1661,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -1638,6 +1682,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["advanced_machine_features"] = advanced_machine_features
         __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
         __props__.__dict__["attached_disks"] = attached_disks
         __props__.__dict__["boot_disk"] = boot_disk
@@ -1674,6 +1719,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
         __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> pulumi.Output[Optional['outputs.InstanceAdvancedMachineFeatures']]:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
@@ -1908,9 +1961,10 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> pulumi.Output[Optional['outputs.InstanceReservationAffinity']]:
+    def reservation_affinity(self) -> pulumi.Output['outputs.InstanceReservationAffinity']:
         """
         Specifies the reservations that this instance can consume from.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 

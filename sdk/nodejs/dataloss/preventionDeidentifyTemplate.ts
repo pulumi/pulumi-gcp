@@ -26,6 +26,14 @@ import * as utilities from "../utilities";
  *         infoTypeTransformations: {
  *             transformations: [
  *                 {
+ *                     infoTypes: [{
+ *                         name: "FIRST_NAME",
+ *                     }],
+ *                     primitiveTransformation: {
+ *                         replaceWithInfoTypeConfig: true,
+ *                     },
+ *                 },
+ *                 {
  *                     infoTypes: [
  *                         {
  *                             name: "PHONE_NUMBER",

@@ -72,8 +72,9 @@ type LookupBucketObjectResult struct {
 	// (Computed) [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType string `pulumi:"contentType"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
-	Crc32c        string `pulumi:"crc32c"`
-	DetectMd5hash string `pulumi:"detectMd5hash"`
+	Crc32c         string `pulumi:"crc32c"`
+	DetectMd5hash  string `pulumi:"detectMd5hash"`
+	EventBasedHold bool   `pulumi:"eventBasedHold"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -90,5 +91,6 @@ type LookupBucketObjectResult struct {
 	// (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-	StorageClass string `pulumi:"storageClass"`
+	StorageClass  string `pulumi:"storageClass"`
+	TemporaryHold bool   `pulumi:"temporaryHold"`
 }

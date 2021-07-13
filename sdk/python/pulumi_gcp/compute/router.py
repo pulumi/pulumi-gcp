@@ -367,13 +367,15 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -459,13 +461,15 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

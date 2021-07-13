@@ -15,8 +15,9 @@ __all__ = ['CertificateArgs', 'Certificate']
 @pulumi.input_type
 class CertificateArgs:
     def __init__(__self__, *,
-                 certificate_authority: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 pool: pulumi.Input[str],
+                 certificate_authority: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
@@ -25,22 +26,25 @@ class CertificateArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
+        :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] certificate_authority: Certificate Authority name.
-        :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
-               running `gcloud beta privateca locations list`.
         :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[str] name: The name for this Certificate .
+        :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "certificate_authority", certificate_authority)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "pool", pool)
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if labels is not None:
@@ -55,29 +59,41 @@ class CertificateArgs:
             pulumi.set(__self__, "project", project)
 
     @property
-    @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> pulumi.Input[str]:
-        """
-        Certificate Authority name.
-        """
-        return pulumi.get(self, "certificate_authority")
-
-    @certificate_authority.setter
-    def certificate_authority(self, value: pulumi.Input[str]):
-        pulumi.set(self, "certificate_authority", value)
-
-    @property
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        Location of the CertificateAuthority. A full list of valid locations can be found by
-        running `gcloud beta privateca locations list`.
+        Location of the Certificate. A full list of valid locations can be found by
+        running `gcloud privateca locations list`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def pool(self) -> pulumi.Input[str]:
+        """
+        The name of the CaPool this Certificate belongs to.
+        """
+        return pulumi.get(self, "pool")
+
+    @pool.setter
+    def pool(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pool", value)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate Authority name.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @certificate_authority.setter
+    def certificate_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority", value)
 
     @property
     @pulumi.getter
@@ -122,7 +138,7 @@ class CertificateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name for this Certificate .
+        The name for this Certificate.
         """
         return pulumi.get(self, "name")
 
@@ -170,6 +186,7 @@ class _CertificateState:
                  pem_certificate: Optional[pulumi.Input[str]] = None,
                  pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
+                 pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -185,12 +202,13 @@ class _CertificateState:
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
-               running `gcloud beta privateca locations list`.
-        :param pulumi.Input[str] name: The name for this Certificate .
+        :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
+        :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
@@ -219,6 +237,8 @@ class _CertificateState:
             pulumi.set(__self__, "pem_certificates", pem_certificates)
         if pem_csr is not None:
             pulumi.set(__self__, "pem_csr", pem_csr)
+        if pool is not None:
+            pulumi.set(__self__, "pool", pool)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if revocation_details is not None:
@@ -306,8 +326,8 @@ class _CertificateState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Location of the CertificateAuthority. A full list of valid locations can be found by
-        running `gcloud beta privateca locations list`.
+        Location of the Certificate. A full list of valid locations can be found by
+        running `gcloud privateca locations list`.
         """
         return pulumi.get(self, "location")
 
@@ -319,7 +339,7 @@ class _CertificateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name for this Certificate .
+        The name for this Certificate.
         """
         return pulumi.get(self, "name")
 
@@ -362,6 +382,18 @@ class _CertificateState:
     @pem_csr.setter
     def pem_csr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pem_csr", value)
+
+    @property
+    @pulumi.getter
+    def pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the CaPool this Certificate belongs to.
+        """
+        return pulumi.get(self, "pool")
+
+    @pool.setter
+    def pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pool", value)
 
     @property
     @pulumi.getter
@@ -414,17 +446,14 @@ class Certificate(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
+                 pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+        A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
 
         > **Note:** The Certificate Authority that is referenced by this resource **must** be
         `tier = "ENTERPRISE"`
-
-        > **Warning:** Please remember that all resources created during preview (via this provider)
-        will be deleted when CA service transitions to General Availability (GA). Relying on these
-        certificate authorities for production traffic is discouraged.
 
         ## Example Usage
         ### Privateca Certificate Csr
@@ -434,35 +463,43 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_ca = gcp.certificateauthority.Authority("test-ca",
+            pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
-            tier="ENTERPRISE",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
                         organization="HashiCorp",
+                        common_name="my-certificate-authority",
                     ),
-                    common_name="my-certificate-authority",
                     subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
-                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
                 ),
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            disable_on_delete=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default = gcp.certificateauthority.Certificate("default",
-            project="my-project-name",
+            pool="",
             location="us-central1",
             certificate_authority=test_ca.certificate_authority_id,
             lifetime="860s",
-            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"))
         ```
 
         ## Import
@@ -470,15 +507,15 @@ class Certificate(pulumi.CustomResource):
         Certificate can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority}}/certificates/{{name}}
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{certificate_authority}}/{{name}}
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{certificate_authority}}/{{name}}
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -490,10 +527,11 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
-               running `gcloud beta privateca locations list`.
-        :param pulumi.Input[str] name: The name for this Certificate .
+        :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
+        :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -504,14 +542,10 @@ class Certificate(pulumi.CustomResource):
                  args: CertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+        A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
 
         > **Note:** The Certificate Authority that is referenced by this resource **must** be
         `tier = "ENTERPRISE"`
-
-        > **Warning:** Please remember that all resources created during preview (via this provider)
-        will be deleted when CA service transitions to General Availability (GA). Relying on these
-        certificate authorities for production traffic is discouraged.
 
         ## Example Usage
         ### Privateca Certificate Csr
@@ -521,35 +555,43 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_ca = gcp.certificateauthority.Authority("test-ca",
+            pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
-            tier="ENTERPRISE",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
                         organization="HashiCorp",
+                        common_name="my-certificate-authority",
                     ),
-                    common_name="my-certificate-authority",
                     subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
-                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
                 ),
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            disable_on_delete=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default = gcp.certificateauthority.Certificate("default",
-            project="my-project-name",
+            pool="",
             location="us-central1",
             certificate_authority=test_ca.certificate_authority_id,
             lifetime="860s",
-            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"))
         ```
 
         ## Import
@@ -557,15 +599,15 @@ class Certificate(pulumi.CustomResource):
         Certificate can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority}}/certificates/{{name}}
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{certificate_authority}}/{{name}}
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{certificate_authority}}/{{name}}
+         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -590,6 +632,7 @@ class Certificate(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
+                 pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -603,8 +646,6 @@ class Certificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CertificateArgs.__new__(CertificateArgs)
 
-            if certificate_authority is None and not opts.urn:
-                raise TypeError("Missing required property 'certificate_authority'")
             __props__.__dict__["certificate_authority"] = certificate_authority
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
@@ -614,6 +655,9 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["pem_csr"] = pem_csr
+            if pool is None and not opts.urn:
+                raise TypeError("Missing required property 'pool'")
+            __props__.__dict__["pool"] = pool
             __props__.__dict__["project"] = project
             __props__.__dict__["certificate_descriptions"] = None
             __props__.__dict__["create_time"] = None
@@ -642,6 +686,7 @@ class Certificate(pulumi.CustomResource):
             pem_certificate: Optional[pulumi.Input[str]] = None,
             pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pem_csr: Optional[pulumi.Input[str]] = None,
+            pool: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Certificate':
@@ -662,12 +707,13 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
-               running `gcloud beta privateca locations list`.
-        :param pulumi.Input[str] name: The name for this Certificate .
+        :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
+        :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
@@ -689,6 +735,7 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["pem_certificate"] = pem_certificate
         __props__.__dict__["pem_certificates"] = pem_certificates
         __props__.__dict__["pem_csr"] = pem_csr
+        __props__.__dict__["pool"] = pool
         __props__.__dict__["project"] = project
         __props__.__dict__["revocation_details"] = revocation_details
         __props__.__dict__["update_time"] = update_time
@@ -696,7 +743,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> pulumi.Output[str]:
+    def certificate_authority(self) -> pulumi.Output[Optional[str]]:
         """
         Certificate Authority name.
         """
@@ -750,8 +797,8 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Location of the CertificateAuthority. A full list of valid locations can be found by
-        running `gcloud beta privateca locations list`.
+        Location of the Certificate. A full list of valid locations can be found by
+        running `gcloud privateca locations list`.
         """
         return pulumi.get(self, "location")
 
@@ -759,7 +806,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name for this Certificate .
+        The name for this Certificate.
         """
         return pulumi.get(self, "name")
 
@@ -786,6 +833,14 @@ class Certificate(pulumi.CustomResource):
         Immutable. A pem-encoded X.509 certificate signing request (CSR).
         """
         return pulumi.get(self, "pem_csr")
+
+    @property
+    @pulumi.getter
+    def pool(self) -> pulumi.Output[str]:
+        """
+        The name of the CaPool this Certificate belongs to.
+        """
+        return pulumi.get(self, "pool")
 
     @property
     @pulumi.getter

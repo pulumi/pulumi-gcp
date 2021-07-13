@@ -6,9 +6,10 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .authority import *
-from .authority_iam_binding import *
-from .authority_iam_member import *
-from .authority_iam_policy import *
+from .ca_pool import *
+from .ca_pool_iam_binding import *
+from .ca_pool_iam_member import *
+from .ca_pool_iam_policy import *
 from .certificate import *
 from ._inputs import *
 from . import outputs

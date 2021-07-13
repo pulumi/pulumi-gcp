@@ -170,7 +170,7 @@ type Function struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
@@ -250,7 +250,7 @@ type functionState struct {
 	Name *string `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+	// Region of function. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
@@ -299,7 +299,7 @@ type FunctionState struct {
 	Name pulumi.StringPtrInput
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
@@ -352,7 +352,7 @@ type functionArgs struct {
 	Name *string `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+	// Region of function. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
@@ -402,7 +402,7 @@ type FunctionArgs struct {
 	Name pulumi.StringPtrInput
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.

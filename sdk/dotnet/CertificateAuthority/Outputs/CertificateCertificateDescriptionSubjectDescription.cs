@@ -13,10 +13,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class CertificateCertificateDescriptionSubjectDescription
     {
-        /// <summary>
-        /// The common name of the distinguished name.
-        /// </summary>
-        public readonly string? CommonName;
         public readonly string? HexSerialNumber;
         /// <summary>
         /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
@@ -27,20 +23,18 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly string? NotAfterTime;
         public readonly string? NotBeforeTime;
         /// <summary>
-        /// Contains distinguished name fields such as the location and organization.
-        /// Structure is documented below.
-        /// </summary>
-        public readonly Outputs.CertificateCertificateDescriptionSubjectDescriptionSubject? Subject;
-        /// <summary>
         /// The subject alternative name fields.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName? SubjectAltName;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> SubjectAltNames;
+        /// <summary>
+        /// Contains distinguished name fields such as the location and organization.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubject> Subjects;
 
         [OutputConstructor]
         private CertificateCertificateDescriptionSubjectDescription(
-            string? commonName,
-
             string? hexSerialNumber,
 
             string? lifetime,
@@ -49,17 +43,16 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             string? notBeforeTime,
 
-            Outputs.CertificateCertificateDescriptionSubjectDescriptionSubject? subject,
+            ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames,
 
-            Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName? subjectAltName)
+            ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubject> subjects)
         {
-            CommonName = commonName;
             HexSerialNumber = hexSerialNumber;
             Lifetime = lifetime;
             NotAfterTime = notAfterTime;
             NotBeforeTime = notBeforeTime;
-            Subject = subject;
-            SubjectAltName = subjectAltName;
+            SubjectAltNames = subjectAltNames;
+            Subjects = subjects;
         }
     }
 }

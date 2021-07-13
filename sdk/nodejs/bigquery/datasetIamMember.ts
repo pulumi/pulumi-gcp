@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *
  * const owner = gcp.organizations.getIAMPolicy({
  *     bindings: [{
- *         role: "roles/dataOwner",
+ *         role: "roles/bigquery.dataOwner",
  *         members: ["user:jane@example.com"],
  *     }],
  * });

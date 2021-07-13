@@ -12,11 +12,15 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceTemplateReservationAffinityArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the label selector for the reservation to use..
+        /// Structure is documented below.
+        /// </summary>
         [Input("specificReservation")]
         public Input<Inputs.InstanceTemplateReservationAffinitySpecificReservationArgs>? SpecificReservation { get; set; }
 
         /// <summary>
-        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// The type of reservation from which this instance can consume resources.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

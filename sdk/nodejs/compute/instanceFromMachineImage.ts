@@ -62,6 +62,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     }
 
     /**
+     * Controls for advanced machine-related behavior features.
+     */
+    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
+    /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
      * stopping the instance without setting this field, the update will fail.
      */
@@ -229,6 +233,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceFromMachineImageState | undefined;
+            inputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisks"] = state ? state.bootDisks : undefined;
@@ -270,6 +275,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             if ((!args || args.sourceMachineImage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceMachineImage'");
             }
+            inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
@@ -318,6 +324,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceFromMachineImage resources.
  */
 export interface InstanceFromMachineImageState {
+    /**
+     * Controls for advanced machine-related behavior features.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
     /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
      * stopping the instance without setting this field, the update will fail.
@@ -478,6 +488,10 @@ export interface InstanceFromMachineImageState {
  * The set of arguments for constructing a InstanceFromMachineImage resource.
  */
 export interface InstanceFromMachineImageArgs {
+    /**
+     * Controls for advanced machine-related behavior features.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
     /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
      * stopping the instance without setting this field, the update will fail.

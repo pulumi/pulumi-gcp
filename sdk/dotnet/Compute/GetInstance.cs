@@ -86,6 +86,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetInstanceResult
     {
+        public readonly ImmutableArray<Outputs.GetInstanceAdvancedMachineFeatureResult> AdvancedMachineFeatures;
         public readonly bool AllowStoppingForUpdate;
         /// <summary>
         /// List of disks attached to the instance. Structure is documented below.
@@ -197,6 +198,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetInstanceResult(
+            ImmutableArray<Outputs.GetInstanceAdvancedMachineFeatureResult> advancedMachineFeatures,
+
             bool allowStoppingForUpdate,
 
             ImmutableArray<Outputs.GetInstanceAttachedDiskResult> attachedDisks,
@@ -269,6 +272,7 @@ namespace Pulumi.Gcp.Compute
 
             string? zone)
         {
+            AdvancedMachineFeatures = advancedMachineFeatures;
             AllowStoppingForUpdate = allowStoppingForUpdate;
             AttachedDisks = attachedDisks;
             BootDisks = bootDisks;

@@ -1227,11 +1227,13 @@ class BackendService(pulumi.CustomResource):
 
         external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
             network_endpoint_type="INTERNET_FQDN_PORT",
-            default_port=443)
+            default_port=443,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
             global_network_endpoint_group=external_proxy.id,
             fqdn="test.example.com",
-            port=external_proxy.default_port)
+            port=external_proxy.default_port,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.compute.BackendService("default",
             enable_cdn=True,
             timeout_sec=10,
@@ -1240,7 +1242,8 @@ class BackendService(pulumi.CustomResource):
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             backends=[gcp.compute.BackendServiceBackendArgs(
                 group=external_proxy.id,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -1479,11 +1482,13 @@ class BackendService(pulumi.CustomResource):
 
         external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
             network_endpoint_type="INTERNET_FQDN_PORT",
-            default_port=443)
+            default_port=443,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
             global_network_endpoint_group=external_proxy.id,
             fqdn="test.example.com",
-            port=external_proxy.default_port)
+            port=external_proxy.default_port,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.compute.BackendService("default",
             enable_cdn=True,
             timeout_sec=10,
@@ -1492,7 +1497,8 @@ class BackendService(pulumi.CustomResource):
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             backends=[gcp.compute.BackendServiceBackendArgs(
                 group=external_proxy.id,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

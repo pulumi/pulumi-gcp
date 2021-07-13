@@ -216,7 +216,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
      */
     public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceTemplateAdvancedMachineFeatures>;
     /**
@@ -323,6 +323,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the reservations that this instance can consume from.
+     * Structure is documented below.
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceTemplateReservationAffinity | undefined>;
     /**
@@ -440,7 +441,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
  */
 export interface InstanceTemplateState {
     /**
-     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures>;
     /**
@@ -547,6 +548,7 @@ export interface InstanceTemplateState {
     region?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
+     * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
     /**
@@ -582,7 +584,7 @@ export interface InstanceTemplateState {
  */
 export interface InstanceTemplateArgs {
     /**
-     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures>;
     /**
@@ -685,6 +687,7 @@ export interface InstanceTemplateArgs {
     region?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
+     * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
     /**

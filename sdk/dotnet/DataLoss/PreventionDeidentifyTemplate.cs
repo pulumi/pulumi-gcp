@@ -43,6 +43,20 @@ namespace Pulumi.Gcp.DataLoss
     ///                             {
     ///                                 new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
     ///                                 {
+    ///                                     Name = "FIRST_NAME",
+    ///                                 },
+    ///                             },
+    ///                             PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs
+    ///                             {
+    ///                                 ReplaceWithInfoTypeConfig = true,
+    ///                             },
+    ///                         },
+    ///                         new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs
+    ///                         {
+    ///                             InfoTypes = 
+    ///                             {
+    ///                                 new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                                 {
     ///                                     Name = "PHONE_NUMBER",
     ///                                 },
     ///                                 new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs

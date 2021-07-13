@@ -70,6 +70,7 @@ export interface GetInstanceArgs {
  * A collection of values returned by getInstance.
  */
 export interface GetInstanceResult {
+    readonly advancedMachineFeatures: outputs.compute.GetInstanceAdvancedMachineFeature[];
     readonly allowStoppingForUpdate: boolean;
     /**
      * List of disks attached to the instance. Structure is documented below.

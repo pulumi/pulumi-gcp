@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceTemplateAdvancedMachineFeaturesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        /// Defines whether the instance should have nested virtualization enabled. Defaults to false.
         /// </summary>
         [Input("enableNestedVirtualization")]
         public Input<bool>? EnableNestedVirtualization { get; set; }

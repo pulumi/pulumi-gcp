@@ -13,12 +13,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class AuthorityConfigSubjectConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The common name of the distinguished name.
-        /// </summary>
-        [Input("commonName", required: true)]
-        public Input<string> CommonName { get; set; } = null!;
-
-        /// <summary>
         /// Contains distinguished name fields such as the location and organization.
         /// Structure is documented below.
         /// </summary>

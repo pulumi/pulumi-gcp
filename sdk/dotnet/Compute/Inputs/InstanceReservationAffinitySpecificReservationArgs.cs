@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceReservationAffinitySpecificReservationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key for the node affinity label.
+        /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// The values for the node affinity label.
+        /// Corresponds to the label values of a reservation resource.
         /// </summary>
         public InputList<string> Values
         {

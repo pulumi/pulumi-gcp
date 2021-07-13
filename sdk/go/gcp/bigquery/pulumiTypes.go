@@ -2407,6 +2407,9 @@ type JobCopyDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
+	// -
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
 
 // JobCopyDestinationEncryptionConfigurationInput is an input type that accepts JobCopyDestinationEncryptionConfigurationArgs and JobCopyDestinationEncryptionConfigurationOutput values.
@@ -2424,6 +2427,9 @@ type JobCopyDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// -
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
 
 func (JobCopyDestinationEncryptionConfigurationArgs) ElementType() reflect.Type {
@@ -2509,6 +2515,12 @@ func (o JobCopyDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.Str
 	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// -
+// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+func (o JobCopyDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
+}
+
 type JobCopyDestinationEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (JobCopyDestinationEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
@@ -2537,6 +2549,17 @@ func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 			return nil
 		}
 		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobCopyDestinationEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4160,6 +4183,9 @@ type JobLoadDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
+	// -
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
 
 // JobLoadDestinationEncryptionConfigurationInput is an input type that accepts JobLoadDestinationEncryptionConfigurationArgs and JobLoadDestinationEncryptionConfigurationOutput values.
@@ -4177,6 +4203,9 @@ type JobLoadDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// -
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
 
 func (JobLoadDestinationEncryptionConfigurationArgs) ElementType() reflect.Type {
@@ -4262,6 +4291,12 @@ func (o JobLoadDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.Str
 	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// -
+// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+func (o JobLoadDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
+}
+
 type JobLoadDestinationEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (JobLoadDestinationEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
@@ -4290,6 +4325,17 @@ func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 			return nil
 		}
 		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadDestinationEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5370,6 +5416,9 @@ type JobQueryDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
+	// -
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
 
 // JobQueryDestinationEncryptionConfigurationInput is an input type that accepts JobQueryDestinationEncryptionConfigurationArgs and JobQueryDestinationEncryptionConfigurationOutput values.
@@ -5387,6 +5436,9 @@ type JobQueryDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// -
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
 
 func (JobQueryDestinationEncryptionConfigurationArgs) ElementType() reflect.Type {
@@ -5472,6 +5524,12 @@ func (o JobQueryDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.St
 	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// -
+// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+func (o JobQueryDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
+}
+
 type JobQueryDestinationEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (JobQueryDestinationEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
@@ -5500,6 +5558,17 @@ func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi
 			return nil
 		}
 		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryDestinationEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6444,6 +6513,8 @@ type TableEncryptionConfiguration struct {
 	// `bigquery.getDefaultServiceAccount` datasource and the
 	// `kms.CryptoKeyIAMBinding` resource.
 	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The self link or full name of the kms key version used to encrypt this table.
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
 
 // TableEncryptionConfigurationInput is an input type that accepts TableEncryptionConfigurationArgs and TableEncryptionConfigurationOutput values.
@@ -6464,6 +6535,8 @@ type TableEncryptionConfigurationArgs struct {
 	// `bigquery.getDefaultServiceAccount` datasource and the
 	// `kms.CryptoKeyIAMBinding` resource.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// The self link or full name of the kms key version used to encrypt this table.
+	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
 
 func (TableEncryptionConfigurationArgs) ElementType() reflect.Type {
@@ -6552,6 +6625,11 @@ func (o TableEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// The self link or full name of the kms key version used to encrypt this table.
+func (o TableEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
+}
+
 type TableEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (TableEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
@@ -6581,6 +6659,16 @@ func (o TableEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutp
 			return nil
 		}
 		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The self link or full name of the kms key version used to encrypt this table.
+func (o TableEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersion
 	}).(pulumi.StringPtrOutput)
 }
 

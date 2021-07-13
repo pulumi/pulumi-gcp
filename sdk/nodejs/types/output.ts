@@ -2592,6 +2592,11 @@ export namespace bigquery {
          * The BigQuery Service Account associated with your project requires access to this encryption key.
          */
         kmsKeyName: string;
+        /**
+         * -
+         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         */
+        kmsKeyVersion: string;
     }
 
     export interface JobCopyDestinationTable {
@@ -2838,6 +2843,11 @@ export namespace bigquery {
          * The BigQuery Service Account associated with your project requires access to this encryption key.
          */
         kmsKeyName: string;
+        /**
+         * -
+         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         */
+        kmsKeyVersion: string;
     }
 
     export interface JobLoadDestinationTable {
@@ -2995,6 +3005,11 @@ export namespace bigquery {
          * The BigQuery Service Account associated with your project requires access to this encryption key.
          */
         kmsKeyName: string;
+        /**
+         * -
+         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         */
+        kmsKeyVersion: string;
     }
 
     export interface JobQueryDestinationTable {
@@ -3103,6 +3118,10 @@ export namespace bigquery {
          * `gcp.kms.CryptoKeyIAMBinding` resource.
          */
         kmsKeyName: string;
+        /**
+         * The self link or full name of the kms key version used to encrypt this table.
+         */
+        kmsKeyVersion: string;
     }
 
     export interface TableExternalDataConfiguration {
@@ -3746,34 +3765,18 @@ export namespace certificateauthority {
 
     export interface AuthorityConfig {
         /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         * . Alternatively, one of the short names
-         * found by running `gcloud beta privateca reusable-configs list`.
-         */
-        reusableConfig: outputs.certificateauthority.AuthorityConfigReusableConfig;
-        /**
          * Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
          */
         subjectConfig: outputs.certificateauthority.AuthorityConfigSubjectConfig;
-    }
-
-    export interface AuthorityConfigReusableConfig {
         /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         * . Alternatively, one of the short names
-         * found by running `gcloud beta privateca reusable-configs list`.
+         * Describes how some of the technical X.509 fields in a certificate should be populated.
+         * Structure is documented below.
          */
-        reusableConfig: string;
+        x509Config: outputs.certificateauthority.AuthorityConfigX509Config;
     }
 
     export interface AuthorityConfigSubjectConfig {
-        /**
-         * The common name of the distinguished name.
-         */
-        commonName: string;
         /**
          * Contains distinguished name fields such as the location and organization.
          * Structure is documented below.
@@ -3787,6 +3790,10 @@ export namespace certificateauthority {
     }
 
     export interface AuthorityConfigSubjectConfigSubject {
+        /**
+         * The common name of the distinguished name.
+         */
+        commonName: string;
         /**
          * The country code of the subject.
          */
@@ -3836,30 +3843,168 @@ export namespace certificateauthority {
         uris?: string[];
     }
 
-    export interface AuthorityIamBindingCondition {
-        description?: string;
-        expression: string;
-        title: string;
+    export interface AuthorityConfigX509Config {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions?: outputs.certificateauthority.AuthorityConfigX509ConfigAdditionalExtension[];
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: string[];
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions: outputs.certificateauthority.AuthorityConfigX509ConfigCaOptions;
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsage: outputs.certificateauthority.AuthorityConfigX509ConfigKeyUsage;
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds?: outputs.certificateauthority.AuthorityConfigX509ConfigPolicyId[];
     }
 
-    export interface AuthorityIamMemberCondition {
-        description?: string;
-        expression: string;
-        title: string;
+    export interface AuthorityConfigX509ConfigAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical: boolean;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectId: outputs.certificateauthority.AuthorityConfigX509ConfigAdditionalExtensionObjectId;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value: string;
     }
 
-    export interface AuthorityIssuingOptions {
+    export interface AuthorityConfigX509ConfigAdditionalExtensionObjectId {
         /**
-         * When true, includes a URL to the issuing CA certificate in the "authority
-         * information access" X.509 extension.
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          */
-        includeCaCertUrl?: boolean;
+        objectIdPaths: number[];
+    }
+
+    export interface AuthorityConfigX509ConfigCaOptions {
         /**
-         * When true, includes a URL to the CRL corresponding to certificates issued from a
-         * CertificateAuthority. CRLs will expire 7 days from their creation. However, we will
-         * rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
+         * the extension will be omitted from the CA certificate.
          */
-        includeCrlAccessUrl?: boolean;
+        isCa: boolean;
+        /**
+         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
+         * value is missing, the max path length will be omitted from the CA certificate.
+         */
+        maxIssuerPathLength?: number;
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsage: outputs.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsage;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsage: outputs.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: outputs.certificateauthority.AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage[];
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: boolean;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: boolean;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: boolean;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: boolean;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: boolean;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: boolean;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: boolean;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: boolean;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: boolean;
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: boolean;
+    }
+
+    export interface AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface AuthorityConfigX509ConfigPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
     }
 
     export interface AuthorityKeySpec {
@@ -3876,139 +4021,512 @@ export namespace certificateauthority {
         cloudKmsKeyVersion?: string;
     }
 
+    export interface CaPoolIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface CaPoolIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface CaPoolIssuancePolicy {
+        /**
+         * IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
+         * Structure is documented below.
+         */
+        allowedIssuanceModes?: outputs.certificateauthority.CaPoolIssuancePolicyAllowedIssuanceModes;
+        /**
+         * If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
+         * Otherwise, any key may be used.
+         * Structure is documented below.
+         */
+        allowedKeyTypes?: outputs.certificateauthority.CaPoolIssuancePolicyAllowedKeyType[];
+        /**
+         * A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
+         * includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
+         * request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
+         * issuance request will fail.
+         * Structure is documented below.
+         */
+        baselineValues?: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValues;
+        /**
+         * Describes constraints on identities that may appear in Certificates issued through this CaPool.
+         * If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
+         * Structure is documented below.
+         */
+        identityConstraints?: outputs.certificateauthority.CaPoolIssuancePolicyIdentityConstraints;
+        /**
+         * The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
+         * expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
+         */
+        maximumLifetime?: string;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedIssuanceModes {
+        /**
+         * When true, allows callers to create Certificates by specifying a CertificateConfig.
+         */
+        allowConfigBasedIssuance: boolean;
+        /**
+         * When true, allows callers to create Certificates by specifying a CSR.
+         */
+        allowCsrBasedIssuance: boolean;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedKeyType {
+        /**
+         * Represents an allowed Elliptic Curve key type.
+         * Structure is documented below.
+         */
+        ellipticCurve?: outputs.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve;
+        /**
+         * Describes an RSA key that may be used in a Certificate issued from a CaPool.
+         * Structure is documented below.
+         */
+        rsa?: outputs.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeRsa;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
+        /**
+         * The algorithm used.
+         * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+         */
+        signatureAlgorithm: string;
+    }
+
+    export interface CaPoolIssuancePolicyAllowedKeyTypeRsa {
+        /**
+         * The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
+         * service will not enforce an explicit upper bound on RSA modulus sizes.
+         */
+        maxModulusSize?: string;
+        /**
+         * The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
+         * service-level min RSA modulus size will continue to apply.
+         */
+        minModulusSize?: string;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValues {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions?: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtension[];
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: string[];
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptions;
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsage: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsage;
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds?: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyId[];
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical: boolean;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectId: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value: string;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesCaOptions {
+        /**
+         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
+         * the extension will be omitted from the CA certificate.
+         */
+        isCa?: boolean;
+        /**
+         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
+         * value is missing, the max path length will be omitted from the CA certificate.
+         */
+        maxIssuerPathLength?: number;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsage: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsage: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: outputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage[];
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: boolean;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: boolean;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: boolean;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: boolean;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: boolean;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: boolean;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: boolean;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: boolean;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: boolean;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: boolean;
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface CaPoolIssuancePolicyBaselineValuesPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface CaPoolIssuancePolicyIdentityConstraints {
+        /**
+         * If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
+         * Otherwise, the requested SubjectAltNames will be discarded.
+         */
+        allowSubjectAltNamesPassthrough: boolean;
+        /**
+         * If this is set, the Subject field may be copied from a certificate request into the signed certificate.
+         * Otherwise, the requested Subject will be discarded.
+         */
+        allowSubjectPassthrough: boolean;
+        /**
+         * A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
+         * certificate is signed. To see the full allowed syntax and some examples,
+         * see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+         * Structure is documented below.
+         */
+        celExpression?: outputs.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpression;
+    }
+
+    export interface CaPoolIssuancePolicyIdentityConstraintsCelExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface CaPoolPublishingOptions {
+        /**
+         * When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
+         * X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
+         * X.509 extension will not be written in issued certificates.
+         */
+        publishCaCert: boolean;
+        /**
+         * When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension
+         * in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not
+         * be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are
+         * also rebuilt shortly after a certificate is revoked.
+         */
+        publishCrl: boolean;
+    }
+
     export interface CertificateCertificateDescription {
-        aiaIssuingCertificateUrls?: string[];
-        authorityKeyId?: outputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId;
-        certFingerprint?: outputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint;
-        configValues?: outputs.certificateauthority.CertificateCertificateDescriptionConfigValues;
-        crlDistributionPoints?: string[];
+        aiaIssuingCertificateUrls: string[];
+        authorityKeyIds: outputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId[];
+        certFingerprints: outputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint[];
+        configValues: outputs.certificateauthority.CertificateCertificateDescriptionConfigValue[];
+        crlDistributionPoints: string[];
         /**
          * A PublicKey describes a public key.
          * Structure is documented below.
          */
-        publicKey: outputs.certificateauthority.CertificateCertificateDescriptionPublicKey;
-        subjectDescription?: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription;
-        subjectKeyId?: outputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId;
+        publicKeys: outputs.certificateauthority.CertificateCertificateDescriptionPublicKey[];
+        subjectDescriptions: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription[];
+        subjectKeyIds: outputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId[];
     }
 
     export interface CertificateCertificateDescriptionAuthorityKeyId {
-        keyId?: string;
+        keyId: string;
     }
 
     export interface CertificateCertificateDescriptionCertFingerprint {
-        sha256Hash?: string;
+        sha256Hash: string;
     }
 
-    export interface CertificateCertificateDescriptionConfigValues {
-        keyUsage?: outputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsage;
+    export interface CertificateCertificateDescriptionConfigValue {
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsage[];
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsage {
-        baseKeyUsage?: outputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage;
-        extendedKeyUsage?: outputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage;
-        unknownExtendedKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage[];
+    export interface CertificateCertificateDescriptionConfigValueKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage[];
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage[];
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage[];
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage {
-        keyUsageOptions?: outputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage {
+        keyUsageOptions: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption[];
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions {
-        certSign?: boolean;
-        contentCommitment?: boolean;
-        crlSign?: boolean;
-        dataEncipherment?: boolean;
-        decipherOnly?: boolean;
-        digitalSignature?: boolean;
-        encipherOnly?: boolean;
-        keyAgreement?: boolean;
-        keyEncipherment?: boolean;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign: boolean;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment: boolean;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign: boolean;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment: boolean;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly: boolean;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature: boolean;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly: boolean;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement: boolean;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment: boolean;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage {
-        clientAuth?: boolean;
-        codeSigning?: boolean;
-        emailProtection?: boolean;
-        ocspSigning?: boolean;
-        serverAuth?: boolean;
-        timeStamping?: boolean;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping: boolean;
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage {
-        obectId: outputs.certificateauthority.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId;
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage {
+        obectIds: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId[];
     }
 
-    export interface CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId {
+    export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
         objectIdPaths: number[];
     }
 
     export interface CertificateCertificateDescriptionPublicKey {
         /**
+         * The format of the public key. Currently, only PEM format is supported.
+         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         */
+        format: string;
+        /**
          * Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
          */
-        key?: string;
-        /**
-         * Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
-         * Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
-         */
-        type: string;
+        key: string;
     }
 
     export interface CertificateCertificateDescriptionSubjectDescription {
-        /**
-         * The common name of the distinguished name.
-         */
-        commonName?: string;
-        hexSerialNumber?: string;
+        hexSerialNumber: string;
         /**
          * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
          * "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
          * fractional digits, terminated by 's'. Example: "3.5s".
          */
-        lifetime?: string;
-        notAfterTime?: string;
-        notBeforeTime?: string;
-        /**
-         * Contains distinguished name fields such as the location and organization.
-         * Structure is documented below.
-         */
-        subject?: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubject;
+        lifetime: string;
+        notAfterTime: string;
+        notBeforeTime: string;
         /**
          * The subject alternative name fields.
          * Structure is documented below.
          */
-        subjectAltName?: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName;
+        subjectAltNames: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName[];
+        /**
+         * Contains distinguished name fields such as the location and organization.
+         * Structure is documented below.
+         */
+        subjects: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubject[];
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubject {
         /**
+         * The common name of the distinguished name.
+         */
+        commonName: string;
+        /**
          * The country code of the subject.
          */
-        countryCode?: string;
+        countryCode: string;
         /**
          * The locality or city of the subject.
          */
-        locality?: string;
+        locality: string;
         /**
          * The organization of the subject.
          */
-        organization?: string;
+        organization: string;
         /**
          * The organizational unit of the subject.
          */
-        organizationalUnit?: string;
+        organizationalUnit: string;
         /**
          * The postal code of the subject.
          */
-        postalCode?: string;
+        postalCode: string;
         /**
          * The province, territory, or regional state of the subject.
          */
-        province?: string;
+        province: string;
         /**
          * The street address of the subject.
          */
-        streetAddress?: string;
+        streetAddress: string;
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
@@ -4016,33 +4534,43 @@ export namespace certificateauthority {
         /**
          * Contains only valid, fully-qualified host names.
          */
-        dnsNames?: string[];
+        dnsNames: string[];
         /**
          * Contains only valid RFC 2822 E-mail addresses.
          */
-        emailAddresses?: string[];
+        emailAddresses: string[];
         /**
          * Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
          */
-        ipAddresses?: string[];
+        ipAddresses: string[];
         /**
          * Contains only valid RFC 3986 URIs.
          */
-        uris?: string[];
+        uris: string[];
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
         critical: boolean;
-        obectId: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId;
-        value?: string;
+        obectIds: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId[];
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value: string;
     }
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
         objectIdPaths: number[];
     }
 
     export interface CertificateCertificateDescriptionSubjectKeyId {
-        keyId?: string;
+        keyId: string;
     }
 
     export interface CertificateConfig {
@@ -4052,42 +4580,30 @@ export namespace certificateauthority {
          */
         publicKey: outputs.certificateauthority.CertificateConfigPublicKey;
         /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         */
-        reusableConfig: outputs.certificateauthority.CertificateConfigReusableConfig;
-        /**
          * Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
          */
         subjectConfig: outputs.certificateauthority.CertificateConfigSubjectConfig;
+        /**
+         * Describes how some of the technical X.509 fields in a certificate should be populated.
+         * Structure is documented below.
+         */
+        x509Config: outputs.certificateauthority.CertificateConfigX509Config;
     }
 
     export interface CertificateConfigPublicKey {
         /**
+         * The format of the public key. Currently, only PEM format is supported.
+         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         */
+        format: string;
+        /**
          * Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
          */
         key?: string;
-        /**
-         * Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
-         * Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
-         */
-        type: string;
-    }
-
-    export interface CertificateConfigReusableConfig {
-        /**
-         * A resource path to a ReusableConfig in the format
-         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
-         */
-        reusableConfig: string;
     }
 
     export interface CertificateConfigSubjectConfig {
-        /**
-         * The common name of the distinguished name.
-         */
-        commonName: string;
         /**
          * Contains distinguished name fields such as the location and organization.
          * Structure is documented below.
@@ -4101,6 +4617,10 @@ export namespace certificateauthority {
     }
 
     export interface CertificateConfigSubjectConfigSubject {
+        /**
+         * The common name of the distinguished name.
+         */
+        commonName: string;
         /**
          * The country code of the subject.
          */
@@ -4150,9 +4670,173 @@ export namespace certificateauthority {
         uris?: string[];
     }
 
+    export interface CertificateConfigX509Config {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions?: outputs.certificateauthority.CertificateConfigX509ConfigAdditionalExtension[];
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: string[];
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions?: outputs.certificateauthority.CertificateConfigX509ConfigCaOptions;
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsage: outputs.certificateauthority.CertificateConfigX509ConfigKeyUsage;
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds?: outputs.certificateauthority.CertificateConfigX509ConfigPolicyId[];
+    }
+
+    export interface CertificateConfigX509ConfigAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical: boolean;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectId: outputs.certificateauthority.CertificateConfigX509ConfigAdditionalExtensionObjectId;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value: string;
+    }
+
+    export interface CertificateConfigX509ConfigAdditionalExtensionObjectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface CertificateConfigX509ConfigCaOptions {
+        /**
+         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
+         * the extension will be omitted from the CA certificate.
+         */
+        isCa?: boolean;
+        /**
+         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
+         * value is missing, the max path length will be omitted from the CA certificate.
+         */
+        maxIssuerPathLength?: number;
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsage: outputs.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsage;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsage: outputs.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsage;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: outputs.certificateauthority.CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage[];
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: boolean;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: boolean;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: boolean;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: boolean;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: boolean;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: boolean;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: boolean;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: boolean;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: boolean;
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: boolean;
+    }
+
+    export interface CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface CertificateConfigX509ConfigPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
     export interface CertificateRevocationDetail {
-        revocationState?: string;
-        revocationTime?: string;
+        revocationState: string;
+        revocationTime: string;
     }
 }
 
@@ -7707,6 +8391,11 @@ export namespace compute {
         response: string;
     }
 
+    export interface GetInstanceAdvancedMachineFeature {
+        enableNestedVirtualization: boolean;
+        threadsPerCore: number;
+    }
+
     export interface GetInstanceAttachedDisk {
         /**
          * Name with which the attached disk is accessible
@@ -8720,6 +9409,17 @@ export namespace compute {
         source: string;
     }
 
+    export interface InstanceAdvancedMachineFeatures {
+        /**
+         * Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+         */
+        enableNestedVirtualization?: boolean;
+        /**
+         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         */
+        threadsPerCore?: number;
+    }
+
     export interface InstanceAttachedDisk {
         /**
          * Name with which the attached disk will be accessible
@@ -8820,7 +9520,7 @@ export namespace compute {
          */
         size: number;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: string;
     }
@@ -8830,6 +9530,11 @@ export namespace compute {
          * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
         enableConfidentialCompute: boolean;
+    }
+
+    export interface InstanceFromMachineImageAdvancedMachineFeatures {
+        enableNestedVirtualization: boolean;
+        threadsPerCore: number;
     }
 
     export interface InstanceFromMachineImageAttachedDisk {
@@ -8935,6 +9640,11 @@ export namespace compute {
         enableIntegrityMonitoring: boolean;
         enableSecureBoot: boolean;
         enableVtpm: boolean;
+    }
+
+    export interface InstanceFromTemplateAdvancedMachineFeatures {
+        enableNestedVirtualization: boolean;
+        threadsPerCore: number;
     }
 
     export interface InstanceFromTemplateAttachedDisk {
@@ -9195,7 +9905,7 @@ export namespace compute {
          */
         count: number;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: string;
     }
@@ -9327,20 +10037,24 @@ export namespace compute {
     }
 
     export interface InstanceReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use..
+         * Structure is documented below.
+         */
         specificReservation?: outputs.compute.InstanceReservationAffinitySpecificReservation;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: string;
     }
 
     export interface InstanceReservationAffinitySpecificReservation {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: string;
         /**
-         * The values for the node affinity label.
+         * Corresponds to the label values of a reservation resource.
          */
         values: string[];
     }
@@ -9380,7 +10094,7 @@ export namespace compute {
 
     export interface InstanceSchedulingNodeAffinity {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: string;
         /**
@@ -9389,7 +10103,7 @@ export namespace compute {
          */
         operator: string;
         /**
-         * The values for the node affinity label.
+         * Corresponds to the label values of a reservation resource.
          */
         values: string[];
     }
@@ -9437,7 +10151,7 @@ export namespace compute {
 
     export interface InstanceTemplateAdvancedMachineFeatures {
         /**
-         * Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+         * Defines whether the instance should have nested virtualization enabled. Defaults to false.
          */
         enableNestedVirtualization?: boolean;
         /**
@@ -9528,7 +10242,7 @@ export namespace compute {
          */
         sourceImage: string;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: string;
     }
@@ -9546,7 +10260,7 @@ export namespace compute {
          */
         count: number;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: string;
     }
@@ -9640,18 +10354,25 @@ export namespace compute {
     }
 
     export interface InstanceTemplateReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use..
+         * Structure is documented below.
+         */
         specificReservation?: outputs.compute.InstanceTemplateReservationAffinitySpecificReservation;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of reservation from which this instance can consume resources.
          */
         type: string;
     }
 
     export interface InstanceTemplateReservationAffinitySpecificReservation {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
@@ -9686,7 +10407,7 @@ export namespace compute {
 
     export interface InstanceTemplateSchedulingNodeAffinity {
         /**
-         * The key for the node affinity label.
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
          */
         key: string;
         /**
@@ -9694,6 +10415,9 @@ export namespace compute {
          * or `NOT_IN` for anti-affinities.
          */
         operator: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
@@ -16927,6 +17651,10 @@ export namespace dataloss {
          * Structure is documented below.
          */
         replaceConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig;
+        /**
+         * Replace each matching finding with the name of the info type.
+         */
+        replaceWithInfoTypeConfig?: boolean;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {

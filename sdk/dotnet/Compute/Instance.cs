@@ -105,6 +105,12 @@ namespace Pulumi.Gcp.Compute
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Output("advancedMachineFeatures")]
+        public Output<Outputs.InstanceAdvancedMachineFeatures?> AdvancedMachineFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// If true, allows this prvider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
@@ -287,9 +293,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
+        /// Structure is documented below.
         /// </summary>
         [Output("reservationAffinity")]
-        public Output<Outputs.InstanceReservationAffinity?> ReservationAffinity { get; private set; } = null!;
+        public Output<Outputs.InstanceReservationAffinity> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
         /// -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
@@ -397,6 +404,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.InstanceAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
         /// <summary>
         /// If true, allows this prvider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -580,6 +593,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
+        /// Structure is documented below.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.InstanceReservationAffinityArgs>? ReservationAffinity { get; set; }
@@ -651,6 +665,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.InstanceAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
+
         /// <summary>
         /// If true, allows this prvider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -864,6 +884,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
+        /// Structure is documented below.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.InstanceReservationAffinityGetArgs>? ReservationAffinity { get; set; }

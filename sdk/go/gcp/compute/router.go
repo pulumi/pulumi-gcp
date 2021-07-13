@@ -77,7 +77,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -87,7 +87,7 @@ import (
 // 			Bgp: &compute.RouterBgpArgs{
 // 				Asn: pulumi.Int(64514),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

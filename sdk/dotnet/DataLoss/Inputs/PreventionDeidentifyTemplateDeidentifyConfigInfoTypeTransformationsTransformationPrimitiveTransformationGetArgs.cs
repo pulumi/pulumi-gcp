@@ -27,6 +27,12 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("replaceConfig")]
         public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigGetArgs>? ReplaceConfig { get; set; }
 
+        /// <summary>
+        /// Replace each matching finding with the name of the info type.
+        /// </summary>
+        [Input("replaceWithInfoTypeConfig")]
+        public Input<bool>? ReplaceWithInfoTypeConfig { get; set; }
+
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationGetArgs()
         {
         }

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceTemplateAdvancedMachineFeatures
     {
         /// <summary>
-        /// Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        /// Defines whether the instance should have nested virtualization enabled. Defaults to false.
         /// </summary>
         public readonly bool? EnableNestedVirtualization;
         /// <summary>

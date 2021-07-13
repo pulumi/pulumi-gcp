@@ -179,13 +179,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
  * const address1 = new gcp.compute.Address("address1", {
  *     addressType: "INTERNAL",
  *     purpose: "IPSEC_INTERCONNECT",
  *     address: "192.168.1.0",
  *     prefixLength: 29,
  *     network: network.selfLink,
+ * }, {
+ *     provider: google_beta,
  * });
  * const router = new gcp.compute.Router("router", {
  *     network: network.name,
@@ -193,6 +197,8 @@ import * as utilities from "../utilities";
  *     bgp: {
  *         asn: 16550,
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * const attachment1 = new gcp.compute.InterconnectAttachment("attachment1", {
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
@@ -200,6 +206,8 @@ import * as utilities from "../utilities";
  *     router: router.id,
  *     encryption: "IPSEC",
  *     ipsecInternalAddresses: [address1.selfLink],
+ * }, {
+ *     provider: google_beta,
  * });
  * const address2 = new gcp.compute.Address("address2", {
  *     addressType: "INTERNAL",
@@ -207,6 +215,8 @@ import * as utilities from "../utilities";
  *     address: "192.168.2.0",
  *     prefixLength: 29,
  *     network: network.selfLink,
+ * }, {
+ *     provider: google_beta,
  * });
  * const attachment2 = new gcp.compute.InterconnectAttachment("attachment2", {
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_2",
@@ -214,6 +224,8 @@ import * as utilities from "../utilities";
  *     router: router.id,
  *     encryption: "IPSEC",
  *     ipsecInternalAddresses: [address2.selfLink],
+ * }, {
+ *     provider: google_beta,
  * });
  * const vpn_gateway = new gcp.compute.HaVpnGateway("vpn-gateway", {
  *     network: network.id,
@@ -227,6 +239,8 @@ import * as utilities from "../utilities";
  *             interconnectAttachment: attachment2.selfLink,
  *         },
  *     ],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

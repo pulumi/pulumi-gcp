@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.BigQuery
     ///             {
     ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
     ///                 {
-    ///                     Role = "roles/dataOwner",
+    ///                     Role = "roles/bigquery.dataOwner",
     ///                     Members = 
     ///                     {
     ///                         "user:jane@example.com",
