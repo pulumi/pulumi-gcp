@@ -5,6 +5,8 @@ CHANGELOG
 * Upgrade to v3.75.0 of the Google Beta Terraform Provider
   **PLEASE NOTE there are breaking changes in the `gcp.certificateauthority` resources as they have changed as part of the GA release in the Google API :**
 
+* (breaking) Bring Go `*State` types for resource get methods into agreement with other languages.
+
 ---
 
 ## 5.11.0 (2021-07-01)
