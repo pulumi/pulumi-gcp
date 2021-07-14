@@ -100,6 +100,7 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public readonly string Crc32c;
         public readonly string DetectMd5hash;
+        public readonly bool EventBasedHold;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -127,6 +128,7 @@ namespace Pulumi.Gcp.Storage
         /// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
         /// </summary>
         public readonly string StorageClass;
+        public readonly bool TemporaryHold;
 
         [OutputConstructor]
         private GetBucketObjectResult(
@@ -148,6 +150,8 @@ namespace Pulumi.Gcp.Storage
 
             string detectMd5hash,
 
+            bool eventBasedHold,
+
             string id,
 
             string kmsKeyName,
@@ -166,7 +170,9 @@ namespace Pulumi.Gcp.Storage
 
             string source,
 
-            string storageClass)
+            string storageClass,
+
+            bool temporaryHold)
         {
             Bucket = bucket;
             CacheControl = cacheControl;
@@ -177,6 +183,7 @@ namespace Pulumi.Gcp.Storage
             ContentType = contentType;
             Crc32c = crc32c;
             DetectMd5hash = detectMd5hash;
+            EventBasedHold = eventBasedHold;
             Id = id;
             KmsKeyName = kmsKeyName;
             Md5hash = md5hash;
@@ -187,6 +194,7 @@ namespace Pulumi.Gcp.Storage
             SelfLink = selfLink;
             Source = source;
             StorageClass = storageClass;
+            TemporaryHold = temporaryHold;
         }
     }
 }

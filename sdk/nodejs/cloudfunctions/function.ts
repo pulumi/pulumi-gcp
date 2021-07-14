@@ -174,7 +174,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+     * Region of function. If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -339,7 +339,7 @@ export interface FunctionState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+     * Region of function. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
     /**
@@ -435,7 +435,7 @@ export interface FunctionArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+     * Region of function. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
     /**

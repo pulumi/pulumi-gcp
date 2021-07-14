@@ -203,7 +203,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        /// Region of function. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        /// Region of function. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -560,7 +560,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+        /// Region of function. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

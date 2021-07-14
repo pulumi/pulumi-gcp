@@ -14,44 +14,44 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescription
     {
         public readonly ImmutableArray<string> AiaIssuingCertificateUrls;
-        public readonly Outputs.CertificateCertificateDescriptionAuthorityKeyId? AuthorityKeyId;
-        public readonly Outputs.CertificateCertificateDescriptionCertFingerprint? CertFingerprint;
-        public readonly Outputs.CertificateCertificateDescriptionConfigValues? ConfigValues;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionAuthorityKeyId> AuthorityKeyIds;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionCertFingerprint> CertFingerprints;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionConfigValue> ConfigValues;
         public readonly ImmutableArray<string> CrlDistributionPoints;
         /// <summary>
         /// A PublicKey describes a public key.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.CertificateCertificateDescriptionPublicKey PublicKey;
-        public readonly Outputs.CertificateCertificateDescriptionSubjectDescription? SubjectDescription;
-        public readonly Outputs.CertificateCertificateDescriptionSubjectKeyId? SubjectKeyId;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionPublicKey> PublicKeys;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescription> SubjectDescriptions;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectKeyId> SubjectKeyIds;
 
         [OutputConstructor]
         private CertificateCertificateDescription(
             ImmutableArray<string> aiaIssuingCertificateUrls,
 
-            Outputs.CertificateCertificateDescriptionAuthorityKeyId? authorityKeyId,
+            ImmutableArray<Outputs.CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds,
 
-            Outputs.CertificateCertificateDescriptionCertFingerprint? certFingerprint,
+            ImmutableArray<Outputs.CertificateCertificateDescriptionCertFingerprint> certFingerprints,
 
-            Outputs.CertificateCertificateDescriptionConfigValues? configValues,
+            ImmutableArray<Outputs.CertificateCertificateDescriptionConfigValue> configValues,
 
             ImmutableArray<string> crlDistributionPoints,
 
-            Outputs.CertificateCertificateDescriptionPublicKey publicKey,
+            ImmutableArray<Outputs.CertificateCertificateDescriptionPublicKey> publicKeys,
 
-            Outputs.CertificateCertificateDescriptionSubjectDescription? subjectDescription,
+            ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescription> subjectDescriptions,
 
-            Outputs.CertificateCertificateDescriptionSubjectKeyId? subjectKeyId)
+            ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds)
         {
             AiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
-            AuthorityKeyId = authorityKeyId;
-            CertFingerprint = certFingerprint;
+            AuthorityKeyIds = authorityKeyIds;
+            CertFingerprints = certFingerprints;
             ConfigValues = configValues;
             CrlDistributionPoints = crlDistributionPoints;
-            PublicKey = publicKey;
-            SubjectDescription = subjectDescription;
-            SubjectKeyId = subjectKeyId;
+            PublicKeys = publicKeys;
+            SubjectDescriptions = subjectDescriptions;
+            SubjectKeyIds = subjectKeyIds;
         }
     }
 }

@@ -45,7 +45,7 @@ class InstanceTemplateArgs:
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[str] machine_type: The machine type to create.
-        :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -87,6 +87,7 @@ class InstanceTemplateArgs:
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
         :param pulumi.Input['InstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input['InstanceTemplateServiceAccountArgs'] service_account: Service account to attach to the instance. Structure is documented below.
@@ -171,7 +172,7 @@ class InstanceTemplateArgs:
     @pulumi.getter(name="advancedMachineFeatures")
     def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]:
         """
-        Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         """
         return pulumi.get(self, "advanced_machine_features")
 
@@ -400,6 +401,7 @@ class InstanceTemplateArgs:
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]:
         """
         Specifies the reservations that this instance can consume from.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -490,7 +492,7 @@ class _InstanceTemplateState:
                  tags_fingerprint: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
-        :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -537,6 +539,7 @@ class _InstanceTemplateState:
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
         :param pulumi.Input['InstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -605,7 +608,7 @@ class _InstanceTemplateState:
     @pulumi.getter(name="advancedMachineFeatures")
     def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]:
         """
-        Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         """
         return pulumi.get(self, "advanced_machine_features")
 
@@ -872,6 +875,7 @@ class _InstanceTemplateState:
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]:
         """
         Specifies the reservations that this instance can consume from.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -1125,7 +1129,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -1171,6 +1175,7 @@ class InstanceTemplate(pulumi.CustomResource):
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']] service_account: Service account to attach to the instance. Structure is documented below.
@@ -1449,7 +1454,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
@@ -1496,6 +1501,7 @@ class InstanceTemplate(pulumi.CustomResource):
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1542,7 +1548,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="advancedMachineFeatures")
     def advanced_machine_features(self) -> pulumi.Output['outputs.InstanceTemplateAdvancedMachineFeatures']:
         """
-        Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         """
         return pulumi.get(self, "advanced_machine_features")
 
@@ -1729,6 +1735,7 @@ class InstanceTemplate(pulumi.CustomResource):
     def reservation_affinity(self) -> pulumi.Output[Optional['outputs.InstanceTemplateReservationAffinity']]:
         """
         Specifies the reservations that this instance can consume from.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 

@@ -770,26 +770,34 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "certificateauthority/authorityIamBinding",
+  "mod": "certificateauthority/caPool",
   "fqn": "pulumi_gcp.certificateauthority",
   "classes": {
-   "gcp:certificateauthority/authorityIamBinding:AuthorityIamBinding": "AuthorityIamBinding"
+   "gcp:certificateauthority/caPool:CaPool": "CaPool"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "certificateauthority/authorityIamMember",
+  "mod": "certificateauthority/caPoolIamBinding",
   "fqn": "pulumi_gcp.certificateauthority",
   "classes": {
-   "gcp:certificateauthority/authorityIamMember:AuthorityIamMember": "AuthorityIamMember"
+   "gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding": "CaPoolIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "certificateauthority/authorityIamPolicy",
+  "mod": "certificateauthority/caPoolIamMember",
   "fqn": "pulumi_gcp.certificateauthority",
   "classes": {
-   "gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy": "AuthorityIamPolicy"
+   "gcp:certificateauthority/caPoolIamMember:CaPoolIamMember": "CaPoolIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "certificateauthority/caPoolIamPolicy",
+  "fqn": "pulumi_gcp.certificateauthority",
+  "classes": {
+   "gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy": "CaPoolIamPolicy"
   }
  },
  {

@@ -14,10 +14,6 @@ import (
 // A CertificateAuthority represents an individual Certificate Authority. A
 // CertificateAuthority can be used to create Certificates.
 //
-// > **Warning:** Please remember that all resources created during preview (via this provider)
-// will be deleted when CA service transitions to General Availability (GA). Relying on these
-// certificate authorities for production traffic is discouraged.
-//
 // To get more information about CertificateAuthority, see:
 //
 // * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
@@ -39,28 +35,51 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
-// 			Location:               pulumi.String("us-central1"),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 // 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+// 						CommonName:   pulumi.String("my-certificate-authority"),
 // 						Organization: pulumi.String("HashiCorp"),
 // 					},
-// 					CommonName: pulumi.String("my-certificate-authority"),
 // 					SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
 // 						DnsNames: pulumi.StringArray{
 // 							pulumi.String("hashicorp.com"),
 // 						},
 // 					},
 // 				},
-// 				ReusableConfig: &certificateauthority.AuthorityConfigReusableConfigArgs{
-// 					ReusableConfig: pulumi.String("projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained"),
+// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+// 						IsCa:                pulumi.Bool(true),
+// 						MaxIssuerPathLength: pulumi.Int(10),
+// 					},
+// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+// 							CertSign:          pulumi.Bool(true),
+// 							ContentCommitment: pulumi.Bool(true),
+// 							CrlSign:           pulumi.Bool(true),
+// 							DataEncipherment:  pulumi.Bool(true),
+// 							DecipherOnly:      pulumi.Bool(true),
+// 							DigitalSignature:  pulumi.Bool(true),
+// 							KeyAgreement:      pulumi.Bool(true),
+// 							KeyEncipherment:   pulumi.Bool(false),
+// 						},
+// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+// 							ClientAuth:      pulumi.Bool(false),
+// 							CodeSigning:     pulumi.Bool(true),
+// 							EmailProtection: pulumi.Bool(true),
+// 							ServerAuth:      pulumi.Bool(true),
+// 							TimeStamping:    pulumi.Bool(true),
+// 						},
+// 					},
 // 				},
 // 			},
 // 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 // 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 // 			},
-// 			DisableOnDelete: pulumi.Bool(true),
-// 		}, pulumi.Provider(google_beta))
+// 			Lifetime: pulumi.String("86400s"),
+// 			Location: pulumi.String("us-central1"),
+// 			Pool:     pulumi.String(""),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -68,63 +87,86 @@ import (
 // 	})
 // }
 // ```
-// ### Privateca Certificate Authority Full
+// ### Privateca Certificate Authority Byo Key
 //
 // ```go
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
+// 		privatecaSa, err := projects.NewServiceIdentity(ctx, "privatecaSa", &projects.ServiceIdentityArgs{
+// 			Service: pulumi.String("privateca.googleapis.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privatecaSaKeyuserSignerverifier, err := kms.NewCryptoKeyIAMBinding(ctx, "privatecaSaKeyuserSignerverifier", &kms.CryptoKeyIAMBindingArgs{
+// 			CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
+// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
+// 			Members: pulumi.StringArray{
+// 				privatecaSa.Email.ApplyT(func(email string) (string, error) {
+// 					return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privatecaSaKeyuserViewer, err := kms.NewCryptoKeyIAMBinding(ctx, "privatecaSaKeyuserViewer", &kms.CryptoKeyIAMBindingArgs{
+// 			CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
+// 			Role:        pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				privatecaSa.Email.ApplyT(func(email string) (string, error) {
+// 					return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
+// 			Pool:                   pulumi.String(""),
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 // 			Location:               pulumi.String("us-central1"),
-// 			Tier:                   pulumi.String("DEVOPS"),
+// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+// 				CloudKmsKeyVersion: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1"),
+// 			},
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 // 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
-// 						CountryCode:        pulumi.String("US"),
-// 						Organization:       pulumi.String("HashiCorp"),
-// 						OrganizationalUnit: pulumi.String("Terraform"),
-// 						Locality:           pulumi.String("San Francisco"),
-// 						Province:           pulumi.String("CA"),
-// 						StreetAddress:      pulumi.String("101 2nd St #700"),
-// 						PostalCode:         pulumi.String("94105"),
+// 						Organization: pulumi.String("Example, Org."),
+// 						CommonName:   pulumi.String("Example Authority"),
 // 					},
-// 					CommonName: pulumi.String("my-certificate-authority"),
-// 					SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
-// 						DnsNames: pulumi.StringArray{
-// 							pulumi.String("hashicorp.com"),
+// 				},
+// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+// 						IsCa:                pulumi.Bool(true),
+// 						MaxIssuerPathLength: pulumi.Int(10),
+// 					},
+// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+// 							CertSign: pulumi.Bool(true),
+// 							CrlSign:  pulumi.Bool(true),
 // 						},
-// 						EmailAddresses: pulumi.StringArray{
-// 							pulumi.String("email@example.com"),
-// 						},
-// 						IpAddresses: pulumi.StringArray{
-// 							pulumi.String("127.0.0.1"),
-// 						},
-// 						Uris: pulumi.StringArray{
-// 							pulumi.String("http://www.ietf.org/rfc/rfc3986.txt"),
+// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+// 							ServerAuth: pulumi.Bool(false),
 // 						},
 // 					},
 // 				},
-// 				ReusableConfig: &certificateauthority.AuthorityConfigReusableConfigArgs{
-// 					ReusableConfig: pulumi.String("projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained"),
-// 				},
 // 			},
-// 			Lifetime: pulumi.String("86400s"),
-// 			IssuingOptions: &certificateauthority.AuthorityIssuingOptionsArgs{
-// 				IncludeCaCertUrl:    pulumi.Bool(true),
-// 				IncludeCrlAccessUrl: pulumi.Bool(false),
-// 			},
-// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
-// 				Algorithm: pulumi.String("EC_P256_SHA256"),
-// 			},
-// 			DisableOnDelete: pulumi.Bool(true),
-// 		}, pulumi.Provider(google_beta))
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			privatecaSaKeyuserSignerverifier,
+// 			privatecaSaKeyuserViewer,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -138,15 +180,15 @@ import (
 // CertificateAuthority can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+//  $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{certificate_authority_id}}
+//  $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{certificate_authority_id}}
+//  $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
 // ```
 type Authority struct {
 	pulumi.CustomResourceState
@@ -161,19 +203,15 @@ type Authority struct {
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// If set to `true`, the Certificate Authority will be disabled
-	// on delete. If the Certitificate Authorities is not disabled,
-	// it cannot be deleted. Use with care. Defaults to `false`.
-	DisableOnDelete pulumi.BoolPtrOutput `pulumi:"disableOnDelete"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
 	// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
 	// created.
 	GcsBucket pulumi.StringPtrOutput `pulumi:"gcsBucket"`
-	// Options that affect all certificates issued by a CertificateAuthority.
-	// Structure is documented below.
-	IssuingOptions AuthorityIssuingOptionsPtrOutput `pulumi:"issuingOptions"`
+	// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+	// Use with care. Defaults to `false`.
+	IgnoreActiveCertificatesOnDeletion pulumi.BoolPtrOutput `pulumi:"ignoreActiveCertificatesOnDeletion"`
 	// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
 	// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
 	// certificate. Otherwise, it is used to sign a CSR.
@@ -188,7 +226,7 @@ type Authority struct {
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime pulumi.StringPtrOutput `pulumi:"lifetime"`
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -196,17 +234,13 @@ type Authority struct {
 	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
 	// current CertificateAuthority's certificate.
 	PemCaCertificates pulumi.StringArrayOutput `pulumi:"pemCaCertificates"`
+	// The name of the CaPool this Certificate Authority belongs to.
+	Pool pulumi.StringOutput `pulumi:"pool"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The State for this CertificateAuthority.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-	// server side certificates issued, and support certificate revocation. For more details,
-	// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-	// Default value is `ENTERPRISE`.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
-	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be manually activated (via Cloud Console of `gcloud`) before they can
@@ -237,6 +271,9 @@ func NewAuthority(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Pool == nil {
+		return nil, errors.New("invalid value for required argument 'Pool'")
 	}
 	var resource Authority
 	err := ctx.RegisterResource("gcp:certificateauthority/authority:Authority", name, args, &resource, opts...)
@@ -270,19 +307,15 @@ type authorityState struct {
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
-	// If set to `true`, the Certificate Authority will be disabled
-	// on delete. If the Certitificate Authorities is not disabled,
-	// it cannot be deleted. Use with care. Defaults to `false`.
-	DisableOnDelete *bool `pulumi:"disableOnDelete"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
 	// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
 	// created.
 	GcsBucket *string `pulumi:"gcsBucket"`
-	// Options that affect all certificates issued by a CertificateAuthority.
-	// Structure is documented below.
-	IssuingOptions *AuthorityIssuingOptions `pulumi:"issuingOptions"`
+	// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+	// Use with care. Defaults to `false`.
+	IgnoreActiveCertificatesOnDeletion *bool `pulumi:"ignoreActiveCertificatesOnDeletion"`
 	// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
 	// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
 	// certificate. Otherwise, it is used to sign a CSR.
@@ -297,7 +330,7 @@ type authorityState struct {
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime *string `pulumi:"lifetime"`
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// running `gcloud privateca locations list`.
 	Location *string `pulumi:"location"`
 	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
 	Name *string `pulumi:"name"`
@@ -305,17 +338,13 @@ type authorityState struct {
 	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
 	// current CertificateAuthority's certificate.
 	PemCaCertificates []string `pulumi:"pemCaCertificates"`
+	// The name of the CaPool this Certificate Authority belongs to.
+	Pool *string `pulumi:"pool"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The State for this CertificateAuthority.
 	State *string `pulumi:"state"`
-	// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-	// server side certificates issued, and support certificate revocation. For more details,
-	// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-	// Default value is `ENTERPRISE`.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
-	Tier *string `pulumi:"tier"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be manually activated (via Cloud Console of `gcloud`) before they can
@@ -339,19 +368,15 @@ type AuthorityState struct {
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
-	// If set to `true`, the Certificate Authority will be disabled
-	// on delete. If the Certitificate Authorities is not disabled,
-	// it cannot be deleted. Use with care. Defaults to `false`.
-	DisableOnDelete pulumi.BoolPtrInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
 	// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
 	// created.
 	GcsBucket pulumi.StringPtrInput
-	// Options that affect all certificates issued by a CertificateAuthority.
-	// Structure is documented below.
-	IssuingOptions AuthorityIssuingOptionsPtrInput
+	// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+	// Use with care. Defaults to `false`.
+	IgnoreActiveCertificatesOnDeletion pulumi.BoolPtrInput
 	// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
 	// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
 	// certificate. Otherwise, it is used to sign a CSR.
@@ -366,7 +391,7 @@ type AuthorityState struct {
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime pulumi.StringPtrInput
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringPtrInput
 	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
 	Name pulumi.StringPtrInput
@@ -374,17 +399,13 @@ type AuthorityState struct {
 	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
 	// current CertificateAuthority's certificate.
 	PemCaCertificates pulumi.StringArrayInput
+	// The name of the CaPool this Certificate Authority belongs to.
+	Pool pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The State for this CertificateAuthority.
 	State pulumi.StringPtrInput
-	// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-	// server side certificates issued, and support certificate revocation. For more details,
-	// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-	// Default value is `ENTERPRISE`.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
-	Tier pulumi.StringPtrInput
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be manually activated (via Cloud Console of `gcloud`) before they can
@@ -407,19 +428,15 @@ type authorityArgs struct {
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config AuthorityConfig `pulumi:"config"`
-	// If set to `true`, the Certificate Authority will be disabled
-	// on delete. If the Certitificate Authorities is not disabled,
-	// it cannot be deleted. Use with care. Defaults to `false`.
-	DisableOnDelete *bool `pulumi:"disableOnDelete"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
 	// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
 	// created.
 	GcsBucket *string `pulumi:"gcsBucket"`
-	// Options that affect all certificates issued by a CertificateAuthority.
-	// Structure is documented below.
-	IssuingOptions *AuthorityIssuingOptions `pulumi:"issuingOptions"`
+	// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+	// Use with care. Defaults to `false`.
+	IgnoreActiveCertificatesOnDeletion *bool `pulumi:"ignoreActiveCertificatesOnDeletion"`
 	// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
 	// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
 	// certificate. Otherwise, it is used to sign a CSR.
@@ -434,17 +451,13 @@ type authorityArgs struct {
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime *string `pulumi:"lifetime"`
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// running `gcloud privateca locations list`.
 	Location string `pulumi:"location"`
+	// The name of the CaPool this Certificate Authority belongs to.
+	Pool string `pulumi:"pool"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-	// server side certificates issued, and support certificate revocation. For more details,
-	// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-	// Default value is `ENTERPRISE`.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
-	Tier *string `pulumi:"tier"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be manually activated (via Cloud Console of `gcloud`) before they can
@@ -461,19 +474,15 @@ type AuthorityArgs struct {
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config AuthorityConfigInput
-	// If set to `true`, the Certificate Authority will be disabled
-	// on delete. If the Certitificate Authorities is not disabled,
-	// it cannot be deleted. Use with care. Defaults to `false`.
-	DisableOnDelete pulumi.BoolPtrInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
 	// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
 	// created.
 	GcsBucket pulumi.StringPtrInput
-	// Options that affect all certificates issued by a CertificateAuthority.
-	// Structure is documented below.
-	IssuingOptions AuthorityIssuingOptionsPtrInput
+	// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+	// Use with care. Defaults to `false`.
+	IgnoreActiveCertificatesOnDeletion pulumi.BoolPtrInput
 	// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
 	// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
 	// certificate. Otherwise, it is used to sign a CSR.
@@ -488,17 +497,13 @@ type AuthorityArgs struct {
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime pulumi.StringPtrInput
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
-	// running `gcloud beta privateca locations list`.
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringInput
+	// The name of the CaPool this Certificate Authority belongs to.
+	Pool pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-	// server side certificates issued, and support certificate revocation. For more details,
-	// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-	// Default value is `ENTERPRISE`.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
-	Tier pulumi.StringPtrInput
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be manually activated (via Cloud Console of `gcloud`) before they can

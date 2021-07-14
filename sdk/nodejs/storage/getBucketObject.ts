@@ -86,6 +86,7 @@ export interface GetBucketObjectResult {
      */
     readonly crc32c: string;
     readonly detectMd5hash: string;
+    readonly eventBasedHold: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -113,4 +114,5 @@ export interface GetBucketObjectResult {
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
     readonly storageClass: string;
+    readonly temporaryHold: boolean;
 }

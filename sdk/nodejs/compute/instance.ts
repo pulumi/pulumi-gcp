@@ -98,6 +98,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Controls for advanced machine-related behavior features.
+     */
+    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceAdvancedMachineFeatures | undefined>;
+    /**
      * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
@@ -230,8 +234,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Specifies the reservations that this instance can consume from.
+     * Structure is documented below.
      */
-    public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceReservationAffinity | undefined>;
+    public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceReservationAffinity>;
     /**
      * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
@@ -288,6 +293,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            inputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
@@ -334,6 +340,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.networkInterfaces === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaces'");
             }
+            inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = args ? args.attachedDisks : undefined;
             inputs["bootDisk"] = args ? args.bootDisk : undefined;
@@ -381,6 +388,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * Controls for advanced machine-related behavior features.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**
      * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -514,6 +525,7 @@ export interface InstanceState {
     project?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
+     * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**
@@ -564,6 +576,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Controls for advanced machine-related behavior features.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**
      * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -677,6 +693,7 @@ export interface InstanceArgs {
     project?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
+     * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**

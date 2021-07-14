@@ -80,6 +80,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     }
 
     /**
+     * Controls for advanced machine-related behavior features.
+     */
+    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceFromTemplateAdvancedMachineFeatures>;
+    /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
      * stopping the instance without setting this field, the update will fail.
      */
@@ -247,6 +251,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceFromTemplateState | undefined;
+            inputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
@@ -288,6 +293,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             if ((!args || args.sourceInstanceTemplate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstanceTemplate'");
             }
+            inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = args ? args.attachedDisks : undefined;
             inputs["bootDisk"] = args ? args.bootDisk : undefined;
@@ -336,6 +342,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceFromTemplate resources.
  */
 export interface InstanceFromTemplateState {
+    /**
+     * Controls for advanced machine-related behavior features.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromTemplateAdvancedMachineFeatures>;
     /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
      * stopping the instance without setting this field, the update will fail.
@@ -496,6 +506,10 @@ export interface InstanceFromTemplateState {
  * The set of arguments for constructing a InstanceFromTemplate resource.
  */
 export interface InstanceFromTemplateArgs {
+    /**
+     * Controls for advanced machine-related behavior features.
+     */
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromTemplateAdvancedMachineFeatures>;
     /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
      * stopping the instance without setting this field, the update will fail.

@@ -12,12 +12,24 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanGetArgs : Pulumi.ResourceArgs
     {
-        [Input("critical", required: true)]
-        public Input<bool> Critical { get; set; } = null!;
+        /// <summary>
+        /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+        /// handle this extension, the client should consider this to be an error).
+        /// </summary>
+        [Input("critical")]
+        public Input<bool>? Critical { get; set; }
 
-        [Input("obectId", required: true)]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs> ObectId { get; set; } = null!;
+        [Input("obectIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs>? _obectIds;
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs> ObectIds
+        {
+            get => _obectIds ?? (_obectIds = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs>());
+            set => _obectIds = value;
+        }
 
+        /// <summary>
+        /// The value of this X.509 extension. A base64-encoded string.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

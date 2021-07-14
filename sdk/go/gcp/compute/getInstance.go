@@ -64,7 +64,8 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AllowStoppingForUpdate bool `pulumi:"allowStoppingForUpdate"`
+	AdvancedMachineFeatures []GetInstanceAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
+	AllowStoppingForUpdate  bool                                `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance. Structure is documented below.
 	AttachedDisks []GetInstanceAttachedDisk `pulumi:"attachedDisks"`
 	// The boot disk for the instance. Structure is documented below.

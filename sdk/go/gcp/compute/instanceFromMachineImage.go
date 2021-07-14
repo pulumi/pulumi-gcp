@@ -50,6 +50,8 @@ import (
 type InstanceFromMachineImage struct {
 	pulumi.CustomResourceState
 
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolOutput `pulumi:"allowStoppingForUpdate"`
@@ -166,6 +168,8 @@ func GetInstanceFromMachineImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceFromMachineImage resources.
 type instanceFromMachineImageState struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *InstanceFromMachineImageAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
@@ -251,6 +255,8 @@ type instanceFromMachineImageState struct {
 }
 
 type InstanceFromMachineImageState struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesPtrInput
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
@@ -340,6 +346,8 @@ func (InstanceFromMachineImageState) ElementType() reflect.Type {
 }
 
 type instanceFromMachineImageArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *InstanceFromMachineImageAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
@@ -406,6 +414,8 @@ type instanceFromMachineImageArgs struct {
 
 // The set of arguments for constructing a InstanceFromMachineImage resource.
 type InstanceFromMachineImageArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesPtrInput
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
 	// stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput

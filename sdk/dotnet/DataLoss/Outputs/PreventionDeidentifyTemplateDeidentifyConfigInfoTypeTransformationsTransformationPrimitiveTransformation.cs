@@ -24,15 +24,22 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig? ReplaceConfig;
+        /// <summary>
+        /// Replace each matching finding with the name of the info type.
+        /// </summary>
+        public readonly bool? ReplaceWithInfoTypeConfig;
 
         [OutputConstructor]
         private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation(
             Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig? characterMaskConfig,
 
-            Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig? replaceConfig)
+            Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig? replaceConfig,
+
+            bool? replaceWithInfoTypeConfig)
         {
             CharacterMaskConfig = characterMaskConfig;
             ReplaceConfig = replaceConfig;
+            ReplaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
         }
     }
 }

@@ -16,6 +16,7 @@ __all__ = ['InstanceFromTemplateArgs', 'InstanceFromTemplate']
 class InstanceFromTemplateArgs:
     def __init__(__self__, *,
                  source_instance_template: pulumi.Input[str],
+                 advanced_machine_features: Optional[pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs']] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]]] = None,
                  boot_disk: Optional[pulumi.Input['InstanceFromTemplateBootDiskArgs']] = None,
@@ -48,6 +49,7 @@ class InstanceFromTemplateArgs:
         The set of arguments for constructing a InstanceFromTemplate resource.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on.
+        :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
                stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
@@ -87,6 +89,8 @@ class InstanceFromTemplateArgs:
                set, the provider zone is used.
         """
         pulumi.set(__self__, "source_instance_template", source_instance_template)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
             pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
         if attached_disks is not None:
@@ -156,6 +160,18 @@ class InstanceFromTemplateArgs:
     @source_instance_template.setter
     def source_instance_template(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_instance_template", value)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs']]:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
@@ -506,6 +522,7 @@ class InstanceFromTemplateArgs:
 @pulumi.input_type
 class _InstanceFromTemplateState:
     def __init__(__self__, *,
+                 advanced_machine_features: Optional[pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs']] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]]] = None,
                  boot_disk: Optional[pulumi.Input['InstanceFromTemplateBootDiskArgs']] = None,
@@ -544,6 +561,7 @@ class _InstanceFromTemplateState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceFromTemplate resources.
+        :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
                stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
@@ -591,6 +609,8 @@ class _InstanceFromTemplateState:
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
         """
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
             pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
         if attached_disks is not None:
@@ -663,6 +683,18 @@ class _InstanceFromTemplateState:
             pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs']]:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
@@ -1112,6 +1144,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceFromTemplateAdvancedMachineFeaturesArgs']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]]] = None,
                  boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceFromTemplateBootDiskArgs']]] = None,
@@ -1188,6 +1221,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceFromTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
                stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]] attached_disks: List of disks attached to the instance
@@ -1293,6 +1327,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceFromTemplateAdvancedMachineFeaturesArgs']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]]] = None,
                  boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceFromTemplateBootDiskArgs']]] = None,
@@ -1334,6 +1369,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceFromTemplateArgs.__new__(InstanceFromTemplateArgs)
 
+            __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
             __props__.__dict__["attached_disks"] = attached_disks
             __props__.__dict__["boot_disk"] = boot_disk
@@ -1382,6 +1418,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceFromTemplateAdvancedMachineFeaturesArgs']]] = None,
             allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
             attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]]] = None,
             boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceFromTemplateBootDiskArgs']]] = None,
@@ -1425,6 +1462,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceFromTemplateAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
                stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]] attached_disks: List of disks attached to the instance
@@ -1476,6 +1514,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         __props__ = _InstanceFromTemplateState.__new__(_InstanceFromTemplateState)
 
+        __props__.__dict__["advanced_machine_features"] = advanced_machine_features
         __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
         __props__.__dict__["attached_disks"] = attached_disks
         __props__.__dict__["boot_disk"] = boot_disk
@@ -1513,6 +1552,14 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
         __props__.__dict__["zone"] = zone
         return InstanceFromTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> pulumi.Output['outputs.InstanceFromTemplateAdvancedMachineFeatures']:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="allowStoppingForUpdate")

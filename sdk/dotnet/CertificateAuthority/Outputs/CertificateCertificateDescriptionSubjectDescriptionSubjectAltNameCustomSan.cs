@@ -13,20 +13,27 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     {
-        public readonly bool Critical;
-        public readonly Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId ObectId;
+        /// <summary>
+        /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+        /// handle this extension, the client should consider this to be an error).
+        /// </summary>
+        public readonly bool? Critical;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> ObectIds;
+        /// <summary>
+        /// The value of this X.509 extension. A base64-encoded string.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]
         private CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(
-            bool critical,
+            bool? critical,
 
-            Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId obectId,
+            ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds,
 
             string? value)
         {
             Critical = critical;
-            ObectId = obectId;
+            ObectIds = obectIds;
             Value = value;
         }
     }

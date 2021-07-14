@@ -19,7 +19,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, event_based_hold=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -47,6 +47,9 @@ class GetBucketObjectResult:
         if detect_md5hash and not isinstance(detect_md5hash, str):
             raise TypeError("Expected argument 'detect_md5hash' to be a str")
         pulumi.set(__self__, "detect_md5hash", detect_md5hash)
+        if event_based_hold and not isinstance(event_based_hold, bool):
+            raise TypeError("Expected argument 'event_based_hold' to be a bool")
+        pulumi.set(__self__, "event_based_hold", event_based_hold)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -77,6 +80,9 @@ class GetBucketObjectResult:
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
+        if temporary_hold and not isinstance(temporary_hold, bool):
+            raise TypeError("Expected argument 'temporary_hold' to be a bool")
+        pulumi.set(__self__, "temporary_hold", temporary_hold)
 
     @property
     @pulumi.getter
@@ -141,6 +147,11 @@ class GetBucketObjectResult:
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> str:
         return pulumi.get(self, "detect_md5hash")
+
+    @property
+    @pulumi.getter(name="eventBasedHold")
+    def event_based_hold(self) -> bool:
+        return pulumi.get(self, "event_based_hold")
 
     @property
     @pulumi.getter
@@ -209,6 +220,11 @@ class GetBucketObjectResult:
         """
         return pulumi.get(self, "storage_class")
 
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> bool:
+        return pulumi.get(self, "temporary_hold")
+
 
 class AwaitableGetBucketObjectResult(GetBucketObjectResult):
     # pylint: disable=using-constant-test
@@ -225,6 +241,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             content_type=self.content_type,
             crc32c=self.crc32c,
             detect_md5hash=self.detect_md5hash,
+            event_based_hold=self.event_based_hold,
             id=self.id,
             kms_key_name=self.kms_key_name,
             md5hash=self.md5hash,
@@ -234,7 +251,8 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             output_name=self.output_name,
             self_link=self.self_link,
             source=self.source,
-            storage_class=self.storage_class)
+            storage_class=self.storage_class,
+            temporary_hold=self.temporary_hold)
 
 
 def get_bucket_object(bucket: Optional[str] = None,
@@ -281,6 +299,7 @@ def get_bucket_object(bucket: Optional[str] = None,
         content_type=__ret__.content_type,
         crc32c=__ret__.crc32c,
         detect_md5hash=__ret__.detect_md5hash,
+        event_based_hold=__ret__.event_based_hold,
         id=__ret__.id,
         kms_key_name=__ret__.kms_key_name,
         md5hash=__ret__.md5hash,
@@ -290,4 +309,5 @@ def get_bucket_object(bucket: Optional[str] = None,
         output_name=__ret__.output_name,
         self_link=__ret__.self_link,
         source=__ret__.source,
-        storage_class=__ret__.storage_class)
+        storage_class=__ret__.storage_class,
+        temporary_hold=__ret__.temporary_hold)

@@ -23,12 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:certificateauthority/authority:Authority":
 		r = &Authority{}
-	case "gcp:certificateauthority/authorityIamBinding:AuthorityIamBinding":
-		r = &AuthorityIamBinding{}
-	case "gcp:certificateauthority/authorityIamMember:AuthorityIamMember":
-		r = &AuthorityIamMember{}
-	case "gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy":
-		r = &AuthorityIamPolicy{}
+	case "gcp:certificateauthority/caPool:CaPool":
+		r = &CaPool{}
+	case "gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding":
+		r = &CaPoolIamBinding{}
+	case "gcp:certificateauthority/caPoolIamMember:CaPoolIamMember":
+		r = &CaPoolIamMember{}
+	case "gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy":
+		r = &CaPoolIamPolicy{}
 	case "gcp:certificateauthority/certificate:Certificate":
 		r = &Certificate{}
 	default:
@@ -51,17 +53,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"certificateauthority/authorityIamBinding",
+		"certificateauthority/caPool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"certificateauthority/authorityIamMember",
+		"certificateauthority/caPoolIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"certificateauthority/authorityIamPolicy",
+		"certificateauthority/caPoolIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"certificateauthority/caPoolIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -39,6 +39,16 @@ import (
 // 						&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
 // 							InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
 // 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+// 									Name: pulumi.String("FIRST_NAME"),
+// 								},
+// 							},
+// 							PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+// 								ReplaceWithInfoTypeConfig: pulumi.Bool(true),
+// 							},
+// 						},
+// 						&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+// 							InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+// 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
 // 									Name: pulumi.String("PHONE_NUMBER"),
 // 								},
 // 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{

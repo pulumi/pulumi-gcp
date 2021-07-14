@@ -6,14 +6,10 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+ * A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
  *
  * > **Note:** The Certificate Authority that is referenced by this resource **must** be
  * `tier = "ENTERPRISE"`
- *
- * > **Warning:** Please remember that all resources created during preview (via this provider)
- * will be deleted when CA service transitions to General Availability (GA). Relying on these
- * certificate authorities for production traffic is discouraged.
  *
  * ## Example Usage
  * ### Privateca Certificate Csr
@@ -24,38 +20,44 @@ import * as utilities from "../utilities";
  * import * from "fs";
  *
  * const test_ca = new gcp.certificateauthority.Authority("test-ca", {
+ *     pool: "",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
- *     tier: "ENTERPRISE",
  *     config: {
  *         subjectConfig: {
  *             subject: {
  *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
  *             },
- *             commonName: "my-certificate-authority",
  *             subjectAltName: {
  *                 dnsNames: ["hashicorp.com"],
  *             },
  *         },
- *         reusableConfig: {
- *             reusableConfig: "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
  *         },
  *     },
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
- *     disableOnDelete: true,
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.certificateauthority.Certificate("default", {
- *     project: "my-project-name",
+ *     pool: "",
  *     location: "us-central1",
  *     certificateAuthority: test_ca.certificateAuthorityId,
  *     lifetime: "860s",
  *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem"),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -64,15 +66,15 @@ import * as utilities from "../utilities";
  * Certificate can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority}}/certificates/{{name}}
+ *  $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{certificate_authority}}/{{name}}
+ *  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{certificate_authority}}/{{name}}
+ *  $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
  * ```
  */
 export class Certificate extends pulumi.CustomResource {
@@ -106,7 +108,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Certificate Authority name.
      */
-    public readonly certificateAuthority!: pulumi.Output<string>;
+    public readonly certificateAuthority!: pulumi.Output<string | undefined>;
     /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
      * this field is present.
@@ -132,12 +134,12 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly lifetime!: pulumi.Output<string | undefined>;
     /**
-     * Location of the CertificateAuthority. A full list of valid locations can be found by
-     * running `gcloud beta privateca locations list`.
+     * Location of the Certificate. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The name for this Certificate .
+     * The name for this Certificate.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -152,6 +154,10 @@ export class Certificate extends pulumi.CustomResource {
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     public readonly pemCsr!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the CaPool this Certificate belongs to.
+     */
+    public readonly pool!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -191,16 +197,17 @@ export class Certificate extends pulumi.CustomResource {
             inputs["pemCertificate"] = state ? state.pemCertificate : undefined;
             inputs["pemCertificates"] = state ? state.pemCertificates : undefined;
             inputs["pemCsr"] = state ? state.pemCsr : undefined;
+            inputs["pool"] = state ? state.pool : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["revocationDetails"] = state ? state.revocationDetails : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if ((!args || args.certificateAuthority === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'certificateAuthority'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.pool === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'pool'");
             }
             inputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
             inputs["config"] = args ? args.config : undefined;
@@ -209,6 +216,7 @@ export class Certificate extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pemCsr"] = args ? args.pemCsr : undefined;
+            inputs["pool"] = args ? args.pool : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["certificateDescriptions"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -257,12 +265,12 @@ export interface CertificateState {
      */
     lifetime?: pulumi.Input<string>;
     /**
-     * Location of the CertificateAuthority. A full list of valid locations can be found by
-     * running `gcloud beta privateca locations list`.
+     * Location of the Certificate. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      */
     location?: pulumi.Input<string>;
     /**
-     * The name for this Certificate .
+     * The name for this Certificate.
      */
     name?: pulumi.Input<string>;
     /**
@@ -277,6 +285,10 @@ export interface CertificateState {
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     pemCsr?: pulumi.Input<string>;
+    /**
+     * The name of the CaPool this Certificate belongs to.
+     */
+    pool?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -300,7 +312,7 @@ export interface CertificateArgs {
     /**
      * Certificate Authority name.
      */
-    certificateAuthority: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
@@ -317,18 +329,22 @@ export interface CertificateArgs {
      */
     lifetime?: pulumi.Input<string>;
     /**
-     * Location of the CertificateAuthority. A full list of valid locations can be found by
-     * running `gcloud beta privateca locations list`.
+     * Location of the Certificate. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      */
     location: pulumi.Input<string>;
     /**
-     * The name for this Certificate .
+     * The name for this Certificate.
      */
     name?: pulumi.Input<string>;
     /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     pemCsr?: pulumi.Input<string>;
+    /**
+     * The name of the CaPool this Certificate belongs to.
+     */
+    pool: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

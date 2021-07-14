@@ -227,7 +227,7 @@ import (
 type InstanceTemplate struct {
 	pulumi.CustomResourceState
 
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
 	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
@@ -294,6 +294,7 @@ type InstanceTemplate struct {
 	// Provider if no value is given.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -346,7 +347,7 @@ func GetInstanceTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceTemplate resources.
 type instanceTemplateState struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
 	AdvancedMachineFeatures *InstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
@@ -413,6 +414,7 @@ type instanceTemplateState struct {
 	// Provider if no value is given.
 	Region *string `pulumi:"region"`
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -431,7 +433,7 @@ type instanceTemplateState struct {
 }
 
 type InstanceTemplateState struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
 	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesPtrInput
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
@@ -498,6 +500,7 @@ type InstanceTemplateState struct {
 	// Provider if no value is given.
 	Region pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -520,7 +523,7 @@ func (InstanceTemplateState) ElementType() reflect.Type {
 }
 
 type instanceTemplateArgs struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
 	AdvancedMachineFeatures *InstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
@@ -585,6 +588,7 @@ type instanceTemplateArgs struct {
 	// Provider if no value is given.
 	Region *string `pulumi:"region"`
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -600,7 +604,7 @@ type instanceTemplateArgs struct {
 
 // The set of arguments for constructing a InstanceTemplate resource.
 type InstanceTemplateArgs struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
 	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesPtrInput
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
@@ -665,6 +669,7 @@ type InstanceTemplateArgs struct {
 	// Provider if no value is given.
 	Region pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.

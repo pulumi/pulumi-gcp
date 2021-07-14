@@ -13,10 +13,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// A CertificateAuthority represents an individual Certificate Authority. A
     /// CertificateAuthority can be used to create Certificates.
     /// 
-    /// &gt; **Warning:** Please remember that all resources created during preview (via this provider)
-    /// will be deleted when CA service transitions to General Availability (GA). Relying on these
-    /// certificate authorities for production traffic is discouraged.
-    /// 
     /// To get more information about CertificateAuthority, see:
     /// 
     /// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
@@ -37,16 +33,15 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         var @default = new Gcp.CertificateAuthority.Authority("default", new Gcp.CertificateAuthority.AuthorityArgs
     ///         {
     ///             CertificateAuthorityId = "my-certificate-authority",
-    ///             Location = "us-central1",
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
     ///                 {
     ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                     {
+    ///                         CommonName = "my-certificate-authority",
     ///                         Organization = "HashiCorp",
     ///                     },
-    ///                     CommonName = "my-certificate-authority",
     ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
     ///                     {
     ///                         DnsNames = 
@@ -55,25 +50,50 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                         },
     ///                     },
     ///                 },
-    ///                 ReusableConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigReusableConfigArgs
+    ///                 X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
     ///                 {
-    ///                     ReusableConfig = "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+    ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                     {
+    ///                         IsCa = true,
+    ///                         MaxIssuerPathLength = 10,
+    ///                     },
+    ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                     {
+    ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                         {
+    ///                             CertSign = true,
+    ///                             ContentCommitment = true,
+    ///                             CrlSign = true,
+    ///                             DataEncipherment = true,
+    ///                             DecipherOnly = true,
+    ///                             DigitalSignature = true,
+    ///                             KeyAgreement = true,
+    ///                             KeyEncipherment = false,
+    ///                         },
+    ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                         {
+    ///                             ClientAuth = false,
+    ///                             CodeSigning = true,
+    ///                             EmailProtection = true,
+    ///                             ServerAuth = true,
+    ///                             TimeStamping = true,
+    ///                         },
+    ///                     },
     ///                 },
     ///             },
     ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///             {
     ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
     ///             },
-    ///             DisableOnDelete = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
+    ///             Lifetime = "86400s",
+    ///             Location = "us-central1",
+    ///             Pool = "",
     ///         });
     ///     }
     /// 
     /// }
     /// ```
-    /// ### Privateca Certificate Authority Full
+    /// ### Privateca Certificate Authority Byo Key
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -83,65 +103,75 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     public MyStack()
     ///     {
+    ///         var privatecaSa = new Gcp.Projects.ServiceIdentity("privatecaSa", new Gcp.Projects.ServiceIdentityArgs
+    ///         {
+    ///             Service = "privateca.googleapis.com",
+    ///         });
+    ///         var privatecaSaKeyuserSignerverifier = new Gcp.Kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier", new Gcp.Kms.CryptoKeyIAMBindingArgs
+    ///         {
+    ///             CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
+    ///             Role = "roles/cloudkms.signerVerifier",
+    ///             Members = 
+    ///             {
+    ///                 privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///             },
+    ///         });
+    ///         var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer", new Gcp.Kms.CryptoKeyIAMBindingArgs
+    ///         {
+    ///             CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///             },
+    ///         });
     ///         var @default = new Gcp.CertificateAuthority.Authority("default", new Gcp.CertificateAuthority.AuthorityArgs
     ///         {
+    ///             Pool = "",
     ///             CertificateAuthorityId = "my-certificate-authority",
     ///             Location = "us-central1",
-    ///             Tier = "DEVOPS",
+    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///             {
+    ///                 CloudKmsKeyVersion = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+    ///             },
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
     ///                 {
     ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                     {
-    ///                         CountryCode = "US",
-    ///                         Organization = "HashiCorp",
-    ///                         OrganizationalUnit = "Terraform",
-    ///                         Locality = "San Francisco",
-    ///                         Province = "CA",
-    ///                         StreetAddress = "101 2nd St #700",
-    ///                         PostalCode = "94105",
-    ///                     },
-    ///                     CommonName = "my-certificate-authority",
-    ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
-    ///                     {
-    ///                         DnsNames = 
-    ///                         {
-    ///                             "hashicorp.com",
-    ///                         },
-    ///                         EmailAddresses = 
-    ///                         {
-    ///                             "email@example.com",
-    ///                         },
-    ///                         IpAddresses = 
-    ///                         {
-    ///                             "127.0.0.1",
-    ///                         },
-    ///                         Uris = 
-    ///                         {
-    ///                             "http://www.ietf.org/rfc/rfc3986.txt",
-    ///                         },
+    ///                         Organization = "Example, Org.",
+    ///                         CommonName = "Example Authority",
     ///                     },
     ///                 },
-    ///                 ReusableConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigReusableConfigArgs
+    ///                 X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
     ///                 {
-    ///                     ReusableConfig = "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+    ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                     {
+    ///                         IsCa = true,
+    ///                         MaxIssuerPathLength = 10,
+    ///                     },
+    ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                     {
+    ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                         {
+    ///                             CertSign = true,
+    ///                             CrlSign = true,
+    ///                         },
+    ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                         {
+    ///                             ServerAuth = false,
+    ///                         },
+    ///                     },
     ///                 },
     ///             },
-    ///             Lifetime = "86400s",
-    ///             IssuingOptions = new Gcp.CertificateAuthority.Inputs.AuthorityIssuingOptionsArgs
-    ///             {
-    ///                 IncludeCaCertUrl = true,
-    ///                 IncludeCrlAccessUrl = false,
-    ///             },
-    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
-    ///             {
-    ///                 Algorithm = "EC_P256_SHA256",
-    ///             },
-    ///             DisableOnDelete = true,
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 privatecaSaKeyuserSignerverifier,
+    ///                 privatecaSaKeyuserViewer,
+    ///             },
     ///         });
     ///     }
     /// 
@@ -153,15 +183,15 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// CertificateAuthority can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/certificateAuthorities/{{certificate_authority_id}}
+    ///  $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{certificate_authority_id}}
+    ///  $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{certificate_authority_id}}
+    ///  $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificateauthority/authority:Authority")]
@@ -194,14 +224,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the Certificate Authority will be disabled
-        /// on delete. If the Certitificate Authorities is not disabled,
-        /// it cannot be deleted. Use with care. Defaults to `false`.
-        /// </summary>
-        [Output("disableOnDelete")]
-        public Output<bool?> DisableOnDelete { get; private set; } = null!;
-
-        /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
         /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -212,11 +234,11 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string?> GcsBucket { get; private set; } = null!;
 
         /// <summary>
-        /// Options that affect all certificates issued by a CertificateAuthority.
-        /// Structure is documented below.
+        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+        /// Use with care. Defaults to `false`.
         /// </summary>
-        [Output("issuingOptions")]
-        public Output<Outputs.AuthorityIssuingOptions?> IssuingOptions { get; private set; } = null!;
+        [Output("ignoreActiveCertificatesOnDeletion")]
+        public Output<bool?> IgnoreActiveCertificatesOnDeletion { get; private set; } = null!;
 
         /// <summary>
         /// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
@@ -245,7 +267,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Location of the CertificateAuthority. A full list of valid locations can be found by
-        /// running `gcloud beta privateca locations list`.
+        /// running `gcloud privateca locations list`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -265,6 +287,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<ImmutableArray<string>> PemCaCertificates { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the CaPool this Certificate Authority belongs to.
+        /// </summary>
+        [Output("pool")]
+        public Output<string> Pool { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -276,16 +304,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-        /// server side certificates issued, and support certificate revocation. For more details,
-        /// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-        /// Default value is `ENTERPRISE`.
-        /// Possible values are `ENTERPRISE` and `DEVOPS`.
-        /// </summary>
-        [Output("tier")]
-        public Output<string?> Tier { get; private set; } = null!;
 
         /// <summary>
         /// The Type of this CertificateAuthority.
@@ -365,14 +383,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<Inputs.AuthorityConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the Certificate Authority will be disabled
-        /// on delete. If the Certitificate Authorities is not disabled,
-        /// it cannot be deleted. Use with care. Defaults to `false`.
-        /// </summary>
-        [Input("disableOnDelete")]
-        public Input<bool>? DisableOnDelete { get; set; }
-
-        /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
         /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -383,11 +393,11 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? GcsBucket { get; set; }
 
         /// <summary>
-        /// Options that affect all certificates issued by a CertificateAuthority.
-        /// Structure is documented below.
+        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+        /// Use with care. Defaults to `false`.
         /// </summary>
-        [Input("issuingOptions")]
-        public Input<Inputs.AuthorityIssuingOptionsArgs>? IssuingOptions { get; set; }
+        [Input("ignoreActiveCertificatesOnDeletion")]
+        public Input<bool>? IgnoreActiveCertificatesOnDeletion { get; set; }
 
         /// <summary>
         /// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
@@ -422,10 +432,16 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Location of the CertificateAuthority. A full list of valid locations can be found by
-        /// running `gcloud beta privateca locations list`.
+        /// running `gcloud privateca locations list`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the CaPool this Certificate Authority belongs to.
+        /// </summary>
+        [Input("pool", required: true)]
+        public Input<string> Pool { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -433,16 +449,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-        /// server side certificates issued, and support certificate revocation. For more details,
-        /// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-        /// Default value is `ENTERPRISE`.
-        /// Possible values are `ENTERPRISE` and `DEVOPS`.
-        /// </summary>
-        [Input("tier")]
-        public Input<string>? Tier { get; set; }
 
         /// <summary>
         /// The Type of this CertificateAuthority.
@@ -495,14 +501,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// If set to `true`, the Certificate Authority will be disabled
-        /// on delete. If the Certitificate Authorities is not disabled,
-        /// it cannot be deleted. Use with care. Defaults to `false`.
-        /// </summary>
-        [Input("disableOnDelete")]
-        public Input<bool>? DisableOnDelete { get; set; }
-
-        /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
         /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -513,11 +511,11 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? GcsBucket { get; set; }
 
         /// <summary>
-        /// Options that affect all certificates issued by a CertificateAuthority.
-        /// Structure is documented below.
+        /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+        /// Use with care. Defaults to `false`.
         /// </summary>
-        [Input("issuingOptions")]
-        public Input<Inputs.AuthorityIssuingOptionsGetArgs>? IssuingOptions { get; set; }
+        [Input("ignoreActiveCertificatesOnDeletion")]
+        public Input<bool>? IgnoreActiveCertificatesOnDeletion { get; set; }
 
         /// <summary>
         /// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
@@ -552,7 +550,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Location of the CertificateAuthority. A full list of valid locations can be found by
-        /// running `gcloud beta privateca locations list`.
+        /// running `gcloud privateca locations list`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -578,6 +576,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
+        /// The name of the CaPool this Certificate Authority belongs to.
+        /// </summary>
+        [Input("pool")]
+        public Input<string>? Pool { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -589,16 +593,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// The Tier of this CertificateAuthority. `ENTERPRISE` Certificate Authorities track
-        /// server side certificates issued, and support certificate revocation. For more details,
-        /// please check the [associated documentation](https://cloud.google.com/certificate-authority-service/docs/tiers).
-        /// Default value is `ENTERPRISE`.
-        /// Possible values are `ENTERPRISE` and `DEVOPS`.
-        /// </summary>
-        [Input("tier")]
-        public Input<string>? Tier { get; set; }
 
         /// <summary>
         /// The Type of this CertificateAuthority.

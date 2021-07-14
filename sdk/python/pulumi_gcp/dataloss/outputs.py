@@ -216,6 +216,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
             suggest = "character_mask_config"
         elif key == "replaceConfig":
             suggest = "replace_config"
+        elif key == "replaceWithInfoTypeConfig":
+            suggest = "replace_with_info_type_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation. Access the value via the '{suggest}' property getter instead.")
@@ -230,18 +232,22 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
     def __init__(__self__, *,
                  character_mask_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig'] = None,
-                 replace_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig'] = None):
+                 replace_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig'] = None,
+                 replace_with_info_type_config: Optional[bool] = None):
         """
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character.
                Masking can start from the beginning or end of the string.
                Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace each input value with a given value.
                Structure is documented below.
+        :param bool replace_with_info_type_config: Replace each matching finding with the name of the info type.
         """
         if character_mask_config is not None:
             pulumi.set(__self__, "character_mask_config", character_mask_config)
         if replace_config is not None:
             pulumi.set(__self__, "replace_config", replace_config)
+        if replace_with_info_type_config is not None:
+            pulumi.set(__self__, "replace_with_info_type_config", replace_with_info_type_config)
 
     @property
     @pulumi.getter(name="characterMaskConfig")
@@ -261,6 +267,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         Structure is documented below.
         """
         return pulumi.get(self, "replace_config")
+
+    @property
+    @pulumi.getter(name="replaceWithInfoTypeConfig")
+    def replace_with_info_type_config(self) -> Optional[bool]:
+        """
+        Replace each matching finding with the name of the info type.
+        """
+        return pulumi.get(self, "replace_with_info_type_config")
 
 
 @pulumi.output_type

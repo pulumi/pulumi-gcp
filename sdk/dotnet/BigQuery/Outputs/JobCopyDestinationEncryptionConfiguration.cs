@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// The BigQuery Service Account associated with your project requires access to this encryption key.
         /// </summary>
         public readonly string KmsKeyName;
+        /// <summary>
+        /// -
+        /// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        /// </summary>
+        public readonly string? KmsKeyVersion;
 
         [OutputConstructor]
-        private JobCopyDestinationEncryptionConfiguration(string kmsKeyName)
+        private JobCopyDestinationEncryptionConfiguration(
+            string kmsKeyName,
+
+            string? kmsKeyVersion)
         {
             KmsKeyName = kmsKeyName;
+            KmsKeyVersion = kmsKeyVersion;
         }
     }
 }

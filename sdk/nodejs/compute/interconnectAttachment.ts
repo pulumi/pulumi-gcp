@@ -36,13 +36,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
  * const address = new gcp.compute.Address("address", {
  *     addressType: "INTERNAL",
  *     purpose: "IPSEC_INTERCONNECT",
  *     address: "192.168.1.0",
  *     prefixLength: 29,
  *     network: network.selfLink,
+ * }, {
+ *     provider: google_beta,
  * });
  * const router = new gcp.compute.Router("router", {
  *     network: network.name,
@@ -50,6 +54,8 @@ import * as utilities from "../utilities";
  *     bgp: {
  *         asn: 16550,
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * const ipsec_encrypted_interconnect_attachment = new gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", {
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
@@ -57,6 +63,8 @@ import * as utilities from "../utilities";
  *     router: router.id,
  *     encryption: "IPSEC",
  *     ipsecInternalAddresses: [address.selfLink],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

@@ -14,10 +14,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class AuthorityConfigSubjectConfig
     {
         /// <summary>
-        /// The common name of the distinguished name.
-        /// </summary>
-        public readonly string CommonName;
-        /// <summary>
         /// Contains distinguished name fields such as the location and organization.
         /// Structure is documented below.
         /// </summary>
@@ -30,13 +26,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
         [OutputConstructor]
         private AuthorityConfigSubjectConfig(
-            string commonName,
-
             Outputs.AuthorityConfigSubjectConfigSubject subject,
 
             Outputs.AuthorityConfigSubjectConfigSubjectAltName? subjectAltName)
         {
-            CommonName = commonName;
             Subject = subject;
             SubjectAltName = subjectAltName;
         }

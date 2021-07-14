@@ -20,14 +20,29 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
             set => _aiaIssuingCertificateUrls = value;
         }
 
-        [Input("authorityKeyId")]
-        public Input<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs>? AuthorityKeyId { get; set; }
+        [Input("authorityKeyIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs>? _authorityKeyIds;
+        public InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs> AuthorityKeyIds
+        {
+            get => _authorityKeyIds ?? (_authorityKeyIds = new InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs>());
+            set => _authorityKeyIds = value;
+        }
 
-        [Input("certFingerprint")]
-        public Input<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs>? CertFingerprint { get; set; }
+        [Input("certFingerprints")]
+        private InputList<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs>? _certFingerprints;
+        public InputList<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs> CertFingerprints
+        {
+            get => _certFingerprints ?? (_certFingerprints = new InputList<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs>());
+            set => _certFingerprints = value;
+        }
 
         [Input("configValues")]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesGetArgs>? ConfigValues { get; set; }
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>? _configValues;
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs> ConfigValues
+        {
+            get => _configValues ?? (_configValues = new InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>());
+            set => _configValues = value;
+        }
 
         [Input("crlDistributionPoints")]
         private InputList<string>? _crlDistributionPoints;
@@ -37,18 +52,34 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
             set => _crlDistributionPoints = value;
         }
 
+        [Input("publicKeys")]
+        private InputList<Inputs.CertificateCertificateDescriptionPublicKeyGetArgs>? _publicKeys;
+
         /// <summary>
         /// A PublicKey describes a public key.
         /// Structure is documented below.
         /// </summary>
-        [Input("publicKey", required: true)]
-        public Input<Inputs.CertificateCertificateDescriptionPublicKeyGetArgs> PublicKey { get; set; } = null!;
+        public InputList<Inputs.CertificateCertificateDescriptionPublicKeyGetArgs> PublicKeys
+        {
+            get => _publicKeys ?? (_publicKeys = new InputList<Inputs.CertificateCertificateDescriptionPublicKeyGetArgs>());
+            set => _publicKeys = value;
+        }
 
-        [Input("subjectDescription")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs>? SubjectDescription { get; set; }
+        [Input("subjectDescriptions")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs>? _subjectDescriptions;
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs> SubjectDescriptions
+        {
+            get => _subjectDescriptions ?? (_subjectDescriptions = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs>());
+            set => _subjectDescriptions = value;
+        }
 
-        [Input("subjectKeyId")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs>? SubjectKeyId { get; set; }
+        [Input("subjectKeyIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs>? _subjectKeyIds;
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs> SubjectKeyIds
+        {
+            get => _subjectKeyIds ?? (_subjectKeyIds = new InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs>());
+            set => _subjectKeyIds = value;
+        }
 
         public CertificateCertificateDescriptionGetArgs()
         {

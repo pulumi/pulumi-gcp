@@ -1932,22 +1932,23 @@ func Provider() tfbridge.ProviderInfo {
 			// Certificate Authority
 			"google_privateca_certificate_authority": {Tok: gcpResource(gcpCertificateAuthority, "Authority")},
 			"google_privateca_certificate":           {Tok: gcpResource(gcpCertificateAuthority, "Certificate")},
-			"google_privateca_certificate_authority_iam_binding": {
-				Tok: gcpResource(gcpCertificateAuthority, "AuthorityIamBinding"),
+			"google_privateca_ca_pool":               {Tok: gcpResource(gcpCertificateAuthority, "CaPool")},
+			"google_privateca_ca_pool_iam_binding": {
+				Tok: gcpResource(gcpCertificateAuthority, "CaPoolIamBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "privateca_certificate_authority_iam.html.markdown",
+					Source: "privateca_ca_pool_iam.html.markdown",
 				},
 			},
-			"google_privateca_certificate_authority_iam_member": {
-				Tok: gcpResource(gcpCertificateAuthority, "AuthorityIamMember"),
+			"google_privateca_ca_pool_iam_member": {
+				Tok: gcpResource(gcpCertificateAuthority, "CaPoolIamMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "privateca_certificate_authority_iam.html.markdown",
+					Source: "privateca_ca_pool_iam.html.markdown",
 				},
 			},
-			"google_privateca_certificate_authority_iam_policy": {
-				Tok: gcpResource(gcpCertificateAuthority, "AuthorityIamPolicy"),
+			"google_privateca_ca_pool_iam_policy": {
+				Tok: gcpResource(gcpCertificateAuthority, "CaPoolIamPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "privateca_certificate_authority_iam.html.markdown",
+					Source: "privateca_ca_pool_iam.html.markdown",
 				},
 			},
 

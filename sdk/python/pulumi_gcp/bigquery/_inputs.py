@@ -838,12 +838,17 @@ class JobCopyArgs:
 @pulumi.input_type
 class JobCopyDestinationEncryptionConfigurationArgs:
     def __init__(__self__, *,
-                 kms_key_name: pulumi.Input[str]):
+                 kms_key_name: pulumi.Input[str],
+                 kms_key_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
+        :param pulumi.Input[str] kms_key_version: -
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -857,6 +862,19 @@ class JobCopyDestinationEncryptionConfigurationArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version", value)
 
 
 @pulumi.input_type
@@ -1647,12 +1665,17 @@ class JobLoadArgs:
 @pulumi.input_type
 class JobLoadDestinationEncryptionConfigurationArgs:
     def __init__(__self__, *,
-                 kms_key_name: pulumi.Input[str]):
+                 kms_key_name: pulumi.Input[str],
+                 kms_key_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
+        :param pulumi.Input[str] kms_key_version: -
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -1666,6 +1689,19 @@ class JobLoadDestinationEncryptionConfigurationArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version", value)
 
 
 @pulumi.input_type
@@ -2169,12 +2205,17 @@ class JobQueryDefaultDatasetArgs:
 @pulumi.input_type
 class JobQueryDestinationEncryptionConfigurationArgs:
     def __init__(__self__, *,
-                 kms_key_name: pulumi.Input[str]):
+                 kms_key_name: pulumi.Input[str],
+                 kms_key_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
+        :param pulumi.Input[str] kms_key_version: -
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -2188,6 +2229,19 @@ class JobQueryDestinationEncryptionConfigurationArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version", value)
 
 
 @pulumi.input_type
@@ -2573,15 +2627,19 @@ class RoutineArgumentArgs:
 @pulumi.input_type
 class TableEncryptionConfigurationArgs:
     def __init__(__self__, *,
-                 kms_key_name: pulumi.Input[str]):
+                 kms_key_name: pulumi.Input[str],
+                 kms_key_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] kms_key_name: The self link or full name of a key which should be used to
                encrypt this table.  Note that the default bigquery service account will need to have
                encrypt/decrypt permissions on this key - you may want to see the
                `bigquery.getDefaultServiceAccount` datasource and the
                `kms.CryptoKeyIAMBinding` resource.
+        :param pulumi.Input[str] kms_key_version: The self link or full name of the kms key version used to encrypt this table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -2598,6 +2656,18 @@ class TableEncryptionConfigurationArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self link or full name of the kms key version used to encrypt this table.
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version", value)
 
 
 @pulumi.input_type

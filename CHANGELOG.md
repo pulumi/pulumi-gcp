@@ -2,12 +2,10 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v3.75.0 of the Google Beta Terraform Provider
+  **PLEASE NOTE there are breaking changes in the `gcp.certificateauthority` resources as they have changed as part of the GA release in the Google API :**
 
 ---
-
-## 5.11.0 (2021-07-01)
-_(none)_
 
 ## 5.11.0 (2021-07-01)
 * Upgrade to v3.74.0 of the Google Beta Terraform Provider

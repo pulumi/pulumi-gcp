@@ -14,26 +14,24 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class AuthorityConfig
     {
         /// <summary>
-        /// A resource path to a ReusableConfig in the format
-        /// `projects/*/locations/*/reusableConfigs/*`.
-        /// . Alternatively, one of the short names
-        /// found by running `gcloud beta privateca reusable-configs list`.
-        /// </summary>
-        public readonly Outputs.AuthorityConfigReusableConfig ReusableConfig;
-        /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AuthorityConfigSubjectConfig SubjectConfig;
+        /// <summary>
+        /// Describes how some of the technical X.509 fields in a certificate should be populated.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AuthorityConfigX509Config X509Config;
 
         [OutputConstructor]
         private AuthorityConfig(
-            Outputs.AuthorityConfigReusableConfig reusableConfig,
+            Outputs.AuthorityConfigSubjectConfig subjectConfig,
 
-            Outputs.AuthorityConfigSubjectConfig subjectConfig)
+            Outputs.AuthorityConfigX509Config x509Config)
         {
-            ReusableConfig = reusableConfig;
             SubjectConfig = subjectConfig;
+            X509Config = x509Config;
         }
     }
 }

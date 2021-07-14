@@ -858,6 +858,8 @@ class JobCopyDestinationEncryptionConfiguration(dict):
         suggest = None
         if key == "kmsKeyName":
             suggest = "kms_key_name"
+        elif key == "kmsKeyVersion":
+            suggest = "kms_key_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobCopyDestinationEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -871,12 +873,17 @@ class JobCopyDestinationEncryptionConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kms_key_name: str):
+                 kms_key_name: str,
+                 kms_key_version: Optional[str] = None):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
+        :param str kms_key_version: -
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -886,6 +893,15 @@ class JobCopyDestinationEncryptionConfiguration(dict):
         The BigQuery Service Account associated with your project requires access to this encryption key.
         """
         return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[str]:
+        """
+        -
+        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        """
+        return pulumi.get(self, "kms_key_version")
 
 
 @pulumi.output_type
@@ -1684,6 +1700,8 @@ class JobLoadDestinationEncryptionConfiguration(dict):
         suggest = None
         if key == "kmsKeyName":
             suggest = "kms_key_name"
+        elif key == "kmsKeyVersion":
+            suggest = "kms_key_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobLoadDestinationEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -1697,12 +1715,17 @@ class JobLoadDestinationEncryptionConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kms_key_name: str):
+                 kms_key_name: str,
+                 kms_key_version: Optional[str] = None):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
+        :param str kms_key_version: -
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -1712,6 +1735,15 @@ class JobLoadDestinationEncryptionConfiguration(dict):
         The BigQuery Service Account associated with your project requires access to this encryption key.
         """
         return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[str]:
+        """
+        -
+        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        """
+        return pulumi.get(self, "kms_key_version")
 
 
 @pulumi.output_type
@@ -2221,6 +2253,8 @@ class JobQueryDestinationEncryptionConfiguration(dict):
         suggest = None
         if key == "kmsKeyName":
             suggest = "kms_key_name"
+        elif key == "kmsKeyVersion":
+            suggest = "kms_key_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobQueryDestinationEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -2234,12 +2268,17 @@ class JobQueryDestinationEncryptionConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kms_key_name: str):
+                 kms_key_name: str,
+                 kms_key_version: Optional[str] = None):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
+        :param str kms_key_version: -
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -2249,6 +2288,15 @@ class JobQueryDestinationEncryptionConfiguration(dict):
         The BigQuery Service Account associated with your project requires access to this encryption key.
         """
         return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[str]:
+        """
+        -
+        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        """
+        return pulumi.get(self, "kms_key_version")
 
 
 @pulumi.output_type
@@ -2651,6 +2699,8 @@ class TableEncryptionConfiguration(dict):
         suggest = None
         if key == "kmsKeyName":
             suggest = "kms_key_name"
+        elif key == "kmsKeyVersion":
+            suggest = "kms_key_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TableEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -2664,15 +2714,19 @@ class TableEncryptionConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kms_key_name: str):
+                 kms_key_name: str,
+                 kms_key_version: Optional[str] = None):
         """
         :param str kms_key_name: The self link or full name of a key which should be used to
                encrypt this table.  Note that the default bigquery service account will need to have
                encrypt/decrypt permissions on this key - you may want to see the
                `bigquery.getDefaultServiceAccount` datasource and the
                `kms.CryptoKeyIAMBinding` resource.
+        :param str kms_key_version: The self link or full name of the kms key version used to encrypt this table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -2685,6 +2739,14 @@ class TableEncryptionConfiguration(dict):
         `kms.CryptoKeyIAMBinding` resource.
         """
         return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[str]:
+        """
+        The self link or full name of the kms key version used to encrypt this table.
+        """
+        return pulumi.get(self, "kms_key_version")
 
 
 @pulumi.output_type

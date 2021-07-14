@@ -6,16 +6,18 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./authority";
-export * from "./authorityIamBinding";
-export * from "./authorityIamMember";
-export * from "./authorityIamPolicy";
+export * from "./caPool";
+export * from "./caPoolIamBinding";
+export * from "./caPoolIamMember";
+export * from "./caPoolIamPolicy";
 export * from "./certificate";
 
 // Import resources to register:
 import { Authority } from "./authority";
-import { AuthorityIamBinding } from "./authorityIamBinding";
-import { AuthorityIamMember } from "./authorityIamMember";
-import { AuthorityIamPolicy } from "./authorityIamPolicy";
+import { CaPool } from "./caPool";
+import { CaPoolIamBinding } from "./caPoolIamBinding";
+import { CaPoolIamMember } from "./caPoolIamMember";
+import { CaPoolIamPolicy } from "./caPoolIamPolicy";
 import { Certificate } from "./certificate";
 
 const _module = {
@@ -24,12 +26,14 @@ const _module = {
         switch (type) {
             case "gcp:certificateauthority/authority:Authority":
                 return new Authority(name, <any>undefined, { urn })
-            case "gcp:certificateauthority/authorityIamBinding:AuthorityIamBinding":
-                return new AuthorityIamBinding(name, <any>undefined, { urn })
-            case "gcp:certificateauthority/authorityIamMember:AuthorityIamMember":
-                return new AuthorityIamMember(name, <any>undefined, { urn })
-            case "gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy":
-                return new AuthorityIamPolicy(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/caPool:CaPool":
+                return new CaPool(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding":
+                return new CaPoolIamBinding(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/caPoolIamMember:CaPoolIamMember":
+                return new CaPoolIamMember(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy":
+                return new CaPoolIamPolicy(name, <any>undefined, { urn })
             case "gcp:certificateauthority/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
             default:
@@ -38,7 +42,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authority", _module)
-pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authorityIamBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authorityIamMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authorityIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPool", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificate", _module)

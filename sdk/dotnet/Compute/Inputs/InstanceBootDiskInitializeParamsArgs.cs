@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// The type of reservation from which this instance can consume resources.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -13,20 +13,18 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class AuthorityConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A resource path to a ReusableConfig in the format
-        /// `projects/*/locations/*/reusableConfigs/*`.
-        /// . Alternatively, one of the short names
-        /// found by running `gcloud beta privateca reusable-configs list`.
-        /// </summary>
-        [Input("reusableConfig", required: true)]
-        public Input<Inputs.AuthorityConfigReusableConfigArgs> ReusableConfig { get; set; } = null!;
-
-        /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
         /// Structure is documented below.
         /// </summary>
         [Input("subjectConfig", required: true)]
         public Input<Inputs.AuthorityConfigSubjectConfigArgs> SubjectConfig { get; set; } = null!;
+
+        /// <summary>
+        /// Describes how some of the technical X.509 fields in a certificate should be populated.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("x509Config", required: true)]
+        public Input<Inputs.AuthorityConfigX509ConfigArgs> X509Config { get; set; } = null!;
 
         public AuthorityConfigArgs()
         {

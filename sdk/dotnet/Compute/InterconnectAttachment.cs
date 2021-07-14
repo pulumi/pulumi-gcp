@@ -60,6 +60,9 @@ namespace Pulumi.Gcp.Compute
     ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
     ///         {
     ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var address = new Gcp.Compute.Address("address", new Gcp.Compute.AddressArgs
     ///         {
@@ -68,6 +71,9 @@ namespace Pulumi.Gcp.Compute
     ///             Address = "192.168.1.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
     ///         {
@@ -77,6 +83,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Asn = 16550,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var ipsec_encrypted_interconnect_attachment = new Gcp.Compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", new Gcp.Compute.InterconnectAttachmentArgs
     ///         {
@@ -88,6 +97,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 address.SelfLink,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

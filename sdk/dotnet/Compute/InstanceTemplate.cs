@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.Compute
     public partial class InstanceTemplate : Pulumi.CustomResource
     {
         /// <summary>
-        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         /// </summary>
         [Output("advancedMachineFeatures")]
         public Output<Outputs.InstanceTemplateAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
@@ -367,6 +367,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
+        /// Structure is documented below.
         /// </summary>
         [Output("reservationAffinity")]
         public Output<Outputs.InstanceTemplateReservationAffinity?> ReservationAffinity { get; private set; } = null!;
@@ -456,7 +457,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceTemplateAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
@@ -627,6 +628,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
+        /// Structure is documented below.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.InstanceTemplateReservationAffinityArgs>? ReservationAffinity { get; set; }
@@ -671,7 +673,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceTemplateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceTemplateAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
@@ -848,6 +850,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
+        /// Structure is documented below.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.InstanceTemplateReservationAffinityGetArgs>? ReservationAffinity { get; set; }

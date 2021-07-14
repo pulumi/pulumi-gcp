@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
 
+        /// <summary>
+        /// The self link or full name of the kms key version used to encrypt this table.
+        /// </summary>
+        [Input("kmsKeyVersion")]
+        public Input<string>? KmsKeyVersion { get; set; }
+
         public TableEncryptionConfigurationArgs()
         {
         }

@@ -77,6 +77,7 @@ export interface GetBucketObjectContentResult {
     readonly contentType: string;
     readonly crc32c: string;
     readonly detectMd5hash: string;
+    readonly eventBasedHold: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -90,4 +91,5 @@ export interface GetBucketObjectContentResult {
     readonly selfLink: string;
     readonly source: string;
     readonly storageClass: string;
+    readonly temporaryHold: boolean;
 }

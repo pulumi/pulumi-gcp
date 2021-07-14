@@ -227,12 +227,18 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             NetworkEndpointType = "INTERNET_FQDN_PORT",
     ///             DefaultPort = 443,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var proxy = new Gcp.Compute.GlobalNetworkEndpoint("proxy", new Gcp.Compute.GlobalNetworkEndpointArgs
     ///         {
     ///             GlobalNetworkEndpointGroup = externalProxy.Id,
     ///             Fqdn = "test.example.com",
     ///             Port = externalProxy.DefaultPort,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var @default = new Gcp.Compute.BackendService("default", new Gcp.Compute.BackendServiceArgs
     ///         {
@@ -254,6 +260,9 @@ namespace Pulumi.Gcp.Compute
     ///                     Group = externalProxy.Id,
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

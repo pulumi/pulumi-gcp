@@ -232,6 +232,9 @@ namespace Pulumi.Gcp.Compute
     ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
     ///         {
     ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var address1 = new Gcp.Compute.Address("address1", new Gcp.Compute.AddressArgs
     ///         {
@@ -240,6 +243,9 @@ namespace Pulumi.Gcp.Compute
     ///             Address = "192.168.1.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
     ///         {
@@ -249,6 +255,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Asn = 16550,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var attachment1 = new Gcp.Compute.InterconnectAttachment("attachment1", new Gcp.Compute.InterconnectAttachmentArgs
     ///         {
@@ -260,6 +269,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 address1.SelfLink,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var address2 = new Gcp.Compute.Address("address2", new Gcp.Compute.AddressArgs
     ///         {
@@ -268,6 +280,9 @@ namespace Pulumi.Gcp.Compute
     ///             Address = "192.168.2.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var attachment2 = new Gcp.Compute.InterconnectAttachment("attachment2", new Gcp.Compute.InterconnectAttachmentArgs
     ///         {
@@ -279,6 +294,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 address2.SelfLink,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var vpn_gateway = new Gcp.Compute.HaVpnGateway("vpn-gateway", new Gcp.Compute.HaVpnGatewayArgs
     ///         {
@@ -296,6 +314,9 @@ namespace Pulumi.Gcp.Compute
     ///                     InterconnectAttachment = attachment2.SelfLink,
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
