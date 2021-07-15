@@ -10,12 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionConfigValuesArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionConfigValueArgs : Pulumi.ResourceArgs
     {
-        [Input("keyUsage")]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageArgs>? KeyUsage { get; set; }
+        [Input("keyUsages")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageArgs>? _keyUsages;
 
-        public CertificateCertificateDescriptionConfigValuesArgs()
+        /// <summary>
+        /// Indicates the intended use for keys that correspond to a certificate.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageArgs> KeyUsages
+        {
+            get => _keyUsages ?? (_keyUsages = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageArgs>());
+            set => _keyUsages = value;
+        }
+
+        public CertificateCertificateDescriptionConfigValueArgs()
         {
         }
     }

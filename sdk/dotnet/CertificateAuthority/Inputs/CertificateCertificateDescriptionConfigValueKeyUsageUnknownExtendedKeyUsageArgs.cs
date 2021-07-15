@@ -10,12 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs : Pulumi.ResourceArgs
     {
-        [Input("obectId", required: true)]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs> ObectId { get; set; } = null!;
+        [Input("obectIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>? _obectIds;
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs> ObectIds
+        {
+            get => _obectIds ?? (_obectIds = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>());
+            set => _obectIds = value;
+        }
 
-        public CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs()
+        public CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs()
         {
         }
     }

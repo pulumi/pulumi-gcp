@@ -20,14 +20,29 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
             set => _aiaIssuingCertificateUrls = value;
         }
 
-        [Input("authorityKeyId")]
-        public Input<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs>? AuthorityKeyId { get; set; }
+        [Input("authorityKeyIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs>? _authorityKeyIds;
+        public InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs> AuthorityKeyIds
+        {
+            get => _authorityKeyIds ?? (_authorityKeyIds = new InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs>());
+            set => _authorityKeyIds = value;
+        }
 
-        [Input("certFingerprint")]
-        public Input<Inputs.CertificateCertificateDescriptionCertFingerprintArgs>? CertFingerprint { get; set; }
+        [Input("certFingerprints")]
+        private InputList<Inputs.CertificateCertificateDescriptionCertFingerprintArgs>? _certFingerprints;
+        public InputList<Inputs.CertificateCertificateDescriptionCertFingerprintArgs> CertFingerprints
+        {
+            get => _certFingerprints ?? (_certFingerprints = new InputList<Inputs.CertificateCertificateDescriptionCertFingerprintArgs>());
+            set => _certFingerprints = value;
+        }
 
         [Input("configValues")]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesArgs>? ConfigValues { get; set; }
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueArgs>? _configValues;
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueArgs> ConfigValues
+        {
+            get => _configValues ?? (_configValues = new InputList<Inputs.CertificateCertificateDescriptionConfigValueArgs>());
+            set => _configValues = value;
+        }
 
         [Input("crlDistributionPoints")]
         private InputList<string>? _crlDistributionPoints;
@@ -37,18 +52,34 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
             set => _crlDistributionPoints = value;
         }
 
+        [Input("publicKeys")]
+        private InputList<Inputs.CertificateCertificateDescriptionPublicKeyArgs>? _publicKeys;
+
         /// <summary>
         /// A PublicKey describes a public key.
         /// Structure is documented below.
         /// </summary>
-        [Input("publicKey", required: true)]
-        public Input<Inputs.CertificateCertificateDescriptionPublicKeyArgs> PublicKey { get; set; } = null!;
+        public InputList<Inputs.CertificateCertificateDescriptionPublicKeyArgs> PublicKeys
+        {
+            get => _publicKeys ?? (_publicKeys = new InputList<Inputs.CertificateCertificateDescriptionPublicKeyArgs>());
+            set => _publicKeys = value;
+        }
 
-        [Input("subjectDescription")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs>? SubjectDescription { get; set; }
+        [Input("subjectDescriptions")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs>? _subjectDescriptions;
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs> SubjectDescriptions
+        {
+            get => _subjectDescriptions ?? (_subjectDescriptions = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs>());
+            set => _subjectDescriptions = value;
+        }
 
-        [Input("subjectKeyId")]
-        public Input<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs>? SubjectKeyId { get; set; }
+        [Input("subjectKeyIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs>? _subjectKeyIds;
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs> SubjectKeyIds
+        {
+            get => _subjectKeyIds ?? (_subjectKeyIds = new InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs>());
+            set => _subjectKeyIds = value;
+        }
 
         public CertificateCertificateDescriptionArgs()
         {

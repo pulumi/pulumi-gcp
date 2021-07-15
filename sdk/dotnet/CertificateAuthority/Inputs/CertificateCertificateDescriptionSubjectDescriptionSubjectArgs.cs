@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The common name of the distinguished name.
+        /// </summary>
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
+        /// <summary>
         /// The country code of the subject.
         /// </summary>
         [Input("countryCode")]

@@ -10,23 +10,48 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionConfigValuesKeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageArgs : Pulumi.ResourceArgs
     {
-        [Input("baseKeyUsage")]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs>? BaseKeyUsage { get; set; }
+        [Input("baseKeyUsages")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs>? _baseKeyUsages;
 
-        [Input("extendedKeyUsage")]
-        public Input<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs>? ExtendedKeyUsage { get; set; }
-
-        [Input("unknownExtendedKeyUsages", required: true)]
-        private InputList<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs>? _unknownExtendedKeyUsages;
-        public InputList<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs> UnknownExtendedKeyUsages
+        /// <summary>
+        /// Describes high-level ways in which a key may be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs> BaseKeyUsages
         {
-            get => _unknownExtendedKeyUsages ?? (_unknownExtendedKeyUsages = new InputList<Inputs.CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs>());
+            get => _baseKeyUsages ?? (_baseKeyUsages = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs>());
+            set => _baseKeyUsages = value;
+        }
+
+        [Input("extendedKeyUsages")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs>? _extendedKeyUsages;
+
+        /// <summary>
+        /// Describes high-level ways in which a key may be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs> ExtendedKeyUsages
+        {
+            get => _extendedKeyUsages ?? (_extendedKeyUsages = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs>());
+            set => _extendedKeyUsages = value;
+        }
+
+        [Input("unknownExtendedKeyUsages")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs>? _unknownExtendedKeyUsages;
+
+        /// <summary>
+        /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs> UnknownExtendedKeyUsages
+        {
+            get => _unknownExtendedKeyUsages ?? (_unknownExtendedKeyUsages = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs>());
             set => _unknownExtendedKeyUsages = value;
         }
 
-        public CertificateCertificateDescriptionConfigValuesKeyUsageArgs()
+        public CertificateCertificateDescriptionConfigValueKeyUsageArgs()
         {
         }
     }

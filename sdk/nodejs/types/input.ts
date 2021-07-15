@@ -14683,7 +14683,6 @@ export namespace compute {
          */
         service: pulumi.Input<string>;
     }
-
 }
 
 export namespace config {

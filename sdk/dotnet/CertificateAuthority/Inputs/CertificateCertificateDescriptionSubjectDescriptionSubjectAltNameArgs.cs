@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs : Pulumi.ResourceArgs
     {
-        [Input("customSans", required: true)]
+        [Input("customSans")]
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>? _customSans;
         public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs> CustomSans
         {
