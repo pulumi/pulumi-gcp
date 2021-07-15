@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Dns
         ///         {
         ///             ManagedZone = id,
         ///         }));
-        ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys[0].DsRecord);
+        ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
         ///     }
         /// 
         ///     [Output("fooDnsDsRecord")]

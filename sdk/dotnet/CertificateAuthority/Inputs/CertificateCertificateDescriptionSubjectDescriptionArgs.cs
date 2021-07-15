@@ -9,4 +9,54 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionArgs : Pulumi.ResourceArgs
+    {
+        [Input("hexSerialNumber")]
+        public Input<string>? HexSerialNumber { get; set; }
+
+        /// <summary>
+        /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+        /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+        /// fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        [Input("lifetime")]
+        public Input<string>? Lifetime { get; set; }
+
+        [Input("notAfterTime")]
+        public Input<string>? NotAfterTime { get; set; }
+
+        [Input("notBeforeTime")]
+        public Input<string>? NotBeforeTime { get; set; }
+
+        [Input("subjectAltNames")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs>? _subjectAltNames;
+
+        /// <summary>
+        /// The subject alternative name fields.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs> SubjectAltNames
+        {
+            get => _subjectAltNames ?? (_subjectAltNames = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs>());
+            set => _subjectAltNames = value;
+        }
+
+        [Input("subjects")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectArgs>? _subjects;
+
+        /// <summary>
+        /// Contains distinguished name fields such as the location and organization.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectArgs> Subjects
+        {
+            get => _subjects ?? (_subjects = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectArgs>());
+            set => _subjects = value;
+        }
+
+        public CertificateCertificateDescriptionSubjectDescriptionArgs()
+        {
+        }
+    }
 }

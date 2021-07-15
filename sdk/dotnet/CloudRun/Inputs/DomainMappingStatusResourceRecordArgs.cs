@@ -9,4 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
+
+    public sealed class DomainMappingStatusResourceRecordArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("rrdata")]
+        public Input<string>? Rrdata { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        public DomainMappingStatusResourceRecordArgs()
+        {
+        }
+    }
 }

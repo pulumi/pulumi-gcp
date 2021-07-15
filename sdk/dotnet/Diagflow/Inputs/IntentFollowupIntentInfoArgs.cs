@@ -9,4 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
+
+    public sealed class IntentFollowupIntentInfoArgs : Pulumi.ResourceArgs
+    {
+        [Input("followupIntentName")]
+        public Input<string>? FollowupIntentName { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the parent intent in the chain of followup intents.
+        /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+        /// </summary>
+        [Input("parentFollowupIntentName")]
+        public Input<string>? ParentFollowupIntentName { get; set; }
+
+        public IntentFollowupIntentInfoArgs()
+        {
+        }
+    }
 }

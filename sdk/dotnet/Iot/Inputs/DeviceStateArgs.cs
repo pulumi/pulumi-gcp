@@ -9,4 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iot.Inputs
 {
+
+    public sealed class DeviceStateArgs : Pulumi.ResourceArgs
+    {
+        [Input("binaryData")]
+        public Input<string>? BinaryData { get; set; }
+
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
+
+        public DeviceStateArgs()
+        {
+        }
+    }
 }

@@ -4,6 +4,8 @@ CHANGELOG
 ## HEAD (Unreleased)
 _(none)_
 
+* (breaking) Bring Go `*State` types for resource get methods into agreement with other languages.
+
 ---
 
 ## 5.12.0 (2021-07-15)

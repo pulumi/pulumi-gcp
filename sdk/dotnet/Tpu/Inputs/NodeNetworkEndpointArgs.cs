@@ -9,4 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Tpu.Inputs
 {
+
+    public sealed class NodeNetworkEndpointArgs : Pulumi.ResourceArgs
+    {
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        public NodeNetworkEndpointArgs()
+        {
+        }
+    }
 }

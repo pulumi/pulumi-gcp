@@ -9,320 +9,425 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
-__all__ = [
-    'access_approval_custom_endpoint',
-    'access_context_manager_custom_endpoint',
-    'access_token',
-    'active_directory_custom_endpoint',
-    'api_gateway_custom_endpoint',
-    'apigee_custom_endpoint',
-    'app_engine_custom_endpoint',
-    'artifact_registry_custom_endpoint',
-    'batching',
-    'big_query_custom_endpoint',
-    'bigquery_connection_custom_endpoint',
-    'bigquery_data_transfer_custom_endpoint',
-    'bigquery_reservation_custom_endpoint',
-    'bigtable_custom_endpoint',
-    'billing_custom_endpoint',
-    'billing_project',
-    'binary_authorization_custom_endpoint',
-    'cloud_asset_custom_endpoint',
-    'cloud_billing_custom_endpoint',
-    'cloud_build_custom_endpoint',
-    'cloud_build_worker_pool_custom_endpoint',
-    'cloud_functions_custom_endpoint',
-    'cloud_identity_custom_endpoint',
-    'cloud_iot_custom_endpoint',
-    'cloud_run_custom_endpoint',
-    'cloud_scheduler_custom_endpoint',
-    'cloud_tasks_custom_endpoint',
-    'composer_custom_endpoint',
-    'compute_beta_custom_endpoint',
-    'compute_custom_endpoint',
-    'container_analysis_custom_endpoint',
-    'container_beta_custom_endpoint',
-    'container_custom_endpoint',
-    'credentials',
-    'data_catalog_custom_endpoint',
-    'data_fusion_custom_endpoint',
-    'data_loss_prevention_custom_endpoint',
-    'dataflow_custom_endpoint',
-    'dataproc_beta_custom_endpoint',
-    'dataproc_custom_endpoint',
-    'dataproc_metastore_custom_endpoint',
-    'datastore_custom_endpoint',
-    'deployment_manager_custom_endpoint',
-    'dialogflow_custom_endpoint',
-    'dialogflow_cx_custom_endpoint',
-    'disable_google_partner_name',
-    'dns_custom_endpoint',
-    'essential_contacts_custom_endpoint',
-    'eventarc_custom_endpoint',
-    'filestore_custom_endpoint',
-    'firebase_custom_endpoint',
-    'firestore_custom_endpoint',
-    'game_services_custom_endpoint',
-    'gke_hub_custom_endpoint',
-    'gkehub_feature_custom_endpoint',
-    'google_partner_name',
-    'healthcare_custom_endpoint',
-    'iam_beta_custom_endpoint',
-    'iam_credentials_custom_endpoint',
-    'iam_custom_endpoint',
-    'iap_custom_endpoint',
-    'identity_platform_custom_endpoint',
-    'impersonate_service_account',
-    'impersonate_service_account_delegates',
-    'kms_custom_endpoint',
-    'logging_custom_endpoint',
-    'memcache_custom_endpoint',
-    'ml_engine_custom_endpoint',
-    'monitoring_custom_endpoint',
-    'network_management_custom_endpoint',
-    'notebooks_custom_endpoint',
-    'os_config_custom_endpoint',
-    'os_login_custom_endpoint',
-    'privateca_custom_endpoint',
-    'project',
-    'pubsub_custom_endpoint',
-    'pubsub_lite_custom_endpoint',
-    'redis_custom_endpoint',
-    'region',
-    'request_timeout',
-    'resource_manager_custom_endpoint',
-    'resource_manager_v2_custom_endpoint',
-    'runtime_config_custom_endpoint',
-    'runtimeconfig_custom_endpoint',
-    'scopes',
-    'secret_manager_custom_endpoint',
-    'security_center_custom_endpoint',
-    'security_scanner_custom_endpoint',
-    'service_directory_custom_endpoint',
-    'service_management_custom_endpoint',
-    'service_networking_custom_endpoint',
-    'service_usage_custom_endpoint',
-    'source_repo_custom_endpoint',
-    'spanner_custom_endpoint',
-    'sql_custom_endpoint',
-    'storage_custom_endpoint',
-    'storage_transfer_custom_endpoint',
-    'tags_custom_endpoint',
-    'tpu_custom_endpoint',
-    'user_project_override',
-    'vertex_ai_custom_endpoint',
-    'vpc_access_custom_endpoint',
-    'workflows_custom_endpoint',
-    'zone',
-]
+import types
 
 __config__ = pulumi.Config('gcp')
 
-access_approval_custom_endpoint = __config__.get('accessApprovalCustomEndpoint')
 
-access_context_manager_custom_endpoint = __config__.get('accessContextManagerCustomEndpoint')
-
-access_token = __config__.get('accessToken')
-
-active_directory_custom_endpoint = __config__.get('activeDirectoryCustomEndpoint')
-
-api_gateway_custom_endpoint = __config__.get('apiGatewayCustomEndpoint')
-
-apigee_custom_endpoint = __config__.get('apigeeCustomEndpoint')
-
-app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
-
-artifact_registry_custom_endpoint = __config__.get('artifactRegistryCustomEndpoint')
-
-batching = __config__.get('batching')
-
-big_query_custom_endpoint = __config__.get('bigQueryCustomEndpoint')
-
-bigquery_connection_custom_endpoint = __config__.get('bigqueryConnectionCustomEndpoint')
-
-bigquery_data_transfer_custom_endpoint = __config__.get('bigqueryDataTransferCustomEndpoint')
-
-bigquery_reservation_custom_endpoint = __config__.get('bigqueryReservationCustomEndpoint')
-
-bigtable_custom_endpoint = __config__.get('bigtableCustomEndpoint')
-
-billing_custom_endpoint = __config__.get('billingCustomEndpoint')
-
-billing_project = __config__.get('billingProject')
-
-binary_authorization_custom_endpoint = __config__.get('binaryAuthorizationCustomEndpoint')
-
-cloud_asset_custom_endpoint = __config__.get('cloudAssetCustomEndpoint')
-
-cloud_billing_custom_endpoint = __config__.get('cloudBillingCustomEndpoint')
-
-cloud_build_custom_endpoint = __config__.get('cloudBuildCustomEndpoint')
-
-cloud_build_worker_pool_custom_endpoint = __config__.get('cloudBuildWorkerPoolCustomEndpoint')
-
-cloud_functions_custom_endpoint = __config__.get('cloudFunctionsCustomEndpoint')
-
-cloud_identity_custom_endpoint = __config__.get('cloudIdentityCustomEndpoint')
-
-cloud_iot_custom_endpoint = __config__.get('cloudIotCustomEndpoint')
-
-cloud_run_custom_endpoint = __config__.get('cloudRunCustomEndpoint')
-
-cloud_scheduler_custom_endpoint = __config__.get('cloudSchedulerCustomEndpoint')
-
-cloud_tasks_custom_endpoint = __config__.get('cloudTasksCustomEndpoint')
-
-composer_custom_endpoint = __config__.get('composerCustomEndpoint')
-
-compute_beta_custom_endpoint = __config__.get('computeBetaCustomEndpoint')
-
-compute_custom_endpoint = __config__.get('computeCustomEndpoint')
-
-container_analysis_custom_endpoint = __config__.get('containerAnalysisCustomEndpoint')
-
-container_beta_custom_endpoint = __config__.get('containerBetaCustomEndpoint')
-
-container_custom_endpoint = __config__.get('containerCustomEndpoint')
-
-credentials = __config__.get('credentials')
-
-data_catalog_custom_endpoint = __config__.get('dataCatalogCustomEndpoint')
-
-data_fusion_custom_endpoint = __config__.get('dataFusionCustomEndpoint')
-
-data_loss_prevention_custom_endpoint = __config__.get('dataLossPreventionCustomEndpoint')
-
-dataflow_custom_endpoint = __config__.get('dataflowCustomEndpoint')
-
-dataproc_beta_custom_endpoint = __config__.get('dataprocBetaCustomEndpoint')
-
-dataproc_custom_endpoint = __config__.get('dataprocCustomEndpoint')
-
-dataproc_metastore_custom_endpoint = __config__.get('dataprocMetastoreCustomEndpoint')
-
-datastore_custom_endpoint = __config__.get('datastoreCustomEndpoint')
-
-deployment_manager_custom_endpoint = __config__.get('deploymentManagerCustomEndpoint')
-
-dialogflow_custom_endpoint = __config__.get('dialogflowCustomEndpoint')
-
-dialogflow_cx_custom_endpoint = __config__.get('dialogflowCxCustomEndpoint')
-
-disable_google_partner_name = __config__.get('disableGooglePartnerName')
-
-dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
-
-essential_contacts_custom_endpoint = __config__.get('essentialContactsCustomEndpoint')
-
-eventarc_custom_endpoint = __config__.get('eventarcCustomEndpoint')
-
-filestore_custom_endpoint = __config__.get('filestoreCustomEndpoint')
-
-firebase_custom_endpoint = __config__.get('firebaseCustomEndpoint')
-
-firestore_custom_endpoint = __config__.get('firestoreCustomEndpoint')
-
-game_services_custom_endpoint = __config__.get('gameServicesCustomEndpoint')
-
-gke_hub_custom_endpoint = __config__.get('gkeHubCustomEndpoint')
-
-gkehub_feature_custom_endpoint = __config__.get('gkehubFeatureCustomEndpoint')
-
-google_partner_name = __config__.get('googlePartnerName')
-
-healthcare_custom_endpoint = __config__.get('healthcareCustomEndpoint')
-
-iam_beta_custom_endpoint = __config__.get('iamBetaCustomEndpoint')
-
-iam_credentials_custom_endpoint = __config__.get('iamCredentialsCustomEndpoint')
-
-iam_custom_endpoint = __config__.get('iamCustomEndpoint')
-
-iap_custom_endpoint = __config__.get('iapCustomEndpoint')
-
-identity_platform_custom_endpoint = __config__.get('identityPlatformCustomEndpoint')
-
-impersonate_service_account = __config__.get('impersonateServiceAccount')
-
-impersonate_service_account_delegates = __config__.get('impersonateServiceAccountDelegates')
-
-kms_custom_endpoint = __config__.get('kmsCustomEndpoint')
-
-logging_custom_endpoint = __config__.get('loggingCustomEndpoint')
-
-memcache_custom_endpoint = __config__.get('memcacheCustomEndpoint')
-
-ml_engine_custom_endpoint = __config__.get('mlEngineCustomEndpoint')
-
-monitoring_custom_endpoint = __config__.get('monitoringCustomEndpoint')
-
-network_management_custom_endpoint = __config__.get('networkManagementCustomEndpoint')
-
-notebooks_custom_endpoint = __config__.get('notebooksCustomEndpoint')
-
-os_config_custom_endpoint = __config__.get('osConfigCustomEndpoint')
-
-os_login_custom_endpoint = __config__.get('osLoginCustomEndpoint')
-
-privateca_custom_endpoint = __config__.get('privatecaCustomEndpoint')
-
-project = __config__.get('project') or _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
-
-pubsub_custom_endpoint = __config__.get('pubsubCustomEndpoint')
-
-pubsub_lite_custom_endpoint = __config__.get('pubsubLiteCustomEndpoint')
-
-redis_custom_endpoint = __config__.get('redisCustomEndpoint')
-
-region = __config__.get('region') or _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
-
-request_timeout = __config__.get('requestTimeout')
-
-resource_manager_custom_endpoint = __config__.get('resourceManagerCustomEndpoint')
-
-resource_manager_v2_custom_endpoint = __config__.get('resourceManagerV2CustomEndpoint')
-
-runtime_config_custom_endpoint = __config__.get('runtimeConfigCustomEndpoint')
-
-runtimeconfig_custom_endpoint = __config__.get('runtimeconfigCustomEndpoint')
-
-scopes = __config__.get('scopes')
-
-secret_manager_custom_endpoint = __config__.get('secretManagerCustomEndpoint')
-
-security_center_custom_endpoint = __config__.get('securityCenterCustomEndpoint')
-
-security_scanner_custom_endpoint = __config__.get('securityScannerCustomEndpoint')
-
-service_directory_custom_endpoint = __config__.get('serviceDirectoryCustomEndpoint')
-
-service_management_custom_endpoint = __config__.get('serviceManagementCustomEndpoint')
-
-service_networking_custom_endpoint = __config__.get('serviceNetworkingCustomEndpoint')
-
-service_usage_custom_endpoint = __config__.get('serviceUsageCustomEndpoint')
-
-source_repo_custom_endpoint = __config__.get('sourceRepoCustomEndpoint')
-
-spanner_custom_endpoint = __config__.get('spannerCustomEndpoint')
-
-sql_custom_endpoint = __config__.get('sqlCustomEndpoint')
-
-storage_custom_endpoint = __config__.get('storageCustomEndpoint')
-
-storage_transfer_custom_endpoint = __config__.get('storageTransferCustomEndpoint')
-
-tags_custom_endpoint = __config__.get('tagsCustomEndpoint')
-
-tpu_custom_endpoint = __config__.get('tpuCustomEndpoint')
-
-user_project_override = __config__.get('userProjectOverride')
-
-vertex_ai_custom_endpoint = __config__.get('vertexAiCustomEndpoint')
-
-vpc_access_custom_endpoint = __config__.get('vpcAccessCustomEndpoint')
-
-workflows_custom_endpoint = __config__.get('workflowsCustomEndpoint')
-
-zone = __config__.get('zone') or _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
+class _ExportableConfig(types.ModuleType):
+    @property
+    def access_approval_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('accessApprovalCustomEndpoint')
+
+    @property
+    def access_context_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('accessContextManagerCustomEndpoint')
+
+    @property
+    def access_token(self) -> Optional[str]:
+        return __config__.get('accessToken')
+
+    @property
+    def active_directory_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('activeDirectoryCustomEndpoint')
+
+    @property
+    def api_gateway_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('apiGatewayCustomEndpoint')
+
+    @property
+    def apigee_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('apigeeCustomEndpoint')
+
+    @property
+    def app_engine_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('appEngineCustomEndpoint')
+
+    @property
+    def artifact_registry_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('artifactRegistryCustomEndpoint')
+
+    @property
+    def batching(self) -> Optional[str]:
+        return __config__.get('batching')
+
+    @property
+    def big_query_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigQueryCustomEndpoint')
+
+    @property
+    def bigquery_connection_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigqueryConnectionCustomEndpoint')
+
+    @property
+    def bigquery_data_transfer_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigqueryDataTransferCustomEndpoint')
+
+    @property
+    def bigquery_reservation_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigqueryReservationCustomEndpoint')
+
+    @property
+    def bigtable_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigtableCustomEndpoint')
+
+    @property
+    def billing_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('billingCustomEndpoint')
+
+    @property
+    def billing_project(self) -> Optional[str]:
+        return __config__.get('billingProject')
+
+    @property
+    def binary_authorization_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('binaryAuthorizationCustomEndpoint')
+
+    @property
+    def cloud_asset_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudAssetCustomEndpoint')
+
+    @property
+    def cloud_billing_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudBillingCustomEndpoint')
+
+    @property
+    def cloud_build_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudBuildCustomEndpoint')
+
+    @property
+    def cloud_build_worker_pool_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudBuildWorkerPoolCustomEndpoint')
+
+    @property
+    def cloud_functions_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudFunctionsCustomEndpoint')
+
+    @property
+    def cloud_identity_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudIdentityCustomEndpoint')
+
+    @property
+    def cloud_iot_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudIotCustomEndpoint')
+
+    @property
+    def cloud_run_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudRunCustomEndpoint')
+
+    @property
+    def cloud_scheduler_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudSchedulerCustomEndpoint')
+
+    @property
+    def cloud_tasks_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudTasksCustomEndpoint')
+
+    @property
+    def composer_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('composerCustomEndpoint')
+
+    @property
+    def compute_beta_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('computeBetaCustomEndpoint')
+
+    @property
+    def compute_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('computeCustomEndpoint')
+
+    @property
+    def container_analysis_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('containerAnalysisCustomEndpoint')
+
+    @property
+    def container_beta_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('containerBetaCustomEndpoint')
+
+    @property
+    def container_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('containerCustomEndpoint')
+
+    @property
+    def credentials(self) -> Optional[str]:
+        return __config__.get('credentials')
+
+    @property
+    def data_catalog_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataCatalogCustomEndpoint')
+
+    @property
+    def data_fusion_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataFusionCustomEndpoint')
+
+    @property
+    def data_loss_prevention_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataLossPreventionCustomEndpoint')
+
+    @property
+    def dataflow_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataflowCustomEndpoint')
+
+    @property
+    def dataproc_beta_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataprocBetaCustomEndpoint')
+
+    @property
+    def dataproc_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataprocCustomEndpoint')
+
+    @property
+    def dataproc_metastore_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataprocMetastoreCustomEndpoint')
+
+    @property
+    def datastore_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('datastoreCustomEndpoint')
+
+    @property
+    def deployment_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('deploymentManagerCustomEndpoint')
+
+    @property
+    def dialogflow_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dialogflowCustomEndpoint')
+
+    @property
+    def dialogflow_cx_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dialogflowCxCustomEndpoint')
+
+    @property
+    def disable_google_partner_name(self) -> Optional[str]:
+        return __config__.get('disableGooglePartnerName')
+
+    @property
+    def dns_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dnsCustomEndpoint')
+
+    @property
+    def essential_contacts_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('essentialContactsCustomEndpoint')
+
+    @property
+    def eventarc_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('eventarcCustomEndpoint')
+
+    @property
+    def filestore_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('filestoreCustomEndpoint')
+
+    @property
+    def firebase_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseCustomEndpoint')
+
+    @property
+    def firestore_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firestoreCustomEndpoint')
+
+    @property
+    def game_services_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('gameServicesCustomEndpoint')
+
+    @property
+    def gke_hub_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('gkeHubCustomEndpoint')
+
+    @property
+    def gkehub_feature_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('gkehubFeatureCustomEndpoint')
+
+    @property
+    def google_partner_name(self) -> Optional[str]:
+        return __config__.get('googlePartnerName')
+
+    @property
+    def healthcare_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('healthcareCustomEndpoint')
+
+    @property
+    def iam_beta_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('iamBetaCustomEndpoint')
+
+    @property
+    def iam_credentials_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('iamCredentialsCustomEndpoint')
+
+    @property
+    def iam_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('iamCustomEndpoint')
+
+    @property
+    def iap_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('iapCustomEndpoint')
+
+    @property
+    def identity_platform_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('identityPlatformCustomEndpoint')
+
+    @property
+    def impersonate_service_account(self) -> Optional[str]:
+        return __config__.get('impersonateServiceAccount')
+
+    @property
+    def impersonate_service_account_delegates(self) -> Optional[str]:
+        return __config__.get('impersonateServiceAccountDelegates')
+
+    @property
+    def kms_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('kmsCustomEndpoint')
+
+    @property
+    def logging_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('loggingCustomEndpoint')
+
+    @property
+    def memcache_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('memcacheCustomEndpoint')
+
+    @property
+    def ml_engine_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('mlEngineCustomEndpoint')
+
+    @property
+    def monitoring_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('monitoringCustomEndpoint')
+
+    @property
+    def network_management_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('networkManagementCustomEndpoint')
+
+    @property
+    def notebooks_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('notebooksCustomEndpoint')
+
+    @property
+    def os_config_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('osConfigCustomEndpoint')
+
+    @property
+    def os_login_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('osLoginCustomEndpoint')
+
+    @property
+    def privateca_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('privatecaCustomEndpoint')
+
+    @property
+    def project(self) -> Optional[str]:
+        return __config__.get('project') or _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+
+    @property
+    def pubsub_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('pubsubCustomEndpoint')
+
+    @property
+    def pubsub_lite_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('pubsubLiteCustomEndpoint')
+
+    @property
+    def redis_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('redisCustomEndpoint')
+
+    @property
+    def region(self) -> Optional[str]:
+        return __config__.get('region') or _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+
+    @property
+    def request_timeout(self) -> Optional[str]:
+        return __config__.get('requestTimeout')
+
+    @property
+    def resource_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('resourceManagerCustomEndpoint')
+
+    @property
+    def resource_manager_v2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('resourceManagerV2CustomEndpoint')
+
+    @property
+    def runtime_config_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('runtimeConfigCustomEndpoint')
+
+    @property
+    def runtimeconfig_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('runtimeconfigCustomEndpoint')
+
+    @property
+    def scopes(self) -> Optional[str]:
+        return __config__.get('scopes')
+
+    @property
+    def secret_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('secretManagerCustomEndpoint')
+
+    @property
+    def security_center_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('securityCenterCustomEndpoint')
+
+    @property
+    def security_scanner_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('securityScannerCustomEndpoint')
+
+    @property
+    def service_directory_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('serviceDirectoryCustomEndpoint')
+
+    @property
+    def service_management_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('serviceManagementCustomEndpoint')
+
+    @property
+    def service_networking_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('serviceNetworkingCustomEndpoint')
+
+    @property
+    def service_usage_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('serviceUsageCustomEndpoint')
+
+    @property
+    def source_repo_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('sourceRepoCustomEndpoint')
+
+    @property
+    def spanner_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('spannerCustomEndpoint')
+
+    @property
+    def sql_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('sqlCustomEndpoint')
+
+    @property
+    def storage_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('storageCustomEndpoint')
+
+    @property
+    def storage_transfer_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('storageTransferCustomEndpoint')
+
+    @property
+    def tags_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('tagsCustomEndpoint')
+
+    @property
+    def tpu_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('tpuCustomEndpoint')
+
+    @property
+    def user_project_override(self) -> Optional[str]:
+        return __config__.get('userProjectOverride')
+
+    @property
+    def vertex_ai_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('vertexAiCustomEndpoint')
+
+    @property
+    def vpc_access_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('vpcAccessCustomEndpoint')
+
+    @property
+    def workflows_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('workflowsCustomEndpoint')
+
+    @property
+    def zone(self) -> Optional[str]:
+        return __config__.get('zone') or _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
 

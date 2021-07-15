@@ -122,7 +122,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = serviceAccount.NewIAMBinding(ctx, "admin_account_iam", &serviceAccount.IAMBindingArgs{
-// 			Condition: &serviceAccount.IAMBindingConditionArgs{
+// 			Condition: &serviceaccount.IAMBindingConditionArgs{
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 // 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 // 				Title:       pulumi.String("expires_after_2019_12_31"),
@@ -210,7 +210,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = serviceAccount.NewIAMMember(ctx, "admin_account_iam", &serviceAccount.IAMMemberArgs{
-// 			Condition: &serviceAccount.IAMMemberConditionArgs{
+// 			Condition: &serviceaccount.IAMMemberConditionArgs{
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 // 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 // 				Title:       pulumi.String("expires_after_2019_12_31"),

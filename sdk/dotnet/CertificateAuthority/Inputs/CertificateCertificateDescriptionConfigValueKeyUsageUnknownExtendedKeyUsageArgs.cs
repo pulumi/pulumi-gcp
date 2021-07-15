@@ -9,4 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs : Pulumi.ResourceArgs
+    {
+        [Input("obectIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>? _obectIds;
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs> ObectIds
+        {
+            get => _obectIds ?? (_obectIds = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>());
+            set => _obectIds = value;
+        }
+
+        public CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs()
+        {
+        }
+    }
 }

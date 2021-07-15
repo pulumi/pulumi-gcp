@@ -19,6 +19,61 @@ import (
 // > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
 //
 // ## Example Usage
+// ### With Top Level Instance Template (`Google` Provider)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		autohealing, err := compute.NewHealthCheck(ctx, "autohealing", &compute.HealthCheckArgs{
+// 			CheckIntervalSec:   pulumi.Int(5),
+// 			TimeoutSec:         pulumi.Int(5),
+// 			HealthyThreshold:   pulumi.Int(2),
+// 			UnhealthyThreshold: pulumi.Int(10),
+// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+// 				RequestPath: pulumi.String("/healthz"),
+// 				Port:        pulumi.Int(8080),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstanceGroupManager(ctx, "appserver", &compute.InstanceGroupManagerArgs{
+// 			BaseInstanceName: pulumi.String("app"),
+// 			Zone:             pulumi.String("us-central1-a"),
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+// 				},
+// 			},
+// 			TargetPools: pulumi.StringArray{
+// 				pulumi.Any(google_compute_target_pool.Appserver.Id),
+// 			},
+// 			TargetSize: pulumi.Int(2),
+// 			NamedPorts: compute.InstanceGroupManagerNamedPortArray{
+// 				&compute.InstanceGroupManagerNamedPortArgs{
+// 					Name: pulumi.String("customHTTP"),
+// 					Port: pulumi.Int(8888),
+// 				},
+// 			},
+// 			AutoHealingPolicies: &compute.InstanceGroupManagerAutoHealingPoliciesArgs{
+// 				HealthCheck:     autohealing.ID(),
+// 				InitialDelaySec: pulumi.Int(300),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### With Multiple Versions (`Google-Beta` Provider)
 // ```go
 // package main

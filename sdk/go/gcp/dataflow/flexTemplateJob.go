@@ -30,8 +30,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := dataflow.NewFlexTemplateJob(ctx, "bigDataJob", &dataflow.FlexTemplateJobArgs{
 // 			ContainerSpecGcsPath: pulumi.String("gs://my-bucket/templates/template.json"),
-// 			Parameters: pulumi.StringMap{
-// 				"inputSubscription": pulumi.String("messages"),
+// 			Parameters: pulumi.AnyMap{
+// 				"inputSubscription": pulumi.Any("messages"),
 // 			},
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {

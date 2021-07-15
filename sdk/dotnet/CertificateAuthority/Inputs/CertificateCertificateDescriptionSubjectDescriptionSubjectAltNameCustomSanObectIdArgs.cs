@@ -9,4 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs : Pulumi.ResourceArgs
+    {
+        [Input("objectIdPaths")]
+        private InputList<int>? _objectIdPaths;
+
+        /// <summary>
+        /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        /// </summary>
+        public InputList<int> ObjectIdPaths
+        {
+            get => _objectIdPaths ?? (_objectIdPaths = new InputList<int>());
+            set => _objectIdPaths = value;
+        }
+
+        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs()
+        {
+        }
+    }
 }

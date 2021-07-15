@@ -9,4 +9,65 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The key may be used to sign certificates.
+        /// </summary>
+        [Input("certSign")]
+        public Input<bool>? CertSign { get; set; }
+
+        /// <summary>
+        /// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        /// </summary>
+        [Input("contentCommitment")]
+        public Input<bool>? ContentCommitment { get; set; }
+
+        /// <summary>
+        /// The key may be used sign certificate revocation lists.
+        /// </summary>
+        [Input("crlSign")]
+        public Input<bool>? CrlSign { get; set; }
+
+        /// <summary>
+        /// The key may be used to encipher data.
+        /// </summary>
+        [Input("dataEncipherment")]
+        public Input<bool>? DataEncipherment { get; set; }
+
+        /// <summary>
+        /// The key may be used to decipher only.
+        /// </summary>
+        [Input("decipherOnly")]
+        public Input<bool>? DecipherOnly { get; set; }
+
+        /// <summary>
+        /// The key may be used for digital signatures.
+        /// </summary>
+        [Input("digitalSignature")]
+        public Input<bool>? DigitalSignature { get; set; }
+
+        /// <summary>
+        /// The key may be used to encipher only.
+        /// </summary>
+        [Input("encipherOnly")]
+        public Input<bool>? EncipherOnly { get; set; }
+
+        /// <summary>
+        /// The key may be used in a key agreement protocol.
+        /// </summary>
+        [Input("keyAgreement")]
+        public Input<bool>? KeyAgreement { get; set; }
+
+        /// <summary>
+        /// The key may be used to encipher other keys.
+        /// </summary>
+        [Input("keyEncipherment")]
+        public Input<bool>? KeyEncipherment { get; set; }
+
+        public CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs()
+        {
+        }
+    }
 }

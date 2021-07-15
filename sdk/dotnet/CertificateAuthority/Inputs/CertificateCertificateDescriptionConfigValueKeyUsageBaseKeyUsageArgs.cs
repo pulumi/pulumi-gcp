@@ -9,4 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs : Pulumi.ResourceArgs
+    {
+        [Input("keyUsageOptions")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>? _keyUsageOptions;
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs> KeyUsageOptions
+        {
+            get => _keyUsageOptions ?? (_keyUsageOptions = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>());
+            set => _keyUsageOptions = value;
+        }
+
+        public CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs()
+        {
+        }
+    }
 }

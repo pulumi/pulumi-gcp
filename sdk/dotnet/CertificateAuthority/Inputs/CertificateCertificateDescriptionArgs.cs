@@ -9,4 +9,80 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
+
+    public sealed class CertificateCertificateDescriptionArgs : Pulumi.ResourceArgs
+    {
+        [Input("aiaIssuingCertificateUrls")]
+        private InputList<string>? _aiaIssuingCertificateUrls;
+        public InputList<string> AiaIssuingCertificateUrls
+        {
+            get => _aiaIssuingCertificateUrls ?? (_aiaIssuingCertificateUrls = new InputList<string>());
+            set => _aiaIssuingCertificateUrls = value;
+        }
+
+        [Input("authorityKeyIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs>? _authorityKeyIds;
+        public InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs> AuthorityKeyIds
+        {
+            get => _authorityKeyIds ?? (_authorityKeyIds = new InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs>());
+            set => _authorityKeyIds = value;
+        }
+
+        [Input("certFingerprints")]
+        private InputList<Inputs.CertificateCertificateDescriptionCertFingerprintArgs>? _certFingerprints;
+        public InputList<Inputs.CertificateCertificateDescriptionCertFingerprintArgs> CertFingerprints
+        {
+            get => _certFingerprints ?? (_certFingerprints = new InputList<Inputs.CertificateCertificateDescriptionCertFingerprintArgs>());
+            set => _certFingerprints = value;
+        }
+
+        [Input("configValues")]
+        private InputList<Inputs.CertificateCertificateDescriptionConfigValueArgs>? _configValues;
+        public InputList<Inputs.CertificateCertificateDescriptionConfigValueArgs> ConfigValues
+        {
+            get => _configValues ?? (_configValues = new InputList<Inputs.CertificateCertificateDescriptionConfigValueArgs>());
+            set => _configValues = value;
+        }
+
+        [Input("crlDistributionPoints")]
+        private InputList<string>? _crlDistributionPoints;
+        public InputList<string> CrlDistributionPoints
+        {
+            get => _crlDistributionPoints ?? (_crlDistributionPoints = new InputList<string>());
+            set => _crlDistributionPoints = value;
+        }
+
+        [Input("publicKeys")]
+        private InputList<Inputs.CertificateCertificateDescriptionPublicKeyArgs>? _publicKeys;
+
+        /// <summary>
+        /// A PublicKey describes a public key.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionPublicKeyArgs> PublicKeys
+        {
+            get => _publicKeys ?? (_publicKeys = new InputList<Inputs.CertificateCertificateDescriptionPublicKeyArgs>());
+            set => _publicKeys = value;
+        }
+
+        [Input("subjectDescriptions")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs>? _subjectDescriptions;
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs> SubjectDescriptions
+        {
+            get => _subjectDescriptions ?? (_subjectDescriptions = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionArgs>());
+            set => _subjectDescriptions = value;
+        }
+
+        [Input("subjectKeyIds")]
+        private InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs>? _subjectKeyIds;
+        public InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs> SubjectKeyIds
+        {
+            get => _subjectKeyIds ?? (_subjectKeyIds = new InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs>());
+            set => _subjectKeyIds = value;
+        }
+
+        public CertificateCertificateDescriptionArgs()
+        {
+        }
+    }
 }
