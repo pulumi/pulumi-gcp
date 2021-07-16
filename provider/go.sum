@@ -869,13 +869,6 @@ github.com/pseudomuto/protoc-gen-doc v1.3.2/go.mod h1:y5+P6n3iGrbKG+9O04V5ld71in
 github.com/pseudomuto/protokit v0.2.0/go.mod h1:2PdH30hxVHsup8KpBTOXTBeMVhJZVio3Q8ViKSAXT0Q=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.4.1-0.20210714215802-5020116ac4e6 h1:Yj9KQ1En582ed7QI3kYNMaCnMOeqDcpgjZHKpS44Z/A=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.4.1-0.20210714215802-5020116ac4e6/go.mod h1:yHZYKH1IuDTFjKk0VkQb4S79zVRM0/i6nFf3u/8K7cM=
-github.com/pulumi/pulumi/pkg/v3 v3.7.1-0.20210714111852-eb8e1585c3b7/go.mod h1:2Y+Q5wUVGmJ2T3jyBxXEe1C0MjNwWn0dwG4blLB3om8=
-github.com/pulumi/pulumi/pkg/v3 v3.7.1-0.20210714212650-083fc64ff547 h1:BxsIYFbKOnf1d2vBDcXd1VZqxKrz0d6AYD/yqS4lh8s=
-github.com/pulumi/pulumi/pkg/v3 v3.7.1-0.20210714212650-083fc64ff547/go.mod h1:2Y+Q5wUVGmJ2T3jyBxXEe1C0MjNwWn0dwG4blLB3om8=
-github.com/pulumi/pulumi/sdk/v3 v3.3.1/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
-github.com/pulumi/pulumi/sdk/v3 v3.6.0/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
-github.com/pulumi/pulumi/sdk/v3 v3.7.0 h1:0Sm4k6QNLTm7QQmn9t31tVG7d9fuyvFOnogffgvbluE=
-github.com/pulumi/pulumi/sdk/v3 v3.7.0/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e h1:jl43csgF3BSlNRmjo+TGgjW/uXk9h7+NoR3doKQ0BT4=
