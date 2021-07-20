@@ -757,7 +757,7 @@ class URLMap(pulumi.CustomResource):
                             "perTryTimeout": {
                                 "seconds": 30,
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -1296,7 +1296,7 @@ class URLMap(pulumi.CustomResource):
                             "perTryTimeout": {
                                 "seconds": 30,
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],

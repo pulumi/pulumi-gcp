@@ -149,6 +149,8 @@ monitoringCustomEndpoint: Optional[str]
 
 networkManagementCustomEndpoint: Optional[str]
 
+networkServicesCustomEndpoint: Optional[str]
+
 notebooksCustomEndpoint: Optional[str]
 
 osConfigCustomEndpoint: Optional[str]

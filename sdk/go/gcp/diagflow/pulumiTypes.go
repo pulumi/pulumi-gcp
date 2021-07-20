@@ -141,6 +141,1884 @@ func (o CxAgentSpeechToTextSettingsPtrOutput) EnableSpeechAdaptation() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type CxFlowEventHandler struct {
+	// The name of the event to handle.
+	Event *string `pulumi:"event"`
+	// -
+	// The unique identifier of this event handler.
+	Name *string `pulumi:"name"`
+	// The target flow to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	TargetFlow *string `pulumi:"targetFlow"`
+	// The target page to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	TargetPage *string `pulumi:"targetPage"`
+	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// Structure is documented below.
+	TriggerFulfillment *CxFlowEventHandlerTriggerFulfillment `pulumi:"triggerFulfillment"`
+}
+
+// CxFlowEventHandlerInput is an input type that accepts CxFlowEventHandlerArgs and CxFlowEventHandlerOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerInput` via:
+//
+//          CxFlowEventHandlerArgs{...}
+type CxFlowEventHandlerInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerOutput() CxFlowEventHandlerOutput
+	ToCxFlowEventHandlerOutputWithContext(context.Context) CxFlowEventHandlerOutput
+}
+
+type CxFlowEventHandlerArgs struct {
+	// The name of the event to handle.
+	Event pulumi.StringPtrInput `pulumi:"event"`
+	// -
+	// The unique identifier of this event handler.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The target flow to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	TargetFlow pulumi.StringPtrInput `pulumi:"targetFlow"`
+	// The target page to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	TargetPage pulumi.StringPtrInput `pulumi:"targetPage"`
+	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// Structure is documented below.
+	TriggerFulfillment CxFlowEventHandlerTriggerFulfillmentPtrInput `pulumi:"triggerFulfillment"`
+}
+
+func (CxFlowEventHandlerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandler)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerArgs) ToCxFlowEventHandlerOutput() CxFlowEventHandlerOutput {
+	return i.ToCxFlowEventHandlerOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerArgs) ToCxFlowEventHandlerOutputWithContext(ctx context.Context) CxFlowEventHandlerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerOutput)
+}
+
+// CxFlowEventHandlerArrayInput is an input type that accepts CxFlowEventHandlerArray and CxFlowEventHandlerArrayOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerArrayInput` via:
+//
+//          CxFlowEventHandlerArray{ CxFlowEventHandlerArgs{...} }
+type CxFlowEventHandlerArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerArrayOutput() CxFlowEventHandlerArrayOutput
+	ToCxFlowEventHandlerArrayOutputWithContext(context.Context) CxFlowEventHandlerArrayOutput
+}
+
+type CxFlowEventHandlerArray []CxFlowEventHandlerInput
+
+func (CxFlowEventHandlerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandler)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerArray) ToCxFlowEventHandlerArrayOutput() CxFlowEventHandlerArrayOutput {
+	return i.ToCxFlowEventHandlerArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerArray) ToCxFlowEventHandlerArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerArrayOutput)
+}
+
+type CxFlowEventHandlerOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandler)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerOutput) ToCxFlowEventHandlerOutput() CxFlowEventHandlerOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerOutput) ToCxFlowEventHandlerOutputWithContext(ctx context.Context) CxFlowEventHandlerOutput {
+	return o
+}
+
+// The name of the event to handle.
+func (o CxFlowEventHandlerOutput) Event() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandler) *string { return v.Event }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The unique identifier of this event handler.
+func (o CxFlowEventHandlerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandler) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The target flow to transition to.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+func (o CxFlowEventHandlerOutput) TargetFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandler) *string { return v.TargetFlow }).(pulumi.StringPtrOutput)
+}
+
+// The target page to transition to.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxFlowEventHandlerOutput) TargetPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandler) *string { return v.TargetPage }).(pulumi.StringPtrOutput)
+}
+
+// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+// Structure is documented below.
+func (o CxFlowEventHandlerOutput) TriggerFulfillment() CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandler) *CxFlowEventHandlerTriggerFulfillment { return v.TriggerFulfillment }).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+type CxFlowEventHandlerArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandler)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerArrayOutput) ToCxFlowEventHandlerArrayOutput() CxFlowEventHandlerArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerArrayOutput) ToCxFlowEventHandlerArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandler {
+		return vs[0].([]CxFlowEventHandler)[vs[1].(int)]
+	}).(CxFlowEventHandlerOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillment struct {
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages []CxFlowEventHandlerTriggerFulfillmentMessage `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag *string `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook *string `pulumi:"webhook"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentArgs and CxFlowEventHandlerTriggerFulfillmentOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentInput` via:
+//
+//          CxFlowEventHandlerTriggerFulfillmentArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentOutput() CxFlowEventHandlerTriggerFulfillmentOutput
+	ToCxFlowEventHandlerTriggerFulfillmentOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentArgs struct {
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages CxFlowEventHandlerTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook pulumi.StringPtrInput `pulumi:"webhook"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFulfillmentOutput() CxFlowEventHandlerTriggerFulfillmentOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFulfillmentOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFulfillmentPtrOutput() CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentOutput).ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentArgs, CxFlowEventHandlerTriggerFulfillmentPtr and CxFlowEventHandlerTriggerFulfillmentPtrOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentPtrInput` via:
+//
+//          CxFlowEventHandlerTriggerFulfillmentArgs{...}
+//
+//  or:
+//
+//          nil
+type CxFlowEventHandlerTriggerFulfillmentPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentPtrOutput() CxFlowEventHandlerTriggerFulfillmentPtrOutput
+	ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput
+}
+
+type cxFlowEventHandlerTriggerFulfillmentPtrType CxFlowEventHandlerTriggerFulfillmentArgs
+
+func CxFlowEventHandlerTriggerFulfillmentPtr(v *CxFlowEventHandlerTriggerFulfillmentArgs) CxFlowEventHandlerTriggerFulfillmentPtrInput {
+	return (*cxFlowEventHandlerTriggerFulfillmentPtrType)(v)
+}
+
+func (*cxFlowEventHandlerTriggerFulfillmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentPtrType) ToCxFlowEventHandlerTriggerFulfillmentPtrOutput() CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentPtrType) ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerFulfillmentOutput() CxFlowEventHandlerTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerFulfillmentOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerFulfillmentPtrOutput() CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return o.ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) *CxFlowEventHandlerTriggerFulfillment {
+		return &v
+	}).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) Messages() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) []CxFlowEventHandlerTriggerFulfillmentMessage {
+		return v.Messages
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) *string { return v.Webhook }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentPtrOutput() CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) CxFlowEventHandlerTriggerFulfillment { return *v }).(CxFlowEventHandlerTriggerFulfillmentOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Messages() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) []CxFlowEventHandlerTriggerFulfillmentMessage {
+		if v == nil {
+			return nil
+		}
+		return v.Messages
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessage struct {
+	// A collection of text responses.
+	Text *CxFlowEventHandlerTriggerFulfillmentMessageText `pulumi:"text"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageArgs and CxFlowEventHandlerTriggerFulfillmentMessageOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageInput` via:
+//
+//          CxFlowEventHandlerTriggerFulfillmentMessageArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentMessageInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageArgs struct {
+	// A collection of text responses.
+	Text CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutput)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageArray and CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageArrayInput` via:
+//
+//          CxFlowEventHandlerTriggerFulfillmentMessageArray{ CxFlowEventHandlerTriggerFulfillmentMessageArgs{...} }
+type CxFlowEventHandlerTriggerFulfillmentMessageArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutput() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageArray []CxFlowEventHandlerTriggerFulfillmentMessageInput
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageArray) ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutput() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageArray) ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutput {
+	return o
+}
+
+// A collection of text responses.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) Text() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageText {
+		return v.Text
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutput() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandlerTriggerFulfillmentMessage {
+		return vs[0].([]CxFlowEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageText struct {
+	// -
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// A collection of text responses.
+	Texts []string `pulumi:"texts"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageTextInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageTextArgs and CxFlowEventHandlerTriggerFulfillmentMessageTextOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageTextInput` via:
+//
+//          CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentMessageTextInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageTextArgs struct {
+	// -
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// A collection of text responses.
+	Texts pulumi.StringArrayInput `pulumi:"texts"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput).ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageTextArgs, CxFlowEventHandlerTriggerFulfillmentMessageTextPtr and CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput` via:
+//
+//          CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{...}
+//
+//  or:
+//
+//          nil
+type CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput
+}
+
+type cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
+
+func CxFlowEventHandlerTriggerFulfillmentMessageTextPtr(v *CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput {
+	return (*cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType)(v)
+}
+
+func (*cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o.ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageText) *CxFlowEventHandlerTriggerFulfillmentMessageText {
+		return &v
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+// -
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text responses.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageText) CxFlowEventHandlerTriggerFulfillmentMessageText {
+		return *v
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput)
+}
+
+// -
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text responses.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageText) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Texts
+	}).(pulumi.StringArrayOutput)
+}
+
+type CxFlowNluSettings struct {
+	// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+	// If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+	ClassificationThreshold *float64 `pulumi:"classificationThreshold"`
+	// Indicates NLU model training mode.
+	// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+	// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+	//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+	ModelTrainingMode *string `pulumi:"modelTrainingMode"`
+	// Indicates the type of NLU model.
+	// * MODEL_TYPE_STANDARD: Use standard NLU model.
+	// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+	//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+	ModelType *string `pulumi:"modelType"`
+}
+
+// CxFlowNluSettingsInput is an input type that accepts CxFlowNluSettingsArgs and CxFlowNluSettingsOutput values.
+// You can construct a concrete instance of `CxFlowNluSettingsInput` via:
+//
+//          CxFlowNluSettingsArgs{...}
+type CxFlowNluSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowNluSettingsOutput() CxFlowNluSettingsOutput
+	ToCxFlowNluSettingsOutputWithContext(context.Context) CxFlowNluSettingsOutput
+}
+
+type CxFlowNluSettingsArgs struct {
+	// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+	// If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+	ClassificationThreshold pulumi.Float64PtrInput `pulumi:"classificationThreshold"`
+	// Indicates NLU model training mode.
+	// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+	// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+	//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+	ModelTrainingMode pulumi.StringPtrInput `pulumi:"modelTrainingMode"`
+	// Indicates the type of NLU model.
+	// * MODEL_TYPE_STANDARD: Use standard NLU model.
+	// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+	//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+	ModelType pulumi.StringPtrInput `pulumi:"modelType"`
+}
+
+func (CxFlowNluSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowNluSettings)(nil)).Elem()
+}
+
+func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsOutput() CxFlowNluSettingsOutput {
+	return i.ToCxFlowNluSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsOutputWithContext(ctx context.Context) CxFlowNluSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowNluSettingsOutput)
+}
+
+func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsPtrOutput() CxFlowNluSettingsPtrOutput {
+	return i.ToCxFlowNluSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsPtrOutputWithContext(ctx context.Context) CxFlowNluSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowNluSettingsOutput).ToCxFlowNluSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowNluSettingsPtrInput is an input type that accepts CxFlowNluSettingsArgs, CxFlowNluSettingsPtr and CxFlowNluSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowNluSettingsPtrInput` via:
+//
+//          CxFlowNluSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type CxFlowNluSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowNluSettingsPtrOutput() CxFlowNluSettingsPtrOutput
+	ToCxFlowNluSettingsPtrOutputWithContext(context.Context) CxFlowNluSettingsPtrOutput
+}
+
+type cxFlowNluSettingsPtrType CxFlowNluSettingsArgs
+
+func CxFlowNluSettingsPtr(v *CxFlowNluSettingsArgs) CxFlowNluSettingsPtrInput {
+	return (*cxFlowNluSettingsPtrType)(v)
+}
+
+func (*cxFlowNluSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowNluSettings)(nil)).Elem()
+}
+
+func (i *cxFlowNluSettingsPtrType) ToCxFlowNluSettingsPtrOutput() CxFlowNluSettingsPtrOutput {
+	return i.ToCxFlowNluSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowNluSettingsPtrType) ToCxFlowNluSettingsPtrOutputWithContext(ctx context.Context) CxFlowNluSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowNluSettingsPtrOutput)
+}
+
+type CxFlowNluSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowNluSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowNluSettings)(nil)).Elem()
+}
+
+func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsOutput() CxFlowNluSettingsOutput {
+	return o
+}
+
+func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsOutputWithContext(ctx context.Context) CxFlowNluSettingsOutput {
+	return o
+}
+
+func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsPtrOutput() CxFlowNluSettingsPtrOutput {
+	return o.ToCxFlowNluSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx context.Context) CxFlowNluSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowNluSettings) *CxFlowNluSettings {
+		return &v
+	}).(CxFlowNluSettingsPtrOutput)
+}
+
+// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+// If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+func (o CxFlowNluSettingsOutput) ClassificationThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CxFlowNluSettings) *float64 { return v.ClassificationThreshold }).(pulumi.Float64PtrOutput)
+}
+
+// Indicates NLU model training mode.
+// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+func (o CxFlowNluSettingsOutput) ModelTrainingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowNluSettings) *string { return v.ModelTrainingMode }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the type of NLU model.
+// * MODEL_TYPE_STANDARD: Use standard NLU model.
+// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+func (o CxFlowNluSettingsOutput) ModelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowNluSettings) *string { return v.ModelType }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowNluSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowNluSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowNluSettings)(nil)).Elem()
+}
+
+func (o CxFlowNluSettingsPtrOutput) ToCxFlowNluSettingsPtrOutput() CxFlowNluSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowNluSettingsPtrOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx context.Context) CxFlowNluSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowNluSettingsPtrOutput) Elem() CxFlowNluSettingsOutput {
+	return o.ApplyT(func(v *CxFlowNluSettings) CxFlowNluSettings { return *v }).(CxFlowNluSettingsOutput)
+}
+
+// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+// If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+func (o CxFlowNluSettingsPtrOutput) ClassificationThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CxFlowNluSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ClassificationThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Indicates NLU model training mode.
+// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+func (o CxFlowNluSettingsPtrOutput) ModelTrainingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowNluSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelTrainingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates the type of NLU model.
+// * MODEL_TYPE_STANDARD: Use standard NLU model.
+// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+func (o CxFlowNluSettingsPtrOutput) ModelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowNluSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelType
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRoute struct {
+	// The condition to evaluate against form parameters or session parameters.
+	// At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+	Condition *string `pulumi:"condition"`
+	// The unique identifier of an Intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+	Intent *string `pulumi:"intent"`
+	// -
+	// The unique identifier of this event handler.
+	Name *string `pulumi:"name"`
+	// The target flow to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	TargetFlow *string `pulumi:"targetFlow"`
+	// The target page to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	TargetPage *string `pulumi:"targetPage"`
+	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// Structure is documented below.
+	TriggerFulfillment *CxFlowTransitionRouteTriggerFulfillment `pulumi:"triggerFulfillment"`
+}
+
+// CxFlowTransitionRouteInput is an input type that accepts CxFlowTransitionRouteArgs and CxFlowTransitionRouteOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteInput` via:
+//
+//          CxFlowTransitionRouteArgs{...}
+type CxFlowTransitionRouteInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteOutput() CxFlowTransitionRouteOutput
+	ToCxFlowTransitionRouteOutputWithContext(context.Context) CxFlowTransitionRouteOutput
+}
+
+type CxFlowTransitionRouteArgs struct {
+	// The condition to evaluate against form parameters or session parameters.
+	// At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// The unique identifier of an Intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+	Intent pulumi.StringPtrInput `pulumi:"intent"`
+	// -
+	// The unique identifier of this event handler.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The target flow to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	TargetFlow pulumi.StringPtrInput `pulumi:"targetFlow"`
+	// The target page to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	TargetPage pulumi.StringPtrInput `pulumi:"targetPage"`
+	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// Structure is documented below.
+	TriggerFulfillment CxFlowTransitionRouteTriggerFulfillmentPtrInput `pulumi:"triggerFulfillment"`
+}
+
+func (CxFlowTransitionRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRoute)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteArgs) ToCxFlowTransitionRouteOutput() CxFlowTransitionRouteOutput {
+	return i.ToCxFlowTransitionRouteOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteArgs) ToCxFlowTransitionRouteOutputWithContext(ctx context.Context) CxFlowTransitionRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteOutput)
+}
+
+// CxFlowTransitionRouteArrayInput is an input type that accepts CxFlowTransitionRouteArray and CxFlowTransitionRouteArrayOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteArrayInput` via:
+//
+//          CxFlowTransitionRouteArray{ CxFlowTransitionRouteArgs{...} }
+type CxFlowTransitionRouteArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteArrayOutput() CxFlowTransitionRouteArrayOutput
+	ToCxFlowTransitionRouteArrayOutputWithContext(context.Context) CxFlowTransitionRouteArrayOutput
+}
+
+type CxFlowTransitionRouteArray []CxFlowTransitionRouteInput
+
+func (CxFlowTransitionRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRoute)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteArray) ToCxFlowTransitionRouteArrayOutput() CxFlowTransitionRouteArrayOutput {
+	return i.ToCxFlowTransitionRouteArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteArray) ToCxFlowTransitionRouteArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteArrayOutput)
+}
+
+type CxFlowTransitionRouteOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRoute)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteOutput) ToCxFlowTransitionRouteOutput() CxFlowTransitionRouteOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteOutput) ToCxFlowTransitionRouteOutputWithContext(ctx context.Context) CxFlowTransitionRouteOutput {
+	return o
+}
+
+// The condition to evaluate against form parameters or session parameters.
+// At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+func (o CxFlowTransitionRouteOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRoute) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of an Intent.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+func (o CxFlowTransitionRouteOutput) Intent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRoute) *string { return v.Intent }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The unique identifier of this event handler.
+func (o CxFlowTransitionRouteOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRoute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The target flow to transition to.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+func (o CxFlowTransitionRouteOutput) TargetFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRoute) *string { return v.TargetFlow }).(pulumi.StringPtrOutput)
+}
+
+// The target page to transition to.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxFlowTransitionRouteOutput) TargetPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRoute) *string { return v.TargetPage }).(pulumi.StringPtrOutput)
+}
+
+// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+// Structure is documented below.
+func (o CxFlowTransitionRouteOutput) TriggerFulfillment() CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRoute) *CxFlowTransitionRouteTriggerFulfillment { return v.TriggerFulfillment }).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
+}
+
+type CxFlowTransitionRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRoute)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteArrayOutput) ToCxFlowTransitionRouteArrayOutput() CxFlowTransitionRouteArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteArrayOutput) ToCxFlowTransitionRouteArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowTransitionRoute {
+		return vs[0].([]CxFlowTransitionRoute)[vs[1].(int)]
+	}).(CxFlowTransitionRouteOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillment struct {
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages []CxFlowTransitionRouteTriggerFulfillmentMessage `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag *string `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook *string `pulumi:"webhook"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentArgs and CxFlowTransitionRouteTriggerFulfillmentOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentInput` via:
+//
+//          CxFlowTransitionRouteTriggerFulfillmentArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentOutput() CxFlowTransitionRouteTriggerFulfillmentOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentArgs struct {
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook pulumi.StringPtrInput `pulumi:"webhook"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillment)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTriggerFulfillmentOutput() CxFlowTransitionRouteTriggerFulfillmentOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTriggerFulfillmentOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutput() CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentOutput).ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentArgs, CxFlowTransitionRouteTriggerFulfillmentPtr and CxFlowTransitionRouteTriggerFulfillmentPtrOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentPtrInput` via:
+//
+//          CxFlowTransitionRouteTriggerFulfillmentArgs{...}
+//
+//  or:
+//
+//          nil
+type CxFlowTransitionRouteTriggerFulfillmentPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentPtrOutput() CxFlowTransitionRouteTriggerFulfillmentPtrOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput
+}
+
+type cxFlowTransitionRouteTriggerFulfillmentPtrType CxFlowTransitionRouteTriggerFulfillmentArgs
+
+func CxFlowTransitionRouteTriggerFulfillmentPtr(v *CxFlowTransitionRouteTriggerFulfillmentArgs) CxFlowTransitionRouteTriggerFulfillmentPtrInput {
+	return (*cxFlowTransitionRouteTriggerFulfillmentPtrType)(v)
+}
+
+func (*cxFlowTransitionRouteTriggerFulfillmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillment)(nil)).Elem()
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentPtrType) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutput() CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentPtrType) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTriggerFulfillmentOutput() CxFlowTransitionRouteTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTriggerFulfillmentOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutput() CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return o.ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) *CxFlowTransitionRouteTriggerFulfillment {
+		return &v
+	}).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) Messages() CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) []CxFlowTransitionRouteTriggerFulfillmentMessage {
+		return v.Messages
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) *string { return v.Webhook }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutput() CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) CxFlowTransitionRouteTriggerFulfillment { return *v }).(CxFlowTransitionRouteTriggerFulfillmentOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Messages() CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) []CxFlowTransitionRouteTriggerFulfillmentMessage {
+		if v == nil {
+			return nil
+		}
+		return v.Messages
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessage struct {
+	// A collection of text responses.
+	Text *CxFlowTransitionRouteTriggerFulfillmentMessageText `pulumi:"text"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageArgs and CxFlowTransitionRouteTriggerFulfillmentMessageOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageInput` via:
+//
+//          CxFlowTransitionRouteTriggerFulfillmentMessageArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentMessageInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageArgs struct {
+	// A collection of text responses.
+	Text CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutput)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageArray and CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput` via:
+//
+//          CxFlowTransitionRouteTriggerFulfillmentMessageArray{ CxFlowTransitionRouteTriggerFulfillmentMessageArgs{...} }
+type CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput() CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageArray []CxFlowTransitionRouteTriggerFulfillmentMessageInput
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRouteTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageArray) ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput() CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageArray) ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
+	return o
+}
+
+// A collection of text responses.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) Text() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageText {
+		return v.Text
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRouteTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput() CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowTransitionRouteTriggerFulfillmentMessage {
+		return vs[0].([]CxFlowTransitionRouteTriggerFulfillmentMessage)[vs[1].(int)]
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageText struct {
+	// -
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// A collection of text responses.
+	Texts []string `pulumi:"texts"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageTextInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs and CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageTextInput` via:
+//
+//          CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentMessageTextInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs struct {
+	// -
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// A collection of text responses.
+	Texts pulumi.StringArrayInput `pulumi:"texts"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput).ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs, CxFlowTransitionRouteTriggerFulfillmentMessageTextPtr and CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput` via:
+//
+//          CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{...}
+//
+//  or:
+//
+//          nil
+type CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput
+}
+
+type cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs
+
+func CxFlowTransitionRouteTriggerFulfillmentMessageTextPtr(v *CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput {
+	return (*cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType)(v)
+}
+
+func (*cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return o.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageText) *CxFlowTransitionRouteTriggerFulfillmentMessageText {
+		return &v
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
+}
+
+// -
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text responses.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageText) CxFlowTransitionRouteTriggerFulfillmentMessageText {
+		return *v
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput)
+}
+
+// -
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text responses.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageText) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Texts
+	}).(pulumi.StringArrayOutput)
+}
+
+type CxIntentParameter struct {
+	// The entity type of the parameter.
+	// Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+	EntityType string `pulumi:"entityType"`
+	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+	Id string `pulumi:"id"`
+	// Indicates whether the parameter represents a list of values.
+	IsList *bool `pulumi:"isList"`
+	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+	// Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+	Redact *bool `pulumi:"redact"`
+}
+
+// CxIntentParameterInput is an input type that accepts CxIntentParameterArgs and CxIntentParameterOutput values.
+// You can construct a concrete instance of `CxIntentParameterInput` via:
+//
+//          CxIntentParameterArgs{...}
+type CxIntentParameterInput interface {
+	pulumi.Input
+
+	ToCxIntentParameterOutput() CxIntentParameterOutput
+	ToCxIntentParameterOutputWithContext(context.Context) CxIntentParameterOutput
+}
+
+type CxIntentParameterArgs struct {
+	// The entity type of the parameter.
+	// Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the parameter represents a list of values.
+	IsList pulumi.BoolPtrInput `pulumi:"isList"`
+	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+	// Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+	Redact pulumi.BoolPtrInput `pulumi:"redact"`
+}
+
+func (CxIntentParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxIntentParameter)(nil)).Elem()
+}
+
+func (i CxIntentParameterArgs) ToCxIntentParameterOutput() CxIntentParameterOutput {
+	return i.ToCxIntentParameterOutputWithContext(context.Background())
+}
+
+func (i CxIntentParameterArgs) ToCxIntentParameterOutputWithContext(ctx context.Context) CxIntentParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxIntentParameterOutput)
+}
+
+// CxIntentParameterArrayInput is an input type that accepts CxIntentParameterArray and CxIntentParameterArrayOutput values.
+// You can construct a concrete instance of `CxIntentParameterArrayInput` via:
+//
+//          CxIntentParameterArray{ CxIntentParameterArgs{...} }
+type CxIntentParameterArrayInput interface {
+	pulumi.Input
+
+	ToCxIntentParameterArrayOutput() CxIntentParameterArrayOutput
+	ToCxIntentParameterArrayOutputWithContext(context.Context) CxIntentParameterArrayOutput
+}
+
+type CxIntentParameterArray []CxIntentParameterInput
+
+func (CxIntentParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxIntentParameter)(nil)).Elem()
+}
+
+func (i CxIntentParameterArray) ToCxIntentParameterArrayOutput() CxIntentParameterArrayOutput {
+	return i.ToCxIntentParameterArrayOutputWithContext(context.Background())
+}
+
+func (i CxIntentParameterArray) ToCxIntentParameterArrayOutputWithContext(ctx context.Context) CxIntentParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxIntentParameterArrayOutput)
+}
+
+type CxIntentParameterOutput struct{ *pulumi.OutputState }
+
+func (CxIntentParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxIntentParameter)(nil)).Elem()
+}
+
+func (o CxIntentParameterOutput) ToCxIntentParameterOutput() CxIntentParameterOutput {
+	return o
+}
+
+func (o CxIntentParameterOutput) ToCxIntentParameterOutputWithContext(ctx context.Context) CxIntentParameterOutput {
+	return o
+}
+
+// The entity type of the parameter.
+// Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+func (o CxIntentParameterOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v CxIntentParameter) string { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+func (o CxIntentParameterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CxIntentParameter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether the parameter represents a list of values.
+func (o CxIntentParameterOutput) IsList() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxIntentParameter) *bool { return v.IsList }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+// Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+func (o CxIntentParameterOutput) Redact() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxIntentParameter) *bool { return v.Redact }).(pulumi.BoolPtrOutput)
+}
+
+type CxIntentParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (CxIntentParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxIntentParameter)(nil)).Elem()
+}
+
+func (o CxIntentParameterArrayOutput) ToCxIntentParameterArrayOutput() CxIntentParameterArrayOutput {
+	return o
+}
+
+func (o CxIntentParameterArrayOutput) ToCxIntentParameterArrayOutputWithContext(ctx context.Context) CxIntentParameterArrayOutput {
+	return o
+}
+
+func (o CxIntentParameterArrayOutput) Index(i pulumi.IntInput) CxIntentParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxIntentParameter {
+		return vs[0].([]CxIntentParameter)[vs[1].(int)]
+	}).(CxIntentParameterOutput)
+}
+
+type CxIntentTrainingPhrase struct {
+	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+	Id *string `pulumi:"id"`
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+	// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+	// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+	// If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+	// If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+	// Part.text is set to a part of the phrase that has no parameters.
+	// Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+	// Structure is documented below.
+	Parts []CxIntentTrainingPhrasePart `pulumi:"parts"`
+	// Indicates how many times this example was added to the intent.
+	RepeatCount *int `pulumi:"repeatCount"`
+}
+
+// CxIntentTrainingPhraseInput is an input type that accepts CxIntentTrainingPhraseArgs and CxIntentTrainingPhraseOutput values.
+// You can construct a concrete instance of `CxIntentTrainingPhraseInput` via:
+//
+//          CxIntentTrainingPhraseArgs{...}
+type CxIntentTrainingPhraseInput interface {
+	pulumi.Input
+
+	ToCxIntentTrainingPhraseOutput() CxIntentTrainingPhraseOutput
+	ToCxIntentTrainingPhraseOutputWithContext(context.Context) CxIntentTrainingPhraseOutput
+}
+
+type CxIntentTrainingPhraseArgs struct {
+	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+	// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+	// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+	// If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+	// If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+	// Part.text is set to a part of the phrase that has no parameters.
+	// Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+	// Structure is documented below.
+	Parts CxIntentTrainingPhrasePartArrayInput `pulumi:"parts"`
+	// Indicates how many times this example was added to the intent.
+	RepeatCount pulumi.IntPtrInput `pulumi:"repeatCount"`
+}
+
+func (CxIntentTrainingPhraseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxIntentTrainingPhrase)(nil)).Elem()
+}
+
+func (i CxIntentTrainingPhraseArgs) ToCxIntentTrainingPhraseOutput() CxIntentTrainingPhraseOutput {
+	return i.ToCxIntentTrainingPhraseOutputWithContext(context.Background())
+}
+
+func (i CxIntentTrainingPhraseArgs) ToCxIntentTrainingPhraseOutputWithContext(ctx context.Context) CxIntentTrainingPhraseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhraseOutput)
+}
+
+// CxIntentTrainingPhraseArrayInput is an input type that accepts CxIntentTrainingPhraseArray and CxIntentTrainingPhraseArrayOutput values.
+// You can construct a concrete instance of `CxIntentTrainingPhraseArrayInput` via:
+//
+//          CxIntentTrainingPhraseArray{ CxIntentTrainingPhraseArgs{...} }
+type CxIntentTrainingPhraseArrayInput interface {
+	pulumi.Input
+
+	ToCxIntentTrainingPhraseArrayOutput() CxIntentTrainingPhraseArrayOutput
+	ToCxIntentTrainingPhraseArrayOutputWithContext(context.Context) CxIntentTrainingPhraseArrayOutput
+}
+
+type CxIntentTrainingPhraseArray []CxIntentTrainingPhraseInput
+
+func (CxIntentTrainingPhraseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxIntentTrainingPhrase)(nil)).Elem()
+}
+
+func (i CxIntentTrainingPhraseArray) ToCxIntentTrainingPhraseArrayOutput() CxIntentTrainingPhraseArrayOutput {
+	return i.ToCxIntentTrainingPhraseArrayOutputWithContext(context.Background())
+}
+
+func (i CxIntentTrainingPhraseArray) ToCxIntentTrainingPhraseArrayOutputWithContext(ctx context.Context) CxIntentTrainingPhraseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhraseArrayOutput)
+}
+
+type CxIntentTrainingPhraseOutput struct{ *pulumi.OutputState }
+
+func (CxIntentTrainingPhraseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxIntentTrainingPhrase)(nil)).Elem()
+}
+
+func (o CxIntentTrainingPhraseOutput) ToCxIntentTrainingPhraseOutput() CxIntentTrainingPhraseOutput {
+	return o
+}
+
+func (o CxIntentTrainingPhraseOutput) ToCxIntentTrainingPhraseOutputWithContext(ctx context.Context) CxIntentTrainingPhraseOutput {
+	return o
+}
+
+// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+func (o CxIntentTrainingPhraseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxIntentTrainingPhrase) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+// If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+// If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+// Part.text is set to a part of the phrase that has no parameters.
+// Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+// Structure is documented below.
+func (o CxIntentTrainingPhraseOutput) Parts() CxIntentTrainingPhrasePartArrayOutput {
+	return o.ApplyT(func(v CxIntentTrainingPhrase) []CxIntentTrainingPhrasePart { return v.Parts }).(CxIntentTrainingPhrasePartArrayOutput)
+}
+
+// Indicates how many times this example was added to the intent.
+func (o CxIntentTrainingPhraseOutput) RepeatCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxIntentTrainingPhrase) *int { return v.RepeatCount }).(pulumi.IntPtrOutput)
+}
+
+type CxIntentTrainingPhraseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxIntentTrainingPhraseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxIntentTrainingPhrase)(nil)).Elem()
+}
+
+func (o CxIntentTrainingPhraseArrayOutput) ToCxIntentTrainingPhraseArrayOutput() CxIntentTrainingPhraseArrayOutput {
+	return o
+}
+
+func (o CxIntentTrainingPhraseArrayOutput) ToCxIntentTrainingPhraseArrayOutputWithContext(ctx context.Context) CxIntentTrainingPhraseArrayOutput {
+	return o
+}
+
+func (o CxIntentTrainingPhraseArrayOutput) Index(i pulumi.IntInput) CxIntentTrainingPhraseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxIntentTrainingPhrase {
+		return vs[0].([]CxIntentTrainingPhrase)[vs[1].(int)]
+	}).(CxIntentTrainingPhraseOutput)
+}
+
+type CxIntentTrainingPhrasePart struct {
+	// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+	ParameterId *string `pulumi:"parameterId"`
+	// The text for this part.
+	Text string `pulumi:"text"`
+}
+
+// CxIntentTrainingPhrasePartInput is an input type that accepts CxIntentTrainingPhrasePartArgs and CxIntentTrainingPhrasePartOutput values.
+// You can construct a concrete instance of `CxIntentTrainingPhrasePartInput` via:
+//
+//          CxIntentTrainingPhrasePartArgs{...}
+type CxIntentTrainingPhrasePartInput interface {
+	pulumi.Input
+
+	ToCxIntentTrainingPhrasePartOutput() CxIntentTrainingPhrasePartOutput
+	ToCxIntentTrainingPhrasePartOutputWithContext(context.Context) CxIntentTrainingPhrasePartOutput
+}
+
+type CxIntentTrainingPhrasePartArgs struct {
+	// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+	ParameterId pulumi.StringPtrInput `pulumi:"parameterId"`
+	// The text for this part.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (CxIntentTrainingPhrasePartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxIntentTrainingPhrasePart)(nil)).Elem()
+}
+
+func (i CxIntentTrainingPhrasePartArgs) ToCxIntentTrainingPhrasePartOutput() CxIntentTrainingPhrasePartOutput {
+	return i.ToCxIntentTrainingPhrasePartOutputWithContext(context.Background())
+}
+
+func (i CxIntentTrainingPhrasePartArgs) ToCxIntentTrainingPhrasePartOutputWithContext(ctx context.Context) CxIntentTrainingPhrasePartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhrasePartOutput)
+}
+
+// CxIntentTrainingPhrasePartArrayInput is an input type that accepts CxIntentTrainingPhrasePartArray and CxIntentTrainingPhrasePartArrayOutput values.
+// You can construct a concrete instance of `CxIntentTrainingPhrasePartArrayInput` via:
+//
+//          CxIntentTrainingPhrasePartArray{ CxIntentTrainingPhrasePartArgs{...} }
+type CxIntentTrainingPhrasePartArrayInput interface {
+	pulumi.Input
+
+	ToCxIntentTrainingPhrasePartArrayOutput() CxIntentTrainingPhrasePartArrayOutput
+	ToCxIntentTrainingPhrasePartArrayOutputWithContext(context.Context) CxIntentTrainingPhrasePartArrayOutput
+}
+
+type CxIntentTrainingPhrasePartArray []CxIntentTrainingPhrasePartInput
+
+func (CxIntentTrainingPhrasePartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxIntentTrainingPhrasePart)(nil)).Elem()
+}
+
+func (i CxIntentTrainingPhrasePartArray) ToCxIntentTrainingPhrasePartArrayOutput() CxIntentTrainingPhrasePartArrayOutput {
+	return i.ToCxIntentTrainingPhrasePartArrayOutputWithContext(context.Background())
+}
+
+func (i CxIntentTrainingPhrasePartArray) ToCxIntentTrainingPhrasePartArrayOutputWithContext(ctx context.Context) CxIntentTrainingPhrasePartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhrasePartArrayOutput)
+}
+
+type CxIntentTrainingPhrasePartOutput struct{ *pulumi.OutputState }
+
+func (CxIntentTrainingPhrasePartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxIntentTrainingPhrasePart)(nil)).Elem()
+}
+
+func (o CxIntentTrainingPhrasePartOutput) ToCxIntentTrainingPhrasePartOutput() CxIntentTrainingPhrasePartOutput {
+	return o
+}
+
+func (o CxIntentTrainingPhrasePartOutput) ToCxIntentTrainingPhrasePartOutputWithContext(ctx context.Context) CxIntentTrainingPhrasePartOutput {
+	return o
+}
+
+// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+func (o CxIntentTrainingPhrasePartOutput) ParameterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxIntentTrainingPhrasePart) *string { return v.ParameterId }).(pulumi.StringPtrOutput)
+}
+
+// The text for this part.
+func (o CxIntentTrainingPhrasePartOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v CxIntentTrainingPhrasePart) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type CxIntentTrainingPhrasePartArrayOutput struct{ *pulumi.OutputState }
+
+func (CxIntentTrainingPhrasePartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxIntentTrainingPhrasePart)(nil)).Elem()
+}
+
+func (o CxIntentTrainingPhrasePartArrayOutput) ToCxIntentTrainingPhrasePartArrayOutput() CxIntentTrainingPhrasePartArrayOutput {
+	return o
+}
+
+func (o CxIntentTrainingPhrasePartArrayOutput) ToCxIntentTrainingPhrasePartArrayOutputWithContext(ctx context.Context) CxIntentTrainingPhrasePartArrayOutput {
+	return o
+}
+
+func (o CxIntentTrainingPhrasePartArrayOutput) Index(i pulumi.IntInput) CxIntentTrainingPhrasePartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxIntentTrainingPhrasePart {
+		return vs[0].([]CxIntentTrainingPhrasePart)[vs[1].(int)]
+	}).(CxIntentTrainingPhrasePartOutput)
+}
+
+type CxVersionNluSetting struct {
+	ClassificationThreshold *float64 `pulumi:"classificationThreshold"`
+	ModelTrainingMode       *string  `pulumi:"modelTrainingMode"`
+	ModelType               *string  `pulumi:"modelType"`
+}
+
+// CxVersionNluSettingInput is an input type that accepts CxVersionNluSettingArgs and CxVersionNluSettingOutput values.
+// You can construct a concrete instance of `CxVersionNluSettingInput` via:
+//
+//          CxVersionNluSettingArgs{...}
+type CxVersionNluSettingInput interface {
+	pulumi.Input
+
+	ToCxVersionNluSettingOutput() CxVersionNluSettingOutput
+	ToCxVersionNluSettingOutputWithContext(context.Context) CxVersionNluSettingOutput
+}
+
+type CxVersionNluSettingArgs struct {
+	ClassificationThreshold pulumi.Float64PtrInput `pulumi:"classificationThreshold"`
+	ModelTrainingMode       pulumi.StringPtrInput  `pulumi:"modelTrainingMode"`
+	ModelType               pulumi.StringPtrInput  `pulumi:"modelType"`
+}
+
+func (CxVersionNluSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxVersionNluSetting)(nil)).Elem()
+}
+
+func (i CxVersionNluSettingArgs) ToCxVersionNluSettingOutput() CxVersionNluSettingOutput {
+	return i.ToCxVersionNluSettingOutputWithContext(context.Background())
+}
+
+func (i CxVersionNluSettingArgs) ToCxVersionNluSettingOutputWithContext(ctx context.Context) CxVersionNluSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxVersionNluSettingOutput)
+}
+
+// CxVersionNluSettingArrayInput is an input type that accepts CxVersionNluSettingArray and CxVersionNluSettingArrayOutput values.
+// You can construct a concrete instance of `CxVersionNluSettingArrayInput` via:
+//
+//          CxVersionNluSettingArray{ CxVersionNluSettingArgs{...} }
+type CxVersionNluSettingArrayInput interface {
+	pulumi.Input
+
+	ToCxVersionNluSettingArrayOutput() CxVersionNluSettingArrayOutput
+	ToCxVersionNluSettingArrayOutputWithContext(context.Context) CxVersionNluSettingArrayOutput
+}
+
+type CxVersionNluSettingArray []CxVersionNluSettingInput
+
+func (CxVersionNluSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxVersionNluSetting)(nil)).Elem()
+}
+
+func (i CxVersionNluSettingArray) ToCxVersionNluSettingArrayOutput() CxVersionNluSettingArrayOutput {
+	return i.ToCxVersionNluSettingArrayOutputWithContext(context.Background())
+}
+
+func (i CxVersionNluSettingArray) ToCxVersionNluSettingArrayOutputWithContext(ctx context.Context) CxVersionNluSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxVersionNluSettingArrayOutput)
+}
+
+type CxVersionNluSettingOutput struct{ *pulumi.OutputState }
+
+func (CxVersionNluSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxVersionNluSetting)(nil)).Elem()
+}
+
+func (o CxVersionNluSettingOutput) ToCxVersionNluSettingOutput() CxVersionNluSettingOutput {
+	return o
+}
+
+func (o CxVersionNluSettingOutput) ToCxVersionNluSettingOutputWithContext(ctx context.Context) CxVersionNluSettingOutput {
+	return o
+}
+
+func (o CxVersionNluSettingOutput) ClassificationThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CxVersionNluSetting) *float64 { return v.ClassificationThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o CxVersionNluSettingOutput) ModelTrainingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxVersionNluSetting) *string { return v.ModelTrainingMode }).(pulumi.StringPtrOutput)
+}
+
+func (o CxVersionNluSettingOutput) ModelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxVersionNluSetting) *string { return v.ModelType }).(pulumi.StringPtrOutput)
+}
+
+type CxVersionNluSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (CxVersionNluSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxVersionNluSetting)(nil)).Elem()
+}
+
+func (o CxVersionNluSettingArrayOutput) ToCxVersionNluSettingArrayOutput() CxVersionNluSettingArrayOutput {
+	return o
+}
+
+func (o CxVersionNluSettingArrayOutput) ToCxVersionNluSettingArrayOutputWithContext(ctx context.Context) CxVersionNluSettingArrayOutput {
+	return o
+}
+
+func (o CxVersionNluSettingArrayOutput) Index(i pulumi.IntInput) CxVersionNluSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxVersionNluSetting {
+		return vs[0].([]CxVersionNluSetting)[vs[1].(int)]
+	}).(CxVersionNluSettingOutput)
+}
+
 type EntityTypeEntity struct {
 	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
 	// could be green onions.
@@ -671,6 +2549,32 @@ func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFoll
 func init() {
 	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowNluSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowNluSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxIntentParameterOutput{})
+	pulumi.RegisterOutputType(CxIntentParameterArrayOutput{})
+	pulumi.RegisterOutputType(CxIntentTrainingPhraseOutput{})
+	pulumi.RegisterOutputType(CxIntentTrainingPhraseArrayOutput{})
+	pulumi.RegisterOutputType(CxIntentTrainingPhrasePartOutput{})
+	pulumi.RegisterOutputType(CxIntentTrainingPhrasePartArrayOutput{})
+	pulumi.RegisterOutputType(CxVersionNluSettingOutput{})
+	pulumi.RegisterOutputType(CxVersionNluSettingArrayOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentFeatureOutput{})

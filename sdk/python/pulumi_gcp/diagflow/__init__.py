@@ -7,6 +7,9 @@ import typing
 # Export this package's modules as members:
 from .agent import *
 from .cx_agent import *
+from .cx_flow import *
+from .cx_intent import *
+from .cx_version import *
 from .entity_type import *
 from .fulfillment import *
 from .intent import *

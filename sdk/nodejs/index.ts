@@ -61,6 +61,7 @@ import * as memcache from "./memcache";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
 import * as networkmanagement from "./networkmanagement";
+import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
 import * as organizations from "./organizations";
 import * as osconfig from "./osconfig";
@@ -140,6 +141,7 @@ export {
     ml,
     monitoring,
     networkmanagement,
+    networkservices,
     notebooks,
     organizations,
     osconfig,

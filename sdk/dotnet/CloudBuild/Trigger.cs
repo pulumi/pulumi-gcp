@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        /// One of `trigger_template` or `github` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Output("github")]
@@ -266,6 +266,15 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// PubsubConfig describes the configuration of a trigger that creates
+        /// a build whenever a Pub/Sub message is published.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pubsubConfig")]
+        public Output<Outputs.TriggerPubsubConfig?> PubsubConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Substitutions to use in a triggered build. Should only be used with triggers.run
         /// </summary>
         [Output("substitutions")]
@@ -288,11 +297,20 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template` or `github` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Output("triggerTemplate")]
         public Output<Outputs.TriggerTriggerTemplate?> TriggerTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// WebhookConfig describes the configuration of a trigger that creates
+        /// a build whenever a webhook is sent to a trigger's webhook URL.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("webhookConfig")]
+        public Output<Outputs.TriggerWebhookConfig?> WebhookConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -367,7 +385,7 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        /// One of `trigger_template` or `github` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("github")]
@@ -426,6 +444,15 @@ namespace Pulumi.Gcp.CloudBuild
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// PubsubConfig describes the configuration of a trigger that creates
+        /// a build whenever a Pub/Sub message is published.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pubsubConfig")]
+        public Input<Inputs.TriggerPubsubConfigArgs>? PubsubConfig { get; set; }
+
         [Input("substitutions")]
         private InputMap<string>? _substitutions;
 
@@ -455,11 +482,20 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template` or `github` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateArgs>? TriggerTemplate { get; set; }
+
+        /// <summary>
+        /// WebhookConfig describes the configuration of a trigger that creates
+        /// a build whenever a webhook is sent to a trigger's webhook URL.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("webhookConfig")]
+        public Input<Inputs.TriggerWebhookConfigArgs>? WebhookConfig { get; set; }
 
         public TriggerArgs()
         {
@@ -501,7 +537,7 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        /// One of `trigger_template` or `github` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("github")]
@@ -560,6 +596,15 @@ namespace Pulumi.Gcp.CloudBuild
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// PubsubConfig describes the configuration of a trigger that creates
+        /// a build whenever a Pub/Sub message is published.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pubsubConfig")]
+        public Input<Inputs.TriggerPubsubConfigGetArgs>? PubsubConfig { get; set; }
+
         [Input("substitutions")]
         private InputMap<string>? _substitutions;
 
@@ -595,11 +640,20 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template` or `github` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateGetArgs>? TriggerTemplate { get; set; }
+
+        /// <summary>
+        /// WebhookConfig describes the configuration of a trigger that creates
+        /// a build whenever a webhook is sent to a trigger's webhook URL.
+        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("webhookConfig")]
+        public Input<Inputs.TriggerWebhookConfigGetArgs>? WebhookConfig { get; set; }
 
         public TriggerState()
         {
