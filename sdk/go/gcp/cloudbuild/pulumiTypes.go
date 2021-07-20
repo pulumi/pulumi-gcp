@@ -3167,6 +3167,206 @@ func (o TriggerGithubPushPtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TriggerPubsubConfig struct {
+	// Service account that will make the push request.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// -
+	// Potential issues with the underlying Pub/Sub subscription configuration.
+	// Only populated on get requests.
+	State *string `pulumi:"state"`
+	// -
+	// Output only. Name of the subscription.
+	Subscription *string `pulumi:"subscription"`
+	// The name of the topic from which this subscription is receiving messages.
+	Topic string `pulumi:"topic"`
+}
+
+// TriggerPubsubConfigInput is an input type that accepts TriggerPubsubConfigArgs and TriggerPubsubConfigOutput values.
+// You can construct a concrete instance of `TriggerPubsubConfigInput` via:
+//
+//          TriggerPubsubConfigArgs{...}
+type TriggerPubsubConfigInput interface {
+	pulumi.Input
+
+	ToTriggerPubsubConfigOutput() TriggerPubsubConfigOutput
+	ToTriggerPubsubConfigOutputWithContext(context.Context) TriggerPubsubConfigOutput
+}
+
+type TriggerPubsubConfigArgs struct {
+	// Service account that will make the push request.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// -
+	// Potential issues with the underlying Pub/Sub subscription configuration.
+	// Only populated on get requests.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// -
+	// Output only. Name of the subscription.
+	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
+	// The name of the topic from which this subscription is receiving messages.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (TriggerPubsubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPubsubConfig)(nil)).Elem()
+}
+
+func (i TriggerPubsubConfigArgs) ToTriggerPubsubConfigOutput() TriggerPubsubConfigOutput {
+	return i.ToTriggerPubsubConfigOutputWithContext(context.Background())
+}
+
+func (i TriggerPubsubConfigArgs) ToTriggerPubsubConfigOutputWithContext(ctx context.Context) TriggerPubsubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPubsubConfigOutput)
+}
+
+func (i TriggerPubsubConfigArgs) ToTriggerPubsubConfigPtrOutput() TriggerPubsubConfigPtrOutput {
+	return i.ToTriggerPubsubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerPubsubConfigArgs) ToTriggerPubsubConfigPtrOutputWithContext(ctx context.Context) TriggerPubsubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPubsubConfigOutput).ToTriggerPubsubConfigPtrOutputWithContext(ctx)
+}
+
+// TriggerPubsubConfigPtrInput is an input type that accepts TriggerPubsubConfigArgs, TriggerPubsubConfigPtr and TriggerPubsubConfigPtrOutput values.
+// You can construct a concrete instance of `TriggerPubsubConfigPtrInput` via:
+//
+//          TriggerPubsubConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerPubsubConfigPtrInput interface {
+	pulumi.Input
+
+	ToTriggerPubsubConfigPtrOutput() TriggerPubsubConfigPtrOutput
+	ToTriggerPubsubConfigPtrOutputWithContext(context.Context) TriggerPubsubConfigPtrOutput
+}
+
+type triggerPubsubConfigPtrType TriggerPubsubConfigArgs
+
+func TriggerPubsubConfigPtr(v *TriggerPubsubConfigArgs) TriggerPubsubConfigPtrInput {
+	return (*triggerPubsubConfigPtrType)(v)
+}
+
+func (*triggerPubsubConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerPubsubConfig)(nil)).Elem()
+}
+
+func (i *triggerPubsubConfigPtrType) ToTriggerPubsubConfigPtrOutput() TriggerPubsubConfigPtrOutput {
+	return i.ToTriggerPubsubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerPubsubConfigPtrType) ToTriggerPubsubConfigPtrOutputWithContext(ctx context.Context) TriggerPubsubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPubsubConfigPtrOutput)
+}
+
+type TriggerPubsubConfigOutput struct{ *pulumi.OutputState }
+
+func (TriggerPubsubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPubsubConfig)(nil)).Elem()
+}
+
+func (o TriggerPubsubConfigOutput) ToTriggerPubsubConfigOutput() TriggerPubsubConfigOutput {
+	return o
+}
+
+func (o TriggerPubsubConfigOutput) ToTriggerPubsubConfigOutputWithContext(ctx context.Context) TriggerPubsubConfigOutput {
+	return o
+}
+
+func (o TriggerPubsubConfigOutput) ToTriggerPubsubConfigPtrOutput() TriggerPubsubConfigPtrOutput {
+	return o.ToTriggerPubsubConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerPubsubConfigOutput) ToTriggerPubsubConfigPtrOutputWithContext(ctx context.Context) TriggerPubsubConfigPtrOutput {
+	return o.ApplyT(func(v TriggerPubsubConfig) *TriggerPubsubConfig {
+		return &v
+	}).(TriggerPubsubConfigPtrOutput)
+}
+
+// Service account that will make the push request.
+func (o TriggerPubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Potential issues with the underlying Pub/Sub subscription configuration.
+// Only populated on get requests.
+func (o TriggerPubsubConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. Name of the subscription.
+func (o TriggerPubsubConfigOutput) Subscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.Subscription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic from which this subscription is receiving messages.
+func (o TriggerPubsubConfigOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerPubsubConfig) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type TriggerPubsubConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerPubsubConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerPubsubConfig)(nil)).Elem()
+}
+
+func (o TriggerPubsubConfigPtrOutput) ToTriggerPubsubConfigPtrOutput() TriggerPubsubConfigPtrOutput {
+	return o
+}
+
+func (o TriggerPubsubConfigPtrOutput) ToTriggerPubsubConfigPtrOutputWithContext(ctx context.Context) TriggerPubsubConfigPtrOutput {
+	return o
+}
+
+func (o TriggerPubsubConfigPtrOutput) Elem() TriggerPubsubConfigOutput {
+	return o.ApplyT(func(v *TriggerPubsubConfig) TriggerPubsubConfig { return *v }).(TriggerPubsubConfigOutput)
+}
+
+// Service account that will make the push request.
+func (o TriggerPubsubConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerPubsubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Potential issues with the underlying Pub/Sub subscription configuration.
+// Only populated on get requests.
+func (o TriggerPubsubConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerPubsubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. Name of the subscription.
+func (o TriggerPubsubConfigPtrOutput) Subscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerPubsubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subscription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic from which this subscription is receiving messages.
+func (o TriggerPubsubConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerPubsubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerTriggerTemplate struct {
 	// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
@@ -3461,6 +3661,168 @@ func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TagName
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerWebhookConfig struct {
+	// Secrets to decrypt using Cloud Key Management Service.
+	// Structure is documented below.
+	Secret string `pulumi:"secret"`
+	// -
+	// Potential issues with the underlying Pub/Sub subscription configuration.
+	// Only populated on get requests.
+	State *string `pulumi:"state"`
+}
+
+// TriggerWebhookConfigInput is an input type that accepts TriggerWebhookConfigArgs and TriggerWebhookConfigOutput values.
+// You can construct a concrete instance of `TriggerWebhookConfigInput` via:
+//
+//          TriggerWebhookConfigArgs{...}
+type TriggerWebhookConfigInput interface {
+	pulumi.Input
+
+	ToTriggerWebhookConfigOutput() TriggerWebhookConfigOutput
+	ToTriggerWebhookConfigOutputWithContext(context.Context) TriggerWebhookConfigOutput
+}
+
+type TriggerWebhookConfigArgs struct {
+	// Secrets to decrypt using Cloud Key Management Service.
+	// Structure is documented below.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// -
+	// Potential issues with the underlying Pub/Sub subscription configuration.
+	// Only populated on get requests.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (TriggerWebhookConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerWebhookConfig)(nil)).Elem()
+}
+
+func (i TriggerWebhookConfigArgs) ToTriggerWebhookConfigOutput() TriggerWebhookConfigOutput {
+	return i.ToTriggerWebhookConfigOutputWithContext(context.Background())
+}
+
+func (i TriggerWebhookConfigArgs) ToTriggerWebhookConfigOutputWithContext(ctx context.Context) TriggerWebhookConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerWebhookConfigOutput)
+}
+
+func (i TriggerWebhookConfigArgs) ToTriggerWebhookConfigPtrOutput() TriggerWebhookConfigPtrOutput {
+	return i.ToTriggerWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerWebhookConfigArgs) ToTriggerWebhookConfigPtrOutputWithContext(ctx context.Context) TriggerWebhookConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerWebhookConfigOutput).ToTriggerWebhookConfigPtrOutputWithContext(ctx)
+}
+
+// TriggerWebhookConfigPtrInput is an input type that accepts TriggerWebhookConfigArgs, TriggerWebhookConfigPtr and TriggerWebhookConfigPtrOutput values.
+// You can construct a concrete instance of `TriggerWebhookConfigPtrInput` via:
+//
+//          TriggerWebhookConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerWebhookConfigPtrInput interface {
+	pulumi.Input
+
+	ToTriggerWebhookConfigPtrOutput() TriggerWebhookConfigPtrOutput
+	ToTriggerWebhookConfigPtrOutputWithContext(context.Context) TriggerWebhookConfigPtrOutput
+}
+
+type triggerWebhookConfigPtrType TriggerWebhookConfigArgs
+
+func TriggerWebhookConfigPtr(v *TriggerWebhookConfigArgs) TriggerWebhookConfigPtrInput {
+	return (*triggerWebhookConfigPtrType)(v)
+}
+
+func (*triggerWebhookConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerWebhookConfig)(nil)).Elem()
+}
+
+func (i *triggerWebhookConfigPtrType) ToTriggerWebhookConfigPtrOutput() TriggerWebhookConfigPtrOutput {
+	return i.ToTriggerWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerWebhookConfigPtrType) ToTriggerWebhookConfigPtrOutputWithContext(ctx context.Context) TriggerWebhookConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerWebhookConfigPtrOutput)
+}
+
+type TriggerWebhookConfigOutput struct{ *pulumi.OutputState }
+
+func (TriggerWebhookConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerWebhookConfig)(nil)).Elem()
+}
+
+func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigOutput() TriggerWebhookConfigOutput {
+	return o
+}
+
+func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigOutputWithContext(ctx context.Context) TriggerWebhookConfigOutput {
+	return o
+}
+
+func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigPtrOutput() TriggerWebhookConfigPtrOutput {
+	return o.ToTriggerWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigPtrOutputWithContext(ctx context.Context) TriggerWebhookConfigPtrOutput {
+	return o.ApplyT(func(v TriggerWebhookConfig) *TriggerWebhookConfig {
+		return &v
+	}).(TriggerWebhookConfigPtrOutput)
+}
+
+// Secrets to decrypt using Cloud Key Management Service.
+// Structure is documented below.
+func (o TriggerWebhookConfigOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerWebhookConfig) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// -
+// Potential issues with the underlying Pub/Sub subscription configuration.
+// Only populated on get requests.
+func (o TriggerWebhookConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerWebhookConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type TriggerWebhookConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerWebhookConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerWebhookConfig)(nil)).Elem()
+}
+
+func (o TriggerWebhookConfigPtrOutput) ToTriggerWebhookConfigPtrOutput() TriggerWebhookConfigPtrOutput {
+	return o
+}
+
+func (o TriggerWebhookConfigPtrOutput) ToTriggerWebhookConfigPtrOutputWithContext(ctx context.Context) TriggerWebhookConfigPtrOutput {
+	return o
+}
+
+func (o TriggerWebhookConfigPtrOutput) Elem() TriggerWebhookConfigOutput {
+	return o.ApplyT(func(v *TriggerWebhookConfig) TriggerWebhookConfig { return *v }).(TriggerWebhookConfigOutput)
+}
+
+// Secrets to decrypt using Cloud Key Management Service.
+// Structure is documented below.
+func (o TriggerWebhookConfigPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerWebhookConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Potential issues with the underlying Pub/Sub subscription configuration.
+// Only populated on get requests.
+func (o TriggerWebhookConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerWebhookConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3795,8 +4157,12 @@ func init() {
 	pulumi.RegisterOutputType(TriggerGithubPullRequestPtrOutput{})
 	pulumi.RegisterOutputType(TriggerGithubPushOutput{})
 	pulumi.RegisterOutputType(TriggerGithubPushPtrOutput{})
+	pulumi.RegisterOutputType(TriggerPubsubConfigOutput{})
+	pulumi.RegisterOutputType(TriggerPubsubConfigPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTriggerTemplateOutput{})
 	pulumi.RegisterOutputType(TriggerTriggerTemplatePtrOutput{})
+	pulumi.RegisterOutputType(TriggerWebhookConfigOutput{})
+	pulumi.RegisterOutputType(TriggerWebhookConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(WorkerPoolNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolWorkerConfigOutput{})

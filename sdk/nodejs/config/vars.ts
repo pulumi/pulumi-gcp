@@ -77,6 +77,7 @@ export let memcacheCustomEndpoint: string | undefined = __config.get("memcacheCu
 export let mlEngineCustomEndpoint: string | undefined = __config.get("mlEngineCustomEndpoint");
 export let monitoringCustomEndpoint: string | undefined = __config.get("monitoringCustomEndpoint");
 export let networkManagementCustomEndpoint: string | undefined = __config.get("networkManagementCustomEndpoint");
+export let networkServicesCustomEndpoint: string | undefined = __config.get("networkServicesCustomEndpoint");
 export let notebooksCustomEndpoint: string | undefined = __config.get("notebooksCustomEndpoint");
 export let osConfigCustomEndpoint: string | undefined = __config.get("osConfigCustomEndpoint");
 export let osLoginCustomEndpoint: string | undefined = __config.get("osLoginCustomEndpoint");

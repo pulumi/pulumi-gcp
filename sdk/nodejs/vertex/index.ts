@@ -6,9 +6,13 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./aiDataset";
+export * from "./aiFeatureStore";
+export * from "./aiFeatureStoreEntityType";
 
 // Import resources to register:
 import { AiDataset } from "./aiDataset";
+import { AiFeatureStore } from "./aiFeatureStore";
+import { AiFeatureStoreEntityType } from "./aiFeatureStoreEntityType";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +20,15 @@ const _module = {
         switch (type) {
             case "gcp:vertex/aiDataset:AiDataset":
                 return new AiDataset(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureStore:AiFeatureStore":
+                return new AiFeatureStore(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
+                return new AiFeatureStoreEntityType(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityType", _module)

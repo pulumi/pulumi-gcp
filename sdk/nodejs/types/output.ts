@@ -5412,6 +5412,28 @@ export namespace cloudbuild {
         tag?: string;
     }
 
+    export interface TriggerPubsubConfig {
+        /**
+         * Service account that will make the push request.
+         */
+        serviceAccountEmail?: string;
+        /**
+         * -
+         * Potential issues with the underlying Pub/Sub subscription configuration.
+         * Only populated on get requests.
+         */
+        state: string;
+        /**
+         * -
+         * Output only. Name of the subscription.
+         */
+        subscription: string;
+        /**
+         * The name of the topic from which this subscription is receiving messages.
+         */
+        topic: string;
+    }
+
     export interface TriggerTriggerTemplate {
         /**
          * Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
@@ -5454,6 +5476,20 @@ export namespace cloudbuild {
          * described at https://github.com/google/re2/wiki/Syntax
          */
         tagName?: string;
+    }
+
+    export interface TriggerWebhookConfig {
+        /**
+         * Secrets to decrypt using Cloud Key Management Service.
+         * Structure is documented below.
+         */
+        secret: string;
+        /**
+         * -
+         * Potential issues with the underlying Pub/Sub subscription configuration.
+         * Only populated on get requests.
+         */
+        state: string;
     }
 
     export interface WorkerPoolNetworkConfig {
@@ -20500,6 +20536,226 @@ export namespace diagflow {
         enableSpeechAdaptation?: boolean;
     }
 
+    export interface CxFlowEventHandler {
+        /**
+         * The name of the event to handle.
+         */
+        event?: string;
+        /**
+         * -
+         * The unique identifier of this event handler.
+         */
+        name: string;
+        /**
+         * The target flow to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+         */
+        targetFlow?: string;
+        /**
+         * The target page to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        targetPage?: string;
+        /**
+         * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * Structure is documented below.
+         */
+        triggerFulfillment?: outputs.diagflow.CxFlowEventHandlerTriggerFulfillment;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillment {
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: outputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessage[];
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: boolean;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: string;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: string;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentMessage {
+        /**
+         * A collection of text responses.
+         */
+        text?: outputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageText;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentMessageText {
+        /**
+         * -
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption: boolean;
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
+    }
+
+    export interface CxFlowNluSettings {
+        /**
+         * To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+         * If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+         */
+        classificationThreshold?: number;
+        /**
+         * Indicates NLU model training mode.
+         * * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+         * * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+         * Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+         */
+        modelTrainingMode?: string;
+        /**
+         * Indicates the type of NLU model.
+         * * MODEL_TYPE_STANDARD: Use standard NLU model.
+         * * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+         * Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+         */
+        modelType?: string;
+    }
+
+    export interface CxFlowTransitionRoute {
+        /**
+         * The condition to evaluate against form parameters or session parameters.
+         * At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+         */
+        condition?: string;
+        /**
+         * The unique identifier of an Intent.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+         */
+        intent?: string;
+        /**
+         * -
+         * The unique identifier of this event handler.
+         */
+        name: string;
+        /**
+         * The target flow to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+         */
+        targetFlow?: string;
+        /**
+         * The target page to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        targetPage?: string;
+        /**
+         * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * Structure is documented below.
+         */
+        triggerFulfillment?: outputs.diagflow.CxFlowTransitionRouteTriggerFulfillment;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillment {
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: outputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessage[];
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: boolean;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: string;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: string;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentMessage {
+        /**
+         * A collection of text responses.
+         */
+        text?: outputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageText;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentMessageText {
+        /**
+         * -
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption: boolean;
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
+    }
+
+    export interface CxIntentParameter {
+        /**
+         * The entity type of the parameter.
+         * Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+         */
+        entityType: string;
+        /**
+         * The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+         */
+        id: string;
+        /**
+         * Indicates whether the parameter represents a list of values.
+         */
+        isList?: boolean;
+        /**
+         * Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+         * Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+         */
+        redact?: boolean;
+    }
+
+    export interface CxIntentTrainingPhrase {
+        /**
+         * The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+         */
+        id: string;
+        /**
+         * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+         * Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+         * Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+         * If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+         * If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+         * Part.text is set to a part of the phrase that has no parameters.
+         * Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+         * Structure is documented below.
+         */
+        parts: outputs.diagflow.CxIntentTrainingPhrasePart[];
+        /**
+         * Indicates how many times this example was added to the intent.
+         */
+        repeatCount?: number;
+    }
+
+    export interface CxIntentTrainingPhrasePart {
+        /**
+         * The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+         */
+        parameterId?: string;
+        /**
+         * The text for this part.
+         */
+        text: string;
+    }
+
+    export interface CxVersionNluSetting {
+        classificationThreshold?: number;
+        modelTrainingMode?: string;
+        modelType?: string;
+    }
+
     export interface EntityTypeEntity {
         /**
          * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
@@ -23831,6 +24087,521 @@ export namespace networkmanagement {
 
 }
 
+export namespace networkservices {
+    export interface EdgeCacheKeysetPublicKey {
+        /**
+         * The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
+         * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
+         * which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+         */
+        id: string;
+        /**
+         * The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
+         * Representations or encodings of the public key other than this will be rejected with an error.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        value: string;
+    }
+
+    export interface EdgeCacheOriginTimeout {
+        /**
+         * The maximum duration to wait for the origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
+         * Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
+         */
+        connectTimeout?: string;
+        /**
+         * The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 503 will be returned if the timeout is reached before a response is returned.
+         * Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
+         */
+        maxAttemptsTimeout?: string;
+        /**
+         * The maximum duration to wait for data to arrive when reading from the HTTP connection/stream.
+         * Defaults to 5 seconds. The timeout must be a value between 1s and 30s.
+         */
+        responseTimeout?: string;
+    }
+
+    export interface EdgeCacheServiceLogConfig {
+        /**
+         * Specifies whether to enable logging for traffic served by this service.
+         */
+        enable: boolean;
+        /**
+         * Configures the sampling rate of requests, where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0, and the value of the field must be in [0, 1].
+         * This field can only be specified if logging is enabled for this service.
+         */
+        sampleRate?: number;
+    }
+
+    export interface EdgeCacheServiceRouting {
+        /**
+         * The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
+         * Structure is documented below.
+         */
+        hostRules: outputs.networkservices.EdgeCacheServiceRoutingHostRule[];
+        /**
+         * The name of the pathMatcher associated with this hostRule.
+         */
+        pathMatchers: outputs.networkservices.EdgeCacheServiceRoutingPathMatcher[];
+    }
+
+    export interface EdgeCacheServiceRoutingHostRule {
+        /**
+         * A human-readable description of the resource.
+         */
+        description?: string;
+        /**
+         * The list of host patterns to match.
+         * Host patterns must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
+         * The only accepted ports are :80 and :443.
+         * Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+         */
+        hosts: string[];
+        /**
+         * The name of the pathMatcher associated with this hostRule.
+         */
+        pathMatcher: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcher {
+        /**
+         * A human-readable description of the resource.
+         */
+        description?: string;
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+         */
+        name: string;
+        /**
+         * The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
+         * Structure is documented below.
+         */
+        routeRules: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRule[];
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRule {
+        /**
+         * A human-readable description of the resource.
+         */
+        description?: string;
+        /**
+         * The header actions, including adding & removing headers, for requests that match this route.
+         * Structure is documented below.
+         */
+        headerAction?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction;
+        /**
+         * The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
+         * within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
+         * Structure is documented below.
+         */
+        matchRules: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule[];
+        /**
+         * The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
+         * Only one of origin or urlRedirect can be set.
+         */
+        origin?: string;
+        /**
+         * The priority of this route rule, where 1 is the highest priority.
+         * You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 1 and 999 inclusive.
+         * Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers
+         * to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+         */
+        priority: string;
+        /**
+         * In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
+         * Structure is documented below.
+         */
+        routeAction?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction;
+        /**
+         * The URL redirect configuration for requests that match this route.
+         * Structure is documented below.
+         */
+        urlRedirect?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
+        /**
+         * Describes a header to add.
+         * Structure is documented below.
+         */
+        requestHeaderToAdds?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+         * Structure is documented below.
+         */
+        requestHeaderToRemoves?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove[];
+        /**
+         * Headers to add to the response prior to sending it back to the client.
+         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         * Structure is documented below.
+         */
+        responseHeaderToAdds?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+         * Structure is documented below.
+         */
+        responseHeaderToRemoves?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove[];
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd {
+        /**
+         * Headers to remove from the response prior to sending it back to the client.
+         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         */
+        headerName: string;
+        /**
+         * The value of the header to add.
+         */
+        headerValue: string;
+        /**
+         * Whether to replace all existing headers with the same name.
+         */
+        replace: boolean;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove {
+        /**
+         * Headers to remove from the response prior to sending it back to the client.
+         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         */
+        headerName: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd {
+        /**
+         * Headers to remove from the response prior to sending it back to the client.
+         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         */
+        headerName: string;
+        /**
+         * The value of the header to add.
+         */
+        headerValue: string;
+        /**
+         * Whether to replace all existing headers with the same name.
+         */
+        replace: boolean;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove {
+        /**
+         * Headers to remove from the response prior to sending it back to the client.
+         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         */
+        headerName: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
+        /**
+         * For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
+         */
+        fullPathMatch?: string;
+        /**
+         * Specifies a list of header match criteria, all of which must match corresponding headers in the request.
+         * Structure is documented below.
+         */
+        headerMatches?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch[];
+        /**
+         * Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+         */
+        ignoreCase: boolean;
+        /**
+         * For satisfying the matchRule condition, the path of the request
+         * must match the wildcard pattern specified in pathTemplateMatch
+         * after removing any query parameters and anchor that may be part
+         * of the original URL.
+         * pathTemplateMatch must be between 1 and 255 characters
+         * (inclusive).  The pattern specified by pathTemplateMatch may
+         * have at most 5 wildcard operators and at most 5 variable
+         * captures in total.
+         */
+        pathTemplateMatch?: string;
+        /**
+         * The value of the header must start with the contents of prefixMatch.
+         */
+        prefixMatch?: string;
+        /**
+         * Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
+         * Structure is documented below.
+         */
+        queryParameterMatches?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch[];
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch {
+        /**
+         * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+         */
+        exactMatch?: string;
+        /**
+         * Headers to remove from the response prior to sending it back to the client.
+         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         */
+        headerName: string;
+        /**
+         * If set to false (default), the headerMatch is considered a match if the match criteria above are met.
+         * If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
+         */
+        invertMatch: boolean;
+        /**
+         * The value of the header must start with the contents of prefixMatch.
+         */
+        prefixMatch?: string;
+        /**
+         * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+         */
+        presentMatch?: boolean;
+        /**
+         * The value of the header must end with the contents of suffixMatch.
+         */
+        suffixMatch?: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+        /**
+         * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+         */
+        exactMatch?: string;
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+         */
+        name: string;
+        /**
+         * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+         */
+        presentMatch?: boolean;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
+        /**
+         * The policy to use for defining caching and signed request behaviour for requests that match this route.
+         * Structure is documented below.
+         */
+        cdnPolicy?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy;
+        /**
+         * CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
+         * Structure is documented below.
+         */
+        corsPolicy?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy;
+        /**
+         * The URL rewrite configuration for requests that match this route.
+         * Structure is documented below.
+         */
+        urlRewrite?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
+        /**
+         * Defines the request parameters that contribute to the cache key.
+         * Structure is documented below.
+         */
+        cacheKeyPolicy?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy;
+        /**
+         * Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
+         * For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
+         * Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+         */
+        cacheMode: string;
+        /**
+         * Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
+         * - The TTL must be > 0 and <= 86400s (1 day)
+         * - The clientTtl cannot be larger than the defaultTtl (if set)
+         * - Fractions of a second are not allowed.
+         * - Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+         * When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        clientTtl?: string;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
+         * Defaults to 3600s (1 hour).
+         * - The TTL must be >= 0 and <= 2592000s (1 month)
+         * - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
+         * - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
+         * - Fractions of a second are not allowed.
+         * - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
+         * Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
+         * When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        defaultTtl: string;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         * Defaults to 86400s (1 day).
+         * Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
+         * - The TTL must be >= 0 and <= 2592000s (1 month)
+         * - Setting a TTL of "0" means "always revalidate"
+         * - The value of maxTtl must be equal to or greater than defaultTtl.
+         * - Fractions of a second are not allowed.
+         * - When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        maxTtl: string;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
+         * By default, the CDNPolicy will apply the following default TTLs to these status codes:
+         * - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+         * - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
+         * - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
+         * These defaults can be overridden in negativeCachingPolicy
+         */
+        negativeCaching?: boolean;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
+         * - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
+         * Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
+         */
+        negativeCachingPolicy?: {[key: string]: string};
+        /**
+         * The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
+         */
+        signedRequestKeyset: string;
+        /**
+         * Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
+         * You must also set a signedRequestKeyset to enable signed requests.
+         * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
+         * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+         */
+        signedRequestMode: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy {
+        /**
+         * If true, requests to different hosts will be cached separately.
+         * Note: this should only be enabled if hosts share the same origin and content Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
+         */
+        excludeHost: boolean;
+        /**
+         * If true, exclude query string parameters from the cache key
+         * If false (the default), include the query string parameters in
+         * the cache key according to includeQueryParameters and
+         * excludeQueryParameters. If neither includeQueryParameters nor
+         * excludeQueryParameters is set, the entire query string will be
+         * included.
+         */
+        excludeQueryString?: boolean;
+        /**
+         * Names of query string parameters to exclude from cache keys. All other parameters will be included.
+         * Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
+         */
+        excludedQueryParameters?: string[];
+        /**
+         * If true, http and https requests will be cached separately.
+         */
+        includeProtocol: boolean;
+        /**
+         * Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
+         * - Header names must be valid HTTP RFC 7230 header field values.
+         * - Header field names are case insensitive
+         * - To include the HTTP method, use ":method"
+         * Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+         */
+        includedHeaderNames?: string[];
+        /**
+         * Names of query string parameters to include in cache keys. All other parameters will be excluded.
+         * Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
+         */
+        includedQueryParameters?: string[];
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
+        /**
+         * In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+         * This translates to the Access-Control-Allow-Credentials response header.
+         */
+        allowCredentials?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Allow-Headers response header.
+         */
+        allowHeaders?: string[];
+        /**
+         * Specifies the content for the Access-Control-Allow-Methods response header.
+         */
+        allowMethods?: string[];
+        /**
+         * Specifies the list of origins that will be allowed to do CORS requests.
+         * This translates to the Access-Control-Allow-Origin response header.
+         */
+        allowOrigins?: string[];
+        /**
+         * If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+         */
+        disabled?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Allow-Headers response header.
+         */
+        exposeHeaders?: string[];
+        /**
+         * Specifies how long results of a preflight request can be cached by a client in seconds. Note that many browser clients enforce a maximum TTL of 600s (10 minutes).
+         * - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
+         * - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
+         * - This translates to the Access-Control-Max-Age header.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        maxAge: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
+        /**
+         * Prior to forwarding the request to the selected origin, the request's host header is replaced with contents of hostRewrite.
+         */
+        hostRewrite?: string;
+        /**
+         * Prior to forwarding the request to the selected origin, the matching portion of the request's path is replaced by pathPrefixRewrite.
+         */
+        pathPrefixRewrite?: string;
+        /**
+         * Prior to forwarding the request to the selected origin, if the
+         * request matched a pathTemplateMatch, the matching portion of the
+         * request's path is replaced re-written using the pattern specified
+         * by pathTemplateRewrite.
+         * pathTemplateRewrite must be between 1 and 255 characters
+         * (inclusive), must start with a '/', and must only use variables
+         * captured by the route's pathTemplate matchers.
+         * pathTemplateRewrite may only be used when all of a route's
+         * MatchRules specify pathTemplate.
+         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * specified.
+         */
+        pathTemplateRewrite?: string;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was supplied in the request.
+         */
+        hostRedirect?: string;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request.
+         * This can only be set if there is at least one (1) edgeSslCertificate set on the service.
+         */
+        httpsRedirect: boolean;
+        /**
+         * The path that will be used in the redirect response instead of the one that was supplied in the request.
+         * pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+         * The path value must be between 1 and 1024 characters.
+         */
+        pathRedirect?: string;
+        /**
+         * The prefix that replaces the prefixMatch specified in the routeRule, retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+         */
+        prefixRedirect?: string;
+        /**
+         * The HTTP Status code to use for this RedirectAction.
+         * The supported values are:
+         * - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+         * - `FOUND`, which corresponds to 302.
+         */
+        redirectResponseCode: string;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+         */
+        stripQuery: boolean;
+    }
+
+}
+
 export namespace notebooks {
     export interface EnvironmentContainerImage {
         /**
@@ -26800,6 +27571,33 @@ export namespace vertex {
          * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
          */
         kmsKeyName?: string;
+    }
+
+    export interface AiFeatureStoreEntityTypeMonitoringConfig {
+        /**
+         * Configuration of how features in Featurestore are monitored.
+         * Structure is documented below.
+         */
+        snapshotAnalysis?: outputs.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis;
+    }
+
+    export interface AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
+        /**
+         * The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+         */
+        disabled?: boolean;
+        /**
+         * Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        monitoringInterval?: string;
+    }
+
+    export interface AiFeatureStoreOnlineServingConfig {
+        /**
+         * The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+         */
+        fixedNodeCount: number;
     }
 
 }

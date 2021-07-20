@@ -7,9 +7,23 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'CxAgentSpeechToTextSettings',
+    'CxFlowEventHandler',
+    'CxFlowEventHandlerTriggerFulfillment',
+    'CxFlowEventHandlerTriggerFulfillmentMessage',
+    'CxFlowEventHandlerTriggerFulfillmentMessageText',
+    'CxFlowNluSettings',
+    'CxFlowTransitionRoute',
+    'CxFlowTransitionRouteTriggerFulfillment',
+    'CxFlowTransitionRouteTriggerFulfillmentMessage',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageText',
+    'CxIntentParameter',
+    'CxIntentTrainingPhrase',
+    'CxIntentTrainingPhrasePart',
+    'CxVersionNluSetting',
     'EntityTypeEntity',
     'FulfillmentFeature',
     'FulfillmentGenericWebService',
@@ -50,6 +64,824 @@ class CxAgentSpeechToTextSettings(dict):
         Whether to use speech adaptation for speech recognition.
         """
         return pulumi.get(self, "enable_speech_adaptation")
+
+
+@pulumi.output_type
+class CxFlowEventHandler(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowEventHandler. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowEventHandler.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowEventHandler.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event: Optional[str] = None,
+                 name: Optional[str] = None,
+                 target_flow: Optional[str] = None,
+                 target_page: Optional[str] = None,
+                 trigger_fulfillment: Optional['outputs.CxFlowEventHandlerTriggerFulfillment'] = None):
+        """
+        :param str event: The name of the event to handle.
+        :param str name: -
+               The unique identifier of this event handler.
+        :param str target_flow: The target flow to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param str target_page: The target page to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        :param 'CxFlowEventHandlerTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+               Structure is documented below.
+        """
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[str]:
+        """
+        The name of the event to handle.
+        """
+        return pulumi.get(self, "event")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        -
+        The unique identifier of this event handler.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[str]:
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[str]:
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "target_page")
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional['outputs.CxFlowEventHandlerTriggerFulfillment']:
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+
+@pulumi.output_type
+class CxFlowEventHandlerTriggerFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowEventHandlerTriggerFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowEventHandlerTriggerFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowEventHandlerTriggerFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 messages: Optional[Sequence['outputs.CxFlowEventHandlerTriggerFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[bool] = None,
+                 tag: Optional[str] = None,
+                 webhook: Optional[str] = None):
+        """
+        :param Sequence['CxFlowEventHandlerTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxFlowEventHandlerTriggerFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
+    def __init__(__self__, *,
+                 text: Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageText'] = None):
+        """
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageText']:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowEventHandlerTriggerFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowEventHandlerTriggerFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowEventHandlerTriggerFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[bool] = None,
+                 texts: Optional[Sequence[str]] = None):
+        """
+        :param bool allow_playback_interruption: -
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[str] texts: A collection of text responses.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[bool]:
+        """
+        -
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[str]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+
+@pulumi.output_type
+class CxFlowNluSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "classificationThreshold":
+            suggest = "classification_threshold"
+        elif key == "modelTrainingMode":
+            suggest = "model_training_mode"
+        elif key == "modelType":
+            suggest = "model_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowNluSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowNluSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowNluSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 classification_threshold: Optional[float] = None,
+                 model_training_mode: Optional[str] = None,
+                 model_type: Optional[str] = None):
+        """
+        :param float classification_threshold: To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+               If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+        :param str model_training_mode: Indicates NLU model training mode.
+               * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+               * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+               Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+        :param str model_type: Indicates the type of NLU model.
+               * MODEL_TYPE_STANDARD: Use standard NLU model.
+               * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+               Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+        """
+        if classification_threshold is not None:
+            pulumi.set(__self__, "classification_threshold", classification_threshold)
+        if model_training_mode is not None:
+            pulumi.set(__self__, "model_training_mode", model_training_mode)
+        if model_type is not None:
+            pulumi.set(__self__, "model_type", model_type)
+
+    @property
+    @pulumi.getter(name="classificationThreshold")
+    def classification_threshold(self) -> Optional[float]:
+        """
+        To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+        If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+        """
+        return pulumi.get(self, "classification_threshold")
+
+    @property
+    @pulumi.getter(name="modelTrainingMode")
+    def model_training_mode(self) -> Optional[str]:
+        """
+        Indicates NLU model training mode.
+        * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+        * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+        Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+        """
+        return pulumi.get(self, "model_training_mode")
+
+    @property
+    @pulumi.getter(name="modelType")
+    def model_type(self) -> Optional[str]:
+        """
+        Indicates the type of NLU model.
+        * MODEL_TYPE_STANDARD: Use standard NLU model.
+        * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+        Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+        """
+        return pulumi.get(self, "model_type")
+
+
+@pulumi.output_type
+class CxFlowTransitionRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowTransitionRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowTransitionRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowTransitionRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: Optional[str] = None,
+                 intent: Optional[str] = None,
+                 name: Optional[str] = None,
+                 target_flow: Optional[str] = None,
+                 target_page: Optional[str] = None,
+                 trigger_fulfillment: Optional['outputs.CxFlowTransitionRouteTriggerFulfillment'] = None):
+        """
+        :param str condition: The condition to evaluate against form parameters or session parameters.
+               At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        :param str intent: The unique identifier of an Intent.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        :param str name: -
+               The unique identifier of this event handler.
+        :param str target_flow: The target flow to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param str target_page: The target page to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+               Structure is documented below.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if intent is not None:
+            pulumi.set(__self__, "intent", intent)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        """
+        The condition to evaluate against form parameters or session parameters.
+        At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def intent(self) -> Optional[str]:
+        """
+        The unique identifier of an Intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        return pulumi.get(self, "intent")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        -
+        The unique identifier of this event handler.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[str]:
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[str]:
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "target_page")
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillment']:
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+
+@pulumi.output_type
+class CxFlowTransitionRouteTriggerFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowTransitionRouteTriggerFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowTransitionRouteTriggerFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowTransitionRouteTriggerFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 messages: Optional[Sequence['outputs.CxFlowTransitionRouteTriggerFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[bool] = None,
+                 tag: Optional[str] = None,
+                 webhook: Optional[str] = None):
+        """
+        :param Sequence['CxFlowTransitionRouteTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxFlowTransitionRouteTriggerFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
+    def __init__(__self__, *,
+                 text: Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageText'] = None):
+        """
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageText']:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowTransitionRouteTriggerFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowTransitionRouteTriggerFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowTransitionRouteTriggerFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[bool] = None,
+                 texts: Optional[Sequence[str]] = None):
+        """
+        :param bool allow_playback_interruption: -
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[str] texts: A collection of text responses.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[bool]:
+        """
+        -
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[str]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+
+@pulumi.output_type
+class CxIntentParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "isList":
+            suggest = "is_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxIntentParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxIntentParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxIntentParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 id: str,
+                 is_list: Optional[bool] = None,
+                 redact: Optional[bool] = None):
+        """
+        :param str entity_type: The entity type of the parameter.
+               Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+        :param str id: The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        :param bool is_list: Indicates whether the parameter represents a list of values.
+        :param bool redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+               Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "id", id)
+        if is_list is not None:
+            pulumi.set(__self__, "is_list", is_list)
+        if redact is not None:
+            pulumi.set(__self__, "redact", redact)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        The entity type of the parameter.
+        Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isList")
+    def is_list(self) -> Optional[bool]:
+        """
+        Indicates whether the parameter represents a list of values.
+        """
+        return pulumi.get(self, "is_list")
+
+    @property
+    @pulumi.getter
+    def redact(self) -> Optional[bool]:
+        """
+        Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+        Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+        """
+        return pulumi.get(self, "redact")
+
+
+@pulumi.output_type
+class CxIntentTrainingPhrase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repeatCount":
+            suggest = "repeat_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxIntentTrainingPhrase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxIntentTrainingPhrase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxIntentTrainingPhrase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parts: Sequence['outputs.CxIntentTrainingPhrasePart'],
+                 id: Optional[str] = None,
+                 repeat_count: Optional[int] = None):
+        """
+        :param Sequence['CxIntentTrainingPhrasePartArgs'] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+               Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+               Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+               If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+               If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+               Part.text is set to a part of the phrase that has no parameters.
+               Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+               Structure is documented below.
+        :param str id: The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        :param int repeat_count: Indicates how many times this example was added to the intent.
+        """
+        pulumi.set(__self__, "parts", parts)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if repeat_count is not None:
+            pulumi.set(__self__, "repeat_count", repeat_count)
+
+    @property
+    @pulumi.getter
+    def parts(self) -> Sequence['outputs.CxIntentTrainingPhrasePart']:
+        """
+        The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+        Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+        Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+        If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+        If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+        Part.text is set to a part of the phrase that has no parameters.
+        Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parts")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="repeatCount")
+    def repeat_count(self) -> Optional[int]:
+        """
+        Indicates how many times this example was added to the intent.
+        """
+        return pulumi.get(self, "repeat_count")
+
+
+@pulumi.output_type
+class CxIntentTrainingPhrasePart(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterId":
+            suggest = "parameter_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxIntentTrainingPhrasePart. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxIntentTrainingPhrasePart.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxIntentTrainingPhrasePart.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 text: str,
+                 parameter_id: Optional[str] = None):
+        """
+        :param str text: The text for this part.
+        :param str parameter_id: The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+        """
+        pulumi.set(__self__, "text", text)
+        if parameter_id is not None:
+            pulumi.set(__self__, "parameter_id", parameter_id)
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        The text for this part.
+        """
+        return pulumi.get(self, "text")
+
+    @property
+    @pulumi.getter(name="parameterId")
+    def parameter_id(self) -> Optional[str]:
+        """
+        The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+        """
+        return pulumi.get(self, "parameter_id")
+
+
+@pulumi.output_type
+class CxVersionNluSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "classificationThreshold":
+            suggest = "classification_threshold"
+        elif key == "modelTrainingMode":
+            suggest = "model_training_mode"
+        elif key == "modelType":
+            suggest = "model_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxVersionNluSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxVersionNluSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxVersionNluSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 classification_threshold: Optional[float] = None,
+                 model_training_mode: Optional[str] = None,
+                 model_type: Optional[str] = None):
+        if classification_threshold is not None:
+            pulumi.set(__self__, "classification_threshold", classification_threshold)
+        if model_training_mode is not None:
+            pulumi.set(__self__, "model_training_mode", model_training_mode)
+        if model_type is not None:
+            pulumi.set(__self__, "model_type", model_type)
+
+    @property
+    @pulumi.getter(name="classificationThreshold")
+    def classification_threshold(self) -> Optional[float]:
+        return pulumi.get(self, "classification_threshold")
+
+    @property
+    @pulumi.getter(name="modelTrainingMode")
+    def model_training_mode(self) -> Optional[str]:
+        return pulumi.get(self, "model_training_mode")
+
+    @property
+    @pulumi.getter(name="modelType")
+    def model_type(self) -> Optional[str]:
+        return pulumi.get(self, "model_type")
 
 
 @pulumi.output_type

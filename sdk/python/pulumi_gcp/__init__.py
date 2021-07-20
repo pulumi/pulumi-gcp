@@ -62,6 +62,7 @@ if typing.TYPE_CHECKING:
     import pulumi_gcp.ml as ml
     import pulumi_gcp.monitoring as monitoring
     import pulumi_gcp.networkmanagement as networkmanagement
+    import pulumi_gcp.networkservices as networkservices
     import pulumi_gcp.notebooks as notebooks
     import pulumi_gcp.organizations as organizations
     import pulumi_gcp.osconfig as osconfig
@@ -139,6 +140,7 @@ else:
     ml = _utilities.lazy_import('pulumi_gcp.ml')
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
     networkmanagement = _utilities.lazy_import('pulumi_gcp.networkmanagement')
+    networkservices = _utilities.lazy_import('pulumi_gcp.networkservices')
     notebooks = _utilities.lazy_import('pulumi_gcp.notebooks')
     organizations = _utilities.lazy_import('pulumi_gcp.organizations')
     osconfig = _utilities.lazy_import('pulumi_gcp.osconfig')
@@ -2153,6 +2155,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxFlow",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxFlow:CxFlow": "CxFlow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/cxIntent",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxIntent:CxIntent": "CxIntent"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/cxVersion",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxVersion:CxVersion": "CxVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/entityType",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -3145,6 +3171,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/edgeCacheKeyset",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset": "EdgeCacheKeyset"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/edgeCacheOrigin",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin": "EdgeCacheOrigin"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/edgeCacheService",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/edgeCacheService:EdgeCacheService": "EdgeCacheService"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "notebooks/environment",
   "fqn": "pulumi_gcp.notebooks",
   "classes": {
@@ -4029,6 +4079,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiDataset:AiDataset": "AiDataset"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStore",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStore:AiFeatureStore": "AiFeatureStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreEntityType",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": "AiFeatureStoreEntityType"
   }
  },
  {

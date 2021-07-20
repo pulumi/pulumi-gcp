@@ -10,6 +10,9 @@ from .. import _utilities
 
 __all__ = [
     'AiDatasetEncryptionSpecArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs',
+    'AiFeatureStoreOnlineServingConfigArgs',
 ]
 
 @pulumi.input_type
@@ -35,5 +38,93 @@ class AiDatasetEncryptionSpecArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreEntityTypeMonitoringConfigArgs:
+    def __init__(__self__, *,
+                 snapshot_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']] = None):
+        """
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs'] snapshot_analysis: Configuration of how features in Featurestore are monitored.
+               Structure is documented below.
+        """
+        if snapshot_analysis is not None:
+            pulumi.set(__self__, "snapshot_analysis", snapshot_analysis)
+
+    @property
+    @pulumi.getter(name="snapshotAnalysis")
+    def snapshot_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]:
+        """
+        Configuration of how features in Featurestore are monitored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "snapshot_analysis")
+
+    @snapshot_analysis.setter
+    def snapshot_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]):
+        pulumi.set(self, "snapshot_analysis", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 monitoring_interval: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+        :param pulumi.Input[str] monitoring_interval: Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if monitoring_interval is not None:
+            pulumi.set(__self__, "monitoring_interval", monitoring_interval)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="monitoringInterval")
+    def monitoring_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "monitoring_interval")
+
+    @monitoring_interval.setter
+    def monitoring_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitoring_interval", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreOnlineServingConfigArgs:
+    def __init__(__self__, *,
+                 fixed_node_count: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] fixed_node_count: The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+        """
+        pulumi.set(__self__, "fixed_node_count", fixed_node_count)
+
+    @property
+    @pulumi.getter(name="fixedNodeCount")
+    def fixed_node_count(self) -> pulumi.Input[int]:
+        """
+        The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+        """
+        return pulumi.get(self, "fixed_node_count")
+
+    @fixed_node_count.setter
+    def fixed_node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "fixed_node_count", value)
 
 

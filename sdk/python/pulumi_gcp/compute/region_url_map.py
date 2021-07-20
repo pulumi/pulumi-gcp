@@ -559,7 +559,7 @@ class RegionUrlMap(pulumi.CustomResource):
                             "perTryTimeout": {
                                 "seconds": 30,
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -631,7 +631,7 @@ class RegionUrlMap(pulumi.CustomResource):
                             "perTryTimeout": {
                                 "seconds": 30,
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -956,7 +956,7 @@ class RegionUrlMap(pulumi.CustomResource):
                             "perTryTimeout": {
                                 "seconds": 30,
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -1028,7 +1028,7 @@ class RegionUrlMap(pulumi.CustomResource):
                             "perTryTimeout": {
                                 "seconds": 30,
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],

@@ -24,7 +24,9 @@ __all__ = [
     'TriggerGithubArgs',
     'TriggerGithubPullRequestArgs',
     'TriggerGithubPushArgs',
+    'TriggerPubsubConfigArgs',
     'TriggerTriggerTemplateArgs',
+    'TriggerWebhookConfigArgs',
     'WorkerPoolNetworkConfigArgs',
     'WorkerPoolWorkerConfigArgs',
 ]
@@ -1500,6 +1502,82 @@ class TriggerGithubPushArgs:
 
 
 @pulumi.input_type
+class TriggerPubsubConfigArgs:
+    def __init__(__self__, *,
+                 topic: pulumi.Input[str],
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 subscription: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages.
+        :param pulumi.Input[str] service_account_email: Service account that will make the push request.
+        :param pulumi.Input[str] state: -
+               Potential issues with the underlying Pub/Sub subscription configuration.
+               Only populated on get requests.
+        :param pulumi.Input[str] subscription: -
+               Output only. Name of the subscription.
+        """
+        pulumi.set(__self__, "topic", topic)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        The name of the topic from which this subscription is receiving messages.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service account that will make the push request.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Potential issues with the underlying Pub/Sub subscription configuration.
+        Only populated on get requests.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Output only. Name of the subscription.
+        """
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription", value)
+
+
+@pulumi.input_type
 class TriggerTriggerTemplateArgs:
     def __init__(__self__, *,
                  branch_name: Optional[pulumi.Input[str]] = None,
@@ -1642,6 +1720,50 @@ class TriggerTriggerTemplateArgs:
     @tag_name.setter
     def tag_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag_name", value)
+
+
+@pulumi.input_type
+class TriggerWebhookConfigArgs:
+    def __init__(__self__, *,
+                 secret: pulumi.Input[str],
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] secret: Secrets to decrypt using Cloud Key Management Service.
+               Structure is documented below.
+        :param pulumi.Input[str] state: -
+               Potential issues with the underlying Pub/Sub subscription configuration.
+               Only populated on get requests.
+        """
+        pulumi.set(__self__, "secret", secret)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[str]:
+        """
+        Secrets to decrypt using Cloud Key Management Service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Potential issues with the underlying Pub/Sub subscription configuration.
+        Only populated on get requests.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type

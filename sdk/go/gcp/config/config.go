@@ -218,6 +218,9 @@ func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 func GetNetworkManagementCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkManagementCustomEndpoint")
 }
+func GetNetworkServicesCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:networkServicesCustomEndpoint")
+}
 func GetNotebooksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:notebooksCustomEndpoint")
 }

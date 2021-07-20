@@ -145,7 +145,437 @@ func (o AiDatasetEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiFeatureStoreEntityTypeMonitoringConfig struct {
+	// Configuration of how features in Featurestore are monitored.
+	// Structure is documented below.
+	SnapshotAnalysis *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis `pulumi:"snapshotAnalysis"`
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigArgs and AiFeatureStoreEntityTypeMonitoringConfigOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigInput` via:
+//
+//          AiFeatureStoreEntityTypeMonitoringConfigArgs{...}
+type AiFeatureStoreEntityTypeMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigOutput
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigArgs struct {
+	// Configuration of how features in Featurestore are monitored.
+	// Structure is documented below.
+	SnapshotAnalysis AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput `pulumi:"snapshotAnalysis"`
+}
+
+func (AiFeatureStoreEntityTypeMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfig)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigOutput)
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigOutput).ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigPtrInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigArgs, AiFeatureStoreEntityTypeMonitoringConfigPtr and AiFeatureStoreEntityTypeMonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigPtrInput` via:
+//
+//          AiFeatureStoreEntityTypeMonitoringConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AiFeatureStoreEntityTypeMonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigPtrOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigPtrOutput
+}
+
+type aiFeatureStoreEntityTypeMonitoringConfigPtrType AiFeatureStoreEntityTypeMonitoringConfigArgs
+
+func AiFeatureStoreEntityTypeMonitoringConfigPtr(v *AiFeatureStoreEntityTypeMonitoringConfigArgs) AiFeatureStoreEntityTypeMonitoringConfigPtrInput {
+	return (*aiFeatureStoreEntityTypeMonitoringConfigPtrType)(v)
+}
+
+func (*aiFeatureStoreEntityTypeMonitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return o.ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfig {
+		return &v
+	}).(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput)
+}
+
+// Configuration of how features in Featurestore are monitored.
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) SnapshotAnalysis() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
+		return v.SnapshotAnalysis
+	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) AiFeatureStoreEntityTypeMonitoringConfig { return *v }).(AiFeatureStoreEntityTypeMonitoringConfigOutput)
+}
+
+// Configuration of how features in Featurestore are monitored.
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) SnapshotAnalysis() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotAnalysis
+	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
+	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+	Disabled *bool `pulumi:"disabled"`
+	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MonitoringInterval *string `pulumi:"monitoringInterval"`
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs and AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput` via:
+//
+//          AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{...}
+type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs struct {
+	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MonitoringInterval pulumi.StringPtrInput `pulumi:"monitoringInterval"`
+}
+
+func (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput)
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput).ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs, AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtr and AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput` via:
+//
+//          AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{...}
+//
+//  or:
+//
+//          nil
+type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput
+}
+
+type aiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrType AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs
+
+func AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtr(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput {
+	return (*aiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrType)(v)
+}
+
+func (*aiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return o.ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
+		return &v
+	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
+}
+
+// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) MonitoringInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string { return v.MonitoringInterval }).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
+		return *v
+	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput)
+}
+
+// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) MonitoringInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureStoreOnlineServingConfig struct {
+	// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+	FixedNodeCount int `pulumi:"fixedNodeCount"`
+}
+
+// AiFeatureStoreOnlineServingConfigInput is an input type that accepts AiFeatureStoreOnlineServingConfigArgs and AiFeatureStoreOnlineServingConfigOutput values.
+// You can construct a concrete instance of `AiFeatureStoreOnlineServingConfigInput` via:
+//
+//          AiFeatureStoreOnlineServingConfigArgs{...}
+type AiFeatureStoreOnlineServingConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreOnlineServingConfigOutput() AiFeatureStoreOnlineServingConfigOutput
+	ToAiFeatureStoreOnlineServingConfigOutputWithContext(context.Context) AiFeatureStoreOnlineServingConfigOutput
+}
+
+type AiFeatureStoreOnlineServingConfigArgs struct {
+	// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+	FixedNodeCount pulumi.IntInput `pulumi:"fixedNodeCount"`
+}
+
+func (AiFeatureStoreOnlineServingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreOnlineServingConfig)(nil)).Elem()
+}
+
+func (i AiFeatureStoreOnlineServingConfigArgs) ToAiFeatureStoreOnlineServingConfigOutput() AiFeatureStoreOnlineServingConfigOutput {
+	return i.ToAiFeatureStoreOnlineServingConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreOnlineServingConfigArgs) ToAiFeatureStoreOnlineServingConfigOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigOutput)
+}
+
+func (i AiFeatureStoreOnlineServingConfigArgs) ToAiFeatureStoreOnlineServingConfigPtrOutput() AiFeatureStoreOnlineServingConfigPtrOutput {
+	return i.ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreOnlineServingConfigArgs) ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigOutput).ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreOnlineServingConfigPtrInput is an input type that accepts AiFeatureStoreOnlineServingConfigArgs, AiFeatureStoreOnlineServingConfigPtr and AiFeatureStoreOnlineServingConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreOnlineServingConfigPtrInput` via:
+//
+//          AiFeatureStoreOnlineServingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AiFeatureStoreOnlineServingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreOnlineServingConfigPtrOutput() AiFeatureStoreOnlineServingConfigPtrOutput
+	ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(context.Context) AiFeatureStoreOnlineServingConfigPtrOutput
+}
+
+type aiFeatureStoreOnlineServingConfigPtrType AiFeatureStoreOnlineServingConfigArgs
+
+func AiFeatureStoreOnlineServingConfigPtr(v *AiFeatureStoreOnlineServingConfigArgs) AiFeatureStoreOnlineServingConfigPtrInput {
+	return (*aiFeatureStoreOnlineServingConfigPtrType)(v)
+}
+
+func (*aiFeatureStoreOnlineServingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreOnlineServingConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreOnlineServingConfigPtrType) ToAiFeatureStoreOnlineServingConfigPtrOutput() AiFeatureStoreOnlineServingConfigPtrOutput {
+	return i.ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreOnlineServingConfigPtrType) ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigPtrOutput)
+}
+
+type AiFeatureStoreOnlineServingConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreOnlineServingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreOnlineServingConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingConfigOutput() AiFeatureStoreOnlineServingConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingConfigOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingConfigPtrOutput() AiFeatureStoreOnlineServingConfigPtrOutput {
+	return o.ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfig) *AiFeatureStoreOnlineServingConfig {
+		return &v
+	}).(AiFeatureStoreOnlineServingConfigPtrOutput)
+}
+
+// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+func (o AiFeatureStoreOnlineServingConfigOutput) FixedNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfig) int { return v.FixedNodeCount }).(pulumi.IntOutput)
+}
+
+type AiFeatureStoreOnlineServingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreOnlineServingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreOnlineServingConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreOnlineServingConfigPtrOutput) ToAiFeatureStoreOnlineServingConfigPtrOutput() AiFeatureStoreOnlineServingConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigPtrOutput) ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigPtrOutput) Elem() AiFeatureStoreOnlineServingConfigOutput {
+	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfig) AiFeatureStoreOnlineServingConfig { return *v }).(AiFeatureStoreOnlineServingConfigOutput)
+}
+
+// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+func (o AiFeatureStoreOnlineServingConfigPtrOutput) FixedNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FixedNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigPtrOutput{})
 }

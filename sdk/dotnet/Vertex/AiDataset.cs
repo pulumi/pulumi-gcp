@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiDataset : Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
         /// fractional digits.
         /// </summary>
         [Output("createTime")]
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        /// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
         /// nine fractional digits.
         /// </summary>
         [Output("updateTime")]
@@ -203,7 +203,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiDatasetState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
         /// fractional digits.
         /// </summary>
         [Input("createTime")]
@@ -260,7 +260,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        /// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
         /// nine fractional digits.
         /// </summary>
         [Input("updateTime")]
