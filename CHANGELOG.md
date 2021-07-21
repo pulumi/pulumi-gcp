@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.76.0 of the Google Beta Terraform Provider
-* (breaking) Change the way types are generated for the Pulumi Go SDK. In most circumstances these changes will relax the allowed types for input properties on `State` types, but in this release and future releases it may cause some properties to require an update to match the desired type.
+_(none)_
 
 ---
+
+## 5.13.0 (2021-07-21)
+* Upgrade to v3.76.0 of the Google Beta Terraform Provider
+* (breaking) Change the way types are generated for the Pulumi Go SDK. In most circumstances these changes will relax the allowed types for input properties on `State` types, but in this release and future releases it may cause some properties to require an update to match the desired type.
 
 ## 5.12.0 (2021-07-15)
 * Upgrade to v3.75.0 of the Google Beta Terraform Provider
