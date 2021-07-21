@@ -148,6 +148,8 @@ namespace Pulumi.Gcp
 
         public static string? NetworkManagementCustomEndpoint { get; set; } = __config.Get("networkManagementCustomEndpoint");
 
+        public static string? NetworkServicesCustomEndpoint { get; set; } = __config.Get("networkServicesCustomEndpoint");
+
         public static string? NotebooksCustomEndpoint { get; set; } = __config.Get("notebooksCustomEndpoint");
 
         public static string? OsConfigCustomEndpoint { get; set; } = __config.Get("osConfigCustomEndpoint");

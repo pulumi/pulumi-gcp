@@ -74,6 +74,7 @@ const (
 	gcpMemcache             = "Memcache"             // Memcache resources
 	gcpMonitoring           = "Monitoring"           // Monitoring resources
 	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
+	gcpNetworkServices      = "NetworkServices"      // Network Services resources
 	gcpNotebooks            = "Notebooks"            // Notebooks resources
 	gcpOrganization         = "Organizations"        // Organization resources
 	gcpOsConfig             = "OsConfig"             // OsConfig resources
@@ -1218,7 +1219,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_tpu_node": {Tok: gcpResource(gcpTPU, "Node")},
 
 			// Vertex
-			"google_vertex_ai_dataset": {Tok: gcpResource(gcpVertex, "AiDataset")},
+			"google_vertex_ai_dataset":                 {Tok: gcpResource(gcpVertex, "AiDataset")},
+			"google_vertex_ai_featurestore_entitytype": {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityType")},
+			"google_vertex_ai_featurestore":            {Tok: gcpResource(gcpVertex, "AiFeatureStore")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -1612,6 +1615,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dialogflow_entity_type": {Tok: gcpResource(gcpDiagflow, "EntityType")},
 			"google_dialogflow_fulfillment": {Tok: gcpResource(gcpDiagflow, "Fulfillment")},
 			"google_dialogflow_cx_agent":    {Tok: gcpResource(gcpDiagflow, "CxAgent")},
+			"google_dialogflow_cx_flow":     {Tok: gcpResource(gcpDiagflow, "CxFlow")},
+			"google_dialogflow_cx_intent":   {Tok: gcpResource(gcpDiagflow, "CxIntent")},
+			"google_dialogflow_cx_version":  {Tok: gcpResource(gcpDiagflow, "CxVersion")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},
@@ -1804,6 +1810,11 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "network_management_connectivity_test_resource.html.markdown",
 				},
 			},
+
+			// Network Services
+			"google_network_services_edge_cache_keyset":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheKeyset")},
+			"google_network_services_edge_cache_origin":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheOrigin")},
+			"google_network_services_edge_cache_service": {Tok: gcpResource(gcpNetworkServices, "EdgeCacheService")},
 
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},

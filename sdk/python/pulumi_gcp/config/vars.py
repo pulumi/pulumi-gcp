@@ -296,6 +296,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('networkManagementCustomEndpoint')
 
     @property
+    def network_services_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('networkServicesCustomEndpoint')
+
+    @property
     def notebooks_custom_endpoint(self) -> Optional[str]:
         return __config__.get('notebooksCustomEndpoint')
 

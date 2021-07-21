@@ -2,9 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
-
-* (breaking) Bring Go `*State` types for resource get methods into agreement with other languages.
+* Upgrade to v3.76.0 of the Google Beta Terraform Provider
+* (breaking) Change the way types are generated for the Pulumi Go SDK. In most circumstances these changes will relax the allowed types for input properties on `State` types, but in this release and future releases it may cause some properties to require an update to match the desired type.
 
 ---
 

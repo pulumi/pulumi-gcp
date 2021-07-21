@@ -51,7 +51,7 @@ import (
 type AiDataset struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
@@ -70,7 +70,7 @@ type AiDataset struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -110,7 +110,7 @@ func GetAiDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiDataset resources.
 type aiDatasetState struct {
-	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
@@ -129,13 +129,13 @@ type aiDatasetState struct {
 	Project *string `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region *string `pulumi:"region"`
-	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AiDatasetState struct {
-	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
@@ -154,7 +154,7 @@ type AiDatasetState struct {
 	Project pulumi.StringPtrInput
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringPtrInput
-	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
