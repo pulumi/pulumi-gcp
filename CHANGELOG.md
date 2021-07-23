@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Prevent panic in bigquery.Dataset.get when passing a different projectId from the current project
 
 ---
 
