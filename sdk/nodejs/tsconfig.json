@@ -593,6 +593,7 @@
         "secretmanager/secretIamPolicy.ts",
         "secretmanager/secretVersion.ts",
         "securitycenter/index.ts",
+        "securitycenter/notificationConfig.ts",
         "securitycenter/source.ts",
         "serviceaccount/account.ts",
         "serviceaccount/getAccount.ts",

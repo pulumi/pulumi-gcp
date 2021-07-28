@@ -358,7 +358,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * If logging is enabled, logs will be exported to Stackdriver.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.RegionBackendServiceLogConfig | undefined>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.RegionBackendServiceLogConfig>;
     /**
      * Name of the cookie.
      */

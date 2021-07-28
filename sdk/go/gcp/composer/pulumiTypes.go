@@ -16,8 +16,9 @@ type EnvironmentConfig struct {
 	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
 	// The encryption options for the Cloud Composer environment and its dependencies.
-	EncryptionConfig *EnvironmentConfigEncryptionConfig `pulumi:"encryptionConfig"`
-	GkeCluster       *string                            `pulumi:"gkeCluster"`
+	EncryptionConfig  *EnvironmentConfigEncryptionConfig  `pulumi:"encryptionConfig"`
+	GkeCluster        *string                             `pulumi:"gkeCluster"`
+	MaintenanceWindow *EnvironmentConfigMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig *EnvironmentConfigNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that
@@ -50,8 +51,9 @@ type EnvironmentConfigArgs struct {
 	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
 	// The encryption options for the Cloud Composer environment and its dependencies.
-	EncryptionConfig EnvironmentConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
-	GkeCluster       pulumi.StringPtrInput                     `pulumi:"gkeCluster"`
+	EncryptionConfig  EnvironmentConfigEncryptionConfigPtrInput  `pulumi:"encryptionConfig"`
+	GkeCluster        pulumi.StringPtrInput                      `pulumi:"gkeCluster"`
+	MaintenanceWindow EnvironmentConfigMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig EnvironmentConfigNodeConfigPtrInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that
@@ -165,6 +167,10 @@ func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
 
+func (o EnvironmentConfigOutput) MaintenanceWindow() EnvironmentConfigMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigMaintenanceWindow { return v.MaintenanceWindow }).(EnvironmentConfigMaintenanceWindowPtrOutput)
+}
+
 // The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 func (o EnvironmentConfigOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
@@ -263,6 +269,15 @@ func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
 		}
 		return v.GkeCluster
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) MaintenanceWindow() EnvironmentConfigMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceWindow
+	}).(EnvironmentConfigMaintenanceWindowPtrOutput)
 }
 
 // The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -605,6 +620,187 @@ func (o EnvironmentConfigEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPt
 			return nil
 		}
 		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigMaintenanceWindow struct {
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+	// The value for end-time must be in the future, relative to 'start_time'.
+	EndTime string `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+	// The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+	// Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+	Recurrence string `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime string `pulumi:"startTime"`
+}
+
+// EnvironmentConfigMaintenanceWindowInput is an input type that accepts EnvironmentConfigMaintenanceWindowArgs and EnvironmentConfigMaintenanceWindowOutput values.
+// You can construct a concrete instance of `EnvironmentConfigMaintenanceWindowInput` via:
+//
+//          EnvironmentConfigMaintenanceWindowArgs{...}
+type EnvironmentConfigMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigMaintenanceWindowOutput() EnvironmentConfigMaintenanceWindowOutput
+	ToEnvironmentConfigMaintenanceWindowOutputWithContext(context.Context) EnvironmentConfigMaintenanceWindowOutput
+}
+
+type EnvironmentConfigMaintenanceWindowArgs struct {
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+	// The value for end-time must be in the future, relative to 'start_time'.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+	// The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+	// Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+	Recurrence pulumi.StringInput `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (EnvironmentConfigMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (i EnvironmentConfigMaintenanceWindowArgs) ToEnvironmentConfigMaintenanceWindowOutput() EnvironmentConfigMaintenanceWindowOutput {
+	return i.ToEnvironmentConfigMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigMaintenanceWindowArgs) ToEnvironmentConfigMaintenanceWindowOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMaintenanceWindowOutput)
+}
+
+func (i EnvironmentConfigMaintenanceWindowArgs) ToEnvironmentConfigMaintenanceWindowPtrOutput() EnvironmentConfigMaintenanceWindowPtrOutput {
+	return i.ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigMaintenanceWindowArgs) ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMaintenanceWindowOutput).ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigMaintenanceWindowPtrInput is an input type that accepts EnvironmentConfigMaintenanceWindowArgs, EnvironmentConfigMaintenanceWindowPtr and EnvironmentConfigMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigMaintenanceWindowPtrInput` via:
+//
+//          EnvironmentConfigMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type EnvironmentConfigMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigMaintenanceWindowPtrOutput() EnvironmentConfigMaintenanceWindowPtrOutput
+	ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(context.Context) EnvironmentConfigMaintenanceWindowPtrOutput
+}
+
+type environmentConfigMaintenanceWindowPtrType EnvironmentConfigMaintenanceWindowArgs
+
+func EnvironmentConfigMaintenanceWindowPtr(v *EnvironmentConfigMaintenanceWindowArgs) EnvironmentConfigMaintenanceWindowPtrInput {
+	return (*environmentConfigMaintenanceWindowPtrType)(v)
+}
+
+func (*environmentConfigMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *environmentConfigMaintenanceWindowPtrType) ToEnvironmentConfigMaintenanceWindowPtrOutput() EnvironmentConfigMaintenanceWindowPtrOutput {
+	return i.ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigMaintenanceWindowPtrType) ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMaintenanceWindowPtrOutput)
+}
+
+type EnvironmentConfigMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenanceWindowOutput() EnvironmentConfigMaintenanceWindowOutput {
+	return o
+}
+
+func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenanceWindowOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowOutput {
+	return o
+}
+
+func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenanceWindowPtrOutput() EnvironmentConfigMaintenanceWindowPtrOutput {
+	return o.ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) *EnvironmentConfigMaintenanceWindow {
+		return &v
+	}).(EnvironmentConfigMaintenanceWindowPtrOutput)
+}
+
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+// The value for end-time must be in the future, relative to 'start_time'.
+func (o EnvironmentConfigMaintenanceWindowOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+// The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+// Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+func (o EnvironmentConfigMaintenanceWindowOutput) Recurrence() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+}
+
+// Start time of the first recurrence of the maintenance window.
+func (o EnvironmentConfigMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type EnvironmentConfigMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (o EnvironmentConfigMaintenanceWindowPtrOutput) ToEnvironmentConfigMaintenanceWindowPtrOutput() EnvironmentConfigMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigMaintenanceWindowPtrOutput) ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigMaintenanceWindowPtrOutput) Elem() EnvironmentConfigMaintenanceWindowOutput {
+	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) EnvironmentConfigMaintenanceWindow { return *v }).(EnvironmentConfigMaintenanceWindowOutput)
+}
+
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+// The value for end-time must be in the future, relative to 'start_time'.
+func (o EnvironmentConfigMaintenanceWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+// The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+// Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+func (o EnvironmentConfigMaintenanceWindowPtrOutput) Recurrence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Recurrence
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of the first recurrence of the maintenance window.
+func (o EnvironmentConfigMaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2209,6 +2405,7 @@ type GetEnvironmentConfig struct {
 	DatabaseConfigs                []GetEnvironmentConfigDatabaseConfig                `pulumi:"databaseConfigs"`
 	EncryptionConfigs              []GetEnvironmentConfigEncryptionConfig              `pulumi:"encryptionConfigs"`
 	GkeCluster                     string                                              `pulumi:"gkeCluster"`
+	MaintenanceWindows             []GetEnvironmentConfigMaintenanceWindow             `pulumi:"maintenanceWindows"`
 	NodeConfigs                    []GetEnvironmentConfigNodeConfig                    `pulumi:"nodeConfigs"`
 	NodeCount                      int                                                 `pulumi:"nodeCount"`
 	PrivateEnvironmentConfigs      []GetEnvironmentConfigPrivateEnvironmentConfig      `pulumi:"privateEnvironmentConfigs"`
@@ -2234,6 +2431,7 @@ type GetEnvironmentConfigArgs struct {
 	DatabaseConfigs                GetEnvironmentConfigDatabaseConfigArrayInput                `pulumi:"databaseConfigs"`
 	EncryptionConfigs              GetEnvironmentConfigEncryptionConfigArrayInput              `pulumi:"encryptionConfigs"`
 	GkeCluster                     pulumi.StringInput                                          `pulumi:"gkeCluster"`
+	MaintenanceWindows             GetEnvironmentConfigMaintenanceWindowArrayInput             `pulumi:"maintenanceWindows"`
 	NodeConfigs                    GetEnvironmentConfigNodeConfigArrayInput                    `pulumi:"nodeConfigs"`
 	NodeCount                      pulumi.IntInput                                             `pulumi:"nodeCount"`
 	PrivateEnvironmentConfigs      GetEnvironmentConfigPrivateEnvironmentConfigArrayInput      `pulumi:"privateEnvironmentConfigs"`
@@ -2311,6 +2509,10 @@ func (o GetEnvironmentConfigOutput) EncryptionConfigs() GetEnvironmentConfigEncr
 
 func (o GetEnvironmentConfigOutput) GkeCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.GkeCluster }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigOutput) MaintenanceWindows() GetEnvironmentConfigMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigMaintenanceWindow { return v.MaintenanceWindows }).(GetEnvironmentConfigMaintenanceWindowArrayOutput)
 }
 
 func (o GetEnvironmentConfigOutput) NodeConfigs() GetEnvironmentConfigNodeConfigArrayOutput {
@@ -2547,6 +2749,112 @@ func (o GetEnvironmentConfigEncryptionConfigArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigEncryptionConfig {
 		return vs[0].([]GetEnvironmentConfigEncryptionConfig)[vs[1].(int)]
 	}).(GetEnvironmentConfigEncryptionConfigOutput)
+}
+
+type GetEnvironmentConfigMaintenanceWindow struct {
+	EndTime    string `pulumi:"endTime"`
+	Recurrence string `pulumi:"recurrence"`
+	StartTime  string `pulumi:"startTime"`
+}
+
+// GetEnvironmentConfigMaintenanceWindowInput is an input type that accepts GetEnvironmentConfigMaintenanceWindowArgs and GetEnvironmentConfigMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigMaintenanceWindowInput` via:
+//
+//          GetEnvironmentConfigMaintenanceWindowArgs{...}
+type GetEnvironmentConfigMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigMaintenanceWindowOutput() GetEnvironmentConfigMaintenanceWindowOutput
+	ToGetEnvironmentConfigMaintenanceWindowOutputWithContext(context.Context) GetEnvironmentConfigMaintenanceWindowOutput
+}
+
+type GetEnvironmentConfigMaintenanceWindowArgs struct {
+	EndTime    pulumi.StringInput `pulumi:"endTime"`
+	Recurrence pulumi.StringInput `pulumi:"recurrence"`
+	StartTime  pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetEnvironmentConfigMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigMaintenanceWindowArgs) ToGetEnvironmentConfigMaintenanceWindowOutput() GetEnvironmentConfigMaintenanceWindowOutput {
+	return i.ToGetEnvironmentConfigMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigMaintenanceWindowArgs) ToGetEnvironmentConfigMaintenanceWindowOutputWithContext(ctx context.Context) GetEnvironmentConfigMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMaintenanceWindowOutput)
+}
+
+// GetEnvironmentConfigMaintenanceWindowArrayInput is an input type that accepts GetEnvironmentConfigMaintenanceWindowArray and GetEnvironmentConfigMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigMaintenanceWindowArrayInput` via:
+//
+//          GetEnvironmentConfigMaintenanceWindowArray{ GetEnvironmentConfigMaintenanceWindowArgs{...} }
+type GetEnvironmentConfigMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigMaintenanceWindowArrayOutput() GetEnvironmentConfigMaintenanceWindowArrayOutput
+	ToGetEnvironmentConfigMaintenanceWindowArrayOutputWithContext(context.Context) GetEnvironmentConfigMaintenanceWindowArrayOutput
+}
+
+type GetEnvironmentConfigMaintenanceWindowArray []GetEnvironmentConfigMaintenanceWindowInput
+
+func (GetEnvironmentConfigMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigMaintenanceWindowArray) ToGetEnvironmentConfigMaintenanceWindowArrayOutput() GetEnvironmentConfigMaintenanceWindowArrayOutput {
+	return i.ToGetEnvironmentConfigMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigMaintenanceWindowArray) ToGetEnvironmentConfigMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMaintenanceWindowArrayOutput)
+}
+
+type GetEnvironmentConfigMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowOutput) ToGetEnvironmentConfigMaintenanceWindowOutput() GetEnvironmentConfigMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowOutput) ToGetEnvironmentConfigMaintenanceWindowOutputWithContext(ctx context.Context) GetEnvironmentConfigMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigMaintenanceWindow) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowOutput) Recurrence() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigMaintenanceWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) ToGetEnvironmentConfigMaintenanceWindowArrayOutput() GetEnvironmentConfigMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) ToGetEnvironmentConfigMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigMaintenanceWindow {
+		return vs[0].([]GetEnvironmentConfigMaintenanceWindow)[vs[1].(int)]
+	}).(GetEnvironmentConfigMaintenanceWindowOutput)
 }
 
 type GetEnvironmentConfigNodeConfig struct {
@@ -3450,6 +3758,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigDatabaseConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigIpAllocationPolicyOutput{})
@@ -3470,6 +3780,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigDatabaseConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigEncryptionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput{})

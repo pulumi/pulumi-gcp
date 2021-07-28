@@ -103,7 +103,7 @@ type DataTransferConfig struct {
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
 	// The BigQuery target dataset id.
-	DestinationDatasetId pulumi.StringOutput `pulumi:"destinationDatasetId"`
+	DestinationDatasetId pulumi.StringPtrOutput `pulumi:"destinationDatasetId"`
 	// When set to true, no runs are scheduled for a given transfer.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
@@ -162,9 +162,6 @@ func NewDataTransferConfig(ctx *pulumi.Context,
 
 	if args.DataSourceId == nil {
 		return nil, errors.New("invalid value for required argument 'DataSourceId'")
-	}
-	if args.DestinationDatasetId == nil {
-		return nil, errors.New("invalid value for required argument 'DestinationDatasetId'")
 	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
@@ -327,7 +324,7 @@ type dataTransferConfigArgs struct {
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId string `pulumi:"dataSourceId"`
 	// The BigQuery target dataset id.
-	DestinationDatasetId string `pulumi:"destinationDatasetId"`
+	DestinationDatasetId *string `pulumi:"destinationDatasetId"`
 	// When set to true, no runs are scheduled for a given transfer.
 	Disabled *bool `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
@@ -384,7 +381,7 @@ type DataTransferConfigArgs struct {
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringInput
 	// The BigQuery target dataset id.
-	DestinationDatasetId pulumi.StringInput
+	DestinationDatasetId pulumi.StringPtrInput
 	// When set to true, no runs are scheduled for a given transfer.
 	Disabled pulumi.BoolPtrInput
 	// The user specified display name for the transfer config.

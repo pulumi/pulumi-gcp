@@ -478,7 +478,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
-        public Output<Outputs.RegionBackendServiceLogConfig?> LogConfig { get; private set; } = null!;
+        public Output<Outputs.RegionBackendServiceLogConfig> LogConfig { get; private set; } = null!;
 
         /// <summary>
         /// Name of the cookie.

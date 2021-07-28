@@ -12,6 +12,7 @@ __all__ = [
     'EnvironmentConfigArgs',
     'EnvironmentConfigDatabaseConfigArgs',
     'EnvironmentConfigEncryptionConfigArgs',
+    'EnvironmentConfigMaintenanceWindowArgs',
     'EnvironmentConfigNodeConfigArgs',
     'EnvironmentConfigNodeConfigIpAllocationPolicyArgs',
     'EnvironmentConfigPrivateEnvironmentConfigArgs',
@@ -29,6 +30,7 @@ class EnvironmentConfigArgs:
                  database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']] = None,
                  gke_cluster: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']] = None,
                  node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']] = None,
@@ -56,6 +58,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -119,6 +123,15 @@ class EnvironmentConfigArgs:
     @gke_cluster.setter
     def gke_cluster(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gke_cluster", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -246,6 +259,64 @@ class EnvironmentConfigEncryptionConfigArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[str],
+                 recurrence: pulumi.Input[str],
+                 start_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] end_time: Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+               The value for end-time must be in the future, relative to 'start_time'.
+        :param pulumi.Input[str] recurrence: Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+               The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+               Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+        :param pulumi.Input[str] start_time: Start time of the first recurrence of the maintenance window.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[str]:
+        """
+        Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+        The value for end-time must be in the future, relative to 'start_time'.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter
+    def recurrence(self) -> pulumi.Input[str]:
+        """
+        Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+        The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+        Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+        """
+        return pulumi.get(self, "recurrence")
+
+    @recurrence.setter
+    def recurrence(self, value: pulumi.Input[str]):
+        pulumi.set(self, "recurrence", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        Start time of the first recurrence of the maintenance window.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

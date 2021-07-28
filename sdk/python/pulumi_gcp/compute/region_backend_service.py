@@ -1978,7 +1978,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceLogConfig']]:
+    def log_config(self) -> pulumi.Output['outputs.RegionBackendServiceLogConfig']:
         """
         This field denotes the logging options for the load balancer traffic served by this backend service.
         If logging is enabled, logs will be exported to Stackdriver.

@@ -2242,8 +2242,7 @@ class BackendServiceBackend(dict):
                the group. Can be used in either balancing mode. For RATE mode,
                either maxRate or maxRatePerInstance must be set.
         :param float max_utilization: Used when balancingMode is UTILIZATION. This ratio defines the
-               CPU utilization target for the group. The default is 0.8. Valid
-               range is [0.0, 1.0].
+               CPU utilization target for the group. Valid range is [0.0, 1.0].
         """
         pulumi.set(__self__, "group", group)
         if balancing_mode is not None:
@@ -2397,8 +2396,7 @@ class BackendServiceBackend(dict):
     def max_utilization(self) -> Optional[float]:
         """
         Used when balancingMode is UTILIZATION. This ratio defines the
-        CPU utilization target for the group. The default is 0.8. Valid
-        range is [0.0, 1.0].
+        CPU utilization target for the group. Valid range is [0.0, 1.0].
         """
         return pulumi.get(self, "max_utilization")
 

@@ -130,6 +130,37 @@ namespace Pulumi.Gcp.DataLoss
     ///                                 },
     ///                             },
     ///                         },
+    ///                         new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs
+    ///                         {
+    ///                             InfoTypes = 
+    ///                             {
+    ///                                 new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                                 {
+    ///                                     Name = "CREDIT_CARD_NUMBER",
+    ///                                 },
+    ///                             },
+    ///                             PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs
+    ///                             {
+    ///                                 CryptoDeterministicConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs
+    ///                                 {
+    ///                                     Context = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs
+    ///                                     {
+    ///                                         Name = "sometweak",
+    ///                                     },
+    ///                                     CryptoKey = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs
+    ///                                     {
+    ///                                         Transient = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs
+    ///                                         {
+    ///                                             Name = "beep",
+    ///                                         },
+    ///                                     },
+    ///                                     SurrogateInfoType = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs
+    ///                                     {
+    ///                                         Name = "abc",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
     ///                     },
     ///                 },
     ///             },
@@ -177,7 +208,7 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the information type.
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -294,7 +325,7 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Name of the information type.
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

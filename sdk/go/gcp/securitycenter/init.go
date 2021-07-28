@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:securitycenter/notificationConfig:NotificationConfig":
+		r = &NotificationConfig{}
 	case "gcp:securitycenter/source:Source":
 		r = &Source{}
 	default:
@@ -36,6 +38,11 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/notificationConfig",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/source",

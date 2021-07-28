@@ -433,7 +433,7 @@ type RegionBackendService struct {
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
-	LogConfig RegionBackendServiceLogConfigPtrOutput `pulumi:"logConfig"`
+	LogConfig RegionBackendServiceLogConfigOutput `pulumi:"logConfig"`
 	// Name of the cookie.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.

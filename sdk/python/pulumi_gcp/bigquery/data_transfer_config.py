@@ -16,10 +16,10 @@ __all__ = ['DataTransferConfigArgs', 'DataTransferConfig']
 class DataTransferConfigArgs:
     def __init__(__self__, *,
                  data_source_id: pulumi.Input[str],
-                 destination_dataset_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  data_refresh_window_days: Optional[pulumi.Input[int]] = None,
+                 destination_dataset_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  email_preferences: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -32,7 +32,6 @@ class DataTransferConfigArgs:
         """
         The set of arguments for constructing a DataTransferConfig resource.
         :param pulumi.Input[str] data_source_id: The data source id. Cannot be changed once the transfer config is created.
-        :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: These parameters are specific to each data source.
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data.
@@ -40,6 +39,7 @@ class DataTransferConfigArgs:
                reingests data for [today-10, today-1], rather than ingesting data for
                just [today-1]. Only valid if the data source supports the feature.
                Set the value to 0 to use the default value.
+        :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input['DataTransferConfigEmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the
                email address of the user who owns this transfer config.
@@ -72,11 +72,12 @@ class DataTransferConfigArgs:
                requesting user calling this API has permissions to act as this service account.
         """
         pulumi.set(__self__, "data_source_id", data_source_id)
-        pulumi.set(__self__, "destination_dataset_id", destination_dataset_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "params", params)
         if data_refresh_window_days is not None:
             pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
+        if destination_dataset_id is not None:
+            pulumi.set(__self__, "destination_dataset_id", destination_dataset_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if email_preferences is not None:
@@ -107,18 +108,6 @@ class DataTransferConfigArgs:
     @data_source_id.setter
     def data_source_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "data_source_id", value)
-
-    @property
-    @pulumi.getter(name="destinationDatasetId")
-    def destination_dataset_id(self) -> pulumi.Input[str]:
-        """
-        The BigQuery target dataset id.
-        """
-        return pulumi.get(self, "destination_dataset_id")
-
-    @destination_dataset_id.setter
-    def destination_dataset_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "destination_dataset_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -159,6 +148,18 @@ class DataTransferConfigArgs:
     @data_refresh_window_days.setter
     def data_refresh_window_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "data_refresh_window_days", value)
+
+    @property
+    @pulumi.getter(name="destinationDatasetId")
+    def destination_dataset_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The BigQuery target dataset id.
+        """
+        return pulumi.get(self, "destination_dataset_id")
+
+    @destination_dataset_id.setter
+    def destination_dataset_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_dataset_id", value)
 
     @property
     @pulumi.getter
@@ -809,8 +810,6 @@ class DataTransferConfig(pulumi.CustomResource):
             if data_source_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_source_id'")
             __props__.__dict__["data_source_id"] = data_source_id
-            if destination_dataset_id is None and not opts.urn:
-                raise TypeError("Missing required property 'destination_dataset_id'")
             __props__.__dict__["destination_dataset_id"] = destination_dataset_id
             __props__.__dict__["disabled"] = disabled
             if display_name is None and not opts.urn:
@@ -946,7 +945,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationDatasetId")
-    def destination_dataset_id(self) -> pulumi.Output[str]:
+    def destination_dataset_id(self) -> pulumi.Output[Optional[str]]:
         """
         The BigQuery target dataset id.
         """

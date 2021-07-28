@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.BigQuery
         /// The BigQuery target dataset id.
         /// </summary>
         [Output("destinationDatasetId")]
-        public Output<string> DestinationDatasetId { get; private set; } = null!;
+        public Output<string?> DestinationDatasetId { get; private set; } = null!;
 
         /// <summary>
         /// When set to true, no runs are scheduled for a given transfer.
@@ -270,8 +270,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The BigQuery target dataset id.
         /// </summary>
-        [Input("destinationDatasetId", required: true)]
-        public Input<string> DestinationDatasetId { get; set; } = null!;
+        [Input("destinationDatasetId")]
+        public Input<string>? DestinationDatasetId { get; set; }
 
         /// <summary>
         /// When set to true, no runs are scheduled for a given transfer.

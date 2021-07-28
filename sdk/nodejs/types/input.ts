@@ -6490,6 +6490,7 @@ export namespace composer {
          */
         encryptionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigEncryptionConfig>;
         gkeCluster?: pulumi.Input<string>;
+        maintenanceWindow?: pulumi.Input<inputs.composer.EnvironmentConfigMaintenanceWindow>;
         /**
          * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
          */
@@ -6534,6 +6535,24 @@ export namespace composer {
          * i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
          */
         kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface EnvironmentConfigMaintenanceWindow {
+        /**
+         * Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+         * The value for end-time must be in the future, relative to 'start_time'.
+         */
+        endTime: pulumi.Input<string>;
+        /**
+         * Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+         * The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+         * Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+         */
+        recurrence: pulumi.Input<string>;
+        /**
+         * Start time of the first recurrence of the maintenance window.
+         */
+        startTime: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -7371,8 +7390,7 @@ export namespace compute {
         maxRatePerInstance?: pulumi.Input<number>;
         /**
          * Used when balancingMode is UTILIZATION. This ratio defines the
-         * CPU utilization target for the group. The default is 0.8. Valid
-         * range is [0.0, 1.0].
+         * CPU utilization target for the group. Valid range is [0.0, 1.0].
          */
         maxUtilization?: pulumi.Input<number>;
     }
@@ -16154,7 +16172,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType {
         /**
-         * Name of the information type.
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
          */
         name: pulumi.Input<string>;
     }
@@ -16166,6 +16184,17 @@ export namespace dataloss {
          * Structure is documented below.
          */
         characterMaskConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig>;
+        /**
+         * Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+         * Structure is documented below.
+         */
+        cryptoDeterministicConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig>;
+        /**
+         * Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+         * Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+         * Structure is documented below.
+         */
+        cryptoReplaceFfxFpeConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig>;
         /**
          * Replace each input value with a given value.
          * Structure is documented below.
@@ -16210,6 +16239,196 @@ export namespace dataloss {
          * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
          */
         commonCharactersToIgnore?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig {
+        /**
+         * The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+         * If the context is set but:
+         * 1.  there is no record present when transforming a given value or
+         * 2.  the field is not present when transforming a given value,
+         * a default tweak will be used.
+         * Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+         * The tweak is constructed as a sequence of bytes in big endian byte order such that:
+         * *   a 64 bit integer is encoded followed by a single byte of value 1
+         * *   a string is encoded in UTF-8 format followed by a single byte of value 2
+         * Structure is documented below.
+         */
+        context?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext>;
+        /**
+         * The key used by the encryption algorithm.
+         * Structure is documented below.
+         */
+        cryptoKey?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey>;
+        /**
+         * The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
+         * For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+         * This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+         * In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+         * Structure is documented below.
+         */
+        surrogateInfoType?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey {
+        /**
+         * Kms wrapped key
+         * Structure is documented below.
+         */
+        kmsWrapped?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped>;
+        /**
+         * Transient crypto key
+         * Structure is documented below.
+         */
+        transient?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient>;
+        /**
+         * Unwrapped crypto key
+         * Structure is documented below.
+         */
+        unwrapped?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped {
+        /**
+         * The resource name of the KMS CryptoKey to use for unwrapping.
+         */
+        cryptoKeyName: pulumi.Input<string>;
+        /**
+         * The wrapped data crypto key.
+         * A base64-encoded string.
+         */
+        wrappedKey: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped {
+        /**
+         * A 128/192/256 bit key.
+         * A base64-encoded string.
+         */
+        key: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
+        /**
+         * Common alphabets.
+         * Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+         */
+        commonAlphabet?: pulumi.Input<string>;
+        /**
+         * The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+         * If the context is set but:
+         * 1.  there is no record present when transforming a given value or
+         * 2.  the field is not present when transforming a given value,
+         * a default tweak will be used.
+         * Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+         * The tweak is constructed as a sequence of bytes in big endian byte order such that:
+         * *   a 64 bit integer is encoded followed by a single byte of value 1
+         * *   a string is encoded in UTF-8 format followed by a single byte of value 2
+         * Structure is documented below.
+         */
+        context?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext>;
+        /**
+         * The key used by the encryption algorithm.
+         * Structure is documented below.
+         */
+        cryptoKey?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey>;
+        /**
+         * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``
+         */
+        customAlphabet?: pulumi.Input<string>;
+        /**
+         * The native way to select the alphabet. Must be in the range \[2, 95\].
+         */
+        radix?: pulumi.Input<number>;
+        /**
+         * The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
+         * For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+         * This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+         * In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+         * Structure is documented below.
+         */
+        surrogateInfoType?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey {
+        /**
+         * Kms wrapped key
+         * Structure is documented below.
+         */
+        kmsWrapped?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped>;
+        /**
+         * Transient crypto key
+         * Structure is documented below.
+         */
+        transient?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient>;
+        /**
+         * Unwrapped crypto key
+         * Structure is documented below.
+         */
+        unwrapped?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped {
+        /**
+         * The resource name of the KMS CryptoKey to use for unwrapping.
+         */
+        cryptoKeyName: pulumi.Input<string>;
+        /**
+         * The wrapped data crypto key.
+         * A base64-encoded string.
+         */
+        wrappedKey: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped {
+        /**
+         * A 128/192/256 bit key.
+         * A base64-encoded string.
+         */
+        key: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name?: pulumi.Input<string>;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
@@ -17026,6 +17245,7 @@ export namespace dataloss {
          */
         pattern: pulumi.Input<string>;
     }
+
 }
 
 export namespace dataproc {
@@ -24580,6 +24800,33 @@ export namespace secretmanager {
          * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
          */
         name: pulumi.Input<string>;
+    }
+}
+
+export namespace securitycenter {
+    export interface NotificationConfigStreamingConfig {
+        /**
+         * Expression that defines the filter to apply across create/update
+         * events of assets or findings as specified by the event type. The
+         * expression is a list of zero or more restrictions combined via
+         * logical operators AND and OR. Parentheses are supported, and OR
+         * has higher precedence than AND.
+         * Restrictions have the form <field> <operator> <value> and may have
+         * a - character in front of them to indicate negation. The fields
+         * map to those defined in the corresponding resource.
+         * The supported operators are:
+         * * = for all value types.
+         * * >, <, >=, <= for integer values.
+         * * :, meaning substring matching, for strings.
+         * The supported value types are:
+         * * string literals in quotes.
+         * * integer literals without quotes.
+         * * boolean literals true and false without quotes.
+         * See
+         * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+         * for information on how to write a filter.
+         */
+        filter: pulumi.Input<string>;
     }
 }
 

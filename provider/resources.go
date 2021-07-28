@@ -1578,7 +1578,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_ml_engine_model": {Tok: gcpResource(gcpMachingLearning, "EngineModel")},
 
 			// Security Center
-			"google_scc_source": {Tok: gcpResource(gcpSecurityCenter, "Source")},
+			"google_scc_source":              {Tok: gcpResource(gcpSecurityCenter, "Source")},
+			"google_scc_notification_config": {Tok: gcpResource(gcpSecurityCenter, "NotificationConfig")},
 
 			// VPC Access
 			"google_vpc_access_connector": {Tok: gcpResource(gcpVpcAccess, "Connector")},
