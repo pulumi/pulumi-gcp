@@ -11,6 +11,102 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Membership contains information about a member cluster.
+//
+// To get more information about Membership, see:
+//
+// * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
+// * How-to Guides
+//     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+//
+// ## Example Usage
+// ### Gkehub Membership Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+// 			InitialNodeCount: pulumi.Int(1),
+// 			Location:         pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+// 			Endpoint: &gkehub.MembershipEndpointArgs{
+// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+// 						return fmt.Sprintf("%v%v", "//container.googleapis.com/", id), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			MembershipId: pulumi.String("basic"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Gkehub Membership Issuer
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+// 			InitialNodeCount: pulumi.Int(1),
+// 			Location:         pulumi.String("us-central1-a"),
+// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+// 				IdentityNamespace: pulumi.String("my-project-name.svc.id.goog"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+// 			Authority: &gkehub.MembershipAuthorityArgs{
+// 				Issuer: primary.ID().ApplyT(func(id string) (string, error) {
+// 					return fmt.Sprintf("%v%v", "https://container.googleapis.com/v1/", id), nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 			Endpoint: &gkehub.MembershipEndpointArgs{
+// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+// 						return fmt.Sprintf("%v%v", "//container.googleapis.com/", id), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			MembershipId: pulumi.String("basic"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Membership can be imported using any of these accepted formats
@@ -26,7 +122,9 @@ type Membership struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrOutput `pulumi:"authority"`
-	// The name of this entity type to be displayed on the console.
+	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+	//
+	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -79,7 +177,9 @@ type membershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// The name of this entity type to be displayed on the console.
+	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+	//
+	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	Description *string `pulumi:"description"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -101,7 +201,9 @@ type MembershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// The name of this entity type to be displayed on the console.
+	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+	//
+	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	Description pulumi.StringPtrInput
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -127,7 +229,9 @@ type membershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// The name of this entity type to be displayed on the console.
+	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+	//
+	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	Description *string `pulumi:"description"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -148,7 +252,9 @@ type MembershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// The name of this entity type to be displayed on the console.
+	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+	//
+	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	Description pulumi.StringPtrInput
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.

@@ -104,7 +104,7 @@ export class User extends pulumi.CustomResource {
      * for MySQL instances. Don't set this field for PostgreSQL instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    public readonly host!: pulumi.Output<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.

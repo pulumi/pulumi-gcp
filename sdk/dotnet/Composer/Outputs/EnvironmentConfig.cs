@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// </summary>
         public readonly Outputs.EnvironmentConfigEncryptionConfig? EncryptionConfig;
         public readonly string? GkeCluster;
+        public readonly Outputs.EnvironmentConfigMaintenanceWindow? MaintenanceWindow;
         /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
         /// </summary>
@@ -62,6 +63,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string? gkeCluster,
 
+            Outputs.EnvironmentConfigMaintenanceWindow? maintenanceWindow,
+
             Outputs.EnvironmentConfigNodeConfig? nodeConfig,
 
             int? nodeCount,
@@ -79,6 +82,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             DatabaseConfig = databaseConfig;
             EncryptionConfig = encryptionConfig;
             GkeCluster = gkeCluster;
+            MaintenanceWindow = maintenanceWindow;
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;

@@ -2242,8 +2242,7 @@ class BackendServiceBackend(dict):
                the group. Can be used in either balancing mode. For RATE mode,
                either maxRate or maxRatePerInstance must be set.
         :param float max_utilization: Used when balancingMode is UTILIZATION. This ratio defines the
-               CPU utilization target for the group. The default is 0.8. Valid
-               range is [0.0, 1.0].
+               CPU utilization target for the group. Valid range is [0.0, 1.0].
         """
         pulumi.set(__self__, "group", group)
         if balancing_mode is not None:
@@ -2397,8 +2396,7 @@ class BackendServiceBackend(dict):
     def max_utilization(self) -> Optional[float]:
         """
         Used when balancingMode is UTILIZATION. This ratio defines the
-        CPU utilization target for the group. The default is 0.8. Valid
-        range is [0.0, 1.0].
+        CPU utilization target for the group. Valid range is [0.0, 1.0].
         """
         return pulumi.get(self, "max_utilization")
 
@@ -15107,7 +15105,7 @@ class RegionUrlMapPathMatcherPathRule(dict):
                  url_redirect: Optional['outputs.RegionUrlMapPathMatcherPathRuleUrlRedirect'] = None):
         """
         :param Sequence[str] paths: The list of path patterns to match. Each must start with / and the only place a
-               * is allowed is at the end following a /. The string fed to the path matcher
+               \* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
         :param 'RegionUrlMapPathMatcherPathRuleRouteActionArgs' route_action: In response to a matching path, the load balancer performs advanced routing
@@ -15136,7 +15134,7 @@ class RegionUrlMapPathMatcherPathRule(dict):
     def paths(self) -> Sequence[str]:
         """
         The list of path patterns to match. Each must start with / and the only place a
-        * is allowed is at the end following a /. The string fed to the path matcher
+        \* is allowed is at the end following a /. The string fed to the path matcher
         does not include any text after the first ? or #, and those chars are not
         allowed here.
         """
@@ -23801,7 +23799,7 @@ class URLMapPathMatcherPathRule(dict):
                  url_redirect: Optional['outputs.URLMapPathMatcherPathRuleUrlRedirect'] = None):
         """
         :param Sequence[str] paths: The list of path patterns to match. Each must start with / and the only place a
-               * is allowed is at the end following a /. The string fed to the path matcher
+               \* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
         :param 'URLMapPathMatcherPathRuleRouteActionArgs' route_action: In response to a matching matchRule, the load balancer performs advanced routing
@@ -23830,7 +23828,7 @@ class URLMapPathMatcherPathRule(dict):
     def paths(self) -> Sequence[str]:
         """
         The list of path patterns to match. Each must start with / and the only place a
-        * is allowed is at the end following a /. The string fed to the path matcher
+        \* is allowed is at the end following a /. The string fed to the path matcher
         does not include any text after the first ? or #, and those chars are not
         allowed here.
         """

@@ -10,79 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc
 {
     /// <summary>
-    /// An event trigger sends messages to the event receiver service deployed on Cloud Run.
-    /// 
-    /// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-    ///             {
-    ///                 Namespace = "my-project",
-    ///             },
-    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
-    ///             {
-    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
-    ///                 {
-    ///                     Containers = 
-    ///                     {
-    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
-    ///                         {
-    ///                             Image = "gcr.io/cloudrun/hello",
-    ///                             Args = 
-    ///                             {
-    ///                                 "arrgs",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     ContainerConcurrency = 50,
-    ///                 },
-    ///             },
-    ///             Traffics = 
-    ///             {
-    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
-    ///                 {
-    ///                     Percent = 100,
-    ///                     LatestRevision = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var trigger = new Gcp.Eventarc.Trigger("trigger", new Gcp.Eventarc.TriggerArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             MatchingCriterias = 
-    ///             {
-    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
-    ///                 {
-    ///                     Attribute = "type",
-    ///                     Value = "google.cloud.pubsub.topic.v1.messagePublished",
-    ///                 },
-    ///             },
-    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
-    ///             {
-    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
-    ///                 {
-    ///                     Service = @default.Name,
-    ///                     Region = "us-central1",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Trigger can be imported using any of these accepted formats
@@ -145,7 +72,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa\\\_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+        /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string?> ServiceAccount { get; private set; } = null!;
@@ -254,7 +181,7 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa\\\_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+        /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
@@ -333,7 +260,7 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa\\\_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+        /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

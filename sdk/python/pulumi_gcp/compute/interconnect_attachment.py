@@ -945,29 +945,25 @@ class InterconnectAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
         address = gcp.compute.Address("address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
-            ipsec_internal_addresses=[address.self_link],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ipsec_internal_addresses=[address.self_link])
         ```
 
         ## Import
@@ -1102,29 +1098,25 @@ class InterconnectAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
         address = gcp.compute.Address("address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
-            network=network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=network.self_link)
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
-            ipsec_internal_addresses=[address.self_link],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ipsec_internal_addresses=[address.self_link])
         ```
 
         ## Import

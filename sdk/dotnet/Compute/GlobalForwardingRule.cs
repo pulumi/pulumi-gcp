@@ -260,6 +260,61 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Private Service Connect Google Apis
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var vpcSubnetwork = new Gcp.Compute.Subnetwork("vpcSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             Project = network.Project,
+    ///             IpCidrRange = "10.2.0.0/16",
+    ///             Region = "us-central1",
+    ///             Network = network.Id,
+    ///             PrivateIpGoogleAccess = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultGlobalAddress = new Gcp.Compute.GlobalAddress("defaultGlobalAddress", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Project = network.Project,
+    ///             AddressType = "INTERNAL",
+    ///             Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///             Network = network.Id,
+    ///             Address = "100.100.100.106",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         {
+    ///             Project = network.Project,
+    ///             Target = "all-apis",
+    ///             Network = network.Id,
+    ///             IpAddress = defaultGlobalAddress.Id,
+    ///             LoadBalancingScheme = "",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -33,6 +33,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("gkeCluster")]
         public Input<string>? GkeCluster { get; set; }
 
+        [Input("maintenanceWindow")]
+        public Input<Inputs.EnvironmentConfigMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
+
         /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
         /// </summary>

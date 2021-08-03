@@ -5,15 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./notificationConfig";
 export * from "./source";
 
 // Import resources to register:
+import { NotificationConfig } from "./notificationConfig";
 import { Source } from "./source";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:securitycenter/notificationConfig:NotificationConfig":
+                return new NotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/source:Source":
                 return new Source(name, <any>undefined, { urn })
             default:
@@ -21,4 +25,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)

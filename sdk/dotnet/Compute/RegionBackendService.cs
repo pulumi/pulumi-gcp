@@ -70,6 +70,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Port = 80,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
     ///         {
@@ -90,6 +93,9 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///             LoadBalancingScheme = "EXTERNAL",
     ///             Protocol = "HTTP",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -478,7 +484,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
-        public Output<Outputs.RegionBackendServiceLogConfig?> LogConfig { get; private set; } = null!;
+        public Output<Outputs.RegionBackendServiceLogConfig> LogConfig { get; private set; } = null!;
 
         /// <summary>
         /// Name of the cookie.

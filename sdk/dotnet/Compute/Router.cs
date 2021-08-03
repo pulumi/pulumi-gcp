@@ -74,9 +74,6 @@ namespace Pulumi.Gcp.Compute
     ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
     ///         {
     ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var encrypted_interconnect_router = new Gcp.Compute.Router("encrypted-interconnect-router", new Gcp.Compute.RouterArgs
     ///         {
@@ -86,9 +83,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Asn = 64514,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

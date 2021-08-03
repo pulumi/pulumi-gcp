@@ -13,6 +13,7 @@ __all__ = [
     'EnvironmentConfig',
     'EnvironmentConfigDatabaseConfig',
     'EnvironmentConfigEncryptionConfig',
+    'EnvironmentConfigMaintenanceWindow',
     'EnvironmentConfigNodeConfig',
     'EnvironmentConfigNodeConfigIpAllocationPolicy',
     'EnvironmentConfigPrivateEnvironmentConfig',
@@ -23,6 +24,7 @@ __all__ = [
     'GetEnvironmentConfigResult',
     'GetEnvironmentConfigDatabaseConfigResult',
     'GetEnvironmentConfigEncryptionConfigResult',
+    'GetEnvironmentConfigMaintenanceWindowResult',
     'GetEnvironmentConfigNodeConfigResult',
     'GetEnvironmentConfigNodeConfigIpAllocationPolicyResult',
     'GetEnvironmentConfigPrivateEnvironmentConfigResult',
@@ -48,6 +50,8 @@ class EnvironmentConfig(dict):
             suggest = "encryption_config"
         elif key == "gkeCluster":
             suggest = "gke_cluster"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
         elif key == "nodeConfig":
             suggest = "node_config"
         elif key == "nodeCount":
@@ -78,6 +82,7 @@ class EnvironmentConfig(dict):
                  database_config: Optional['outputs.EnvironmentConfigDatabaseConfig'] = None,
                  encryption_config: Optional['outputs.EnvironmentConfigEncryptionConfig'] = None,
                  gke_cluster: Optional[str] = None,
+                 maintenance_window: Optional['outputs.EnvironmentConfigMaintenanceWindow'] = None,
                  node_config: Optional['outputs.EnvironmentConfigNodeConfig'] = None,
                  node_count: Optional[int] = None,
                  private_environment_config: Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig'] = None,
@@ -105,6 +110,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "encryption_config", encryption_config)
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -148,6 +155,11 @@ class EnvironmentConfig(dict):
     @pulumi.getter(name="gkeCluster")
     def gke_cluster(self) -> Optional[str]:
         return pulumi.get(self, "gke_cluster")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional['outputs.EnvironmentConfigMaintenanceWindow']:
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -277,6 +289,71 @@ class EnvironmentConfigEncryptionConfig(dict):
         i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class EnvironmentConfigMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 recurrence: str,
+                 start_time: str):
+        """
+        :param str end_time: Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+               The value for end-time must be in the future, relative to 'start_time'.
+        :param str recurrence: Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+               The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+               Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+        :param str start_time: Start time of the first recurrence of the maintenance window.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+        The value for end-time must be in the future, relative to 'start_time'.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def recurrence(self) -> str:
+        """
+        Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
+        The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
+        Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+        """
+        return pulumi.get(self, "recurrence")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Start time of the first recurrence of the maintenance window.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -938,6 +1015,7 @@ class GetEnvironmentConfigResult(dict):
                  database_configs: Sequence['outputs.GetEnvironmentConfigDatabaseConfigResult'],
                  encryption_configs: Sequence['outputs.GetEnvironmentConfigEncryptionConfigResult'],
                  gke_cluster: str,
+                 maintenance_windows: Sequence['outputs.GetEnvironmentConfigMaintenanceWindowResult'],
                  node_configs: Sequence['outputs.GetEnvironmentConfigNodeConfigResult'],
                  node_count: int,
                  private_environment_configs: Sequence['outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult'],
@@ -949,6 +1027,7 @@ class GetEnvironmentConfigResult(dict):
         pulumi.set(__self__, "database_configs", database_configs)
         pulumi.set(__self__, "encryption_configs", encryption_configs)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         pulumi.set(__self__, "node_configs", node_configs)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_configs", private_environment_configs)
@@ -980,6 +1059,11 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="gkeCluster")
     def gke_cluster(self) -> str:
         return pulumi.get(self, "gke_cluster")
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.GetEnvironmentConfigMaintenanceWindowResult']:
+        return pulumi.get(self, "maintenance_windows")
 
     @property
     @pulumi.getter(name="nodeConfigs")
@@ -1034,6 +1118,32 @@ class GetEnvironmentConfigEncryptionConfigResult(dict):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 end_time: str,
+                 recurrence: str,
+                 start_time: str):
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def recurrence(self) -> str:
+        return pulumi.get(self, "recurrence")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type

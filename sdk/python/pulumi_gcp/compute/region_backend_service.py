@@ -1119,7 +1119,8 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port=80,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
             region="us-central1",
             health_checks=[default_region_health_check.id],
@@ -1133,7 +1134,8 @@ class RegionBackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ),
             load_balancing_scheme="EXTERNAL",
-            protocol="HTTP")
+            protocol="HTTP",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Region Backend Service Ilb Round Robin
 
@@ -1416,7 +1418,8 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port=80,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
             region="us-central1",
             health_checks=[default_region_health_check.id],
@@ -1430,7 +1433,8 @@ class RegionBackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ),
             load_balancing_scheme="EXTERNAL",
-            protocol="HTTP")
+            protocol="HTTP",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Region Backend Service Ilb Round Robin
 
@@ -1978,7 +1982,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceLogConfig']]:
+    def log_config(self) -> pulumi.Output['outputs.RegionBackendServiceLogConfig']:
         """
         This field denotes the logging options for the load balancer traffic served by this backend service.
         If logging is enabled, logs will be exported to Stackdriver.

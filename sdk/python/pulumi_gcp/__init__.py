@@ -3611,6 +3611,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/notificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/notificationConfig:NotificationConfig": "NotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/source",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {

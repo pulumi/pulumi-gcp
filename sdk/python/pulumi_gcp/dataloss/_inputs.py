@@ -16,6 +16,20 @@ __all__ = [
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs',
@@ -173,7 +187,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the information type.
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -181,7 +195,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the information type.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         return pulumi.get(self, "name")
 
@@ -194,11 +208,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs:
     def __init__(__self__, *,
                  character_mask_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs']] = None,
+                 crypto_deterministic_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']] = None,
+                 crypto_replace_ffx_fpe_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']] = None,
                  replace_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs']] = None,
                  replace_with_info_type_config: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs'] character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character.
                Masking can start from the beginning or end of the string.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs'] crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs'] crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+               Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs'] replace_config: Replace each input value with a given value.
                Structure is documented below.
@@ -206,6 +227,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         if character_mask_config is not None:
             pulumi.set(__self__, "character_mask_config", character_mask_config)
+        if crypto_deterministic_config is not None:
+            pulumi.set(__self__, "crypto_deterministic_config", crypto_deterministic_config)
+        if crypto_replace_ffx_fpe_config is not None:
+            pulumi.set(__self__, "crypto_replace_ffx_fpe_config", crypto_replace_ffx_fpe_config)
         if replace_config is not None:
             pulumi.set(__self__, "replace_config", replace_config)
         if replace_with_info_type_config is not None:
@@ -224,6 +249,33 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @character_mask_config.setter
     def character_mask_config(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs']]):
         pulumi.set(self, "character_mask_config", value)
+
+    @property
+    @pulumi.getter(name="cryptoDeterministicConfig")
+    def crypto_deterministic_config(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']]:
+        """
+        Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_deterministic_config")
+
+    @crypto_deterministic_config.setter
+    def crypto_deterministic_config(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']]):
+        pulumi.set(self, "crypto_deterministic_config", value)
+
+    @property
+    @pulumi.getter(name="cryptoReplaceFfxFpeConfig")
+    def crypto_replace_ffx_fpe_config(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']]:
+        """
+        Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+        Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_replace_ffx_fpe_config")
+
+    @crypto_replace_ffx_fpe_config.setter
+    def crypto_replace_ffx_fpe_config(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']]):
+        pulumi.set(self, "crypto_replace_ffx_fpe_config", value)
 
     @property
     @pulumi.getter(name="replaceConfig")
@@ -369,6 +421,608 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @common_characters_to_ignore.setter
     def common_characters_to_ignore(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "common_characters_to_ignore", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs:
+    def __init__(__self__, *,
+                 context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']] = None,
+                 crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs']] = None,
+                 surrogate_info_type: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+               If the context is set but:
+               1.  there is no record present when transforming a given value or
+               2.  the field is not present when transforming a given value,
+               a default tweak will be used.
+               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+               *   a 64 bit integer is encoded followed by a single byte of value 1
+               *   a string is encoded in UTF-8 format followed by a single byte of value 2
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs'] surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
+               For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+               This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+               In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+               Structure is documented below.
+        """
+        if context is not None:
+            pulumi.set(__self__, "context", context)
+        if crypto_key is not None:
+            pulumi.set(__self__, "crypto_key", crypto_key)
+        if surrogate_info_type is not None:
+            pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+
+    @property
+    @pulumi.getter
+    def context(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']]:
+        """
+        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+        If the context is set but:
+        1.  there is no record present when transforming a given value or
+        2.  the field is not present when transforming a given value,
+        a default tweak will be used.
+        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+        *   a 64 bit integer is encoded followed by a single byte of value 1
+        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        Structure is documented below.
+        """
+        return pulumi.get(self, "context")
+
+    @context.setter
+    def context(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']]):
+        pulumi.set(self, "context", value)
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs']]:
+        """
+        The key used by the encryption algorithm.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @crypto_key.setter
+    def crypto_key(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs']]):
+        pulumi.set(self, "crypto_key", value)
+
+    @property
+    @pulumi.getter(name="surrogateInfoType")
+    def surrogate_info_type(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs']]:
+        """
+        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
+        For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+        This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+        In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+        Structure is documented below.
+        """
+        return pulumi.get(self, "surrogate_info_type")
+
+    @surrogate_info_type.setter
+    def surrogate_info_type(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs']]):
+        pulumi.set(self, "surrogate_info_type", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs:
+    def __init__(__self__, *,
+                 kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']] = None,
+                 transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']] = None,
+                 unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs'] kms_wrapped: Kms wrapped key
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs'] transient: Transient crypto key
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key
+               Structure is documented below.
+        """
+        if kms_wrapped is not None:
+            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+        if transient is not None:
+            pulumi.set(__self__, "transient", transient)
+        if unwrapped is not None:
+            pulumi.set(__self__, "unwrapped", unwrapped)
+
+    @property
+    @pulumi.getter(name="kmsWrapped")
+    def kms_wrapped(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']]:
+        """
+        Kms wrapped key
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kms_wrapped")
+
+    @kms_wrapped.setter
+    def kms_wrapped(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']]):
+        pulumi.set(self, "kms_wrapped", value)
+
+    @property
+    @pulumi.getter
+    def transient(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']]:
+        """
+        Transient crypto key
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transient")
+
+    @transient.setter
+    def transient(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']]):
+        pulumi.set(self, "transient", value)
+
+    @property
+    @pulumi.getter
+    def unwrapped(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']]:
+        """
+        Unwrapped crypto key
+        Structure is documented below.
+        """
+        return pulumi.get(self, "unwrapped")
+
+    @unwrapped.setter
+    def unwrapped(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']]):
+        pulumi.set(self, "unwrapped", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs:
+    def __init__(__self__, *,
+                 crypto_key_name: pulumi.Input[str],
+                 wrapped_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] crypto_key_name: The resource name of the KMS CryptoKey to use for unwrapping.
+        :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
+               A base64-encoded string.
+        """
+        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+        pulumi.set(__self__, "wrapped_key", wrapped_key)
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the KMS CryptoKey to use for unwrapping.
+        """
+        return pulumi.get(self, "crypto_key_name")
+
+    @crypto_key_name.setter
+    def crypto_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_key_name", value)
+
+    @property
+    @pulumi.getter(name="wrappedKey")
+    def wrapped_key(self) -> pulumi.Input[str]:
+        """
+        The wrapped data crypto key.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "wrapped_key")
+
+    @wrapped_key.setter
+    def wrapped_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "wrapped_key", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: A 128/192/256 bit key.
+               A base64-encoded string.
+        """
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        A 128/192/256 bit key.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs:
+    def __init__(__self__, *,
+                 common_alphabet: Optional[pulumi.Input[str]] = None,
+                 context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']] = None,
+                 crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs']] = None,
+                 custom_alphabet: Optional[pulumi.Input[str]] = None,
+                 radix: Optional[pulumi.Input[int]] = None,
+                 surrogate_info_type: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']] = None):
+        """
+        :param pulumi.Input[str] common_alphabet: Common alphabets.
+               Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+               If the context is set but:
+               1.  there is no record present when transforming a given value or
+               2.  the field is not present when transforming a given value,
+               a default tweak will be used.
+               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+               *   a 64 bit integer is encoded followed by a single byte of value 1
+               *   a string is encoded in UTF-8 format followed by a single byte of value 2
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
+               Structure is documented below.
+        :param pulumi.Input[str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+               ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``
+        :param pulumi.Input[int] radix: The native way to select the alphabet. Must be in the range \[2, 95\].
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs'] surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
+               For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+               This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+               In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+               Structure is documented below.
+        """
+        if common_alphabet is not None:
+            pulumi.set(__self__, "common_alphabet", common_alphabet)
+        if context is not None:
+            pulumi.set(__self__, "context", context)
+        if crypto_key is not None:
+            pulumi.set(__self__, "crypto_key", crypto_key)
+        if custom_alphabet is not None:
+            pulumi.set(__self__, "custom_alphabet", custom_alphabet)
+        if radix is not None:
+            pulumi.set(__self__, "radix", radix)
+        if surrogate_info_type is not None:
+            pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+
+    @property
+    @pulumi.getter(name="commonAlphabet")
+    def common_alphabet(self) -> Optional[pulumi.Input[str]]:
+        """
+        Common alphabets.
+        Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+        """
+        return pulumi.get(self, "common_alphabet")
+
+    @common_alphabet.setter
+    def common_alphabet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "common_alphabet", value)
+
+    @property
+    @pulumi.getter
+    def context(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']]:
+        """
+        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+        If the context is set but:
+        1.  there is no record present when transforming a given value or
+        2.  the field is not present when transforming a given value,
+        a default tweak will be used.
+        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+        *   a 64 bit integer is encoded followed by a single byte of value 1
+        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        Structure is documented below.
+        """
+        return pulumi.get(self, "context")
+
+    @context.setter
+    def context(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']]):
+        pulumi.set(self, "context", value)
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs']]:
+        """
+        The key used by the encryption algorithm.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @crypto_key.setter
+    def crypto_key(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs']]):
+        pulumi.set(self, "crypto_key", value)
+
+    @property
+    @pulumi.getter(name="customAlphabet")
+    def custom_alphabet(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+        ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``
+        """
+        return pulumi.get(self, "custom_alphabet")
+
+    @custom_alphabet.setter
+    def custom_alphabet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_alphabet", value)
+
+    @property
+    @pulumi.getter
+    def radix(self) -> Optional[pulumi.Input[int]]:
+        """
+        The native way to select the alphabet. Must be in the range \[2, 95\].
+        """
+        return pulumi.get(self, "radix")
+
+    @radix.setter
+    def radix(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "radix", value)
+
+    @property
+    @pulumi.getter(name="surrogateInfoType")
+    def surrogate_info_type(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']]:
+        """
+        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
+        For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+        This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+        In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+        Structure is documented below.
+        """
+        return pulumi.get(self, "surrogate_info_type")
+
+    @surrogate_info_type.setter
+    def surrogate_info_type(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']]):
+        pulumi.set(self, "surrogate_info_type", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs:
+    def __init__(__self__, *,
+                 kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']] = None,
+                 transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']] = None,
+                 unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs'] kms_wrapped: Kms wrapped key
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs'] transient: Transient crypto key
+               Structure is documented below.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key
+               Structure is documented below.
+        """
+        if kms_wrapped is not None:
+            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+        if transient is not None:
+            pulumi.set(__self__, "transient", transient)
+        if unwrapped is not None:
+            pulumi.set(__self__, "unwrapped", unwrapped)
+
+    @property
+    @pulumi.getter(name="kmsWrapped")
+    def kms_wrapped(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']]:
+        """
+        Kms wrapped key
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kms_wrapped")
+
+    @kms_wrapped.setter
+    def kms_wrapped(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']]):
+        pulumi.set(self, "kms_wrapped", value)
+
+    @property
+    @pulumi.getter
+    def transient(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']]:
+        """
+        Transient crypto key
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transient")
+
+    @transient.setter
+    def transient(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']]):
+        pulumi.set(self, "transient", value)
+
+    @property
+    @pulumi.getter
+    def unwrapped(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']]:
+        """
+        Unwrapped crypto key
+        Structure is documented below.
+        """
+        return pulumi.get(self, "unwrapped")
+
+    @unwrapped.setter
+    def unwrapped(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']]):
+        pulumi.set(self, "unwrapped", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs:
+    def __init__(__self__, *,
+                 crypto_key_name: pulumi.Input[str],
+                 wrapped_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] crypto_key_name: The resource name of the KMS CryptoKey to use for unwrapping.
+        :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
+               A base64-encoded string.
+        """
+        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+        pulumi.set(__self__, "wrapped_key", wrapped_key)
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the KMS CryptoKey to use for unwrapping.
+        """
+        return pulumi.get(self, "crypto_key_name")
+
+    @crypto_key_name.setter
+    def crypto_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_key_name", value)
+
+    @property
+    @pulumi.getter(name="wrappedKey")
+    def wrapped_key(self) -> pulumi.Input[str]:
+        """
+        The wrapped data crypto key.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "wrapped_key")
+
+    @wrapped_key.setter
+    def wrapped_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "wrapped_key", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: A 128/192/256 bit key.
+               A base64-encoded string.
+        """
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        A 128/192/256 bit key.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+
+@pulumi.input_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

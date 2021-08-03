@@ -105,7 +105,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
     /**
      * The BigQuery target dataset id.
      */
-    public readonly destinationDatasetId!: pulumi.Output<string>;
+    public readonly destinationDatasetId!: pulumi.Output<string | undefined>;
     /**
      * When set to true, no runs are scheduled for a given transfer.
      */
@@ -210,9 +210,6 @@ export class DataTransferConfig extends pulumi.CustomResource {
             const args = argsOrState as DataTransferConfigArgs | undefined;
             if ((!args || args.dataSourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceId'");
-            }
-            if ((!args || args.destinationDatasetId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'destinationDatasetId'");
             }
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
@@ -355,7 +352,7 @@ export interface DataTransferConfigArgs {
     /**
      * The BigQuery target dataset id.
      */
-    destinationDatasetId: pulumi.Input<string>;
+    destinationDatasetId?: pulumi.Input<string>;
     /**
      * When set to true, no runs are scheduled for a given transfer.
      */

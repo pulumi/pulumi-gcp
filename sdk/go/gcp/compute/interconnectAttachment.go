@@ -69,7 +69,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -79,7 +79,7 @@ import (
 // 			Address:      pulumi.String("192.168.1.0"),
 // 			PrefixLength: pulumi.Int(29),
 // 			Network:      network.SelfLink,
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -89,7 +89,7 @@ import (
 // 			Bgp: &compute.RouterBgpArgs{
 // 				Asn: pulumi.Int(16550),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -101,7 +101,7 @@ import (
 // 			IpsecInternalAddresses: pulumi.StringArray{
 // 				address.SelfLink,
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

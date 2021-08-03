@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.Sql
         /// Can be an IP address. Changing this forces a new resource to be created.
         /// </summary>
         [Output("host")]
-        public Output<string?> Host { get; private set; } = null!;
+        public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Cloud SQL instance. Changing this

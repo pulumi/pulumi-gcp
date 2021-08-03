@@ -106,7 +106,7 @@ class _PreventionDeidentifyTemplateState:
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
-        :param pulumi.Input[str] name: Name of the information type.
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -165,7 +165,7 @@ class _PreventionDeidentifyTemplateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the information type.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         return pulumi.get(self, "name")
 
@@ -277,6 +277,26 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                             month=1,
                                             year=2020,
                                         ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="CREDIT_CARD_NUMBER",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                crypto_deterministic_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs(
+                                    context=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs(
+                                        name="sometweak",
+                                    ),
+                                    crypto_key={
+                                        "transient": {
+                                            "name": "beep",
+                                        },
+                                    },
+                                    surrogate_info_type=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs(
+                                        name="abc",
                                     ),
                                 ),
                             ),
@@ -400,6 +420,26 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                 ),
                             ),
                         ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="CREDIT_CARD_NUMBER",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                crypto_deterministic_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs(
+                                    context=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs(
+                                        name="sometweak",
+                                    ),
+                                    crypto_key={
+                                        "transient": {
+                                            "name": "beep",
+                                        },
+                                    },
+                                    surrogate_info_type=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs(
+                                        name="abc",
+                                    ),
+                                ),
+                            ),
+                        ),
                     ],
                 ),
             ),
@@ -486,7 +526,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
-        :param pulumi.Input[str] name: Name of the information type.
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -533,7 +573,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the information type.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         return pulumi.get(self, "name")
 

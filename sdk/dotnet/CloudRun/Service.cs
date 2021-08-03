@@ -124,8 +124,7 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// }
     /// ```
-    /// 
-    /// ###Cloud Run Service Noauth
+    /// ### Cloud Run Service Noauth
     /// 
     /// ```csharp
     /// using Pulumi;
