@@ -11095,7 +11095,7 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherPathRule {
         /**
          * The list of path patterns to match. Each must start with / and the only place a
-         * * is allowed is at the end following a /. The string fed to the path matcher
+         * \* is allowed is at the end following a /. The string fed to the path matcher
          * does not include any text after the first ? or #, and those chars are not
          * allowed here.
          */
@@ -13696,7 +13696,7 @@ export namespace compute {
     export interface URLMapPathMatcherPathRule {
         /**
          * The list of path patterns to match. Each must start with / and the only place a
-         * * is allowed is at the end following a /. The string fed to the path matcher
+         * \* is allowed is at the end following a /. The string fed to the path matcher
          * does not include any text after the first ? or #, and those chars are not
          * allowed here.
          */

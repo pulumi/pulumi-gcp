@@ -47,6 +47,8 @@ import * as utilities from "../utilities";
  *     httpHealthCheck: {
  *         port: 80,
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
  *     region: "us-central1",
@@ -62,6 +64,8 @@ import * as utilities from "../utilities";
  *     },
  *     loadBalancingScheme: "EXTERNAL",
  *     protocol: "HTTP",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  * ### Region Backend Service Ilb Round Robin

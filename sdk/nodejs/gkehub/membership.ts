@@ -6,6 +6,60 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * Membership contains information about a member cluster.
+ *
+ * To get more information about Membership, see:
+ *
+ * * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
+ * * How-to Guides
+ *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *
+ * ## Example Usage
+ * ### Gkehub Membership Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     initialNodeCount: 1,
+ *     location: "us-central1-a",
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
+ *         },
+ *     },
+ *     membershipId: "basic",
+ * });
+ * ```
+ * ### Gkehub Membership Issuer
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     initialNodeCount: 1,
+ *     location: "us-central1-a",
+ *     workloadIdentityConfig: {
+ *         identityNamespace: "my-project-name.svc.id.goog",
+ *     },
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     authority: {
+ *         issuer: pulumi.interpolate`https://container.googleapis.com/v1/${primary.id}`,
+ *     },
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
+ *         },
+ *     },
+ *     membershipId: "basic",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Membership can be imported using any of these accepted formats
@@ -50,7 +104,9 @@ export class Membership extends pulumi.CustomResource {
      */
     public readonly authority!: pulumi.Output<outputs.gkehub.MembershipAuthority | undefined>;
     /**
-     * The name of this entity type to be displayed on the console.
+     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     *
+     * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -128,7 +184,9 @@ export interface MembershipState {
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
-     * The name of this entity type to be displayed on the console.
+     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     *
+     * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
      */
     description?: pulumi.Input<string>;
     /**
@@ -167,7 +225,9 @@ export interface MembershipArgs {
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
-     * The name of this entity type to be displayed on the console.
+     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     *
+     * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
      */
     description?: pulumi.Input<string>;
     /**

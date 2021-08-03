@@ -28,7 +28,7 @@ class MembershipArgs:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -38,6 +38,9 @@ class MembershipArgs:
         pulumi.set(__self__, "membership_id", membership_id)
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
+        if description is not None:
+            warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
         if description is not None:
             pulumi.set(__self__, "description", description)
         if endpoint is not None:
@@ -78,7 +81,7 @@ class MembershipArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this entity type to be displayed on the console.
+        The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         """
         return pulumi.get(self, "description")
 
@@ -141,7 +144,7 @@ class _MembershipState:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -152,6 +155,9 @@ class _MembershipState:
         """
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
+        if description is not None:
+            warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
         if description is not None:
             pulumi.set(__self__, "description", description)
         if endpoint is not None:
@@ -184,7 +190,7 @@ class _MembershipState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this entity type to be displayed on the console.
+        The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         """
         return pulumi.get(self, "description")
 
@@ -268,6 +274,56 @@ class Membership(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Membership contains information about a member cluster.
+
+        To get more information about Membership, see:
+
+        * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
+        ## Example Usage
+        ### Gkehub Membership Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=1,
+            location="us-central1-a")
+        membership = gcp.gkehub.Membership("membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            membership_id="basic")
+        ```
+        ### Gkehub Membership Issuer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=1,
+            location="us-central1-a",
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                identity_namespace="my-project-name.svc.id.goog",
+            ))
+        membership = gcp.gkehub.Membership("membership",
+            authority=gcp.gkehub.MembershipAuthorityArgs(
+                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            ),
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            membership_id="basic")
+        ```
+
         ## Import
 
         Membership can be imported using any of these accepted formats
@@ -282,7 +338,7 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -297,6 +353,56 @@ class Membership(pulumi.CustomResource):
                  args: MembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Membership contains information about a member cluster.
+
+        To get more information about Membership, see:
+
+        * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
+        ## Example Usage
+        ### Gkehub Membership Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=1,
+            location="us-central1-a")
+        membership = gcp.gkehub.Membership("membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            membership_id="basic")
+        ```
+        ### Gkehub Membership Issuer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=1,
+            location="us-central1-a",
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                identity_namespace="my-project-name.svc.id.goog",
+            ))
+        membership = gcp.gkehub.Membership("membership",
+            authority=gcp.gkehub.MembershipAuthorityArgs(
+                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            ),
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            membership_id="basic")
+        ```
+
         ## Import
 
         Membership can be imported using any of these accepted formats
@@ -339,6 +445,9 @@ class Membership(pulumi.CustomResource):
             __props__ = MembershipArgs.__new__(MembershipArgs)
 
             __props__.__dict__["authority"] = authority
+            if description is not None and not opts.urn:
+                warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+                pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
             __props__.__dict__["description"] = description
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["labels"] = labels
@@ -375,7 +484,7 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -412,7 +521,7 @@ class Membership(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of this entity type to be displayed on the console.
+        The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         """
         return pulumi.get(self, "description")
 

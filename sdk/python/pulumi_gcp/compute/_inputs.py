@@ -15074,7 +15074,7 @@ class RegionUrlMapPathMatcherPathRuleArgs:
                  url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The list of path patterns to match. Each must start with / and the only place a
-               * is allowed is at the end following a /. The string fed to the path matcher
+               \* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
         :param pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArgs'] route_action: In response to a matching path, the load balancer performs advanced routing
@@ -15103,7 +15103,7 @@ class RegionUrlMapPathMatcherPathRuleArgs:
     def paths(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of path patterns to match. Each must start with / and the only place a
-        * is allowed is at the end following a /. The string fed to the path matcher
+        \* is allowed is at the end following a /. The string fed to the path matcher
         does not include any text after the first ? or #, and those chars are not
         allowed here.
         """
@@ -23368,7 +23368,7 @@ class URLMapPathMatcherPathRuleArgs:
                  url_redirect: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The list of path patterns to match. Each must start with / and the only place a
-               * is allowed is at the end following a /. The string fed to the path matcher
+               \* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
         :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs'] route_action: In response to a matching matchRule, the load balancer performs advanced routing
@@ -23397,7 +23397,7 @@ class URLMapPathMatcherPathRuleArgs:
     def paths(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of path patterns to match. Each must start with / and the only place a
-        * is allowed is at the end following a /. The string fed to the path matcher
+        \* is allowed is at the end following a /. The string fed to the path matcher
         does not include any text after the first ? or #, and those chars are not
         allowed here.
         """

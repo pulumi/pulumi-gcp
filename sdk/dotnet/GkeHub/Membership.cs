@@ -10,6 +10,84 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub
 {
     /// <summary>
+    /// Membership contains information about a member cluster.
+    /// 
+    /// To get more information about Membership, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
+    /// * How-to Guides
+    ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+    /// 
+    /// ## Example Usage
+    /// ### Gkehub Membership Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             InitialNodeCount = 1,
+    ///             Location = "us-central1-a",
+    ///         });
+    ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs
+    ///         {
+    ///             Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///             {
+    ///                 GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///                 {
+    ///                     ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///                 },
+    ///             },
+    ///             MembershipId = "basic",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Gkehub Membership Issuer
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             InitialNodeCount = 1,
+    ///             Location = "us-central1-a",
+    ///             WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///             {
+    ///                 IdentityNamespace = "my-project-name.svc.id.goog",
+    ///             },
+    ///         });
+    ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs
+    ///         {
+    ///             Authority = new Gcp.GkeHub.Inputs.MembershipAuthorityArgs
+    ///             {
+    ///                 Issuer = primary.Id.Apply(id =&gt; $"https://container.googleapis.com/v1/{id}"),
+    ///             },
+    ///             Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///             {
+    ///                 GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///                 {
+    ///                     ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///                 },
+    ///             },
+    ///             MembershipId = "basic",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Membership can be imported using any of these accepted formats
@@ -31,7 +109,7 @@ namespace Pulumi.Gcp.GkeHub
         public Output<Outputs.MembershipAuthority?> Authority { get; private set; } = null!;
 
         /// <summary>
-        /// The name of this entity type to be displayed on the console.
+        /// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -124,7 +202,7 @@ namespace Pulumi.Gcp.GkeHub
         public Input<Inputs.MembershipAuthorityArgs>? Authority { get; set; }
 
         /// <summary>
-        /// The name of this entity type to be displayed on the console.
+        /// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -178,7 +256,7 @@ namespace Pulumi.Gcp.GkeHub
         public Input<Inputs.MembershipAuthorityGetArgs>? Authority { get; set; }
 
         /// <summary>
-        /// The name of this entity type to be displayed on the console.
+        /// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

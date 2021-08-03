@@ -74,7 +74,7 @@ import (
 // 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -94,7 +94,7 @@ import (
 // 			},
 // 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 // 			Protocol:            pulumi.String("HTTP"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

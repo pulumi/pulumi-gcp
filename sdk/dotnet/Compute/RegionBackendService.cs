@@ -70,6 +70,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Port = 80,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
     ///         {
@@ -90,6 +93,9 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///             LoadBalancingScheme = "EXTERNAL",
     ///             Protocol = "HTTP",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

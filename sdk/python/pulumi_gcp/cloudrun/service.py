@@ -428,8 +428,7 @@ class Service(pulumi.CustomResource):
             ),
             autogenerate_revision_name=True)
         ```
-
-        ###Cloud Run Service Noauth
+        ### Cloud Run Service Noauth
 
         ```python
         import pulumi
@@ -761,8 +760,7 @@ class Service(pulumi.CustomResource):
             ),
             autogenerate_revision_name=True)
         ```
-
-        ###Cloud Run Service Noauth
+        ### Cloud Run Service Noauth
 
         ```python
         import pulumi

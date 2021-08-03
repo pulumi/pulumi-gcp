@@ -124,7 +124,7 @@ type User struct {
 	// The host the user can connect from. This is only supported
 	// for MySQL instances. Don't set this field for PostgreSQL instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
-	Host pulumi.StringPtrOutput `pulumi:"host"`
+	Host pulumi.StringOutput `pulumi:"host"`
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
 	Instance pulumi.StringOutput `pulumi:"instance"`

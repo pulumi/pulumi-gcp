@@ -854,6 +854,38 @@ class GlobalForwardingRule(pulumi.CustomResource):
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Private Service Connect Google Apis
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            project="my-project-name",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            project=network.project,
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=network.id,
+            private_ip_google_access=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            project=network.project,
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.106",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            project=network.project,
+            target="all-apis",
+            network=network.id,
+            ip_address=default_global_address.id,
+            load_balancing_scheme="",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1085,6 +1117,38 @@ class GlobalForwardingRule(pulumi.CustomResource):
                     value="MARS",
                 )],
             )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Private Service Connect Google Apis
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            project="my-project-name",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            project=network.project,
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=network.id,
+            private_ip_google_access=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            project=network.project,
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.106",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            project=network.project,
+            target="all-apis",
+            network=network.id,
+            ip_address=default_global_address.id,
+            load_balancing_scheme="",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 

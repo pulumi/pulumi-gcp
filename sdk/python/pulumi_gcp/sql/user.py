@@ -554,7 +554,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> pulumi.Output[Optional[str]]:
+    def host(self) -> pulumi.Output[str]:
         """
         The host the user can connect from. This is only supported
         for MySQL instances. Don't set this field for PostgreSQL instances.

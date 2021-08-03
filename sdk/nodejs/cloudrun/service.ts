@@ -84,8 +84,7 @@ import * as utilities from "../utilities";
  *     autogenerateRevisionName: true,
  * });
  * ```
- *
- * ###Cloud Run Service Noauth
+ * ### Cloud Run Service Noauth
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

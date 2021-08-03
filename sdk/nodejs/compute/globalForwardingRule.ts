@@ -155,6 +155,46 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Private Service Connect Google Apis
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     project: "my-project-name",
+ *     autoCreateSubnetworks: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const vpcSubnetwork = new gcp.compute.Subnetwork("vpcSubnetwork", {
+ *     project: network.project,
+ *     ipCidrRange: "10.2.0.0/16",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     privateIpGoogleAccess: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {
+ *     project: network.project,
+ *     addressType: "INTERNAL",
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     network: network.id,
+ *     address: "100.100.100.106",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     project: network.project,
+ *     target: "all-apis",
+ *     network: network.id,
+ *     ipAddress: defaultGlobalAddress.id,
+ *     loadBalancingScheme: "",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.77.0 of the Google Beta Terraform Provider
+* Upgrade to v3.78.0 of the Google Beta Terraform Provider
 * Prevent panic in bigquery.Dataset.get when passing a different projectId from the current project
 
 ---

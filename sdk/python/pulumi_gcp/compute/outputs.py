@@ -15105,7 +15105,7 @@ class RegionUrlMapPathMatcherPathRule(dict):
                  url_redirect: Optional['outputs.RegionUrlMapPathMatcherPathRuleUrlRedirect'] = None):
         """
         :param Sequence[str] paths: The list of path patterns to match. Each must start with / and the only place a
-               * is allowed is at the end following a /. The string fed to the path matcher
+               \* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
         :param 'RegionUrlMapPathMatcherPathRuleRouteActionArgs' route_action: In response to a matching path, the load balancer performs advanced routing
@@ -15134,7 +15134,7 @@ class RegionUrlMapPathMatcherPathRule(dict):
     def paths(self) -> Sequence[str]:
         """
         The list of path patterns to match. Each must start with / and the only place a
-        * is allowed is at the end following a /. The string fed to the path matcher
+        \* is allowed is at the end following a /. The string fed to the path matcher
         does not include any text after the first ? or #, and those chars are not
         allowed here.
         """
@@ -23799,7 +23799,7 @@ class URLMapPathMatcherPathRule(dict):
                  url_redirect: Optional['outputs.URLMapPathMatcherPathRuleUrlRedirect'] = None):
         """
         :param Sequence[str] paths: The list of path patterns to match. Each must start with / and the only place a
-               * is allowed is at the end following a /. The string fed to the path matcher
+               \* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
         :param 'URLMapPathMatcherPathRuleRouteActionArgs' route_action: In response to a matching matchRule, the load balancer performs advanced routing
@@ -23828,7 +23828,7 @@ class URLMapPathMatcherPathRule(dict):
     def paths(self) -> Sequence[str]:
         """
         The list of path patterns to match. Each must start with / and the only place a
-        * is allowed is at the end following a /. The string fed to the path matcher
+        \* is allowed is at the end following a /. The string fed to the path matcher
         does not include any text after the first ? or #, and those chars are not
         allowed here.
         """
