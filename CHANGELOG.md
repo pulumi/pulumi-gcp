@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.79.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 5.15.0 (2021-08-11)
+* Upgrade to v3.79.0 of the Google Beta Terraform Provider
 
 ## 5.14.0 (2021-08-03)
 * Upgrade to v3.78.0 of the Google Beta Terraform Provider
