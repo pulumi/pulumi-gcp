@@ -395,7 +395,10 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork", mtu=1500)
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            mtu=1460,
+            project="my-project-name")
         ```
 
         ## Import
@@ -473,7 +476,10 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork", mtu=1500)
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            mtu=1460,
+            project="my-project-name")
         ```
 
         ## Import

@@ -6,6 +6,46 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ * ### Basic_trigger
+ * A basic example for an Eventarc Trigger
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     location: "us-west1",
+ *     metadata: {
+ *         namespace: "my-project-name",
+ *     },
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 args: ["arrgs"],
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         latestRevision: true,
+ *         percent: 100,
+ *     }],
+ * });
+ * const primary = new gcp.eventarc.Trigger("primary", {
+ *     destination: {
+ *         cloudRunService: {
+ *             service: _default.name,
+ *             region: "us-west1",
+ *         },
+ *     },
+ *     location: "us-west1",
+ *     matchingCriterias: [{
+ *         attribute: "type",
+ *         value: "google.cloud.pubsub.topic.v1.messagePublished",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Trigger can be imported using any of these accepted formats

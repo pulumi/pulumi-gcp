@@ -19,7 +19,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, config=None, display_name=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, project=None, state=None):
+    def __init__(__self__, config=None, display_name=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, state=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
@@ -41,6 +41,9 @@ class GetInstanceResult:
         if num_nodes and not isinstance(num_nodes, int):
             raise TypeError("Expected argument 'num_nodes' to be a int")
         pulumi.set(__self__, "num_nodes", num_nodes)
+        if processing_units and not isinstance(processing_units, int):
+            raise TypeError("Expected argument 'processing_units' to be a int")
+        pulumi.set(__self__, "processing_units", processing_units)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -83,8 +86,13 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> Optional[int]:
+    def num_nodes(self) -> int:
         return pulumi.get(self, "num_nodes")
+
+    @property
+    @pulumi.getter(name="processingUnits")
+    def processing_units(self) -> int:
+        return pulumi.get(self, "processing_units")
 
     @property
     @pulumi.getter
@@ -110,6 +118,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             labels=self.labels,
             name=self.name,
             num_nodes=self.num_nodes,
+            processing_units=self.processing_units,
             project=self.project,
             state=self.state)
 
@@ -120,6 +129,7 @@ def get_instance(config: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None,
                  num_nodes: Optional[int] = None,
+                 processing_units: Optional[int] = None,
                  project: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
@@ -146,6 +156,7 @@ def get_instance(config: Optional[str] = None,
     __args__['labels'] = labels
     __args__['name'] = name
     __args__['numNodes'] = num_nodes
+    __args__['processingUnits'] = processing_units
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -161,5 +172,6 @@ def get_instance(config: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         num_nodes=__ret__.num_nodes,
+        processing_units=__ret__.processing_units,
         project=__ret__.project,
         state=__ret__.state)

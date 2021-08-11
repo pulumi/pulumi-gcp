@@ -64,14 +64,15 @@ type GetBucketObjectContentResult struct {
 	Bucket       string `pulumi:"bucket"`
 	CacheControl string `pulumi:"cacheControl"`
 	// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
-	Content            *string `pulumi:"content"`
-	ContentDisposition string  `pulumi:"contentDisposition"`
-	ContentEncoding    string  `pulumi:"contentEncoding"`
-	ContentLanguage    string  `pulumi:"contentLanguage"`
-	ContentType        string  `pulumi:"contentType"`
-	Crc32c             string  `pulumi:"crc32c"`
-	DetectMd5hash      string  `pulumi:"detectMd5hash"`
-	EventBasedHold     bool    `pulumi:"eventBasedHold"`
+	Content             *string                                    `pulumi:"content"`
+	ContentDisposition  string                                     `pulumi:"contentDisposition"`
+	ContentEncoding     string                                     `pulumi:"contentEncoding"`
+	ContentLanguage     string                                     `pulumi:"contentLanguage"`
+	ContentType         string                                     `pulumi:"contentType"`
+	Crc32c              string                                     `pulumi:"crc32c"`
+	CustomerEncryptions []GetBucketObjectContentCustomerEncryption `pulumi:"customerEncryptions"`
+	DetectMd5hash       string                                     `pulumi:"detectMd5hash"`
+	EventBasedHold      bool                                       `pulumi:"eventBasedHold"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string            `pulumi:"id"`
 	KmsKeyName    string            `pulumi:"kmsKeyName"`

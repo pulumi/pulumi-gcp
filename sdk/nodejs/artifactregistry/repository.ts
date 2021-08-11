@@ -132,7 +132,14 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The format of packages that are stored in the repository.
+     * The format of packages that are stored in the repository. You can only create
+     * alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     * - DOCKER
+     * - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+     * - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -235,7 +242,14 @@ export interface RepositoryState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The format of packages that are stored in the repository.
+     * The format of packages that are stored in the repository. You can only create
+     * alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     * - DOCKER
+     * - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+     * - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
      */
     format?: pulumi.Input<string>;
     /**
@@ -286,7 +300,14 @@ export interface RepositoryArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The format of packages that are stored in the repository.
+     * The format of packages that are stored in the repository. You can only create
+     * alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     * - DOCKER
+     * - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+     * - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+     * - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
      */
     format: pulumi.Input<string>;
     /**

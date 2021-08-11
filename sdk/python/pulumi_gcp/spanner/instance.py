@@ -19,6 +19,7 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
+                 processing_units: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -37,7 +38,10 @@ class InstanceArgs:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+               terraform.
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+               in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -51,6 +55,8 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if num_nodes is not None:
             pulumi.set(__self__, "num_nodes", num_nodes)
+        if processing_units is not None:
+            pulumi.set(__self__, "processing_units", processing_units)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -128,13 +134,27 @@ class InstanceArgs:
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes allocated to this instance.
+        The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        terraform.
         """
         return pulumi.get(self, "num_nodes")
 
     @num_nodes.setter
     def num_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_nodes", value)
+
+    @property
+    @pulumi.getter(name="processingUnits")
+    def processing_units(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        in terraform.
+        """
+        return pulumi.get(self, "processing_units")
+
+    @processing_units.setter
+    def processing_units(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "processing_units", value)
 
     @property
     @pulumi.getter
@@ -159,6 +179,7 @@ class _InstanceState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
+                 processing_units: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
@@ -178,7 +199,10 @@ class _InstanceState:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+               terraform.
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+               in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Instance status: 'CREATING' or 'READY'.
@@ -195,6 +219,8 @@ class _InstanceState:
             pulumi.set(__self__, "name", name)
         if num_nodes is not None:
             pulumi.set(__self__, "num_nodes", num_nodes)
+        if processing_units is not None:
+            pulumi.set(__self__, "processing_units", processing_units)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if state is not None:
@@ -274,13 +300,27 @@ class _InstanceState:
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes allocated to this instance.
+        The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        terraform.
         """
         return pulumi.get(self, "num_nodes")
 
     @num_nodes.setter
     def num_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_nodes", value)
+
+    @property
+    @pulumi.getter(name="processingUnits")
+    def processing_units(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        in terraform.
+        """
+        return pulumi.get(self, "processing_units")
+
+    @processing_units.setter
+    def processing_units(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "processing_units", value)
 
     @property
     @pulumi.getter
@@ -319,6 +359,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
+                 processing_units: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -345,6 +386,20 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             },
             num_nodes=2)
+        ```
+        ### Spanner Instance Processing Units
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            },
+            processing_units=200)
         ```
         ### Spanner Instance Multi Regional
 
@@ -394,7 +449,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+               terraform.
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+               in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -428,6 +486,20 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             },
             num_nodes=2)
+        ```
+        ### Spanner Instance Processing Units
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            },
+            processing_units=200)
         ```
         ### Spanner Instance Multi Regional
 
@@ -481,6 +553,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
+                 processing_units: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -504,6 +577,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["num_nodes"] = num_nodes
+            __props__.__dict__["processing_units"] = processing_units
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(
@@ -522,6 +596,7 @@ class Instance(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             num_nodes: Optional[pulumi.Input[int]] = None,
+            processing_units: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -546,7 +621,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+               terraform.
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+               in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Instance status: 'CREATING' or 'READY'.
@@ -561,6 +639,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["num_nodes"] = num_nodes
+        __props__.__dict__["processing_units"] = processing_units
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -617,11 +696,21 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> pulumi.Output[Optional[int]]:
+    def num_nodes(self) -> pulumi.Output[int]:
         """
-        The number of nodes allocated to this instance.
+        The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        terraform.
         """
         return pulumi.get(self, "num_nodes")
+
+    @property
+    @pulumi.getter(name="processingUnits")
+    def processing_units(self) -> pulumi.Output[int]:
+        """
+        The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        in terraform.
+        """
+        return pulumi.get(self, "processing_units")
 
     @property
     @pulumi.getter

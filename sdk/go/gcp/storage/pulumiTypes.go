@@ -1043,6 +1043,156 @@ func (o BucketLoggingPtrOutput) LogObjectPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketObjectCustomerEncryption struct {
+	// Encryption algorithm. Default: AES256
+	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
+	// Base64 encoded Customer-Supplied Encryption Key.
+	EncryptionKey string `pulumi:"encryptionKey"`
+}
+
+// BucketObjectCustomerEncryptionInput is an input type that accepts BucketObjectCustomerEncryptionArgs and BucketObjectCustomerEncryptionOutput values.
+// You can construct a concrete instance of `BucketObjectCustomerEncryptionInput` via:
+//
+//          BucketObjectCustomerEncryptionArgs{...}
+type BucketObjectCustomerEncryptionInput interface {
+	pulumi.Input
+
+	ToBucketObjectCustomerEncryptionOutput() BucketObjectCustomerEncryptionOutput
+	ToBucketObjectCustomerEncryptionOutputWithContext(context.Context) BucketObjectCustomerEncryptionOutput
+}
+
+type BucketObjectCustomerEncryptionArgs struct {
+	// Encryption algorithm. Default: AES256
+	EncryptionAlgorithm pulumi.StringPtrInput `pulumi:"encryptionAlgorithm"`
+	// Base64 encoded Customer-Supplied Encryption Key.
+	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
+}
+
+func (BucketObjectCustomerEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionOutput() BucketObjectCustomerEncryptionOutput {
+	return i.ToBucketObjectCustomerEncryptionOutputWithContext(context.Background())
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionOutput)
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return i.ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionOutput).ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx)
+}
+
+// BucketObjectCustomerEncryptionPtrInput is an input type that accepts BucketObjectCustomerEncryptionArgs, BucketObjectCustomerEncryptionPtr and BucketObjectCustomerEncryptionPtrOutput values.
+// You can construct a concrete instance of `BucketObjectCustomerEncryptionPtrInput` via:
+//
+//          BucketObjectCustomerEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketObjectCustomerEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput
+	ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Context) BucketObjectCustomerEncryptionPtrOutput
+}
+
+type bucketObjectCustomerEncryptionPtrType BucketObjectCustomerEncryptionArgs
+
+func BucketObjectCustomerEncryptionPtr(v *BucketObjectCustomerEncryptionArgs) BucketObjectCustomerEncryptionPtrInput {
+	return (*bucketObjectCustomerEncryptionPtrType)(v)
+}
+
+func (*bucketObjectCustomerEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (i *bucketObjectCustomerEncryptionPtrType) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return i.ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectCustomerEncryptionPtrType) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionPtrOutput)
+}
+
+type BucketObjectCustomerEncryptionOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectCustomerEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionOutput() BucketObjectCustomerEncryptionOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return o.ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryption) *BucketObjectCustomerEncryption {
+		return &v
+	}).(BucketObjectCustomerEncryptionPtrOutput)
+}
+
+// Encryption algorithm. Default: AES256
+func (o BucketObjectCustomerEncryptionOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryption) *string { return v.EncryptionAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded Customer-Supplied Encryption Key.
+func (o BucketObjectCustomerEncryptionOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryption) string { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+type BucketObjectCustomerEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectCustomerEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (o BucketObjectCustomerEncryptionPtrOutput) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionPtrOutput) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionPtrOutput) Elem() BucketObjectCustomerEncryptionOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) BucketObjectCustomerEncryption { return *v }).(BucketObjectCustomerEncryptionOutput)
+}
+
+// Encryption algorithm. Default: AES256
+func (o BucketObjectCustomerEncryptionPtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded Customer-Supplied Encryption Key.
+func (o BucketObjectCustomerEncryptionPtrOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type BucketRetentionPolicy struct {
 	// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked *bool `pulumi:"isLocked"`
@@ -4007,6 +4157,206 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteObjectsAlready
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetBucketObjectContentCustomerEncryption struct {
+	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
+	EncryptionKey       string `pulumi:"encryptionKey"`
+}
+
+// GetBucketObjectContentCustomerEncryptionInput is an input type that accepts GetBucketObjectContentCustomerEncryptionArgs and GetBucketObjectContentCustomerEncryptionOutput values.
+// You can construct a concrete instance of `GetBucketObjectContentCustomerEncryptionInput` via:
+//
+//          GetBucketObjectContentCustomerEncryptionArgs{...}
+type GetBucketObjectContentCustomerEncryptionInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContentCustomerEncryptionOutput() GetBucketObjectContentCustomerEncryptionOutput
+	ToGetBucketObjectContentCustomerEncryptionOutputWithContext(context.Context) GetBucketObjectContentCustomerEncryptionOutput
+}
+
+type GetBucketObjectContentCustomerEncryptionArgs struct {
+	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
+	EncryptionKey       pulumi.StringInput `pulumi:"encryptionKey"`
+}
+
+func (GetBucketObjectContentCustomerEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContentCustomerEncryption)(nil)).Elem()
+}
+
+func (i GetBucketObjectContentCustomerEncryptionArgs) ToGetBucketObjectContentCustomerEncryptionOutput() GetBucketObjectContentCustomerEncryptionOutput {
+	return i.ToGetBucketObjectContentCustomerEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContentCustomerEncryptionArgs) ToGetBucketObjectContentCustomerEncryptionOutputWithContext(ctx context.Context) GetBucketObjectContentCustomerEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContentCustomerEncryptionOutput)
+}
+
+// GetBucketObjectContentCustomerEncryptionArrayInput is an input type that accepts GetBucketObjectContentCustomerEncryptionArray and GetBucketObjectContentCustomerEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetBucketObjectContentCustomerEncryptionArrayInput` via:
+//
+//          GetBucketObjectContentCustomerEncryptionArray{ GetBucketObjectContentCustomerEncryptionArgs{...} }
+type GetBucketObjectContentCustomerEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContentCustomerEncryptionArrayOutput() GetBucketObjectContentCustomerEncryptionArrayOutput
+	ToGetBucketObjectContentCustomerEncryptionArrayOutputWithContext(context.Context) GetBucketObjectContentCustomerEncryptionArrayOutput
+}
+
+type GetBucketObjectContentCustomerEncryptionArray []GetBucketObjectContentCustomerEncryptionInput
+
+func (GetBucketObjectContentCustomerEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContentCustomerEncryption)(nil)).Elem()
+}
+
+func (i GetBucketObjectContentCustomerEncryptionArray) ToGetBucketObjectContentCustomerEncryptionArrayOutput() GetBucketObjectContentCustomerEncryptionArrayOutput {
+	return i.ToGetBucketObjectContentCustomerEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContentCustomerEncryptionArray) ToGetBucketObjectContentCustomerEncryptionArrayOutputWithContext(ctx context.Context) GetBucketObjectContentCustomerEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContentCustomerEncryptionArrayOutput)
+}
+
+type GetBucketObjectContentCustomerEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContentCustomerEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContentCustomerEncryption)(nil)).Elem()
+}
+
+func (o GetBucketObjectContentCustomerEncryptionOutput) ToGetBucketObjectContentCustomerEncryptionOutput() GetBucketObjectContentCustomerEncryptionOutput {
+	return o
+}
+
+func (o GetBucketObjectContentCustomerEncryptionOutput) ToGetBucketObjectContentCustomerEncryptionOutputWithContext(ctx context.Context) GetBucketObjectContentCustomerEncryptionOutput {
+	return o
+}
+
+func (o GetBucketObjectContentCustomerEncryptionOutput) EncryptionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentCustomerEncryption) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetBucketObjectContentCustomerEncryptionOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentCustomerEncryption) string { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+type GetBucketObjectContentCustomerEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContentCustomerEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContentCustomerEncryption)(nil)).Elem()
+}
+
+func (o GetBucketObjectContentCustomerEncryptionArrayOutput) ToGetBucketObjectContentCustomerEncryptionArrayOutput() GetBucketObjectContentCustomerEncryptionArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContentCustomerEncryptionArrayOutput) ToGetBucketObjectContentCustomerEncryptionArrayOutputWithContext(ctx context.Context) GetBucketObjectContentCustomerEncryptionArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContentCustomerEncryptionArrayOutput) Index(i pulumi.IntInput) GetBucketObjectContentCustomerEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectContentCustomerEncryption {
+		return vs[0].([]GetBucketObjectContentCustomerEncryption)[vs[1].(int)]
+	}).(GetBucketObjectContentCustomerEncryptionOutput)
+}
+
+type GetBucketObjectCustomerEncryption struct {
+	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
+	EncryptionKey       string `pulumi:"encryptionKey"`
+}
+
+// GetBucketObjectCustomerEncryptionInput is an input type that accepts GetBucketObjectCustomerEncryptionArgs and GetBucketObjectCustomerEncryptionOutput values.
+// You can construct a concrete instance of `GetBucketObjectCustomerEncryptionInput` via:
+//
+//          GetBucketObjectCustomerEncryptionArgs{...}
+type GetBucketObjectCustomerEncryptionInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectCustomerEncryptionOutput() GetBucketObjectCustomerEncryptionOutput
+	ToGetBucketObjectCustomerEncryptionOutputWithContext(context.Context) GetBucketObjectCustomerEncryptionOutput
+}
+
+type GetBucketObjectCustomerEncryptionArgs struct {
+	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
+	EncryptionKey       pulumi.StringInput `pulumi:"encryptionKey"`
+}
+
+func (GetBucketObjectCustomerEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (i GetBucketObjectCustomerEncryptionArgs) ToGetBucketObjectCustomerEncryptionOutput() GetBucketObjectCustomerEncryptionOutput {
+	return i.ToGetBucketObjectCustomerEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectCustomerEncryptionArgs) ToGetBucketObjectCustomerEncryptionOutputWithContext(ctx context.Context) GetBucketObjectCustomerEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectCustomerEncryptionOutput)
+}
+
+// GetBucketObjectCustomerEncryptionArrayInput is an input type that accepts GetBucketObjectCustomerEncryptionArray and GetBucketObjectCustomerEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetBucketObjectCustomerEncryptionArrayInput` via:
+//
+//          GetBucketObjectCustomerEncryptionArray{ GetBucketObjectCustomerEncryptionArgs{...} }
+type GetBucketObjectCustomerEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectCustomerEncryptionArrayOutput() GetBucketObjectCustomerEncryptionArrayOutput
+	ToGetBucketObjectCustomerEncryptionArrayOutputWithContext(context.Context) GetBucketObjectCustomerEncryptionArrayOutput
+}
+
+type GetBucketObjectCustomerEncryptionArray []GetBucketObjectCustomerEncryptionInput
+
+func (GetBucketObjectCustomerEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (i GetBucketObjectCustomerEncryptionArray) ToGetBucketObjectCustomerEncryptionArrayOutput() GetBucketObjectCustomerEncryptionArrayOutput {
+	return i.ToGetBucketObjectCustomerEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectCustomerEncryptionArray) ToGetBucketObjectCustomerEncryptionArrayOutputWithContext(ctx context.Context) GetBucketObjectCustomerEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectCustomerEncryptionArrayOutput)
+}
+
+type GetBucketObjectCustomerEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectCustomerEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (o GetBucketObjectCustomerEncryptionOutput) ToGetBucketObjectCustomerEncryptionOutput() GetBucketObjectCustomerEncryptionOutput {
+	return o
+}
+
+func (o GetBucketObjectCustomerEncryptionOutput) ToGetBucketObjectCustomerEncryptionOutputWithContext(ctx context.Context) GetBucketObjectCustomerEncryptionOutput {
+	return o
+}
+
+func (o GetBucketObjectCustomerEncryptionOutput) EncryptionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectCustomerEncryption) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetBucketObjectCustomerEncryptionOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectCustomerEncryption) string { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+type GetBucketObjectCustomerEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectCustomerEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (o GetBucketObjectCustomerEncryptionArrayOutput) ToGetBucketObjectCustomerEncryptionArrayOutput() GetBucketObjectCustomerEncryptionArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectCustomerEncryptionArrayOutput) ToGetBucketObjectCustomerEncryptionArrayOutputWithContext(ctx context.Context) GetBucketObjectCustomerEncryptionArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectCustomerEncryptionArrayOutput) Index(i pulumi.IntInput) GetBucketObjectCustomerEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectCustomerEncryption {
+		return vs[0].([]GetBucketObjectCustomerEncryption)[vs[1].(int)]
+	}).(GetBucketObjectCustomerEncryptionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketCorOutput{})
 	pulumi.RegisterOutputType(BucketCorArrayOutput{})
@@ -4022,6 +4372,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketLifecycleRuleConditionOutput{})
 	pulumi.RegisterOutputType(BucketLoggingOutput{})
 	pulumi.RegisterOutputType(BucketLoggingPtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionOutput{})
+	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningOutput{})
@@ -4060,4 +4412,8 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecObjectConditionsPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContentCustomerEncryptionOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContentCustomerEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectCustomerEncryptionOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectCustomerEncryptionArrayOutput{})
 }

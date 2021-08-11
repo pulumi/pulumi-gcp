@@ -34,6 +34,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
         "labels": args.labels,
         "name": args.name,
         "numNodes": args.numNodes,
+        "processingUnits": args.processingUnits,
         "project": args.project,
     }, opts);
 }
@@ -51,6 +52,7 @@ export interface GetInstanceArgs {
      */
     name: string;
     numNodes?: number;
+    processingUnits?: number;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -71,7 +73,8 @@ export interface GetInstanceResult {
     readonly id: string;
     readonly labels?: {[key: string]: string};
     readonly name: string;
-    readonly numNodes?: number;
+    readonly numNodes: number;
+    readonly processingUnits: number;
     readonly project?: string;
     readonly state: string;
 }

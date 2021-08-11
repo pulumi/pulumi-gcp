@@ -157,7 +157,41 @@ class Connection(pulumi.CustomResource):
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Connection resource with the given unique name, props, and options.
+        Manages a private VPC connection with a GCP service provider. For more information see
+        [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
+        and
+        [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        peering_network = gcp.compute.Network("peeringNetwork")
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=peering_network.id)
+        foobar = gcp.servicenetworking.Connection("foobar",
+            network=peering_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        ```
+
+        ## Import
+
+        ServiceNetworkingConnection can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:servicenetworking/connection:Connection peering_connection {{peering-network}}:{{service}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicenetworking/connection:Connection peering_connection /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
@@ -175,7 +209,41 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Connection resource with the given unique name, props, and options.
+        Manages a private VPC connection with a GCP service provider. For more information see
+        [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
+        and
+        [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        peering_network = gcp.compute.Network("peeringNetwork")
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=peering_network.id)
+        foobar = gcp.servicenetworking.Connection("foobar",
+            network=peering_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        ```
+
+        ## Import
+
+        ServiceNetworkingConnection can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:servicenetworking/connection:Connection peering_connection {{peering-network}}:{{service}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicenetworking/connection:Connection peering_connection /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -234,7 +234,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                     name="PHONE_NUMBER",
                                 ),
                                 gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="CREDIT_CARD_NUMBER",
+                                    name="AGE",
                                 ),
                             ],
                             primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
@@ -373,7 +373,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                     name="PHONE_NUMBER",
                                 ),
                                 gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="CREDIT_CARD_NUMBER",
+                                    name="AGE",
                                 ),
                             ],
                             primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(

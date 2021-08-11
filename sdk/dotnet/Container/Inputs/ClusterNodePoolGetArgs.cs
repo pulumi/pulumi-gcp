@@ -56,6 +56,13 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
+        /// ) Configuration for
+        /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.ClusterNodePoolNetworkConfigGetArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
         /// `gcp.container.NodePool` or a `node_pool` block; this configuration

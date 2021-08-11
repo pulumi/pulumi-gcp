@@ -11,6 +11,8 @@ from . import outputs
 
 __all__ = [
     'CxAgentSpeechToTextSettings',
+    'CxEntityTypeEntity',
+    'CxEntityTypeExcludedPhrase',
     'CxFlowEventHandler',
     'CxFlowEventHandlerTriggerFulfillment',
     'CxFlowEventHandlerTriggerFulfillmentMessage',
@@ -23,6 +25,23 @@ __all__ = [
     'CxIntentParameter',
     'CxIntentTrainingPhrase',
     'CxIntentTrainingPhrasePart',
+    'CxPageEntryFulfillment',
+    'CxPageEntryFulfillmentMessage',
+    'CxPageEntryFulfillmentMessageText',
+    'CxPageEventHandler',
+    'CxPageEventHandlerTriggerFulfillment',
+    'CxPageEventHandlerTriggerFulfillmentMessage',
+    'CxPageEventHandlerTriggerFulfillmentMessageText',
+    'CxPageForm',
+    'CxPageFormParameter',
+    'CxPageFormParameterFillBehavior',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillment',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText',
+    'CxPageTransitionRoute',
+    'CxPageTransitionRouteTriggerFulfillment',
+    'CxPageTransitionRouteTriggerFulfillmentMessage',
+    'CxPageTransitionRouteTriggerFulfillmentMessageText',
     'CxVersionNluSetting',
     'EntityTypeEntity',
     'FulfillmentFeature',
@@ -64,6 +83,58 @@ class CxAgentSpeechToTextSettings(dict):
         Whether to use speech adaptation for speech recognition.
         """
         return pulumi.get(self, "enable_speech_adaptation")
+
+
+@pulumi.output_type
+class CxEntityTypeEntity(dict):
+    def __init__(__self__, *,
+                 synonyms: Optional[Sequence[str]] = None,
+                 value: Optional[str] = None):
+        """
+        :param Sequence[str] synonyms: A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
+               For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+        :param str value: The word or phrase to be excluded.
+        """
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[str]]:
+        """
+        A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
+        For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The word or phrase to be excluded.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CxEntityTypeExcludedPhrase(dict):
+    def __init__(__self__, *,
+                 value: Optional[str] = None):
+        """
+        :param str value: The word or phrase to be excluded.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The word or phrase to be excluded.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -832,6 +903,955 @@ class CxIntentTrainingPhrasePart(dict):
         The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
         """
         return pulumi.get(self, "parameter_id")
+
+
+@pulumi.output_type
+class CxPageEntryFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageEntryFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageEntryFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageEntryFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 messages: Optional[Sequence['outputs.CxPageEntryFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[bool] = None,
+                 tag: Optional[str] = None,
+                 webhook: Optional[str] = None):
+        """
+        :param Sequence['CxPageEntryFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxPageEntryFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxPageEntryFulfillmentMessage(dict):
+    def __init__(__self__, *,
+                 text: Optional['outputs.CxPageEntryFulfillmentMessageText'] = None):
+        """
+        :param 'CxPageEntryFulfillmentMessageTextArgs' text: A collection of text responses.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxPageEntryFulfillmentMessageText']:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxPageEntryFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageEntryFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageEntryFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageEntryFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[bool] = None,
+                 texts: Optional[Sequence[str]] = None):
+        """
+        :param bool allow_playback_interruption: -
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[str] texts: A collection of text responses.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[bool]:
+        """
+        -
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[str]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+
+@pulumi.output_type
+class CxPageEventHandler(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageEventHandler. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageEventHandler.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageEventHandler.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event: Optional[str] = None,
+                 name: Optional[str] = None,
+                 target_flow: Optional[str] = None,
+                 target_page: Optional[str] = None,
+                 trigger_fulfillment: Optional['outputs.CxPageEventHandlerTriggerFulfillment'] = None):
+        """
+        :param str event: The name of the event to handle.
+        :param str name: -
+               The unique identifier of this event handler.
+        :param str target_flow: The target flow to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param str target_page: The target page to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        :param 'CxPageEventHandlerTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+               Structure is documented below.
+        """
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[str]:
+        """
+        The name of the event to handle.
+        """
+        return pulumi.get(self, "event")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        -
+        The unique identifier of this event handler.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[str]:
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[str]:
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "target_page")
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional['outputs.CxPageEventHandlerTriggerFulfillment']:
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+
+@pulumi.output_type
+class CxPageEventHandlerTriggerFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageEventHandlerTriggerFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageEventHandlerTriggerFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageEventHandlerTriggerFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 messages: Optional[Sequence['outputs.CxPageEventHandlerTriggerFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[bool] = None,
+                 tag: Optional[str] = None,
+                 webhook: Optional[str] = None):
+        """
+        :param Sequence['CxPageEventHandlerTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxPageEventHandlerTriggerFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxPageEventHandlerTriggerFulfillmentMessage(dict):
+    def __init__(__self__, *,
+                 text: Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageText'] = None):
+        """
+        :param 'CxPageEventHandlerTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageText']:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageEventHandlerTriggerFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageEventHandlerTriggerFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageEventHandlerTriggerFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[bool] = None,
+                 texts: Optional[Sequence[str]] = None):
+        """
+        :param bool allow_playback_interruption: -
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[str] texts: A collection of text responses.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[bool]:
+        """
+        -
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[str]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+
+@pulumi.output_type
+class CxPageForm(dict):
+    def __init__(__self__, *,
+                 parameters: Optional[Sequence['outputs.CxPageFormParameter']] = None):
+        """
+        :param Sequence['CxPageFormParameterArgs'] parameters: Parameters to collect from the user.
+               Structure is documented below.
+        """
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.CxPageFormParameter']]:
+        """
+        Parameters to collect from the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class CxPageFormParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "entityType":
+            suggest = "entity_type"
+        elif key == "fillBehavior":
+            suggest = "fill_behavior"
+        elif key == "isList":
+            suggest = "is_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageFormParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageFormParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageFormParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[str] = None,
+                 entity_type: Optional[str] = None,
+                 fill_behavior: Optional['outputs.CxPageFormParameterFillBehavior'] = None,
+                 is_list: Optional[bool] = None,
+                 redact: Optional[bool] = None,
+                 required: Optional[bool] = None):
+        """
+        :param str display_name: The human-readable name of the parameter, unique within the form.
+        :param str entity_type: The entity type of the parameter.
+               Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+        :param 'CxPageFormParameterFillBehaviorArgs' fill_behavior: Defines fill behavior for the parameter.
+               Structure is documented below.
+        :param bool is_list: Indicates whether the parameter represents a list of values.
+        :param bool redact: Indicates whether the parameter content should be redacted in log.
+               If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+        :param bool required: Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
+               Required parameters must be filled before form filling concludes.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if entity_type is not None:
+            pulumi.set(__self__, "entity_type", entity_type)
+        if fill_behavior is not None:
+            pulumi.set(__self__, "fill_behavior", fill_behavior)
+        if is_list is not None:
+            pulumi.set(__self__, "is_list", is_list)
+        if redact is not None:
+            pulumi.set(__self__, "redact", redact)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The human-readable name of the parameter, unique within the form.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> Optional[str]:
+        """
+        The entity type of the parameter.
+        Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="fillBehavior")
+    def fill_behavior(self) -> Optional['outputs.CxPageFormParameterFillBehavior']:
+        """
+        Defines fill behavior for the parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fill_behavior")
+
+    @property
+    @pulumi.getter(name="isList")
+    def is_list(self) -> Optional[bool]:
+        """
+        Indicates whether the parameter represents a list of values.
+        """
+        return pulumi.get(self, "is_list")
+
+    @property
+    @pulumi.getter
+    def redact(self) -> Optional[bool]:
+        """
+        Indicates whether the parameter content should be redacted in log.
+        If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+        """
+        return pulumi.get(self, "redact")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
+        Required parameters must be filled before form filling concludes.
+        """
+        return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class CxPageFormParameterFillBehavior(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialPromptFulfillment":
+            suggest = "initial_prompt_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageFormParameterFillBehavior. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageFormParameterFillBehavior.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageFormParameterFillBehavior.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_prompt_fulfillment: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillment'] = None):
+        """
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs' initial_prompt_fulfillment: The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+               Structure is documented below.
+        """
+        if initial_prompt_fulfillment is not None:
+            pulumi.set(__self__, "initial_prompt_fulfillment", initial_prompt_fulfillment)
+
+    @property
+    @pulumi.getter(name="initialPromptFulfillment")
+    def initial_prompt_fulfillment(self) -> Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillment']:
+        """
+        The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "initial_prompt_fulfillment")
+
+
+@pulumi.output_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageFormParameterFillBehaviorInitialPromptFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageFormParameterFillBehaviorInitialPromptFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageFormParameterFillBehaviorInitialPromptFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 messages: Optional[Sequence['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[bool] = None,
+                 tag: Optional[str] = None,
+                 webhook: Optional[str] = None):
+        """
+        :param Sequence['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
+    def __init__(__self__, *,
+                 text: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText'] = None):
+        """
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs' text: A collection of text responses.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText']:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[bool] = None,
+                 texts: Optional[Sequence[str]] = None):
+        """
+        :param bool allow_playback_interruption: -
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[str] texts: A collection of text responses.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[bool]:
+        """
+        -
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[str]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+
+@pulumi.output_type
+class CxPageTransitionRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageTransitionRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageTransitionRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageTransitionRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: Optional[str] = None,
+                 intent: Optional[str] = None,
+                 name: Optional[str] = None,
+                 target_flow: Optional[str] = None,
+                 target_page: Optional[str] = None,
+                 trigger_fulfillment: Optional['outputs.CxPageTransitionRouteTriggerFulfillment'] = None):
+        """
+        :param str condition: The condition to evaluate against form parameters or session parameters.
+               At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        :param str intent: The unique identifier of an Intent.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        :param str name: -
+               The unique identifier of this event handler.
+        :param str target_flow: The target flow to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param str target_page: The target page to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        :param 'CxPageTransitionRouteTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+               Structure is documented below.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if intent is not None:
+            pulumi.set(__self__, "intent", intent)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        """
+        The condition to evaluate against form parameters or session parameters.
+        At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def intent(self) -> Optional[str]:
+        """
+        The unique identifier of an Intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        return pulumi.get(self, "intent")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        -
+        The unique identifier of this event handler.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[str]:
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[str]:
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "target_page")
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional['outputs.CxPageTransitionRouteTriggerFulfillment']:
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+
+@pulumi.output_type
+class CxPageTransitionRouteTriggerFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageTransitionRouteTriggerFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageTransitionRouteTriggerFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageTransitionRouteTriggerFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 messages: Optional[Sequence['outputs.CxPageTransitionRouteTriggerFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[bool] = None,
+                 tag: Optional[str] = None,
+                 webhook: Optional[str] = None):
+        """
+        :param Sequence['CxPageTransitionRouteTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxPageTransitionRouteTriggerFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
+    def __init__(__self__, *,
+                 text: Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageText'] = None):
+        """
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageText']:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageTransitionRouteTriggerFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageTransitionRouteTriggerFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageTransitionRouteTriggerFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[bool] = None,
+                 texts: Optional[Sequence[str]] = None):
+        """
+        :param bool allow_playback_interruption: -
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[str] texts: A collection of text responses.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[bool]:
+        """
+        -
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[str]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
 
 
 @pulumi.output_type

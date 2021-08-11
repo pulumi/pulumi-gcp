@@ -18,6 +18,7 @@ __all__ = [
     'BucketLifecycleRuleAction',
     'BucketLifecycleRuleCondition',
     'BucketLogging',
+    'BucketObjectCustomerEncryption',
     'BucketRetentionPolicy',
     'BucketVersioning',
     'BucketWebsite',
@@ -37,6 +38,8 @@ __all__ = [
     'TransferJobTransferSpecHttpDataSource',
     'TransferJobTransferSpecObjectConditions',
     'TransferJobTransferSpecTransferOptions',
+    'GetBucketObjectContentCustomerEncryptionResult',
+    'GetBucketObjectCustomerEncryptionResult',
 ]
 
 @pulumi.output_type
@@ -495,6 +498,55 @@ class BucketLogging(dict):
         by default GCS sets this to this bucket's name.
         """
         return pulumi.get(self, "log_object_prefix")
+
+
+@pulumi.output_type
+class BucketObjectCustomerEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionKey":
+            suggest = "encryption_key"
+        elif key == "encryptionAlgorithm":
+            suggest = "encryption_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketObjectCustomerEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketObjectCustomerEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketObjectCustomerEncryption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_key: str,
+                 encryption_algorithm: Optional[str] = None):
+        """
+        :param str encryption_key: Base64 encoded Customer-Supplied Encryption Key.
+        :param str encryption_algorithm: Encryption algorithm. Default: AES256
+        """
+        pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryption_algorithm is not None:
+            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> str:
+        """
+        Base64 encoded Customer-Supplied Encryption Key.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> Optional[str]:
+        """
+        Encryption algorithm. Default: AES256
+        """
+        return pulumi.get(self, "encryption_algorithm")
 
 
 @pulumi.output_type
@@ -1457,5 +1509,43 @@ class TransferJobTransferSpecTransferOptions(dict):
         Whether overwriting objects that already exist in the sink is allowed.
         """
         return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
+
+
+@pulumi.output_type
+class GetBucketObjectContentCustomerEncryptionResult(dict):
+    def __init__(__self__, *,
+                 encryption_algorithm: str,
+                 encryption_key: str):
+        pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+        pulumi.set(__self__, "encryption_key", encryption_key)
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> str:
+        return pulumi.get(self, "encryption_algorithm")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> str:
+        return pulumi.get(self, "encryption_key")
+
+
+@pulumi.output_type
+class GetBucketObjectCustomerEncryptionResult(dict):
+    def __init__(__self__, *,
+                 encryption_algorithm: str,
+                 encryption_key: str):
+        pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+        pulumi.set(__self__, "encryption_key", encryption_key)
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> str:
+        return pulumi.get(self, "encryption_algorithm")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> str:
+        return pulumi.get(self, "encryption_key")
 
 

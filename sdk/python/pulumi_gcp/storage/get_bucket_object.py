@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetBucketObjectResult',
@@ -19,7 +20,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, event_based_hold=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -44,6 +45,9 @@ class GetBucketObjectResult:
         if crc32c and not isinstance(crc32c, str):
             raise TypeError("Expected argument 'crc32c' to be a str")
         pulumi.set(__self__, "crc32c", crc32c)
+        if customer_encryptions and not isinstance(customer_encryptions, list):
+            raise TypeError("Expected argument 'customer_encryptions' to be a list")
+        pulumi.set(__self__, "customer_encryptions", customer_encryptions)
         if detect_md5hash and not isinstance(detect_md5hash, str):
             raise TypeError("Expected argument 'detect_md5hash' to be a str")
         pulumi.set(__self__, "detect_md5hash", detect_md5hash)
@@ -144,6 +148,11 @@ class GetBucketObjectResult:
         return pulumi.get(self, "crc32c")
 
     @property
+    @pulumi.getter(name="customerEncryptions")
+    def customer_encryptions(self) -> Sequence['outputs.GetBucketObjectCustomerEncryptionResult']:
+        return pulumi.get(self, "customer_encryptions")
+
+    @property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> str:
         return pulumi.get(self, "detect_md5hash")
@@ -240,6 +249,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             content_language=self.content_language,
             content_type=self.content_type,
             crc32c=self.crc32c,
+            customer_encryptions=self.customer_encryptions,
             detect_md5hash=self.detect_md5hash,
             event_based_hold=self.event_based_hold,
             id=self.id,
@@ -298,6 +308,7 @@ def get_bucket_object(bucket: Optional[str] = None,
         content_language=__ret__.content_language,
         content_type=__ret__.content_type,
         crc32c=__ret__.crc32c,
+        customer_encryptions=__ret__.customer_encryptions,
         detect_md5hash=__ret__.detect_md5hash,
         event_based_hold=__ret__.event_based_hold,
         id=__ret__.id,

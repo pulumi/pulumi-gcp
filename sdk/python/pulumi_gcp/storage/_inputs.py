@@ -17,6 +17,7 @@ __all__ = [
     'BucketLifecycleRuleActionArgs',
     'BucketLifecycleRuleConditionArgs',
     'BucketLoggingArgs',
+    'BucketObjectCustomerEncryptionArgs',
     'BucketRetentionPolicyArgs',
     'BucketVersioningArgs',
     'BucketWebsiteArgs',
@@ -495,6 +496,44 @@ class BucketLoggingArgs:
     @log_object_prefix.setter
     def log_object_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_object_prefix", value)
+
+
+@pulumi.input_type
+class BucketObjectCustomerEncryptionArgs:
+    def __init__(__self__, *,
+                 encryption_key: pulumi.Input[str],
+                 encryption_algorithm: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] encryption_key: Base64 encoded Customer-Supplied Encryption Key.
+        :param pulumi.Input[str] encryption_algorithm: Encryption algorithm. Default: AES256
+        """
+        pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryption_algorithm is not None:
+            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> pulumi.Input[str]:
+        """
+        Base64 encoded Customer-Supplied Encryption Key.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Encryption algorithm. Default: AES256
+        """
+        return pulumi.get(self, "encryption_algorithm")
+
+    @encryption_algorithm.setter
+    def encryption_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_algorithm", value)
 
 
 @pulumi.input_type

@@ -85,6 +85,7 @@ export interface GetBucketObjectResult {
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
     readonly crc32c: string;
+    readonly customerEncryptions: outputs.storage.GetBucketObjectCustomerEncryption[];
     readonly detectMd5hash: string;
     readonly eventBasedHold: boolean;
     /**

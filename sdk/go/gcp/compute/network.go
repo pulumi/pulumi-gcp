@@ -52,7 +52,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := compute.NewNetwork(ctx, "vpcNetwork", &compute.NetworkArgs{
-// 			Mtu: pulumi.Int(1500),
+// 			AutoCreateSubnetworks: pulumi.Bool(true),
+// 			Mtu:                   pulumi.Int(1460),
+// 			Project:               pulumi.String("my-project-name"),
 // 		})
 // 		if err != nil {
 // 			return err

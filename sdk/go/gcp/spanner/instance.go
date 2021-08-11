@@ -48,6 +48,33 @@ import (
 // 	})
 // }
 // ```
+// ### Spanner Instance Processing Units
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
+// 			Config:      pulumi.String("regional-us-central1"),
+// 			DisplayName: pulumi.String("Test Spanner Instance"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			ProcessingUnits: pulumi.Int(200),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Spanner Instance Multi Regional
 //
 // ```go
@@ -114,8 +141,12 @@ type Instance struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of nodes allocated to this instance.
-	NumNodes pulumi.IntPtrOutput `pulumi:"numNodes"`
+	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// terraform.
+	NumNodes pulumi.IntOutput `pulumi:"numNodes"`
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// in terraform.
+	ProcessingUnits pulumi.IntOutput `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -178,8 +209,12 @@ type instanceState struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name *string `pulumi:"name"`
-	// The number of nodes allocated to this instance.
+	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// terraform.
 	NumNodes *int `pulumi:"numNodes"`
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// in terraform.
+	ProcessingUnits *int `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -208,8 +243,12 @@ type InstanceState struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name pulumi.StringPtrInput
-	// The number of nodes allocated to this instance.
+	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// terraform.
 	NumNodes pulumi.IntPtrInput
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// in terraform.
+	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -242,8 +281,12 @@ type instanceArgs struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name *string `pulumi:"name"`
-	// The number of nodes allocated to this instance.
+	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// terraform.
 	NumNodes *int `pulumi:"numNodes"`
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// in terraform.
+	ProcessingUnits *int `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -271,8 +314,12 @@ type InstanceArgs struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name pulumi.StringPtrInput
-	// The number of nodes allocated to this instance.
+	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// terraform.
 	NumNodes pulumi.IntPtrInput
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// in terraform.
+	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

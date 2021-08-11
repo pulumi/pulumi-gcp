@@ -140,7 +140,14 @@ namespace Pulumi.Gcp.Container
         public Output<string> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The node configuration of the pool. See
+        /// The network configuration of the pool. See
+        /// gcp.container.Cluster for schema.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.NodePoolNetworkConfig> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The network configuration of the pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Output("nodeConfig")]
@@ -300,7 +307,14 @@ namespace Pulumi.Gcp.Container
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The node configuration of the pool. See
+        /// The network configuration of the pool. See
+        /// gcp.container.Cluster for schema.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.NodePoolNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// The network configuration of the pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Input("nodeConfig")]
@@ -436,7 +450,14 @@ namespace Pulumi.Gcp.Container
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The node configuration of the pool. See
+        /// The network configuration of the pool. See
+        /// gcp.container.Cluster for schema.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.NodePoolNetworkConfigGetArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// The network configuration of the pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Input("nodeConfig")]

@@ -50,6 +50,7 @@ __all__ = [
     'ClusterNodePool',
     'ClusterNodePoolAutoscaling',
     'ClusterNodePoolManagement',
+    'ClusterNodePoolNetworkConfig',
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigGuestAccelerator',
@@ -72,6 +73,7 @@ __all__ = [
     'ClusterWorkloadIdentityConfig',
     'NodePoolAutoscaling',
     'NodePoolManagement',
+    'NodePoolNetworkConfig',
     'NodePoolNodeConfig',
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigGuestAccelerator',
@@ -122,6 +124,7 @@ __all__ = [
     'GetClusterNodePoolResult',
     'GetClusterNodePoolAutoscalingResult',
     'GetClusterNodePoolManagementResult',
+    'GetClusterNodePoolNetworkConfigResult',
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorResult',
@@ -2184,6 +2187,8 @@ class ClusterNodePool(dict):
             suggest = "max_pods_per_node"
         elif key == "namePrefix":
             suggest = "name_prefix"
+        elif key == "networkConfig":
+            suggest = "network_config"
         elif key == "nodeConfig":
             suggest = "node_config"
         elif key == "nodeCount":
@@ -2212,6 +2217,7 @@ class ClusterNodePool(dict):
                  max_pods_per_node: Optional[int] = None,
                  name: Optional[str] = None,
                  name_prefix: Optional[str] = None,
+                 network_config: Optional['outputs.ClusterNodePoolNetworkConfig'] = None,
                  node_config: Optional['outputs.ClusterNodePoolNodeConfig'] = None,
                  node_count: Optional[int] = None,
                  node_locations: Optional[Sequence[str]] = None,
@@ -2228,6 +2234,8 @@ class ClusterNodePool(dict):
                to the cluster.
         :param str name: The name of the cluster, unique within the project and
                location.
+        :param 'ClusterNodePoolNetworkConfigArgs' network_config: ) Configuration for
+               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
         :param 'ClusterNodePoolNodeConfigArgs' node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -2252,6 +2260,8 @@ class ClusterNodePool(dict):
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -2313,6 +2323,15 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[str]:
         return pulumi.get(self, "name_prefix")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional['outputs.ClusterNodePoolNetworkConfig']:
+        """
+        ) Configuration for
+        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -2429,6 +2448,69 @@ class ClusterNodePoolManagement(dict):
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> Optional[bool]:
         return pulumi.get(self, "auto_upgrade")
+
+
+@pulumi.output_type
+class ClusterNodePoolNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podRange":
+            suggest = "pod_range"
+        elif key == "createPodRange":
+            suggest = "create_pod_range"
+        elif key == "podIpv4CidrBlock":
+            suggest = "pod_ipv4_cidr_block"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_range: str,
+                 create_pod_range: Optional[bool] = None,
+                 pod_ipv4_cidr_block: Optional[str] = None):
+        """
+        :param str pod_range: ) The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        :param bool create_pod_range: ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param str pod_ipv4_cidr_block: ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        """
+        pulumi.set(__self__, "pod_range", pod_range)
+        if create_pod_range is not None:
+            pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if pod_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> str:
+        """
+        ) The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        """
+        return pulumi.get(self, "pod_range")
+
+    @property
+    @pulumi.getter(name="createPodRange")
+    def create_pod_range(self) -> Optional[bool]:
+        """
+        ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        """
+        return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="podIpv4CidrBlock")
+    def pod_ipv4_cidr_block(self) -> Optional[str]:
+        """
+        ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        """
+        return pulumi.get(self, "pod_ipv4_cidr_block")
 
 
 @pulumi.output_type
@@ -3299,7 +3381,7 @@ class ClusterPrivateClusterConfig(dict):
                the hosted master network. This range will be used for assigning private IP
                addresses to the cluster master(s) and the ILB VIP. This range must not overlap
                with any other ranges in use within the cluster's network, and it must be a /28
-               subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+               subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
                for more details. This field only applies to private clusters, when
                `enable_private_nodes` is `true`.
         :param str peering_name: The name of the peering between this cluster and the Google owned VPC.
@@ -3360,7 +3442,7 @@ class ClusterPrivateClusterConfig(dict):
         the hosted master network. This range will be used for assigning private IP
         addresses to the cluster master(s) and the ILB VIP. This range must not overlap
         with any other ranges in use within the cluster's network, and it must be a /28
-        subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+        subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
         for more details. This field only applies to private clusters, when
         `enable_private_nodes` is `true`.
         """
@@ -3694,6 +3776,55 @@ class NodePoolManagement(dict):
         Whether the nodes will be automatically upgraded.
         """
         return pulumi.get(self, "auto_upgrade")
+
+
+@pulumi.output_type
+class NodePoolNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podRange":
+            suggest = "pod_range"
+        elif key == "createPodRange":
+            suggest = "create_pod_range"
+        elif key == "podIpv4CidrBlock":
+            suggest = "pod_ipv4_cidr_block"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_range: str,
+                 create_pod_range: Optional[bool] = None,
+                 pod_ipv4_cidr_block: Optional[str] = None):
+        pulumi.set(__self__, "pod_range", pod_range)
+        if create_pod_range is not None:
+            pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if pod_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> str:
+        return pulumi.get(self, "pod_range")
+
+    @property
+    @pulumi.getter(name="createPodRange")
+    def create_pod_range(self) -> Optional[bool]:
+        return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="podIpv4CidrBlock")
+    def pod_ipv4_cidr_block(self) -> Optional[str]:
+        return pulumi.get(self, "pod_ipv4_cidr_block")
 
 
 @pulumi.output_type
@@ -5086,6 +5217,7 @@ class GetClusterNodePoolResult(dict):
                  max_pods_per_node: int,
                  name: str,
                  name_prefix: str,
+                 network_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigResult'],
                  node_configs: Sequence['outputs.GetClusterNodePoolNodeConfigResult'],
                  node_count: int,
                  node_locations: Sequence[str],
@@ -5101,6 +5233,7 @@ class GetClusterNodePoolResult(dict):
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "name_prefix", name_prefix)
+        pulumi.set(__self__, "network_configs", network_configs)
         pulumi.set(__self__, "node_configs", node_configs)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_locations", node_locations)
@@ -5144,6 +5277,11 @@ class GetClusterNodePoolResult(dict):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> str:
         return pulumi.get(self, "name_prefix")
+
+    @property
+    @pulumi.getter(name="networkConfigs")
+    def network_configs(self) -> Sequence['outputs.GetClusterNodePoolNetworkConfigResult']:
+        return pulumi.get(self, "network_configs")
 
     @property
     @pulumi.getter(name="nodeConfigs")
@@ -5207,6 +5345,32 @@ class GetClusterNodePoolManagementResult(dict):
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> bool:
         return pulumi.get(self, "auto_upgrade")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNetworkConfigResult(dict):
+    def __init__(__self__, *,
+                 create_pod_range: bool,
+                 pod_ipv4_cidr_block: str,
+                 pod_range: str):
+        pulumi.set(__self__, "create_pod_range", create_pod_range)
+        pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
+        pulumi.set(__self__, "pod_range", pod_range)
+
+    @property
+    @pulumi.getter(name="createPodRange")
+    def create_pod_range(self) -> bool:
+        return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="podIpv4CidrBlock")
+    def pod_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "pod_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> str:
+        return pulumi.get(self, "pod_range")
 
 
 @pulumi.output_type

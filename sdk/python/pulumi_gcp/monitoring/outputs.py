@@ -2037,10 +2037,10 @@ class SloRequestBasedSliDistributionCut(dict):
                MetricKind = DELTA or MetricKind = CUMULATIVE.
         :param 'SloRequestBasedSliDistributionCutRangeArgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
-               that range.min <= x < range.max. inclusive of min and
-               exclusive of max. Open ranges can be defined by setting
+               that range.min <= x <= range.max. inclusive of min and
+               max. Open ranges can be defined by setting
                just one of min or max. Summed value `X` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
                Structure is documented below.
         """
         pulumi.set(__self__, "distribution_filter", distribution_filter)
@@ -2063,10 +2063,10 @@ class SloRequestBasedSliDistributionCut(dict):
         """
         Range of numerical values. The computed good_service
         will be the count of values x in the Distribution such
-        that range.min <= x < range.max. inclusive of min and
-        exclusive of max. Open ranges can be defined by setting
+        that range.min <= x <= range.max. inclusive of min and
+        max. Open ranges can be defined by setting
         just one of min or max. Summed value `X` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -2259,12 +2259,12 @@ class SloWindowsBasedSli(dict):
                `good_total_ratio_threshold`, `metric_mean_in_range`,
                `metric_sum_in_range` must be set for `windows_based_sli`.
                Average value X of `time_series` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
                Structure is documented below.
         :param 'SloWindowsBasedSliMetricSumInRangeArgs' metric_sum_in_range: Criterion that describes a window as good if the metric's value
                is in a good range, *summed* across returned streams.
                Summed value `X` of `time_series` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
                One of `good_bad_metric_filter`,
                `good_total_ratio_threshold`, `metric_mean_in_range`,
                `metric_sum_in_range` must be set for `windows_based_sli`.
@@ -2318,7 +2318,7 @@ class SloWindowsBasedSli(dict):
         `good_total_ratio_threshold`, `metric_mean_in_range`,
         `metric_sum_in_range` must be set for `windows_based_sli`.
         Average value X of `time_series` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         Structure is documented below.
         """
         return pulumi.get(self, "metric_mean_in_range")
@@ -2330,7 +2330,7 @@ class SloWindowsBasedSli(dict):
         Criterion that describes a window as good if the metric's value
         is in a good range, *summed* across returned streams.
         Summed value `X` of `time_series` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         One of `good_bad_metric_filter`,
         `good_total_ratio_threshold`, `metric_mean_in_range`,
         `metric_sum_in_range` must be set for `windows_based_sli`.
@@ -2658,10 +2658,10 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
                MetricKind = DELTA or MetricKind = CUMULATIVE.
         :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
-               that range.min <= x < range.max. inclusive of min and
-               exclusive of max. Open ranges can be defined by setting
+               that range.min <= x <= range.max. inclusive of min and
+               max. Open ranges can be defined by setting
                just one of min or max. Summed value `X` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
                Structure is documented below.
         """
         pulumi.set(__self__, "distribution_filter", distribution_filter)
@@ -2684,10 +2684,10 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
         """
         Range of numerical values. The computed good_service
         will be the count of values x in the Distribution such
-        that range.min <= x < range.max. inclusive of min and
-        exclusive of max. Open ranges can be defined by setting
+        that range.min <= x <= range.max. inclusive of min and
+        max. Open ranges can be defined by setting
         just one of min or max. Summed value `X` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -2855,10 +2855,10 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
         """
         :param 'SloWindowsBasedSliMetricMeanInRangeRangeArgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
-               that range.min <= x < range.max. inclusive of min and
-               exclusive of max. Open ranges can be defined by setting
+               that range.min <= x <= range.max. inclusive of min and
+               max. Open ranges can be defined by setting
                just one of min or max. Summed value `X` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
                Structure is documented below.
         :param str time_series: A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                specifying the TimeSeries to use for evaluating window
@@ -2866,7 +2866,7 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
                ValueType = INT64 or ValueType = DOUBLE and
                MetricKind = GAUGE.
                Summed value `X` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
         """
         pulumi.set(__self__, "range", range)
         pulumi.set(__self__, "time_series", time_series)
@@ -2877,10 +2877,10 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
         """
         Range of numerical values. The computed good_service
         will be the count of values x in the Distribution such
-        that range.min <= x < range.max. inclusive of min and
-        exclusive of max. Open ranges can be defined by setting
+        that range.min <= x <= range.max. inclusive of min and
+        max. Open ranges can be defined by setting
         just one of min or max. Summed value `X` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -2895,7 +2895,7 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
         ValueType = INT64 or ValueType = DOUBLE and
         MetricKind = GAUGE.
         Summed value `X` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         """
         return pulumi.get(self, "time_series")
 
@@ -2964,10 +2964,10 @@ class SloWindowsBasedSliMetricSumInRange(dict):
         """
         :param 'SloWindowsBasedSliMetricSumInRangeRangeArgs' range: Range of numerical values. The computed good_service
                will be the count of values x in the Distribution such
-               that range.min <= x < range.max. inclusive of min and
-               exclusive of max. Open ranges can be defined by setting
+               that range.min <= x <= range.max. inclusive of min and
+               max. Open ranges can be defined by setting
                just one of min or max. Summed value `X` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
                Structure is documented below.
         :param str time_series: A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                specifying the TimeSeries to use for evaluating window
@@ -2975,7 +2975,7 @@ class SloWindowsBasedSliMetricSumInRange(dict):
                ValueType = INT64 or ValueType = DOUBLE and
                MetricKind = GAUGE.
                Summed value `X` should satisfy
-               `range.min <= X < range.max` for a good window.
+               `range.min <= X <= range.max` for a good window.
         """
         pulumi.set(__self__, "range", range)
         pulumi.set(__self__, "time_series", time_series)
@@ -2986,10 +2986,10 @@ class SloWindowsBasedSliMetricSumInRange(dict):
         """
         Range of numerical values. The computed good_service
         will be the count of values x in the Distribution such
-        that range.min <= x < range.max. inclusive of min and
-        exclusive of max. Open ranges can be defined by setting
+        that range.min <= x <= range.max. inclusive of min and
+        max. Open ranges can be defined by setting
         just one of min or max. Summed value `X` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -3004,7 +3004,7 @@ class SloWindowsBasedSliMetricSumInRange(dict):
         ValueType = INT64 or ValueType = DOUBLE and
         MetricKind = GAUGE.
         Summed value `X` should satisfy
-        `range.min <= X < range.max` for a good window.
+        `range.min <= X <= range.max` for a good window.
         """
         return pulumi.get(self, "time_series")
 

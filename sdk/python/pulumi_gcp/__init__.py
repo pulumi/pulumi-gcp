@@ -2155,6 +2155,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxEntityType",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxEntityType:CxEntityType": "CxEntityType"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/cxFlow",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -2167,6 +2175,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
    "gcp:diagflow/cxIntent:CxIntent": "CxIntent"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/cxPage",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxPage:CxPage": "CxPage"
   }
  },
  {

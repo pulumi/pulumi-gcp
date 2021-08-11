@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// `good_total_ratio_threshold`, `metric_mean_in_range`,
         /// `metric_sum_in_range` must be set for `windows_based_sli`.
         /// Average value X of `time_series` should satisfy
-        /// `range.min &lt;= X &lt; range.max` for a good window.
+        /// `range.min &lt;= X &lt;= range.max` for a good window.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SloWindowsBasedSliMetricMeanInRange? MetricMeanInRange;
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// Criterion that describes a window as good if the metric's value
         /// is in a good range, *summed* across returned streams.
         /// Summed value `X` of `time_series` should satisfy
-        /// `range.min &lt;= X &lt; range.max` for a good window.
+        /// `range.min &lt;= X &lt;= range.max` for a good window.
         /// One of `good_bad_metric_filter`,
         /// `good_total_ratio_threshold`, `metric_mean_in_range`,
         /// `metric_sum_in_range` must be set for `windows_based_sli`.
