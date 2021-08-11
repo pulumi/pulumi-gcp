@@ -66,8 +66,11 @@ type BucketObject struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
-	Crc32c        pulumi.StringOutput    `pulumi:"crc32c"`
-	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
+	Crc32c pulumi.StringOutput `pulumi:"crc32c"`
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Structure is documented below.
+	CustomerEncryption BucketObjectCustomerEncryptionPtrOutput `pulumi:"customerEncryption"`
+	DetectMd5hash      pulumi.StringPtrOutput                  `pulumi:"detectMd5hash"`
 	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
 	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
 	// will be subject to bucket-level retention (if any).
@@ -147,8 +150,11 @@ type bucketObjectState struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType *string `pulumi:"contentType"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
-	Crc32c        *string `pulumi:"crc32c"`
-	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	Crc32c *string `pulumi:"crc32c"`
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Structure is documented below.
+	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
+	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
 	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
 	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
 	// will be subject to bucket-level retention (if any).
@@ -197,8 +203,11 @@ type BucketObjectState struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringPtrInput
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
-	Crc32c        pulumi.StringPtrInput
-	DetectMd5hash pulumi.StringPtrInput
+	Crc32c pulumi.StringPtrInput
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Structure is documented below.
+	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
+	DetectMd5hash      pulumi.StringPtrInput
 	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
 	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
 	// will be subject to bucket-level retention (if any).
@@ -249,8 +258,11 @@ type bucketObjectArgs struct {
 	// [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-	ContentType   *string `pulumi:"contentType"`
-	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	ContentType *string `pulumi:"contentType"`
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Structure is documented below.
+	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
+	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
 	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
 	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
 	// will be subject to bucket-level retention (if any).
@@ -289,8 +301,11 @@ type BucketObjectArgs struct {
 	// [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
 	ContentLanguage pulumi.StringPtrInput
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-	ContentType   pulumi.StringPtrInput
-	DetectMd5hash pulumi.StringPtrInput
+	ContentType pulumi.StringPtrInput
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Structure is documented below.
+	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
+	DetectMd5hash      pulumi.StringPtrInput
 	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
 	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
 	// will be subject to bucket-level retention (if any).

@@ -44,6 +44,30 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// }
     /// ```
+    /// ### Spanner Instance Processing Units
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Spanner.Instance("example", new Gcp.Spanner.InstanceArgs
+    ///         {
+    ///             Config = "regional-us-central1",
+    ///             DisplayName = "Test Spanner Instance",
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             ProcessingUnits = 200,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Spanner Instance Multi Regional
     /// 
     /// ```csharp
@@ -129,10 +153,18 @@ namespace Pulumi.Gcp.Spanner
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes allocated to this instance.
+        /// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        /// terraform.
         /// </summary>
         [Output("numNodes")]
-        public Output<int?> NumNodes { get; private set; } = null!;
+        public Output<int> NumNodes { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        /// in terraform.
+        /// </summary>
+        [Output("processingUnits")]
+        public Output<int> ProcessingUnits { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -240,10 +272,18 @@ namespace Pulumi.Gcp.Spanner
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The number of nodes allocated to this instance.
+        /// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        /// terraform.
         /// </summary>
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }
+
+        /// <summary>
+        /// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        /// in terraform.
+        /// </summary>
+        [Input("processingUnits")]
+        public Input<int>? ProcessingUnits { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -306,10 +346,18 @@ namespace Pulumi.Gcp.Spanner
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The number of nodes allocated to this instance.
+        /// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        /// terraform.
         /// </summary>
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }
+
+        /// <summary>
+        /// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        /// in terraform.
+        /// </summary>
+        [Input("processingUnits")]
+        public Input<int>? ProcessingUnits { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

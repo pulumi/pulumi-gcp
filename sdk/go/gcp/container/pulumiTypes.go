@@ -6204,6 +6204,9 @@ type ClusterNodePool struct {
 	// location.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
+	// ) Configuration for
+	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+	NetworkConfig *ClusterNodePoolNetworkConfig `pulumi:"networkConfig"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
@@ -6249,6 +6252,9 @@ type ClusterNodePoolArgs struct {
 	// location.
 	Name       pulumi.StringPtrInput `pulumi:"name"`
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// ) Configuration for
+	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+	NetworkConfig ClusterNodePoolNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
@@ -6352,6 +6358,12 @@ func (o ClusterNodePoolOutput) Name() pulumi.StringPtrOutput {
 
 func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// ) Configuration for
+// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+func (o ClusterNodePoolOutput) NetworkConfig() ClusterNodePoolNetworkConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNetworkConfig { return v.NetworkConfig }).(ClusterNodePoolNetworkConfigPtrOutput)
 }
 
 // Parameters used in creating the default node pool.
@@ -6683,6 +6695,175 @@ func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 		}
 		return v.AutoUpgrade
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfig struct {
+	// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	CreatePodRange *bool `pulumi:"createPodRange"`
+	// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
+	// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	PodRange string `pulumi:"podRange"`
+}
+
+// ClusterNodePoolNetworkConfigInput is an input type that accepts ClusterNodePoolNetworkConfigArgs and ClusterNodePoolNetworkConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigInput` via:
+//
+//          ClusterNodePoolNetworkConfigArgs{...}
+type ClusterNodePoolNetworkConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigOutput() ClusterNodePoolNetworkConfigOutput
+	ToClusterNodePoolNetworkConfigOutputWithContext(context.Context) ClusterNodePoolNetworkConfigOutput
+}
+
+type ClusterNodePoolNetworkConfigArgs struct {
+	// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
+	// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	PodRange pulumi.StringInput `pulumi:"podRange"`
+}
+
+func (ClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNetworkConfigArgs) ToClusterNodePoolNetworkConfigOutput() ClusterNodePoolNetworkConfigOutput {
+	return i.ToClusterNodePoolNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigArgs) ToClusterNodePoolNetworkConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigOutput)
+}
+
+func (i ClusterNodePoolNetworkConfigArgs) ToClusterNodePoolNetworkConfigPtrOutput() ClusterNodePoolNetworkConfigPtrOutput {
+	return i.ToClusterNodePoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigArgs) ToClusterNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigOutput).ToClusterNodePoolNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNetworkConfigPtrInput is an input type that accepts ClusterNodePoolNetworkConfigArgs, ClusterNodePoolNetworkConfigPtr and ClusterNodePoolNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigPtrInput` via:
+//
+//          ClusterNodePoolNetworkConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodePoolNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigPtrOutput() ClusterNodePoolNetworkConfigPtrOutput
+	ToClusterNodePoolNetworkConfigPtrOutputWithContext(context.Context) ClusterNodePoolNetworkConfigPtrOutput
+}
+
+type clusterNodePoolNetworkConfigPtrType ClusterNodePoolNetworkConfigArgs
+
+func ClusterNodePoolNetworkConfigPtr(v *ClusterNodePoolNetworkConfigArgs) ClusterNodePoolNetworkConfigPtrInput {
+	return (*clusterNodePoolNetworkConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNetworkConfigPtrType) ToClusterNodePoolNetworkConfigPtrOutput() ClusterNodePoolNetworkConfigPtrOutput {
+	return i.ToClusterNodePoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNetworkConfigPtrType) ToClusterNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigOutput) ToClusterNodePoolNetworkConfigOutput() ClusterNodePoolNetworkConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigOutput) ToClusterNodePoolNetworkConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigOutput) ToClusterNodePoolNetworkConfigPtrOutput() ClusterNodePoolNetworkConfigPtrOutput {
+	return o.ToClusterNodePoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNetworkConfigOutput) ToClusterNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfig {
+		return &v
+	}).(ClusterNodePoolNetworkConfigPtrOutput)
+}
+
+// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+func (o ClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
+}
+
+// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+func (o ClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+func (o ClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
+}
+
+type ClusterNodePoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigPtrOutput) ToClusterNodePoolNetworkConfigPtrOutput() ClusterNodePoolNetworkConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigPtrOutput) ToClusterNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigPtrOutput) Elem() ClusterNodePoolNetworkConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) ClusterNodePoolNetworkConfig { return *v }).(ClusterNodePoolNetworkConfigOutput)
+}
+
+// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+func (o ClusterNodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreatePodRange
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PodRange
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolNodeConfig struct {
@@ -9042,7 +9223,7 @@ type ClusterPrivateClusterConfig struct {
 	// the hosted master network. This range will be used for assigning private IP
 	// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
 	// with any other ranges in use within the cluster's network, and it must be a /28
-	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 	// for more details. This field only applies to private clusters, when
 	// `enablePrivateNodes` is `true`.
 	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
@@ -9084,7 +9265,7 @@ type ClusterPrivateClusterConfigArgs struct {
 	// the hosted master network. This range will be used for assigning private IP
 	// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
 	// with any other ranges in use within the cluster's network, and it must be a /28
-	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 	// for more details. This field only applies to private clusters, when
 	// `enablePrivateNodes` is `true`.
 	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
@@ -9202,7 +9383,7 @@ func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPri
 // the hosted master network. This range will be used for assigning private IP
 // addresses to the cluster master(s) and the ILB VIP. This range must not overlap
 // with any other ranges in use within the cluster's network, and it must be a /28
-// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 // for more details. This field only applies to private clusters, when
 // `enablePrivateNodes` is `true`.
 func (o ClusterPrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
@@ -9284,7 +9465,7 @@ func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() Cluster
 // the hosted master network. This range will be used for assigning private IP
 // addresses to the cluster master(s) and the ILB VIP. This range must not overlap
 // with any other ranges in use within the cluster's network, and it must be a /28
-// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
 // for more details. This field only applies to private clusters, when
 // `enablePrivateNodes` is `true`.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
@@ -10501,6 +10682,162 @@ func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 		}
 		return v.AutoUpgrade
 	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolNetworkConfig struct {
+	CreatePodRange   *bool   `pulumi:"createPodRange"`
+	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
+	PodRange         string  `pulumi:"podRange"`
+}
+
+// NodePoolNetworkConfigInput is an input type that accepts NodePoolNetworkConfigArgs and NodePoolNetworkConfigOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigInput` via:
+//
+//          NodePoolNetworkConfigArgs{...}
+type NodePoolNetworkConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigOutput() NodePoolNetworkConfigOutput
+	ToNodePoolNetworkConfigOutputWithContext(context.Context) NodePoolNetworkConfigOutput
+}
+
+type NodePoolNetworkConfigArgs struct {
+	CreatePodRange   pulumi.BoolPtrInput   `pulumi:"createPodRange"`
+	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
+	PodRange         pulumi.StringInput    `pulumi:"podRange"`
+}
+
+func (NodePoolNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i NodePoolNetworkConfigArgs) ToNodePoolNetworkConfigOutput() NodePoolNetworkConfigOutput {
+	return i.ToNodePoolNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigArgs) ToNodePoolNetworkConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigOutput)
+}
+
+func (i NodePoolNetworkConfigArgs) ToNodePoolNetworkConfigPtrOutput() NodePoolNetworkConfigPtrOutput {
+	return i.ToNodePoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigArgs) ToNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigOutput).ToNodePoolNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNetworkConfigPtrInput is an input type that accepts NodePoolNetworkConfigArgs, NodePoolNetworkConfigPtr and NodePoolNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigPtrInput` via:
+//
+//          NodePoolNetworkConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigPtrOutput() NodePoolNetworkConfigPtrOutput
+	ToNodePoolNetworkConfigPtrOutputWithContext(context.Context) NodePoolNetworkConfigPtrOutput
+}
+
+type nodePoolNetworkConfigPtrType NodePoolNetworkConfigArgs
+
+func NodePoolNetworkConfigPtr(v *NodePoolNetworkConfigArgs) NodePoolNetworkConfigPtrInput {
+	return (*nodePoolNetworkConfigPtrType)(v)
+}
+
+func (*nodePoolNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNetworkConfigPtrType) ToNodePoolNetworkConfigPtrOutput() NodePoolNetworkConfigPtrOutput {
+	return i.ToNodePoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNetworkConfigPtrType) ToNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigPtrOutput)
+}
+
+type NodePoolNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigOutput) ToNodePoolNetworkConfigOutput() NodePoolNetworkConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigOutput) ToNodePoolNetworkConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigOutput) ToNodePoolNetworkConfigPtrOutput() NodePoolNetworkConfigPtrOutput {
+	return o.ToNodePoolNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNetworkConfigOutput) ToNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *NodePoolNetworkConfig {
+		return &v
+	}).(NodePoolNetworkConfigPtrOutput)
+}
+func (o NodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
+}
+
+type NodePoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigPtrOutput) ToNodePoolNetworkConfigPtrOutput() NodePoolNetworkConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigPtrOutput) ToNodePoolNetworkConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigPtrOutput) Elem() NodePoolNetworkConfigOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) NodePoolNetworkConfig { return *v }).(NodePoolNetworkConfigOutput)
+}
+
+func (o NodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreatePodRange
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PodRange
+	}).(pulumi.StringPtrOutput)
 }
 
 type NodePoolNodeConfig struct {
@@ -15983,6 +16320,7 @@ type GetClusterNodePool struct {
 	// The name of the cluster.
 	Name            string                             `pulumi:"name"`
 	NamePrefix      string                             `pulumi:"namePrefix"`
+	NetworkConfigs  []GetClusterNodePoolNetworkConfig  `pulumi:"networkConfigs"`
 	NodeConfigs     []GetClusterNodePoolNodeConfig     `pulumi:"nodeConfigs"`
 	NodeCount       int                                `pulumi:"nodeCount"`
 	NodeLocations   []string                           `pulumi:"nodeLocations"`
@@ -16010,6 +16348,7 @@ type GetClusterNodePoolArgs struct {
 	// The name of the cluster.
 	Name            pulumi.StringInput                         `pulumi:"name"`
 	NamePrefix      pulumi.StringInput                         `pulumi:"namePrefix"`
+	NetworkConfigs  GetClusterNodePoolNetworkConfigArrayInput  `pulumi:"networkConfigs"`
 	NodeConfigs     GetClusterNodePoolNodeConfigArrayInput     `pulumi:"nodeConfigs"`
 	NodeCount       pulumi.IntInput                            `pulumi:"nodeCount"`
 	NodeLocations   pulumi.StringArrayInput                    `pulumi:"nodeLocations"`
@@ -16095,6 +16434,10 @@ func (o GetClusterNodePoolOutput) Name() pulumi.StringOutput {
 
 func (o GetClusterNodePoolOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePool) string { return v.NamePrefix }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolOutput) NetworkConfigs() GetClusterNodePoolNetworkConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolNetworkConfig { return v.NetworkConfigs }).(GetClusterNodePoolNetworkConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) NodeConfigs() GetClusterNodePoolNodeConfigArrayOutput {
@@ -16335,6 +16678,112 @@ func (o GetClusterNodePoolManagementArrayOutput) Index(i pulumi.IntInput) GetClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolManagement {
 		return vs[0].([]GetClusterNodePoolManagement)[vs[1].(int)]
 	}).(GetClusterNodePoolManagementOutput)
+}
+
+type GetClusterNodePoolNetworkConfig struct {
+	CreatePodRange   bool   `pulumi:"createPodRange"`
+	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
+	PodRange         string `pulumi:"podRange"`
+}
+
+// GetClusterNodePoolNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigArgs and GetClusterNodePoolNetworkConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigInput` via:
+//
+//          GetClusterNodePoolNetworkConfigArgs{...}
+type GetClusterNodePoolNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigOutput() GetClusterNodePoolNetworkConfigOutput
+	ToGetClusterNodePoolNetworkConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigArgs struct {
+	CreatePodRange   pulumi.BoolInput   `pulumi:"createPodRange"`
+	PodIpv4CidrBlock pulumi.StringInput `pulumi:"podIpv4CidrBlock"`
+	PodRange         pulumi.StringInput `pulumi:"podRange"`
+}
+
+func (GetClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigOutput() GetClusterNodePoolNetworkConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigArray and GetClusterNodePoolNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigArrayInput` via:
+//
+//          GetClusterNodePoolNetworkConfigArray{ GetClusterNodePoolNetworkConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigArray []GetClusterNodePoolNetworkConfigInput
+
+func (GetClusterNodePoolNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigArray) ToGetClusterNodePoolNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigArray) ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigOutput() GetClusterNodePoolNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.PodIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfig struct {
@@ -18532,6 +18981,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolManagementOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolManagementPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
@@ -18576,6 +19027,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigOutput{})
@@ -18676,6 +19129,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})

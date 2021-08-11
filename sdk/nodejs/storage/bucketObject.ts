@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -91,6 +92,11 @@ export class BucketObject extends pulumi.CustomResource {
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
     public /*out*/ readonly crc32c!: pulumi.Output<string>;
+    /**
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Structure is documented below.
+     */
+    public readonly customerEncryption!: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
     public readonly detectMd5hash!: pulumi.Output<string | undefined>;
     /**
      * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
@@ -165,6 +171,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentLanguage"] = state ? state.contentLanguage : undefined;
             inputs["contentType"] = state ? state.contentType : undefined;
             inputs["crc32c"] = state ? state.crc32c : undefined;
+            inputs["customerEncryption"] = state ? state.customerEncryption : undefined;
             inputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
             inputs["eventBasedHold"] = state ? state.eventBasedHold : undefined;
             inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
@@ -189,6 +196,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentEncoding"] = args ? args.contentEncoding : undefined;
             inputs["contentLanguage"] = args ? args.contentLanguage : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
+            inputs["customerEncryption"] = args ? args.customerEncryption : undefined;
             inputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
             inputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -247,6 +255,11 @@ export interface BucketObjectState {
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
     crc32c?: pulumi.Input<string>;
+    /**
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Structure is documented below.
+     */
+    customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
@@ -334,6 +347,11 @@ export interface BucketObjectArgs {
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
     contentType?: pulumi.Input<string>;
+    /**
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Structure is documented below.
+     */
+    customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is

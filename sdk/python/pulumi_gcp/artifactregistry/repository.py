@@ -22,7 +22,14 @@ class RepositoryArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Repository resource.
-        :param pulumi.Input[str] format: The format of packages that are stored in the repository.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository. You can only create
+               alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               - DOCKER
+               - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] description: The user-provided description of the repository.
@@ -56,7 +63,14 @@ class RepositoryArgs:
     @pulumi.getter
     def format(self) -> pulumi.Input[str]:
         """
-        The format of packages that are stored in the repository.
+        The format of packages that are stored in the repository. You can only create
+        alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        - DOCKER
+        - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+        - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
         """
         return pulumi.get(self, "format")
 
@@ -163,7 +177,14 @@ class _RepositoryState:
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[str] format: The format of packages that are stored in the repository.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository. You can only create
+               alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               - DOCKER
+               - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -230,7 +251,14 @@ class _RepositoryState:
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
         """
-        The format of packages that are stored in the repository.
+        The format of packages that are stored in the repository. You can only create
+        alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        - DOCKER
+        - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+        - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
         """
         return pulumi.get(self, "format")
 
@@ -429,7 +457,14 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[str] format: The format of packages that are stored in the repository.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository. You can only create
+               alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               - DOCKER
+               - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -609,7 +644,14 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[str] format: The format of packages that are stored in the repository.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository. You can only create
+               alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               - DOCKER
+               - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+               - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -663,7 +705,14 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def format(self) -> pulumi.Output[str]:
         """
-        The format of packages that are stored in the repository.
+        The format of packages that are stored in the repository. You can only create
+        alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        - DOCKER
+        - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
+        - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
+        - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
         """
         return pulumi.get(self, "format")
 

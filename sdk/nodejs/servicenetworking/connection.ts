@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a private VPC connection with a GCP service provider. For more information see
+ * [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
+ * and
+ * [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: peeringNetwork.id,
+ * });
+ * const foobar = new gcp.servicenetworking.Connection("foobar", {
+ *     network: peeringNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ServiceNetworkingConnection can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicenetworking/connection:Connection peering_connection {{peering-network}}:{{service}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicenetworking/connection:Connection peering_connection /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
+ * ```
+ */
 export class Connection extends pulumi.CustomResource {
     /**
      * Get an existing Connection resource's state with the given name, ID, and optional extra

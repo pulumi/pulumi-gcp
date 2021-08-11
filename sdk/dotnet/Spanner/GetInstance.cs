@@ -70,6 +70,9 @@ namespace Pulumi.Gcp.Spanner
         [Input("numNodes")]
         public int? NumNodes { get; set; }
 
+        [Input("processingUnits")]
+        public int? ProcessingUnits { get; set; }
+
         /// <summary>
         /// The project in which the resource belongs. If it
         /// is not provided, the provider project is used.
@@ -95,7 +98,8 @@ namespace Pulumi.Gcp.Spanner
         public readonly string Id;
         public readonly ImmutableDictionary<string, string>? Labels;
         public readonly string Name;
-        public readonly int? NumNodes;
+        public readonly int NumNodes;
+        public readonly int ProcessingUnits;
         public readonly string? Project;
         public readonly string State;
 
@@ -113,7 +117,9 @@ namespace Pulumi.Gcp.Spanner
 
             string name,
 
-            int? numNodes,
+            int numNodes,
+
+            int processingUnits,
 
             string? project,
 
@@ -126,6 +132,7 @@ namespace Pulumi.Gcp.Spanner
             Labels = labels;
             Name = name;
             NumNodes = numNodes;
+            ProcessingUnits = processingUnits;
             Project = project;
             State = state;
         }

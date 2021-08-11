@@ -332,6 +332,44 @@ class Trigger(pulumi.CustomResource):
                  transports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Basic_trigger
+        A basic example for an Eventarc Trigger
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-west1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                namespace="my-project-name",
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        args=["arrgs"],
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        primary = gcp.eventarc.Trigger("primary",
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region="us-west1",
+                ),
+            ),
+            location="us-west1",
+            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
+                attribute="type",
+                value="google.cloud.pubsub.topic.v1.messagePublished",
+            )])
+        ```
+
         ## Import
 
         Trigger can be imported using any of these accepted formats
@@ -366,6 +404,44 @@ class Trigger(pulumi.CustomResource):
                  args: TriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Basic_trigger
+        A basic example for an Eventarc Trigger
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-west1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                namespace="my-project-name",
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        args=["arrgs"],
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        primary = gcp.eventarc.Trigger("primary",
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region="us-west1",
+                ),
+            ),
+            location="us-west1",
+            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
+                attribute="type",
+                value="google.cloud.pubsub.topic.v1.messagePublished",
+            )])
+        ```
+
         ## Import
 
         Trigger can be imported using any of these accepted formats

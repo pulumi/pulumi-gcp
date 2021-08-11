@@ -9,6 +9,58 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ServiceNetworking
 {
+    /// <summary>
+    /// Manages a private VPC connection with a GCP service provider. For more information see
+    /// [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
+    /// and
+    /// [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var peeringNetwork = new Gcp.Compute.Network("peeringNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = peeringNetwork.Id,
+    ///         });
+    ///         var foobar = new Gcp.ServiceNetworking.Connection("foobar", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = peeringNetwork.Id,
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 privateIpAlloc.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ServiceNetworkingConnection can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicenetworking/connection:Connection peering_connection {{peering-network}}:{{service}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicenetworking/connection:Connection peering_connection /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
+    /// ```
+    /// </summary>
     [GcpResourceType("gcp:servicenetworking/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {

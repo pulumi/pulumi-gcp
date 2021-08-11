@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BucketObjectArgs', 'BucketObject']
 
@@ -20,6 +22,7 @@ class BucketObjectArgs:
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
+                 customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -38,6 +41,8 @@ class BucketObjectArgs:
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+               Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
                signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
                will be subject to bucket-level retention (if any).
@@ -65,6 +70,8 @@ class BucketObjectArgs:
             pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if customer_encryption is not None:
+            pulumi.set(__self__, "customer_encryption", customer_encryption)
         if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
@@ -166,6 +173,19 @@ class BucketObjectArgs:
     @content_type.setter
     def content_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter(name="customerEncryption")
+    def customer_encryption(self) -> Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]:
+        """
+        Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_encryption")
+
+    @customer_encryption.setter
+    def customer_encryption(self, value: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]):
+        pulumi.set(self, "customer_encryption", value)
 
     @property
     @pulumi.getter(name="detectMd5hash")
@@ -278,6 +298,7 @@ class _BucketObjectState:
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  crc32c: Optional[pulumi.Input[str]] = None,
+                 customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -301,6 +322,8 @@ class _BucketObjectState:
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
+        :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+               Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
                signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
                will be subject to bucket-level retention (if any).
@@ -336,6 +359,8 @@ class _BucketObjectState:
             pulumi.set(__self__, "content_type", content_type)
         if crc32c is not None:
             pulumi.set(__self__, "crc32c", crc32c)
+        if customer_encryption is not None:
+            pulumi.set(__self__, "customer_encryption", customer_encryption)
         if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
@@ -457,6 +482,19 @@ class _BucketObjectState:
     @crc32c.setter
     def crc32c(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "crc32c", value)
+
+    @property
+    @pulumi.getter(name="customerEncryption")
+    def customer_encryption(self) -> Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]:
+        """
+        Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_encryption")
+
+    @customer_encryption.setter
+    def customer_encryption(self, value: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]):
+        pulumi.set(self, "customer_encryption", value)
 
     @property
     @pulumi.getter(name="detectMd5hash")
@@ -619,6 +657,7 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
+                 customer_encryption: Optional[pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']]] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -663,6 +702,8 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+               Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
                signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
                will be subject to bucket-level retention (if any).
@@ -730,6 +771,7 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
+                 customer_encryption: Optional[pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']]] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -759,6 +801,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["content_encoding"] = content_encoding
             __props__.__dict__["content_language"] = content_language
             __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["customer_encryption"] = customer_encryption
             __props__.__dict__["detect_md5hash"] = detect_md5hash
             __props__.__dict__["event_based_hold"] = event_based_hold
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -790,6 +833,7 @@ class BucketObject(pulumi.CustomResource):
             content_language: Optional[pulumi.Input[str]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             crc32c: Optional[pulumi.Input[str]] = None,
+            customer_encryption: Optional[pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']]] = None,
             detect_md5hash: Optional[pulumi.Input[str]] = None,
             event_based_hold: Optional[pulumi.Input[bool]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -818,6 +862,8 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
+        :param pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+               Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
                signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
                will be subject to bucket-level retention (if any).
@@ -849,6 +895,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["content_language"] = content_language
         __props__.__dict__["content_type"] = content_type
         __props__.__dict__["crc32c"] = crc32c
+        __props__.__dict__["customer_encryption"] = customer_encryption
         __props__.__dict__["detect_md5hash"] = detect_md5hash
         __props__.__dict__["event_based_hold"] = event_based_hold
         __props__.__dict__["kms_key_name"] = kms_key_name
@@ -927,6 +974,15 @@ class BucketObject(pulumi.CustomResource):
         (Computed) Base 64 CRC32 hash of the uploaded data.
         """
         return pulumi.get(self, "crc32c")
+
+    @property
+    @pulumi.getter(name="customerEncryption")
+    def customer_encryption(self) -> pulumi.Output[Optional['outputs.BucketObjectCustomerEncryption']]:
+        """
+        Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_encryption")
 
     @property
     @pulumi.getter(name="detectMd5hash")

@@ -37,6 +37,11 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? Name;
         public readonly string? NamePrefix;
         /// <summary>
+        /// ) Configuration for
+        /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNetworkConfig? NetworkConfig;
+        /// <summary>
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
         /// `gcp.container.NodePool` or a `node_pool` block; this configuration
@@ -71,6 +76,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? namePrefix,
 
+            Outputs.ClusterNodePoolNetworkConfig? networkConfig,
+
             Outputs.ClusterNodePoolNodeConfig? nodeConfig,
 
             int? nodeCount,
@@ -88,6 +95,7 @@ namespace Pulumi.Gcp.Container.Outputs
             MaxPodsPerNode = maxPodsPerNode;
             Name = name;
             NamePrefix = namePrefix;
+            NetworkConfig = networkConfig;
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             NodeLocations = nodeLocations;

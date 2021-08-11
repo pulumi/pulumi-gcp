@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.Storage
         public readonly string ContentLanguage;
         public readonly string ContentType;
         public readonly string Crc32c;
+        public readonly ImmutableArray<Outputs.GetBucketObjectContentCustomerEncryptionResult> CustomerEncryptions;
         public readonly string DetectMd5hash;
         public readonly bool EventBasedHold;
         /// <summary>
@@ -128,6 +129,8 @@ namespace Pulumi.Gcp.Storage
 
             string crc32c,
 
+            ImmutableArray<Outputs.GetBucketObjectContentCustomerEncryptionResult> customerEncryptions,
+
             string detectMd5hash,
 
             bool eventBasedHold,
@@ -162,6 +165,7 @@ namespace Pulumi.Gcp.Storage
             ContentLanguage = contentLanguage;
             ContentType = contentType;
             Crc32c = crc32c;
+            CustomerEncryptions = customerEncryptions;
             DetectMd5hash = detectMd5hash;
             EventBasedHold = eventBasedHold;
             Id = id;

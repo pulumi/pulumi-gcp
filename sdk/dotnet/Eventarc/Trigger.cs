@@ -10,6 +10,75 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Basic_trigger
+    /// A basic example for an Eventarc Trigger
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-west1",
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Namespace = "my-project-name",
+    ///             },
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Args = 
+    ///                             {
+    ///                                 "arrgs",
+    ///                             },
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     LatestRevision = true,
+    ///                     Percent = 100,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var primary = new Gcp.Eventarc.Trigger("primary", new Gcp.Eventarc.TriggerArgs
+    ///         {
+    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
+    ///             {
+    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
+    ///                 {
+    ///                     Service = @default.Name,
+    ///                     Region = "us-west1",
+    ///                 },
+    ///             },
+    ///             Location = "us-west1",
+    ///             MatchingCriterias = 
+    ///             {
+    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///                 {
+    ///                     Attribute = "type",
+    ///                     Value = "google.cloud.pubsub.topic.v1.messagePublished",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Trigger can be imported using any of these accepted formats

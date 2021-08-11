@@ -110,7 +110,10 @@ type NodePool struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
-	// The node configuration of the pool. See
+	// The network configuration of the pool. See
+	// container.Cluster for schema.
+	NetworkConfig NodePoolNetworkConfigOutput `pulumi:"networkConfig"`
+	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NodeConfig NodePoolNodeConfigOutput `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
@@ -202,7 +205,10 @@ type nodePoolState struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The node configuration of the pool. See
+	// The network configuration of the pool. See
+	// container.Cluster for schema.
+	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
+	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NodeConfig *NodePoolNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
@@ -263,7 +269,10 @@ type NodePoolState struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// The node configuration of the pool. See
+	// The network configuration of the pool. See
+	// container.Cluster for schema.
+	NetworkConfig NodePoolNetworkConfigPtrInput
+	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NodeConfig NodePoolNodeConfigPtrInput
 	// The number of nodes per instance group. This field can be used to
@@ -326,7 +335,10 @@ type nodePoolArgs struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The node configuration of the pool. See
+	// The network configuration of the pool. See
+	// container.Cluster for schema.
+	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
+	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NodeConfig *NodePoolNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
@@ -385,7 +397,10 @@ type NodePoolArgs struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// The node configuration of the pool. See
+	// The network configuration of the pool. See
+	// container.Cluster for schema.
+	NetworkConfig NodePoolNetworkConfigPtrInput
+	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NodeConfig NodePoolNodeConfigPtrInput
 	// The number of nodes per instance group. This field can be used to

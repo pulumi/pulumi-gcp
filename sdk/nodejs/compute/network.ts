@@ -29,7 +29,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vpcNetwork = new gcp.compute.Network("vpc_network", {
- *     mtu: 1500,
+ *     autoCreateSubnetworks: true,
+ *     mtu: 1460,
+ *     project: "my-project-name",
  * });
  * ```
  *

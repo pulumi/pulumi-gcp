@@ -23,6 +23,7 @@ class NodePoolArgs:
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['NodePoolNetworkConfigArgs']] = None,
                  node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -53,7 +54,9 @@ class NodePoolArgs:
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: The node configuration of the pool. See
+        :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
+               container.Cluster for schema.
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: The network configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -88,6 +91,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -212,10 +217,23 @@ class NodePoolArgs:
         pulumi.set(self, "name_prefix", value)
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['NodePoolNetworkConfigArgs']]:
+        """
+        The network configuration of the pool. See
+        container.Cluster for schema.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['NodePoolNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
         """
-        The node configuration of the pool. See
+        The network configuration of the pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")
@@ -309,6 +327,7 @@ class _NodePoolState:
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['NodePoolNetworkConfigArgs']] = None,
                  node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -341,7 +360,9 @@ class _NodePoolState:
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: The node configuration of the pool. See
+        :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
+               container.Cluster for schema.
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: The network configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -379,6 +400,8 @@ class _NodePoolState:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -517,10 +540,23 @@ class _NodePoolState:
         pulumi.set(self, "name_prefix", value)
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['NodePoolNetworkConfigArgs']]:
+        """
+        The network configuration of the pool. See
+        container.Cluster for schema.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['NodePoolNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
         """
-        The node configuration of the pool. See
+        The network configuration of the pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")
@@ -624,6 +660,7 @@ class NodePool(pulumi.CustomResource):
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -697,7 +734,9 @@ class NodePool(pulumi.CustomResource):
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: The node configuration of the pool. See
+        :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
+               container.Cluster for schema.
+        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: The network configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -788,6 +827,7 @@ class NodePool(pulumi.CustomResource):
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -816,6 +856,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
+            __props__.__dict__["network_config"] = network_config
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["node_locations"] = node_locations
@@ -843,6 +884,7 @@ class NodePool(pulumi.CustomResource):
             max_pods_per_node: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
+            network_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']]] = None,
             node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -880,7 +922,9 @@ class NodePool(pulumi.CustomResource):
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: The node configuration of the pool. See
+        :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
+               container.Cluster for schema.
+        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: The network configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -913,6 +957,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
+        __props__.__dict__["network_config"] = network_config
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["node_locations"] = node_locations
@@ -1009,10 +1054,19 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "name_prefix")
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.NodePoolNetworkConfig']:
+        """
+        The network configuration of the pool. See
+        container.Cluster for schema.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Output['outputs.NodePoolNodeConfig']:
         """
-        The node configuration of the pool. See
+        The network configuration of the pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")

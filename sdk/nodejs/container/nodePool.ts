@@ -165,7 +165,12 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly namePrefix!: pulumi.Output<string>;
     /**
-     * The node configuration of the pool. See
+     * The network configuration of the pool. See
+     * gcp.container.Cluster for schema.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.container.NodePoolNetworkConfig>;
+    /**
+     * The network configuration of the pool. See
      * gcp.container.Cluster for schema.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.container.NodePoolNodeConfig>;
@@ -225,6 +230,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
+            inputs["networkConfig"] = state ? state.networkConfig : undefined;
             inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
@@ -245,6 +251,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
+            inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["nodeLocations"] = args ? args.nodeLocations : undefined;
@@ -316,7 +323,12 @@ export interface NodePoolState {
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * The node configuration of the pool. See
+     * The network configuration of the pool. See
+     * gcp.container.Cluster for schema.
+     */
+    networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
+    /**
+     * The network configuration of the pool. See
      * gcp.container.Cluster for schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
@@ -406,7 +418,12 @@ export interface NodePoolArgs {
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * The node configuration of the pool. See
+     * The network configuration of the pool. See
+     * gcp.container.Cluster for schema.
+     */
+    networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
+    /**
+     * The network configuration of the pool. See
      * gcp.container.Cluster for schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;

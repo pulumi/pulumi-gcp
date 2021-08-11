@@ -16532,6 +16532,11 @@ export namespace container {
         name: string;
         namePrefix: string;
         /**
+         * ) Configuration for
+         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+         */
+        networkConfig: outputs.container.ClusterNodePoolNetworkConfig;
+        /**
          * Parameters used in creating the default node pool.
          * Generally, this field should not be used at the same time as a
          * `gcp.container.NodePool` or a `nodePool` block; this configuration
@@ -16559,6 +16564,21 @@ export namespace container {
     export interface ClusterNodePoolManagement {
         autoRepair?: boolean;
         autoUpgrade?: boolean;
+    }
+
+    export interface ClusterNodePoolNetworkConfig {
+        /**
+         * ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+         */
+        createPodRange?: boolean;
+        /**
+         * ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+         */
+        podIpv4CidrBlock: string;
+        /**
+         * ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+         */
+        podRange: string;
     }
 
     export interface ClusterNodePoolNodeConfig {
@@ -16833,7 +16853,7 @@ export namespace container {
          * the hosted master network. This range will be used for assigning private IP
          * addresses to the cluster master(s) and the ILB VIP. This range must not overlap
          * with any other ranges in use within the cluster's network, and it must be a /28
-         * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+         * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
          * for more details. This field only applies to private clusters, when
          * `enablePrivateNodes` is `true`.
          */
@@ -17131,6 +17151,7 @@ export namespace container {
          */
         name: string;
         namePrefix: string;
+        networkConfigs: outputs.container.GetClusterNodePoolNetworkConfig[];
         nodeConfigs: outputs.container.GetClusterNodePoolNodeConfig[];
         nodeCount: number;
         nodeLocations: string[];
@@ -17146,6 +17167,12 @@ export namespace container {
     export interface GetClusterNodePoolManagement {
         autoRepair: boolean;
         autoUpgrade: boolean;
+    }
+
+    export interface GetClusterNodePoolNetworkConfig {
+        createPodRange: boolean;
+        podIpv4CidrBlock: string;
+        podRange: string;
     }
 
     export interface GetClusterNodePoolNodeConfig {
@@ -17287,6 +17314,12 @@ export namespace container {
         autoUpgrade?: boolean;
     }
 
+    export interface NodePoolNetworkConfig {
+        createPodRange?: boolean;
+        podIpv4CidrBlock: string;
+        podRange: string;
+    }
+
     export interface NodePoolNodeConfig {
         bootDiskKmsKey?: string;
         diskSizeGb: number;
@@ -17363,7 +17396,6 @@ export namespace container {
          */
         maxUnavailable: number;
     }
-
 }
 
 export namespace containeranalysis {
@@ -20762,6 +20794,25 @@ export namespace diagflow {
         enableSpeechAdaptation?: boolean;
     }
 
+    export interface CxEntityTypeEntity {
+        /**
+         * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
+         * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+         */
+        synonyms?: string[];
+        /**
+         * The word or phrase to be excluded.
+         */
+        value?: string;
+    }
+
+    export interface CxEntityTypeExcludedPhrase {
+        /**
+         * The word or phrase to be excluded.
+         */
+        value?: string;
+    }
+
     export interface CxFlowEventHandler {
         /**
          * The name of the event to handle.
@@ -20974,6 +21025,269 @@ export namespace diagflow {
          * The text for this part.
          */
         text: string;
+    }
+
+    export interface CxPageEntryFulfillment {
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: outputs.diagflow.CxPageEntryFulfillmentMessage[];
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: boolean;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: string;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: string;
+    }
+
+    export interface CxPageEntryFulfillmentMessage {
+        /**
+         * A collection of text responses.
+         */
+        text?: outputs.diagflow.CxPageEntryFulfillmentMessageText;
+    }
+
+    export interface CxPageEntryFulfillmentMessageText {
+        /**
+         * -
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption: boolean;
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
+    }
+
+    export interface CxPageEventHandler {
+        /**
+         * The name of the event to handle.
+         */
+        event?: string;
+        /**
+         * -
+         * The unique identifier of this event handler.
+         */
+        name: string;
+        /**
+         * The target flow to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+         */
+        targetFlow?: string;
+        /**
+         * The target page to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        targetPage?: string;
+        /**
+         * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * Structure is documented below.
+         */
+        triggerFulfillment?: outputs.diagflow.CxPageEventHandlerTriggerFulfillment;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillment {
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: outputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessage[];
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: boolean;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: string;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: string;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillmentMessage {
+        /**
+         * A collection of text responses.
+         */
+        text?: outputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageText;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillmentMessageText {
+        /**
+         * -
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption: boolean;
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
+    }
+
+    export interface CxPageForm {
+        /**
+         * Parameters to collect from the user.
+         * Structure is documented below.
+         */
+        parameters?: outputs.diagflow.CxPageFormParameter[];
+    }
+
+    export interface CxPageFormParameter {
+        /**
+         * The human-readable name of the parameter, unique within the form.
+         */
+        displayName?: string;
+        /**
+         * The entity type of the parameter.
+         * Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+         */
+        entityType?: string;
+        /**
+         * Defines fill behavior for the parameter.
+         * Structure is documented below.
+         */
+        fillBehavior?: outputs.diagflow.CxPageFormParameterFillBehavior;
+        /**
+         * Indicates whether the parameter represents a list of values.
+         */
+        isList?: boolean;
+        /**
+         * Indicates whether the parameter content should be redacted in log.
+         * If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+         */
+        redact?: boolean;
+        /**
+         * Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
+         * Required parameters must be filled before form filling concludes.
+         */
+        required?: boolean;
+    }
+
+    export interface CxPageFormParameterFillBehavior {
+        /**
+         * The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+         * Structure is documented below.
+         */
+        initialPromptFulfillment?: outputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillment;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillment {
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: outputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage[];
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: boolean;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: string;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: string;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
+        /**
+         * A collection of text responses.
+         */
+        text?: outputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
+        /**
+         * -
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption: boolean;
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
+    }
+
+    export interface CxPageTransitionRoute {
+        /**
+         * The condition to evaluate against form parameters or session parameters.
+         * At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+         */
+        condition?: string;
+        /**
+         * The unique identifier of an Intent.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+         */
+        intent?: string;
+        /**
+         * -
+         * The unique identifier of this event handler.
+         */
+        name: string;
+        /**
+         * The target flow to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+         */
+        targetFlow?: string;
+        /**
+         * The target page to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        targetPage?: string;
+        /**
+         * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * Structure is documented below.
+         */
+        triggerFulfillment?: outputs.diagflow.CxPageTransitionRouteTriggerFulfillment;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillment {
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: outputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessage[];
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: boolean;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: string;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: string;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentMessage {
+        /**
+         * A collection of text responses.
+         */
+        text?: outputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageText;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentMessageText {
+        /**
+         * -
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption: boolean;
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
     }
 
     export interface CxVersionNluSetting {
@@ -23794,10 +24108,10 @@ export namespace monitoring {
         /**
          * Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
-         * that range.min <= x < range.max. inclusive of min and
-         * exclusive of max. Open ranges can be defined by setting
+         * that range.min <= x <= range.max. inclusive of min and
+         * max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          * Structure is documented below.
          */
         range: outputs.monitoring.SloRequestBasedSliDistributionCutRange;
@@ -23874,7 +24188,7 @@ export namespace monitoring {
          * `goodTotalRatioThreshold`, `metricMeanInRange`,
          * `metricSumInRange` must be set for `windowsBasedSli`.
          * Average value X of `timeSeries` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          * Structure is documented below.
          */
         metricMeanInRange?: outputs.monitoring.SloWindowsBasedSliMetricMeanInRange;
@@ -23882,7 +24196,7 @@ export namespace monitoring {
          * Criterion that describes a window as good if the metric's value
          * is in a good range, *summed* across returned streams.
          * Summed value `X` of `timeSeries` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          * One of `goodBadMetricFilter`,
          * `goodTotalRatioThreshold`, `metricMeanInRange`,
          * `metricSumInRange` must be set for `windowsBasedSli`.
@@ -24004,10 +24318,10 @@ export namespace monitoring {
         /**
          * Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
-         * that range.min <= x < range.max. inclusive of min and
-         * exclusive of max. Open ranges can be defined by setting
+         * that range.min <= x <= range.max. inclusive of min and
+         * max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          * Structure is documented below.
          */
         range: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange;
@@ -24064,10 +24378,10 @@ export namespace monitoring {
         /**
          * Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
-         * that range.min <= x < range.max. inclusive of min and
-         * exclusive of max. Open ranges can be defined by setting
+         * that range.min <= x <= range.max. inclusive of min and
+         * max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          * Structure is documented below.
          */
         range: outputs.monitoring.SloWindowsBasedSliMetricMeanInRangeRange;
@@ -24078,7 +24392,7 @@ export namespace monitoring {
          * ValueType = INT64 or ValueType = DOUBLE and
          * MetricKind = GAUGE.
          * Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          */
         timeSeries: string;
     }
@@ -24102,10 +24416,10 @@ export namespace monitoring {
         /**
          * Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
-         * that range.min <= x < range.max. inclusive of min and
-         * exclusive of max. Open ranges can be defined by setting
+         * that range.min <= x <= range.max. inclusive of min and
+         * max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          * Structure is documented below.
          */
         range: outputs.monitoring.SloWindowsBasedSliMetricSumInRangeRange;
@@ -24116,7 +24430,7 @@ export namespace monitoring {
          * ValueType = INT64 or ValueType = DOUBLE and
          * MetricKind = GAUGE.
          * Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.
+         * `range.min <= X <= range.max` for a good window.
          */
         timeSeries: string;
     }
@@ -27534,6 +27848,17 @@ export namespace storage {
         logObjectPrefix: string;
     }
 
+    export interface BucketObjectCustomerEncryption {
+        /**
+         * Encryption algorithm. Default: AES256
+         */
+        encryptionAlgorithm?: string;
+        /**
+         * Base64 encoded Customer-Supplied Encryption Key.
+         */
+        encryptionKey: string;
+    }
+
     export interface BucketRetentionPolicy {
         /**
          * If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
@@ -27568,6 +27893,16 @@ export namespace storage {
     export interface DefaultObjectAccessControlProjectTeam {
         projectNumber?: string;
         team?: string;
+    }
+
+    export interface GetBucketObjectContentCustomerEncryption {
+        encryptionAlgorithm: string;
+        encryptionKey: string;
+    }
+
+    export interface GetBucketObjectCustomerEncryption {
+        encryptionAlgorithm: string;
+        encryptionKey: string;
     }
 
     export interface ObjectAccessControlProjectTeam {
@@ -27773,7 +28108,6 @@ export namespace storage {
          */
         overwriteObjectsAlreadyExistingInSink?: boolean;
     }
-
 }
 
 export namespace tags {

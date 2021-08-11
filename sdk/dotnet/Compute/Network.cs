@@ -48,7 +48,9 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new Gcp.Compute.NetworkArgs
     ///         {
-    ///             Mtu = 1500,
+    ///             AutoCreateSubnetworks = true,
+    ///             Mtu = 1460,
+    ///             Project = "my-project-name",
     ///         });
     ///     }
     /// 

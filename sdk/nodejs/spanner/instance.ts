@@ -30,6 +30,21 @@ import * as utilities from "../utilities";
  *     numNodes: 2,
  * });
  * ```
+ * ### Spanner Instance Processing Units
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     config: "regional-us-central1",
+ *     displayName: "Test Spanner Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     processingUnits: 200,
+ * });
+ * ```
  * ### Spanner Instance Multi Regional
  *
  * ```typescript
@@ -121,9 +136,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The number of nodes allocated to this instance.
+     * The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+     * terraform.
      */
-    public readonly numNodes!: pulumi.Output<number | undefined>;
+    public readonly numNodes!: pulumi.Output<number>;
+    /**
+     * The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+     * in terraform.
+     */
+    public readonly processingUnits!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -153,6 +174,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["numNodes"] = state ? state.numNodes : undefined;
+            inputs["processingUnits"] = state ? state.processingUnits : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["state"] = state ? state.state : undefined;
         } else {
@@ -169,6 +191,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["numNodes"] = args ? args.numNodes : undefined;
+            inputs["processingUnits"] = args ? args.processingUnits : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = undefined /*out*/;
         }
@@ -214,9 +237,15 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of nodes allocated to this instance.
+     * The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+     * terraform.
      */
     numNodes?: pulumi.Input<number>;
+    /**
+     * The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+     * in terraform.
+     */
+    processingUnits?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -263,9 +292,15 @@ export interface InstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of nodes allocated to this instance.
+     * The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+     * terraform.
      */
     numNodes?: pulumi.Input<number>;
+    /**
+     * The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+     * in terraform.
+     */
+    processingUnits?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

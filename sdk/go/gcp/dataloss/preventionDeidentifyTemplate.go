@@ -52,7 +52,7 @@ import (
 // 									Name: pulumi.String("PHONE_NUMBER"),
 // 								},
 // 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
-// 									Name: pulumi.String("CREDIT_CARD_NUMBER"),
+// 									Name: pulumi.String("AGE"),
 // 								},
 // 							},
 // 							PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{

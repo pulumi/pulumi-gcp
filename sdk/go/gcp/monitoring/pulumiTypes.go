@@ -4556,10 +4556,10 @@ type SloRequestBasedSliDistributionCut struct {
 	DistributionFilter string `pulumi:"distributionFilter"`
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRange `pulumi:"range"`
 }
@@ -4583,10 +4583,10 @@ type SloRequestBasedSliDistributionCutArgs struct {
 	DistributionFilter pulumi.StringInput `pulumi:"distributionFilter"`
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRangeInput `pulumi:"range"`
 }
@@ -4678,10 +4678,10 @@ func (o SloRequestBasedSliDistributionCutOutput) DistributionFilter() pulumi.Str
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloRequestBasedSliDistributionCutOutput) Range() SloRequestBasedSliDistributionCutRangeOutput {
 	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCutRange { return v.Range }).(SloRequestBasedSliDistributionCutRangeOutput)
@@ -4720,10 +4720,10 @@ func (o SloRequestBasedSliDistributionCutPtrOutput) DistributionFilter() pulumi.
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloRequestBasedSliDistributionCutPtrOutput) Range() SloRequestBasedSliDistributionCutRangePtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCutRange {
@@ -5156,13 +5156,13 @@ type SloWindowsBasedSli struct {
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
 	// `metricSumInRange` must be set for `windowsBasedSli`.
 	// Average value X of `timeSeries` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	MetricMeanInRange *SloWindowsBasedSliMetricMeanInRange `pulumi:"metricMeanInRange"`
 	// Criterion that describes a window as good if the metric's value
 	// is in a good range, *summed* across returned streams.
 	// Summed value `X` of `timeSeries` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// One of `goodBadMetricFilter`,
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
 	// `metricSumInRange` must be set for `windowsBasedSli`.
@@ -5204,13 +5204,13 @@ type SloWindowsBasedSliArgs struct {
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
 	// `metricSumInRange` must be set for `windowsBasedSli`.
 	// Average value X of `timeSeries` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	MetricMeanInRange SloWindowsBasedSliMetricMeanInRangePtrInput `pulumi:"metricMeanInRange"`
 	// Criterion that describes a window as good if the metric's value
 	// is in a good range, *summed* across returned streams.
 	// Summed value `X` of `timeSeries` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// One of `goodBadMetricFilter`,
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
 	// `metricSumInRange` must be set for `windowsBasedSli`.
@@ -5325,7 +5325,7 @@ func (o SloWindowsBasedSliOutput) GoodTotalRatioThreshold() SloWindowsBasedSliGo
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
 // `metricSumInRange` must be set for `windowsBasedSli`.
 // Average value X of `timeSeries` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliOutput) MetricMeanInRange() SloWindowsBasedSliMetricMeanInRangePtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSliMetricMeanInRange { return v.MetricMeanInRange }).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
@@ -5334,7 +5334,7 @@ func (o SloWindowsBasedSliOutput) MetricMeanInRange() SloWindowsBasedSliMetricMe
 // Criterion that describes a window as good if the metric's value
 // is in a good range, *summed* across returned streams.
 // Summed value `X` of `timeSeries` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // One of `goodBadMetricFilter`,
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
 // `metricSumInRange` must be set for `windowsBasedSli`.
@@ -5402,7 +5402,7 @@ func (o SloWindowsBasedSliPtrOutput) GoodTotalRatioThreshold() SloWindowsBasedSl
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
 // `metricSumInRange` must be set for `windowsBasedSli`.
 // Average value X of `timeSeries` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliPtrOutput) MetricMeanInRange() SloWindowsBasedSliMetricMeanInRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSli) *SloWindowsBasedSliMetricMeanInRange {
@@ -5416,7 +5416,7 @@ func (o SloWindowsBasedSliPtrOutput) MetricMeanInRange() SloWindowsBasedSliMetri
 // Criterion that describes a window as good if the metric's value
 // is in a good range, *summed* across returned streams.
 // Summed value `X` of `timeSeries` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // One of `goodBadMetricFilter`,
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
 // `metricSumInRange` must be set for `windowsBasedSli`.
@@ -6394,10 +6394,10 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut struct 
 	DistributionFilter string `pulumi:"distributionFilter"`
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange `pulumi:"range"`
 }
@@ -6421,10 +6421,10 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs str
 	DistributionFilter pulumi.StringInput `pulumi:"distributionFilter"`
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput `pulumi:"range"`
 }
@@ -6518,10 +6518,10 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutpu
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
@@ -6564,10 +6564,10 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOu
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
@@ -6998,10 +6998,10 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOut
 type SloWindowsBasedSliMetricMeanInRange struct {
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloWindowsBasedSliMetricMeanInRangeRange `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -7010,7 +7010,7 @@ type SloWindowsBasedSliMetricMeanInRange struct {
 	// ValueType = INT64 or ValueType = DOUBLE and
 	// MetricKind = GAUGE.
 	// Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	TimeSeries string `pulumi:"timeSeries"`
 }
 
@@ -7028,10 +7028,10 @@ type SloWindowsBasedSliMetricMeanInRangeInput interface {
 type SloWindowsBasedSliMetricMeanInRangeArgs struct {
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloWindowsBasedSliMetricMeanInRangeRangeInput `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -7040,7 +7040,7 @@ type SloWindowsBasedSliMetricMeanInRangeArgs struct {
 	// ValueType = INT64 or ValueType = DOUBLE and
 	// MetricKind = GAUGE.
 	// Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	TimeSeries pulumi.StringInput `pulumi:"timeSeries"`
 }
 
@@ -7123,10 +7123,10 @@ func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMea
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliMetricMeanInRangeOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) SloWindowsBasedSliMetricMeanInRangeRange { return v.Range }).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
@@ -7138,7 +7138,7 @@ func (o SloWindowsBasedSliMetricMeanInRangeOutput) Range() SloWindowsBasedSliMet
 // ValueType = INT64 or ValueType = DOUBLE and
 // MetricKind = GAUGE.
 // Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 func (o SloWindowsBasedSliMetricMeanInRangeOutput) TimeSeries() pulumi.StringOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) string { return v.TimeSeries }).(pulumi.StringOutput)
 }
@@ -7163,10 +7163,10 @@ func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Elem() SloWindowsBasedSliM
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRangeRange {
@@ -7183,7 +7183,7 @@ func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Range() SloWindowsBasedSli
 // ValueType = INT64 or ValueType = DOUBLE and
 // MetricKind = GAUGE.
 // Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) TimeSeries() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) *string {
 		if v == nil {
@@ -7362,10 +7362,10 @@ func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Min() pulumi.Float64P
 type SloWindowsBasedSliMetricSumInRange struct {
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloWindowsBasedSliMetricSumInRangeRange `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -7374,7 +7374,7 @@ type SloWindowsBasedSliMetricSumInRange struct {
 	// ValueType = INT64 or ValueType = DOUBLE and
 	// MetricKind = GAUGE.
 	// Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	TimeSeries string `pulumi:"timeSeries"`
 }
 
@@ -7392,10 +7392,10 @@ type SloWindowsBasedSliMetricSumInRangeInput interface {
 type SloWindowsBasedSliMetricSumInRangeArgs struct {
 	// Range of numerical values. The computed goodService
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	// Structure is documented below.
 	Range SloWindowsBasedSliMetricSumInRangeRangeInput `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -7404,7 +7404,7 @@ type SloWindowsBasedSliMetricSumInRangeArgs struct {
 	// ValueType = INT64 or ValueType = DOUBLE and
 	// MetricKind = GAUGE.
 	// Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.
+	// `range.min <= X <= range.max` for a good window.
 	TimeSeries pulumi.StringInput `pulumi:"timeSeries"`
 }
 
@@ -7487,10 +7487,10 @@ func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumI
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliMetricSumInRangeOutput) Range() SloWindowsBasedSliMetricSumInRangeRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRange) SloWindowsBasedSliMetricSumInRangeRange { return v.Range }).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
@@ -7502,7 +7502,7 @@ func (o SloWindowsBasedSliMetricSumInRangeOutput) Range() SloWindowsBasedSliMetr
 // ValueType = INT64 or ValueType = DOUBLE and
 // MetricKind = GAUGE.
 // Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 func (o SloWindowsBasedSliMetricSumInRangeOutput) TimeSeries() pulumi.StringOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRange) string { return v.TimeSeries }).(pulumi.StringOutput)
 }
@@ -7527,10 +7527,10 @@ func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Elem() SloWindowsBasedSliMe
 
 // Range of numerical values. The computed goodService
 // will be the count of values x in the Distribution such
-// that range.min <= x < range.max. inclusive of min and
-// exclusive of max. Open ranges can be defined by setting
+// that range.min <= x <= range.max. inclusive of min and
+// max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 // Structure is documented below.
 func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Range() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) *SloWindowsBasedSliMetricSumInRangeRange {
@@ -7547,7 +7547,7 @@ func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Range() SloWindowsBasedSliM
 // ValueType = INT64 or ValueType = DOUBLE and
 // MetricKind = GAUGE.
 // Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.
+// `range.min <= X <= range.max` for a good window.
 func (o SloWindowsBasedSliMetricSumInRangePtrOutput) TimeSeries() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) *string {
 		if v == nil {

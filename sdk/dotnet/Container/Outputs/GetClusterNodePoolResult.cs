@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string Name;
         public readonly string NamePrefix;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNetworkConfigResult> NetworkConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigResult> NodeConfigs;
         public readonly int NodeCount;
         public readonly ImmutableArray<string> NodeLocations;
@@ -45,6 +46,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string namePrefix,
 
+            ImmutableArray<Outputs.GetClusterNodePoolNetworkConfigResult> networkConfigs,
+
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigResult> nodeConfigs,
 
             int nodeCount,
@@ -62,6 +65,7 @@ namespace Pulumi.Gcp.Container.Outputs
             MaxPodsPerNode = maxPodsPerNode;
             Name = name;
             NamePrefix = namePrefix;
+            NetworkConfigs = networkConfigs;
             NodeConfigs = nodeConfigs;
             NodeCount = nodeCount;
             NodeLocations = nodeLocations;

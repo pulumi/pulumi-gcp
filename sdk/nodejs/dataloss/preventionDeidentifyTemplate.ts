@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *                             name: "PHONE_NUMBER",
  *                         },
  *                         {
- *                             name: "CREDIT_CARD_NUMBER",
+ *                             name: "AGE",
  *                         },
  *                     ],
  *                     primitiveTransformation: {

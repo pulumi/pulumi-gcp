@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.DataLoss
     ///                                 },
     ///                                 new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
     ///                                 {
-    ///                                     Name = "CREDIT_CARD_NUMBER",
+    ///                                     Name = "AGE",
     ///                                 },
     ///                             },
     ///                             PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs

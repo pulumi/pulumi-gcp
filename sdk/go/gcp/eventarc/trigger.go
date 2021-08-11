@@ -11,6 +11,70 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Basic_trigger
+// A basic example for an Eventarc Trigger
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/eventarc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-west1"),
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Namespace: pulumi.String("my-project-name"),
+// 			},
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Args: pulumi.StringArray{
+// 								pulumi.String("arrgs"),
+// 							},
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					LatestRevision: pulumi.Bool(true),
+// 					Percent:        pulumi.Int(100),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = eventarc.NewTrigger(ctx, "primary", &eventarc.TriggerArgs{
+// 			Destination: &eventarc.TriggerDestinationArgs{
+// 				CloudRunService: &eventarc.TriggerDestinationCloudRunServiceArgs{
+// 					Service: _default.Name,
+// 					Region:  pulumi.String("us-west1"),
+// 				},
+// 			},
+// 			Location: pulumi.String("us-west1"),
+// 			MatchingCriterias: eventarc.TriggerMatchingCriteriaArray{
+// 				&eventarc.TriggerMatchingCriteriaArgs{
+// 					Attribute: pulumi.String("type"),
+// 					Value:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Trigger can be imported using any of these accepted formats
