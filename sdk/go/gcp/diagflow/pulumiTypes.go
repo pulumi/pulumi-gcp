@@ -347,6 +347,103 @@ func (o CxEntityTypeExcludedPhraseArrayOutput) Index(i pulumi.IntInput) CxEntity
 	}).(CxEntityTypeExcludedPhraseOutput)
 }
 
+type CxEnvironmentVersionConfig struct {
+	// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+	Version string `pulumi:"version"`
+}
+
+// CxEnvironmentVersionConfigInput is an input type that accepts CxEnvironmentVersionConfigArgs and CxEnvironmentVersionConfigOutput values.
+// You can construct a concrete instance of `CxEnvironmentVersionConfigInput` via:
+//
+//          CxEnvironmentVersionConfigArgs{...}
+type CxEnvironmentVersionConfigInput interface {
+	pulumi.Input
+
+	ToCxEnvironmentVersionConfigOutput() CxEnvironmentVersionConfigOutput
+	ToCxEnvironmentVersionConfigOutputWithContext(context.Context) CxEnvironmentVersionConfigOutput
+}
+
+type CxEnvironmentVersionConfigArgs struct {
+	// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (CxEnvironmentVersionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxEnvironmentVersionConfig)(nil)).Elem()
+}
+
+func (i CxEnvironmentVersionConfigArgs) ToCxEnvironmentVersionConfigOutput() CxEnvironmentVersionConfigOutput {
+	return i.ToCxEnvironmentVersionConfigOutputWithContext(context.Background())
+}
+
+func (i CxEnvironmentVersionConfigArgs) ToCxEnvironmentVersionConfigOutputWithContext(ctx context.Context) CxEnvironmentVersionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentVersionConfigOutput)
+}
+
+// CxEnvironmentVersionConfigArrayInput is an input type that accepts CxEnvironmentVersionConfigArray and CxEnvironmentVersionConfigArrayOutput values.
+// You can construct a concrete instance of `CxEnvironmentVersionConfigArrayInput` via:
+//
+//          CxEnvironmentVersionConfigArray{ CxEnvironmentVersionConfigArgs{...} }
+type CxEnvironmentVersionConfigArrayInput interface {
+	pulumi.Input
+
+	ToCxEnvironmentVersionConfigArrayOutput() CxEnvironmentVersionConfigArrayOutput
+	ToCxEnvironmentVersionConfigArrayOutputWithContext(context.Context) CxEnvironmentVersionConfigArrayOutput
+}
+
+type CxEnvironmentVersionConfigArray []CxEnvironmentVersionConfigInput
+
+func (CxEnvironmentVersionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxEnvironmentVersionConfig)(nil)).Elem()
+}
+
+func (i CxEnvironmentVersionConfigArray) ToCxEnvironmentVersionConfigArrayOutput() CxEnvironmentVersionConfigArrayOutput {
+	return i.ToCxEnvironmentVersionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i CxEnvironmentVersionConfigArray) ToCxEnvironmentVersionConfigArrayOutputWithContext(ctx context.Context) CxEnvironmentVersionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentVersionConfigArrayOutput)
+}
+
+type CxEnvironmentVersionConfigOutput struct{ *pulumi.OutputState }
+
+func (CxEnvironmentVersionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxEnvironmentVersionConfig)(nil)).Elem()
+}
+
+func (o CxEnvironmentVersionConfigOutput) ToCxEnvironmentVersionConfigOutput() CxEnvironmentVersionConfigOutput {
+	return o
+}
+
+func (o CxEnvironmentVersionConfigOutput) ToCxEnvironmentVersionConfigOutputWithContext(ctx context.Context) CxEnvironmentVersionConfigOutput {
+	return o
+}
+
+// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+func (o CxEnvironmentVersionConfigOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v CxEnvironmentVersionConfig) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type CxEnvironmentVersionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (CxEnvironmentVersionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxEnvironmentVersionConfig)(nil)).Elem()
+}
+
+func (o CxEnvironmentVersionConfigArrayOutput) ToCxEnvironmentVersionConfigArrayOutput() CxEnvironmentVersionConfigArrayOutput {
+	return o
+}
+
+func (o CxEnvironmentVersionConfigArrayOutput) ToCxEnvironmentVersionConfigArrayOutputWithContext(ctx context.Context) CxEnvironmentVersionConfigArrayOutput {
+	return o
+}
+
+func (o CxEnvironmentVersionConfigArrayOutput) Index(i pulumi.IntInput) CxEnvironmentVersionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxEnvironmentVersionConfig {
+		return vs[0].([]CxEnvironmentVersionConfig)[vs[1].(int)]
+	}).(CxEnvironmentVersionConfigOutput)
+}
+
 type CxFlowEventHandler struct {
 	// The name of the event to handle.
 	Event *string `pulumi:"event"`
@@ -5284,6 +5381,8 @@ func init() {
 	pulumi.RegisterOutputType(CxEntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(CxEntityTypeExcludedPhraseOutput{})
 	pulumi.RegisterOutputType(CxEntityTypeExcludedPhraseArrayOutput{})
+	pulumi.RegisterOutputType(CxEnvironmentVersionConfigOutput{})
+	pulumi.RegisterOutputType(CxEnvironmentVersionConfigArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentOutput{})

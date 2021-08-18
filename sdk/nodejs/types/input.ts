@@ -19264,6 +19264,13 @@ export namespace diagflow {
         value?: pulumi.Input<string>;
     }
 
+    export interface CxEnvironmentVersionConfig {
+        /**
+         * Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+         */
+        version: pulumi.Input<string>;
+    }
+
     export interface CxFlowEventHandler {
         /**
          * The name of the event to handle.

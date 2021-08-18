@@ -1621,6 +1621,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dialogflow_cx_version":     {Tok: gcpResource(gcpDiagflow, "CxVersion")},
 			"google_dialogflow_cx_entity_type": {Tok: gcpResource(gcpDiagflow, "CxEntityType")},
 			"google_dialogflow_cx_page":        {Tok: gcpResource(gcpDiagflow, "CxPage")},
+			"google_dialogflow_cx_environment": {Tok: gcpResource(gcpDiagflow, "CxEnvironment")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},

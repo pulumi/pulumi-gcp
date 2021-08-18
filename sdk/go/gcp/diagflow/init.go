@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CxAgent{}
 	case "gcp:diagflow/cxEntityType:CxEntityType":
 		r = &CxEntityType{}
+	case "gcp:diagflow/cxEnvironment:CxEnvironment":
+		r = &CxEnvironment{}
 	case "gcp:diagflow/cxFlow:CxFlow":
 		r = &CxFlow{}
 	case "gcp:diagflow/cxIntent:CxIntent":
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"diagflow/cxEntityType",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/cxEnvironment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

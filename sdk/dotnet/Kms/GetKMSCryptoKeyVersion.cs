@@ -39,11 +39,11 @@ namespace Pulumi.Gcp.Kms
         ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
         ///         {
         ///             Name = "my-crypto-key",
-        ///             KeyRing = myKeyRing.SelfLink,
+        ///             KeyRing = myKeyRing.Id,
         ///         })));
         ///         var myCryptoKeyVersion = Output.Create(Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
         ///         {
-        ///             CryptoKey = data.Google_kms_key.My_key.Self_link,
+        ///             CryptoKey = data.Google_kms_key.My_key.Id,
         ///         }));
         ///     }
         /// 
@@ -60,7 +60,8 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSCryptoKeyVersionArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.
+        /// The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        /// `gcp.kms.CryptoKey` resource/datasource.
         /// </summary>
         [Input("cryptoKey", required: true)]
         public string CryptoKey { get; set; } = null!;
@@ -90,6 +91,10 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
         /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
         /// </summary>
         public readonly string ProtectionLevel;
@@ -111,6 +116,8 @@ namespace Pulumi.Gcp.Kms
 
             string id,
 
+            string name,
+
             string protectionLevel,
 
             ImmutableArray<Outputs.GetKMSCryptoKeyVersionPublicKeyResult> publicKeys,
@@ -122,6 +129,7 @@ namespace Pulumi.Gcp.Kms
             Algorithm = algorithm;
             CryptoKey = cryptoKey;
             Id = id;
+            Name = name;
             ProtectionLevel = protectionLevel;
             PublicKeys = publicKeys;
             State = state;

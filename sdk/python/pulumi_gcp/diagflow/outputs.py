@@ -13,6 +13,7 @@ __all__ = [
     'CxAgentSpeechToTextSettings',
     'CxEntityTypeEntity',
     'CxEntityTypeExcludedPhrase',
+    'CxEnvironmentVersionConfig',
     'CxFlowEventHandler',
     'CxFlowEventHandlerTriggerFulfillment',
     'CxFlowEventHandlerTriggerFulfillmentMessage',
@@ -135,6 +136,24 @@ class CxEntityTypeExcludedPhrase(dict):
         The word or phrase to be excluded.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CxEnvironmentVersionConfig(dict):
+    def __init__(__self__, *,
+                 version: str):
+        """
+        :param str version: Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+        """
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

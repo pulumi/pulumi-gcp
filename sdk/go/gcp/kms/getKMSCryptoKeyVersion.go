@@ -35,13 +35,13 @@ import (
 // 		}
 // 		_, err = kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
 // 			Name:    "my-crypto-key",
-// 			KeyRing: myKeyRing.SelfLink,
+// 			KeyRing: myKeyRing.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = kms.GetKMSCryptoKeyVersion(ctx, &kms.GetKMSCryptoKeyVersionArgs{
-// 			CryptoKey: data.Google_kms_key.My_key.Self_link,
+// 			CryptoKey: data.Google_kms_key.My_key.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -61,7 +61,8 @@ func GetKMSCryptoKeyVersion(ctx *pulumi.Context, args *GetKMSCryptoKeyVersionArg
 
 // A collection of arguments for invoking getKMSCryptoKeyVersion.
 type GetKMSCryptoKeyVersionArgs struct {
-	// The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
+	// The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+	// `kms.CryptoKey` resource/datasource.
 	CryptoKey string `pulumi:"cryptoKey"`
 	// The version number for this CryptoKeyVersion. Defaults to `1`.
 	Version *int `pulumi:"version"`
@@ -74,6 +75,8 @@ type GetKMSCryptoKeyVersionResult struct {
 	CryptoKey string `pulumi:"cryptoKey"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`
+	Name string `pulumi:"name"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
 	ProtectionLevel string `pulumi:"protectionLevel"`
 	// If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.

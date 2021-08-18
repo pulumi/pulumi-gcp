@@ -61,8 +61,8 @@ namespace Pulumi.Gcp.GkeHub
     ///     {
     ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
     ///         {
-    ///             InitialNodeCount = 1,
     ///             Location = "us-central1-a",
+    ///             InitialNodeCount = 1,
     ///             WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///             {
     ///                 IdentityNamespace = "my-project-name.svc.id.goog",
@@ -70,18 +70,18 @@ namespace Pulumi.Gcp.GkeHub
     ///         });
     ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs
     ///         {
-    ///             Authority = new Gcp.GkeHub.Inputs.MembershipAuthorityArgs
-    ///             {
-    ///                 Issuer = primary.Id.Apply(id =&gt; $"https://container.googleapis.com/v1/{id}"),
-    ///             },
+    ///             MembershipId = "basic",
     ///             Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///             {
     ///                 GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
     ///                 {
-    ///                     ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///                     ResourceLink = primary.Id,
     ///                 },
     ///             },
-    ///             MembershipId = "basic",
+    ///             Authority = new Gcp.GkeHub.Inputs.MembershipAuthorityArgs
+    ///             {
+    ///                 Issuer = primary.Id.Apply(id =&gt; $"https://container.googleapis.com/v1/{id}"),
+    ///             },
     ///         });
     ///     }
     /// 
