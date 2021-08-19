@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./agent";
 export * from "./cxAgent";
 export * from "./cxEntityType";
+export * from "./cxEnvironment";
 export * from "./cxFlow";
 export * from "./cxIntent";
 export * from "./cxPage";
@@ -20,6 +21,7 @@ export * from "./intent";
 import { Agent } from "./agent";
 import { CxAgent } from "./cxAgent";
 import { CxEntityType } from "./cxEntityType";
+import { CxEnvironment } from "./cxEnvironment";
 import { CxFlow } from "./cxFlow";
 import { CxIntent } from "./cxIntent";
 import { CxPage } from "./cxPage";
@@ -38,6 +40,8 @@ const _module = {
                 return new CxAgent(name, <any>undefined, { urn })
             case "gcp:diagflow/cxEntityType:CxEntityType":
                 return new CxEntityType(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxEnvironment:CxEnvironment":
+                return new CxEnvironment(name, <any>undefined, { urn })
             case "gcp:diagflow/cxFlow:CxFlow":
                 return new CxFlow(name, <any>undefined, { urn })
             case "gcp:diagflow/cxIntent:CxIntent":
@@ -60,6 +64,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "diagflow/agent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxAgent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxEntityType", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxEnvironment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxFlow", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxIntent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxPage", _module)

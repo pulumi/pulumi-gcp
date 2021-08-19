@@ -25,10 +25,10 @@ import * as utilities from "../utilities";
  * });
  * const myCryptoKey = myKeyRing.then(myKeyRing => gcp.kms.getKMSCryptoKey({
  *     name: "my-crypto-key",
- *     keyRing: myKeyRing.selfLink,
+ *     keyRing: myKeyRing.id,
  * }));
  * const myCryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: data.google_kms_key.my_key.self_link,
+ *     cryptoKey: data.google_kms_key.my_key.id,
  * });
  * ```
  */
@@ -51,7 +51,8 @@ export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: 
  */
 export interface GetKMSCryptoKeyVersionArgs {
     /**
-     * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
+     * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+     * `gcp.kms.CryptoKey` resource/datasource.
      */
     cryptoKey: string;
     /**
@@ -73,6 +74,10 @@ export interface GetKMSCryptoKeyVersionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The resource name for this CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`
+     */
+    readonly name: string;
     /**
      * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
      */

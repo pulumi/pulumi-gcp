@@ -218,10 +218,8 @@ type Instance struct {
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
 	RedisConfigs pulumi.StringMapOutput `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
-	// version will be used. Currently, the supported values are:
-	// - REDIS_5_0 for Redis 5.0 compatibility
-	// - REDIS_4_0 for Redis 4.0 compatibility
-	// - REDIS_3_2 for Redis 3.2 compatibility
+	// version will be used. Please check the API documentation linked
+	// at the top for the latest valid values.
 	RedisVersion pulumi.StringOutput `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -333,10 +331,8 @@ type instanceState struct {
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
-	// version will be used. Currently, the supported values are:
-	// - REDIS_5_0 for Redis 5.0 compatibility
-	// - REDIS_4_0 for Redis 4.0 compatibility
-	// - REDIS_3_2 for Redis 3.2 compatibility
+	// version will be used. Please check the API documentation linked
+	// at the top for the latest valid values.
 	RedisVersion *string `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region *string `pulumi:"region"`
@@ -417,10 +413,8 @@ type InstanceState struct {
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
 	RedisConfigs pulumi.StringMapInput
 	// The version of Redis software. If not provided, latest supported
-	// version will be used. Currently, the supported values are:
-	// - REDIS_5_0 for Redis 5.0 compatibility
-	// - REDIS_4_0 for Redis 4.0 compatibility
-	// - REDIS_3_2 for Redis 3.2 compatibility
+	// version will be used. Please check the API documentation linked
+	// at the top for the latest valid values.
 	RedisVersion pulumi.StringPtrInput
 	// The name of the Redis region of the instance.
 	Region pulumi.StringPtrInput
@@ -489,10 +483,8 @@ type instanceArgs struct {
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
-	// version will be used. Currently, the supported values are:
-	// - REDIS_5_0 for Redis 5.0 compatibility
-	// - REDIS_4_0 for Redis 4.0 compatibility
-	// - REDIS_3_2 for Redis 3.2 compatibility
+	// version will be used. Please check the API documentation linked
+	// at the top for the latest valid values.
 	RedisVersion *string `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region *string `pulumi:"region"`
@@ -556,10 +548,8 @@ type InstanceArgs struct {
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
 	RedisConfigs pulumi.StringMapInput
 	// The version of Redis software. If not provided, latest supported
-	// version will be used. Currently, the supported values are:
-	// - REDIS_5_0 for Redis 5.0 compatibility
-	// - REDIS_4_0 for Redis 4.0 compatibility
-	// - REDIS_3_2 for Redis 3.2 compatibility
+	// version will be used. Please check the API documentation linked
+	// at the top for the latest valid values.
 	RedisVersion pulumi.StringPtrInput
 	// The name of the Redis region of the instance.
 	Region pulumi.StringPtrInput

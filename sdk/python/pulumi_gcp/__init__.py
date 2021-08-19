@@ -2163,6 +2163,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxEnvironment",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxEnvironment:CxEnvironment": "CxEnvironment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/cxFlow",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {

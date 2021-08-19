@@ -75,8 +75,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-// 			InitialNodeCount: pulumi.Int(1),
 // 			Location:         pulumi.String("us-central1-a"),
+// 			InitialNodeCount: pulumi.Int(1),
 // 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 // 				IdentityNamespace: pulumi.String("my-project-name.svc.id.goog"),
 // 			},
@@ -85,19 +85,17 @@ import (
 // 			return err
 // 		}
 // 		_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+// 			MembershipId: pulumi.String("basic"),
+// 			Endpoint: &gkehub.MembershipEndpointArgs{
+// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+// 					ResourceLink: primary.ID(),
+// 				},
+// 			},
 // 			Authority: &gkehub.MembershipAuthorityArgs{
 // 				Issuer: primary.ID().ApplyT(func(id string) (string, error) {
 // 					return fmt.Sprintf("%v%v", "https://container.googleapis.com/v1/", id), nil
 // 				}).(pulumi.StringOutput),
 // 			},
-// 			Endpoint: &gkehub.MembershipEndpointArgs{
-// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
-// 						return fmt.Sprintf("%v%v", "//container.googleapis.com/", id), nil
-// 					}).(pulumi.StringOutput),
-// 				},
-// 			},
-// 			MembershipId: pulumi.String("basic"),
 // 		})
 // 		if err != nil {
 // 			return err

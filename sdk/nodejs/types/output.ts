@@ -20813,6 +20813,13 @@ export namespace diagflow {
         value?: string;
     }
 
+    export interface CxEnvironmentVersionConfig {
+        /**
+         * Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+         */
+        version: string;
+    }
+
     export interface CxFlowEventHandler {
         /**
          * The name of the event to handle.

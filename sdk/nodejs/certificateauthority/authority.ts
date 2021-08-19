@@ -67,7 +67,62 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     // This example assumes this pool already exists.
  *     // Pools cannot be deleted in normal test circumstances, so we depend on static pools
- *     pool: "",
+ *     pool: "ca-pool",
+ * });
+ * ```
+ * ### Privateca Certificate Authority Subordinate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 commonName: "my-subordinate-authority",
+ *                 organization: "HashiCorp",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *                 maxIssuerPathLength: 10,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     contentCommitment: true,
+ *                     crlSign: true,
+ *                     dataEncipherment: true,
+ *                     decipherOnly: true,
+ *                     digitalSignature: true,
+ *                     keyAgreement: true,
+ *                     keyEncipherment: false,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     clientAuth: false,
+ *                     codeSigning: true,
+ *                     emailProtection: true,
+ *                     serverAuth: true,
+ *                     timeStamping: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     lifetime: "86400s",
+ *     location: "us-central1",
+ *     // This example assumes this pool already exists.
+ *     // Pools cannot be deleted in normal test circumstances, so we depend on static pools
+ *     pool: "ca-pool",
+ *     type: "SUBORDINATE",
  * });
  * ```
  * ### Privateca Certificate Authority Byo Key
@@ -88,7 +143,7 @@ import * as utilities from "../utilities";
  *     members: [pulumi.interpolate`serviceAccount:${privatecaSa.email}`],
  * });
  * const _default = new gcp.certificateauthority.Authority("default", {
- *     pool: "",
+ *     pool: "ca-pool",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
  *     keySpec: {

@@ -41,22 +41,22 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
- *     initialNodeCount: 1,
  *     location: "us-central1-a",
+ *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
  *         identityNamespace: "my-project-name.svc.id.goog",
  *     },
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "basic",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: primary.id,
+ *         },
+ *     },
  *     authority: {
  *         issuer: pulumi.interpolate`https://container.googleapis.com/v1/${primary.id}`,
  *     },
- *     endpoint: {
- *         gkeCluster: {
- *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
- *         },
- *     },
- *     membershipId: "basic",
  * });
  * ```
  *

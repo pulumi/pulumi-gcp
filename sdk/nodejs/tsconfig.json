@@ -336,6 +336,7 @@
         "diagflow/agent.ts",
         "diagflow/cxAgent.ts",
         "diagflow/cxEntityType.ts",
+        "diagflow/cxEnvironment.ts",
         "diagflow/cxFlow.ts",
         "diagflow/cxIntent.ts",
         "diagflow/cxPage.ts",

@@ -20,7 +20,7 @@ class GetKMSCryptoKeyVersionResult:
     """
     A collection of values returned by getKMSCryptoKeyVersion.
     """
-    def __init__(__self__, algorithm=None, crypto_key=None, id=None, protection_level=None, public_keys=None, state=None, version=None):
+    def __init__(__self__, algorithm=None, crypto_key=None, id=None, name=None, protection_level=None, public_keys=None, state=None, version=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -30,6 +30,9 @@ class GetKMSCryptoKeyVersionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if protection_level and not isinstance(protection_level, str):
             raise TypeError("Expected argument 'protection_level' to be a str")
         pulumi.set(__self__, "protection_level", protection_level)
@@ -63,6 +66,14 @@ class GetKMSCryptoKeyVersionResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="protectionLevel")
@@ -103,6 +114,7 @@ class AwaitableGetKMSCryptoKeyVersionResult(GetKMSCryptoKeyVersionResult):
             algorithm=self.algorithm,
             crypto_key=self.crypto_key,
             id=self.id,
+            name=self.name,
             protection_level=self.protection_level,
             public_keys=self.public_keys,
             state=self.state,
@@ -129,12 +141,13 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
     my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
-        key_ring=my_key_ring.self_link)
-    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_key"]["my_key"]["self_link"])
+        key_ring=my_key_ring.id)
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_key"]["my_key"]["id"])
     ```
 
 
-    :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.
+    :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+           `kms.CryptoKey` resource/datasource.
     :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """
     __args__ = dict()
@@ -150,6 +163,7 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
         algorithm=__ret__.algorithm,
         crypto_key=__ret__.crypto_key,
         id=__ret__.id,
+        name=__ret__.name,
         protection_level=__ret__.protection_level,
         public_keys=__ret__.public_keys,
         state=__ret__.state,

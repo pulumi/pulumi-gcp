@@ -12,6 +12,7 @@ __all__ = [
     'CxAgentSpeechToTextSettingsArgs',
     'CxEntityTypeEntityArgs',
     'CxEntityTypeExcludedPhraseArgs',
+    'CxEnvironmentVersionConfigArgs',
     'CxFlowEventHandlerArgs',
     'CxFlowEventHandlerTriggerFulfillmentArgs',
     'CxFlowEventHandlerTriggerFulfillmentMessageArgs',
@@ -133,6 +134,28 @@ class CxEntityTypeExcludedPhraseArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class CxEnvironmentVersionConfigArgs:
+    def __init__(__self__, *,
+                 version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] version: Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+        """
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

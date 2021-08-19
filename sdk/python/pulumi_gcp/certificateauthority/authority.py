@@ -636,7 +636,59 @@ class Authority(pulumi.CustomResource):
             ),
             lifetime="86400s",
             location="us-central1",
-            pool="")
+            pool="ca-pool")
+        ```
+        ### Privateca Certificate Authority Subordinate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            certificate_authority_id="my-certificate-authority",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        common_name="my-subordinate-authority",
+                        organization="HashiCorp",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                        max_issuer_path_length=10,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            content_commitment=True,
+                            crl_sign=True,
+                            data_encipherment=True,
+                            decipher_only=True,
+                            digital_signature=True,
+                            key_agreement=True,
+                            key_encipherment=False,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            client_auth=False,
+                            code_signing=True,
+                            email_protection=True,
+                            server_auth=True,
+                            time_stamping=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            lifetime="86400s",
+            location="us-central1",
+            pool="ca-pool",
+            type="SUBORDINATE")
         ```
         ### Privateca Certificate Authority Byo Key
 
@@ -654,7 +706,7 @@ class Authority(pulumi.CustomResource):
             role="roles/viewer",
             members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
         default = gcp.certificateauthority.Authority("default",
-            pool="",
+            pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
@@ -805,7 +857,59 @@ class Authority(pulumi.CustomResource):
             ),
             lifetime="86400s",
             location="us-central1",
-            pool="")
+            pool="ca-pool")
+        ```
+        ### Privateca Certificate Authority Subordinate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            certificate_authority_id="my-certificate-authority",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        common_name="my-subordinate-authority",
+                        organization="HashiCorp",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                        max_issuer_path_length=10,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            content_commitment=True,
+                            crl_sign=True,
+                            data_encipherment=True,
+                            decipher_only=True,
+                            digital_signature=True,
+                            key_agreement=True,
+                            key_encipherment=False,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            client_auth=False,
+                            code_signing=True,
+                            email_protection=True,
+                            server_auth=True,
+                            time_stamping=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            lifetime="86400s",
+            location="us-central1",
+            pool="ca-pool",
+            type="SUBORDINATE")
         ```
         ### Privateca Certificate Authority Byo Key
 
@@ -823,7 +927,7 @@ class Authority(pulumi.CustomResource):
             role="roles/viewer",
             members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
         default = gcp.certificateauthority.Authority("default",
-            pool="",
+            pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(

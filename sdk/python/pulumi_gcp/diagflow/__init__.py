@@ -8,6 +8,7 @@ import typing
 from .agent import *
 from .cx_agent import *
 from .cx_entity_type import *
+from .cx_environment import *
 from .cx_flow import *
 from .cx_intent import *
 from .cx_page import *

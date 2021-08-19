@@ -307,21 +307,21 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
-            initial_node_count=1,
             location="us-central1-a",
+            initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
                 identity_namespace="my-project-name.svc.id.goog",
             ))
         membership = gcp.gkehub.Membership("membership",
-            authority=gcp.gkehub.MembershipAuthorityArgs(
-                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
-            ),
+            membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                    resource_link=primary.id,
                 ),
             ),
-            membership_id="basic")
+            authority=gcp.gkehub.MembershipAuthorityArgs(
+                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            ))
         ```
 
         ## Import
@@ -386,21 +386,21 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
-            initial_node_count=1,
             location="us-central1-a",
+            initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
                 identity_namespace="my-project-name.svc.id.goog",
             ))
         membership = gcp.gkehub.Membership("membership",
-            authority=gcp.gkehub.MembershipAuthorityArgs(
-                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
-            ),
+            membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                    resource_link=primary.id,
                 ),
             ),
-            membership_id="basic")
+            authority=gcp.gkehub.MembershipAuthorityArgs(
+                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            ))
         ```
 
         ## Import

@@ -61,10 +61,8 @@ class InstanceArgs:
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
-               version will be used. Currently, the supported values are:
-               - REDIS_5_0 for Redis 5.0 compatibility
-               - REDIS_4_0 for Redis 4.0 compatibility
-               - REDIS_3_2 for Redis 3.2 compatibility
+               version will be used. Please check the API documentation linked
+               at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
@@ -266,10 +264,8 @@ class InstanceArgs:
     def redis_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of Redis software. If not provided, latest supported
-        version will be used. Currently, the supported values are:
-        - REDIS_5_0 for Redis 5.0 compatibility
-        - REDIS_4_0 for Redis 4.0 compatibility
-        - REDIS_3_2 for Redis 3.2 compatibility
+        version will be used. Please check the API documentation linked
+        at the top for the latest valid values.
         """
         return pulumi.get(self, "redis_version")
 
@@ -403,10 +399,8 @@ class _InstanceState:
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
-               version will be used. Currently, the supported values are:
-               - REDIS_5_0 for Redis 5.0 compatibility
-               - REDIS_4_0 for Redis 4.0 compatibility
-               - REDIS_3_2 for Redis 3.2 compatibility
+               version will be used. Please check the API documentation linked
+               at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
@@ -700,10 +694,8 @@ class _InstanceState:
     def redis_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of Redis software. If not provided, latest supported
-        version will be used. Currently, the supported values are:
-        - REDIS_5_0 for Redis 5.0 compatibility
-        - REDIS_4_0 for Redis 4.0 compatibility
-        - REDIS_3_2 for Redis 3.2 compatibility
+        version will be used. Please check the API documentation linked
+        at the top for the latest valid values.
         """
         return pulumi.get(self, "redis_version")
 
@@ -922,10 +914,8 @@ class Instance(pulumi.CustomResource):
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
-               version will be used. Currently, the supported values are:
-               - REDIS_5_0 for Redis 5.0 compatibility
-               - REDIS_4_0 for Redis 4.0 compatibility
-               - REDIS_3_2 for Redis 3.2 compatibility
+               version will be used. Please check the API documentation linked
+               at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
@@ -1181,10 +1171,8 @@ class Instance(pulumi.CustomResource):
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
-               version will be used. Currently, the supported values are:
-               - REDIS_5_0 for Redis 5.0 compatibility
-               - REDIS_4_0 for Redis 4.0 compatibility
-               - REDIS_3_2 for Redis 3.2 compatibility
+               version will be used. Please check the API documentation linked
+               at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
@@ -1392,10 +1380,8 @@ class Instance(pulumi.CustomResource):
     def redis_version(self) -> pulumi.Output[str]:
         """
         The version of Redis software. If not provided, latest supported
-        version will be used. Currently, the supported values are:
-        - REDIS_5_0 for Redis 5.0 compatibility
-        - REDIS_4_0 for Redis 4.0 compatibility
-        - REDIS_3_2 for Redis 3.2 compatibility
+        version will be used. Please check the API documentation linked
+        at the top for the latest valid values.
         """
         return pulumi.get(self, "redis_version")
 
