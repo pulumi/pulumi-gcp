@@ -3799,7 +3799,7 @@ func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ListUrl() pulumi.StringP
 type TransferJobTransferSpecObjectConditions struct {
 	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
-	// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	IncludePrefixes []string `pulumi:"includePrefixes"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaxTimeElapsedSinceLastModification *string `pulumi:"maxTimeElapsedSinceLastModification"`
@@ -3821,7 +3821,7 @@ type TransferJobTransferSpecObjectConditionsInput interface {
 type TransferJobTransferSpecObjectConditionsArgs struct {
 	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
-	// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"maxTimeElapsedSinceLastModification"`
@@ -3911,7 +3911,7 @@ func (o TransferJobTransferSpecObjectConditionsOutput) ExcludePrefixes() pulumi.
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
 }
 
-// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsOutput) IncludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
@@ -3954,7 +3954,7 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) ExcludePrefixes() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
-// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) IncludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) []string {
 		if v == nil {

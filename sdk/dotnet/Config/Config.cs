@@ -168,6 +168,8 @@ namespace Pulumi.Gcp
 
         public static string? Region { get; set; } = __config.Get("region") ?? Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
 
+        public static string? RequestReason { get; set; } = __config.Get("requestReason");
+
         public static string? RequestTimeout { get; set; } = __config.Get("requestTimeout");
 
         public static string? ResourceManagerCustomEndpoint { get; set; } = __config.Get("resourceManagerCustomEndpoint");

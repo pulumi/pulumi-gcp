@@ -553,7 +553,7 @@ class ClusterClusterConfig(dict):
         :param 'ClusterClusterConfigPreemptibleWorkerConfigArgs' preemptible_worker_config: The Google Compute Engine config settings for the additional
                instances in a cluster. Structure defined below.
                * **NOTE** : `preemptible_worker_config` is
-               an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+               an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
                such for legacy/compatibility reasons.
         :param 'ClusterClusterConfigSecurityConfigArgs' security_config: Security related configuration. Structure defined below.
         :param 'ClusterClusterConfigSoftwareConfigArgs' software_config: The config settings for software inside the cluster.
@@ -678,7 +678,7 @@ class ClusterClusterConfig(dict):
         The Google Compute Engine config settings for the additional
         instances in a cluster. Structure defined below.
         * **NOTE** : `preemptible_worker_config` is
-        an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+        an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
         such for legacy/compatibility reasons.
         """
         return pulumi.get(self, "preemptible_worker_config")

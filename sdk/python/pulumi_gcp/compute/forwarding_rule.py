@@ -34,11 +34,13 @@ class ForwardingRuleArgs:
                  target: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ForwardingRule resource.
-        :param pulumi.Input[bool] all_ports: For internal TCP/UDP load balancing (i.e. load balancing scheme is
-               INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-               addressed to any ports to be forwarded to the backends configured
-               with this forwarding rule. Used with backend service. Cannot be set
-               if port or portRange are set.
+        :param pulumi.Input[bool] all_ports: This field can be used with internal load balancer or network load balancer
+               when the forwarding rule references a backend service, or with the target
+               field when it references a TargetInstance. Set this to true to
+               allow packets addressed to any ports to be forwarded to the backends configured
+               with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+               must be set to true when the protocol is set to L3_DEFAULT.
+               Cannot be set if port or portRange are set.
         :param pulumi.Input[bool] allow_global_access: If true, clients can access ILB from all regions.
                Otherwise only allows from the local region the ILB is located at.
         :param pulumi.Input[str] backend_service: A BackendService to receive the matched traffic. This is used only
@@ -61,7 +63,7 @@ class ForwardingRuleArgs:
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                When the load balancing scheme is INTERNAL, only TCP and UDP are
                valid.
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used
                as a collector for packet mirroring. To prevent mirroring loops,
                instances behind this load balancer will not have their traffic
@@ -108,13 +110,15 @@ class ForwardingRuleArgs:
                * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
                1883, 5222
                * TargetVpnGateway: 500, 4500
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
-               load balancing.
-               When the load balancing scheme is INTERNAL, a single port or a comma
-               separated list of ports can be configured. Only packets addressed to
-               these ports will be forwarded to the backends configured with this
-               forwarding rule.
-               You may specify a maximum of up to 5 ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with internal load balancing and network
+               load balancer when the forwarding rule references a backend service
+               and when protocol is not L3_DEFAULT.
+               A single port or a comma separated list of ports can be configured.
+               Only packets addressed to these ports will be forwarded to the backends
+               configured with this forwarding rule.
+               You can only use one of ports and portRange, or allPorts.
+               The three are mutually exclusive.
+               You may specify a maximum of up to 5 ports, which can be non-contiguous.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
@@ -182,11 +186,13 @@ class ForwardingRuleArgs:
     @pulumi.getter(name="allPorts")
     def all_ports(self) -> Optional[pulumi.Input[bool]]:
         """
-        For internal TCP/UDP load balancing (i.e. load balancing scheme is
-        INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-        addressed to any ports to be forwarded to the backends configured
-        with this forwarding rule. Used with backend service. Cannot be set
-        if port or portRange are set.
+        This field can be used with internal load balancer or network load balancer
+        when the forwarding rule references a backend service, or with the target
+        field when it references a TargetInstance. Set this to true to
+        allow packets addressed to any ports to be forwarded to the backends configured
+        with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+        must be set to true when the protocol is set to L3_DEFAULT.
+        Cannot be set if port or portRange are set.
         """
         return pulumi.get(self, "all_ports")
 
@@ -264,7 +270,7 @@ class ForwardingRuleArgs:
         The IP protocol to which this rule applies.
         When the load balancing scheme is INTERNAL, only TCP and UDP are
         valid.
-        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -399,13 +405,15 @@ class ForwardingRuleArgs:
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This field is used along with the backend_service field for internal
-        load balancing.
-        When the load balancing scheme is INTERNAL, a single port or a comma
-        separated list of ports can be configured. Only packets addressed to
-        these ports will be forwarded to the backends configured with this
-        forwarding rule.
-        You may specify a maximum of up to 5 ports.
+        This field is used along with internal load balancing and network
+        load balancer when the forwarding rule references a backend service
+        and when protocol is not L3_DEFAULT.
+        A single port or a comma separated list of ports can be configured.
+        Only packets addressed to these ports will be forwarded to the backends
+        configured with this forwarding rule.
+        You can only use one of ports and portRange, or allPorts.
+        The three are mutually exclusive.
+        You may specify a maximum of up to 5 ports, which can be non-contiguous.
         """
         return pulumi.get(self, "ports")
 
@@ -520,11 +528,13 @@ class _ForwardingRuleState:
                  target: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ForwardingRule resources.
-        :param pulumi.Input[bool] all_ports: For internal TCP/UDP load balancing (i.e. load balancing scheme is
-               INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-               addressed to any ports to be forwarded to the backends configured
-               with this forwarding rule. Used with backend service. Cannot be set
-               if port or portRange are set.
+        :param pulumi.Input[bool] all_ports: This field can be used with internal load balancer or network load balancer
+               when the forwarding rule references a backend service, or with the target
+               field when it references a TargetInstance. Set this to true to
+               allow packets addressed to any ports to be forwarded to the backends configured
+               with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+               must be set to true when the protocol is set to L3_DEFAULT.
+               Cannot be set if port or portRange are set.
         :param pulumi.Input[bool] allow_global_access: If true, clients can access ILB from all regions.
                Otherwise only allows from the local region the ILB is located at.
         :param pulumi.Input[str] backend_service: A BackendService to receive the matched traffic. This is used only
@@ -548,7 +558,7 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                When the load balancing scheme is INTERNAL, only TCP and UDP are
                valid.
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used
                as a collector for packet mirroring. To prevent mirroring loops,
                instances behind this load balancer will not have their traffic
@@ -596,13 +606,15 @@ class _ForwardingRuleState:
                * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
                1883, 5222
                * TargetVpnGateway: 500, 4500
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
-               load balancing.
-               When the load balancing scheme is INTERNAL, a single port or a comma
-               separated list of ports can be configured. Only packets addressed to
-               these ports will be forwarded to the backends configured with this
-               forwarding rule.
-               You may specify a maximum of up to 5 ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with internal load balancing and network
+               load balancer when the forwarding rule references a backend service
+               and when protocol is not L3_DEFAULT.
+               A single port or a comma separated list of ports can be configured.
+               Only packets addressed to these ports will be forwarded to the backends
+               configured with this forwarding rule.
+               You can only use one of ports and portRange, or allPorts.
+               The three are mutually exclusive.
+               You may specify a maximum of up to 5 ports, which can be non-contiguous.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
@@ -680,11 +692,13 @@ class _ForwardingRuleState:
     @pulumi.getter(name="allPorts")
     def all_ports(self) -> Optional[pulumi.Input[bool]]:
         """
-        For internal TCP/UDP load balancing (i.e. load balancing scheme is
-        INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-        addressed to any ports to be forwarded to the backends configured
-        with this forwarding rule. Used with backend service. Cannot be set
-        if port or portRange are set.
+        This field can be used with internal load balancer or network load balancer
+        when the forwarding rule references a backend service, or with the target
+        field when it references a TargetInstance. Set this to true to
+        allow packets addressed to any ports to be forwarded to the backends configured
+        with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+        must be set to true when the protocol is set to L3_DEFAULT.
+        Cannot be set if port or portRange are set.
         """
         return pulumi.get(self, "all_ports")
 
@@ -774,7 +788,7 @@ class _ForwardingRuleState:
         The IP protocol to which this rule applies.
         When the load balancing scheme is INTERNAL, only TCP and UDP are
         valid.
-        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -921,13 +935,15 @@ class _ForwardingRuleState:
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This field is used along with the backend_service field for internal
-        load balancing.
-        When the load balancing scheme is INTERNAL, a single port or a comma
-        separated list of ports can be configured. Only packets addressed to
-        these ports will be forwarded to the backends configured with this
-        forwarding rule.
-        You may specify a maximum of up to 5 ports.
+        This field is used along with internal load balancing and network
+        load balancer when the forwarding rule references a backend service
+        and when protocol is not L3_DEFAULT.
+        A single port or a comma separated list of ports can be configured.
+        Only packets addressed to these ports will be forwarded to the backends
+        configured with this forwarding rule.
+        You can only use one of ports and portRange, or allPorts.
+        The three are mutually exclusive.
+        You may specify a maximum of up to 5 ports, which can be non-contiguous.
         """
         return pulumi.get(self, "ports")
 
@@ -1075,6 +1091,161 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+        ### Internal Http Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal HTTP load balancer with a managed instance group backend
+        # VPC
+        ilb_network = gcp.compute.Network("ilbNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        # proxy-only subnet
+        proxy_subnet = gcp.compute.Subnetwork("proxySubnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="europe-west1",
+            purpose="INTERNAL_HTTPS_LOAD_BALANCER",
+            role="ACTIVE",
+            network=ilb_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # backed subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilbSubnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-small",
+            tags=["http-server"],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # backend service
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="europe-west1",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.id],
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # url map
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="europe-west1",
+            default_service=default_region_backend_service.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # http proxy
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="europe-west1",
+            url_map=default_region_url_map.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("googleComputeForwardingRule",
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id,
+            network_tier="PREMIUM",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxy_subnet]))
+        # allow all access from IAP and health check ranges
+        fw_iap = gcp.compute.Firewall("fw-iap",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow http from proxy subnet to backends
+        fw_ilb_to_backends = gcp.compute.Firewall("fw-ilb-to-backends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.0.0/24"],
+            target_tags=["http-server"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=[
+                    "80",
+                    "443",
+                    "8080",
+                ],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # test instance
+        vm_test = gcp.compute.Instance("vm-test",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Forwarding Rule Externallb
 
         ```python
@@ -1141,6 +1312,30 @@ class ForwardingRule(pulumi.CustomResource):
         default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
             target=default_target_pool.id,
             port_range="80")
+        ```
+        ### Forwarding Rule L3 Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("healthCheck",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        service = gcp.compute.RegionBackendService("service",
+            region="us-central1",
+            health_checks=[health_check.id],
+            protocol="UNSPECIFIED",
+            load_balancing_scheme="EXTERNAL",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fwd_rule = gcp.compute.ForwardingRule("fwdRule",
+            backend_service=service.id,
+            ip_protocol="L3_DEFAULT",
+            all_ports=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Forwarding Rule Internallb
 
@@ -1344,11 +1539,13 @@ class ForwardingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] all_ports: For internal TCP/UDP load balancing (i.e. load balancing scheme is
-               INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-               addressed to any ports to be forwarded to the backends configured
-               with this forwarding rule. Used with backend service. Cannot be set
-               if port or portRange are set.
+        :param pulumi.Input[bool] all_ports: This field can be used with internal load balancer or network load balancer
+               when the forwarding rule references a backend service, or with the target
+               field when it references a TargetInstance. Set this to true to
+               allow packets addressed to any ports to be forwarded to the backends configured
+               with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+               must be set to true when the protocol is set to L3_DEFAULT.
+               Cannot be set if port or portRange are set.
         :param pulumi.Input[bool] allow_global_access: If true, clients can access ILB from all regions.
                Otherwise only allows from the local region the ILB is located at.
         :param pulumi.Input[str] backend_service: A BackendService to receive the matched traffic. This is used only
@@ -1371,7 +1568,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                When the load balancing scheme is INTERNAL, only TCP and UDP are
                valid.
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used
                as a collector for packet mirroring. To prevent mirroring loops,
                instances behind this load balancer will not have their traffic
@@ -1418,13 +1615,15 @@ class ForwardingRule(pulumi.CustomResource):
                * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
                1883, 5222
                * TargetVpnGateway: 500, 4500
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
-               load balancing.
-               When the load balancing scheme is INTERNAL, a single port or a comma
-               separated list of ports can be configured. Only packets addressed to
-               these ports will be forwarded to the backends configured with this
-               forwarding rule.
-               You may specify a maximum of up to 5 ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with internal load balancing and network
+               load balancer when the forwarding rule references a backend service
+               and when protocol is not L3_DEFAULT.
+               A single port or a comma separated list of ports can be configured.
+               Only packets addressed to these ports will be forwarded to the backends
+               configured with this forwarding rule.
+               You can only use one of ports and portRange, or allPorts.
+               The three are mutually exclusive.
+               You may specify a maximum of up to 5 ports, which can be non-contiguous.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
@@ -1467,6 +1666,161 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+        ### Internal Http Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal HTTP load balancer with a managed instance group backend
+        # VPC
+        ilb_network = gcp.compute.Network("ilbNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        # proxy-only subnet
+        proxy_subnet = gcp.compute.Subnetwork("proxySubnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="europe-west1",
+            purpose="INTERNAL_HTTPS_LOAD_BALANCER",
+            role="ACTIVE",
+            network=ilb_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # backed subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilbSubnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-small",
+            tags=["http-server"],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # backend service
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="europe-west1",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.id],
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # url map
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="europe-west1",
+            default_service=default_region_backend_service.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # http proxy
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="europe-west1",
+            url_map=default_region_url_map.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("googleComputeForwardingRule",
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id,
+            network_tier="PREMIUM",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxy_subnet]))
+        # allow all access from IAP and health check ranges
+        fw_iap = gcp.compute.Firewall("fw-iap",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow http from proxy subnet to backends
+        fw_ilb_to_backends = gcp.compute.Firewall("fw-ilb-to-backends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.0.0/24"],
+            target_tags=["http-server"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=[
+                    "80",
+                    "443",
+                    "8080",
+                ],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # test instance
+        vm_test = gcp.compute.Instance("vm-test",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Forwarding Rule Externallb
 
         ```python
@@ -1533,6 +1887,30 @@ class ForwardingRule(pulumi.CustomResource):
         default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
             target=default_target_pool.id,
             port_range="80")
+        ```
+        ### Forwarding Rule L3 Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("healthCheck",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        service = gcp.compute.RegionBackendService("service",
+            region="us-central1",
+            health_checks=[health_check.id],
+            protocol="UNSPECIFIED",
+            load_balancing_scheme="EXTERNAL",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fwd_rule = gcp.compute.ForwardingRule("fwdRule",
+            backend_service=service.id,
+            ip_protocol="L3_DEFAULT",
+            all_ports=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Forwarding Rule Internallb
 
@@ -1843,11 +2221,13 @@ class ForwardingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] all_ports: For internal TCP/UDP load balancing (i.e. load balancing scheme is
-               INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-               addressed to any ports to be forwarded to the backends configured
-               with this forwarding rule. Used with backend service. Cannot be set
-               if port or portRange are set.
+        :param pulumi.Input[bool] all_ports: This field can be used with internal load balancer or network load balancer
+               when the forwarding rule references a backend service, or with the target
+               field when it references a TargetInstance. Set this to true to
+               allow packets addressed to any ports to be forwarded to the backends configured
+               with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+               must be set to true when the protocol is set to L3_DEFAULT.
+               Cannot be set if port or portRange are set.
         :param pulumi.Input[bool] allow_global_access: If true, clients can access ILB from all regions.
                Otherwise only allows from the local region the ILB is located at.
         :param pulumi.Input[str] backend_service: A BackendService to receive the matched traffic. This is used only
@@ -1871,7 +2251,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                When the load balancing scheme is INTERNAL, only TCP and UDP are
                valid.
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used
                as a collector for packet mirroring. To prevent mirroring loops,
                instances behind this load balancer will not have their traffic
@@ -1919,13 +2299,15 @@ class ForwardingRule(pulumi.CustomResource):
                * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
                1883, 5222
                * TargetVpnGateway: 500, 4500
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
-               load balancing.
-               When the load balancing scheme is INTERNAL, a single port or a comma
-               separated list of ports can be configured. Only packets addressed to
-               these ports will be forwarded to the backends configured with this
-               forwarding rule.
-               You may specify a maximum of up to 5 ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with internal load balancing and network
+               load balancer when the forwarding rule references a backend service
+               and when protocol is not L3_DEFAULT.
+               A single port or a comma separated list of ports can be configured.
+               Only packets addressed to these ports will be forwarded to the backends
+               configured with this forwarding rule.
+               You can only use one of ports and portRange, or allPorts.
+               The three are mutually exclusive.
+               You may specify a maximum of up to 5 ports, which can be non-contiguous.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
@@ -1985,11 +2367,13 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="allPorts")
     def all_ports(self) -> pulumi.Output[Optional[bool]]:
         """
-        For internal TCP/UDP load balancing (i.e. load balancing scheme is
-        INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-        addressed to any ports to be forwarded to the backends configured
-        with this forwarding rule. Used with backend service. Cannot be set
-        if port or portRange are set.
+        This field can be used with internal load balancer or network load balancer
+        when the forwarding rule references a backend service, or with the target
+        field when it references a TargetInstance. Set this to true to
+        allow packets addressed to any ports to be forwarded to the backends configured
+        with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+        must be set to true when the protocol is set to L3_DEFAULT.
+        Cannot be set if port or portRange are set.
         """
         return pulumi.get(self, "all_ports")
 
@@ -2055,7 +2439,7 @@ class ForwardingRule(pulumi.CustomResource):
         The IP protocol to which this rule applies.
         When the load balancing scheme is INTERNAL, only TCP and UDP are
         valid.
-        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -2166,13 +2550,15 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def ports(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        This field is used along with the backend_service field for internal
-        load balancing.
-        When the load balancing scheme is INTERNAL, a single port or a comma
-        separated list of ports can be configured. Only packets addressed to
-        these ports will be forwarded to the backends configured with this
-        forwarding rule.
-        You may specify a maximum of up to 5 ports.
+        This field is used along with internal load balancing and network
+        load balancer when the forwarding rule references a backend service
+        and when protocol is not L3_DEFAULT.
+        A single port or a comma separated list of ports can be configured.
+        Only packets addressed to these ports will be forwarded to the backends
+        configured with this forwarding rule.
+        You can only use one of ports and portRange, or allPorts.
+        The three are mutually exclusive.
+        You may specify a maximum of up to 5 ports, which can be non-contiguous.
         """
         return pulumi.get(self, "ports")
 

@@ -45,7 +45,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = logging.NewFolderSink(ctx, "my_sink", &logging.FolderSinkArgs{
-// 			Description: pulumi.String("some explaination on what this is"),
+// 			Description: pulumi.String("some explanation on what this is"),
 // 			Folder:      my_folder.Name,
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil

@@ -203,8 +203,7 @@ class Contact(pulumi.CustomResource):
             parent=project.id,
             email="foo@bar.com",
             language_tag="en-GB",
-            notification_category_subscriptions=["ALL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            notification_category_subscriptions=["ALL"])
         ```
 
         ## Import
@@ -255,8 +254,7 @@ class Contact(pulumi.CustomResource):
             parent=project.id,
             email="foo@bar.com",
             language_tag="en-GB",
-            notification_category_subscriptions=["ALL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            notification_category_subscriptions=["ALL"])
         ```
 
         ## Import

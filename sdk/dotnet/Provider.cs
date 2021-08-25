@@ -249,6 +249,9 @@ namespace Pulumi.Gcp
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
+        [Output("requestReason")]
+        public Output<string?> RequestReason { get; private set; } = null!;
+
         [Output("requestTimeout")]
         public Output<string?> RequestTimeout { get; private set; } = null!;
 
@@ -590,6 +593,9 @@ namespace Pulumi.Gcp
 
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("requestReason")]
+        public Input<string>? RequestReason { get; set; }
 
         [Input("requestTimeout")]
         public Input<string>? RequestTimeout { get; set; }

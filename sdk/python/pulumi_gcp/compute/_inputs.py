@@ -43,6 +43,7 @@ __all__ = [
     'BackendServiceOutlierDetectionArgs',
     'BackendServiceOutlierDetectionBaseEjectionTimeArgs',
     'BackendServiceOutlierDetectionIntervalArgs',
+    'BackendServiceSecuritySettingsArgs',
     'DiskDiskEncryptionKeyArgs',
     'DiskIamBindingConditionArgs',
     'DiskIamMemberConditionArgs',
@@ -3461,6 +3462,33 @@ class BackendServiceOutlierDetectionIntervalArgs:
     @nanos.setter
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
+
+
+@pulumi.input_type
+class BackendServiceSecuritySettingsArgs:
+    def __init__(__self__, *,
+                 client_tls_policy: pulumi.Input[str],
+                 subject_alt_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "client_tls_policy", client_tls_policy)
+        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter(name="clientTlsPolicy")
+    def client_tls_policy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_tls_policy")
+
+    @client_tls_policy.setter
+    def client_tls_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_tls_policy", value)
+
+    @property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "subject_alt_names")
+
+    @subject_alt_names.setter
+    def subject_alt_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "subject_alt_names", value)
 
 
 @pulumi.input_type

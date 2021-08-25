@@ -94,6 +94,7 @@ class ProviderArgs:
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_reason: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -286,6 +287,8 @@ class ProviderArgs:
             region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if request_reason is not None:
+            pulumi.set(__self__, "request_reason", request_reason)
         if request_timeout is not None:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if resource_manager_custom_endpoint is not None:
@@ -1060,6 +1063,15 @@ class ProviderArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="requestReason")
+    def request_reason(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_reason")
+
+    @request_reason.setter
+    def request_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_reason", value)
+
+    @property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_timeout")
@@ -1370,6 +1382,7 @@ class Provider(pulumi.ProviderResource):
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_reason: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1512,6 +1525,7 @@ class Provider(pulumi.ProviderResource):
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_reason: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1633,6 +1647,7 @@ class Provider(pulumi.ProviderResource):
             if region is None:
                 region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_reason"] = request_reason
             __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["resource_manager_custom_endpoint"] = resource_manager_custom_endpoint
             __props__.__dict__["resource_manager_v2_custom_endpoint"] = resource_manager_v2_custom_endpoint
@@ -2050,6 +2065,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestReason")
+    def request_reason(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "request_reason")
 
     @property
     @pulumi.getter(name="requestTimeout")

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     public MyStack()
         ///     {
-        ///         var healthChceck = Output.Create(Gcp.Compute.GetHealthCheck.InvokeAsync(new Gcp.Compute.GetHealthCheckArgs
+        ///         var healthCheck = Output.Create(Gcp.Compute.GetHealthCheck.InvokeAsync(new Gcp.Compute.GetHealthCheckArgs
         ///         {
         ///             Name = "my-hc",
         ///         }));

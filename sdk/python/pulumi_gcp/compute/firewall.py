@@ -929,6 +929,26 @@ class Firewall(pulumi.CustomResource):
             ],
             source_tags=["web"])
         ```
+        ### Firewall With Target Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rules = gcp.compute.Firewall("rules",
+            allows=[gcp.compute.FirewallAllowArgs(
+                ports=[
+                    "80",
+                    "8080",
+                    "1000-2000",
+                ],
+                protocol="tcp",
+            )],
+            description="Creates firewall rule targeting tagged instances",
+            network="default",
+            project="my-project-name",
+            target_tags=["web"])
+        ```
 
         ## Import
 
@@ -1079,6 +1099,26 @@ class Firewall(pulumi.CustomResource):
                 ),
             ],
             source_tags=["web"])
+        ```
+        ### Firewall With Target Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rules = gcp.compute.Firewall("rules",
+            allows=[gcp.compute.FirewallAllowArgs(
+                ports=[
+                    "80",
+                    "8080",
+                    "1000-2000",
+                ],
+                protocol="tcp",
+            )],
+            description="Creates firewall rule targeting tagged instances",
+            network="default",
+            project="my-project-name",
+            target_tags=["web"])
         ```
 
         ## Import

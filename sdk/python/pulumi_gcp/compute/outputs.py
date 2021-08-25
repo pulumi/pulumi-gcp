@@ -44,6 +44,7 @@ __all__ = [
     'BackendServiceOutlierDetection',
     'BackendServiceOutlierDetectionBaseEjectionTime',
     'BackendServiceOutlierDetectionInterval',
+    'BackendServiceSecuritySettings',
     'DiskDiskEncryptionKey',
     'DiskIamBindingCondition',
     'DiskIamMemberCondition',
@@ -403,6 +404,7 @@ __all__ = [
     'GetBackendServiceOutlierDetectionResult',
     'GetBackendServiceOutlierDetectionBaseEjectionTimeResult',
     'GetBackendServiceOutlierDetectionIntervalResult',
+    'GetBackendServiceSecuritySettingResult',
     'GetGlobalForwardingRuleMetadataFilterResult',
     'GetGlobalForwardingRuleMetadataFilterFilterLabelResult',
     'GetHcVpnGatewayVpnInterfaceResult',
@@ -3473,6 +3475,44 @@ class BackendServiceOutlierDetectionInterval(dict):
         `nanos` field. Must be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class BackendServiceSecuritySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientTlsPolicy":
+            suggest = "client_tls_policy"
+        elif key == "subjectAltNames":
+            suggest = "subject_alt_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceSecuritySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceSecuritySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceSecuritySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_tls_policy: str,
+                 subject_alt_names: Sequence[str]):
+        pulumi.set(__self__, "client_tls_policy", client_tls_policy)
+        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter(name="clientTlsPolicy")
+    def client_tls_policy(self) -> str:
+        return pulumi.get(self, "client_tls_policy")
+
+    @property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> Sequence[str]:
+        return pulumi.get(self, "subject_alt_names")
 
 
 @pulumi.output_type
@@ -27798,6 +27838,25 @@ class GetBackendServiceOutlierDetectionIntervalResult(dict):
     @pulumi.getter
     def seconds(self) -> int:
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetBackendServiceSecuritySettingResult(dict):
+    def __init__(__self__, *,
+                 client_tls_policy: str,
+                 subject_alt_names: Sequence[str]):
+        pulumi.set(__self__, "client_tls_policy", client_tls_policy)
+        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter(name="clientTlsPolicy")
+    def client_tls_policy(self) -> str:
+        return pulumi.get(self, "client_tls_policy")
+
+    @property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> Sequence[str]:
+        return pulumi.get(self, "subject_alt_names")
 
 
 @pulumi.output_type

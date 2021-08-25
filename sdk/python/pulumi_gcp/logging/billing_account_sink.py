@@ -356,7 +356,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         log_bucket = gcp.storage.Bucket("log-bucket")
         my_sink = gcp.logging.BillingAccountSink("my-sink",
-            description="some explaination on what this is",
+            description="some explanation on what this is",
             billing_account="ABCDEF-012345-GHIJKL",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
         log_writer = gcp.projects.IAMBinding("log-writer",
@@ -413,7 +413,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         log_bucket = gcp.storage.Bucket("log-bucket")
         my_sink = gcp.logging.BillingAccountSink("my-sink",
-            description="some explaination on what this is",
+            description="some explanation on what this is",
             billing_account="ABCDEF-012345-GHIJKL",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
         log_writer = gcp.projects.IAMBinding("log-writer",

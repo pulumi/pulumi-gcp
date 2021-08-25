@@ -8101,6 +8101,11 @@ export namespace compute {
         seconds: number;
     }
 
+    export interface BackendServiceSecuritySettings {
+        clientTlsPolicy: string;
+        subjectAltNames: string[];
+    }
+
     export interface DiskDiskEncryptionKey {
         /**
          * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
@@ -8383,6 +8388,11 @@ export namespace compute {
     export interface GetBackendServiceOutlierDetectionInterval {
         nanos: number;
         seconds: number;
+    }
+
+    export interface GetBackendServiceSecuritySetting {
+        clientTlsPolicy: string;
+        subjectAltNames: string[];
     }
 
     export interface GetGlobalForwardingRuleMetadataFilter {
@@ -15915,7 +15925,6 @@ export namespace compute {
          */
         service: string;
     }
-
 }
 
 export namespace config {
@@ -18979,7 +18988,7 @@ export namespace dataproc {
          * The Google Compute Engine config settings for the additional
          * instances in a cluster. Structure defined below.
          * * **NOTE** : `preemptibleWorkerConfig` is
-         * an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't neccasarily mean it is preemptible and is named as
+         * an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
          * such for legacy/compatibility reasons.
          */
         preemptibleWorkerConfig: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfig;
@@ -22086,7 +22095,7 @@ export namespace gameservices {
 export namespace gkehub {
     export interface FeatureMembershipConfigmanagement {
         /**
-         * Binauthz conifguration for the cluster.
+         * Binauthz configuration for the cluster.
          */
         binauthz?: outputs.gkehub.FeatureMembershipConfigmanagementBinauthz;
         /**
@@ -28087,7 +28096,7 @@ export namespace storage {
          */
         excludePrefixes?: string[];
         /**
-         * If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+         * If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
          */
         includePrefixes?: string[];
         /**

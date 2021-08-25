@@ -256,6 +256,9 @@ func GetRegion(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string)
 }
+func GetRequestReason(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:requestReason")
+}
 func GetRequestTimeout(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:requestTimeout")
 }

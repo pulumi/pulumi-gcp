@@ -16,6 +16,186 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
  *
  * ## Example Usage
+ * ### Internal Http Lb With Mig Backend
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Internal HTTP load balancer with a managed instance group backend
+ * // VPC
+ * const ilbNetwork = new gcp.compute.Network("ilbNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * // proxy-only subnet
+ * const proxySubnet = new gcp.compute.Subnetwork("proxySubnet", {
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "europe-west1",
+ *     purpose: "INTERNAL_HTTPS_LOAD_BALANCER",
+ *     role: "ACTIVE",
+ *     network: ilbNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // backed subnet
+ * const ilbSubnet = new gcp.compute.Subnetwork("ilbSubnet", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "europe-west1",
+ *     network: ilbNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // health check
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
+ *     region: "europe-west1",
+ *     httpHealthCheck: {
+ *         portSpecification: "USE_SERVING_PORT",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // instance template
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ *     machineType: "e2-small",
+ *     tags: ["http-server"],
+ *     networkInterfaces: [{
+ *         network: ilbNetwork.id,
+ *         subnetwork: ilbSubnet.id,
+ *         accessConfigs: [{}],
+ *     }],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ *
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ *
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ *
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // MIG
+ * const mig = new gcp.compute.RegionInstanceGroupManager("mig", {
+ *     region: "europe-west1",
+ *     versions: [{
+ *         instanceTemplate: instanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // backend service
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
+ *     region: "europe-west1",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultRegionHealthCheck.id],
+ *     backends: [{
+ *         group: mig.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         capacityScaler: 1,
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // url map
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
+ *     region: "europe-west1",
+ *     defaultService: defaultRegionBackendService.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // http proxy
+ * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
+ *     region: "europe-west1",
+ *     urlMap: defaultRegionUrlMap.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // forwarding rule
+ * const googleComputeForwardingRule = new gcp.compute.ForwardingRule("googleComputeForwardingRule", {
+ *     region: "europe-west1",
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     portRange: "80",
+ *     target: defaultRegionTargetHttpProxy.id,
+ *     network: ilbNetwork.id,
+ *     subnetwork: ilbSubnet.id,
+ *     networkTier: "PREMIUM",
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [proxySubnet],
+ * });
+ * // allow all access from IAP and health check ranges
+ * const fw_iap = new gcp.compute.Firewall("fw-iap", {
+ *     direction: "INGRESS",
+ *     network: ilbNetwork.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *         "35.235.240.0/20",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // allow http from proxy subnet to backends
+ * const fw_ilb_to_backends = new gcp.compute.Firewall("fw-ilb-to-backends", {
+ *     direction: "INGRESS",
+ *     network: ilbNetwork.id,
+ *     sourceRanges: ["10.0.0.0/24"],
+ *     targetTags: ["http-server"],
+ *     allows: [{
+ *         protocol: "tcp",
+ *         ports: [
+ *             "80",
+ *             "443",
+ *             "8080",
+ *         ],
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // test instance
+ * const vm_test = new gcp.compute.Instance("vm-test", {
+ *     zone: "europe-west1-b",
+ *     machineType: "e2-small",
+ *     networkInterfaces: [{
+ *         network: ilbNetwork.id,
+ *         subnetwork: ilbSubnet.id,
+ *     }],
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-10",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Forwarding Rule Externallb
  *
  * ```typescript
@@ -92,6 +272,36 @@ import * as utilities from "../utilities";
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
  *     target: defaultTargetPool.id,
  *     portRange: "80",
+ * });
+ * ```
+ * ### Forwarding Rule L3 Default
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.RegionHealthCheck("healthCheck", {
+ *     region: "us-central1",
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const service = new gcp.compute.RegionBackendService("service", {
+ *     region: "us-central1",
+ *     healthChecks: [healthCheck.id],
+ *     protocol: "UNSPECIFIED",
+ *     loadBalancingScheme: "EXTERNAL",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const fwdRule = new gcp.compute.ForwardingRule("fwdRule", {
+ *     backendService: service.id,
+ *     ipProtocol: "L3_DEFAULT",
+ *     allPorts: true,
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  * ### Forwarding Rule Internallb
@@ -357,11 +567,13 @@ export class ForwardingRule extends pulumi.CustomResource {
     }
 
     /**
-     * For internal TCP/UDP load balancing (i.e. load balancing scheme is
-     * INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-     * addressed to any ports to be forwarded to the backends configured
-     * with this forwarding rule. Used with backend service. Cannot be set
-     * if port or portRange are set.
+     * This field can be used with internal load balancer or network load balancer
+     * when the forwarding rule references a backend service, or with the target
+     * field when it references a TargetInstance. Set this to true to
+     * allow packets addressed to any ports to be forwarded to the backends configured
+     * with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+     * must be set to true when the protocol is set to L3_DEFAULT.
+     * Cannot be set if port or portRange are set.
      */
     public readonly allPorts!: pulumi.Output<boolean | undefined>;
     /**
@@ -403,7 +615,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
@@ -478,13 +690,15 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly portRange!: pulumi.Output<string | undefined>;
     /**
-     * This field is used along with the backendService field for internal
-     * load balancing.
-     * When the load balancing scheme is INTERNAL, a single port or a comma
-     * separated list of ports can be configured. Only packets addressed to
-     * these ports will be forwarded to the backends configured with this
-     * forwarding rule.
-     * You may specify a maximum of up to 5 ports.
+     * This field is used along with internal load balancing and network
+     * load balancer when the forwarding rule references a backend service
+     * and when protocol is not L3_DEFAULT.
+     * A single port or a comma separated list of ports can be configured.
+     * Only packets addressed to these ports will be forwarded to the backends
+     * configured with this forwarding rule.
+     * You can only use one of ports and portRange, or allPorts.
+     * The three are mutually exclusive.
+     * You may specify a maximum of up to 5 ports, which can be non-contiguous.
      */
     public readonly ports!: pulumi.Output<string[] | undefined>;
     /**
@@ -608,11 +822,13 @@ export class ForwardingRule extends pulumi.CustomResource {
  */
 export interface ForwardingRuleState {
     /**
-     * For internal TCP/UDP load balancing (i.e. load balancing scheme is
-     * INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-     * addressed to any ports to be forwarded to the backends configured
-     * with this forwarding rule. Used with backend service. Cannot be set
-     * if port or portRange are set.
+     * This field can be used with internal load balancer or network load balancer
+     * when the forwarding rule references a backend service, or with the target
+     * field when it references a TargetInstance. Set this to true to
+     * allow packets addressed to any ports to be forwarded to the backends configured
+     * with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+     * must be set to true when the protocol is set to L3_DEFAULT.
+     * Cannot be set if port or portRange are set.
      */
     allPorts?: pulumi.Input<boolean>;
     /**
@@ -654,7 +870,7 @@ export interface ForwardingRuleState {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
@@ -729,13 +945,15 @@ export interface ForwardingRuleState {
      */
     portRange?: pulumi.Input<string>;
     /**
-     * This field is used along with the backendService field for internal
-     * load balancing.
-     * When the load balancing scheme is INTERNAL, a single port or a comma
-     * separated list of ports can be configured. Only packets addressed to
-     * these ports will be forwarded to the backends configured with this
-     * forwarding rule.
-     * You may specify a maximum of up to 5 ports.
+     * This field is used along with internal load balancing and network
+     * load balancer when the forwarding rule references a backend service
+     * and when protocol is not L3_DEFAULT.
+     * A single port or a comma separated list of ports can be configured.
+     * Only packets addressed to these ports will be forwarded to the backends
+     * configured with this forwarding rule.
+     * You can only use one of ports and portRange, or allPorts.
+     * The three are mutually exclusive.
+     * You may specify a maximum of up to 5 ports, which can be non-contiguous.
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -791,11 +1009,13 @@ export interface ForwardingRuleState {
  */
 export interface ForwardingRuleArgs {
     /**
-     * For internal TCP/UDP load balancing (i.e. load balancing scheme is
-     * INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-     * addressed to any ports to be forwarded to the backends configured
-     * with this forwarding rule. Used with backend service. Cannot be set
-     * if port or portRange are set.
+     * This field can be used with internal load balancer or network load balancer
+     * when the forwarding rule references a backend service, or with the target
+     * field when it references a TargetInstance. Set this to true to
+     * allow packets addressed to any ports to be forwarded to the backends configured
+     * with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+     * must be set to true when the protocol is set to L3_DEFAULT.
+     * Cannot be set if port or portRange are set.
      */
     allPorts?: pulumi.Input<boolean>;
     /**
@@ -833,7 +1053,7 @@ export interface ForwardingRuleArgs {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
@@ -904,13 +1124,15 @@ export interface ForwardingRuleArgs {
      */
     portRange?: pulumi.Input<string>;
     /**
-     * This field is used along with the backendService field for internal
-     * load balancing.
-     * When the load balancing scheme is INTERNAL, a single port or a comma
-     * separated list of ports can be configured. Only packets addressed to
-     * these ports will be forwarded to the backends configured with this
-     * forwarding rule.
-     * You may specify a maximum of up to 5 ports.
+     * This field is used along with internal load balancing and network
+     * load balancer when the forwarding rule references a backend service
+     * and when protocol is not L3_DEFAULT.
+     * A single port or a comma separated list of ports can be configured.
+     * Only packets addressed to these ports will be forwarded to the backends
+     * configured with this forwarding rule.
+     * You can only use one of ports and portRange, or allPorts.
+     * The three are mutually exclusive.
+     * You may specify a maximum of up to 5 ports, which can be non-contiguous.
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**

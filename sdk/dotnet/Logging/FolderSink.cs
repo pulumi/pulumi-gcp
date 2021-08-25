@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Logging
     ///         });
     ///         var my_sink = new Gcp.Logging.FolderSink("my-sink", new Gcp.Logging.FolderSinkArgs
     ///         {
-    ///             Description = "some explaination on what this is",
+    ///             Description = "some explanation on what this is",
     ///             Folder = my_folder.Name,
     ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
     ///             Filter = "resource.type = gce_instance AND severity &gt;= WARNING",

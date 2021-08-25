@@ -40,10 +40,6 @@ import * as utilities from "../utilities";
  *             fieldPath: "description",
  *             order: "DESCENDING",
  *         },
- *         {
- *             fieldPath: "__name__",
- *             order: "DESCENDING",
- *         },
  *     ],
  *     project: "my-project-name",
  * });

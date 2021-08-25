@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     email: "foo@bar.com",
  *     languageTag: "en-GB",
  *     notificationCategorySubscriptions: ["ALL"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

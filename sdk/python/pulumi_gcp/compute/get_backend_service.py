@@ -20,7 +20,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -93,6 +93,9 @@ class GetBackendServiceResult:
         if security_policy and not isinstance(security_policy, str):
             raise TypeError("Expected argument 'security_policy' to be a str")
         pulumi.set(__self__, "security_policy", security_policy)
+        if security_settings and not isinstance(security_settings, list):
+            raise TypeError("Expected argument 'security_settings' to be a list")
+        pulumi.set(__self__, "security_settings", security_settings)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -251,6 +254,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "security_policy")
 
     @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> Sequence['outputs.GetBackendServiceSecuritySettingResult']:
+        return pulumi.get(self, "security_settings")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -305,6 +313,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             project=self.project,
             protocol=self.protocol,
             security_policy=self.security_policy,
+            security_settings=self.security_settings,
             self_link=self.self_link,
             session_affinity=self.session_affinity,
             timeout_sec=self.timeout_sec)
@@ -356,6 +365,7 @@ def get_backend_service(name: Optional[str] = None,
         project=__ret__.project,
         protocol=__ret__.protocol,
         security_policy=__ret__.security_policy,
+        security_settings=__ret__.security_settings,
         self_link=__ret__.self_link,
         session_affinity=__ret__.session_affinity,
         timeout_sec=__ret__.timeout_sec)

@@ -95,6 +95,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Protocol;
         public readonly string SecurityPolicy;
+        public readonly ImmutableArray<Outputs.GetBackendServiceSecuritySettingResult> SecuritySettings;
         /// <summary>
         /// The URI of the Backend Service.
         /// </summary>
@@ -158,6 +159,8 @@ namespace Pulumi.Gcp.Compute
 
             string securityPolicy,
 
+            ImmutableArray<Outputs.GetBackendServiceSecuritySettingResult> securitySettings,
+
             string selfLink,
 
             string sessionAffinity,
@@ -188,6 +191,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             Protocol = protocol;
             SecurityPolicy = securityPolicy;
+            SecuritySettings = securitySettings;
             SelfLink = selfLink;
             SessionAffinity = sessionAffinity;
             TimeoutSec = timeoutSec;

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
  * const my_sink = new gcp.logging.OrganizationSink("my-sink", {
- *     description: "some explaination on what this is",
+ *     description: "some explanation on what this is",
  *     orgId: "123456789",
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  *     filter: "resource.type = gce_instance AND severity >= WARNING",

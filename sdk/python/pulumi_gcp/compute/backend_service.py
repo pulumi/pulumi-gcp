@@ -36,6 +36,7 @@ class BackendServiceArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
+                 security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -124,6 +125,9 @@ class BackendServiceArgs:
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
+               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
@@ -172,6 +176,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "protocol", protocol)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
+        if security_settings is not None:
+            pulumi.set(__self__, "security_settings", security_settings)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout_sec is not None:
@@ -493,6 +499,20 @@ class BackendServiceArgs:
         pulumi.set(self, "security_policy", value)
 
     @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
+        """
+        The security settings that apply to this backend service. This field is applicable to either a regional backend service
+        with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+        backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        """
+        return pulumi.get(self, "security_settings")
+
+    @security_settings.setter
+    def security_settings(self, value: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]):
+        pulumi.set(self, "security_settings", value)
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -546,6 +566,7 @@ class _BackendServiceState:
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
+                 security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
@@ -637,6 +658,9 @@ class _BackendServiceState:
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
+               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -690,6 +714,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "protocol", protocol)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
+        if security_settings is not None:
+            pulumi.set(__self__, "security_settings", security_settings)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
@@ -1037,6 +1063,20 @@ class _BackendServiceState:
         pulumi.set(self, "security_policy", value)
 
     @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
+        """
+        The security settings that apply to this backend service. This field is applicable to either a regional backend service
+        with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+        backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        """
+        return pulumi.get(self, "security_settings")
+
+    @security_settings.setter
+    def security_settings(self, value: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]):
+        pulumi.set(self, "security_settings", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1102,6 +1142,7 @@ class BackendService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
+                 security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1348,6 +1389,9 @@ class BackendService(pulumi.CustomResource):
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
+               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
@@ -1553,6 +1597,7 @@ class BackendService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
+                 security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1588,6 +1633,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["security_policy"] = security_policy
+            __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
@@ -1626,6 +1672,7 @@ class BackendService(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             security_policy: Optional[pulumi.Input[str]] = None,
+            security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None) -> 'BackendService':
@@ -1722,6 +1769,9 @@ class BackendService(pulumi.CustomResource):
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
+               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -1756,6 +1806,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["security_policy"] = security_policy
+        __props__.__dict__["security_settings"] = security_settings
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["session_affinity"] = session_affinity
         __props__.__dict__["timeout_sec"] = timeout_sec
@@ -2007,6 +2058,16 @@ class BackendService(pulumi.CustomResource):
         The security policy associated with this backend service.
         """
         return pulumi.get(self, "security_policy")
+
+    @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> pulumi.Output[Optional['outputs.BackendServiceSecuritySettings']]:
+        """
+        The security settings that apply to this backend service. This field is applicable to either a regional backend service
+        with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+        backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        """
+        return pulumi.get(self, "security_settings")
 
     @property
     @pulumi.getter(name="selfLink")

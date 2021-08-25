@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagement
     {
         /// <summary>
-        /// Binauthz conifguration for the cluster.
+        /// Binauthz configuration for the cluster.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementBinauthz? Binauthz;
         /// <summary>

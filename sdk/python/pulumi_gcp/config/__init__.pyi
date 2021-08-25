@@ -169,6 +169,8 @@ redisCustomEndpoint: Optional[str]
 
 region: Optional[str]
 
+requestReason: Optional[str]
+
 requestTimeout: Optional[str]
 
 resourceManagerCustomEndpoint: Optional[str]

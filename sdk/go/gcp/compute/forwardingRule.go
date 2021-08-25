@@ -21,6 +21,205 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 //
 // ## Example Usage
+// ### Internal Http Lb With Mig Backend
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ilbNetwork, err := compute.NewNetwork(ctx, "ilbNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		proxySubnet, err := compute.NewSubnetwork(ctx, "proxySubnet", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
+// 			Region:      pulumi.String("europe-west1"),
+// 			Purpose:     pulumi.String("INTERNAL_HTTPS_LOAD_BALANCER"),
+// 			Role:        pulumi.String("ACTIVE"),
+// 			Network:     ilbNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ilbSubnet, err := compute.NewSubnetwork(ctx, "ilbSubnet", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
+// 			Region:      pulumi.String("europe-west1"),
+// 			Network:     ilbNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "defaultRegionHealthCheck", &compute.RegionHealthCheckArgs{
+// 			Region: pulumi.String("europe-west1"),
+// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+// 				PortSpecification: pulumi.String("USE_SERVING_PORT"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-small"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("http-server"),
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network:    ilbNetwork.ID(),
+// 					Subnetwork: ilbSubnet.ID(),
+// 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-10"),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 			Metadata: pulumi.AnyMap{
+// 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "\n", "export DEBIAN_FRONTEND=noninteractive\n", "apt-get update\n", "apt-get install -y nginx-light jq\n", "\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "\n", "cat <<EOF > /var/www/html/index.html\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mig, err := compute.NewRegionInstanceGroupManager(ctx, "mig", &compute.RegionInstanceGroupManagerArgs{
+// 			Region: pulumi.String("europe-west1"),
+// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: instanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			BaseInstanceName: pulumi.String("vm"),
+// 			TargetSize:       pulumi.Int(2),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
+// 			Region:              pulumi.String("europe-west1"),
+// 			Protocol:            pulumi.String("HTTP"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+// 			TimeoutSec:          pulumi.Int(10),
+// 			HealthChecks: pulumi.String{
+// 				defaultRegionHealthCheck.ID(),
+// 			},
+// 			Backends: compute.RegionBackendServiceBackendArray{
+// 				&compute.RegionBackendServiceBackendArgs{
+// 					Group:          mig.InstanceGroup,
+// 					BalancingMode:  pulumi.String("UTILIZATION"),
+// 					CapacityScaler: pulumi.Float64(1),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "defaultRegionUrlMap", &compute.RegionUrlMapArgs{
+// 			Region:         pulumi.String("europe-west1"),
+// 			DefaultService: defaultRegionBackendService.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "defaultRegionTargetHttpProxy", &compute.RegionTargetHttpProxyArgs{
+// 			Region: pulumi.String("europe-west1"),
+// 			UrlMap: defaultRegionUrlMap.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewForwardingRule(ctx, "googleComputeForwardingRule", &compute.ForwardingRuleArgs{
+// 			Region:              pulumi.String("europe-west1"),
+// 			IpProtocol:          pulumi.String("TCP"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+// 			PortRange:           pulumi.String("80"),
+// 			Target:              defaultRegionTargetHttpProxy.ID(),
+// 			Network:             ilbNetwork.ID(),
+// 			Subnetwork:          ilbSubnet.ID(),
+// 			NetworkTier:         pulumi.String("PREMIUM"),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			proxySubnet,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewall(ctx, "fw_iap", &compute.FirewallArgs{
+// 			Direction: pulumi.String("INGRESS"),
+// 			Network:   ilbNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("130.211.0.0/22"),
+// 				pulumi.String("35.191.0.0/16"),
+// 				pulumi.String("35.235.240.0/20"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewall(ctx, "fw_ilb_to_backends", &compute.FirewallArgs{
+// 			Direction: pulumi.String("INGRESS"),
+// 			Network:   ilbNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("10.0.0.0/24"),
+// 			},
+// 			TargetTags: pulumi.StringArray{
+// 				pulumi.String("http-server"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("80"),
+// 						pulumi.String("443"),
+// 						pulumi.String("8080"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstance(ctx, "vm_test", &compute.InstanceArgs{
+// 			Zone:        pulumi.String("europe-west1-b"),
+// 			MachineType: pulumi.String("e2-small"),
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network:    ilbNetwork.ID(),
+// 					Subnetwork: ilbSubnet.ID(),
+// 				},
+// 			},
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-10"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Forwarding Rule Externallb
 //
 // ```go
@@ -147,6 +346,50 @@ import (
 // 			Target:    defaultTargetPool.ID(),
 // 			PortRange: pulumi.String("80"),
 // 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Forwarding Rule L3 Default
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		healthCheck, err := compute.NewRegionHealthCheck(ctx, "healthCheck", &compute.RegionHealthCheckArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		service, err := compute.NewRegionBackendService(ctx, "service", &compute.RegionBackendServiceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			HealthChecks: pulumi.String{
+// 				healthCheck.ID(),
+// 			},
+// 			Protocol:            pulumi.String("UNSPECIFIED"),
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewForwardingRule(ctx, "fwdRule", &compute.ForwardingRuleArgs{
+// 			BackendService: service.ID(),
+// 			IpProtocol:     pulumi.String("L3_DEFAULT"),
+// 			AllPorts:       pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -483,11 +726,13 @@ import (
 type ForwardingRule struct {
 	pulumi.CustomResourceState
 
-	// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-	// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-	// addressed to any ports to be forwarded to the backends configured
-	// with this forwarding rule. Used with backend service. Cannot be set
-	// if port or portRange are set.
+	// This field can be used with internal load balancer or network load balancer
+	// when the forwarding rule references a backend service, or with the target
+	// field when it references a TargetInstance. Set this to true to
+	// allow packets addressed to any ports to be forwarded to the backends configured
+	// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+	// must be set to true when the protocol is set to L3_DEFAULT.
+	// Cannot be set if port or portRange are set.
 	AllPorts pulumi.BoolPtrOutput `pulumi:"allPorts"`
 	// If true, clients can access ILB from all regions.
 	// Otherwise only allows from the local region the ILB is located at.
@@ -517,7 +762,7 @@ type ForwardingRule struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -574,13 +819,15 @@ type ForwardingRule struct {
 	//   1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
-	// This field is used along with the backendService field for internal
-	// load balancing.
-	// When the load balancing scheme is INTERNAL, a single port or a comma
-	// separated list of ports can be configured. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// You may specify a maximum of up to 5 ports.
+	// This field is used along with internal load balancing and network
+	// load balancer when the forwarding rule references a backend service
+	// and when protocol is not L3_DEFAULT.
+	// A single port or a comma separated list of ports can be configured.
+	// Only packets addressed to these ports will be forwarded to the backends
+	// configured with this forwarding rule.
+	// You can only use one of ports and portRange, or allPorts.
+	// The three are mutually exclusive.
+	// You may specify a maximum of up to 5 ports, which can be non-contiguous.
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -645,11 +892,13 @@ func GetForwardingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ForwardingRule resources.
 type forwardingRuleState struct {
-	// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-	// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-	// addressed to any ports to be forwarded to the backends configured
-	// with this forwarding rule. Used with backend service. Cannot be set
-	// if port or portRange are set.
+	// This field can be used with internal load balancer or network load balancer
+	// when the forwarding rule references a backend service, or with the target
+	// field when it references a TargetInstance. Set this to true to
+	// allow packets addressed to any ports to be forwarded to the backends configured
+	// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+	// must be set to true when the protocol is set to L3_DEFAULT.
+	// Cannot be set if port or portRange are set.
 	AllPorts *bool `pulumi:"allPorts"`
 	// If true, clients can access ILB from all regions.
 	// Otherwise only allows from the local region the ILB is located at.
@@ -679,7 +928,7 @@ type forwardingRuleState struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -736,13 +985,15 @@ type forwardingRuleState struct {
 	//   1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
-	// This field is used along with the backendService field for internal
-	// load balancing.
-	// When the load balancing scheme is INTERNAL, a single port or a comma
-	// separated list of ports can be configured. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// You may specify a maximum of up to 5 ports.
+	// This field is used along with internal load balancing and network
+	// load balancer when the forwarding rule references a backend service
+	// and when protocol is not L3_DEFAULT.
+	// A single port or a comma separated list of ports can be configured.
+	// Only packets addressed to these ports will be forwarded to the backends
+	// configured with this forwarding rule.
+	// You can only use one of ports and portRange, or allPorts.
+	// The three are mutually exclusive.
+	// You may specify a maximum of up to 5 ports, which can be non-contiguous.
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -779,11 +1030,13 @@ type forwardingRuleState struct {
 }
 
 type ForwardingRuleState struct {
-	// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-	// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-	// addressed to any ports to be forwarded to the backends configured
-	// with this forwarding rule. Used with backend service. Cannot be set
-	// if port or portRange are set.
+	// This field can be used with internal load balancer or network load balancer
+	// when the forwarding rule references a backend service, or with the target
+	// field when it references a TargetInstance. Set this to true to
+	// allow packets addressed to any ports to be forwarded to the backends configured
+	// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+	// must be set to true when the protocol is set to L3_DEFAULT.
+	// Cannot be set if port or portRange are set.
 	AllPorts pulumi.BoolPtrInput
 	// If true, clients can access ILB from all regions.
 	// Otherwise only allows from the local region the ILB is located at.
@@ -813,7 +1066,7 @@ type ForwardingRuleState struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
 	IpProtocol pulumi.StringPtrInput
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -870,13 +1123,15 @@ type ForwardingRuleState struct {
 	//   1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
-	// This field is used along with the backendService field for internal
-	// load balancing.
-	// When the load balancing scheme is INTERNAL, a single port or a comma
-	// separated list of ports can be configured. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// You may specify a maximum of up to 5 ports.
+	// This field is used along with internal load balancing and network
+	// load balancer when the forwarding rule references a backend service
+	// and when protocol is not L3_DEFAULT.
+	// A single port or a comma separated list of ports can be configured.
+	// Only packets addressed to these ports will be forwarded to the backends
+	// configured with this forwarding rule.
+	// You can only use one of ports and portRange, or allPorts.
+	// The three are mutually exclusive.
+	// You may specify a maximum of up to 5 ports, which can be non-contiguous.
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -917,11 +1172,13 @@ func (ForwardingRuleState) ElementType() reflect.Type {
 }
 
 type forwardingRuleArgs struct {
-	// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-	// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-	// addressed to any ports to be forwarded to the backends configured
-	// with this forwarding rule. Used with backend service. Cannot be set
-	// if port or portRange are set.
+	// This field can be used with internal load balancer or network load balancer
+	// when the forwarding rule references a backend service, or with the target
+	// field when it references a TargetInstance. Set this to true to
+	// allow packets addressed to any ports to be forwarded to the backends configured
+	// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+	// must be set to true when the protocol is set to L3_DEFAULT.
+	// Cannot be set if port or portRange are set.
 	AllPorts *bool `pulumi:"allPorts"`
 	// If true, clients can access ILB from all regions.
 	// Otherwise only allows from the local region the ILB is located at.
@@ -949,7 +1206,7 @@ type forwardingRuleArgs struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -1004,13 +1261,15 @@ type forwardingRuleArgs struct {
 	//   1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
-	// This field is used along with the backendService field for internal
-	// load balancing.
-	// When the load balancing scheme is INTERNAL, a single port or a comma
-	// separated list of ports can be configured. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// You may specify a maximum of up to 5 ports.
+	// This field is used along with internal load balancing and network
+	// load balancer when the forwarding rule references a backend service
+	// and when protocol is not L3_DEFAULT.
+	// A single port or a comma separated list of ports can be configured.
+	// Only packets addressed to these ports will be forwarded to the backends
+	// configured with this forwarding rule.
+	// You can only use one of ports and portRange, or allPorts.
+	// The three are mutually exclusive.
+	// You may specify a maximum of up to 5 ports, which can be non-contiguous.
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1044,11 +1303,13 @@ type forwardingRuleArgs struct {
 
 // The set of arguments for constructing a ForwardingRule resource.
 type ForwardingRuleArgs struct {
-	// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-	// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-	// addressed to any ports to be forwarded to the backends configured
-	// with this forwarding rule. Used with backend service. Cannot be set
-	// if port or portRange are set.
+	// This field can be used with internal load balancer or network load balancer
+	// when the forwarding rule references a backend service, or with the target
+	// field when it references a TargetInstance. Set this to true to
+	// allow packets addressed to any ports to be forwarded to the backends configured
+	// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+	// must be set to true when the protocol is set to L3_DEFAULT.
+	// Cannot be set if port or portRange are set.
 	AllPorts pulumi.BoolPtrInput
 	// If true, clients can access ILB from all regions.
 	// Otherwise only allows from the local region the ILB is located at.
@@ -1076,7 +1337,7 @@ type ForwardingRuleArgs struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
 	IpProtocol pulumi.StringPtrInput
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -1131,13 +1392,15 @@ type ForwardingRuleArgs struct {
 	//   1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
-	// This field is used along with the backendService field for internal
-	// load balancing.
-	// When the load balancing scheme is INTERNAL, a single port or a comma
-	// separated list of ports can be configured. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// You may specify a maximum of up to 5 ports.
+	// This field is used along with internal load balancing and network
+	// load balancer when the forwarding rule references a backend service
+	// and when protocol is not L3_DEFAULT.
+	// A single port or a comma separated list of ports can be configured.
+	// Only packets addressed to these ports will be forwarded to the backends
+	// configured with this forwarding rule.
+	// You can only use one of ports and portRange, or allPorts.
+	// The three are mutually exclusive.
+	// You may specify a maximum of up to 5 ports, which can be non-contiguous.
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -31,7 +31,7 @@ class FeatureMembershipConfigmanagementArgs:
                  policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs'] binauthz: Binauthz conifguration for the cluster.
+        :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs'] binauthz: Binauthz configuration for the cluster.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster.
         :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster.
         :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster.
@@ -52,7 +52,7 @@ class FeatureMembershipConfigmanagementArgs:
     @pulumi.getter
     def binauthz(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']]:
         """
-        Binauthz conifguration for the cluster.
+        Binauthz configuration for the cluster.
         """
         return pulumi.get(self, "binauthz")
 
