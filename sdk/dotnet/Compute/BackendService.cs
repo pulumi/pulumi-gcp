@@ -490,6 +490,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> SecurityPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The security settings that apply to this backend service. This field is applicable to either a regional backend service
+        /// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+        /// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Output("securitySettings")]
+        public Output<Outputs.BackendServiceSecuritySettings?> SecuritySettings { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -764,6 +772,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
+        /// The security settings that apply to this backend service. This field is applicable to either a regional backend service
+        /// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+        /// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Input("securitySettings")]
+        public Input<Inputs.BackendServiceSecuritySettingsArgs>? SecuritySettings { get; set; }
+
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
         /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
@@ -1003,6 +1019,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
+
+        /// <summary>
+        /// The security settings that apply to this backend service. This field is applicable to either a regional backend service
+        /// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+        /// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Input("securitySettings")]
+        public Input<Inputs.BackendServiceSecuritySettingsGetArgs>? SecuritySettings { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

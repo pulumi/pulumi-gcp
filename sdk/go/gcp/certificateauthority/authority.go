@@ -116,7 +116,7 @@ import (
 // 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
 // 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
 // 						IsCa:                pulumi.Bool(true),
-// 						MaxIssuerPathLength: pulumi.Int(10),
+// 						MaxIssuerPathLength: pulumi.Int(0),
 // 					},
 // 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
 // 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{

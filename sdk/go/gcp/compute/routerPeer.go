@@ -50,6 +50,34 @@ import (
 // 	})
 // }
 // ```
+// ### Router Peer Disabled
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+// 			AdvertisedRoutePriority: pulumi.Int(100),
+// 			Enable:                  pulumi.Bool(false),
+// 			Interface:               pulumi.String("interface-1"),
+// 			PeerAsn:                 pulumi.Int(65513),
+// 			PeerIpAddress:           pulumi.String("169.254.1.2"),
+// 			Region:                  pulumi.String("us-central1"),
+// 			Router:                  pulumi.String("my-router"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -95,6 +123,11 @@ type RouterPeer struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrOutput `pulumi:"advertisedRoutePriority"`
+	// The status of the BGP peer connection. If set to false, any active session
+	// with the peer is terminated and all associated routing information is removed.
+	// If set to true, the peer connection can be established with routing information.
+	// The default is true.
+	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringOutput `pulumi:"interface"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
@@ -190,6 +223,11 @@ type routerPeerState struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
+	// The status of the BGP peer connection. If set to false, any active session
+	// with the peer is terminated and all associated routing information is removed.
+	// If set to true, the peer connection can be established with routing information.
+	// The default is true.
+	Enable *bool `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
 	Interface *string `pulumi:"interface"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
@@ -245,6 +283,11 @@ type RouterPeerState struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrInput
+	// The status of the BGP peer connection. If set to false, any active session
+	// with the peer is terminated and all associated routing information is removed.
+	// If set to true, the peer connection can be established with routing information.
+	// The default is true.
+	Enable pulumi.BoolPtrInput
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringPtrInput
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
@@ -304,6 +347,11 @@ type routerPeerArgs struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
+	// The status of the BGP peer connection. If set to false, any active session
+	// with the peer is terminated and all associated routing information is removed.
+	// If set to true, the peer connection can be established with routing information.
+	// The default is true.
+	Enable *bool `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
 	Interface string `pulumi:"interface"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
@@ -353,6 +401,11 @@ type RouterPeerArgs struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrInput
+	// The status of the BGP peer connection. If set to false, any active session
+	// with the peer is terminated and all associated routing information is removed.
+	// If set to true, the peer connection can be established with routing information.
+	// The default is true.
+	Enable pulumi.BoolPtrInput
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringInput
 	// Name of this BGP peer. The name must be 1-63 characters long,

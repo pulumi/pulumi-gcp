@@ -11,7 +11,7 @@ import (
 )
 
 type FeatureMembershipConfigmanagement struct {
-	// Binauthz conifguration for the cluster.
+	// Binauthz configuration for the cluster.
 	Binauthz *FeatureMembershipConfigmanagementBinauthz `pulumi:"binauthz"`
 	// Config Sync configuration for the cluster.
 	ConfigSync *FeatureMembershipConfigmanagementConfigSync `pulumi:"configSync"`
@@ -35,7 +35,7 @@ type FeatureMembershipConfigmanagementInput interface {
 }
 
 type FeatureMembershipConfigmanagementArgs struct {
-	// Binauthz conifguration for the cluster.
+	// Binauthz configuration for the cluster.
 	Binauthz FeatureMembershipConfigmanagementBinauthzPtrInput `pulumi:"binauthz"`
 	// Config Sync configuration for the cluster.
 	ConfigSync FeatureMembershipConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
@@ -124,7 +124,7 @@ func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanage
 	}).(FeatureMembershipConfigmanagementPtrOutput)
 }
 
-// Binauthz conifguration for the cluster.
+// Binauthz configuration for the cluster.
 func (o FeatureMembershipConfigmanagementOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
 		return v.Binauthz
@@ -175,7 +175,7 @@ func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConf
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) FeatureMembershipConfigmanagement { return *v }).(FeatureMembershipConfigmanagementOutput)
 }
 
-// Binauthz conifguration for the cluster.
+// Binauthz configuration for the cluster.
 func (o FeatureMembershipConfigmanagementPtrOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
 		if v == nil {

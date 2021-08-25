@@ -37,7 +37,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = logging.NewOrganizationSink(ctx, "my_sink", &logging.OrganizationSinkArgs{
-// 			Description: pulumi.String("some explaination on what this is"),
+// 			Description: pulumi.String("some explanation on what this is"),
 // 			OrgId:       pulumi.String("123456789"),
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil

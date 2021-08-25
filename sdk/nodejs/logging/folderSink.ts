@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     parent: "organizations/123456",
  * });
  * const my_sink = new gcp.logging.FolderSink("my-sink", {
- *     description: "some explaination on what this is",
+ *     description: "some explanation on what this is",
  *     folder: my_folder.name,
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  *     filter: "resource.type = gce_instance AND severity >= WARNING",

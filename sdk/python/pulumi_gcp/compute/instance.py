@@ -81,7 +81,7 @@ class InstanceArgs:
                startup-script metadata key on the created instance and thus the two
                mechanisms are not allowed to be used simultaneously.  Users are free to use
                either mechanism - the only distinction is that this separate attribute
-               willl cause a recreate on modification.  On import, `metadata_startup_script`
+               will cause a recreate on modification.  On import, `metadata_startup_script`
                will be set, but `metadata.startup-script` will not - if you choose to use the
                other mechanism, you will see a diff immediately after import, which will cause a
                destroy/recreate operation.  You may want to modify your state file manually
@@ -385,7 +385,7 @@ class InstanceArgs:
         startup-script metadata key on the created instance and thus the two
         mechanisms are not allowed to be used simultaneously.  Users are free to use
         either mechanism - the only distinction is that this separate attribute
-        willl cause a recreate on modification.  On import, `metadata_startup_script`
+        will cause a recreate on modification.  On import, `metadata_startup_script`
         will be set, but `metadata.startup-script` will not - if you choose to use the
         other mechanism, you will see a diff immediately after import, which will cause a
         destroy/recreate operation.  You may want to modify your state file manually
@@ -636,7 +636,7 @@ class _InstanceState:
                startup-script metadata key on the created instance and thus the two
                mechanisms are not allowed to be used simultaneously.  Users are free to use
                either mechanism - the only distinction is that this separate attribute
-               willl cause a recreate on modification.  On import, `metadata_startup_script`
+               will cause a recreate on modification.  On import, `metadata_startup_script`
                will be set, but `metadata.startup-script` will not - if you choose to use the
                other mechanism, you will see a diff immediately after import, which will cause a
                destroy/recreate operation.  You may want to modify your state file manually
@@ -1008,7 +1008,7 @@ class _InstanceState:
         startup-script metadata key on the created instance and thus the two
         mechanisms are not allowed to be used simultaneously.  Users are free to use
         either mechanism - the only distinction is that this separate attribute
-        willl cause a recreate on modification.  On import, `metadata_startup_script`
+        will cause a recreate on modification.  On import, `metadata_startup_script`
         will be set, but `metadata.startup-script` will not - if you choose to use the
         other mechanism, you will see a diff immediately after import, which will cause a
         destroy/recreate operation.  You may want to modify your state file manually
@@ -1349,7 +1349,7 @@ class Instance(pulumi.CustomResource):
                startup-script metadata key on the created instance and thus the two
                mechanisms are not allowed to be used simultaneously.  Users are free to use
                either mechanism - the only distinction is that this separate attribute
-               willl cause a recreate on modification.  On import, `metadata_startup_script`
+               will cause a recreate on modification.  On import, `metadata_startup_script`
                will be set, but `metadata.startup-script` will not - if you choose to use the
                other mechanism, you will see a diff immediately after import, which will cause a
                destroy/recreate operation.  You may want to modify your state file manually
@@ -1641,7 +1641,7 @@ class Instance(pulumi.CustomResource):
                startup-script metadata key on the created instance and thus the two
                mechanisms are not allowed to be used simultaneously.  Users are free to use
                either mechanism - the only distinction is that this separate attribute
-               willl cause a recreate on modification.  On import, `metadata_startup_script`
+               will cause a recreate on modification.  On import, `metadata_startup_script`
                will be set, but `metadata.startup-script` will not - if you choose to use the
                other mechanism, you will see a diff immediately after import, which will cause a
                destroy/recreate operation.  You may want to modify your state file manually
@@ -1902,7 +1902,7 @@ class Instance(pulumi.CustomResource):
         startup-script metadata key on the created instance and thus the two
         mechanisms are not allowed to be used simultaneously.  Users are free to use
         either mechanism - the only distinction is that this separate attribute
-        willl cause a recreate on modification.  On import, `metadata_startup_script`
+        will cause a recreate on modification.  On import, `metadata_startup_script`
         will be set, but `metadata.startup-script` will not - if you choose to use the
         other mechanism, you will see a diff immediately after import, which will cause a
         destroy/recreate operation.  You may want to modify your state file manually

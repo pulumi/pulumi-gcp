@@ -103,6 +103,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly pubsubLiteCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly redisCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly region!: pulumi.Output<string | undefined>;
+    public readonly requestReason!: pulumi.Output<string | undefined>;
     public readonly requestTimeout!: pulumi.Output<string | undefined>;
     public readonly resourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly resourceManagerV2CustomEndpoint!: pulumi.Output<string | undefined>;
@@ -218,6 +219,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["pubsubLiteCustomEndpoint"] = args ? args.pubsubLiteCustomEndpoint : undefined;
             inputs["redisCustomEndpoint"] = args ? args.redisCustomEndpoint : undefined;
             inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+            inputs["requestReason"] = args ? args.requestReason : undefined;
             inputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             inputs["resourceManagerCustomEndpoint"] = args ? args.resourceManagerCustomEndpoint : undefined;
             inputs["resourceManagerV2CustomEndpoint"] = args ? args.resourceManagerV2CustomEndpoint : undefined;
@@ -335,6 +337,7 @@ export interface ProviderArgs {
     pubsubLiteCustomEndpoint?: pulumi.Input<string>;
     redisCustomEndpoint?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+    requestReason?: pulumi.Input<string>;
     requestTimeout?: pulumi.Input<string>;
     resourceManagerCustomEndpoint?: pulumi.Input<string>;
     resourceManagerV2CustomEndpoint?: pulumi.Input<string>;

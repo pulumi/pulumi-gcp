@@ -45,6 +45,30 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Router Peer Disabled
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var peer = new Gcp.Compute.RouterPeer("peer", new Gcp.Compute.RouterPeerArgs
+    ///         {
+    ///             AdvertisedRoutePriority = 100,
+    ///             Enable = false,
+    ///             Interface = "interface-1",
+    ///             PeerAsn = 65513,
+    ///             PeerIpAddress = "169.254.1.2",
+    ///             Region = "us-central1",
+    ///             Router = "my-router",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -106,6 +130,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("advertisedRoutePriority")]
         public Output<int?> AdvertisedRoutePriority { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the BGP peer connection. If set to false, any active session
+        /// with the peer is terminated and all associated routing information is removed.
+        /// If set to true, the peer connection can be established with routing information.
+        /// The default is true.
+        /// </summary>
+        [Output("enable")]
+        public Output<bool?> Enable { get; private set; } = null!;
 
         /// <summary>
         /// Name of the interface the BGP peer is associated with.
@@ -270,6 +303,15 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? AdvertisedRoutePriority { get; set; }
 
         /// <summary>
+        /// The status of the BGP peer connection. If set to false, any active session
+        /// with the peer is terminated and all associated routing information is removed.
+        /// If set to true, the peer connection can be established with routing information.
+        /// The default is true.
+        /// </summary>
+        [Input("enable")]
+        public Input<bool>? Enable { get; set; }
+
+        /// <summary>
         /// Name of the interface the BGP peer is associated with.
         /// </summary>
         [Input("interface", required: true)]
@@ -376,6 +418,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("advertisedRoutePriority")]
         public Input<int>? AdvertisedRoutePriority { get; set; }
+
+        /// <summary>
+        /// The status of the BGP peer connection. If set to false, any active session
+        /// with the peer is terminated and all associated routing information is removed.
+        /// If set to true, the peer connection can be established with routing information.
+        /// The default is true.
+        /// </summary>
+        [Input("enable")]
+        public Input<bool>? Enable { get; set; }
 
         /// <summary>
         /// Name of the interface the BGP peer is associated with.

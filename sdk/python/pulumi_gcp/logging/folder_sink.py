@@ -396,7 +396,7 @@ class FolderSink(pulumi.CustomResource):
             display_name="My folder",
             parent="organizations/123456")
         my_sink = gcp.logging.FolderSink("my-sink",
-            description="some explaination on what this is",
+            description="some explanation on what this is",
             folder=my_folder.name,
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
             filter="resource.type = gce_instance AND severity >= WARNING")
@@ -456,7 +456,7 @@ class FolderSink(pulumi.CustomResource):
             display_name="My folder",
             parent="organizations/123456")
         my_sink = gcp.logging.FolderSink("my-sink",
-            description="some explaination on what this is",
+            description="some explanation on what this is",
             folder=my_folder.name,
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
             filter="resource.type = gce_instance AND severity >= WARNING")

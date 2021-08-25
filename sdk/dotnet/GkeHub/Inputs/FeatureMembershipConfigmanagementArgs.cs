@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Binauthz conifguration for the cluster.
+        /// Binauthz configuration for the cluster.
         /// </summary>
         [Input("binauthz")]
         public Input<Inputs.FeatureMembershipConfigmanagementBinauthzArgs>? Binauthz { get; set; }

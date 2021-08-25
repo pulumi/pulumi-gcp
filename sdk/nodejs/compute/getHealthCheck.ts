@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const healthChceck = pulumi.output(gcp.compute.getHealthCheck({
+ * const healthCheck = pulumi.output(gcp.compute.getHealthCheck({
  *     name: "my-hc",
  * }));
  * ```

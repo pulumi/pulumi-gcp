@@ -336,6 +336,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('region') or _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
 
     @property
+    def request_reason(self) -> Optional[str]:
+        return __config__.get('requestReason')
+
+    @property
     def request_timeout(self) -> Optional[str]:
         return __config__.get('requestTimeout')
 

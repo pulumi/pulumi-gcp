@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Logging
     ///         });
     ///         var my_sink = new Gcp.Logging.BillingAccountSink("my-sink", new Gcp.Logging.BillingAccountSinkArgs
     ///         {
-    ///             Description = "some explaination on what this is",
+    ///             Description = "some explanation on what this is",
     ///             BillingAccount = "ABCDEF-012345-GHIJKL",
     ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
     ///         });

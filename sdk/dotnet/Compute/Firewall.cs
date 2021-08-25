@@ -72,6 +72,43 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Firewall With Target Tags
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var rules = new Gcp.Compute.Firewall("rules", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Ports = 
+    ///                     {
+    ///                         "80",
+    ///                         "8080",
+    ///                         "1000-2000",
+    ///                     },
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///             },
+    ///             Description = "Creates firewall rule targeting tagged instances",
+    ///             Network = "default",
+    ///             Project = "my-project-name",
+    ///             TargetTags = 
+    ///             {
+    ///                 "web",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

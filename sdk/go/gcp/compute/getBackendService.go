@@ -60,8 +60,9 @@ type LookupBackendServiceResult struct {
 	PortName string  `pulumi:"portName"`
 	Project  *string `pulumi:"project"`
 	// The protocol for incoming requests.
-	Protocol       string `pulumi:"protocol"`
-	SecurityPolicy string `pulumi:"securityPolicy"`
+	Protocol         string                             `pulumi:"protocol"`
+	SecurityPolicy   string                             `pulumi:"securityPolicy"`
+	SecuritySettings []GetBackendServiceSecuritySetting `pulumi:"securitySettings"`
 	// The URI of the Backend Service.
 	SelfLink string `pulumi:"selfLink"`
 	// The Backend Service session stickiness configuration.

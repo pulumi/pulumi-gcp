@@ -21,6 +21,273 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
     /// 
     /// ## Example Usage
+    /// ### Internal Http Lb With Mig Backend
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Internal HTTP load balancer with a managed instance group backend
+    ///         // VPC
+    ///         var ilbNetwork = new Gcp.Compute.Network("ilbNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // proxy-only subnet
+    ///         var proxySubnet = new Gcp.Compute.Subnetwork("proxySubnet", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.0.0/24",
+    ///             Region = "europe-west1",
+    ///             Purpose = "INTERNAL_HTTPS_LOAD_BALANCER",
+    ///             Role = "ACTIVE",
+    ///             Network = ilbNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // backed subnet
+    ///         var ilbSubnet = new Gcp.Compute.Subnetwork("ilbSubnet", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.1.0/24",
+    ///             Region = "europe-west1",
+    ///             Network = ilbNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // health check
+    ///         var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("defaultRegionHealthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 PortSpecification = "USE_SERVING_PORT",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // instance template
+    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-small",
+    ///             Tags = 
+    ///             {
+    ///                 "http-server",
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = ilbNetwork.Id,
+    ///                     Subnetwork = ilbSubnet.Id,
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = "debian-cloud/debian-10",
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "startup-script", @"#! /bin/bash
+    /// set -euo pipefail
+    /// 
+    /// export DEBIAN_FRONTEND=noninteractive
+    /// apt-get update
+    /// apt-get install -y nginx-light jq
+    /// 
+    /// NAME=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/hostname"")
+    /// IP=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip"")
+    /// METADATA=$(curl -f -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True"" | jq 'del(.[""startup-script""])')
+    /// 
+    /// cat &lt;&lt;EOF &gt; /var/www/html/index.html
+    /// &lt;pre&gt;
+    /// Name: $NAME
+    /// IP: $IP
+    /// Metadata: $METADATA
+    /// &lt;/pre&gt;
+    /// EOF
+    /// " },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // MIG
+    ///         var mig = new Gcp.Compute.RegionInstanceGroupManager("mig", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = instanceTemplate.Id,
+    ///                     Name = "primary",
+    ///                 },
+    ///             },
+    ///             BaseInstanceName = "vm",
+    ///             TargetSize = 2,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // backend service
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             Protocol = "HTTP",
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultRegionHealthCheck.Id,
+    ///             },
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///                 {
+    ///                     Group = mig.InstanceGroup,
+    ///                     BalancingMode = "UTILIZATION",
+    ///                     CapacityScaler = 1,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // url map
+    ///         var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("defaultRegionUrlMap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             DefaultService = defaultRegionBackendService.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // http proxy
+    ///         var defaultRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", new Gcp.Compute.RegionTargetHttpProxyArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             UrlMap = defaultRegionUrlMap.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // forwarding rule
+    ///         var googleComputeForwardingRule = new Gcp.Compute.ForwardingRule("googleComputeForwardingRule", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             IpProtocol = "TCP",
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///             PortRange = "80",
+    ///             Target = defaultRegionTargetHttpProxy.Id,
+    ///             Network = ilbNetwork.Id,
+    ///             Subnetwork = ilbSubnet.Id,
+    ///             NetworkTier = "PREMIUM",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 proxySubnet,
+    ///             },
+    ///         });
+    ///         // allow all access from IAP and health check ranges
+    ///         var fw_iap = new Gcp.Compute.Firewall("fw-iap", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Direction = "INGRESS",
+    ///             Network = ilbNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "130.211.0.0/22",
+    ///                 "35.191.0.0/16",
+    ///                 "35.235.240.0/20",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // allow http from proxy subnet to backends
+    ///         var fw_ilb_to_backends = new Gcp.Compute.Firewall("fw-ilb-to-backends", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Direction = "INGRESS",
+    ///             Network = ilbNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "10.0.0.0/24",
+    ///             },
+    ///             TargetTags = 
+    ///             {
+    ///                 "http-server",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     Ports = 
+    ///                     {
+    ///                         "80",
+    ///                         "443",
+    ///                         "8080",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // test instance
+    ///         var vm_test = new Gcp.Compute.Instance("vm-test", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             Zone = "europe-west1-b",
+    ///             MachineType = "e2-small",
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = ilbNetwork.Id,
+    ///                     Subnetwork = ilbSubnet.Id,
+    ///                 },
+    ///             },
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-10",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Forwarding Rule Externallb
     /// 
     /// ```csharp
@@ -139,6 +406,53 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Target = defaultTargetPool.Id,
     ///             PortRange = "80",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Forwarding Rule L3 Default
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var healthCheck = new Gcp.Compute.RegionHealthCheck("healthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var service = new Gcp.Compute.RegionBackendService("service", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HealthChecks = 
+    ///             {
+    ///                 healthCheck.Id,
+    ///             },
+    ///             Protocol = "UNSPECIFIED",
+    ///             LoadBalancingScheme = "EXTERNAL",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var fwdRule = new Gcp.Compute.ForwardingRule("fwdRule", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             BackendService = service.Id,
+    ///             IpProtocol = "L3_DEFAULT",
+    ///             AllPorts = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -519,11 +833,13 @@ namespace Pulumi.Gcp.Compute
     public partial class ForwardingRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-        /// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-        /// addressed to any ports to be forwarded to the backends configured
-        /// with this forwarding rule. Used with backend service. Cannot be set
-        /// if port or portRange are set.
+        /// This field can be used with internal load balancer or network load balancer
+        /// when the forwarding rule references a backend service, or with the target
+        /// field when it references a TargetInstance. Set this to true to
+        /// allow packets addressed to any ports to be forwarded to the backends configured
+        /// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+        /// must be set to true when the protocol is set to L3_DEFAULT.
+        /// Cannot be set if port or portRange are set.
         /// </summary>
         [Output("allPorts")]
         public Output<bool?> AllPorts { get; private set; } = null!;
@@ -577,7 +893,7 @@ namespace Pulumi.Gcp.Compute
         /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
-        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
@@ -670,13 +986,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> PortRange { get; private set; } = null!;
 
         /// <summary>
-        /// This field is used along with the backend_service field for internal
-        /// load balancing.
-        /// When the load balancing scheme is INTERNAL, a single port or a comma
-        /// separated list of ports can be configured. Only packets addressed to
-        /// these ports will be forwarded to the backends configured with this
-        /// forwarding rule.
-        /// You may specify a maximum of up to 5 ports.
+        /// This field is used along with internal load balancing and network
+        /// load balancer when the forwarding rule references a backend service
+        /// and when protocol is not L3_DEFAULT.
+        /// A single port or a comma separated list of ports can be configured.
+        /// Only packets addressed to these ports will be forwarded to the backends
+        /// configured with this forwarding rule.
+        /// You can only use one of ports and portRange, or allPorts.
+        /// The three are mutually exclusive.
+        /// You may specify a maximum of up to 5 ports, which can be non-contiguous.
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
@@ -788,11 +1106,13 @@ namespace Pulumi.Gcp.Compute
     public sealed class ForwardingRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-        /// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-        /// addressed to any ports to be forwarded to the backends configured
-        /// with this forwarding rule. Used with backend service. Cannot be set
-        /// if port or portRange are set.
+        /// This field can be used with internal load balancer or network load balancer
+        /// when the forwarding rule references a backend service, or with the target
+        /// field when it references a TargetInstance. Set this to true to
+        /// allow packets addressed to any ports to be forwarded to the backends configured
+        /// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+        /// must be set to true when the protocol is set to L3_DEFAULT.
+        /// Cannot be set if port or portRange are set.
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
@@ -840,7 +1160,7 @@ namespace Pulumi.Gcp.Compute
         /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
-        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
@@ -936,13 +1256,15 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _ports;
 
         /// <summary>
-        /// This field is used along with the backend_service field for internal
-        /// load balancing.
-        /// When the load balancing scheme is INTERNAL, a single port or a comma
-        /// separated list of ports can be configured. Only packets addressed to
-        /// these ports will be forwarded to the backends configured with this
-        /// forwarding rule.
-        /// You may specify a maximum of up to 5 ports.
+        /// This field is used along with internal load balancing and network
+        /// load balancer when the forwarding rule references a backend service
+        /// and when protocol is not L3_DEFAULT.
+        /// A single port or a comma separated list of ports can be configured.
+        /// Only packets addressed to these ports will be forwarded to the backends
+        /// configured with this forwarding rule.
+        /// You can only use one of ports and portRange, or allPorts.
+        /// The three are mutually exclusive.
+        /// You may specify a maximum of up to 5 ports, which can be non-contiguous.
         /// </summary>
         public InputList<string> Ports
         {
@@ -1006,11 +1328,13 @@ namespace Pulumi.Gcp.Compute
     public sealed class ForwardingRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For internal TCP/UDP load balancing (i.e. load balancing scheme is
-        /// INTERNAL and protocol is TCP/UDP), set this to true to allow packets
-        /// addressed to any ports to be forwarded to the backends configured
-        /// with this forwarding rule. Used with backend service. Cannot be set
-        /// if port or portRange are set.
+        /// This field can be used with internal load balancer or network load balancer
+        /// when the forwarding rule references a backend service, or with the target
+        /// field when it references a TargetInstance. Set this to true to
+        /// allow packets addressed to any ports to be forwarded to the backends configured
+        /// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
+        /// must be set to true when the protocol is set to L3_DEFAULT.
+        /// Cannot be set if port or portRange are set.
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
@@ -1064,7 +1388,7 @@ namespace Pulumi.Gcp.Compute
         /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
-        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
@@ -1166,13 +1490,15 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _ports;
 
         /// <summary>
-        /// This field is used along with the backend_service field for internal
-        /// load balancing.
-        /// When the load balancing scheme is INTERNAL, a single port or a comma
-        /// separated list of ports can be configured. Only packets addressed to
-        /// these ports will be forwarded to the backends configured with this
-        /// forwarding rule.
-        /// You may specify a maximum of up to 5 ports.
+        /// This field is used along with internal load balancing and network
+        /// load balancer when the forwarding rule references a backend service
+        /// and when protocol is not L3_DEFAULT.
+        /// A single port or a comma separated list of ports can be configured.
+        /// Only packets addressed to these ports will be forwarded to the backends
+        /// configured with this forwarding rule.
+        /// You can only use one of ports and portRange, or allPorts.
+        /// The three are mutually exclusive.
+        /// You may specify a maximum of up to 5 ports, which can be non-contiguous.
         /// </summary>
         public InputList<string> Ports
         {

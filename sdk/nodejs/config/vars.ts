@@ -87,6 +87,7 @@ export let pubsubCustomEndpoint: string | undefined = __config.get("pubsubCustom
 export let pubsubLiteCustomEndpoint: string | undefined = __config.get("pubsubLiteCustomEndpoint");
 export let redisCustomEndpoint: string | undefined = __config.get("redisCustomEndpoint");
 export let region: string | undefined = __config.get("region") || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+export let requestReason: string | undefined = __config.get("requestReason");
 export let requestTimeout: string | undefined = __config.get("requestTimeout");
 export let resourceManagerCustomEndpoint: string | undefined = __config.get("resourceManagerCustomEndpoint");
 export let resourceManagerV2CustomEndpoint: string | undefined = __config.get("resourceManagerV2CustomEndpoint");

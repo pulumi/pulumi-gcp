@@ -73,6 +73,43 @@ import (
 // 	})
 // }
 // ```
+// ### Firewall With Target Tags
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("80"),
+// 						pulumi.String("8080"),
+// 						pulumi.String("1000-2000"),
+// 					},
+// 					Protocol: pulumi.String("tcp"),
+// 				},
+// 			},
+// 			Description: pulumi.String("Creates firewall rule targeting tagged instances"),
+// 			Network:     pulumi.String("default"),
+// 			Project:     pulumi.String("my-project-name"),
+// 			TargetTags: pulumi.StringArray{
+// 				pulumi.String("web"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

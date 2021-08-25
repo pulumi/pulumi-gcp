@@ -94,6 +94,7 @@ type Provider struct {
 	PubsubLiteCustomEndpoint           pulumi.StringPtrOutput `pulumi:"pubsubLiteCustomEndpoint"`
 	RedisCustomEndpoint                pulumi.StringPtrOutput `pulumi:"redisCustomEndpoint"`
 	Region                             pulumi.StringPtrOutput `pulumi:"region"`
+	RequestReason                      pulumi.StringPtrOutput `pulumi:"requestReason"`
 	RequestTimeout                     pulumi.StringPtrOutput `pulumi:"requestTimeout"`
 	ResourceManagerCustomEndpoint      pulumi.StringPtrOutput `pulumi:"resourceManagerCustomEndpoint"`
 	ResourceManagerV2CustomEndpoint    pulumi.StringPtrOutput `pulumi:"resourceManagerV2CustomEndpoint"`
@@ -224,6 +225,7 @@ type providerArgs struct {
 	PubsubLiteCustomEndpoint           *string           `pulumi:"pubsubLiteCustomEndpoint"`
 	RedisCustomEndpoint                *string           `pulumi:"redisCustomEndpoint"`
 	Region                             *string           `pulumi:"region"`
+	RequestReason                      *string           `pulumi:"requestReason"`
 	RequestTimeout                     *string           `pulumi:"requestTimeout"`
 	ResourceManagerCustomEndpoint      *string           `pulumi:"resourceManagerCustomEndpoint"`
 	ResourceManagerV2CustomEndpoint    *string           `pulumi:"resourceManagerV2CustomEndpoint"`
@@ -333,6 +335,7 @@ type ProviderArgs struct {
 	PubsubLiteCustomEndpoint           pulumi.StringPtrInput
 	RedisCustomEndpoint                pulumi.StringPtrInput
 	Region                             pulumi.StringPtrInput
+	RequestReason                      pulumi.StringPtrInput
 	RequestTimeout                     pulumi.StringPtrInput
 	ResourceManagerCustomEndpoint      pulumi.StringPtrInput
 	ResourceManagerV2CustomEndpoint    pulumi.StringPtrInput

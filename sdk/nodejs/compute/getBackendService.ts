@@ -93,6 +93,7 @@ export interface GetBackendServiceResult {
      */
     readonly protocol: string;
     readonly securityPolicy: string;
+    readonly securitySettings: outputs.compute.GetBackendServiceSecuritySetting[];
     /**
      * The URI of the Backend Service.
      */

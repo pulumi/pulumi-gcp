@@ -64,7 +64,7 @@ type LookupInstanceTemplateArgs struct {
 	// The name of the instance template. One of `name` or `filter` must be provided.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
-	// If `project` is not provideded, the provider project is used.
+	// If `project` is not provided, the provider project is used.
 	Project string `pulumi:"project"`
 }
 

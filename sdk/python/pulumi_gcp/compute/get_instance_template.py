@@ -432,7 +432,7 @@ def get_instance_template(filter: Optional[str] = None,
     :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
     :param str name: The name of the instance template. One of `name` or `filter` must be provided.
     :param str project: The ID of the project in which the resource belongs.
-           If `project` is not provideded, the provider project is used.
+           If `project` is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['filter'] = filter

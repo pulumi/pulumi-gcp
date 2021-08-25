@@ -208,7 +208,7 @@ def get_health_check(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    health_chceck = gcp.compute.get_health_check(name="my-hc")
+    health_check = gcp.compute.get_health_check(name="my-hc")
     ```
 
 

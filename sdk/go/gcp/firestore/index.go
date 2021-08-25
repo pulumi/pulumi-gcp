@@ -51,10 +51,6 @@ import (
 // 					FieldPath: pulumi.String("description"),
 // 					Order:     pulumi.String("DESCENDING"),
 // 				},
-// 				&firestore.IndexFieldArgs{
-// 					FieldPath: pulumi.String("__name__"),
-// 					Order:     pulumi.String("DESCENDING"),
-// 				},
 // 			},
 // 			Project: pulumi.String("my-project-name"),
 // 		})

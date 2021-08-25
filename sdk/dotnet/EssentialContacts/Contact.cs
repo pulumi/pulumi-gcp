@@ -45,9 +45,6 @@ namespace Pulumi.Gcp.EssentialContacts
     ///             {
     ///                 "ALL",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

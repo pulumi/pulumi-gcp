@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `project` is not provideded, the provider project is used.
+        /// If `project` is not provided, the provider project is used.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;

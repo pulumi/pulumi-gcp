@@ -23,6 +23,7 @@ class RouterPeerArgs:
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -52,6 +53,10 @@ class RouterPeerArgs:
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
+        :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
+               with the peer is terminated and all associated routing information is removed.
+               If set to true, the peer connection can be established with routing information.
+               The default is true.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -75,6 +80,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
         if advertised_route_priority is not None:
             pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -196,6 +203,21 @@ class RouterPeerArgs:
 
     @property
     @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The status of the BGP peer connection. If set to false, any active session
+        with the peer is terminated and all associated routing information is removed.
+        If set to true, the peer connection can be established with routing information.
+        The default is true.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of this BGP peer. The name must be 1-63 characters long,
@@ -245,6 +267,7 @@ class _RouterPeerState:
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  management_type: Optional[pulumi.Input[str]] = None,
@@ -274,6 +297,10 @@ class _RouterPeerState:
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
+        :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
+               with the peer is terminated and all associated routing information is removed.
+               If set to true, the peer connection can be established with routing information.
+               The default is true.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
@@ -304,6 +331,8 @@ class _RouterPeerState:
             pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
         if advertised_route_priority is not None:
             pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if ip_address is not None:
@@ -384,6 +413,21 @@ class _RouterPeerState:
     @advertised_route_priority.setter
     def advertised_route_priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "advertised_route_priority", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The status of the BGP peer connection. If set to false, any active session
+        with the peer is terminated and all associated routing information is removed.
+        If set to true, the peer connection can be established with routing information.
+        The default is true.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
 
     @property
     @pulumi.getter
@@ -515,6 +559,7 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
@@ -544,6 +589,21 @@ class RouterPeer(pulumi.CustomResource):
 
         peer = gcp.compute.RouterPeer("peer",
             advertised_route_priority=100,
+            interface="interface-1",
+            peer_asn=65513,
+            peer_ip_address="169.254.1.2",
+            region="us-central1",
+            router="my-router")
+        ```
+        ### Router Peer Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        peer = gcp.compute.RouterPeer("peer",
+            advertised_route_priority=100,
+            enable=False,
             interface="interface-1",
             peer_asn=65513,
             peer_ip_address="169.254.1.2",
@@ -591,6 +651,10 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
+        :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
+               with the peer is terminated and all associated routing information is removed.
+               If set to true, the peer connection can be established with routing information.
+               The default is true.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -641,6 +705,21 @@ class RouterPeer(pulumi.CustomResource):
             region="us-central1",
             router="my-router")
         ```
+        ### Router Peer Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        peer = gcp.compute.RouterPeer("peer",
+            advertised_route_priority=100,
+            enable=False,
+            interface="interface-1",
+            peer_asn=65513,
+            peer_ip_address="169.254.1.2",
+            region="us-central1",
+            router="my-router")
+        ```
 
         ## Import
 
@@ -681,6 +760,7 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
@@ -704,6 +784,7 @@ class RouterPeer(pulumi.CustomResource):
             __props__.__dict__["advertised_groups"] = advertised_groups
             __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
             __props__.__dict__["advertised_route_priority"] = advertised_route_priority
+            __props__.__dict__["enable"] = enable
             if interface is None and not opts.urn:
                 raise TypeError("Missing required property 'interface'")
             __props__.__dict__["interface"] = interface
@@ -735,6 +816,7 @@ class RouterPeer(pulumi.CustomResource):
             advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
             advertised_route_priority: Optional[pulumi.Input[int]] = None,
+            enable: Optional[pulumi.Input[bool]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             management_type: Optional[pulumi.Input[str]] = None,
@@ -769,6 +851,10 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
+        :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
+               with the peer is terminated and all associated routing information is removed.
+               If set to true, the peer connection can be established with routing information.
+               The default is true.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
@@ -799,6 +885,7 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["advertised_groups"] = advertised_groups
         __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
         __props__.__dict__["advertised_route_priority"] = advertised_route_priority
+        __props__.__dict__["enable"] = enable
         __props__.__dict__["interface"] = interface
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["management_type"] = management_type
@@ -855,6 +942,17 @@ class RouterPeer(pulumi.CustomResource):
         length, the routes with the lowest priority value win.
         """
         return pulumi.get(self, "advertised_route_priority")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> pulumi.Output[Optional[bool]]:
+        """
+        The status of the BGP peer connection. If set to false, any active session
+        with the peer is terminated and all associated routing information is removed.
+        If set to true, the peer connection can be established with routing information.
+        The default is true.
+        """
+        return pulumi.get(self, "enable")
 
     @property
     @pulumi.getter

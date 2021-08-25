@@ -286,10 +286,6 @@ class Index(pulumi.CustomResource):
                     field_path="description",
                     order="DESCENDING",
                 ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="__name__",
-                    order="DESCENDING",
-                ),
             ],
             project="my-project-name")
         ```
@@ -358,10 +354,6 @@ class Index(pulumi.CustomResource):
                 ),
                 gcp.firestore.IndexFieldArgs(
                     field_path="description",
-                    order="DESCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="__name__",
                     order="DESCENDING",
                 ),
             ],

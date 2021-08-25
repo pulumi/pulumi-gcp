@@ -363,6 +363,12 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly securityPolicy!: pulumi.Output<string | undefined>;
     /**
+     * The security settings that apply to this backend service. This field is applicable to either a regional backend service
+     * with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+     * backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     */
+    public readonly securitySettings!: pulumi.Output<outputs.compute.BackendServiceSecuritySettings | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -414,6 +420,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
             inputs["securityPolicy"] = state ? state.securityPolicy : undefined;
+            inputs["securitySettings"] = state ? state.securitySettings : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
             inputs["timeoutSec"] = state ? state.timeoutSec : undefined;
@@ -440,6 +447,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
+            inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -613,6 +621,12 @@ export interface BackendServiceState {
      */
     securityPolicy?: pulumi.Input<string>;
     /**
+     * The security settings that apply to this backend service. This field is applicable to either a regional backend service
+     * with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+     * backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     */
+    securitySettings?: pulumi.Input<inputs.compute.BackendServiceSecuritySettings>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -780,6 +794,12 @@ export interface BackendServiceArgs {
      * The security policy associated with this backend service.
      */
     securityPolicy?: pulumi.Input<string>;
+    /**
+     * The security settings that apply to this backend service. This field is applicable to either a regional backend service
+     * with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+     * backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     */
+    securitySettings?: pulumi.Input<inputs.compute.BackendServiceSecuritySettings>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.

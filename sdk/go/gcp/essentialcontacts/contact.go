@@ -50,7 +50,7 @@ import (
 // 			NotificationCategorySubscriptions: pulumi.StringArray{
 // 				pulumi.String("ALL"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

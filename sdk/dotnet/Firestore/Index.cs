@@ -52,11 +52,6 @@ namespace Pulumi.Gcp.Firestore
     ///                     FieldPath = "description",
     ///                     Order = "DESCENDING",
     ///                 },
-    ///                 new Gcp.Firestore.Inputs.IndexFieldArgs
-    ///                 {
-    ///                     FieldPath = "__name__",
-    ///                     Order = "DESCENDING",
-    ///                 },
     ///             },
     ///             Project = "my-project-name",
     ///         });

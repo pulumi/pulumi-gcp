@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Logging
     ///         });
     ///         var my_sink = new Gcp.Logging.OrganizationSink("my-sink", new Gcp.Logging.OrganizationSinkArgs
     ///         {
-    ///             Description = "some explaination on what this is",
+    ///             Description = "some explanation on what this is",
     ///             OrgId = "123456789",
     ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
     ///             Filter = "resource.type = gce_instance AND severity &gt;= WARNING",

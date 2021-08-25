@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
     ///                     {
     ///                         IsCa = true,
-    ///                         MaxIssuerPathLength = 10,
+    ///                         MaxIssuerPathLength = 0,
     ///                     },
     ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
     ///                     {
