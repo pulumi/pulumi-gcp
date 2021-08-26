@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     region: subnet.region,
  *     network: net.id,
  * });
- * const address: gcp.compute.Address[];
+ * const address: gcp.compute.Address[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     address.push(new gcp.compute.Address(`address-${range.value}`, {region: subnet.region}));
  * }
