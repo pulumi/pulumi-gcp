@@ -109,7 +109,7 @@ import (
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{project}}/{{service}}/{{metric}}/{{limit}}/{{name}}
+//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
 // ```
 //
 // ```sh

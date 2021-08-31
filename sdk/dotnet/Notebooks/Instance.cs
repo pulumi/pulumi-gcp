@@ -149,6 +149,11 @@ namespace Pulumi.Gcp.Notebooks
     ///             {
     ///                 { "k", "val" },
     ///             },
+    ///             NicType = "VIRTIO_NET",
+    ///             ReservationAffinity = new Gcp.Notebooks.Inputs.InstanceReservationAffinityArgs
+    ///             {
+    ///                 ConsumeReservationType = "NO_RESERVATION",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -306,6 +311,12 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        /// </summary>
+        [Output("nicType")]
+        public Output<string?> NicType { get; private set; } = null!;
+
+        /// <summary>
         /// The notebook instance will not register with the proxy..
         /// </summary>
         [Output("noProxyAccess")]
@@ -343,6 +354,12 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         [Output("proxyUri")]
         public Output<string> ProxyUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Reservation Affinity for consuming Zonal reservation.
+        /// </summary>
+        [Output("reservationAffinity")]
+        public Output<Outputs.InstanceReservationAffinity?> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
         /// The service account on this instance, giving access to other
@@ -599,6 +616,12 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        /// </summary>
+        [Input("nicType")]
+        public Input<string>? NicType { get; set; }
+
+        /// <summary>
         /// The notebook instance will not register with the proxy..
         /// </summary>
         [Input("noProxyAccess")]
@@ -630,6 +653,12 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Reservation Affinity for consuming Zonal reservation.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.InstanceReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
         /// The service account on this instance, giving access to other
@@ -853,6 +882,12 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        /// </summary>
+        [Input("nicType")]
+        public Input<string>? NicType { get; set; }
+
+        /// <summary>
         /// The notebook instance will not register with the proxy..
         /// </summary>
         [Input("noProxyAccess")]
@@ -890,6 +925,12 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         [Input("proxyUri")]
         public Input<string>? ProxyUri { get; set; }
+
+        /// <summary>
+        /// Reservation Affinity for consuming Zonal reservation.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.InstanceReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
         /// The service account on this instance, giving access to other

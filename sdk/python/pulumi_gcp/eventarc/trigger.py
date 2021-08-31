@@ -333,41 +333,45 @@ class Trigger(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Basic_trigger
-        A basic example for an Eventarc Trigger
+        ### Basic
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
-            location="us-west1",
+            location="europe-west1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 namespace="my-project-name",
             ),
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        args=["arrgs"],
                         image="gcr.io/cloudrun/hello",
+                        args=["arrgs"],
                     )],
+                    container_concurrency=50,
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                latest_revision=True,
                 percent=100,
+                latest_revision=True,
             )])
         primary = gcp.eventarc.Trigger("primary",
-            destination=gcp.eventarc.TriggerDestinationArgs(
-                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
-                    service=default.name,
-                    region="us-west1",
-                ),
-            ),
-            location="us-west1",
+            location="europe-west1",
             matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
                 attribute="type",
                 value="google.cloud.pubsub.topic.v1.messagePublished",
-            )])
+            )],
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region="europe-west1",
+                ),
+            ),
+            labels={
+                "foo": "bar",
+            })
+        foo = gcp.pubsub.Topic("foo")
         ```
 
         ## Import
@@ -405,41 +409,45 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Basic_trigger
-        A basic example for an Eventarc Trigger
+        ### Basic
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
-            location="us-west1",
+            location="europe-west1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 namespace="my-project-name",
             ),
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        args=["arrgs"],
                         image="gcr.io/cloudrun/hello",
+                        args=["arrgs"],
                     )],
+                    container_concurrency=50,
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                latest_revision=True,
                 percent=100,
+                latest_revision=True,
             )])
         primary = gcp.eventarc.Trigger("primary",
-            destination=gcp.eventarc.TriggerDestinationArgs(
-                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
-                    service=default.name,
-                    region="us-west1",
-                ),
-            ),
-            location="us-west1",
+            location="europe-west1",
             matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
                 attribute="type",
                 value="google.cloud.pubsub.topic.v1.messagePublished",
-            )])
+            )],
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region="europe-west1",
+                ),
+            ),
+            labels={
+                "foo": "bar",
+            })
+        foo = gcp.pubsub.Topic("foo")
         ```
 
         ## Import

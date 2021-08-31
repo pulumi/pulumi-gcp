@@ -91,8 +91,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                             {
     ///                                 ObjectIdPath = 
     ///                                 {
-    ///                                     123,
-    ///                                     899,
+    ///                                     1,
+    ///                                     7,
     ///                                 },
     ///                             },
     ///                             Value = "asdf",
@@ -135,16 +135,17 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                         {
     ///                             ObjectIdPath = 
     ///                             {
-    ///                                 123,
-    ///                                 888,
+    ///                                 1,
+    ///                                 5,
     ///                             },
     ///                         },
     ///                         new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs
     ///                         {
     ///                             ObjectIdPath = 
     ///                             {
-    ///                                 456,
-    ///                                 120,
+    ///                                 1,
+    ///                                 5,
+    ///                                 7,
     ///                             },
     ///                         },
     ///                     },

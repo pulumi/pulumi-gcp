@@ -15,6 +15,7 @@ __all__ = [
     'InstanceContainerImage',
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
+    'InstanceReservationAffinity',
     'InstanceShieldedInstanceConfig',
     'InstanceVmImage',
 ]
@@ -246,6 +247,67 @@ class InstanceIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class InstanceReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: str,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str consume_reservation_type: The type of Compute Reservation.
+               Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+        :param str key: Corresponds to the label key of reservation resource.
+        :param Sequence[str] values: Corresponds to the label values of reservation resource.
+        """
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> str:
+        """
+        The type of Compute Reservation.
+        Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Corresponds to the label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Corresponds to the label values of reservation resource.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

@@ -7,43 +7,47 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Basic_trigger
- * A basic example for an Eventarc Trigger
+ * ### Basic
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrun.Service("default", {
- *     location: "us-west1",
+ *     location: "europe-west1",
  *     metadata: {
  *         namespace: "my-project-name",
  *     },
  *     template: {
  *         spec: {
  *             containers: [{
- *                 args: ["arrgs"],
  *                 image: "gcr.io/cloudrun/hello",
+ *                 args: ["arrgs"],
  *             }],
+ *             containerConcurrency: 50,
  *         },
  *     },
  *     traffics: [{
- *         latestRevision: true,
  *         percent: 100,
+ *         latestRevision: true,
  *     }],
  * });
  * const primary = new gcp.eventarc.Trigger("primary", {
- *     destination: {
- *         cloudRunService: {
- *             service: _default.name,
- *             region: "us-west1",
- *         },
- *     },
- *     location: "us-west1",
+ *     location: "europe-west1",
  *     matchingCriterias: [{
  *         attribute: "type",
  *         value: "google.cloud.pubsub.topic.v1.messagePublished",
  *     }],
+ *     destination: {
+ *         cloudRunService: {
+ *             service: _default.name,
+ *             region: "europe-west1",
+ *         },
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
  * });
+ * const foo = new gcp.pubsub.Topic("foo", {});
  * ```
  *
  * ## Import

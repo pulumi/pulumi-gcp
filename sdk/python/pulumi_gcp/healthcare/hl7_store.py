@@ -817,7 +817,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parserConfig")
-    def parser_config(self) -> pulumi.Output[Optional['outputs.Hl7StoreParserConfig']]:
+    def parser_config(self) -> pulumi.Output['outputs.Hl7StoreParserConfig']:
         """
         A nested object resource
         Structure is documented below.

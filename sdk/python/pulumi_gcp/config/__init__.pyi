@@ -25,6 +25,8 @@ appEngineCustomEndpoint: Optional[str]
 
 artifactRegistryCustomEndpoint: Optional[str]
 
+assuredWorkloadsCustomEndpoint: Optional[str]
+
 batching: Optional[str]
 
 bigQueryCustomEndpoint: Optional[str]

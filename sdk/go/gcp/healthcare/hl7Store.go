@@ -174,7 +174,7 @@ type Hl7Store struct {
 	NotificationConfigs Hl7StoreNotificationConfigsArrayOutput `pulumi:"notificationConfigs"`
 	// A nested object resource
 	// Structure is documented below.
-	ParserConfig Hl7StoreParserConfigPtrOutput `pulumi:"parserConfig"`
+	ParserConfig Hl7StoreParserConfigOutput `pulumi:"parserConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }

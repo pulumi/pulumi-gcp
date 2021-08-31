@@ -33,11 +33,13 @@ class InstanceArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
@@ -88,6 +90,7 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
+        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -96,6 +99,7 @@ class InstanceArgs:
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
+        :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -149,6 +153,8 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if no_proxy_access is not None:
             pulumi.set(__self__, "no_proxy_access", no_proxy_access)
         if no_public_ip is not None:
@@ -159,6 +165,8 @@ class InstanceArgs:
             pulumi.set(__self__, "post_startup_script", post_startup_script)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -414,6 +422,18 @@ class InstanceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        """
+        return pulumi.get(self, "nic_type")
+
+    @nic_type.setter
+    def nic_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nic_type", value)
+
+    @property
     @pulumi.getter(name="noProxyAccess")
     def no_proxy_access(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -475,6 +495,18 @@ class InstanceArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+        """
+        Reservation Affinity for consuming Zonal reservation.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -593,12 +625,14 @@ class _InstanceState:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
@@ -650,6 +684,7 @@ class _InstanceState:
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
+        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -659,6 +694,7 @@ class _InstanceState:
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
         :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
+        :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -715,6 +751,8 @@ class _InstanceState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if no_proxy_access is not None:
             pulumi.set(__self__, "no_proxy_access", no_proxy_access)
         if no_public_ip is not None:
@@ -727,6 +765,8 @@ class _InstanceState:
             pulumi.set(__self__, "project", project)
         if proxy_uri is not None:
             pulumi.set(__self__, "proxy_uri", proxy_uri)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -984,6 +1024,18 @@ class _InstanceState:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        """
+        return pulumi.get(self, "nic_type")
+
+    @nic_type.setter
+    def nic_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nic_type", value)
+
+    @property
     @pulumi.getter(name="noProxyAccess")
     def no_proxy_access(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1057,6 +1109,18 @@ class _InstanceState:
     @proxy_uri.setter
     def proxy_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "proxy_uri", value)
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+        """
+        Reservation Affinity for consuming Zonal reservation.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1189,11 +1253,13 @@ class Instance(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
@@ -1293,7 +1359,11 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
-            })
+            },
+            nic_type="VIRTIO_NET",
+            reservation_affinity=gcp.notebooks.InstanceReservationAffinityArgs(
+                consume_reservation_type="NO_RESERVATION",
+            ))
         ```
 
         ## Import
@@ -1355,6 +1425,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
+        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -1363,6 +1434,7 @@ class Instance(pulumi.CustomResource):
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
+        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -1479,7 +1551,11 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
-            })
+            },
+            nic_type="VIRTIO_NET",
+            reservation_affinity=gcp.notebooks.InstanceReservationAffinityArgs(
+                consume_reservation_type="NO_RESERVATION",
+            ))
         ```
 
         ## Import
@@ -1531,11 +1607,13 @@ class Instance(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
@@ -1577,11 +1655,13 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            __props__.__dict__["nic_type"] = nic_type
             __props__.__dict__["no_proxy_access"] = no_proxy_access
             __props__.__dict__["no_public_ip"] = no_public_ip
             __props__.__dict__["no_remove_data_disk"] = no_remove_data_disk
             __props__.__dict__["post_startup_script"] = post_startup_script
             __props__.__dict__["project"] = project
+            __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["service_account_scopes"] = service_account_scopes
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
@@ -1619,12 +1699,14 @@ class Instance(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
+            nic_type: Optional[pulumi.Input[str]] = None,
             no_proxy_access: Optional[pulumi.Input[bool]] = None,
             no_public_ip: Optional[pulumi.Input[bool]] = None,
             no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
             post_startup_script: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             proxy_uri: Optional[pulumi.Input[str]] = None,
+            reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
@@ -1681,6 +1763,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
+        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -1690,6 +1773,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
         :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
+        :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -1732,12 +1816,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["nic_type"] = nic_type
         __props__.__dict__["no_proxy_access"] = no_proxy_access
         __props__.__dict__["no_public_ip"] = no_public_ip
         __props__.__dict__["no_remove_data_disk"] = no_remove_data_disk
         __props__.__dict__["post_startup_script"] = post_startup_script
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_uri"] = proxy_uri
+        __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["service_account_scopes"] = service_account_scopes
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
@@ -1916,6 +2002,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        """
+        return pulumi.get(self, "nic_type")
+
+    @property
     @pulumi.getter(name="noProxyAccess")
     def no_proxy_access(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1965,6 +2059,14 @@ class Instance(pulumi.CustomResource):
         The proxy endpoint that is used to access the Jupyter notebook.
         """
         return pulumi.get(self, "proxy_uri")
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Output[Optional['outputs.InstanceReservationAffinity']]:
+        """
+        Reservation Affinity for consuming Zonal reservation.
+        """
+        return pulumi.get(self, "reservation_affinity")
 
     @property
     @pulumi.getter(name="serviceAccount")

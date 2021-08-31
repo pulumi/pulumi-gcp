@@ -12,21 +12,21 @@ import (
 )
 
 // ## Example Usage
-// ### Basic_trigger
-// A basic example for an Eventarc Trigger
+// ### Basic
 // ```go
 // package main
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/eventarc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
-// 			Location: pulumi.String("us-west1"),
+// 			Location: pulumi.String("europe-west1"),
 // 			Metadata: &cloudrun.ServiceMetadataArgs{
 // 				Namespace: pulumi.String("my-project-name"),
 // 			},
@@ -34,18 +34,19 @@ import (
 // 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
 // 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
 // 							Args: pulumi.StringArray{
 // 								pulumi.String("arrgs"),
 // 							},
-// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
 // 						},
 // 					},
+// 					ContainerConcurrency: pulumi.Int(50),
 // 				},
 // 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{
 // 				&cloudrun.ServiceTrafficArgs{
-// 					LatestRevision: pulumi.Bool(true),
 // 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
 // 				},
 // 			},
 // 		})
@@ -53,20 +54,27 @@ import (
 // 			return err
 // 		}
 // 		_, err = eventarc.NewTrigger(ctx, "primary", &eventarc.TriggerArgs{
-// 			Destination: &eventarc.TriggerDestinationArgs{
-// 				CloudRunService: &eventarc.TriggerDestinationCloudRunServiceArgs{
-// 					Service: _default.Name,
-// 					Region:  pulumi.String("us-west1"),
-// 				},
-// 			},
-// 			Location: pulumi.String("us-west1"),
+// 			Location: pulumi.String("europe-west1"),
 // 			MatchingCriterias: eventarc.TriggerMatchingCriteriaArray{
 // 				&eventarc.TriggerMatchingCriteriaArgs{
 // 					Attribute: pulumi.String("type"),
 // 					Value:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
 // 				},
 // 			},
+// 			Destination: &eventarc.TriggerDestinationArgs{
+// 				CloudRunService: &eventarc.TriggerDestinationCloudRunServiceArgs{
+// 					Service: _default.Name,
+// 					Region:  pulumi.String("europe-west1"),
+// 				},
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
 // 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopic(ctx, "foo", nil)
 // 		if err != nil {
 // 			return err
 // 		}

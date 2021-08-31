@@ -104,6 +104,10 @@ import * as utilities from "../utilities";
  *     labels: {
  *         k: "val",
  *     },
+ *     nicType: "VIRTIO_NET",
+ *     reservationAffinity: {
+ *         consumeReservationType: "NO_RESERVATION",
+ *     },
  * });
  * ```
  *
@@ -247,6 +251,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+     */
+    public readonly nicType!: pulumi.Output<string | undefined>;
+    /**
      * The notebook instance will not register with the proxy..
      */
     public readonly noProxyAccess!: pulumi.Output<boolean | undefined>;
@@ -273,6 +281,10 @@ export class Instance extends pulumi.CustomResource {
      * The proxy endpoint that is used to access the Jupyter notebook.
      */
     public /*out*/ readonly proxyUri!: pulumi.Output<string>;
+    /**
+     * Reservation Affinity for consuming Zonal reservation.
+     */
+    public readonly reservationAffinity!: pulumi.Output<outputs.notebooks.InstanceReservationAffinity | undefined>;
     /**
      * The service account on this instance, giving access to other
      * Google Cloud services. You can use any service account within
@@ -348,12 +360,14 @@ export class Instance extends pulumi.CustomResource {
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
+            inputs["nicType"] = state ? state.nicType : undefined;
             inputs["noProxyAccess"] = state ? state.noProxyAccess : undefined;
             inputs["noPublicIp"] = state ? state.noPublicIp : undefined;
             inputs["noRemoveDataDisk"] = state ? state.noRemoveDataDisk : undefined;
             inputs["postStartupScript"] = state ? state.postStartupScript : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["proxyUri"] = state ? state.proxyUri : undefined;
+            inputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             inputs["serviceAccountScopes"] = state ? state.serviceAccountScopes : undefined;
             inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
@@ -388,11 +402,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
+            inputs["nicType"] = args ? args.nicType : undefined;
             inputs["noProxyAccess"] = args ? args.noProxyAccess : undefined;
             inputs["noPublicIp"] = args ? args.noPublicIp : undefined;
             inputs["noRemoveDataDisk"] = args ? args.noRemoveDataDisk : undefined;
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
             inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
@@ -510,6 +526,10 @@ export interface InstanceState {
      */
     network?: pulumi.Input<string>;
     /**
+     * The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+     */
+    nicType?: pulumi.Input<string>;
+    /**
      * The notebook instance will not register with the proxy..
      */
     noProxyAccess?: pulumi.Input<boolean>;
@@ -536,6 +556,10 @@ export interface InstanceState {
      * The proxy endpoint that is used to access the Jupyter notebook.
      */
     proxyUri?: pulumi.Input<string>;
+    /**
+     * Reservation Affinity for consuming Zonal reservation.
+     */
+    reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity>;
     /**
      * The service account on this instance, giving access to other
      * Google Cloud services. You can use any service account within
@@ -681,6 +705,10 @@ export interface InstanceArgs {
      */
     network?: pulumi.Input<string>;
     /**
+     * The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+     */
+    nicType?: pulumi.Input<string>;
+    /**
      * The notebook instance will not register with the proxy..
      */
     noProxyAccess?: pulumi.Input<boolean>;
@@ -703,6 +731,10 @@ export interface InstanceArgs {
      * Format: projects/{project_id}
      */
     project?: pulumi.Input<string>;
+    /**
+     * Reservation Affinity for consuming Zonal reservation.
+     */
+    reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity>;
     /**
      * The service account on this instance, giving access to other
      * Google Cloud services. You can use any service account within

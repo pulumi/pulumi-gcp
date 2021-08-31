@@ -288,6 +288,264 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Internal Tcp Udp Lb With Mig Backend
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Internal TCP/UDP load balancer with a managed instance group backend
+    ///         // VPC
+    ///         var ilbNetwork = new Gcp.Compute.Network("ilbNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // backed subnet
+    ///         var ilbSubnet = new Gcp.Compute.Subnetwork("ilbSubnet", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.1.0/24",
+    ///             Region = "europe-west1",
+    ///             Network = ilbNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // health check
+    ///         var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("defaultRegionHealthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // instance template
+    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-small",
+    ///             Tags = 
+    ///             {
+    ///                 "allow-ssh",
+    ///                 "allow-health-check",
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = ilbNetwork.Id,
+    ///                     Subnetwork = ilbSubnet.Id,
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = "debian-cloud/debian-10",
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "startup-script", @"#! /bin/bash
+    /// set -euo pipefail
+    /// 
+    /// export DEBIAN_FRONTEND=noninteractive
+    /// apt-get update
+    /// apt-get install -y nginx-light jq
+    /// 
+    /// NAME=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/hostname"")
+    /// IP=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip"")
+    /// METADATA=$(curl -f -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True"" | jq 'del(.[""startup-script""])')
+    /// 
+    /// cat &lt;&lt;EOF &gt; /var/www/html/index.html
+    /// &lt;pre&gt;
+    /// Name: $NAME
+    /// IP: $IP
+    /// Metadata: $METADATA
+    /// &lt;/pre&gt;
+    /// EOF
+    /// " },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // MIG
+    ///         var mig = new Gcp.Compute.RegionInstanceGroupManager("mig", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = instanceTemplate.Id,
+    ///                     Name = "primary",
+    ///                 },
+    ///             },
+    ///             BaseInstanceName = "vm",
+    ///             TargetSize = 2,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // backend service
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "europe-west1",
+    ///             Protocol = "TCP",
+    ///             LoadBalancingScheme = "INTERNAL",
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultRegionHealthCheck.Id,
+    ///             },
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///                 {
+    ///                     Group = mig.InstanceGroup,
+    ///                     BalancingMode = "CONNECTION",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // forwarding rule
+    ///         var googleComputeForwardingRule = new Gcp.Compute.ForwardingRule("googleComputeForwardingRule", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             BackendService = defaultRegionBackendService.Id,
+    ///             Region = "europe-west1",
+    ///             IpProtocol = "TCP",
+    ///             LoadBalancingScheme = "INTERNAL",
+    ///             AllPorts = true,
+    ///             AllowGlobalAccess = true,
+    ///             Network = ilbNetwork.Id,
+    ///             Subnetwork = ilbSubnet.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // allow all access from health check ranges
+    ///         var fwHc = new Gcp.Compute.Firewall("fwHc", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Direction = "INGRESS",
+    ///             Network = ilbNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "130.211.0.0/22",
+    ///                 "35.191.0.0/16",
+    ///                 "35.235.240.0/20",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///             },
+    ///             SourceTags = 
+    ///             {
+    ///                 "allow-health-check",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // allow communication within the subnet 
+    ///         var fwIlbToBackends = new Gcp.Compute.Firewall("fwIlbToBackends", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Direction = "INGRESS",
+    ///             Network = ilbNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "10.0.1.0/24",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "udp",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "icmp",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // allow SSH
+    ///         var fwIlbSsh = new Gcp.Compute.Firewall("fwIlbSsh", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Direction = "INGRESS",
+    ///             Network = ilbNetwork.Id,
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     Ports = 
+    ///                     {
+    ///                         "22",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SourceTags = 
+    ///             {
+    ///                 "allow-ssh",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // test instance
+    ///         var vmTest = new Gcp.Compute.Instance("vmTest", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             Zone = "europe-west1-b",
+    ///             MachineType = "e2-small",
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = ilbNetwork.Id,
+    ///                     Subnetwork = ilbSubnet.Id,
+    ///                 },
+    ///             },
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-10",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Forwarding Rule Externallb
     /// 
     /// ```csharp

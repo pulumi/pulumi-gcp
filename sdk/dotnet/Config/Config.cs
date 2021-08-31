@@ -24,6 +24,8 @@ namespace Pulumi.Gcp
 
         public static string? ArtifactRegistryCustomEndpoint { get; set; } = __config.Get("artifactRegistryCustomEndpoint");
 
+        public static string? AssuredWorkloadsCustomEndpoint { get; set; } = __config.Get("assuredWorkloadsCustomEndpoint");
+
         public static Pulumi.Gcp.Config.Types.Batching? Batching { get; set; } = __config.GetObject<Pulumi.Gcp.Config.Types.Batching>("batching");
 
         public static string? BigQueryCustomEndpoint { get; set; } = __config.Get("bigQueryCustomEndpoint");

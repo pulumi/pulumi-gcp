@@ -11,8 +11,7 @@ namespace Pulumi.Gcp.Eventarc
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Basic_trigger
-    /// A basic example for an Eventarc Trigger
+    /// ### Basic
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
@@ -23,7 +22,7 @@ namespace Pulumi.Gcp.Eventarc
     ///     {
     ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
     ///         {
-    ///             Location = "us-west1",
+    ///             Location = "europe-west1",
     ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
     ///             {
     ///                 Namespace = "my-project-name",
@@ -36,35 +35,28 @@ namespace Pulumi.Gcp.Eventarc
     ///                     {
     ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
     ///                             Args = 
     ///                             {
     ///                                 "arrgs",
     ///                             },
-    ///                             Image = "gcr.io/cloudrun/hello",
     ///                         },
     ///                     },
+    ///                     ContainerConcurrency = 50,
     ///                 },
     ///             },
     ///             Traffics = 
     ///             {
     ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
     ///                 {
-    ///                     LatestRevision = true,
     ///                     Percent = 100,
+    ///                     LatestRevision = true,
     ///                 },
     ///             },
     ///         });
     ///         var primary = new Gcp.Eventarc.Trigger("primary", new Gcp.Eventarc.TriggerArgs
     ///         {
-    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
-    ///             {
-    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
-    ///                 {
-    ///                     Service = @default.Name,
-    ///                     Region = "us-west1",
-    ///                 },
-    ///             },
-    ///             Location = "us-west1",
+    ///             Location = "europe-west1",
     ///             MatchingCriterias = 
     ///             {
     ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
@@ -73,6 +65,21 @@ namespace Pulumi.Gcp.Eventarc
     ///                     Value = "google.cloud.pubsub.topic.v1.messagePublished",
     ///                 },
     ///             },
+    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
+    ///             {
+    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
+    ///                 {
+    ///                     Service = @default.Name,
+    ///                     Region = "europe-west1",
+    ///                 },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///         });
+    ///         var foo = new Gcp.PubSub.Topic("foo", new Gcp.PubSub.TopicArgs
+    ///         {
     ///         });
     ///     }
     /// 

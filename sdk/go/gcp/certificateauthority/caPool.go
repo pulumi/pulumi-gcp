@@ -83,8 +83,8 @@ import (
 // 							Critical: pulumi.Bool(true),
 // 							ObjectId: &certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs{
 // 								ObjectIdPath: []float64{
-// 									123,
-// 									899,
+// 									1,
+// 									7,
 // 								},
 // 							},
 // 							Value: pulumi.String("asdf"),
@@ -119,14 +119,15 @@ import (
 // 					PolicyIds: certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArray{
 // 						&certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{
 // 							ObjectIdPath: []float64{
-// 								123,
-// 								888,
+// 								1,
+// 								5,
 // 							},
 // 						},
 // 						&certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{
 // 							ObjectIdPath: []float64{
-// 								456,
-// 								120,
+// 								1,
+// 								5,
+// 								7,
 // 							},
 // 						},
 // 					},

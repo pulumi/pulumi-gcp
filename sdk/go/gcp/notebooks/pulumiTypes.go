@@ -957,6 +957,179 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceReservationAffinity struct {
+	// The type of Compute Reservation.
+	// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+	ConsumeReservationType string `pulumi:"consumeReservationType"`
+	// Corresponds to the label key of reservation resource.
+	Key *string `pulumi:"key"`
+	// Corresponds to the label values of reservation resource.
+	Values []string `pulumi:"values"`
+}
+
+// InstanceReservationAffinityInput is an input type that accepts InstanceReservationAffinityArgs and InstanceReservationAffinityOutput values.
+// You can construct a concrete instance of `InstanceReservationAffinityInput` via:
+//
+//          InstanceReservationAffinityArgs{...}
+type InstanceReservationAffinityInput interface {
+	pulumi.Input
+
+	ToInstanceReservationAffinityOutput() InstanceReservationAffinityOutput
+	ToInstanceReservationAffinityOutputWithContext(context.Context) InstanceReservationAffinityOutput
+}
+
+type InstanceReservationAffinityArgs struct {
+	// The type of Compute Reservation.
+	// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
+	// Corresponds to the label key of reservation resource.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Corresponds to the label values of reservation resource.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (InstanceReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityOutput() InstanceReservationAffinityOutput {
+	return i.ToInstanceReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityOutputWithContext(ctx context.Context) InstanceReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityOutput)
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return i.ToInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityOutput).ToInstanceReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// InstanceReservationAffinityPtrInput is an input type that accepts InstanceReservationAffinityArgs, InstanceReservationAffinityPtr and InstanceReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `InstanceReservationAffinityPtrInput` via:
+//
+//          InstanceReservationAffinityArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput
+	ToInstanceReservationAffinityPtrOutputWithContext(context.Context) InstanceReservationAffinityPtrOutput
+}
+
+type instanceReservationAffinityPtrType InstanceReservationAffinityArgs
+
+func InstanceReservationAffinityPtr(v *InstanceReservationAffinityArgs) InstanceReservationAffinityPtrInput {
+	return (*instanceReservationAffinityPtrType)(v)
+}
+
+func (*instanceReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i *instanceReservationAffinityPtrType) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return i.ToInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceReservationAffinityPtrType) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityPtrOutput)
+}
+
+type InstanceReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (InstanceReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityOutput() InstanceReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityOutputWithContext(ctx context.Context) InstanceReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return o.ToInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return o.ApplyT(func(v InstanceReservationAffinity) *InstanceReservationAffinity {
+		return &v
+	}).(InstanceReservationAffinityPtrOutput)
+}
+
+// The type of Compute Reservation.
+// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+func (o InstanceReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
+}
+
+// Corresponds to the label key of reservation resource.
+func (o InstanceReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of reservation resource.
+func (o InstanceReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type InstanceReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceReservationAffinityPtrOutput) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityPtrOutput) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceReservationAffinityPtrOutput) Elem() InstanceReservationAffinityOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinity) InstanceReservationAffinity { return *v }).(InstanceReservationAffinityOutput)
+}
+
+// The type of Compute Reservation.
+// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+func (o InstanceReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label key of reservation resource.
+func (o InstanceReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of reservation resource.
+func (o InstanceReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type InstanceShieldedInstanceConfig struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
 	// boot integrity of the instance. The attestation is performed against the integrity policy baseline.
@@ -1340,6 +1513,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceReservationAffinityOutput{})
+	pulumi.RegisterOutputType(InstanceReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceVmImageOutput{})

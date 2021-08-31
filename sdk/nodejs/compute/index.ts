@@ -20,6 +20,9 @@ export * from "./diskIamPolicy";
 export * from "./diskResourcePolicyAttachment";
 export * from "./externalVpnGateway";
 export * from "./firewall";
+export * from "./firewallPolicy";
+export * from "./firewallPolicyAssociation";
+export * from "./firewallPolicyRule";
 export * from "./forwardingRule";
 export * from "./getAddress";
 export * from "./getBackendBucket";
@@ -155,6 +158,9 @@ import { DiskIamPolicy } from "./diskIamPolicy";
 import { DiskResourcePolicyAttachment } from "./diskResourcePolicyAttachment";
 import { ExternalVpnGateway } from "./externalVpnGateway";
 import { Firewall } from "./firewall";
+import { FirewallPolicy } from "./firewallPolicy";
+import { FirewallPolicyAssociation } from "./firewallPolicyAssociation";
+import { FirewallPolicyRule } from "./firewallPolicyRule";
 import { ForwardingRule } from "./forwardingRule";
 import { GlobalAddress } from "./globalAddress";
 import { GlobalForwardingRule } from "./globalForwardingRule";
@@ -279,6 +285,12 @@ const _module = {
                 return new ExternalVpnGateway(name, <any>undefined, { urn })
             case "gcp:compute/firewall:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
+            case "gcp:compute/firewallPolicy:FirewallPolicy":
+                return new FirewallPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation":
+                return new FirewallPolicyAssociation(name, <any>undefined, { urn })
+            case "gcp:compute/firewallPolicyRule:FirewallPolicyRule":
+                return new FirewallPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/forwardingRule:ForwardingRule":
                 return new ForwardingRule(name, <any>undefined, { urn })
             case "gcp:compute/globalAddress:GlobalAddress":
@@ -477,6 +489,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/diskIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/diskResourcePolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/externalVpnGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/firewall", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/forwardingRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalForwardingRule", _module)

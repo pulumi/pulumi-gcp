@@ -220,7 +220,7 @@ jobs:
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v2
       with:
-        args: -p 3 release --rm-dist --timeout 60m0s
+        args: -p 2 release --rm-dist --timeout 60m0s
         version: latest
     strategy:
       fail-fast: true

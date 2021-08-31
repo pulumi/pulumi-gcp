@@ -34,6 +34,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly apigeeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly appEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly artifactRegistryCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly assuredWorkloadsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigQueryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryConnectionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryDataTransferCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -147,6 +148,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["apigeeCustomEndpoint"] = args ? args.apigeeCustomEndpoint : undefined;
             inputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
             inputs["artifactRegistryCustomEndpoint"] = args ? args.artifactRegistryCustomEndpoint : undefined;
+            inputs["assuredWorkloadsCustomEndpoint"] = args ? args.assuredWorkloadsCustomEndpoint : undefined;
             inputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
             inputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
             inputs["bigqueryConnectionCustomEndpoint"] = args ? args.bigqueryConnectionCustomEndpoint : undefined;
@@ -265,6 +267,7 @@ export interface ProviderArgs {
     apigeeCustomEndpoint?: pulumi.Input<string>;
     appEngineCustomEndpoint?: pulumi.Input<string>;
     artifactRegistryCustomEndpoint?: pulumi.Input<string>;
+    assuredWorkloadsCustomEndpoint?: pulumi.Input<string>;
     batching?: pulumi.Input<inputs.ProviderBatching>;
     bigQueryCustomEndpoint?: pulumi.Input<string>;
     bigqueryConnectionCustomEndpoint?: pulumi.Input<string>;

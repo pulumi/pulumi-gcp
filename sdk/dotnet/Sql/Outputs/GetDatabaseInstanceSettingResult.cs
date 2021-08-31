@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> BackupConfigurations;
         /// <summary>
+        /// The name of server instance collation.
+        /// </summary>
+        public readonly string Collation;
+        /// <summary>
         /// (Deprecated) This property is only applicable to First Generation instances.
         /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
         /// </summary>
@@ -86,6 +90,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> backupConfigurations,
 
+            string collation,
+
             bool crashSafeReplication,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> databaseFlags,
@@ -120,6 +126,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             AuthorizedGaeApplications = authorizedGaeApplications;
             AvailabilityType = availabilityType;
             BackupConfigurations = backupConfigurations;
+            Collation = collation;
             CrashSafeReplication = crashSafeReplication;
             DatabaseFlags = databaseFlags;
             DiskAutoresize = diskAutoresize;

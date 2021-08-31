@@ -364,15 +364,15 @@ class ApiConfig(pulumi.CustomResource):
         ApiConfig can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{name}}
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{name}}
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{name}}
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -413,15 +413,15 @@ class ApiConfig(pulumi.CustomResource):
         ApiConfig can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{name}}
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{name}}
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{name}}
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
         ```
 
         :param str resource_name: The name of the resource.

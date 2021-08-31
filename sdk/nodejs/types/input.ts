@@ -4841,6 +4841,210 @@ export namespace certificateauthority {
         revocationState?: pulumi.Input<string>;
         revocationTime?: pulumi.Input<string>;
     }
+
+    export interface CertificateTemplateIdentityConstraints {
+        /**
+         * Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+         */
+        allowSubjectAltNamesPassthrough: pulumi.Input<boolean>;
+        /**
+         * Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+         */
+        allowSubjectPassthrough: pulumi.Input<boolean>;
+        /**
+         * Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+         */
+        celExpression?: pulumi.Input<inputs.certificateauthority.CertificateTemplateIdentityConstraintsCelExpression>;
+    }
+
+    export interface CertificateTemplateIdentityConstraintsCelExpression {
+        /**
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface CertificateTemplatePassthroughExtensions {
+        /**
+         * Optional. Describes custom X.509 extensions.
+         */
+        additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtension>[]>;
+        /**
+         * Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+         */
+        knownExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CertificateTemplatePassthroughExtensionsAdditionalExtension {
+        /**
+         * Required. The parts of an OID path. The most significant parts of the path come first.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateTemplatePredefinedValues {
+        /**
+         * Optional. Describes custom X.509 extensions.
+         */
+        additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtension>[]>;
+        /**
+         * Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+         */
+        caOptions?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesCaOptions>;
+        /**
+         * Optional. Indicates the intended use for keys that correspond to a certificate.
+         */
+        keyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsage>;
+        /**
+         * Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         */
+        policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesPolicyId>[]>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesAdditionalExtension {
+        /**
+         * Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+         */
+        critical?: pulumi.Input<boolean>;
+        /**
+         * Required. The OID for this X.509 extension.
+         */
+        objectId: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectId>;
+        /**
+         * Required. The value of this X.509 extension.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesAdditionalExtensionObjectId {
+        /**
+         * Required. The parts of an OID path. The most significant parts of the path come first.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesCaOptions {
+        /**
+         * Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+         */
+        isCa?: pulumi.Input<boolean>;
+        /**
+         * Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+         */
+        maxIssuerPathLength?: pulumi.Input<number>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         */
+        baseKeyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage>;
+        /**
+         * Detailed scenarios in which a key may be used.
+         */
+        extendedKeyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage>;
+        /**
+         * Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+         */
+        unknownExtendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>[]>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: pulumi.Input<boolean>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: pulumi.Input<boolean>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * Required. The parts of an OID path. The most significant parts of the path come first.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesPolicyId {
+        /**
+         * Required. The parts of an OID path. The most significant parts of the path come first.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
 }
 
 export namespace cloudasset {
@@ -7895,6 +8099,32 @@ export namespace compute {
          * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
          */
         metadata: pulumi.Input<string>;
+    }
+
+    export interface FirewallPolicyRuleMatch {
+        /**
+         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         */
+        layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyRuleMatchLayer4Config>[]>;
+        /**
+         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface FirewallPolicyRuleMatchLayer4Config {
+        /**
+         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         */
+        ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GlobalForwardingRuleMetadataFilter {
@@ -23430,6 +23660,22 @@ export namespace notebooks {
         title: pulumi.Input<string>;
     }
 
+    export interface InstanceReservationAffinity {
+        /**
+         * The type of Compute Reservation.
+         * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+         */
+        consumeReservationType: pulumi.Input<string>;
+        /**
+         * Corresponds to the label key of reservation resource.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Corresponds to the label values of reservation resource.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface InstanceShieldedInstanceConfig {
         /**
          * Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
@@ -25401,6 +25647,10 @@ export namespace sql {
          */
         availabilityType?: pulumi.Input<string>;
         backupConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfiguration>;
+        /**
+         * The name of server instance collation.
+         */
+        collation?: pulumi.Input<string>;
         /**
          * This property is only applicable to First Generation instances.
          * First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)

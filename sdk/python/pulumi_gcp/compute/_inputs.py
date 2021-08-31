@@ -53,6 +53,8 @@ __all__ = [
     'FirewallAllowArgs',
     'FirewallDenyArgs',
     'FirewallLogConfigArgs',
+    'FirewallPolicyRuleMatchArgs',
+    'FirewallPolicyRuleMatchLayer4ConfigArgs',
     'GlobalForwardingRuleMetadataFilterArgs',
     'GlobalForwardingRuleMetadataFilterFilterLabelArgs',
     'HaVpnGatewayVpnInterfaceArgs',
@@ -4013,6 +4015,98 @@ class FirewallLogConfigArgs:
     @metadata.setter
     def metadata(self, value: pulumi.Input[str]):
         pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class FirewallPolicyRuleMatchArgs:
+    def __init__(__self__, *,
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]],
+                 dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @layer4_configs.setter
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]):
+        pulumi.set(self, "layer4_configs", value)
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @dest_ip_ranges.setter
+    def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @src_ip_ranges.setter
+    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_ip_ranges", value)
+
+
+@pulumi.input_type
+class FirewallPolicyRuleMatchLayer4ConfigArgs:
+    def __init__(__self__, *,
+                 ip_protocol: pulumi.Input[str],
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ports", value)
 
 
 @pulumi.input_type
