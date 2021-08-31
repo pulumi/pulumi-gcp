@@ -20,6 +20,9 @@ from .disk_iam_policy import *
 from .disk_resource_policy_attachment import *
 from .external_vpn_gateway import *
 from .firewall import *
+from .firewall_policy import *
+from .firewall_policy_association import *
+from .firewall_policy_rule import *
 from .forwarding_rule import *
 from .get_address import *
 from .get_backend_bucket import *

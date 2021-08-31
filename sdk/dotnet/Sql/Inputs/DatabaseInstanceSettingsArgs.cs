@@ -48,6 +48,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<Inputs.DatabaseInstanceSettingsBackupConfigurationArgs>? BackupConfiguration { get; set; }
 
         /// <summary>
+        /// The name of server instance collation.
+        /// </summary>
+        [Input("collation")]
+        public Input<string>? Collation { get; set; }
+
+        /// <summary>
         /// This property is only applicable to First Generation instances.
         /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
         /// for information on how to upgrade to Second Generation instances.

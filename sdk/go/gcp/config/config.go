@@ -32,6 +32,9 @@ func GetAppEngineCustomEndpoint(ctx *pulumi.Context) string {
 func GetArtifactRegistryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:artifactRegistryCustomEndpoint")
 }
+func GetAssuredWorkloadsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:assuredWorkloadsCustomEndpoint")
+}
 func GetBatching(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:batching")
 }

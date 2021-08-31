@@ -11,6 +11,7 @@ export * from "./caPoolIamBinding";
 export * from "./caPoolIamMember";
 export * from "./caPoolIamPolicy";
 export * from "./certificate";
+export * from "./certificateTemplate";
 
 // Import resources to register:
 import { Authority } from "./authority";
@@ -19,6 +20,7 @@ import { CaPoolIamBinding } from "./caPoolIamBinding";
 import { CaPoolIamMember } from "./caPoolIamMember";
 import { CaPoolIamPolicy } from "./caPoolIamPolicy";
 import { Certificate } from "./certificate";
+import { CertificateTemplate } from "./certificateTemplate";
 
 const _module = {
     version: utilities.getVersion(),
@@ -36,6 +38,8 @@ const _module = {
                 return new CaPoolIamPolicy(name, <any>undefined, { urn })
             case "gcp:certificateauthority/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/certificateTemplate:CertificateTemplate":
+                return new CertificateTemplate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -47,3 +51,4 @@ pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamBind
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificate", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificateTemplate", _module)

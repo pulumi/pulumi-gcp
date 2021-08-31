@@ -51,6 +51,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExternalVpnGateway{}
 	case "gcp:compute/firewall:Firewall":
 		r = &Firewall{}
+	case "gcp:compute/firewallPolicy:FirewallPolicy":
+		r = &FirewallPolicy{}
+	case "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation":
+		r = &FirewallPolicyAssociation{}
+	case "gcp:compute/firewallPolicyRule:FirewallPolicyRule":
+		r = &FirewallPolicyRule{}
 	case "gcp:compute/forwardingRule:ForwardingRule":
 		r = &ForwardingRule{}
 	case "gcp:compute/globalAddress:GlobalAddress":
@@ -315,6 +321,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/firewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/firewallPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/firewallPolicyAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/firewallPolicyRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

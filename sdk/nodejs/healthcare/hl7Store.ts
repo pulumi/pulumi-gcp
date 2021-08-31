@@ -234,7 +234,7 @@ export class Hl7Store extends pulumi.CustomResource {
      * A nested object resource
      * Structure is documented below.
      */
-    public readonly parserConfig!: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig | undefined>;
+    public readonly parserConfig!: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
     /**
      * The fully qualified name of this dataset
      */

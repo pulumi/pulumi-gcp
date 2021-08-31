@@ -54,6 +54,8 @@ __all__ = [
     'FirewallAllow',
     'FirewallDeny',
     'FirewallLogConfig',
+    'FirewallPolicyRuleMatch',
+    'FirewallPolicyRuleMatchLayer4Config',
     'GlobalForwardingRuleMetadataFilter',
     'GlobalForwardingRuleMetadataFilterFilterLabel',
     'HaVpnGatewayVpnInterface',
@@ -4017,6 +4019,116 @@ class FirewallLogConfig(dict):
         Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
         """
         return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
+class FirewallPolicyRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layer4_configs: Sequence['outputs.FirewallPolicyRuleMatchLayer4Config'],
+                 dest_ip_ranges: Optional[Sequence[str]] = None,
+                 src_ip_ranges: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['FirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Sequence['outputs.FirewallPolicyRuleMatchLayer4Config']:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+
+@pulumi.output_type
+class FirewallPolicyRuleMatchLayer4Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleMatchLayer4Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyRuleMatchLayer4Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyRuleMatchLayer4Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: str,
+                 ports: Optional[Sequence[str]] = None):
+        """
+        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> str:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[str]]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+        return pulumi.get(self, "ports")
 
 
 @pulumi.output_type

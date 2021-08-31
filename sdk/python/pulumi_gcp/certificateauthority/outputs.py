@@ -76,6 +76,19 @@ __all__ = [
     'CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage',
     'CertificateConfigX509ConfigPolicyId',
     'CertificateRevocationDetail',
+    'CertificateTemplateIdentityConstraints',
+    'CertificateTemplateIdentityConstraintsCelExpression',
+    'CertificateTemplatePassthroughExtensions',
+    'CertificateTemplatePassthroughExtensionsAdditionalExtension',
+    'CertificateTemplatePredefinedValues',
+    'CertificateTemplatePredefinedValuesAdditionalExtension',
+    'CertificateTemplatePredefinedValuesAdditionalExtensionObjectId',
+    'CertificateTemplatePredefinedValuesCaOptions',
+    'CertificateTemplatePredefinedValuesKeyUsage',
+    'CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage',
+    'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage',
+    'CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage',
+    'CertificateTemplatePredefinedValuesPolicyId',
 ]
 
 @pulumi.output_type
@@ -4435,5 +4448,830 @@ class CertificateRevocationDetail(dict):
     @pulumi.getter(name="revocationTime")
     def revocation_time(self) -> Optional[str]:
         return pulumi.get(self, "revocation_time")
+
+
+@pulumi.output_type
+class CertificateTemplateIdentityConstraints(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSubjectAltNamesPassthrough":
+            suggest = "allow_subject_alt_names_passthrough"
+        elif key == "allowSubjectPassthrough":
+            suggest = "allow_subject_passthrough"
+        elif key == "celExpression":
+            suggest = "cel_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplateIdentityConstraints. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplateIdentityConstraints.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplateIdentityConstraints.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_subject_alt_names_passthrough: bool,
+                 allow_subject_passthrough: bool,
+                 cel_expression: Optional['outputs.CertificateTemplateIdentityConstraintsCelExpression'] = None):
+        """
+        :param bool allow_subject_alt_names_passthrough: Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+        :param bool allow_subject_passthrough: Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+        :param 'CertificateTemplateIdentityConstraintsCelExpressionArgs' cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        """
+        pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
+        pulumi.set(__self__, "allow_subject_passthrough", allow_subject_passthrough)
+        if cel_expression is not None:
+            pulumi.set(__self__, "cel_expression", cel_expression)
+
+    @property
+    @pulumi.getter(name="allowSubjectAltNamesPassthrough")
+    def allow_subject_alt_names_passthrough(self) -> bool:
+        """
+        Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+        """
+        return pulumi.get(self, "allow_subject_alt_names_passthrough")
+
+    @property
+    @pulumi.getter(name="allowSubjectPassthrough")
+    def allow_subject_passthrough(self) -> bool:
+        """
+        Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+        """
+        return pulumi.get(self, "allow_subject_passthrough")
+
+    @property
+    @pulumi.getter(name="celExpression")
+    def cel_expression(self) -> Optional['outputs.CertificateTemplateIdentityConstraintsCelExpression']:
+        """
+        Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        """
+        return pulumi.get(self, "cel_expression")
+
+
+@pulumi.output_type
+class CertificateTemplateIdentityConstraintsCelExpression(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 expression: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class CertificateTemplatePassthroughExtensions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalExtensions":
+            suggest = "additional_extensions"
+        elif key == "knownExtensions":
+            suggest = "known_extensions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePassthroughExtensions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePassthroughExtensions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePassthroughExtensions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_extensions: Optional[Sequence['outputs.CertificateTemplatePassthroughExtensionsAdditionalExtension']] = None,
+                 known_extensions: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs'] additional_extensions: Optional. Describes custom X.509 extensions.
+        :param Sequence[str] known_extensions: Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+        """
+        if additional_extensions is not None:
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
+        if known_extensions is not None:
+            pulumi.set(__self__, "known_extensions", known_extensions)
+
+    @property
+    @pulumi.getter(name="additionalExtensions")
+    def additional_extensions(self) -> Optional[Sequence['outputs.CertificateTemplatePassthroughExtensionsAdditionalExtension']]:
+        """
+        Optional. Describes custom X.509 extensions.
+        """
+        return pulumi.get(self, "additional_extensions")
+
+    @property
+    @pulumi.getter(name="knownExtensions")
+    def known_extensions(self) -> Optional[Sequence[str]]:
+        """
+        Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+        """
+        return pulumi.get(self, "known_extensions")
+
+
+@pulumi.output_type
+class CertificateTemplatePassthroughExtensionsAdditionalExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPaths":
+            suggest = "object_id_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePassthroughExtensionsAdditionalExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePassthroughExtensionsAdditionalExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePassthroughExtensionsAdditionalExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[int]):
+        """
+        :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[int]:
+        """
+        Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValues(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalExtensions":
+            suggest = "additional_extensions"
+        elif key == "aiaOcspServers":
+            suggest = "aia_ocsp_servers"
+        elif key == "caOptions":
+            suggest = "ca_options"
+        elif key == "keyUsage":
+            suggest = "key_usage"
+        elif key == "policyIds":
+            suggest = "policy_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValues. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValues.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValues.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_extensions: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesAdditionalExtension']] = None,
+                 aia_ocsp_servers: Optional[Sequence[str]] = None,
+                 ca_options: Optional['outputs.CertificateTemplatePredefinedValuesCaOptions'] = None,
+                 key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsage'] = None,
+                 policy_ids: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesPolicyId']] = None):
+        """
+        :param Sequence['CertificateTemplatePredefinedValuesAdditionalExtensionArgs'] additional_extensions: Optional. Describes custom X.509 extensions.
+        :param Sequence[str] aia_ocsp_servers: Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+        :param 'CertificateTemplatePredefinedValuesCaOptionsArgs' ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+        :param 'CertificateTemplatePredefinedValuesKeyUsageArgs' key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
+        :param Sequence['CertificateTemplatePredefinedValuesPolicyIdArgs'] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        """
+        if additional_extensions is not None:
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
+        if aia_ocsp_servers is not None:
+            pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
+        if ca_options is not None:
+            pulumi.set(__self__, "ca_options", ca_options)
+        if key_usage is not None:
+            pulumi.set(__self__, "key_usage", key_usage)
+        if policy_ids is not None:
+            pulumi.set(__self__, "policy_ids", policy_ids)
+
+    @property
+    @pulumi.getter(name="additionalExtensions")
+    def additional_extensions(self) -> Optional[Sequence['outputs.CertificateTemplatePredefinedValuesAdditionalExtension']]:
+        """
+        Optional. Describes custom X.509 extensions.
+        """
+        return pulumi.get(self, "additional_extensions")
+
+    @property
+    @pulumi.getter(name="aiaOcspServers")
+    def aia_ocsp_servers(self) -> Optional[Sequence[str]]:
+        """
+        Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+        """
+        return pulumi.get(self, "aia_ocsp_servers")
+
+    @property
+    @pulumi.getter(name="caOptions")
+    def ca_options(self) -> Optional['outputs.CertificateTemplatePredefinedValuesCaOptions']:
+        """
+        Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+        """
+        return pulumi.get(self, "ca_options")
+
+    @property
+    @pulumi.getter(name="keyUsage")
+    def key_usage(self) -> Optional['outputs.CertificateTemplatePredefinedValuesKeyUsage']:
+        """
+        Optional. Indicates the intended use for keys that correspond to a certificate.
+        """
+        return pulumi.get(self, "key_usage")
+
+    @property
+    @pulumi.getter(name="policyIds")
+    def policy_ids(self) -> Optional[Sequence['outputs.CertificateTemplatePredefinedValuesPolicyId']]:
+        """
+        Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        """
+        return pulumi.get(self, "policy_ids")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesAdditionalExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesAdditionalExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesAdditionalExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesAdditionalExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id: 'outputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectId',
+                 value: str,
+                 critical: Optional[bool] = None):
+        """
+        :param 'CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs' object_id: Required. The OID for this X.509 extension.
+        :param str value: Required. The value of this X.509 extension.
+        :param bool critical: Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        """
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "value", value)
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> 'outputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectId':
+        """
+        Required. The OID for this X.509 extension.
+        """
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Required. The value of this X.509 extension.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[bool]:
+        """
+        Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        """
+        return pulumi.get(self, "critical")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPaths":
+            suggest = "object_id_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesAdditionalExtensionObjectId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[int]):
+        """
+        :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[int]:
+        """
+        Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesCaOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isCa":
+            suggest = "is_ca"
+        elif key == "maxIssuerPathLength":
+            suggest = "max_issuer_path_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesCaOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesCaOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesCaOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_ca: Optional[bool] = None,
+                 max_issuer_path_length: Optional[int] = None):
+        """
+        :param bool is_ca: Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+        :param int max_issuer_path_length: Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+        """
+        if is_ca is not None:
+            pulumi.set(__self__, "is_ca", is_ca)
+        if max_issuer_path_length is not None:
+            pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+
+    @property
+    @pulumi.getter(name="isCa")
+    def is_ca(self) -> Optional[bool]:
+        """
+        Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "is_ca")
+
+    @property
+    @pulumi.getter(name="maxIssuerPathLength")
+    def max_issuer_path_length(self) -> Optional[int]:
+        """
+        Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "max_issuer_path_length")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseKeyUsage":
+            suggest = "base_key_usage"
+        elif key == "extendedKeyUsage":
+            suggest = "extended_key_usage"
+        elif key == "unknownExtendedKeyUsages":
+            suggest = "unknown_extended_key_usages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage'] = None,
+                 extended_key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage'] = None,
+                 unknown_extended_key_usages: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage']] = None):
+        """
+        :param 'CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs' base_key_usage: Describes high-level ways in which a key may be used.
+        :param 'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs' extended_key_usage: Detailed scenarios in which a key may be used.
+        :param Sequence['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        """
+        if base_key_usage is not None:
+            pulumi.set(__self__, "base_key_usage", base_key_usage)
+        if extended_key_usage is not None:
+            pulumi.set(__self__, "extended_key_usage", extended_key_usage)
+        if unknown_extended_key_usages is not None:
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
+
+    @property
+    @pulumi.getter(name="baseKeyUsage")
+    def base_key_usage(self) -> Optional['outputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage']:
+        """
+        Describes high-level ways in which a key may be used.
+        """
+        return pulumi.get(self, "base_key_usage")
+
+    @property
+    @pulumi.getter(name="extendedKeyUsage")
+    def extended_key_usage(self) -> Optional['outputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage']:
+        """
+        Detailed scenarios in which a key may be used.
+        """
+        return pulumi.get(self, "extended_key_usage")
+
+    @property
+    @pulumi.getter(name="unknownExtendedKeyUsages")
+    def unknown_extended_key_usages(self) -> Optional[Sequence['outputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage']]:
+        """
+        Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        """
+        return pulumi.get(self, "unknown_extended_key_usages")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certSign":
+            suggest = "cert_sign"
+        elif key == "contentCommitment":
+            suggest = "content_commitment"
+        elif key == "crlSign":
+            suggest = "crl_sign"
+        elif key == "dataEncipherment":
+            suggest = "data_encipherment"
+        elif key == "decipherOnly":
+            suggest = "decipher_only"
+        elif key == "digitalSignature":
+            suggest = "digital_signature"
+        elif key == "encipherOnly":
+            suggest = "encipher_only"
+        elif key == "keyAgreement":
+            suggest = "key_agreement"
+        elif key == "keyEncipherment":
+            suggest = "key_encipherment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_sign: Optional[bool] = None,
+                 content_commitment: Optional[bool] = None,
+                 crl_sign: Optional[bool] = None,
+                 data_encipherment: Optional[bool] = None,
+                 decipher_only: Optional[bool] = None,
+                 digital_signature: Optional[bool] = None,
+                 encipher_only: Optional[bool] = None,
+                 key_agreement: Optional[bool] = None,
+                 key_encipherment: Optional[bool] = None):
+        """
+        :param bool cert_sign: The key may be used to sign certificates.
+        :param bool content_commitment: The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        :param bool crl_sign: The key may be used sign certificate revocation lists.
+        :param bool data_encipherment: The key may be used to encipher data.
+        :param bool decipher_only: The key may be used to decipher only.
+        :param bool digital_signature: The key may be used for digital signatures.
+        :param bool encipher_only: The key may be used to encipher only.
+        :param bool key_agreement: The key may be used in a key agreement protocol.
+        :param bool key_encipherment: The key may be used to encipher other keys.
+        """
+        if cert_sign is not None:
+            pulumi.set(__self__, "cert_sign", cert_sign)
+        if content_commitment is not None:
+            pulumi.set(__self__, "content_commitment", content_commitment)
+        if crl_sign is not None:
+            pulumi.set(__self__, "crl_sign", crl_sign)
+        if data_encipherment is not None:
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
+        if decipher_only is not None:
+            pulumi.set(__self__, "decipher_only", decipher_only)
+        if digital_signature is not None:
+            pulumi.set(__self__, "digital_signature", digital_signature)
+        if encipher_only is not None:
+            pulumi.set(__self__, "encipher_only", encipher_only)
+        if key_agreement is not None:
+            pulumi.set(__self__, "key_agreement", key_agreement)
+        if key_encipherment is not None:
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
+
+    @property
+    @pulumi.getter(name="certSign")
+    def cert_sign(self) -> Optional[bool]:
+        """
+        The key may be used to sign certificates.
+        """
+        return pulumi.get(self, "cert_sign")
+
+    @property
+    @pulumi.getter(name="contentCommitment")
+    def content_commitment(self) -> Optional[bool]:
+        """
+        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        """
+        return pulumi.get(self, "content_commitment")
+
+    @property
+    @pulumi.getter(name="crlSign")
+    def crl_sign(self) -> Optional[bool]:
+        """
+        The key may be used sign certificate revocation lists.
+        """
+        return pulumi.get(self, "crl_sign")
+
+    @property
+    @pulumi.getter(name="dataEncipherment")
+    def data_encipherment(self) -> Optional[bool]:
+        """
+        The key may be used to encipher data.
+        """
+        return pulumi.get(self, "data_encipherment")
+
+    @property
+    @pulumi.getter(name="decipherOnly")
+    def decipher_only(self) -> Optional[bool]:
+        """
+        The key may be used to decipher only.
+        """
+        return pulumi.get(self, "decipher_only")
+
+    @property
+    @pulumi.getter(name="digitalSignature")
+    def digital_signature(self) -> Optional[bool]:
+        """
+        The key may be used for digital signatures.
+        """
+        return pulumi.get(self, "digital_signature")
+
+    @property
+    @pulumi.getter(name="encipherOnly")
+    def encipher_only(self) -> Optional[bool]:
+        """
+        The key may be used to encipher only.
+        """
+        return pulumi.get(self, "encipher_only")
+
+    @property
+    @pulumi.getter(name="keyAgreement")
+    def key_agreement(self) -> Optional[bool]:
+        """
+        The key may be used in a key agreement protocol.
+        """
+        return pulumi.get(self, "key_agreement")
+
+    @property
+    @pulumi.getter(name="keyEncipherment")
+    def key_encipherment(self) -> Optional[bool]:
+        """
+        The key may be used to encipher other keys.
+        """
+        return pulumi.get(self, "key_encipherment")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientAuth":
+            suggest = "client_auth"
+        elif key == "codeSigning":
+            suggest = "code_signing"
+        elif key == "emailProtection":
+            suggest = "email_protection"
+        elif key == "ocspSigning":
+            suggest = "ocsp_signing"
+        elif key == "serverAuth":
+            suggest = "server_auth"
+        elif key == "timeStamping":
+            suggest = "time_stamping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_auth: Optional[bool] = None,
+                 code_signing: Optional[bool] = None,
+                 email_protection: Optional[bool] = None,
+                 ocsp_signing: Optional[bool] = None,
+                 server_auth: Optional[bool] = None,
+                 time_stamping: Optional[bool] = None):
+        """
+        :param bool client_auth: Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        :param bool code_signing: Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        :param bool email_protection: Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        :param bool ocsp_signing: Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        """
+        if client_auth is not None:
+            pulumi.set(__self__, "client_auth", client_auth)
+        if code_signing is not None:
+            pulumi.set(__self__, "code_signing", code_signing)
+        if email_protection is not None:
+            pulumi.set(__self__, "email_protection", email_protection)
+        if ocsp_signing is not None:
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
+        if server_auth is not None:
+            pulumi.set(__self__, "server_auth", server_auth)
+        if time_stamping is not None:
+            pulumi.set(__self__, "time_stamping", time_stamping)
+
+    @property
+    @pulumi.getter(name="clientAuth")
+    def client_auth(self) -> Optional[bool]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        """
+        return pulumi.get(self, "client_auth")
+
+    @property
+    @pulumi.getter(name="codeSigning")
+    def code_signing(self) -> Optional[bool]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        """
+        return pulumi.get(self, "code_signing")
+
+    @property
+    @pulumi.getter(name="emailProtection")
+    def email_protection(self) -> Optional[bool]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        """
+        return pulumi.get(self, "email_protection")
+
+    @property
+    @pulumi.getter(name="ocspSigning")
+    def ocsp_signing(self) -> Optional[bool]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        """
+        return pulumi.get(self, "ocsp_signing")
+
+    @property
+    @pulumi.getter(name="serverAuth")
+    def server_auth(self) -> Optional[bool]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        """
+        return pulumi.get(self, "server_auth")
+
+    @property
+    @pulumi.getter(name="timeStamping")
+    def time_stamping(self) -> Optional[bool]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        """
+        return pulumi.get(self, "time_stamping")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPaths":
+            suggest = "object_id_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[int]):
+        """
+        :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[int]:
+        """
+        Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesPolicyId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPaths":
+            suggest = "object_id_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesPolicyId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesPolicyId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesPolicyId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[int]):
+        """
+        :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[int]:
+        """
+        Required. The parts of an OID path. The most significant parts of the path come first.
+        """
+        return pulumi.get(self, "object_id_paths")
 
 

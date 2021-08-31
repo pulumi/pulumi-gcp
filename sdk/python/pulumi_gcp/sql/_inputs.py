@@ -440,6 +440,7 @@ class DatabaseInstanceSettingsArgs:
                  authorized_gae_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  availability_type: Optional[pulumi.Input[str]] = None,
                  backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
+                 collation: Optional[pulumi.Input[str]] = None,
                  crash_safe_replication: Optional[pulumi.Input[bool]] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
@@ -468,6 +469,7 @@ class DatabaseInstanceSettingsArgs:
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
                instances, ensure that `settings.backup_configuration.enabled` and
                `settings.backup_configuration.binary_log_enabled` are both set to `true`.
+        :param pulumi.Input[str] collation: The name of server instance collation.
         :param pulumi.Input[bool] crash_safe_replication: This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
                for information on how to upgrade to Second Generation instances.
@@ -495,6 +497,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
             pulumi.set(__self__, "backup_configuration", backup_configuration)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
         if crash_safe_replication is not None:
             warnings.warn("""This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""", DeprecationWarning)
             pulumi.log.warn("""crash_safe_replication is deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""")
@@ -595,6 +599,18 @@ class DatabaseInstanceSettingsArgs:
     @backup_configuration.setter
     def backup_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']]):
         pulumi.set(self, "backup_configuration", value)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of server instance collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation", value)
 
     @property
     @pulumi.getter(name="crashSafeReplication")

@@ -42,6 +42,9 @@ namespace Pulumi.Gcp
         [Output("artifactRegistryCustomEndpoint")]
         public Output<string?> ArtifactRegistryCustomEndpoint { get; private set; } = null!;
 
+        [Output("assuredWorkloadsCustomEndpoint")]
+        public Output<string?> AssuredWorkloadsCustomEndpoint { get; private set; } = null!;
+
         [Output("bigQueryCustomEndpoint")]
         public Output<string?> BigQueryCustomEndpoint { get; private set; } = null!;
 
@@ -372,6 +375,9 @@ namespace Pulumi.Gcp
 
         [Input("artifactRegistryCustomEndpoint")]
         public Input<string>? ArtifactRegistryCustomEndpoint { get; set; }
+
+        [Input("assuredWorkloadsCustomEndpoint")]
+        public Input<string>? AssuredWorkloadsCustomEndpoint { get; set; }
 
         [Input("batching", json: true)]
         public Input<Inputs.ProviderBatchingArgs>? Batching { get; set; }

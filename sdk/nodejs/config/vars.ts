@@ -15,6 +15,7 @@ export let apiGatewayCustomEndpoint: string | undefined = __config.get("apiGatew
 export let apigeeCustomEndpoint: string | undefined = __config.get("apigeeCustomEndpoint");
 export let appEngineCustomEndpoint: string | undefined = __config.get("appEngineCustomEndpoint");
 export let artifactRegistryCustomEndpoint: string | undefined = __config.get("artifactRegistryCustomEndpoint");
+export let assuredWorkloadsCustomEndpoint: string | undefined = __config.get("assuredWorkloadsCustomEndpoint");
 export let batching: outputs.config.Batching | undefined = __config.getObject<outputs.config.Batching>("batching");
 export let bigQueryCustomEndpoint: string | undefined = __config.get("bigQueryCustomEndpoint");
 export let bigqueryConnectionCustomEndpoint: string | undefined = __config.get("bigqueryConnectionCustomEndpoint");

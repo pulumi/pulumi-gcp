@@ -59,8 +59,8 @@ import * as utilities from "../utilities";
  *                 critical: true,
  *                 objectId: {
  *                     objectIdPaths: [
- *                         123,
- *                         899,
+ *                         1,
+ *                         7,
  *                     ],
  *                 },
  *                 value: "asdf",
@@ -92,14 +92,15 @@ import * as utilities from "../utilities";
  *             policyIds: [
  *                 {
  *                     objectIdPaths: [
- *                         123,
- *                         888,
+ *                         1,
+ *                         5,
  *                     ],
  *                 },
  *                 {
  *                     objectIdPaths: [
- *                         456,
- *                         120,
+ *                         1,
+ *                         5,
+ *                         7,
  *                     ],
  *                 },
  *             ],

@@ -10230,6 +10230,2038 @@ func (o CertificateRevocationDetailArrayOutput) Index(i pulumi.IntInput) Certifi
 	}).(CertificateRevocationDetailOutput)
 }
 
+type CertificateTemplateIdentityConstraints struct {
+	// Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+	AllowSubjectAltNamesPassthrough bool `pulumi:"allowSubjectAltNamesPassthrough"`
+	// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+	AllowSubjectPassthrough bool `pulumi:"allowSubjectPassthrough"`
+	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+	CelExpression *CertificateTemplateIdentityConstraintsCelExpression `pulumi:"celExpression"`
+}
+
+// CertificateTemplateIdentityConstraintsInput is an input type that accepts CertificateTemplateIdentityConstraintsArgs and CertificateTemplateIdentityConstraintsOutput values.
+// You can construct a concrete instance of `CertificateTemplateIdentityConstraintsInput` via:
+//
+//          CertificateTemplateIdentityConstraintsArgs{...}
+type CertificateTemplateIdentityConstraintsInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIdentityConstraintsOutput() CertificateTemplateIdentityConstraintsOutput
+	ToCertificateTemplateIdentityConstraintsOutputWithContext(context.Context) CertificateTemplateIdentityConstraintsOutput
+}
+
+type CertificateTemplateIdentityConstraintsArgs struct {
+	// Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+	AllowSubjectAltNamesPassthrough pulumi.BoolInput `pulumi:"allowSubjectAltNamesPassthrough"`
+	// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+	AllowSubjectPassthrough pulumi.BoolInput `pulumi:"allowSubjectPassthrough"`
+	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+	CelExpression CertificateTemplateIdentityConstraintsCelExpressionPtrInput `pulumi:"celExpression"`
+}
+
+func (CertificateTemplateIdentityConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIdentityConstraints)(nil)).Elem()
+}
+
+func (i CertificateTemplateIdentityConstraintsArgs) ToCertificateTemplateIdentityConstraintsOutput() CertificateTemplateIdentityConstraintsOutput {
+	return i.ToCertificateTemplateIdentityConstraintsOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIdentityConstraintsArgs) ToCertificateTemplateIdentityConstraintsOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIdentityConstraintsOutput)
+}
+
+func (i CertificateTemplateIdentityConstraintsArgs) ToCertificateTemplateIdentityConstraintsPtrOutput() CertificateTemplateIdentityConstraintsPtrOutput {
+	return i.ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIdentityConstraintsArgs) ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIdentityConstraintsOutput).ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(ctx)
+}
+
+// CertificateTemplateIdentityConstraintsPtrInput is an input type that accepts CertificateTemplateIdentityConstraintsArgs, CertificateTemplateIdentityConstraintsPtr and CertificateTemplateIdentityConstraintsPtrOutput values.
+// You can construct a concrete instance of `CertificateTemplateIdentityConstraintsPtrInput` via:
+//
+//          CertificateTemplateIdentityConstraintsArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplateIdentityConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIdentityConstraintsPtrOutput() CertificateTemplateIdentityConstraintsPtrOutput
+	ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(context.Context) CertificateTemplateIdentityConstraintsPtrOutput
+}
+
+type certificateTemplateIdentityConstraintsPtrType CertificateTemplateIdentityConstraintsArgs
+
+func CertificateTemplateIdentityConstraintsPtr(v *CertificateTemplateIdentityConstraintsArgs) CertificateTemplateIdentityConstraintsPtrInput {
+	return (*certificateTemplateIdentityConstraintsPtrType)(v)
+}
+
+func (*certificateTemplateIdentityConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIdentityConstraints)(nil)).Elem()
+}
+
+func (i *certificateTemplateIdentityConstraintsPtrType) ToCertificateTemplateIdentityConstraintsPtrOutput() CertificateTemplateIdentityConstraintsPtrOutput {
+	return i.ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplateIdentityConstraintsPtrType) ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIdentityConstraintsPtrOutput)
+}
+
+type CertificateTemplateIdentityConstraintsOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIdentityConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIdentityConstraints)(nil)).Elem()
+}
+
+func (o CertificateTemplateIdentityConstraintsOutput) ToCertificateTemplateIdentityConstraintsOutput() CertificateTemplateIdentityConstraintsOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsOutput) ToCertificateTemplateIdentityConstraintsOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsOutput) ToCertificateTemplateIdentityConstraintsPtrOutput() CertificateTemplateIdentityConstraintsPtrOutput {
+	return o.ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplateIdentityConstraintsOutput) ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraints {
+		return &v
+	}).(CertificateTemplateIdentityConstraintsPtrOutput)
+}
+
+// Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+func (o CertificateTemplateIdentityConstraintsOutput) AllowSubjectAltNamesPassthrough() pulumi.BoolOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) bool { return v.AllowSubjectAltNamesPassthrough }).(pulumi.BoolOutput)
+}
+
+// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+func (o CertificateTemplateIdentityConstraintsOutput) AllowSubjectPassthrough() pulumi.BoolOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) bool { return v.AllowSubjectPassthrough }).(pulumi.BoolOutput)
+}
+
+// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+func (o CertificateTemplateIdentityConstraintsOutput) CelExpression() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraintsCelExpression {
+		return v.CelExpression
+	}).(CertificateTemplateIdentityConstraintsCelExpressionPtrOutput)
+}
+
+type CertificateTemplateIdentityConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIdentityConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIdentityConstraints)(nil)).Elem()
+}
+
+func (o CertificateTemplateIdentityConstraintsPtrOutput) ToCertificateTemplateIdentityConstraintsPtrOutput() CertificateTemplateIdentityConstraintsPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsPtrOutput) ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsPtrOutput) Elem() CertificateTemplateIdentityConstraintsOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) CertificateTemplateIdentityConstraints { return *v }).(CertificateTemplateIdentityConstraintsOutput)
+}
+
+// Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+func (o CertificateTemplateIdentityConstraintsPtrOutput) AllowSubjectAltNamesPassthrough() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowSubjectAltNamesPassthrough
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+func (o CertificateTemplateIdentityConstraintsPtrOutput) AllowSubjectPassthrough() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowSubjectPassthrough
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+func (o CertificateTemplateIdentityConstraintsPtrOutput) CelExpression() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraintsCelExpression {
+		if v == nil {
+			return nil
+		}
+		return v.CelExpression
+	}).(CertificateTemplateIdentityConstraintsCelExpressionPtrOutput)
+}
+
+type CertificateTemplateIdentityConstraintsCelExpression struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression *string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// CertificateTemplateIdentityConstraintsCelExpressionInput is an input type that accepts CertificateTemplateIdentityConstraintsCelExpressionArgs and CertificateTemplateIdentityConstraintsCelExpressionOutput values.
+// You can construct a concrete instance of `CertificateTemplateIdentityConstraintsCelExpressionInput` via:
+//
+//          CertificateTemplateIdentityConstraintsCelExpressionArgs{...}
+type CertificateTemplateIdentityConstraintsCelExpressionInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIdentityConstraintsCelExpressionOutput() CertificateTemplateIdentityConstraintsCelExpressionOutput
+	ToCertificateTemplateIdentityConstraintsCelExpressionOutputWithContext(context.Context) CertificateTemplateIdentityConstraintsCelExpressionOutput
+}
+
+type CertificateTemplateIdentityConstraintsCelExpressionArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (CertificateTemplateIdentityConstraintsCelExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIdentityConstraintsCelExpression)(nil)).Elem()
+}
+
+func (i CertificateTemplateIdentityConstraintsCelExpressionArgs) ToCertificateTemplateIdentityConstraintsCelExpressionOutput() CertificateTemplateIdentityConstraintsCelExpressionOutput {
+	return i.ToCertificateTemplateIdentityConstraintsCelExpressionOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIdentityConstraintsCelExpressionArgs) ToCertificateTemplateIdentityConstraintsCelExpressionOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsCelExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIdentityConstraintsCelExpressionOutput)
+}
+
+func (i CertificateTemplateIdentityConstraintsCelExpressionArgs) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutput() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return i.ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIdentityConstraintsCelExpressionArgs) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIdentityConstraintsCelExpressionOutput).ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(ctx)
+}
+
+// CertificateTemplateIdentityConstraintsCelExpressionPtrInput is an input type that accepts CertificateTemplateIdentityConstraintsCelExpressionArgs, CertificateTemplateIdentityConstraintsCelExpressionPtr and CertificateTemplateIdentityConstraintsCelExpressionPtrOutput values.
+// You can construct a concrete instance of `CertificateTemplateIdentityConstraintsCelExpressionPtrInput` via:
+//
+//          CertificateTemplateIdentityConstraintsCelExpressionArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplateIdentityConstraintsCelExpressionPtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutput() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput
+	ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(context.Context) CertificateTemplateIdentityConstraintsCelExpressionPtrOutput
+}
+
+type certificateTemplateIdentityConstraintsCelExpressionPtrType CertificateTemplateIdentityConstraintsCelExpressionArgs
+
+func CertificateTemplateIdentityConstraintsCelExpressionPtr(v *CertificateTemplateIdentityConstraintsCelExpressionArgs) CertificateTemplateIdentityConstraintsCelExpressionPtrInput {
+	return (*certificateTemplateIdentityConstraintsCelExpressionPtrType)(v)
+}
+
+func (*certificateTemplateIdentityConstraintsCelExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIdentityConstraintsCelExpression)(nil)).Elem()
+}
+
+func (i *certificateTemplateIdentityConstraintsCelExpressionPtrType) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutput() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return i.ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplateIdentityConstraintsCelExpressionPtrType) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIdentityConstraintsCelExpressionPtrOutput)
+}
+
+type CertificateTemplateIdentityConstraintsCelExpressionOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIdentityConstraintsCelExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIdentityConstraintsCelExpression)(nil)).Elem()
+}
+
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) ToCertificateTemplateIdentityConstraintsCelExpressionOutput() CertificateTemplateIdentityConstraintsCelExpressionOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) ToCertificateTemplateIdentityConstraintsCelExpressionOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsCelExpressionOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutput() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return o.ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraintsCelExpression) *CertificateTemplateIdentityConstraintsCelExpression {
+		return &v
+	}).(CertificateTemplateIdentityConstraintsCelExpressionPtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraintsCelExpression) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraintsCelExpression) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraintsCelExpression) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIdentityConstraintsCelExpression) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type CertificateTemplateIdentityConstraintsCelExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIdentityConstraintsCelExpression)(nil)).Elem()
+}
+
+func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutput() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Elem() CertificateTemplateIdentityConstraintsCelExpressionOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraintsCelExpression) CertificateTemplateIdentityConstraintsCelExpression {
+		return *v
+	}).(CertificateTemplateIdentityConstraintsCelExpressionOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraintsCelExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraintsCelExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraintsCelExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraintsCelExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateTemplatePassthroughExtensions struct {
+	// Optional. Describes custom X.509 extensions.
+	AdditionalExtensions []CertificateTemplatePassthroughExtensionsAdditionalExtension `pulumi:"additionalExtensions"`
+	// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+	KnownExtensions []string `pulumi:"knownExtensions"`
+}
+
+// CertificateTemplatePassthroughExtensionsInput is an input type that accepts CertificateTemplatePassthroughExtensionsArgs and CertificateTemplatePassthroughExtensionsOutput values.
+// You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsInput` via:
+//
+//          CertificateTemplatePassthroughExtensionsArgs{...}
+type CertificateTemplatePassthroughExtensionsInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePassthroughExtensionsOutput() CertificateTemplatePassthroughExtensionsOutput
+	ToCertificateTemplatePassthroughExtensionsOutputWithContext(context.Context) CertificateTemplatePassthroughExtensionsOutput
+}
+
+type CertificateTemplatePassthroughExtensionsArgs struct {
+	// Optional. Describes custom X.509 extensions.
+	AdditionalExtensions CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
+	// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+	KnownExtensions pulumi.StringArrayInput `pulumi:"knownExtensions"`
+}
+
+func (CertificateTemplatePassthroughExtensionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePassthroughExtensions)(nil)).Elem()
+}
+
+func (i CertificateTemplatePassthroughExtensionsArgs) ToCertificateTemplatePassthroughExtensionsOutput() CertificateTemplatePassthroughExtensionsOutput {
+	return i.ToCertificateTemplatePassthroughExtensionsOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePassthroughExtensionsArgs) ToCertificateTemplatePassthroughExtensionsOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePassthroughExtensionsOutput)
+}
+
+func (i CertificateTemplatePassthroughExtensionsArgs) ToCertificateTemplatePassthroughExtensionsPtrOutput() CertificateTemplatePassthroughExtensionsPtrOutput {
+	return i.ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePassthroughExtensionsArgs) ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePassthroughExtensionsOutput).ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(ctx)
+}
+
+// CertificateTemplatePassthroughExtensionsPtrInput is an input type that accepts CertificateTemplatePassthroughExtensionsArgs, CertificateTemplatePassthroughExtensionsPtr and CertificateTemplatePassthroughExtensionsPtrOutput values.
+// You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsPtrInput` via:
+//
+//          CertificateTemplatePassthroughExtensionsArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplatePassthroughExtensionsPtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePassthroughExtensionsPtrOutput() CertificateTemplatePassthroughExtensionsPtrOutput
+	ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(context.Context) CertificateTemplatePassthroughExtensionsPtrOutput
+}
+
+type certificateTemplatePassthroughExtensionsPtrType CertificateTemplatePassthroughExtensionsArgs
+
+func CertificateTemplatePassthroughExtensionsPtr(v *CertificateTemplatePassthroughExtensionsArgs) CertificateTemplatePassthroughExtensionsPtrInput {
+	return (*certificateTemplatePassthroughExtensionsPtrType)(v)
+}
+
+func (*certificateTemplatePassthroughExtensionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePassthroughExtensions)(nil)).Elem()
+}
+
+func (i *certificateTemplatePassthroughExtensionsPtrType) ToCertificateTemplatePassthroughExtensionsPtrOutput() CertificateTemplatePassthroughExtensionsPtrOutput {
+	return i.ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplatePassthroughExtensionsPtrType) ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePassthroughExtensionsPtrOutput)
+}
+
+type CertificateTemplatePassthroughExtensionsOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePassthroughExtensionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePassthroughExtensions)(nil)).Elem()
+}
+
+func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePassthroughExtensionsOutput() CertificateTemplatePassthroughExtensionsOutput {
+	return o
+}
+
+func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePassthroughExtensionsOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsOutput {
+	return o
+}
+
+func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePassthroughExtensionsPtrOutput() CertificateTemplatePassthroughExtensionsPtrOutput {
+	return o.ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePassthroughExtensions) *CertificateTemplatePassthroughExtensions {
+		return &v
+	}).(CertificateTemplatePassthroughExtensionsPtrOutput)
+}
+
+// Optional. Describes custom X.509 extensions.
+func (o CertificateTemplatePassthroughExtensionsOutput) AdditionalExtensions() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePassthroughExtensions) []CertificateTemplatePassthroughExtensionsAdditionalExtension {
+		return v.AdditionalExtensions
+	}).(CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput)
+}
+
+// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+func (o CertificateTemplatePassthroughExtensionsOutput) KnownExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePassthroughExtensions) []string { return v.KnownExtensions }).(pulumi.StringArrayOutput)
+}
+
+type CertificateTemplatePassthroughExtensionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePassthroughExtensionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePassthroughExtensions)(nil)).Elem()
+}
+
+func (o CertificateTemplatePassthroughExtensionsPtrOutput) ToCertificateTemplatePassthroughExtensionsPtrOutput() CertificateTemplatePassthroughExtensionsPtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePassthroughExtensionsPtrOutput) ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsPtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePassthroughExtensionsPtrOutput) Elem() CertificateTemplatePassthroughExtensionsOutput {
+	return o.ApplyT(func(v *CertificateTemplatePassthroughExtensions) CertificateTemplatePassthroughExtensions { return *v }).(CertificateTemplatePassthroughExtensionsOutput)
+}
+
+// Optional. Describes custom X.509 extensions.
+func (o CertificateTemplatePassthroughExtensionsPtrOutput) AdditionalExtensions() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v *CertificateTemplatePassthroughExtensions) []CertificateTemplatePassthroughExtensionsAdditionalExtension {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalExtensions
+	}).(CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput)
+}
+
+// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+func (o CertificateTemplatePassthroughExtensionsPtrOutput) KnownExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateTemplatePassthroughExtensions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KnownExtensions
+	}).(pulumi.StringArrayOutput)
+}
+
+type CertificateTemplatePassthroughExtensionsAdditionalExtension struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateTemplatePassthroughExtensionsAdditionalExtensionInput is an input type that accepts CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs and CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput values.
+// You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsAdditionalExtensionInput` via:
+//
+//          CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{...}
+type CertificateTemplatePassthroughExtensionsAdditionalExtensionInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePassthroughExtensionsAdditionalExtensionOutput() CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput
+	ToCertificateTemplatePassthroughExtensionsAdditionalExtensionOutputWithContext(context.Context) CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput
+}
+
+type CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (i CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionOutput() CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput {
+	return i.ToCertificateTemplatePassthroughExtensionsAdditionalExtensionOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput)
+}
+
+// CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput is an input type that accepts CertificateTemplatePassthroughExtensionsAdditionalExtensionArray and CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput values.
+// You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput` via:
+//
+//          CertificateTemplatePassthroughExtensionsAdditionalExtensionArray{ CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{...} }
+type CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput
+	ToCertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutputWithContext(context.Context) CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput
+}
+
+type CertificateTemplatePassthroughExtensionsAdditionalExtensionArray []CertificateTemplatePassthroughExtensionsAdditionalExtensionInput
+
+func (CertificateTemplatePassthroughExtensionsAdditionalExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (i CertificateTemplatePassthroughExtensionsAdditionalExtensionArray) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
+	return i.ToCertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePassthroughExtensionsAdditionalExtensionArray) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput)
+}
+
+type CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (o CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionOutput() CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput {
+	return o
+}
+
+func (o CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput {
+	return o
+}
+
+// Required. The parts of an OID path. The most significant parts of the path come first.
+func (o CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePassthroughExtensionsAdditionalExtension) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (o CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput) ToCertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput) Index(i pulumi.IntInput) CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateTemplatePassthroughExtensionsAdditionalExtension {
+		return vs[0].([]CertificateTemplatePassthroughExtensionsAdditionalExtension)[vs[1].(int)]
+	}).(CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput)
+}
+
+type CertificateTemplatePredefinedValues struct {
+	// Optional. Describes custom X.509 extensions.
+	AdditionalExtensions []CertificateTemplatePredefinedValuesAdditionalExtension `pulumi:"additionalExtensions"`
+	// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+	AiaOcspServers []string `pulumi:"aiaOcspServers"`
+	// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+	CaOptions *CertificateTemplatePredefinedValuesCaOptions `pulumi:"caOptions"`
+	// Optional. Indicates the intended use for keys that correspond to a certificate.
+	KeyUsage *CertificateTemplatePredefinedValuesKeyUsage `pulumi:"keyUsage"`
+	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	PolicyIds []CertificateTemplatePredefinedValuesPolicyId `pulumi:"policyIds"`
+}
+
+// CertificateTemplatePredefinedValuesInput is an input type that accepts CertificateTemplatePredefinedValuesArgs and CertificateTemplatePredefinedValuesOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesInput` via:
+//
+//          CertificateTemplatePredefinedValuesArgs{...}
+type CertificateTemplatePredefinedValuesInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesOutput() CertificateTemplatePredefinedValuesOutput
+	ToCertificateTemplatePredefinedValuesOutputWithContext(context.Context) CertificateTemplatePredefinedValuesOutput
+}
+
+type CertificateTemplatePredefinedValuesArgs struct {
+	// Optional. Describes custom X.509 extensions.
+	AdditionalExtensions CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
+	// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
+	// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+	CaOptions CertificateTemplatePredefinedValuesCaOptionsPtrInput `pulumi:"caOptions"`
+	// Optional. Indicates the intended use for keys that correspond to a certificate.
+	KeyUsage CertificateTemplatePredefinedValuesKeyUsagePtrInput `pulumi:"keyUsage"`
+	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	PolicyIds CertificateTemplatePredefinedValuesPolicyIdArrayInput `pulumi:"policyIds"`
+}
+
+func (CertificateTemplatePredefinedValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValues)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesArgs) ToCertificateTemplatePredefinedValuesOutput() CertificateTemplatePredefinedValuesOutput {
+	return i.ToCertificateTemplatePredefinedValuesOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesArgs) ToCertificateTemplatePredefinedValuesOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesOutput)
+}
+
+func (i CertificateTemplatePredefinedValuesArgs) ToCertificateTemplatePredefinedValuesPtrOutput() CertificateTemplatePredefinedValuesPtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesArgs) ToCertificateTemplatePredefinedValuesPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesOutput).ToCertificateTemplatePredefinedValuesPtrOutputWithContext(ctx)
+}
+
+// CertificateTemplatePredefinedValuesPtrInput is an input type that accepts CertificateTemplatePredefinedValuesArgs, CertificateTemplatePredefinedValuesPtr and CertificateTemplatePredefinedValuesPtrOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesPtrInput` via:
+//
+//          CertificateTemplatePredefinedValuesArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplatePredefinedValuesPtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesPtrOutput() CertificateTemplatePredefinedValuesPtrOutput
+	ToCertificateTemplatePredefinedValuesPtrOutputWithContext(context.Context) CertificateTemplatePredefinedValuesPtrOutput
+}
+
+type certificateTemplatePredefinedValuesPtrType CertificateTemplatePredefinedValuesArgs
+
+func CertificateTemplatePredefinedValuesPtr(v *CertificateTemplatePredefinedValuesArgs) CertificateTemplatePredefinedValuesPtrInput {
+	return (*certificateTemplatePredefinedValuesPtrType)(v)
+}
+
+func (*certificateTemplatePredefinedValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValues)(nil)).Elem()
+}
+
+func (i *certificateTemplatePredefinedValuesPtrType) ToCertificateTemplatePredefinedValuesPtrOutput() CertificateTemplatePredefinedValuesPtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplatePredefinedValuesPtrType) ToCertificateTemplatePredefinedValuesPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValues)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesOutput) ToCertificateTemplatePredefinedValuesOutput() CertificateTemplatePredefinedValuesOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesOutput) ToCertificateTemplatePredefinedValuesOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesOutput) ToCertificateTemplatePredefinedValuesPtrOutput() CertificateTemplatePredefinedValuesPtrOutput {
+	return o.ToCertificateTemplatePredefinedValuesPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplatePredefinedValuesOutput) ToCertificateTemplatePredefinedValuesPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValues {
+		return &v
+	}).(CertificateTemplatePredefinedValuesPtrOutput)
+}
+
+// Optional. Describes custom X.509 extensions.
+func (o CertificateTemplatePredefinedValuesOutput) AdditionalExtensions() CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesAdditionalExtension {
+		return v.AdditionalExtensions
+	}).(CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput)
+}
+
+// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+func (o CertificateTemplatePredefinedValuesOutput) AiaOcspServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValues) []string { return v.AiaOcspServers }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+func (o CertificateTemplatePredefinedValuesOutput) CaOptions() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesCaOptions {
+		return v.CaOptions
+	}).(CertificateTemplatePredefinedValuesCaOptionsPtrOutput)
+}
+
+// Optional. Indicates the intended use for keys that correspond to a certificate.
+func (o CertificateTemplatePredefinedValuesOutput) KeyUsage() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesKeyUsage {
+		return v.KeyUsage
+	}).(CertificateTemplatePredefinedValuesKeyUsagePtrOutput)
+}
+
+// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+func (o CertificateTemplatePredefinedValuesOutput) PolicyIds() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesPolicyId {
+		return v.PolicyIds
+	}).(CertificateTemplatePredefinedValuesPolicyIdArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValues)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesPtrOutput) ToCertificateTemplatePredefinedValuesPtrOutput() CertificateTemplatePredefinedValuesPtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesPtrOutput) ToCertificateTemplatePredefinedValuesPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesPtrOutput) Elem() CertificateTemplatePredefinedValuesOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) CertificateTemplatePredefinedValues { return *v }).(CertificateTemplatePredefinedValuesOutput)
+}
+
+// Optional. Describes custom X.509 extensions.
+func (o CertificateTemplatePredefinedValuesPtrOutput) AdditionalExtensions() CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesAdditionalExtension {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalExtensions
+	}).(CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput)
+}
+
+// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+func (o CertificateTemplatePredefinedValuesPtrOutput) AiaOcspServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AiaOcspServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+func (o CertificateTemplatePredefinedValuesPtrOutput) CaOptions() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesCaOptions {
+		if v == nil {
+			return nil
+		}
+		return v.CaOptions
+	}).(CertificateTemplatePredefinedValuesCaOptionsPtrOutput)
+}
+
+// Optional. Indicates the intended use for keys that correspond to a certificate.
+func (o CertificateTemplatePredefinedValuesPtrOutput) KeyUsage() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValuesKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.KeyUsage
+	}).(CertificateTemplatePredefinedValuesKeyUsagePtrOutput)
+}
+
+// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+func (o CertificateTemplatePredefinedValuesPtrOutput) PolicyIds() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesPolicyId {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyIds
+	}).(CertificateTemplatePredefinedValuesPolicyIdArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtension struct {
+	// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+	Critical *bool `pulumi:"critical"`
+	// Required. The OID for this X.509 extension.
+	ObjectId CertificateTemplatePredefinedValuesAdditionalExtensionObjectId `pulumi:"objectId"`
+	// Required. The value of this X.509 extension.
+	Value string `pulumi:"value"`
+}
+
+// CertificateTemplatePredefinedValuesAdditionalExtensionInput is an input type that accepts CertificateTemplatePredefinedValuesAdditionalExtensionArgs and CertificateTemplatePredefinedValuesAdditionalExtensionOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesAdditionalExtensionInput` via:
+//
+//          CertificateTemplatePredefinedValuesAdditionalExtensionArgs{...}
+type CertificateTemplatePredefinedValuesAdditionalExtensionInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesAdditionalExtensionOutput() CertificateTemplatePredefinedValuesAdditionalExtensionOutput
+	ToCertificateTemplatePredefinedValuesAdditionalExtensionOutputWithContext(context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionOutput
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtensionArgs struct {
+	// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+	Critical pulumi.BoolPtrInput `pulumi:"critical"`
+	// Required. The OID for this X.509 extension.
+	ObjectId CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput `pulumi:"objectId"`
+	// Required. The value of this X.509 extension.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (CertificateTemplatePredefinedValuesAdditionalExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesAdditionalExtension)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesAdditionalExtensionArgs) ToCertificateTemplatePredefinedValuesAdditionalExtensionOutput() CertificateTemplatePredefinedValuesAdditionalExtensionOutput {
+	return i.ToCertificateTemplatePredefinedValuesAdditionalExtensionOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesAdditionalExtensionArgs) ToCertificateTemplatePredefinedValuesAdditionalExtensionOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesAdditionalExtensionOutput)
+}
+
+// CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput is an input type that accepts CertificateTemplatePredefinedValuesAdditionalExtensionArray and CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput` via:
+//
+//          CertificateTemplatePredefinedValuesAdditionalExtensionArray{ CertificateTemplatePredefinedValuesAdditionalExtensionArgs{...} }
+type CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput() CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput
+	ToCertificateTemplatePredefinedValuesAdditionalExtensionArrayOutputWithContext(context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtensionArray []CertificateTemplatePredefinedValuesAdditionalExtensionInput
+
+func (CertificateTemplatePredefinedValuesAdditionalExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePredefinedValuesAdditionalExtension)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesAdditionalExtensionArray) ToCertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput() CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
+	return i.ToCertificateTemplatePredefinedValuesAdditionalExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesAdditionalExtensionArray) ToCertificateTemplatePredefinedValuesAdditionalExtensionArrayOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtensionOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesAdditionalExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesAdditionalExtension)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionOutput) ToCertificateTemplatePredefinedValuesAdditionalExtensionOutput() CertificateTemplatePredefinedValuesAdditionalExtensionOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionOutput) ToCertificateTemplatePredefinedValuesAdditionalExtensionOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionOutput {
+	return o
+}
+
+// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtension) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+}
+
+// Required. The OID for this X.509 extension.
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionOutput) ObjectId() CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtension) CertificateTemplatePredefinedValuesAdditionalExtensionObjectId {
+		return v.ObjectId
+	}).(CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput)
+}
+
+// Required. The value of this X.509 extension.
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePredefinedValuesAdditionalExtension)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput) ToCertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput() CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput) ToCertificateTemplatePredefinedValuesAdditionalExtensionArrayOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput) Index(i pulumi.IntInput) CertificateTemplatePredefinedValuesAdditionalExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateTemplatePredefinedValuesAdditionalExtension {
+		return vs[0].([]CertificateTemplatePredefinedValuesAdditionalExtension)[vs[1].(int)]
+	}).(CertificateTemplatePredefinedValuesAdditionalExtensionOutput)
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtensionObjectId struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput is an input type that accepts CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs and CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput` via:
+//
+//          CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs{...}
+type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput() CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput
+	ToCertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutputWithContext(context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs) ToCertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput() CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput {
+	return i.ToCertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs) ToCertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput)
+}
+
+type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) ToCertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput() CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) ToCertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput {
+	return o
+}
+
+// Required. The parts of an OID path. The most significant parts of the path come first.
+func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtensionObjectId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesCaOptions struct {
+	// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+	IsCa *bool `pulumi:"isCa"`
+	// Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+	MaxIssuerPathLength *int `pulumi:"maxIssuerPathLength"`
+}
+
+// CertificateTemplatePredefinedValuesCaOptionsInput is an input type that accepts CertificateTemplatePredefinedValuesCaOptionsArgs and CertificateTemplatePredefinedValuesCaOptionsOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesCaOptionsInput` via:
+//
+//          CertificateTemplatePredefinedValuesCaOptionsArgs{...}
+type CertificateTemplatePredefinedValuesCaOptionsInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesCaOptionsOutput() CertificateTemplatePredefinedValuesCaOptionsOutput
+	ToCertificateTemplatePredefinedValuesCaOptionsOutputWithContext(context.Context) CertificateTemplatePredefinedValuesCaOptionsOutput
+}
+
+type CertificateTemplatePredefinedValuesCaOptionsArgs struct {
+	// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+	IsCa pulumi.BoolPtrInput `pulumi:"isCa"`
+	// Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+	MaxIssuerPathLength pulumi.IntPtrInput `pulumi:"maxIssuerPathLength"`
+}
+
+func (CertificateTemplatePredefinedValuesCaOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesCaOptions)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesCaOptionsArgs) ToCertificateTemplatePredefinedValuesCaOptionsOutput() CertificateTemplatePredefinedValuesCaOptionsOutput {
+	return i.ToCertificateTemplatePredefinedValuesCaOptionsOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesCaOptionsArgs) ToCertificateTemplatePredefinedValuesCaOptionsOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesCaOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesCaOptionsOutput)
+}
+
+func (i CertificateTemplatePredefinedValuesCaOptionsArgs) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutput() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesCaOptionsArgs) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesCaOptionsOutput).ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(ctx)
+}
+
+// CertificateTemplatePredefinedValuesCaOptionsPtrInput is an input type that accepts CertificateTemplatePredefinedValuesCaOptionsArgs, CertificateTemplatePredefinedValuesCaOptionsPtr and CertificateTemplatePredefinedValuesCaOptionsPtrOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesCaOptionsPtrInput` via:
+//
+//          CertificateTemplatePredefinedValuesCaOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplatePredefinedValuesCaOptionsPtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesCaOptionsPtrOutput() CertificateTemplatePredefinedValuesCaOptionsPtrOutput
+	ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(context.Context) CertificateTemplatePredefinedValuesCaOptionsPtrOutput
+}
+
+type certificateTemplatePredefinedValuesCaOptionsPtrType CertificateTemplatePredefinedValuesCaOptionsArgs
+
+func CertificateTemplatePredefinedValuesCaOptionsPtr(v *CertificateTemplatePredefinedValuesCaOptionsArgs) CertificateTemplatePredefinedValuesCaOptionsPtrInput {
+	return (*certificateTemplatePredefinedValuesCaOptionsPtrType)(v)
+}
+
+func (*certificateTemplatePredefinedValuesCaOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesCaOptions)(nil)).Elem()
+}
+
+func (i *certificateTemplatePredefinedValuesCaOptionsPtrType) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutput() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplatePredefinedValuesCaOptionsPtrType) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesCaOptionsPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesCaOptionsOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesCaOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesCaOptions)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesCaOptionsOutput) ToCertificateTemplatePredefinedValuesCaOptionsOutput() CertificateTemplatePredefinedValuesCaOptionsOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesCaOptionsOutput) ToCertificateTemplatePredefinedValuesCaOptionsOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesCaOptionsOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesCaOptionsOutput) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutput() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return o.ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplatePredefinedValuesCaOptionsOutput) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesCaOptions) *CertificateTemplatePredefinedValuesCaOptions {
+		return &v
+	}).(CertificateTemplatePredefinedValuesCaOptionsPtrOutput)
+}
+
+// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+func (o CertificateTemplatePredefinedValuesCaOptionsOutput) IsCa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesCaOptions) *bool { return v.IsCa }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+func (o CertificateTemplatePredefinedValuesCaOptionsOutput) MaxIssuerPathLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesCaOptions) *int { return v.MaxIssuerPathLength }).(pulumi.IntPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesCaOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesCaOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesCaOptions)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutput() CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) Elem() CertificateTemplatePredefinedValuesCaOptionsOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesCaOptions) CertificateTemplatePredefinedValuesCaOptions {
+		return *v
+	}).(CertificateTemplatePredefinedValuesCaOptionsOutput)
+}
+
+// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) IsCa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesCaOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) MaxIssuerPathLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesCaOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIssuerPathLength
+	}).(pulumi.IntPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsage struct {
+	// Describes high-level ways in which a key may be used.
+	BaseKeyUsage *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage `pulumi:"baseKeyUsage"`
+	// Detailed scenarios in which a key may be used.
+	ExtendedKeyUsage *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage `pulumi:"extendedKeyUsage"`
+	// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+	UnknownExtendedKeyUsages []CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage `pulumi:"unknownExtendedKeyUsages"`
+}
+
+// CertificateTemplatePredefinedValuesKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageArgs{...}
+type CertificateTemplatePredefinedValuesKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageOutput
+	ToCertificateTemplatePredefinedValuesKeyUsageOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsageOutput
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageArgs struct {
+	// Describes high-level ways in which a key may be used.
+	BaseKeyUsage CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput `pulumi:"baseKeyUsage"`
+	// Detailed scenarios in which a key may be used.
+	ExtendedKeyUsage CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput `pulumi:"extendedKeyUsage"`
+	// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+	UnknownExtendedKeyUsages CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput `pulumi:"unknownExtendedKeyUsages"`
+}
+
+func (CertificateTemplatePredefinedValuesKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageOutput)
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageOutput).ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(ctx)
+}
+
+// CertificateTemplatePredefinedValuesKeyUsagePtrInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageArgs, CertificateTemplatePredefinedValuesKeyUsagePtr and CertificateTemplatePredefinedValuesKeyUsagePtrOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsagePtrInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplatePredefinedValuesKeyUsagePtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsagePtrOutput
+	ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsagePtrOutput
+}
+
+type certificateTemplatePredefinedValuesKeyUsagePtrType CertificateTemplatePredefinedValuesKeyUsageArgs
+
+func CertificateTemplatePredefinedValuesKeyUsagePtr(v *CertificateTemplatePredefinedValuesKeyUsageArgs) CertificateTemplatePredefinedValuesKeyUsagePtrInput {
+	return (*certificateTemplatePredefinedValuesKeyUsagePtrType)(v)
+}
+
+func (*certificateTemplatePredefinedValuesKeyUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesKeyUsage)(nil)).Elem()
+}
+
+func (i *certificateTemplatePredefinedValuesKeyUsagePtrType) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplatePredefinedValuesKeyUsagePtrType) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsagePtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return o.ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsage {
+		return &v
+	}).(CertificateTemplatePredefinedValuesKeyUsagePtrOutput)
+}
+
+// Describes high-level ways in which a key may be used.
+func (o CertificateTemplatePredefinedValuesKeyUsageOutput) BaseKeyUsage() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
+		return v.BaseKeyUsage
+	}).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+
+// Detailed scenarios in which a key may be used.
+func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ExtendedKeyUsage() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
+		return v.ExtendedKeyUsage
+	}).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+
+// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+func (o CertificateTemplatePredefinedValuesKeyUsageOutput) UnknownExtendedKeyUsages() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) []CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
+		return v.UnknownExtendedKeyUsages
+	}).(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) Elem() CertificateTemplatePredefinedValuesKeyUsageOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) CertificateTemplatePredefinedValuesKeyUsage {
+		return *v
+	}).(CertificateTemplatePredefinedValuesKeyUsageOutput)
+}
+
+// Describes high-level ways in which a key may be used.
+func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) BaseKeyUsage() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.BaseKeyUsage
+	}).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+
+// Detailed scenarios in which a key may be used.
+func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) ExtendedKeyUsage() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedKeyUsage
+	}).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+
+// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) UnknownExtendedKeyUsages() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) []CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.UnknownExtendedKeyUsages
+	}).(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage struct {
+	// The key may be used to sign certificates.
+	CertSign *bool `pulumi:"certSign"`
+	// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+	ContentCommitment *bool `pulumi:"contentCommitment"`
+	// The key may be used sign certificate revocation lists.
+	CrlSign *bool `pulumi:"crlSign"`
+	// The key may be used to encipher data.
+	DataEncipherment *bool `pulumi:"dataEncipherment"`
+	// The key may be used to decipher only.
+	DecipherOnly *bool `pulumi:"decipherOnly"`
+	// The key may be used for digital signatures.
+	DigitalSignature *bool `pulumi:"digitalSignature"`
+	// The key may be used to encipher only.
+	EncipherOnly *bool `pulumi:"encipherOnly"`
+	// The key may be used in a key agreement protocol.
+	KeyAgreement *bool `pulumi:"keyAgreement"`
+	// The key may be used to encipher other keys.
+	KeyEncipherment *bool `pulumi:"keyEncipherment"`
+}
+
+// CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs{...}
+type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput
+	ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs struct {
+	// The key may be used to sign certificates.
+	CertSign pulumi.BoolPtrInput `pulumi:"certSign"`
+	// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+	ContentCommitment pulumi.BoolPtrInput `pulumi:"contentCommitment"`
+	// The key may be used sign certificate revocation lists.
+	CrlSign pulumi.BoolPtrInput `pulumi:"crlSign"`
+	// The key may be used to encipher data.
+	DataEncipherment pulumi.BoolPtrInput `pulumi:"dataEncipherment"`
+	// The key may be used to decipher only.
+	DecipherOnly pulumi.BoolPtrInput `pulumi:"decipherOnly"`
+	// The key may be used for digital signatures.
+	DigitalSignature pulumi.BoolPtrInput `pulumi:"digitalSignature"`
+	// The key may be used to encipher only.
+	EncipherOnly pulumi.BoolPtrInput `pulumi:"encipherOnly"`
+	// The key may be used in a key agreement protocol.
+	KeyAgreement pulumi.BoolPtrInput `pulumi:"keyAgreement"`
+	// The key may be used to encipher other keys.
+	KeyEncipherment pulumi.BoolPtrInput `pulumi:"keyEncipherment"`
+}
+
+func (CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput)
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput).ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx)
+}
+
+// CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs, CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtr and CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput
+	ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput
+}
+
+type certificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrType CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs
+
+func CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtr(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput {
+	return (*certificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrType)(v)
+}
+
+func (*certificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i *certificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrType) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrType) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
+		return &v
+	}).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+
+// The key may be used to sign certificates.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) CertSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.CertSign }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ContentCommitment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.ContentCommitment }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used sign certificate revocation lists.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) CrlSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.CrlSign }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher data.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) DataEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.DataEncipherment }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to decipher only.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) DecipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.DecipherOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used for digital signatures.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) DigitalSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.DigitalSignature }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher only.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) EncipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.EncipherOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used in a key agreement protocol.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) KeyAgreement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.KeyAgreement }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher other keys.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) KeyEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool { return v.KeyEncipherment }).(pulumi.BoolPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) Elem() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
+		return *v
+	}).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput)
+}
+
+// The key may be used to sign certificates.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) CertSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CertSign
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) ContentCommitment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContentCommitment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used sign certificate revocation lists.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) CrlSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CrlSign
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher data.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) DataEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to decipher only.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) DecipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DecipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used for digital signatures.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) DigitalSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DigitalSignature
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher only.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) EncipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used in a key agreement protocol.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) KeyAgreement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeyAgreement
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher other keys.
+func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) KeyEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage struct {
+	// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+	ClientAuth *bool `pulumi:"clientAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+	CodeSigning *bool `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+	EmailProtection *bool `pulumi:"emailProtection"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+	OcspSigning *bool `pulumi:"ocspSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+	ServerAuth *bool `pulumi:"serverAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+	TimeStamping *bool `pulumi:"timeStamping"`
+}
+
+// CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs{...}
+type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput
+	ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs struct {
+	// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+	ClientAuth pulumi.BoolPtrInput `pulumi:"clientAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+	CodeSigning pulumi.BoolPtrInput `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+	EmailProtection pulumi.BoolPtrInput `pulumi:"emailProtection"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+	OcspSigning pulumi.BoolPtrInput `pulumi:"ocspSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+	ServerAuth pulumi.BoolPtrInput `pulumi:"serverAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+	TimeStamping pulumi.BoolPtrInput `pulumi:"timeStamping"`
+}
+
+func (CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput)
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput).ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx)
+}
+
+// CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs, CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtr and CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput
+	ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput
+}
+
+type certificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrType CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs
+
+func CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtr(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput {
+	return (*certificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrType)(v)
+}
+
+func (*certificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i *certificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrType) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrType) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
+		return &v
+	}).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ClientAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool { return v.ClientAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) CodeSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool { return v.CodeSigning }).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) EmailProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool { return v.EmailProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) OcspSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool { return v.OcspSigning }).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ServerAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool { return v.ServerAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) TimeStamping() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool { return v.TimeStamping }).(pulumi.BoolPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) Elem() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
+		return *v
+	}).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) ClientAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) CodeSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CodeSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) EmailProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EmailProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) OcspSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OcspSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) ServerAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) TimeStamping() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TimeStamping
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs{...}
+type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput
+	ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+// CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray and CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput` via:
+//
+//          CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray{ CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs{...} }
+type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput
+	ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Context) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray []CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageInput
+
+func (CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return i.ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+// Required. The parts of an OID path. The most significant parts of the path come first.
+func (o CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage) []int {
+		return v.ObjectIdPaths
+	}).(pulumi.IntArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) ToCertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) Index(i pulumi.IntInput) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
+		return vs[0].([]CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage)[vs[1].(int)]
+	}).(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+type CertificateTemplatePredefinedValuesPolicyId struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateTemplatePredefinedValuesPolicyIdInput is an input type that accepts CertificateTemplatePredefinedValuesPolicyIdArgs and CertificateTemplatePredefinedValuesPolicyIdOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesPolicyIdInput` via:
+//
+//          CertificateTemplatePredefinedValuesPolicyIdArgs{...}
+type CertificateTemplatePredefinedValuesPolicyIdInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesPolicyIdOutput() CertificateTemplatePredefinedValuesPolicyIdOutput
+	ToCertificateTemplatePredefinedValuesPolicyIdOutputWithContext(context.Context) CertificateTemplatePredefinedValuesPolicyIdOutput
+}
+
+type CertificateTemplatePredefinedValuesPolicyIdArgs struct {
+	// Required. The parts of an OID path. The most significant parts of the path come first.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateTemplatePredefinedValuesPolicyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesPolicyId)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesPolicyIdArgs) ToCertificateTemplatePredefinedValuesPolicyIdOutput() CertificateTemplatePredefinedValuesPolicyIdOutput {
+	return i.ToCertificateTemplatePredefinedValuesPolicyIdOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesPolicyIdArgs) ToCertificateTemplatePredefinedValuesPolicyIdOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPolicyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesPolicyIdOutput)
+}
+
+// CertificateTemplatePredefinedValuesPolicyIdArrayInput is an input type that accepts CertificateTemplatePredefinedValuesPolicyIdArray and CertificateTemplatePredefinedValuesPolicyIdArrayOutput values.
+// You can construct a concrete instance of `CertificateTemplatePredefinedValuesPolicyIdArrayInput` via:
+//
+//          CertificateTemplatePredefinedValuesPolicyIdArray{ CertificateTemplatePredefinedValuesPolicyIdArgs{...} }
+type CertificateTemplatePredefinedValuesPolicyIdArrayInput interface {
+	pulumi.Input
+
+	ToCertificateTemplatePredefinedValuesPolicyIdArrayOutput() CertificateTemplatePredefinedValuesPolicyIdArrayOutput
+	ToCertificateTemplatePredefinedValuesPolicyIdArrayOutputWithContext(context.Context) CertificateTemplatePredefinedValuesPolicyIdArrayOutput
+}
+
+type CertificateTemplatePredefinedValuesPolicyIdArray []CertificateTemplatePredefinedValuesPolicyIdInput
+
+func (CertificateTemplatePredefinedValuesPolicyIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePredefinedValuesPolicyId)(nil)).Elem()
+}
+
+func (i CertificateTemplatePredefinedValuesPolicyIdArray) ToCertificateTemplatePredefinedValuesPolicyIdArrayOutput() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
+	return i.ToCertificateTemplatePredefinedValuesPolicyIdArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplatePredefinedValuesPolicyIdArray) ToCertificateTemplatePredefinedValuesPolicyIdArrayOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplatePredefinedValuesPolicyIdArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesPolicyIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesPolicyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplatePredefinedValuesPolicyId)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesPolicyIdOutput) ToCertificateTemplatePredefinedValuesPolicyIdOutput() CertificateTemplatePredefinedValuesPolicyIdOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesPolicyIdOutput) ToCertificateTemplatePredefinedValuesPolicyIdOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPolicyIdOutput {
+	return o
+}
+
+// Required. The parts of an OID path. The most significant parts of the path come first.
+func (o CertificateTemplatePredefinedValuesPolicyIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateTemplatePredefinedValuesPolicyId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type CertificateTemplatePredefinedValuesPolicyIdArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplatePredefinedValuesPolicyIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTemplatePredefinedValuesPolicyId)(nil)).Elem()
+}
+
+func (o CertificateTemplatePredefinedValuesPolicyIdArrayOutput) ToCertificateTemplatePredefinedValuesPolicyIdArrayOutput() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesPolicyIdArrayOutput) ToCertificateTemplatePredefinedValuesPolicyIdArrayOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
+	return o
+}
+
+func (o CertificateTemplatePredefinedValuesPolicyIdArrayOutput) Index(i pulumi.IntInput) CertificateTemplatePredefinedValuesPolicyIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateTemplatePredefinedValuesPolicyId {
+		return vs[0].([]CertificateTemplatePredefinedValuesPolicyId)[vs[1].(int)]
+	}).(CertificateTemplatePredefinedValuesPolicyIdOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorityAccessUrlOutput{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlArrayOutput{})
@@ -10360,4 +12392,29 @@ func init() {
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(CertificateRevocationDetailOutput{})
 	pulumi.RegisterOutputType(CertificateRevocationDetailArrayOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIdentityConstraintsOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIdentityConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIdentityConstraintsCelExpressionOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIdentityConstraintsCelExpressionPtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePassthroughExtensionsOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePassthroughExtensionsPtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesPtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesAdditionalExtensionOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesCaOptionsOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesCaOptionsPtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsagePtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesPolicyIdOutput{})
+	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesPolicyIdArrayOutput{})
 }

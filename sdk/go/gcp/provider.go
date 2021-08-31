@@ -25,6 +25,7 @@ type Provider struct {
 	ApigeeCustomEndpoint               pulumi.StringPtrOutput `pulumi:"apigeeCustomEndpoint"`
 	AppEngineCustomEndpoint            pulumi.StringPtrOutput `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint     pulumi.StringPtrOutput `pulumi:"artifactRegistryCustomEndpoint"`
+	AssuredWorkloadsCustomEndpoint     pulumi.StringPtrOutput `pulumi:"assuredWorkloadsCustomEndpoint"`
 	BigQueryCustomEndpoint             pulumi.StringPtrOutput `pulumi:"bigQueryCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint   pulumi.StringPtrOutput `pulumi:"bigqueryConnectionCustomEndpoint"`
 	BigqueryDataTransferCustomEndpoint pulumi.StringPtrOutput `pulumi:"bigqueryDataTransferCustomEndpoint"`
@@ -153,6 +154,7 @@ type providerArgs struct {
 	ApigeeCustomEndpoint               *string           `pulumi:"apigeeCustomEndpoint"`
 	AppEngineCustomEndpoint            *string           `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint     *string           `pulumi:"artifactRegistryCustomEndpoint"`
+	AssuredWorkloadsCustomEndpoint     *string           `pulumi:"assuredWorkloadsCustomEndpoint"`
 	Batching                           *ProviderBatching `pulumi:"batching"`
 	BigQueryCustomEndpoint             *string           `pulumi:"bigQueryCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint   *string           `pulumi:"bigqueryConnectionCustomEndpoint"`
@@ -263,6 +265,7 @@ type ProviderArgs struct {
 	ApigeeCustomEndpoint               pulumi.StringPtrInput
 	AppEngineCustomEndpoint            pulumi.StringPtrInput
 	ArtifactRegistryCustomEndpoint     pulumi.StringPtrInput
+	AssuredWorkloadsCustomEndpoint     pulumi.StringPtrInput
 	Batching                           ProviderBatchingPtrInput
 	BigQueryCustomEndpoint             pulumi.StringPtrInput
 	BigqueryConnectionCustomEndpoint   pulumi.StringPtrInput

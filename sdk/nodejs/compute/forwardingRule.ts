@@ -196,6 +196,177 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Internal Tcp Udp Lb With Mig Backend
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Internal TCP/UDP load balancer with a managed instance group backend
+ * // VPC
+ * const ilbNetwork = new gcp.compute.Network("ilbNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * // backed subnet
+ * const ilbSubnet = new gcp.compute.Subnetwork("ilbSubnet", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "europe-west1",
+ *     network: ilbNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // health check
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
+ *     region: "europe-west1",
+ *     httpHealthCheck: {
+ *         port: "80",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // instance template
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ *     machineType: "e2-small",
+ *     tags: [
+ *         "allow-ssh",
+ *         "allow-health-check",
+ *     ],
+ *     networkInterfaces: [{
+ *         network: ilbNetwork.id,
+ *         subnetwork: ilbSubnet.id,
+ *         accessConfigs: [{}],
+ *     }],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ *
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ *
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ *
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // MIG
+ * const mig = new gcp.compute.RegionInstanceGroupManager("mig", {
+ *     region: "europe-west1",
+ *     versions: [{
+ *         instanceTemplate: instanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // backend service
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
+ *     region: "europe-west1",
+ *     protocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL",
+ *     healthChecks: [defaultRegionHealthCheck.id],
+ *     backends: [{
+ *         group: mig.instanceGroup,
+ *         balancingMode: "CONNECTION",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // forwarding rule
+ * const googleComputeForwardingRule = new gcp.compute.ForwardingRule("googleComputeForwardingRule", {
+ *     backendService: defaultRegionBackendService.id,
+ *     region: "europe-west1",
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL",
+ *     allPorts: true,
+ *     allowGlobalAccess: true,
+ *     network: ilbNetwork.id,
+ *     subnetwork: ilbSubnet.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // allow all access from health check ranges
+ * const fwHc = new gcp.compute.Firewall("fwHc", {
+ *     direction: "INGRESS",
+ *     network: ilbNetwork.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *         "35.235.240.0/20",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     sourceTags: ["allow-health-check"],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // allow communication within the subnet 
+ * const fwIlbToBackends = new gcp.compute.Firewall("fwIlbToBackends", {
+ *     direction: "INGRESS",
+ *     network: ilbNetwork.id,
+ *     sourceRanges: ["10.0.1.0/24"],
+ *     allows: [
+ *         {
+ *             protocol: "tcp",
+ *         },
+ *         {
+ *             protocol: "udp",
+ *         },
+ *         {
+ *             protocol: "icmp",
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // allow SSH
+ * const fwIlbSsh = new gcp.compute.Firewall("fwIlbSsh", {
+ *     direction: "INGRESS",
+ *     network: ilbNetwork.id,
+ *     allows: [{
+ *         protocol: "tcp",
+ *         ports: ["22"],
+ *     }],
+ *     sourceTags: ["allow-ssh"],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // test instance
+ * const vmTest = new gcp.compute.Instance("vmTest", {
+ *     zone: "europe-west1-b",
+ *     machineType: "e2-small",
+ *     networkInterfaces: [{
+ *         network: ilbNetwork.id,
+ *         subnetwork: ilbSubnet.id,
+ *     }],
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-10",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Forwarding Rule Externallb
  *
  * ```typescript

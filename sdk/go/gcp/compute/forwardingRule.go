@@ -220,6 +220,197 @@ import (
 // 	})
 // }
 // ```
+// ### Internal Tcp Udp Lb With Mig Backend
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ilbNetwork, err := compute.NewNetwork(ctx, "ilbNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ilbSubnet, err := compute.NewSubnetwork(ctx, "ilbSubnet", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
+// 			Region:      pulumi.String("europe-west1"),
+// 			Network:     ilbNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "defaultRegionHealthCheck", &compute.RegionHealthCheckArgs{
+// 			Region: pulumi.String("europe-west1"),
+// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-small"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("allow-ssh"),
+// 				pulumi.String("allow-health-check"),
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network:    ilbNetwork.ID(),
+// 					Subnetwork: ilbSubnet.ID(),
+// 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-10"),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 			Metadata: pulumi.AnyMap{
+// 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "\n", "export DEBIAN_FRONTEND=noninteractive\n", "apt-get update\n", "apt-get install -y nginx-light jq\n", "\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "\n", "cat <<EOF > /var/www/html/index.html\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mig, err := compute.NewRegionInstanceGroupManager(ctx, "mig", &compute.RegionInstanceGroupManagerArgs{
+// 			Region: pulumi.String("europe-west1"),
+// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: instanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			BaseInstanceName: pulumi.String("vm"),
+// 			TargetSize:       pulumi.Int(2),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
+// 			Region:              pulumi.String("europe-west1"),
+// 			Protocol:            pulumi.String("TCP"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
+// 			HealthChecks: pulumi.String{
+// 				defaultRegionHealthCheck.ID(),
+// 			},
+// 			Backends: compute.RegionBackendServiceBackendArray{
+// 				&compute.RegionBackendServiceBackendArgs{
+// 					Group:         mig.InstanceGroup,
+// 					BalancingMode: pulumi.String("CONNECTION"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewForwardingRule(ctx, "googleComputeForwardingRule", &compute.ForwardingRuleArgs{
+// 			BackendService:      defaultRegionBackendService.ID(),
+// 			Region:              pulumi.String("europe-west1"),
+// 			IpProtocol:          pulumi.String("TCP"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
+// 			AllPorts:            pulumi.Bool(true),
+// 			AllowGlobalAccess:   pulumi.Bool(true),
+// 			Network:             ilbNetwork.ID(),
+// 			Subnetwork:          ilbSubnet.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewall(ctx, "fwHc", &compute.FirewallArgs{
+// 			Direction: pulumi.String("INGRESS"),
+// 			Network:   ilbNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("130.211.0.0/22"),
+// 				pulumi.String("35.191.0.0/16"),
+// 				pulumi.String("35.235.240.0/20"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 				},
+// 			},
+// 			SourceTags: pulumi.StringArray{
+// 				pulumi.String("allow-health-check"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewall(ctx, "fwIlbToBackends", &compute.FirewallArgs{
+// 			Direction: pulumi.String("INGRESS"),
+// 			Network:   ilbNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("10.0.1.0/24"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 				},
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("udp"),
+// 				},
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("icmp"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewall(ctx, "fwIlbSsh", &compute.FirewallArgs{
+// 			Direction: pulumi.String("INGRESS"),
+// 			Network:   ilbNetwork.ID(),
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("22"),
+// 					},
+// 				},
+// 			},
+// 			SourceTags: pulumi.StringArray{
+// 				pulumi.String("allow-ssh"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstance(ctx, "vmTest", &compute.InstanceArgs{
+// 			Zone:        pulumi.String("europe-west1-b"),
+// 			MachineType: pulumi.String("e2-small"),
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network:    ilbNetwork.ID(),
+// 					Subnetwork: ilbSubnet.ID(),
+// 				},
+// 			},
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-10"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Forwarding Rule Externallb
 //
 // ```go

@@ -522,6 +522,7 @@ class DatabaseInstanceSettings(dict):
                  authorized_gae_applications: Optional[Sequence[str]] = None,
                  availability_type: Optional[str] = None,
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
+                 collation: Optional[str] = None,
                  crash_safe_replication: Optional[bool] = None,
                  database_flags: Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
                  disk_autoresize: Optional[bool] = None,
@@ -550,6 +551,7 @@ class DatabaseInstanceSettings(dict):
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
                instances, ensure that `settings.backup_configuration.enabled` and
                `settings.backup_configuration.binary_log_enabled` are both set to `true`.
+        :param str collation: The name of server instance collation.
         :param bool crash_safe_replication: This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
                for information on how to upgrade to Second Generation instances.
@@ -574,6 +576,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
             pulumi.set(__self__, "backup_configuration", backup_configuration)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
         if crash_safe_replication is not None:
             pulumi.set(__self__, "crash_safe_replication", crash_safe_replication)
         if database_flags is not None:
@@ -648,6 +652,14 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="backupConfiguration")
     def backup_configuration(self) -> Optional['outputs.DatabaseInstanceSettingsBackupConfiguration']:
         return pulumi.get(self, "backup_configuration")
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[str]:
+        """
+        The name of server instance collation.
+        """
+        return pulumi.get(self, "collation")
 
     @property
     @pulumi.getter(name="crashSafeReplication")
@@ -1615,6 +1627,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  authorized_gae_applications: Sequence[str],
                  availability_type: str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
+                 collation: str,
                  crash_safe_replication: bool,
                  database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
                  disk_autoresize: bool,
@@ -1639,6 +1652,7 @@ class GetDatabaseInstanceSettingResult(dict):
                A list of Google App Engine (GAE) project names that are allowed to access this instance.
         :param str availability_type: The availability type of the Cloud SQL
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
+        :param str collation: The name of server instance collation.
         :param bool crash_safe_replication: (Deprecated) This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
         :param bool disk_autoresize: Configuration to increase storage size automatically.
@@ -1655,6 +1669,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
+        pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "crash_safe_replication", crash_safe_replication)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "disk_autoresize", disk_autoresize)
@@ -1704,6 +1719,14 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="backupConfigurations")
     def backup_configurations(self) -> Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult']:
         return pulumi.get(self, "backup_configurations")
+
+    @property
+    @pulumi.getter
+    def collation(self) -> str:
+        """
+        The name of server instance collation.
+        """
+        return pulumi.get(self, "collation")
 
     @property
     @pulumi.getter(name="crashSafeReplication")

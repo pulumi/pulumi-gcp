@@ -811,6 +811,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "certificateauthority/certificateTemplate",
+  "fqn": "pulumi_gcp.certificateauthority",
+  "classes": {
+   "gcp:certificateauthority/certificateTemplate:CertificateTemplate": "CertificateTemplate"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudasset/folderFeed",
   "fqn": "pulumi_gcp.cloudasset",
   "classes": {
@@ -1079,6 +1087,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/firewall:Firewall": "Firewall"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/firewallPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/firewallPolicy:FirewallPolicy": "FirewallPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/firewallPolicyAssociation",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation": "FirewallPolicyAssociation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/firewallPolicyRule",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/firewallPolicyRule:FirewallPolicyRule": "FirewallPolicyRule"
   }
  },
  {

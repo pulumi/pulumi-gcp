@@ -268,7 +268,7 @@ namespace Pulumi.Gcp.Healthcare
         /// Structure is documented below.
         /// </summary>
         [Output("parserConfig")]
-        public Output<Outputs.Hl7StoreParserConfig?> ParserConfig { get; private set; } = null!;
+        public Output<Outputs.Hl7StoreParserConfig> ParserConfig { get; private set; } = null!;
 
         /// <summary>
         /// The fully qualified name of this dataset

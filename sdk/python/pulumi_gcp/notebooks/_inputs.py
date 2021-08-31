@@ -15,6 +15,7 @@ __all__ = [
     'InstanceContainerImageArgs',
     'InstanceIamBindingConditionArgs',
     'InstanceIamMemberConditionArgs',
+    'InstanceReservationAffinityArgs',
     'InstanceShieldedInstanceConfigArgs',
     'InstanceVmImageArgs',
 ]
@@ -270,6 +271,62 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class InstanceReservationAffinityArgs:
+    def __init__(__self__, *,
+                 consume_reservation_type: pulumi.Input[str],
+                 key: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] consume_reservation_type: The type of Compute Reservation.
+               Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+        :param pulumi.Input[str] key: Corresponds to the label key of reservation resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of reservation resource.
+        """
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> pulumi.Input[str]:
+        """
+        The type of Compute Reservation.
+        Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @consume_reservation_type.setter
+    def consume_reservation_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consume_reservation_type", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Corresponds to the label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Corresponds to the label values of reservation resource.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type

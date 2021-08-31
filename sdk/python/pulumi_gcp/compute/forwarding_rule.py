@@ -1246,6 +1246,156 @@ class ForwardingRule(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Internal Tcp Udp Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal TCP/UDP load balancer with a managed instance group backend
+        # VPC
+        ilb_network = gcp.compute.Network("ilbNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        # backed subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilbSubnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-small",
+            tags=[
+                "allow-ssh",
+                "allow-health-check",
+            ],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # backend service
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="europe-west1",
+            protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            health_checks=[default_region_health_check.id],
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="CONNECTION",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("googleComputeForwardingRule",
+            backend_service=default_region_backend_service.id,
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            all_ports=True,
+            allow_global_access=True,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow all access from health check ranges
+        fw_hc = gcp.compute.Firewall("fwHc",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            source_tags=["allow-health-check"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow communication within the subnet 
+        fw_ilb_to_backends = gcp.compute.Firewall("fwIlbToBackends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.1.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow SSH
+        fw_ilb_ssh = gcp.compute.Firewall("fwIlbSsh",
+            direction="INGRESS",
+            network=ilb_network.id,
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            source_tags=["allow-ssh"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # test instance
+        vm_test = gcp.compute.Instance("vmTest",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Forwarding Rule Externallb
 
         ```python
@@ -1808,6 +1958,156 @@ class ForwardingRule(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         # test instance
         vm_test = gcp.compute.Instance("vm-test",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Internal Tcp Udp Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal TCP/UDP load balancer with a managed instance group backend
+        # VPC
+        ilb_network = gcp.compute.Network("ilbNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        # backed subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilbSubnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-small",
+            tags=[
+                "allow-ssh",
+                "allow-health-check",
+            ],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # backend service
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="europe-west1",
+            protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            health_checks=[default_region_health_check.id],
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="CONNECTION",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("googleComputeForwardingRule",
+            backend_service=default_region_backend_service.id,
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            all_ports=True,
+            allow_global_access=True,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow all access from health check ranges
+        fw_hc = gcp.compute.Firewall("fwHc",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            source_tags=["allow-health-check"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow communication within the subnet 
+        fw_ilb_to_backends = gcp.compute.Firewall("fwIlbToBackends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.1.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # allow SSH
+        fw_ilb_ssh = gcp.compute.Firewall("fwIlbSsh",
+            direction="INGRESS",
+            network=ilb_network.id,
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            source_tags=["allow-ssh"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # test instance
+        vm_test = gcp.compute.Instance("vmTest",
             zone="europe-west1-b",
             machine_type="e2-small",
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(

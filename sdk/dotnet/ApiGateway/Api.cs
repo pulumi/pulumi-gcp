@@ -46,15 +46,15 @@ namespace Pulumi.Gcp.ApiGateway
     /// Api can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{name}}
+    ///  $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:apigateway/api:Api default {{project}}/{{name}}
+    ///  $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:apigateway/api:Api default {{name}}
+    ///  $ pulumi import gcp:apigateway/api:Api default {{api_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigateway/api:Api")]

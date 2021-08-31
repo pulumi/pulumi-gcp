@@ -937,6 +937,8 @@ type DatabaseInstanceSettings struct {
 	// `settings.backup_configuration.binary_log_enabled` are both set to `true`.
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
+	// The name of server instance collation.
+	Collation *string `pulumi:"collation"`
 	// This property is only applicable to First Generation instances.
 	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
 	// for information on how to upgrade to Second Generation instances.
@@ -1003,6 +1005,8 @@ type DatabaseInstanceSettingsArgs struct {
 	// `settings.backup_configuration.binary_log_enabled` are both set to `true`.
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
+	// The name of server instance collation.
+	Collation pulumi.StringPtrInput `pulumi:"collation"`
 	// This property is only applicable to First Generation instances.
 	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
 	// for information on how to upgrade to Second Generation instances.
@@ -1146,6 +1150,11 @@ func (o DatabaseInstanceSettingsOutput) BackupConfiguration() DatabaseInstanceSe
 	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsBackupConfiguration {
 		return v.BackupConfiguration
 	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
+}
+
+// The name of server instance collation.
+func (o DatabaseInstanceSettingsOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
 // This property is only applicable to First Generation instances.
@@ -1297,6 +1306,16 @@ func (o DatabaseInstanceSettingsPtrOutput) BackupConfiguration() DatabaseInstanc
 		}
 		return v.BackupConfiguration
 	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
+}
+
+// The name of server instance collation.
+func (o DatabaseInstanceSettingsPtrOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Collation
+	}).(pulumi.StringPtrOutput)
 }
 
 // This property is only applicable to First Generation instances.
@@ -3613,6 +3632,8 @@ type GetDatabaseInstanceSetting struct {
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
 	AvailabilityType     string                                          `pulumi:"availabilityType"`
 	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
+	// The name of server instance collation.
+	Collation string `pulumi:"collation"`
 	// (Deprecated) This property is only applicable to First Generation instances.
 	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
 	CrashSafeReplication bool                                     `pulumi:"crashSafeReplication"`
@@ -3665,6 +3686,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
 	AvailabilityType     pulumi.StringInput                                      `pulumi:"availabilityType"`
 	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
+	// The name of server instance collation.
+	Collation pulumi.StringInput `pulumi:"collation"`
 	// (Deprecated) This property is only applicable to First Generation instances.
 	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
 	CrashSafeReplication pulumi.BoolInput                                 `pulumi:"crashSafeReplication"`
@@ -3768,6 +3791,11 @@ func (o GetDatabaseInstanceSettingOutput) BackupConfigurations() GetDatabaseInst
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingBackupConfiguration {
 		return v.BackupConfigurations
 	}).(GetDatabaseInstanceSettingBackupConfigurationArrayOutput)
+}
+
+// The name of server instance collation.
+func (o GetDatabaseInstanceSettingOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
 // (Deprecated) This property is only applicable to First Generation instances.

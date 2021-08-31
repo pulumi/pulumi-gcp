@@ -655,6 +655,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_disk":                          {Tok: gcpResource(gcpCompute, "Disk")},
 			"google_compute_firewall":                      {Tok: gcpResource(gcpCompute, "Firewall")},
+			"google_compute_firewall_policy":               {Tok: gcpResource(gcpCompute, "FirewallPolicy")},
+			"google_compute_firewall_policy_rule":          {Tok: gcpResource(gcpCompute, "FirewallPolicyRule")},
+			"google_compute_firewall_policy_association":   {Tok: gcpResource(gcpCompute, "FirewallPolicyAssociation")},
 			"google_compute_forwarding_rule":               {Tok: gcpResource(gcpCompute, "ForwardingRule")},
 			"google_compute_external_vpn_gateway":          {Tok: gcpResource(gcpCompute, "ExternalVpnGateway")},
 			"google_compute_global_address":                {Tok: gcpResource(gcpCompute, "GlobalAddress")},
@@ -1948,6 +1951,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_privateca_certificate_authority": {Tok: gcpResource(gcpCertificateAuthority, "Authority")},
 			"google_privateca_certificate":           {Tok: gcpResource(gcpCertificateAuthority, "Certificate")},
 			"google_privateca_ca_pool":               {Tok: gcpResource(gcpCertificateAuthority, "CaPool")},
+			"google_privateca_certificate_template":  {Tok: gcpResource(gcpCertificateAuthority, "CertificateTemplate")},
 			"google_privateca_ca_pool_iam_binding": {
 				Tok: gcpResource(gcpCertificateAuthority, "CaPoolIamBinding"),
 				Docs: &tfbridge.DocInfo{
