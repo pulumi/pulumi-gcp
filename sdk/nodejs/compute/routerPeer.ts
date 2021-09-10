@@ -140,9 +140,10 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly interface!: pulumi.Output<string>;
     /**
-     * IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+     * IP address of the interface inside Google Cloud Platform.
+     * Only IPv4 is supported.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    public readonly ipAddress!: pulumi.Output<string>;
     /**
      * The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
      * you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
@@ -231,13 +232,13 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
             inputs["enable"] = args ? args.enable : undefined;
             inputs["interface"] = args ? args.interface : undefined;
+            inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["peerAsn"] = args ? args.peerAsn : undefined;
             inputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["router"] = args ? args.router : undefined;
-            inputs["ipAddress"] = undefined /*out*/;
             inputs["managementType"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -293,7 +294,8 @@ export interface RouterPeerState {
      */
     interface?: pulumi.Input<string>;
     /**
-     * IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+     * IP address of the interface inside Google Cloud Platform.
+     * Only IPv4 is supported.
      */
     ipAddress?: pulumi.Input<string>;
     /**
@@ -383,6 +385,11 @@ export interface RouterPeerArgs {
      * Name of the interface the BGP peer is associated with.
      */
     interface: pulumi.Input<string>;
+    /**
+     * IP address of the interface inside Google Cloud Platform.
+     * Only IPv4 is supported.
+     */
+    ipAddress?: pulumi.Input<string>;
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters

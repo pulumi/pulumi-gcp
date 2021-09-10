@@ -182,8 +182,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
         )])
-        dataset = gcp.bigquery.DatasetIamPolicy("dataset",
-            dataset_id="your-dataset-id",
+        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
+        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
+            dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
 
@@ -193,10 +194,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id="your-dataset-id",
-            members=["user:jane@example.com"],
-            role="roles/bigquery.dataViewer")
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"])
         ```
 
         ## google\_bigquery\_dataset\_iam\_member
@@ -205,10 +207,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id="your-dataset-id",
-            member="user:jane@example.com",
-            role="roles/bigquery.dataEditor")
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -284,8 +287,9 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
         )])
-        dataset = gcp.bigquery.DatasetIamPolicy("dataset",
-            dataset_id="your-dataset-id",
+        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
+        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
+            dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
 
@@ -295,10 +299,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id="your-dataset-id",
-            members=["user:jane@example.com"],
-            role="roles/bigquery.dataViewer")
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"])
         ```
 
         ## google\_bigquery\_dataset\_iam\_member
@@ -307,10 +312,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id="your-dataset-id",
-            member="user:jane@example.com",
-            role="roles/bigquery.dataEditor")
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com")
         ```
 
         ## Import

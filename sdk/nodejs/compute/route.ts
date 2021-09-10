@@ -189,7 +189,7 @@ export class Route extends pulumi.CustomResource {
      * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      */
-    public readonly nextHopInstanceZone!: pulumi.Output<string | undefined>;
+    public readonly nextHopInstanceZone!: pulumi.Output<string>;
     /**
      * Network IP address of an instance that should handle matching packets.
      */

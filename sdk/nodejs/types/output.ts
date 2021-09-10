@@ -19190,7 +19190,6 @@ export namespace dataproc {
         /**
          * The config settings for port access on the cluster.
          * Structure defined below.
-         * - - -
          */
         endpointConfig: outputs.dataproc.ClusterClusterConfigEndpointConfig;
         /**
@@ -19213,6 +19212,12 @@ export namespace dataproc {
          * in a cluster.. Structure defined below.
          */
         masterConfig: outputs.dataproc.ClusterClusterConfigMasterConfig;
+        /**
+         * The config setting for metastore service with the cluster.
+         * Structure defined below.
+         * - - -
+         */
+        metastoreConfig?: outputs.dataproc.ClusterClusterConfigMetastoreConfig;
         /**
          * The Google Compute Engine config settings for the additional
          * instances in a cluster. Structure defined below.
@@ -19444,6 +19449,13 @@ export namespace dataproc {
          * attached to each preemptible worker node. Defaults to 0.
          */
         numLocalSsds: number;
+    }
+
+    export interface ClusterClusterConfigMetastoreConfig {
+        /**
+         * Resource name of an existing Dataproc Metastore service.
+         */
+        dataprocMetastoreService: string;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfig {

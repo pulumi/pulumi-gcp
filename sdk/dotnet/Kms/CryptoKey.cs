@@ -94,6 +94,13 @@ namespace Pulumi.Gcp.Kms
     public partial class CryptoKey : Pulumi.CustomResource
     {
         /// <summary>
+        /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+        /// If not specified at creation time, the default duration is 24 hours.
+        /// </summary>
+        [Output("destroyScheduledDuration")]
+        public Output<string> DestroyScheduledDuration { get; private set; } = null!;
+
+        /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         /// </summary>
@@ -198,6 +205,13 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+        /// If not specified at creation time, the default duration is 24 hours.
+        /// </summary>
+        [Input("destroyScheduledDuration")]
+        public Input<string>? DestroyScheduledDuration { get; set; }
+
+        /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         /// </summary>
@@ -262,6 +276,13 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+        /// If not specified at creation time, the default duration is 24 hours.
+        /// </summary>
+        [Input("destroyScheduledDuration")]
+        public Input<string>? DestroyScheduledDuration { get; set; }
+
         /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.

@@ -16,6 +16,186 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// `tier = "ENTERPRISE"`
     /// 
     /// ## Example Usage
+    /// ### Privateca Certificate With Template
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var template = new Gcp.CertificateAuthority.CertificateTemplate("template", new Gcp.CertificateAuthority.CertificateTemplateArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Description = "An updated sample certificate template",
+    ///             IdentityConstraints = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsArgs
+    ///             {
+    ///                 AllowSubjectAltNamesPassthrough = true,
+    ///                 AllowSubjectPassthrough = true,
+    ///                 CelExpression = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsCelExpressionArgs
+    ///                 {
+    ///                     Description = "Always true",
+    ///                     Expression = "true",
+    ///                     Location = "any.file.anywhere",
+    ///                     Title = "Sample expression",
+    ///                 },
+    ///             },
+    ///             PassthroughExtensions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsArgs
+    ///             {
+    ///                 AdditionalExtensions = 
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs
+    ///                     {
+    ///                         ObjectIdPaths = 
+    ///                         {
+    ///                             1,
+    ///                             6,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 KnownExtensions = 
+    ///                 {
+    ///                     "EXTENDED_KEY_USAGE",
+    ///                 },
+    ///             },
+    ///             PredefinedValues = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesArgs
+    ///             {
+    ///                 AdditionalExtensions = 
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionArgs
+    ///                     {
+    ///                         ObjectId = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs
+    ///                         {
+    ///                             ObjectIdPaths = 
+    ///                             {
+    ///                                 1,
+    ///                                 6,
+    ///                             },
+    ///                         },
+    ///                         Value = "c3RyaW5nCg==",
+    ///                         Critical = true,
+    ///                     },
+    ///                 },
+    ///                 AiaOcspServers = 
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesCaOptionsArgs
+    ///                 {
+    ///                     IsCa = false,
+    ///                     MaxIssuerPathLength = 6,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = false,
+    ///                         ContentCommitment = true,
+    ///                         CrlSign = false,
+    ///                         DataEncipherment = true,
+    ///                         DecipherOnly = true,
+    ///                         DigitalSignature = true,
+    ///                         EncipherOnly = true,
+    ///                         KeyAgreement = true,
+    ///                         KeyEncipherment = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ClientAuth = true,
+    ///                         CodeSigning = true,
+    ///                         EmailProtection = true,
+    ///                         OcspSigning = true,
+    ///                         ServerAuth = true,
+    ///                         TimeStamping = true,
+    ///                     },
+    ///                     UnknownExtendedKeyUsages = 
+    ///                     {
+    ///                         new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs
+    ///                         {
+    ///                             ObjectIdPaths = 
+    ///                             {
+    ///                                 1,
+    ///                                 6,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 PolicyIds = 
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesPolicyIdArgs
+    ///                     {
+    ///                         ObjectIdPaths = 
+    ///                         {
+    ///                             1,
+    ///                             6,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var test_ca = new Gcp.CertificateAuthority.Authority("test-ca", new Gcp.CertificateAuthority.AuthorityArgs
+    ///         {
+    ///             Pool = "",
+    ///             CertificateAuthorityId = "my-certificate-authority",
+    ///             Location = "us-central1",
+    ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///             {
+    ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///                 {
+    ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                     {
+    ///                         Organization = "HashiCorp",
+    ///                         CommonName = "my-certificate-authority",
+    ///                     },
+    ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                     {
+    ///                         DnsNames = 
+    ///                         {
+    ///                             "hashicorp.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///                 {
+    ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                     {
+    ///                         IsCa = true,
+    ///                     },
+    ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                     {
+    ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                         {
+    ///                             CertSign = true,
+    ///                             CrlSign = true,
+    ///                         },
+    ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                         {
+    ///                             ServerAuth = false,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///             {
+    ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///             },
+    ///         });
+    ///         var @default = new Gcp.CertificateAuthority.Certificate("default", new Gcp.CertificateAuthority.CertificateArgs
+    ///         {
+    ///             Pool = "",
+    ///             Location = "us-central1",
+    ///             CertificateAuthority = test_ca.CertificateAuthorityId,
+    ///             Lifetime = "860s",
+    ///             PemCsr = File.ReadAllText("test-fixtures/rsa_csr.pem"),
+    ///             CertificateTemplate = template.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Privateca Certificate Csr
     /// 
     /// ```csharp
@@ -118,6 +298,16 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("certificateDescriptions")]
         public Output<ImmutableArray<Outputs.CertificateCertificateDescription>> CertificateDescriptions { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name for a CertificateTemplate used to issue this certificate,
+        /// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+        /// the caller must have the necessary permission to use this template. If this is
+        /// omitted, no template will be used. This template must be in the same location
+        /// as the Certificate.
+        /// </summary>
+        [Output("certificateTemplate")]
+        public Output<string?> CertificateTemplate { get; private set; } = null!;
 
         /// <summary>
         /// The config used to create a self-signed X.509 certificate or CSR.
@@ -256,6 +446,16 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? CertificateAuthority { get; set; }
 
         /// <summary>
+        /// The resource name for a CertificateTemplate used to issue this certificate,
+        /// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+        /// the caller must have the necessary permission to use this template. If this is
+        /// omitted, no template will be used. This template must be in the same location
+        /// as the Certificate.
+        /// </summary>
+        [Input("certificateTemplate")]
+        public Input<string>? CertificateTemplate { get; set; }
+
+        /// <summary>
         /// The config used to create a self-signed X.509 certificate or CSR.
         /// Structure is documented below.
         /// </summary>
@@ -339,6 +539,16 @@ namespace Pulumi.Gcp.CertificateAuthority
             get => _certificateDescriptions ?? (_certificateDescriptions = new InputList<Inputs.CertificateCertificateDescriptionGetArgs>());
             set => _certificateDescriptions = value;
         }
+
+        /// <summary>
+        /// The resource name for a CertificateTemplate used to issue this certificate,
+        /// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+        /// the caller must have the necessary permission to use this template. If this is
+        /// omitted, no template will be used. This template must be in the same location
+        /// as the Certificate.
+        /// </summary>
+        [Input("certificateTemplate")]
+        public Input<string>? CertificateTemplate { get; set; }
 
         /// <summary>
         /// The config used to create a self-signed X.509 certificate or CSR.

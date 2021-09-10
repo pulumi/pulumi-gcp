@@ -919,7 +919,6 @@ type ClusterClusterConfig struct {
 	EncryptionConfig *ClusterClusterConfigEncryptionConfig `pulumi:"encryptionConfig"`
 	// The config settings for port access on the cluster.
 	// Structure defined below.
-	// ***
 	EndpointConfig *ClusterClusterConfigEndpointConfig `pulumi:"endpointConfig"`
 	// Common config settings for resources of Google Compute Engine cluster
 	// instances, applicable to all instances in the cluster. Structure defined below.
@@ -933,6 +932,10 @@ type ClusterClusterConfig struct {
 	// The Google Compute Engine config settings for the master instances
 	// in a cluster.. Structure defined below.
 	MasterConfig *ClusterClusterConfigMasterConfig `pulumi:"masterConfig"`
+	// The config setting for metastore service with the cluster.
+	// Structure defined below.
+	// ***
+	MetastoreConfig *ClusterClusterConfigMetastoreConfig `pulumi:"metastoreConfig"`
 	// The Google Compute Engine config settings for the additional
 	// instances in a cluster. Structure defined below.
 	// * **NOTE** : `preemptibleWorkerConfig` is
@@ -984,7 +987,6 @@ type ClusterClusterConfigArgs struct {
 	EncryptionConfig ClusterClusterConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// The config settings for port access on the cluster.
 	// Structure defined below.
-	// ***
 	EndpointConfig ClusterClusterConfigEndpointConfigPtrInput `pulumi:"endpointConfig"`
 	// Common config settings for resources of Google Compute Engine cluster
 	// instances, applicable to all instances in the cluster. Structure defined below.
@@ -998,6 +1000,10 @@ type ClusterClusterConfigArgs struct {
 	// The Google Compute Engine config settings for the master instances
 	// in a cluster.. Structure defined below.
 	MasterConfig ClusterClusterConfigMasterConfigPtrInput `pulumi:"masterConfig"`
+	// The config setting for metastore service with the cluster.
+	// Structure defined below.
+	// ***
+	MetastoreConfig ClusterClusterConfigMetastoreConfigPtrInput `pulumi:"metastoreConfig"`
 	// The Google Compute Engine config settings for the additional
 	// instances in a cluster. Structure defined below.
 	// * **NOTE** : `preemptibleWorkerConfig` is
@@ -1123,7 +1129,6 @@ func (o ClusterClusterConfigOutput) EncryptionConfig() ClusterClusterConfigEncry
 
 // The config settings for port access on the cluster.
 // Structure defined below.
-// ***
 func (o ClusterClusterConfigOutput) EndpointConfig() ClusterClusterConfigEndpointConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigEndpointConfig { return v.EndpointConfig }).(ClusterClusterConfigEndpointConfigPtrOutput)
 }
@@ -1152,6 +1157,13 @@ func (o ClusterClusterConfigOutput) LifecycleConfig() ClusterClusterConfigLifecy
 // in a cluster.. Structure defined below.
 func (o ClusterClusterConfigOutput) MasterConfig() ClusterClusterConfigMasterConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigMasterConfig { return v.MasterConfig }).(ClusterClusterConfigMasterConfigPtrOutput)
+}
+
+// The config setting for metastore service with the cluster.
+// Structure defined below.
+// ***
+func (o ClusterClusterConfigOutput) MetastoreConfig() ClusterClusterConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigMetastoreConfig { return v.MetastoreConfig }).(ClusterClusterConfigMetastoreConfigPtrOutput)
 }
 
 // The Google Compute Engine config settings for the additional
@@ -1253,7 +1265,6 @@ func (o ClusterClusterConfigPtrOutput) EncryptionConfig() ClusterClusterConfigEn
 
 // The config settings for port access on the cluster.
 // Structure defined below.
-// ***
 func (o ClusterClusterConfigPtrOutput) EndpointConfig() ClusterClusterConfigEndpointConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigEndpointConfig {
 		if v == nil {
@@ -1305,6 +1316,18 @@ func (o ClusterClusterConfigPtrOutput) MasterConfig() ClusterClusterConfigMaster
 		}
 		return v.MasterConfig
 	}).(ClusterClusterConfigMasterConfigPtrOutput)
+}
+
+// The config setting for metastore service with the cluster.
+// Structure defined below.
+// ***
+func (o ClusterClusterConfigPtrOutput) MetastoreConfig() ClusterClusterConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigMetastoreConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreConfig
+	}).(ClusterClusterConfigMetastoreConfigPtrOutput)
 }
 
 // The Google Compute Engine config settings for the additional
@@ -3195,6 +3218,137 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulu
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMetastoreConfig struct {
+	// Resource name of an existing Dataproc Metastore service.
+	DataprocMetastoreService string `pulumi:"dataprocMetastoreService"`
+}
+
+// ClusterClusterConfigMetastoreConfigInput is an input type that accepts ClusterClusterConfigMetastoreConfigArgs and ClusterClusterConfigMetastoreConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMetastoreConfigInput` via:
+//
+//          ClusterClusterConfigMetastoreConfigArgs{...}
+type ClusterClusterConfigMetastoreConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMetastoreConfigOutput() ClusterClusterConfigMetastoreConfigOutput
+	ToClusterClusterConfigMetastoreConfigOutputWithContext(context.Context) ClusterClusterConfigMetastoreConfigOutput
+}
+
+type ClusterClusterConfigMetastoreConfigArgs struct {
+	// Resource name of an existing Dataproc Metastore service.
+	DataprocMetastoreService pulumi.StringInput `pulumi:"dataprocMetastoreService"`
+}
+
+func (ClusterClusterConfigMetastoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMetastoreConfigArgs) ToClusterClusterConfigMetastoreConfigOutput() ClusterClusterConfigMetastoreConfigOutput {
+	return i.ToClusterClusterConfigMetastoreConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMetastoreConfigArgs) ToClusterClusterConfigMetastoreConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMetastoreConfigOutput)
+}
+
+func (i ClusterClusterConfigMetastoreConfigArgs) ToClusterClusterConfigMetastoreConfigPtrOutput() ClusterClusterConfigMetastoreConfigPtrOutput {
+	return i.ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMetastoreConfigArgs) ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMetastoreConfigOutput).ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigMetastoreConfigPtrInput is an input type that accepts ClusterClusterConfigMetastoreConfigArgs, ClusterClusterConfigMetastoreConfigPtr and ClusterClusterConfigMetastoreConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMetastoreConfigPtrInput` via:
+//
+//          ClusterClusterConfigMetastoreConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterClusterConfigMetastoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMetastoreConfigPtrOutput() ClusterClusterConfigMetastoreConfigPtrOutput
+	ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(context.Context) ClusterClusterConfigMetastoreConfigPtrOutput
+}
+
+type clusterClusterConfigMetastoreConfigPtrType ClusterClusterConfigMetastoreConfigArgs
+
+func ClusterClusterConfigMetastoreConfigPtr(v *ClusterClusterConfigMetastoreConfigArgs) ClusterClusterConfigMetastoreConfigPtrInput {
+	return (*clusterClusterConfigMetastoreConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigMetastoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigMetastoreConfigPtrType) ToClusterClusterConfigMetastoreConfigPtrOutput() ClusterClusterConfigMetastoreConfigPtrOutput {
+	return i.ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigMetastoreConfigPtrType) ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMetastoreConfigPtrOutput)
+}
+
+type ClusterClusterConfigMetastoreConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMetastoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMetastoreConfigOutput) ToClusterClusterConfigMetastoreConfigOutput() ClusterClusterConfigMetastoreConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMetastoreConfigOutput) ToClusterClusterConfigMetastoreConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMetastoreConfigOutput) ToClusterClusterConfigMetastoreConfigPtrOutput() ClusterClusterConfigMetastoreConfigPtrOutput {
+	return o.ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigMetastoreConfigOutput) ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMetastoreConfig) *ClusterClusterConfigMetastoreConfig {
+		return &v
+	}).(ClusterClusterConfigMetastoreConfigPtrOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service.
+func (o ClusterClusterConfigMetastoreConfigOutput) DataprocMetastoreService() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMetastoreConfig) string { return v.DataprocMetastoreService }).(pulumi.StringOutput)
+}
+
+type ClusterClusterConfigMetastoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMetastoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMetastoreConfigPtrOutput) ToClusterClusterConfigMetastoreConfigPtrOutput() ClusterClusterConfigMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMetastoreConfigPtrOutput) ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMetastoreConfigPtrOutput) Elem() ClusterClusterConfigMetastoreConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMetastoreConfig) ClusterClusterConfigMetastoreConfig { return *v }).(ClusterClusterConfigMetastoreConfigOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service.
+func (o ClusterClusterConfigMetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMetastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataprocMetastoreService
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfig struct {
@@ -18807,6 +18961,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMetastoreConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput{})

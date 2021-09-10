@@ -20,7 +20,10 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, id=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, skip_initial_version_creation=None, version_templates=None):
+    def __init__(__self__, destroy_scheduled_duration=None, id=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, skip_initial_version_creation=None, version_templates=None):
+        if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
+            raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
+        pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -48,6 +51,11 @@ class GetKMSCryptoKeyResult:
         if version_templates and not isinstance(version_templates, list):
             raise TypeError("Expected argument 'version_templates' to be a list")
         pulumi.set(__self__, "version_templates", version_templates)
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> str:
+        return pulumi.get(self, "destroy_scheduled_duration")
 
     @property
     @pulumi.getter
@@ -115,6 +123,7 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
         if False:
             yield self
         return GetKMSCryptoKeyResult(
+            destroy_scheduled_duration=self.destroy_scheduled_duration,
             id=self.id,
             key_ring=self.key_ring,
             labels=self.labels,
@@ -165,6 +174,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts, typ=GetKMSCryptoKeyResult).value
 
     return AwaitableGetKMSCryptoKeyResult(
+        destroy_scheduled_duration=__ret__.destroy_scheduled_duration,
         id=__ret__.id,
         key_ring=__ret__.key_ring,
         labels=__ret__.labels,

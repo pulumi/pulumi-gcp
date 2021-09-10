@@ -78,6 +78,7 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class GetKMSCryptoKeyResult
     {
+        public readonly string DestroyScheduledDuration;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -104,6 +105,8 @@ namespace Pulumi.Gcp.Kms
 
         [OutputConstructor]
         private GetKMSCryptoKeyResult(
+            string destroyScheduledDuration,
+
             string id,
 
             string keyRing,
@@ -122,6 +125,7 @@ namespace Pulumi.Gcp.Kms
 
             ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> versionTemplates)
         {
+            DestroyScheduledDuration = destroyScheduledDuration;
             Id = id;
             KeyRing = keyRing;
             Labels = labels;

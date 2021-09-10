@@ -92,6 +92,11 @@ export class CryptoKey extends pulumi.CustomResource {
     }
 
     /**
+     * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+     * If not specified at creation time, the default duration is 24 hours.
+     */
+    public readonly destroyScheduledDuration!: pulumi.Output<string>;
+    /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
@@ -149,6 +154,7 @@ export class CryptoKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
+            inputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -162,6 +168,7 @@ export class CryptoKey extends pulumi.CustomResource {
             if ((!args || args.keyRing === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
+            inputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
             inputs["keyRing"] = args ? args.keyRing : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -182,6 +189,11 @@ export class CryptoKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CryptoKey resources.
  */
 export interface CryptoKeyState {
+    /**
+     * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+     * If not specified at creation time, the default duration is 24 hours.
+     */
+    destroyScheduledDuration?: pulumi.Input<string>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -232,6 +244,11 @@ export interface CryptoKeyState {
  * The set of arguments for constructing a CryptoKey resource.
  */
 export interface CryptoKeyArgs {
+    /**
+     * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+     * If not specified at creation time, the default duration is 24 hours.
+     */
+    destroyScheduledDuration?: pulumi.Input<string>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.

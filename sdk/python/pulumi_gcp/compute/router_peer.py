@@ -24,6 +24,7 @@ class RouterPeerArgs:
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -57,6 +58,8 @@ class RouterPeerArgs:
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
+        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
+               Only IPv4 is supported.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -82,6 +85,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -217,6 +222,19 @@ class RouterPeerArgs:
         pulumi.set(self, "enable", value)
 
     @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the interface inside Google Cloud Platform.
+        Only IPv4 is supported.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -302,7 +320,8 @@ class _RouterPeerState:
                If set to true, the peer connection can be established with routing information.
                The default is true.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
-        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
+               Only IPv4 is supported.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
                you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
                specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
@@ -445,7 +464,8 @@ class _RouterPeerState:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        IP address of the interface inside Google Cloud Platform.
+        Only IPv4 is supported.
         """
         return pulumi.get(self, "ip_address")
 
@@ -561,6 +581,7 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -656,6 +677,8 @@ class RouterPeer(pulumi.CustomResource):
                If set to true, the peer connection can be established with routing information.
                The default is true.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
+        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
+               Only IPv4 is supported.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -762,6 +785,7 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -788,6 +812,7 @@ class RouterPeer(pulumi.CustomResource):
             if interface is None and not opts.urn:
                 raise TypeError("Missing required property 'interface'")
             __props__.__dict__["interface"] = interface
+            __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["name"] = name
             if peer_asn is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_asn'")
@@ -800,7 +825,6 @@ class RouterPeer(pulumi.CustomResource):
             if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
-            __props__.__dict__["ip_address"] = None
             __props__.__dict__["management_type"] = None
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
@@ -856,7 +880,8 @@ class RouterPeer(pulumi.CustomResource):
                If set to true, the peer connection can be established with routing information.
                The default is true.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
-        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
+               Only IPv4 is supported.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
                you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
                specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
@@ -966,7 +991,8 @@ class RouterPeer(pulumi.CustomResource):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
         """
-        IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        IP address of the interface inside Google Cloud Platform.
+        Only IPv4 is supported.
         """
         return pulumi.get(self, "ip_address")
 

@@ -65,6 +65,7 @@ type GetKMSCryptoKeyArgs struct {
 
 // A collection of values returned by getKMSCryptoKey.
 type GetKMSCryptoKeyResult struct {
+	DestroyScheduledDuration string `pulumi:"destroyScheduledDuration"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string            `pulumi:"id"`
 	KeyRing string            `pulumi:"keyRing"`

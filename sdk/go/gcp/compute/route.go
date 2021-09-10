@@ -199,7 +199,7 @@ type Route struct {
 	// specified)  The zone of the instance specified in
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
-	NextHopInstanceZone pulumi.StringPtrOutput `pulumi:"nextHopInstanceZone"`
+	NextHopInstanceZone pulumi.StringOutput `pulumi:"nextHopInstanceZone"`
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp pulumi.StringOutput `pulumi:"nextHopIp"`
 	// URL to a Network that should handle matching packets.

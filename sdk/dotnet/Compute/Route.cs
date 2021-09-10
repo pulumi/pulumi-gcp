@@ -213,7 +213,7 @@ namespace Pulumi.Gcp.Compute
         /// a URL.
         /// </summary>
         [Output("nextHopInstanceZone")]
-        public Output<string?> NextHopInstanceZone { get; private set; } = null!;
+        public Output<string> NextHopInstanceZone { get; private set; } = null!;
 
         /// <summary>
         /// Network IP address of an instance that should handle matching packets.

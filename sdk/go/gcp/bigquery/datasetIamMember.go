@@ -55,8 +55,14 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
-// 			DatasetId:  pulumi.String("your-dataset-id"),
+// 		datasetDataset, err := bigquery.NewDataset(ctx, "datasetDataset", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("example_dataset"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetIamPolicy(ctx, "datasetDatasetIamPolicy", &bigquery.DatasetIamPolicyArgs{
+// 			DatasetId:  datasetDataset.DatasetId,
 // 			PolicyData: pulumi.String(owner.PolicyData),
 // 		})
 // 		if err != nil {
@@ -79,12 +85,18 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
-// 			DatasetId: pulumi.String("your-dataset-id"),
+// 		dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("example_dataset"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+// 			DatasetId: dataset.DatasetId,
+// 			Role:      pulumi.String("roles/bigquery.dataViewer"),
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 			Role: pulumi.String("roles/bigquery.dataViewer"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -106,10 +118,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
-// 			DatasetId: pulumi.String("your-dataset-id"),
-// 			Member:    pulumi.String("user:jane@example.com"),
+// 		dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("example_dataset"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+// 			DatasetId: dataset.DatasetId,
 // 			Role:      pulumi.String("roles/bigquery.dataEditor"),
+// 			Member:    pulumi.String("user:jane@example.com"),
 // 		})
 // 		if err != nil {
 // 			return err

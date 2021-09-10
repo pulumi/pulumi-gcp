@@ -35,8 +35,9 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
- *     datasetId: "your-dataset-id",
+ * const datasetDataset = new gcp.bigquery.Dataset("datasetDataset", {datasetId: "example_dataset"});
+ * const datasetDatasetIamPolicy = new gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy", {
+ *     datasetId: datasetDataset.datasetId,
  *     policyData: owner.then(owner => owner.policyData),
  * });
  * ```
@@ -47,10 +48,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
  * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
- *     datasetId: "your-dataset-id",
- *     members: ["user:jane@example.com"],
+ *     datasetId: dataset.datasetId,
  *     role: "roles/bigquery.dataViewer",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -60,10 +62,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
  * const editor = new gcp.bigquery.DatasetIamMember("editor", {
- *     datasetId: "your-dataset-id",
- *     member: "user:jane@example.com",
+ *     datasetId: dataset.datasetId,
  *     role: "roles/bigquery.dataEditor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *
