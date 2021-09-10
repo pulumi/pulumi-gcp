@@ -18,6 +18,7 @@ class CertificateArgs:
                  location: pulumi.Input[str],
                  pool: pulumi.Input[str],
                  certificate_authority: Optional[pulumi.Input[str]] = None,
+                 certificate_template: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,11 @@ class CertificateArgs:
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
+               in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+               the caller must have the necessary permission to use this template. If this is
+               omitted, no template will be used. This template must be in the same location
+               as the Certificate.
         :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
@@ -45,6 +51,8 @@ class CertificateArgs:
         pulumi.set(__self__, "pool", pool)
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if certificate_template is not None:
+            pulumi.set(__self__, "certificate_template", certificate_template)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if labels is not None:
@@ -94,6 +102,22 @@ class CertificateArgs:
     @certificate_authority.setter
     def certificate_authority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="certificateTemplate")
+    def certificate_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for a CertificateTemplate used to issue this certificate,
+        in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+        the caller must have the necessary permission to use this template. If this is
+        omitted, no template will be used. This template must be in the same location
+        as the Certificate.
+        """
+        return pulumi.get(self, "certificate_template")
+
+    @certificate_template.setter
+    def certificate_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_template", value)
 
     @property
     @pulumi.getter
@@ -177,6 +201,7 @@ class _CertificateState:
     def __init__(__self__, *,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]]] = None,
+                 certificate_template: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -195,6 +220,11 @@ class _CertificateState:
         :param pulumi.Input[str] certificate_authority: Certificate Authority name.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
                this field is present.
+        :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
+               in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+               the caller must have the necessary permission to use this template. If this is
+               omitted, no template will be used. This template must be in the same location
+               as the Certificate.
         :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
@@ -219,6 +249,8 @@ class _CertificateState:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
         if certificate_descriptions is not None:
             pulumi.set(__self__, "certificate_descriptions", certificate_descriptions)
+        if certificate_template is not None:
+            pulumi.set(__self__, "certificate_template", certificate_template)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if create_time is not None:
@@ -270,6 +302,22 @@ class _CertificateState:
     @certificate_descriptions.setter
     def certificate_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]]]):
         pulumi.set(self, "certificate_descriptions", value)
+
+    @property
+    @pulumi.getter(name="certificateTemplate")
+    def certificate_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for a CertificateTemplate used to issue this certificate,
+        in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+        the caller must have the necessary permission to use this template. If this is
+        omitted, no template will be used. This template must be in the same location
+        as the Certificate.
+        """
+        return pulumi.get(self, "certificate_template")
+
+    @certificate_template.setter
+    def certificate_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_template", value)
 
     @property
     @pulumi.getter
@@ -440,6 +488,7 @@ class Certificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
+                 certificate_template: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
@@ -456,6 +505,124 @@ class Certificate(pulumi.CustomResource):
         `tier = "ENTERPRISE"`
 
         ## Example Usage
+        ### Privateca Certificate With Template
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template = gcp.certificateauthority.CertificateTemplate("template",
+            location="us-central1",
+            description="An updated sample certificate template",
+            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
+                allow_subject_alt_names_passthrough=True,
+                allow_subject_passthrough=True,
+                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
+                    description="Always true",
+                    expression="true",
+                    location="any.file.anywhere",
+                    title="Sample expression",
+                ),
+            ),
+            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
+                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
+                    object_id_paths=[
+                        1,
+                        6,
+                    ],
+                )],
+                known_extensions=["EXTENDED_KEY_USAGE"],
+            ),
+            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
+                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
+                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
+                        object_id_paths=[
+                            1,
+                            6,
+                        ],
+                    ),
+                    value="c3RyaW5nCg==",
+                    critical=True,
+                )],
+                aia_ocsp_servers=["string"],
+                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
+                    is_ca=False,
+                    max_issuer_path_length=6,
+                ),
+                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
+                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
+                        cert_sign=False,
+                        content_commitment=True,
+                        crl_sign=False,
+                        data_encipherment=True,
+                        decipher_only=True,
+                        digital_signature=True,
+                        encipher_only=True,
+                        key_agreement=True,
+                        key_encipherment=True,
+                    ),
+                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
+                        client_auth=True,
+                        code_signing=True,
+                        email_protection=True,
+                        ocsp_signing=True,
+                        server_auth=True,
+                        time_stamping=True,
+                    ),
+                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
+                        object_id_paths=[
+                            1,
+                            6,
+                        ],
+                    )],
+                ),
+                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
+                    object_id_paths=[
+                        1,
+                        6,
+                    ],
+                )],
+            ))
+        test_ca = gcp.certificateauthority.Authority("test-ca",
+            pool="",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ))
+        default = gcp.certificateauthority.Certificate("default",
+            pool="",
+            location="us-central1",
+            certificate_authority=test_ca.certificate_authority_id,
+            lifetime="860s",
+            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
+            certificate_template=template.id)
+        ```
         ### Privateca Certificate Csr
 
         ```python
@@ -521,6 +688,11 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
+               in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+               the caller must have the necessary permission to use this template. If this is
+               omitted, no template will be used. This template must be in the same location
+               as the Certificate.
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
@@ -548,6 +720,124 @@ class Certificate(pulumi.CustomResource):
         `tier = "ENTERPRISE"`
 
         ## Example Usage
+        ### Privateca Certificate With Template
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template = gcp.certificateauthority.CertificateTemplate("template",
+            location="us-central1",
+            description="An updated sample certificate template",
+            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
+                allow_subject_alt_names_passthrough=True,
+                allow_subject_passthrough=True,
+                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
+                    description="Always true",
+                    expression="true",
+                    location="any.file.anywhere",
+                    title="Sample expression",
+                ),
+            ),
+            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
+                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
+                    object_id_paths=[
+                        1,
+                        6,
+                    ],
+                )],
+                known_extensions=["EXTENDED_KEY_USAGE"],
+            ),
+            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
+                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
+                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
+                        object_id_paths=[
+                            1,
+                            6,
+                        ],
+                    ),
+                    value="c3RyaW5nCg==",
+                    critical=True,
+                )],
+                aia_ocsp_servers=["string"],
+                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
+                    is_ca=False,
+                    max_issuer_path_length=6,
+                ),
+                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
+                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
+                        cert_sign=False,
+                        content_commitment=True,
+                        crl_sign=False,
+                        data_encipherment=True,
+                        decipher_only=True,
+                        digital_signature=True,
+                        encipher_only=True,
+                        key_agreement=True,
+                        key_encipherment=True,
+                    ),
+                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
+                        client_auth=True,
+                        code_signing=True,
+                        email_protection=True,
+                        ocsp_signing=True,
+                        server_auth=True,
+                        time_stamping=True,
+                    ),
+                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
+                        object_id_paths=[
+                            1,
+                            6,
+                        ],
+                    )],
+                ),
+                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
+                    object_id_paths=[
+                        1,
+                        6,
+                    ],
+                )],
+            ))
+        test_ca = gcp.certificateauthority.Authority("test-ca",
+            pool="",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ))
+        default = gcp.certificateauthority.Certificate("default",
+            pool="",
+            location="us-central1",
+            certificate_authority=test_ca.certificate_authority_id,
+            lifetime="860s",
+            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
+            certificate_template=template.id)
+        ```
         ### Privateca Certificate Csr
 
         ```python
@@ -626,6 +916,7 @@ class Certificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
+                 certificate_template: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
@@ -647,6 +938,7 @@ class Certificate(pulumi.CustomResource):
             __props__ = CertificateArgs.__new__(CertificateArgs)
 
             __props__.__dict__["certificate_authority"] = certificate_authority
+            __props__.__dict__["certificate_template"] = certificate_template
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lifetime"] = lifetime
@@ -677,6 +969,7 @@ class Certificate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_authority: Optional[pulumi.Input[str]] = None,
             certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateCertificateDescriptionArgs']]]]] = None,
+            certificate_template: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -700,6 +993,11 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_authority: Certificate Authority name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateCertificateDescriptionArgs']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
                this field is present.
+        :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
+               in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+               the caller must have the necessary permission to use this template. If this is
+               omitted, no template will be used. This template must be in the same location
+               as the Certificate.
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
@@ -726,6 +1024,7 @@ class Certificate(pulumi.CustomResource):
 
         __props__.__dict__["certificate_authority"] = certificate_authority
         __props__.__dict__["certificate_descriptions"] = certificate_descriptions
+        __props__.__dict__["certificate_template"] = certificate_template
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["labels"] = labels
@@ -757,6 +1056,18 @@ class Certificate(pulumi.CustomResource):
         this field is present.
         """
         return pulumi.get(self, "certificate_descriptions")
+
+    @property
+    @pulumi.getter(name="certificateTemplate")
+    def certificate_template(self) -> pulumi.Output[Optional[str]]:
+        """
+        The resource name for a CertificateTemplate used to issue this certificate,
+        in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+        the caller must have the necessary permission to use this template. If this is
+        omitted, no template will be used. This template must be in the same location
+        as the Certificate.
+        """
+        return pulumi.get(self, "certificate_template")
 
     @property
     @pulumi.getter

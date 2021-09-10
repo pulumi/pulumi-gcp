@@ -16,6 +16,7 @@ __all__ = ['CryptoKeyArgs', 'CryptoKey']
 class CryptoKeyArgs:
     def __init__(__self__, *,
                  key_ring: pulumi.Input[str],
+                 destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,8 @@ class CryptoKeyArgs:
         The set of arguments for constructing a CryptoKey resource.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+        :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+               If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
         :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the
@@ -43,6 +46,8 @@ class CryptoKeyArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "key_ring", key_ring)
+        if destroy_scheduled_duration is not None:
+            pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -68,6 +73,19 @@ class CryptoKeyArgs:
     @key_ring.setter
     def key_ring(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_ring", value)
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+        If not specified at creation time, the default duration is 24 hours.
+        """
+        return pulumi.get(self, "destroy_scheduled_duration")
+
+    @destroy_scheduled_duration.setter
+    def destroy_scheduled_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destroy_scheduled_duration", value)
 
     @property
     @pulumi.getter
@@ -154,6 +172,7 @@ class CryptoKeyArgs:
 @pulumi.input_type
 class _CryptoKeyState:
     def __init__(__self__, *,
+                 destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -164,6 +183,8 @@ class _CryptoKeyState:
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         Input properties used for looking up and filtering CryptoKey resources.
+        :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+               If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
@@ -183,6 +204,8 @@ class _CryptoKeyState:
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
+        if destroy_scheduled_duration is not None:
+            pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if key_ring is not None:
             pulumi.set(__self__, "key_ring", key_ring)
         if labels is not None:
@@ -202,6 +225,19 @@ class _CryptoKeyState:
             pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
         if version_template is not None:
             pulumi.set(__self__, "version_template", version_template)
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+        If not specified at creation time, the default duration is 24 hours.
+        """
+        return pulumi.get(self, "destroy_scheduled_duration")
+
+    @destroy_scheduled_duration.setter
+    def destroy_scheduled_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destroy_scheduled_duration", value)
 
     @property
     @pulumi.getter(name="keyRing")
@@ -315,6 +351,7 @@ class CryptoKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -381,6 +418,8 @@ class CryptoKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+               If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
@@ -476,6 +515,7 @@ class CryptoKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -495,6 +535,7 @@ class CryptoKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CryptoKeyArgs.__new__(CryptoKeyArgs)
 
+            __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
             if key_ring is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring'")
             __props__.__dict__["key_ring"] = key_ring
@@ -515,6 +556,7 @@ class CryptoKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
             key_ring: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -530,6 +572,8 @@ class CryptoKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+               If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
@@ -553,6 +597,7 @@ class CryptoKey(pulumi.CustomResource):
 
         __props__ = _CryptoKeyState.__new__(_CryptoKeyState)
 
+        __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
         __props__.__dict__["key_ring"] = key_ring
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -562,6 +607,15 @@ class CryptoKey(pulumi.CustomResource):
         __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
         __props__.__dict__["version_template"] = version_template
         return CryptoKey(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> pulumi.Output[str]:
+        """
+        The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+        If not specified at creation time, the default duration is 24 hours.
+        """
+        return pulumi.get(self, "destroy_scheduled_duration")
 
     @property
     @pulumi.getter(name="keyRing")

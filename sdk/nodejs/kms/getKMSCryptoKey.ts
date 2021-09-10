@@ -63,6 +63,7 @@ export interface GetKMSCryptoKeyArgs {
  * A collection of values returned by getKMSCryptoKey.
  */
 export interface GetKMSCryptoKeyResult {
+    readonly destroyScheduledDuration: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -52,9 +52,13 @@ namespace Pulumi.Gcp.BigQuery
     ///                 },
     ///             },
     ///         }));
-    ///         var dataset = new Gcp.BigQuery.DatasetIamPolicy("dataset", new Gcp.BigQuery.DatasetIamPolicyArgs
+    ///         var datasetDataset = new Gcp.BigQuery.Dataset("datasetDataset", new Gcp.BigQuery.DatasetArgs
     ///         {
-    ///             DatasetId = "your-dataset-id",
+    ///             DatasetId = "example_dataset",
+    ///         });
+    ///         var datasetDatasetIamPolicy = new Gcp.BigQuery.DatasetIamPolicy("datasetDatasetIamPolicy", new Gcp.BigQuery.DatasetIamPolicyArgs
+    ///         {
+    ///             DatasetId = datasetDataset.DatasetId,
     ///             PolicyData = owner.Apply(owner =&gt; owner.PolicyData),
     ///         });
     ///     }
@@ -72,14 +76,18 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     public MyStack()
     ///     {
+    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "example_dataset",
+    ///         });
     ///         var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new Gcp.BigQuery.DatasetIamBindingArgs
     ///         {
-    ///             DatasetId = "your-dataset-id",
+    ///             DatasetId = dataset.DatasetId,
+    ///             Role = "roles/bigquery.dataViewer",
     ///             Members = 
     ///             {
     ///                 "user:jane@example.com",
     ///             },
-    ///             Role = "roles/bigquery.dataViewer",
     ///         });
     ///     }
     /// 
@@ -96,11 +104,15 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     public MyStack()
     ///     {
+    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "example_dataset",
+    ///         });
     ///         var editor = new Gcp.BigQuery.DatasetIamMember("editor", new Gcp.BigQuery.DatasetIamMemberArgs
     ///         {
-    ///             DatasetId = "your-dataset-id",
-    ///             Member = "user:jane@example.com",
+    ///             DatasetId = dataset.DatasetId,
     ///             Role = "roles/bigquery.dataEditor",
+    ///             Member = "user:jane@example.com",
     ///         });
     ///     }
     /// 

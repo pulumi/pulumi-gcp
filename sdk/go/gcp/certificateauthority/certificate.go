@@ -41,6 +41,12 @@ type Certificate struct {
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
 	// this field is present.
 	CertificateDescriptions CertificateCertificateDescriptionArrayOutput `pulumi:"certificateDescriptions"`
+	// The resource name for a CertificateTemplate used to issue this certificate,
+	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+	// the caller must have the necessary permission to use this template. If this is
+	// omitted, no template will be used. This template must be in the same location
+	// as the Certificate.
+	CertificateTemplate pulumi.StringPtrOutput `pulumi:"certificateTemplate"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config CertificateConfigPtrOutput `pulumi:"config"`
@@ -115,6 +121,12 @@ type certificateState struct {
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
 	// this field is present.
 	CertificateDescriptions []CertificateCertificateDescription `pulumi:"certificateDescriptions"`
+	// The resource name for a CertificateTemplate used to issue this certificate,
+	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+	// the caller must have the necessary permission to use this template. If this is
+	// omitted, no template will be used. This template must be in the same location
+	// as the Certificate.
+	CertificateTemplate *string `pulumi:"certificateTemplate"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config *CertificateConfig `pulumi:"config"`
@@ -155,6 +167,12 @@ type CertificateState struct {
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
 	// this field is present.
 	CertificateDescriptions CertificateCertificateDescriptionArrayInput
+	// The resource name for a CertificateTemplate used to issue this certificate,
+	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+	// the caller must have the necessary permission to use this template. If this is
+	// omitted, no template will be used. This template must be in the same location
+	// as the Certificate.
+	CertificateTemplate pulumi.StringPtrInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config CertificateConfigPtrInput
@@ -196,6 +214,12 @@ func (CertificateState) ElementType() reflect.Type {
 type certificateArgs struct {
 	// Certificate Authority name.
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// The resource name for a CertificateTemplate used to issue this certificate,
+	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+	// the caller must have the necessary permission to use this template. If this is
+	// omitted, no template will be used. This template must be in the same location
+	// as the Certificate.
+	CertificateTemplate *string `pulumi:"certificateTemplate"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config *CertificateConfig `pulumi:"config"`
@@ -223,6 +247,12 @@ type certificateArgs struct {
 type CertificateArgs struct {
 	// Certificate Authority name.
 	CertificateAuthority pulumi.StringPtrInput
+	// The resource name for a CertificateTemplate used to issue this certificate,
+	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
+	// the caller must have the necessary permission to use this template. If this is
+	// omitted, no template will be used. This template must be in the same location
+	// as the Certificate.
+	CertificateTemplate pulumi.StringPtrInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config CertificateConfigPtrInput

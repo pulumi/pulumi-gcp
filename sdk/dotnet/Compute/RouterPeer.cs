@@ -147,7 +147,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Interface { get; private set; } = null!;
 
         /// <summary>
-        /// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        /// IP address of the interface inside Google Cloud Platform.
+        /// Only IPv4 is supported.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
@@ -318,6 +319,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Interface { get; set; } = null!;
 
         /// <summary>
+        /// IP address of the interface inside Google Cloud Platform.
+        /// Only IPv4 is supported.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long,
         /// and comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `a-z?` which
@@ -435,7 +443,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Interface { get; set; }
 
         /// <summary>
-        /// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+        /// IP address of the interface inside Google Cloud Platform.
+        /// Only IPv4 is supported.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }

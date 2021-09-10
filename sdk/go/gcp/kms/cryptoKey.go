@@ -104,6 +104,9 @@ import (
 type CryptoKey struct {
 	pulumi.CustomResourceState
 
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing pulumi.StringOutput `pulumi:"keyRing"`
@@ -166,6 +169,9 @@ func GetCryptoKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CryptoKey resources.
 type cryptoKeyState struct {
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing *string `pulumi:"keyRing"`
@@ -197,6 +203,9 @@ type cryptoKeyState struct {
 }
 
 type CryptoKeyState struct {
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration pulumi.StringPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing pulumi.StringPtrInput
@@ -232,6 +241,9 @@ func (CryptoKeyState) ElementType() reflect.Type {
 }
 
 type cryptoKeyArgs struct {
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing string `pulumi:"keyRing"`
@@ -260,6 +272,9 @@ type cryptoKeyArgs struct {
 
 // The set of arguments for constructing a CryptoKey resource.
 type CryptoKeyArgs struct {
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration pulumi.StringPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing pulumi.StringInput

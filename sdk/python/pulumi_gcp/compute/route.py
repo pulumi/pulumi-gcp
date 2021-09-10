@@ -1096,7 +1096,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopInstanceZone")
-    def next_hop_instance_zone(self) -> pulumi.Output[Optional[str]]:
+    def next_hop_instance_zone(self) -> pulumi.Output[str]:
         """
         (Optional when `next_hop_instance` is
         specified)  The zone of the instance specified in

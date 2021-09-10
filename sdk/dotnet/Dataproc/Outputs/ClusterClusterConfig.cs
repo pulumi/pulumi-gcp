@@ -29,7 +29,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The config settings for port access on the cluster.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         public readonly Outputs.ClusterClusterConfigEndpointConfig? EndpointConfig;
         /// <summary>
@@ -52,6 +51,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// in a cluster.. Structure defined below.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigMasterConfig? MasterConfig;
+        /// <summary>
+        /// The config setting for metastore service with the cluster.
+        /// Structure defined below.
+        /// - - -
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigMetastoreConfig? MetastoreConfig;
         /// <summary>
         /// The Google Compute Engine config settings for the additional
         /// instances in a cluster. Structure defined below.
@@ -109,6 +114,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             Outputs.ClusterClusterConfigMasterConfig? masterConfig,
 
+            Outputs.ClusterClusterConfigMetastoreConfig? metastoreConfig,
+
             Outputs.ClusterClusterConfigPreemptibleWorkerConfig? preemptibleWorkerConfig,
 
             Outputs.ClusterClusterConfigSecurityConfig? securityConfig,
@@ -129,6 +136,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             InitializationActions = initializationActions;
             LifecycleConfig = lifecycleConfig;
             MasterConfig = masterConfig;
+            MetastoreConfig = metastoreConfig;
             PreemptibleWorkerConfig = preemptibleWorkerConfig;
             SecurityConfig = securityConfig;
             SoftwareConfig = softwareConfig;

@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The config settings for port access on the cluster.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         [Input("endpointConfig")]
         public Input<Inputs.ClusterClusterConfigEndpointConfigGetArgs>? EndpointConfig { get; set; }
@@ -72,6 +71,14 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// </summary>
         [Input("masterConfig")]
         public Input<Inputs.ClusterClusterConfigMasterConfigGetArgs>? MasterConfig { get; set; }
+
+        /// <summary>
+        /// The config setting for metastore service with the cluster.
+        /// Structure defined below.
+        /// - - -
+        /// </summary>
+        [Input("metastoreConfig")]
+        public Input<Inputs.ClusterClusterConfigMetastoreConfigGetArgs>? MetastoreConfig { get; set; }
 
         /// <summary>
         /// The Google Compute Engine config settings for the additional

@@ -130,7 +130,8 @@ type RouterPeer struct {
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringOutput `pulumi:"interface"`
-	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the interface inside Google Cloud Platform.
+	// Only IPv4 is supported.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
 	// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
@@ -230,7 +231,8 @@ type routerPeerState struct {
 	Enable *bool `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
 	Interface *string `pulumi:"interface"`
-	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the interface inside Google Cloud Platform.
+	// Only IPv4 is supported.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
 	// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
@@ -290,7 +292,8 @@ type RouterPeerState struct {
 	Enable pulumi.BoolPtrInput
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringPtrInput
-	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the interface inside Google Cloud Platform.
+	// Only IPv4 is supported.
 	IpAddress pulumi.StringPtrInput
 	// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
 	// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
@@ -354,6 +357,9 @@ type routerPeerArgs struct {
 	Enable *bool `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
 	Interface string `pulumi:"interface"`
+	// IP address of the interface inside Google Cloud Platform.
+	// Only IPv4 is supported.
+	IpAddress *string `pulumi:"ipAddress"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which
@@ -408,6 +414,9 @@ type RouterPeerArgs struct {
 	Enable pulumi.BoolPtrInput
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringInput
+	// IP address of the interface inside Google Cloud Platform.
+	// Only IPv4 is supported.
+	IpAddress pulumi.StringPtrInput
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which

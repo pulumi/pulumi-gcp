@@ -12,6 +12,128 @@ import * as utilities from "../utilities";
  * `tier = "ENTERPRISE"`
  *
  * ## Example Usage
+ * ### Privateca Certificate With Template
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const template = new gcp.certificateauthority.CertificateTemplate("template", {
+ *     location: "us-central1",
+ *     description: "An updated sample certificate template",
+ *     identityConstraints: {
+ *         allowSubjectAltNamesPassthrough: true,
+ *         allowSubjectPassthrough: true,
+ *         celExpression: {
+ *             description: "Always true",
+ *             expression: "true",
+ *             location: "any.file.anywhere",
+ *             title: "Sample expression",
+ *         },
+ *     },
+ *     passthroughExtensions: {
+ *         additionalExtensions: [{
+ *             objectIdPaths: [
+ *                 1,
+ *                 6,
+ *             ],
+ *         }],
+ *         knownExtensions: ["EXTENDED_KEY_USAGE"],
+ *     },
+ *     predefinedValues: {
+ *         additionalExtensions: [{
+ *             objectId: {
+ *                 objectIdPaths: [
+ *                     1,
+ *                     6,
+ *                 ],
+ *             },
+ *             value: "c3RyaW5nCg==",
+ *             critical: true,
+ *         }],
+ *         aiaOcspServers: ["string"],
+ *         caOptions: {
+ *             isCa: false,
+ *             maxIssuerPathLength: 6,
+ *         },
+ *         keyUsage: {
+ *             baseKeyUsage: {
+ *                 certSign: false,
+ *                 contentCommitment: true,
+ *                 crlSign: false,
+ *                 dataEncipherment: true,
+ *                 decipherOnly: true,
+ *                 digitalSignature: true,
+ *                 encipherOnly: true,
+ *                 keyAgreement: true,
+ *                 keyEncipherment: true,
+ *             },
+ *             extendedKeyUsage: {
+ *                 clientAuth: true,
+ *                 codeSigning: true,
+ *                 emailProtection: true,
+ *                 ocspSigning: true,
+ *                 serverAuth: true,
+ *                 timeStamping: true,
+ *             },
+ *             unknownExtendedKeyUsages: [{
+ *                 objectIdPaths: [
+ *                     1,
+ *                     6,
+ *                 ],
+ *             }],
+ *         },
+ *         policyIds: [{
+ *             objectIdPaths: [
+ *                 1,
+ *                 6,
+ *             ],
+ *         }],
+ *     },
+ * });
+ * const test_ca = new gcp.certificateauthority.Authority("test-ca", {
+ *     pool: "",
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * });
+ * const _default = new gcp.certificateauthority.Certificate("default", {
+ *     pool: "",
+ *     location: "us-central1",
+ *     certificateAuthority: test_ca.certificateAuthorityId,
+ *     lifetime: "860s",
+ *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem"),
+ *     certificateTemplate: template.id,
+ * });
+ * ```
  * ### Privateca Certificate Csr
  *
  * ```typescript
@@ -115,6 +237,14 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly certificateDescriptions!: pulumi.Output<outputs.certificateauthority.CertificateCertificateDescription[]>;
     /**
+     * The resource name for a CertificateTemplate used to issue this certificate,
+     * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
+     * the caller must have the necessary permission to use this template. If this is
+     * omitted, no template will be used. This template must be in the same location
+     * as the Certificate.
+     */
+    public readonly certificateTemplate!: pulumi.Output<string | undefined>;
+    /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
      */
@@ -188,6 +318,7 @@ export class Certificate extends pulumi.CustomResource {
             const state = argsOrState as CertificateState | undefined;
             inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             inputs["certificateDescriptions"] = state ? state.certificateDescriptions : undefined;
+            inputs["certificateTemplate"] = state ? state.certificateTemplate : undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -210,6 +341,7 @@ export class Certificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'pool'");
             }
             inputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
+            inputs["certificateTemplate"] = args ? args.certificateTemplate : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifetime"] = args ? args.lifetime : undefined;
@@ -245,6 +377,14 @@ export interface CertificateState {
      * this field is present.
      */
     certificateDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescription>[]>;
+    /**
+     * The resource name for a CertificateTemplate used to issue this certificate,
+     * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
+     * the caller must have the necessary permission to use this template. If this is
+     * omitted, no template will be used. This template must be in the same location
+     * as the Certificate.
+     */
+    certificateTemplate?: pulumi.Input<string>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
@@ -313,6 +453,14 @@ export interface CertificateArgs {
      * Certificate Authority name.
      */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The resource name for a CertificateTemplate used to issue this certificate,
+     * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
+     * the caller must have the necessary permission to use this template. If this is
+     * omitted, no template will be used. This template must be in the same location
+     * as the Certificate.
+     */
+    certificateTemplate?: pulumi.Input<string>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.

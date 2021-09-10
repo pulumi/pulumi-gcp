@@ -25,6 +25,7 @@ __all__ = [
     'ClusterClusterConfigMasterConfig',
     'ClusterClusterConfigMasterConfigAccelerator',
     'ClusterClusterConfigMasterConfigDiskConfig',
+    'ClusterClusterConfigMetastoreConfig',
     'ClusterClusterConfigPreemptibleWorkerConfig',
     'ClusterClusterConfigPreemptibleWorkerConfigDiskConfig',
     'ClusterClusterConfigSecurityConfig',
@@ -493,6 +494,8 @@ class ClusterClusterConfig(dict):
             suggest = "lifecycle_config"
         elif key == "masterConfig":
             suggest = "master_config"
+        elif key == "metastoreConfig":
+            suggest = "metastore_config"
         elif key == "preemptibleWorkerConfig":
             suggest = "preemptible_worker_config"
         elif key == "securityConfig":
@@ -526,6 +529,7 @@ class ClusterClusterConfig(dict):
                  initialization_actions: Optional[Sequence['outputs.ClusterClusterConfigInitializationAction']] = None,
                  lifecycle_config: Optional['outputs.ClusterClusterConfigLifecycleConfig'] = None,
                  master_config: Optional['outputs.ClusterClusterConfigMasterConfig'] = None,
+                 metastore_config: Optional['outputs.ClusterClusterConfigMetastoreConfig'] = None,
                  preemptible_worker_config: Optional['outputs.ClusterClusterConfigPreemptibleWorkerConfig'] = None,
                  security_config: Optional['outputs.ClusterClusterConfigSecurityConfig'] = None,
                  software_config: Optional['outputs.ClusterClusterConfigSoftwareConfig'] = None,
@@ -541,7 +545,6 @@ class ClusterClusterConfig(dict):
                Structure defined below.
         :param 'ClusterClusterConfigEndpointConfigArgs' endpoint_config: The config settings for port access on the cluster.
                Structure defined below.
-               - - -
         :param 'ClusterClusterConfigGceClusterConfigArgs' gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
                instances, applicable to all instances in the cluster. Structure defined below.
         :param Sequence['ClusterClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed.
@@ -550,6 +553,9 @@ class ClusterClusterConfig(dict):
                Structure defined below.
         :param 'ClusterClusterConfigMasterConfigArgs' master_config: The Google Compute Engine config settings for the master instances
                in a cluster.. Structure defined below.
+        :param 'ClusterClusterConfigMetastoreConfigArgs' metastore_config: The config setting for metastore service with the cluster.
+               Structure defined below.
+               - - -
         :param 'ClusterClusterConfigPreemptibleWorkerConfigArgs' preemptible_worker_config: The Google Compute Engine config settings for the additional
                instances in a cluster. Structure defined below.
                * **NOTE** : `preemptible_worker_config` is
@@ -587,6 +593,8 @@ class ClusterClusterConfig(dict):
             pulumi.set(__self__, "lifecycle_config", lifecycle_config)
         if master_config is not None:
             pulumi.set(__self__, "master_config", master_config)
+        if metastore_config is not None:
+            pulumi.set(__self__, "metastore_config", metastore_config)
         if preemptible_worker_config is not None:
             pulumi.set(__self__, "preemptible_worker_config", preemptible_worker_config)
         if security_config is not None:
@@ -631,7 +639,6 @@ class ClusterClusterConfig(dict):
         """
         The config settings for port access on the cluster.
         Structure defined below.
-        - - -
         """
         return pulumi.get(self, "endpoint_config")
 
@@ -670,6 +677,16 @@ class ClusterClusterConfig(dict):
         in a cluster.. Structure defined below.
         """
         return pulumi.get(self, "master_config")
+
+    @property
+    @pulumi.getter(name="metastoreConfig")
+    def metastore_config(self) -> Optional['outputs.ClusterClusterConfigMetastoreConfig']:
+        """
+        The config setting for metastore service with the cluster.
+        Structure defined below.
+        - - -
+        """
+        return pulumi.get(self, "metastore_config")
 
     @property
     @pulumi.getter(name="preemptibleWorkerConfig")
@@ -1462,6 +1479,41 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
         attached to each preemptible worker node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigMetastoreConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataprocMetastoreService":
+            suggest = "dataproc_metastore_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigMetastoreConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigMetastoreConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigMetastoreConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataproc_metastore_service: str):
+        """
+        :param str dataproc_metastore_service: Resource name of an existing Dataproc Metastore service.
+        """
+        pulumi.set(__self__, "dataproc_metastore_service", dataproc_metastore_service)
+
+    @property
+    @pulumi.getter(name="dataprocMetastoreService")
+    def dataproc_metastore_service(self) -> str:
+        """
+        Resource name of an existing Dataproc Metastore service.
+        """
+        return pulumi.get(self, "dataproc_metastore_service")
 
 
 @pulumi.output_type
