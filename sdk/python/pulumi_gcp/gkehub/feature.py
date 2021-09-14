@@ -112,11 +112,14 @@ class _FeatureState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Feature resources.
+        :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
+        :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['FeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -138,6 +141,9 @@ class _FeatureState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. When the Feature resource was created.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -147,6 +153,9 @@ class _FeatureState:
     @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. When the Feature resource was deleted.
+        """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
@@ -216,6 +225,9 @@ class _FeatureState:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. When the Feature resource was last updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -349,11 +361,14 @@ class Feature(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
+        :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -372,11 +387,17 @@ class Feature(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
+        """
+        Output only. When the Feature resource was created.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> pulumi.Output[str]:
+        """
+        Output only. When the Feature resource was deleted.
+        """
         return pulumi.get(self, "delete_time")
 
     @property
@@ -422,5 +443,8 @@ class Feature(pulumi.CustomResource):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
+        """
+        Output only. When the Feature resource was last updated.
+        """
         return pulumi.get(self, "update_time")
 

@@ -92,11 +92,13 @@ type FirewallPolicyRule struct {
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
-	Kind           pulumi.StringOutput `pulumi:"kind"`
+	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match FirewallPolicyRuleMatchOutput `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-	Priority       pulumi.IntOutput `pulumi:"priority"`
+	Priority pulumi.IntOutput `pulumi:"priority"`
+	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayOutput `pulumi:"targetResources"`
@@ -160,11 +162,13 @@ type firewallPolicyRuleState struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
-	Kind           *string `pulumi:"kind"`
+	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+	Kind *string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *FirewallPolicyRuleMatch `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-	Priority       *int `pulumi:"priority"`
+	Priority *int `pulumi:"priority"`
+	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
@@ -185,11 +189,13 @@ type FirewallPolicyRuleState struct {
 	EnableLogging pulumi.BoolPtrInput
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringPtrInput
-	Kind           pulumi.StringPtrInput
+	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+	Kind pulumi.StringPtrInput
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match FirewallPolicyRuleMatchPtrInput
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-	Priority       pulumi.IntPtrInput
+	Priority pulumi.IntPtrInput
+	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntPtrInput
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput

@@ -2501,6 +2501,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// IAP
 			"google_iap_client": {Tok: gcpDataSource(gcpIAP, "getClient")},
+
+			// Secret Manager
+			"google_secret_manager_secret": {Tok: gcpDataSource(gcpSecretManager, "getSecret")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

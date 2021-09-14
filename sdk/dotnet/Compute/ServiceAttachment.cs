@@ -267,6 +267,12 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> EnableProxyProtocol { get; private set; } = null!;
 
         /// <summary>
+        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
         /// comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `a-z?`
@@ -512,6 +518,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
+
+        /// <summary>
+        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// </summary>
+        [Input("fingerprint")]
+        public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and

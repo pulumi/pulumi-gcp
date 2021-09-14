@@ -394,11 +394,11 @@ class MetricBucketOptionsLinearBuckets(dict):
     def __init__(__self__, *,
                  num_finite_buckets: Optional[int] = None,
                  offset: Optional[float] = None,
-                 width: Optional[int] = None):
+                 width: Optional[float] = None):
         """
         :param int num_finite_buckets: Must be greater than 0.
         :param float offset: Lower bound of the first bucket.
-        :param int width: Must be greater than 0.
+        :param float width: Must be greater than 0.
         """
         if num_finite_buckets is not None:
             pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
@@ -425,7 +425,7 @@ class MetricBucketOptionsLinearBuckets(dict):
 
     @property
     @pulumi.getter
-    def width(self) -> Optional[int]:
+    def width(self) -> Optional[float]:
         """
         Must be greater than 0.
         """

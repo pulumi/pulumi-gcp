@@ -22,10 +22,6 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
  * ```
- *
- * ```sh
- *  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
- * ```
  */
 export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
     /**

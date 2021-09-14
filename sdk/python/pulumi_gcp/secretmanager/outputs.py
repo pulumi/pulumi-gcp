@@ -18,6 +18,12 @@ __all__ = [
     'SecretReplicationUserManagedReplicaCustomerManagedEncryption',
     'SecretRotation',
     'SecretTopic',
+    'GetSecretReplicationResult',
+    'GetSecretReplicationUserManagedResult',
+    'GetSecretReplicationUserManagedReplicaResult',
+    'GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult',
+    'GetSecretRotationResult',
+    'GetSecretTopicResult',
 ]
 
 @pulumi.output_type
@@ -299,6 +305,99 @@ class SecretTopic(dict):
         The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
         For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetSecretReplicationResult(dict):
+    def __init__(__self__, *,
+                 automatic: bool,
+                 user_manageds: Sequence['outputs.GetSecretReplicationUserManagedResult']):
+        pulumi.set(__self__, "automatic", automatic)
+        pulumi.set(__self__, "user_manageds", user_manageds)
+
+    @property
+    @pulumi.getter
+    def automatic(self) -> bool:
+        return pulumi.get(self, "automatic")
+
+    @property
+    @pulumi.getter(name="userManageds")
+    def user_manageds(self) -> Sequence['outputs.GetSecretReplicationUserManagedResult']:
+        return pulumi.get(self, "user_manageds")
+
+
+@pulumi.output_type
+class GetSecretReplicationUserManagedResult(dict):
+    def __init__(__self__, *,
+                 replicas: Sequence['outputs.GetSecretReplicationUserManagedReplicaResult']):
+        pulumi.set(__self__, "replicas", replicas)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Sequence['outputs.GetSecretReplicationUserManagedReplicaResult']:
+        return pulumi.get(self, "replicas")
+
+
+@pulumi.output_type
+class GetSecretReplicationUserManagedReplicaResult(dict):
+    def __init__(__self__, *,
+                 customer_managed_encryptions: Sequence['outputs.GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult'],
+                 location: str):
+        pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryptions")
+    def customer_managed_encryptions(self) -> Sequence['outputs.GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult']:
+        return pulumi.get(self, "customer_managed_encryptions")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetSecretRotationResult(dict):
+    def __init__(__self__, *,
+                 next_rotation_time: str,
+                 rotation_period: str):
+        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> str:
+        return pulumi.get(self, "next_rotation_time")
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> str:
+        return pulumi.get(self, "rotation_period")
+
+
+@pulumi.output_type
+class GetSecretTopicResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         return pulumi.get(self, "name")
 
 

@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
     [OutputType]
     public sealed class InstanceNetwork
     {
+        public readonly string? ConnectMode;
         /// <summary>
         /// -
         /// A list of IPv4 or IPv6 addresses.
@@ -37,6 +38,8 @@ namespace Pulumi.Gcp.Filestore.Outputs
 
         [OutputConstructor]
         private InstanceNetwork(
+            string? connectMode,
+
             ImmutableArray<string> ipAddresses,
 
             ImmutableArray<string> modes,
@@ -45,6 +48,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
 
             string? reservedIpRange)
         {
+            ConnectMode = connectMode;
             IpAddresses = ipAddresses;
             Modes = modes;
             Network = network;

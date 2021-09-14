@@ -22021,6 +22021,7 @@ export namespace filestore {
     }
 
     export interface InstanceNetwork {
+        connectMode?: string;
         /**
          * -
          * A list of IPv4 or IPv6 addresses.
@@ -27159,6 +27160,33 @@ export namespace runtimeconfig {
 }
 
 export namespace secretmanager {
+    export interface GetSecretReplication {
+        automatic: boolean;
+        userManageds: outputs.secretmanager.GetSecretReplicationUserManaged[];
+    }
+
+    export interface GetSecretReplicationUserManaged {
+        replicas: outputs.secretmanager.GetSecretReplicationUserManagedReplica[];
+    }
+
+    export interface GetSecretReplicationUserManagedReplica {
+        customerManagedEncryptions: outputs.secretmanager.GetSecretReplicationUserManagedReplicaCustomerManagedEncryption[];
+        location: string;
+    }
+
+    export interface GetSecretReplicationUserManagedReplicaCustomerManagedEncryption {
+        kmsKeyName: string;
+    }
+
+    export interface GetSecretRotation {
+        nextRotationTime: string;
+        rotationPeriod: string;
+    }
+
+    export interface GetSecretTopic {
+        name: string;
+    }
+
     export interface SecretIamBindingCondition {
         description?: string;
         expression: string;
@@ -27230,7 +27258,6 @@ export namespace secretmanager {
          */
         name: string;
     }
-
 }
 
 export namespace securitycenter {
@@ -27755,46 +27782,16 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceReplicaConfiguration {
-        /**
-         * PEM representation of the trusted CA's x509 certificate.
-         */
         caCertificate: string;
-        /**
-         * PEM representation of the replica's x509 certificate.
-         */
         clientCertificate: string;
-        /**
-         * PEM representation of the replica's private key.
-         */
         clientKey: string;
-        /**
-         * The number of seconds between connect retries.
-         */
         connectRetryInterval: number;
-        /**
-         * Path to a SQL file in GCS from which replica instances are created.
-         */
         dumpFilePath: string;
-        /**
-         * Specifies if the replica is the failover target.
-         */
         failoverTarget: boolean;
-        /**
-         * Time in ms between replication heartbeats.
-         */
         masterHeartbeatPeriod: number;
-        /**
-         * Password for the replication connection.
-         */
         password: string;
         sslCipher: string;
-        /**
-         * Username for replication connection.
-         */
         username: string;
-        /**
-         * True if the master's common name value is checked during the SSL handshake.
-         */
         verifyServerCertificate: boolean;
     }
 
@@ -27811,98 +27808,39 @@ export namespace sql {
         cert: string;
         commonName: string;
         createTime: string;
-        /**
-         * The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-         * formatted date time string indicating when this whitelist expires.
-         */
         expirationTime: string;
         sha1Fingerprint: string;
     }
 
     export interface GetDatabaseInstanceSetting {
-        /**
-         * This specifies when the instance should be
-         * active. Can be either `ALWAYS` or `NEVER`.
-         */
         activationPolicy: string;
-        /**
-         * (Deprecated) This property is only applicable to First Generation instances.
-         * First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-         * for information on how to upgrade to Second Generation instances.
-         * A list of Google App Engine (GAE) project names that are allowed to access this instance.
-         */
         authorizedGaeApplications: string[];
-        /**
-         * The availability type of the Cloud SQL
-         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
-         */
         availabilityType: string;
         backupConfigurations: outputs.sql.GetDatabaseInstanceSettingBackupConfiguration[];
-        /**
-         * The name of server instance collation.
-         */
         collation: string;
-        /**
-         * (Deprecated) This property is only applicable to First Generation instances.
-         * First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-         */
         crashSafeReplication: boolean;
         databaseFlags: outputs.sql.GetDatabaseInstanceSettingDatabaseFlag[];
-        /**
-         * Configuration to increase storage size automatically.
-         */
         diskAutoresize: boolean;
-        /**
-         * The maximum size, in GB, to which storage capacity can be automatically increased.
-         */
         diskAutoresizeLimit: number;
-        /**
-         * The size of data disk, in GB.
-         */
         diskSize: number;
-        /**
-         * The type of data disk.
-         */
         diskType: string;
         insightsConfigs: outputs.sql.GetDatabaseInstanceSettingInsightsConfig[];
         ipConfigurations: outputs.sql.GetDatabaseInstanceSettingIpConfiguration[];
         locationPreferences: outputs.sql.GetDatabaseInstanceSettingLocationPreference[];
         maintenanceWindows: outputs.sql.GetDatabaseInstanceSettingMaintenanceWindow[];
-        /**
-         * Pricing plan for this instance.
-         */
         pricingPlan: string;
-        /**
-         * This property is only applicable to First Generation instances.
-         * First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-         */
         replicationType: string;
-        /**
-         * The machine type to use.
-         */
         tier: string;
-        /**
-         * A set of key/value user label pairs to assign to the instance.
-         */
         userLabels: {[key: string]: string};
         version: number;
     }
 
     export interface GetDatabaseInstanceSettingBackupConfiguration {
         backupRetentionSettings: outputs.sql.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting[];
-        /**
-         * True if binary logging is enabled.
-         */
         binaryLogEnabled: boolean;
-        /**
-         * True if backup configuration is enabled.
-         */
         enabled: boolean;
         location: string;
         pointInTimeRecoveryEnabled: boolean;
-        /**
-         * `HH:MM` format time indicating when backup configuration starts.
-         */
         startTime: string;
         transactionLogRetentionDays: number;
     }
@@ -27917,86 +27855,40 @@ export namespace sql {
          * The name of the instance.
          */
         name: string;
-        /**
-         * A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
-         */
         value: string;
     }
 
     export interface GetDatabaseInstanceSettingInsightsConfig {
-        /**
-         * True if Query Insights feature is enabled.
-         */
         queryInsightsEnabled: boolean;
-        /**
-         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
-         */
         queryStringLength: number;
-        /**
-         * True if Query Insights will record application tags from query when enabled.
-         */
         recordApplicationTags: boolean;
-        /**
-         * True if Query Insights will record client address when enabled.
-         */
         recordClientAddress: boolean;
     }
 
     export interface GetDatabaseInstanceSettingIpConfiguration {
         authorizedNetworks: outputs.sql.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork[];
-        /**
-         * Whether this Cloud SQL instance should be assigned a public IPV4 address.
-         */
         ipv4Enabled: boolean;
-        /**
-         * The VPC network from which the Cloud SQL instance is accessible for private IP.
-         */
         privateNetwork: string;
-        /**
-         * True if mysqld default to `REQUIRE X509` for users connecting over IP.
-         */
         requireSsl: boolean;
     }
 
     export interface GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
-        /**
-         * The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-         * formatted date time string indicating when this whitelist expires.
-         */
         expirationTime: string;
         /**
          * The name of the instance.
          */
         name: string;
-        /**
-         * A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
-         */
         value: string;
     }
 
     export interface GetDatabaseInstanceSettingLocationPreference {
-        /**
-         * A GAE application whose zone to remain in.
-         */
         followGaeApplication: string;
-        /**
-         * The preferred compute engine.
-         */
         zone: string;
     }
 
     export interface GetDatabaseInstanceSettingMaintenanceWindow {
-        /**
-         * Day of week (`1-7`), starting on Monday.
-         */
         day: number;
-        /**
-         * Hour of day (`0-23`), ignored if `day` not set.
-         */
         hour: number;
-        /**
-         * Receive updates earlier (`canary`) or later (`stable`).
-         */
         updateTrack: string;
     }
 

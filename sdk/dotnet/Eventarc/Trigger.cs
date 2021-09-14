@@ -105,6 +105,9 @@ namespace Pulumi.Gcp.Eventarc
     [GcpResourceType("gcp:eventarc/trigger:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Output only. The creation time.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
@@ -114,6 +117,10 @@ namespace Pulumi.Gcp.Eventarc
         [Output("destination")]
         public Output<Outputs.TriggerDestination> Destination { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
@@ -159,6 +166,9 @@ namespace Pulumi.Gcp.Eventarc
         [Output("transports")]
         public Output<ImmutableArray<Outputs.TriggerTransport>> Transports { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. The last-modified time.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -281,6 +291,9 @@ namespace Pulumi.Gcp.Eventarc
 
     public sealed class TriggerState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. The creation time.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
@@ -290,6 +303,10 @@ namespace Pulumi.Gcp.Eventarc
         [Input("destination")]
         public Input<Inputs.TriggerDestinationGetArgs>? Destination { get; set; }
 
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
@@ -353,6 +370,9 @@ namespace Pulumi.Gcp.Eventarc
             set => _transports = value;
         }
 
+        /// <summary>
+        /// Output only. The last-modified time.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

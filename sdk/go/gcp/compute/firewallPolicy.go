@@ -56,16 +56,23 @@ import (
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
 
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description      pulumi.StringPtrOutput `pulumi:"description"`
-	Fingerprint      pulumi.StringOutput    `pulumi:"fingerprint"`
-	FirewallPolicyId pulumi.StringOutput    `pulumi:"firewallPolicyId"`
-	Name             pulumi.StringOutput    `pulumi:"name"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Fingerprint of the resource. This field is used internally during updates of this resource.
+	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	FirewallPolicyId pulumi.StringOutput `pulumi:"firewallPolicyId"`
+	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the firewall policy.
-	Parent         pulumi.StringOutput `pulumi:"parent"`
-	RuleTupleCount pulumi.IntOutput    `pulumi:"ruleTupleCount"`
-	SelfLink       pulumi.StringOutput `pulumi:"selfLink"`
+	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
+	// Server-defined URL for the resource.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
@@ -106,32 +113,46 @@ func GetFirewallPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallPolicy resources.
 type firewallPolicyState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description      *string `pulumi:"description"`
-	Fingerprint      *string `pulumi:"fingerprint"`
+	Description *string `pulumi:"description"`
+	// Fingerprint of the resource. This field is used internally during updates of this resource.
+	Fingerprint *string `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
 	FirewallPolicyId *string `pulumi:"firewallPolicyId"`
-	Name             *string `pulumi:"name"`
+	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+	Name *string `pulumi:"name"`
 	// The parent of the firewall policy.
-	Parent         *string `pulumi:"parent"`
-	RuleTupleCount *int    `pulumi:"ruleTupleCount"`
-	SelfLink       *string `pulumi:"selfLink"`
+	Parent *string `pulumi:"parent"`
+	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+	RuleTupleCount *int `pulumi:"ruleTupleCount"`
+	// Server-defined URL for the resource.
+	SelfLink *string `pulumi:"selfLink"`
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName *string `pulumi:"shortName"`
 }
 
 type FirewallPolicyState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description      pulumi.StringPtrInput
-	Fingerprint      pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Fingerprint of the resource. This field is used internally during updates of this resource.
+	Fingerprint pulumi.StringPtrInput
+	// The unique identifier for the resource. This identifier is defined by the server.
 	FirewallPolicyId pulumi.StringPtrInput
-	Name             pulumi.StringPtrInput
+	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+	Name pulumi.StringPtrInput
 	// The parent of the firewall policy.
-	Parent         pulumi.StringPtrInput
+	Parent pulumi.StringPtrInput
+	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
-	SelfLink       pulumi.StringPtrInput
+	// Server-defined URL for the resource.
+	SelfLink pulumi.StringPtrInput
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringPtrInput

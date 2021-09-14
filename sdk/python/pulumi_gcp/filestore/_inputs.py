@@ -187,6 +187,7 @@ class InstanceNetworkArgs:
     def __init__(__self__, *,
                  modes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  network: pulumi.Input[str],
+                 connect_mode: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None):
         """
@@ -202,6 +203,8 @@ class InstanceNetworkArgs:
         """
         pulumi.set(__self__, "modes", modes)
         pulumi.set(__self__, "network", network)
+        if connect_mode is not None:
+            pulumi.set(__self__, "connect_mode", connect_mode)
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
         if reserved_ip_range is not None:
@@ -233,6 +236,15 @@ class InstanceNetworkArgs:
     @network.setter
     def network(self, value: pulumi.Input[str]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="connectMode")
+    def connect_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connect_mode")
+
+    @connect_mode.setter
+    def connect_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connect_mode", value)
 
     @property
     @pulumi.getter(name="ipAddresses")

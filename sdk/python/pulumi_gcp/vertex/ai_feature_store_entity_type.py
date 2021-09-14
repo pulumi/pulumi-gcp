@@ -234,10 +234,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
          $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
         ```
 
-        ```sh
-         $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/{{name}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -260,10 +256,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
 
         ```sh
          $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

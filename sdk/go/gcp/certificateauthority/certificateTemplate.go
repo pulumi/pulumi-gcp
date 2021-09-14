@@ -136,6 +136,7 @@ import (
 type CertificateTemplate struct {
 	pulumi.CustomResourceState
 
+	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -152,7 +153,8 @@ type CertificateTemplate struct {
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
 	PredefinedValues CertificateTemplatePredefinedValuesPtrOutput `pulumi:"predefinedValues"`
 	// The project for the resource
-	Project    pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -188,6 +190,7 @@ func GetCertificateTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificateTemplate resources.
 type certificateTemplateState struct {
+	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
@@ -204,11 +207,13 @@ type certificateTemplateState struct {
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
 	PredefinedValues *CertificateTemplatePredefinedValues `pulumi:"predefinedValues"`
 	// The project for the resource
-	Project    *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type CertificateTemplateState struct {
+	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput
@@ -225,7 +230,8 @@ type CertificateTemplateState struct {
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
 	PredefinedValues CertificateTemplatePredefinedValuesPtrInput
 	// The project for the resource
-	Project    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringPtrInput
 }
 

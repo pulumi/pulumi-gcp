@@ -29,7 +29,9 @@ import (
 type WorkerPool struct {
 	pulumi.CustomResourceState
 
+	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -38,8 +40,10 @@ type WorkerPool struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig WorkerPoolNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// The project for the resource
-	Project    pulumi.StringOutput `pulumi:"project"`
-	State      pulumi.StringOutput `pulumi:"state"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	State pulumi.StringOutput `pulumi:"state"`
+	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Configuration to be used for a creating workers in the `WorkerPool`.
 	WorkerConfig WorkerPoolWorkerConfigOutput `pulumi:"workerConfig"`
@@ -77,7 +81,9 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
+	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime *string `pulumi:"createTime"`
+	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -86,15 +92,19 @@ type workerPoolState struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
 	// The project for the resource
-	Project    *string `pulumi:"project"`
-	State      *string `pulumi:"state"`
+	Project *string `pulumi:"project"`
+	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	State *string `pulumi:"state"`
+	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Configuration to be used for a creating workers in the `WorkerPool`.
 	WorkerConfig *WorkerPoolWorkerConfig `pulumi:"workerConfig"`
 }
 
 type WorkerPoolState struct {
+	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringPtrInput
+	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -103,8 +113,10 @@ type WorkerPoolState struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
 	// The project for the resource
-	Project    pulumi.StringPtrInput
-	State      pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	State pulumi.StringPtrInput
+	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringPtrInput
 	// Configuration to be used for a creating workers in the `WorkerPool`.
 	WorkerConfig WorkerPoolWorkerConfigPtrInput

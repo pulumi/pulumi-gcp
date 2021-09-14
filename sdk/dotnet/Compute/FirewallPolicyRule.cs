@@ -115,6 +115,9 @@ namespace Pulumi.Gcp.Compute
         [Output("firewallPolicy")]
         public Output<string> FirewallPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+        /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
@@ -130,6 +133,9 @@ namespace Pulumi.Gcp.Compute
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
+        /// <summary>
+        /// Calculation of the complexity of a single firewall policy rule.
+        /// </summary>
         [Output("ruleTupleCount")]
         public Output<int> RuleTupleCount { get; private set; } = null!;
 
@@ -306,6 +312,9 @@ namespace Pulumi.Gcp.Compute
         [Input("firewallPolicy")]
         public Input<string>? FirewallPolicy { get; set; }
 
+        /// <summary>
+        /// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -321,6 +330,9 @@ namespace Pulumi.Gcp.Compute
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        /// <summary>
+        /// Calculation of the complexity of a single firewall policy rule.
+        /// </summary>
         [Input("ruleTupleCount")]
         public Input<int>? RuleTupleCount { get; set; }
 

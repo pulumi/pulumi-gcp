@@ -113,10 +113,14 @@ class _WorkerPoolState:
                  worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
+        :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
+        :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         """
         if create_time is not None:
@@ -141,6 +145,9 @@ class _WorkerPoolState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Time at which the request to create the `WorkerPool` was received.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -150,6 +157,9 @@ class _WorkerPoolState:
     @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Time at which the request to delete the `WorkerPool` was received.
+        """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
@@ -207,6 +217,9 @@ class _WorkerPoolState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -216,6 +229,9 @@ class _WorkerPoolState:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Time at which the request to update the `WorkerPool` was received.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -363,10 +379,14 @@ class WorkerPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
+        :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
         :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -387,11 +407,17 @@ class WorkerPool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
+        """
+        Output only. Time at which the request to create the `WorkerPool` was received.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> pulumi.Output[str]:
+        """
+        Output only. Time at which the request to delete the `WorkerPool` was received.
+        """
         return pulumi.get(self, "delete_time")
 
     @property
@@ -429,11 +455,17 @@ class WorkerPool(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
+        """
+        Output only. Time at which the request to update the `WorkerPool` was received.
+        """
         return pulumi.get(self, "update_time")
 
     @property

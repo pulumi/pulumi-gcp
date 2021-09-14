@@ -13,18 +13,11 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult
     {
-        /// <summary>
-        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-        /// formatted date time string indicating when this whitelist expires.
-        /// </summary>
         public readonly string ExpirationTime;
         /// <summary>
         /// The name of the instance.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

@@ -13,70 +13,24 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingResult
     {
-        /// <summary>
-        /// This specifies when the instance should be
-        /// active. Can be either `ALWAYS` or `NEVER`.
-        /// </summary>
         public readonly string ActivationPolicy;
-        /// <summary>
-        /// (Deprecated) This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// for information on how to upgrade to Second Generation instances.
-        /// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-        /// </summary>
         public readonly ImmutableArray<string> AuthorizedGaeApplications;
-        /// <summary>
-        /// The availability type of the Cloud SQL
-        /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
-        /// </summary>
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> BackupConfigurations;
-        /// <summary>
-        /// The name of server instance collation.
-        /// </summary>
         public readonly string Collation;
-        /// <summary>
-        /// (Deprecated) This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// </summary>
         public readonly bool CrashSafeReplication;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> DatabaseFlags;
-        /// <summary>
-        /// Configuration to increase storage size automatically.
-        /// </summary>
         public readonly bool DiskAutoresize;
-        /// <summary>
-        /// The maximum size, in GB, to which storage capacity can be automatically increased.
-        /// </summary>
         public readonly int DiskAutoresizeLimit;
-        /// <summary>
-        /// The size of data disk, in GB.
-        /// </summary>
         public readonly int DiskSize;
-        /// <summary>
-        /// The type of data disk.
-        /// </summary>
         public readonly string DiskType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingInsightsConfigResult> InsightsConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationResult> IpConfigurations;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingLocationPreferenceResult> LocationPreferences;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingMaintenanceWindowResult> MaintenanceWindows;
-        /// <summary>
-        /// Pricing plan for this instance.
-        /// </summary>
         public readonly string PricingPlan;
-        /// <summary>
-        /// This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// </summary>
         public readonly string ReplicationType;
-        /// <summary>
-        /// The machine type to use.
-        /// </summary>
         public readonly string Tier;
-        /// <summary>
-        /// A set of key/value user label pairs to assign to the instance.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> UserLabels;
         public readonly int Version;
 

@@ -133,6 +133,9 @@ export class CertificateTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === CertificateTemplate.__pulumiType;
     }
 
+    /**
+     * Output only. The time at which this CertificateTemplate was created.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -166,6 +169,9 @@ export class CertificateTemplate extends pulumi.CustomResource {
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Output only. The time at which this CertificateTemplate was updated.
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
@@ -218,6 +224,9 @@ export class CertificateTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CertificateTemplate resources.
  */
 export interface CertificateTemplateState {
+    /**
+     * Output only. The time at which this CertificateTemplate was created.
+     */
     createTime?: pulumi.Input<string>;
     /**
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -251,6 +260,9 @@ export interface CertificateTemplateState {
      * The project for the resource
      */
     project?: pulumi.Input<string>;
+    /**
+     * Output only. The time at which this CertificateTemplate was updated.
+     */
     updateTime?: pulumi.Input<string>;
 }
 

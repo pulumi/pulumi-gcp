@@ -161,7 +161,10 @@ class _TriggerState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
+        :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+               requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
@@ -169,6 +172,7 @@ class _TriggerState:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -196,6 +200,9 @@ class _TriggerState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The creation time.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -217,6 +224,10 @@ class _TriggerState:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+        requests to ensure the client has an up-to-date value before proceeding.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -310,6 +321,9 @@ class _TriggerState:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The last-modified time.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -546,7 +560,10 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+               requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
@@ -554,6 +571,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -575,6 +593,9 @@ class Trigger(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The creation time.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -588,6 +609,10 @@ class Trigger(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
+        """
+        Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+        requests to ensure the client has an up-to-date value before proceeding.
+        """
         return pulumi.get(self, "etag")
 
     @property
@@ -649,5 +674,8 @@ class Trigger(pulumi.CustomResource):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The last-modified time.
+        """
         return pulumi.get(self, "update_time")
 

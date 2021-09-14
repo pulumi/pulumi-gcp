@@ -423,10 +423,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
          $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
         ```
 
-        ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/{{priority}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
@@ -474,10 +470,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         ```sh
          $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/{{priority}}
         ```
 
         :param str resource_name: The name of the resource.

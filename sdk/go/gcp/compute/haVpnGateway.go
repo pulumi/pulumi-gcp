@@ -209,7 +209,7 @@ import (
 // 		router1Interface2, err := compute.NewRouterInterface(ctx, "router1Interface2", &compute.RouterInterfaceArgs{
 // 			Router:    router1.Name,
 // 			Region:    pulumi.String("us-central1"),
-// 			IpRange:   pulumi.String("169.254.1.1/30"),
+// 			IpRange:   pulumi.String("169.254.1.2/30"),
 // 			VpnTunnel: tunnel2.Name,
 // 		})
 // 		if err != nil {
@@ -218,7 +218,7 @@ import (
 // 		_, err = compute.NewRouterPeer(ctx, "router1Peer2", &compute.RouterPeerArgs{
 // 			Router:                  router1.Name,
 // 			Region:                  pulumi.String("us-central1"),
-// 			PeerIpAddress:           pulumi.String("169.254.1.2"),
+// 			PeerIpAddress:           pulumi.String("169.254.1.1"),
 // 			PeerAsn:                 pulumi.Int(64515),
 // 			AdvertisedRoutePriority: pulumi.Int(100),
 // 			Interface:               router1Interface2.Name,
@@ -229,7 +229,7 @@ import (
 // 		router2Interface1, err := compute.NewRouterInterface(ctx, "router2Interface1", &compute.RouterInterfaceArgs{
 // 			Router:    router2.Name,
 // 			Region:    pulumi.String("us-central1"),
-// 			IpRange:   pulumi.String("169.254.0.1/30"),
+// 			IpRange:   pulumi.String("169.254.0.2/30"),
 // 			VpnTunnel: tunnel3.Name,
 // 		})
 // 		if err != nil {
@@ -238,7 +238,7 @@ import (
 // 		_, err = compute.NewRouterPeer(ctx, "router2Peer1", &compute.RouterPeerArgs{
 // 			Router:                  router2.Name,
 // 			Region:                  pulumi.String("us-central1"),
-// 			PeerIpAddress:           pulumi.String("169.254.0.2"),
+// 			PeerIpAddress:           pulumi.String("169.254.0.1"),
 // 			PeerAsn:                 pulumi.Int(64514),
 // 			AdvertisedRoutePriority: pulumi.Int(100),
 // 			Interface:               router2Interface1.Name,

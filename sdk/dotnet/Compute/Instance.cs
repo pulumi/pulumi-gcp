@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Compute
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Controls for advanced machine-related behavior features.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
         /// </summary>
         [Output("advancedMachineFeatures")]
         public Output<Outputs.InstanceAdvancedMachineFeatures?> AdvancedMachineFeatures { get; private set; } = null!;
@@ -405,7 +405,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls for advanced machine-related behavior features.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
@@ -666,7 +666,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls for advanced machine-related behavior features.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }

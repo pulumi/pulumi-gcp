@@ -64,20 +64,41 @@ export class FirewallPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === FirewallPolicy.__pulumiType;
     }
 
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Fingerprint of the resource. This field is used internally during updates of this resource.
+     */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
     public /*out*/ readonly firewallPolicyId!: pulumi.Output<string>;
+    /**
+     * Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+     */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The parent of the firewall policy.
      */
     public readonly parent!: pulumi.Output<string>;
+    /**
+     * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+     */
     public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
+    /**
+     * Server-defined URL for the resource.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Server-defined URL for this resource with the resource id.
+     */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -137,20 +158,41 @@ export class FirewallPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FirewallPolicy resources.
  */
 export interface FirewallPolicyState {
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Fingerprint of the resource. This field is used internally during updates of this resource.
+     */
     fingerprint?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
     firewallPolicyId?: pulumi.Input<string>;
+    /**
+     * Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+     */
     name?: pulumi.Input<string>;
     /**
      * The parent of the firewall policy.
      */
     parent?: pulumi.Input<string>;
+    /**
+     * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+     */
     ruleTupleCount?: pulumi.Input<number>;
+    /**
+     * Server-defined URL for the resource.
+     */
     selfLink?: pulumi.Input<string>;
+    /**
+     * Server-defined URL for this resource with the resource id.
+     */
     selfLinkWithId?: pulumi.Input<string>;
     /**
      * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

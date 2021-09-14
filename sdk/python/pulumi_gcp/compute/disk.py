@@ -56,8 +56,6 @@ class DiskArgs:
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-               Default value is `SCSI`.
-               Possible values are `SCSI` and `NVME`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -117,6 +115,9 @@ class DiskArgs:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if interface is not None:
+            warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if labels is not None:
@@ -205,8 +206,6 @@ class DiskArgs:
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        Default value is `SCSI`.
-        Possible values are `SCSI` and `NVME`.
         """
         return pulumi.get(self, "interface")
 
@@ -463,8 +462,6 @@ class _DiskState:
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-               Default value is `SCSI`.
-               Possible values are `SCSI` and `NVME`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -537,6 +534,9 @@ class _DiskState:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if interface is not None:
+            warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if label_fingerprint is not None:
@@ -651,8 +651,6 @@ class _DiskState:
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        Default value is `SCSI`.
-        Possible values are `SCSI` and `NVME`.
         """
         return pulumi.get(self, "interface")
 
@@ -1054,8 +1052,6 @@ class Disk(pulumi.CustomResource):
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-               Default value is `SCSI`.
-               Possible values are `SCSI` and `NVME`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -1225,6 +1221,9 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["image"] = image
+            if interface is not None and not opts.urn:
+                warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+                pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
             __props__.__dict__["multi_writer"] = multi_writer
@@ -1312,8 +1311,6 @@ class Disk(pulumi.CustomResource):
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-               Default value is `SCSI`.
-               Possible values are `SCSI` and `NVME`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -1464,8 +1461,6 @@ class Disk(pulumi.CustomResource):
     def interface(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        Default value is `SCSI`.
-        Possible values are `SCSI` and `NVME`.
         """
         return pulumi.get(self, "interface")
 

@@ -131,8 +131,9 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.RegionDiskDiskEncryptionKey | undefined>;
     /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     *
+     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
      */
     public readonly interface!: pulumi.Output<string | undefined>;
     /**
@@ -322,8 +323,9 @@ export interface RegionDiskState {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
     /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     *
+     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
      */
     interface?: pulumi.Input<string>;
     /**
@@ -444,8 +446,9 @@ export interface RegionDiskArgs {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
     /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     *
+     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
      */
     interface?: pulumi.Input<string>;
     /**

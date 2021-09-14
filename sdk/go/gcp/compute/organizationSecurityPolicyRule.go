@@ -28,10 +28,6 @@ import (
 // ```sh
 //  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
 // ```
-//
-// ```sh
-//  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/{{priority}}
-// ```
 type OrganizationSecurityPolicyRule struct {
 	pulumi.CustomResourceState
 

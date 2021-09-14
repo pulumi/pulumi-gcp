@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Filestore.Inputs
 
     public sealed class InstanceNetworkGetArgs : Pulumi.ResourceArgs
     {
+        [Input("connectMode")]
+        public Input<string>? ConnectMode { get; set; }
+
         [Input("ipAddresses")]
         private InputList<string>? _ipAddresses;
 

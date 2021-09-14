@@ -127,8 +127,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionDiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
         [Output("interface")]
         public Output<string?> Interface { get; private set; } = null!;
@@ -327,8 +326,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionDiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -468,8 +466,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionDiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }

@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Sql
     public static class GetDatabaseInstance
     {
         /// <summary>
-        /// Use this data source to get information about a Cloud SQL instance
+        /// Use this data source to get information about a Cloud SQL instance.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -66,70 +66,28 @@ namespace Pulumi.Gcp.Sql
     public sealed class GetDatabaseInstanceResult
     {
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
-        /// <summary>
-        /// The connection name of the instance to be used in connection strings.
-        /// </summary>
         public readonly string ConnectionName;
-        /// <summary>
-        /// The MySQL, PostgreSQL or SQL Server (beta) version to use.
-        /// </summary>
         public readonly string DatabaseVersion;
         public readonly bool DeletionProtection;
-        /// <summary>
-        /// The full path to the encryption key used for the CMEK disk encryption.
-        /// </summary>
         public readonly string EncryptionKeyName;
-        /// <summary>
-        /// The first IPv4 address of any type assigned.
-        /// </summary>
         public readonly string FirstIpAddress;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceIpAddressResult> IpAddresses;
-        /// <summary>
-        /// The name of the existing instance that will act as
-        /// the master in the replication setup.
-        /// </summary>
         public readonly string MasterInstanceName;
-        /// <summary>
-        /// A name for this whitelist entry.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The first private (`PRIVATE`) IPv4 address assigned.
-        /// </summary>
         public readonly string PrivateIpAddress;
         public readonly string? Project;
-        /// <summary>
-        /// The first public (`PRIMARY`) IPv4 address assigned.
-        /// </summary>
         public readonly string PublicIpAddress;
         public readonly string Region;
-        /// <summary>
-        /// The configuration for replication. The
-        /// configuration is detailed below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceReplicaConfigurationResult> ReplicaConfigurations;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceRestoreBackupContextResult> RestoreBackupContexts;
-        /// <summary>
-        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
-        /// </summary>
         public readonly string RootPassword;
-        /// <summary>
-        /// The URI of the created resource.
-        /// </summary>
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceServerCaCertResult> ServerCaCerts;
-        /// <summary>
-        /// The service account email address assigned to the instance.
-        /// </summary>
         public readonly string ServiceAccountEmailAddress;
-        /// <summary>
-        /// The settings to use for the database. The
-        /// configuration is detailed below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> Settings;
 
         [OutputConstructor]

@@ -100,7 +100,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Controls for advanced machine-related behavior features.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrOutput `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -250,7 +250,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Controls for advanced machine-related behavior features.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -363,7 +363,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// Controls for advanced machine-related behavior features.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -480,7 +480,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Controls for advanced machine-related behavior features.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -580,7 +580,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Controls for advanced machine-related behavior features.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.

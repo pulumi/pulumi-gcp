@@ -79,8 +79,15 @@ class _FirewallPolicyState:
                  short_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FirewallPolicy resources.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[str] name: Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         :param pulumi.Input[str] parent: The parent of the firewall policy.
+        :param pulumi.Input[int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        :param pulumi.Input[str] self_link: Server-defined URL for the resource.
+        :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         if creation_timestamp is not None:
@@ -107,6 +114,9 @@ class _FirewallPolicyState:
     @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
@@ -128,6 +138,9 @@ class _FirewallPolicyState:
     @property
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of the resource. This field is used internally during updates of this resource.
+        """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
@@ -137,6 +150,9 @@ class _FirewallPolicyState:
     @property
     @pulumi.getter(name="firewallPolicyId")
     def firewall_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
         return pulumi.get(self, "firewall_policy_id")
 
     @firewall_policy_id.setter
@@ -146,6 +162,9 @@ class _FirewallPolicyState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -167,6 +186,9 @@ class _FirewallPolicyState:
     @property
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        """
         return pulumi.get(self, "rule_tuple_count")
 
     @rule_tuple_count.setter
@@ -176,6 +198,9 @@ class _FirewallPolicyState:
     @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server-defined URL for the resource.
+        """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
@@ -185,6 +210,9 @@ class _FirewallPolicyState:
     @property
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server-defined URL for this resource with the resource id.
+        """
         return pulumi.get(self, "self_link_with_id")
 
     @self_link_with_id.setter
@@ -358,8 +386,15 @@ class FirewallPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[str] name: Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         :param pulumi.Input[str] parent: The parent of the firewall policy.
+        :param pulumi.Input[int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        :param pulumi.Input[str] self_link: Server-defined URL for the resource.
+        :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -381,6 +416,9 @@ class FirewallPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
         return pulumi.get(self, "creation_timestamp")
 
     @property
@@ -394,16 +432,25 @@ class FirewallPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of the resource. This field is used internally during updates of this resource.
+        """
         return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter(name="firewallPolicyId")
     def firewall_policy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
         return pulumi.get(self, "firewall_policy_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -417,16 +464,25 @@ class FirewallPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> pulumi.Output[int]:
+        """
+        Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        """
         return pulumi.get(self, "rule_tuple_count")
 
     @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
+        """
+        Server-defined URL for the resource.
+        """
         return pulumi.get(self, "self_link")
 
     @property
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        Server-defined URL for this resource with the resource id.
+        """
         return pulumi.get(self, "self_link_with_id")
 
     @property

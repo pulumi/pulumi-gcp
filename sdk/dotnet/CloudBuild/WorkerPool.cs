@@ -29,9 +29,15 @@ namespace Pulumi.Gcp.CloudBuild
     [GcpResourceType("gcp:cloudbuild/workerPool:WorkerPool")]
     public partial class WorkerPool : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Output only. Time at which the request to create the `WorkerPool` was received.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. Time at which the request to delete the `WorkerPool` was received.
+        /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
@@ -59,9 +65,15 @@ namespace Pulumi.Gcp.CloudBuild
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. Time at which the request to update the `WorkerPool` was received.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -154,9 +166,15 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class WorkerPoolState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. Time at which the request to create the `WorkerPool` was received.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Output only. Time at which the request to delete the `WorkerPool` was received.
+        /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
@@ -184,9 +202,15 @@ namespace Pulumi.Gcp.CloudBuild
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Output only. Time at which the request to update the `WorkerPool` was received.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

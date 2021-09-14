@@ -16,10 +16,6 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string Cert;
         public readonly string CommonName;
         public readonly string CreateTime;
-        /// <summary>
-        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-        /// formatted date time string indicating when this whitelist expires.
-        /// </summary>
         public readonly string ExpirationTime;
         public readonly string Sha1Fingerprint;
 

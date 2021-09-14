@@ -52,6 +52,9 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/firewallPolicy:FirewallPolicy")]
     public partial class FirewallPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
@@ -61,12 +64,21 @@ namespace Pulumi.Gcp.Compute
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Fingerprint of the resource. This field is used internally during updates of this resource.
+        /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
         [Output("firewallPolicyId")]
         public Output<string> FirewallPolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -76,12 +88,21 @@ namespace Pulumi.Gcp.Compute
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        /// </summary>
         [Output("ruleTupleCount")]
         public Output<int> RuleTupleCount { get; private set; } = null!;
 
+        /// <summary>
+        /// Server-defined URL for the resource.
+        /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// Server-defined URL for this resource with the resource id.
+        /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
@@ -162,6 +183,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class FirewallPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
@@ -171,12 +195,21 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Fingerprint of the resource. This field is used internally during updates of this resource.
+        /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
         [Input("firewallPolicyId")]
         public Input<string>? FirewallPolicyId { get; set; }
 
+        /// <summary>
+        /// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -186,12 +219,21 @@ namespace Pulumi.Gcp.Compute
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        /// </summary>
         [Input("ruleTupleCount")]
         public Input<int>? RuleTupleCount { get; set; }
 
+        /// <summary>
+        /// Server-defined URL for the resource.
+        /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// Server-defined URL for this resource with the resource id.
+        /// </summary>
         [Input("selfLinkWithId")]
         public Input<string>? SelfLinkWithId { get; set; }
 

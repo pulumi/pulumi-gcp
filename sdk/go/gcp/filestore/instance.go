@@ -100,6 +100,7 @@ import (
 // 					Modes: pulumi.StringArray{
 // 						pulumi.String("MODE_IPV4"),
 // 					},
+// 					ConnectMode: pulumi.String("DIRECT_PEERING"),
 // 				},
 // 			},
 // 		}, pulumi.Provider(google_beta))

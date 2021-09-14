@@ -28,10 +28,6 @@ import (
 // ```sh
 //  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
 // ```
-//
-// ```sh
-//  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
-// ```
 type OrganizationSecurityPolicyAssociation struct {
 	pulumi.CustomResourceState
 

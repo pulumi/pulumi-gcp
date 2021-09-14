@@ -39,7 +39,7 @@ import (
 // 				LinearBuckets: &logging.MetricBucketOptionsLinearBucketsArgs{
 // 					NumFiniteBuckets: pulumi.Int(3),
 // 					Offset:           pulumi.Float64(1),
-// 					Width:            pulumi.Int(1),
+// 					Width:            pulumi.Float64(1),
 // 				},
 // 			},
 // 			Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),

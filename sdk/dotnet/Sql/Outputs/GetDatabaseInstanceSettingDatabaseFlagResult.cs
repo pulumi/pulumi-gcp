@@ -17,9 +17,6 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The name of the instance.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

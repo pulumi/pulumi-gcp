@@ -221,6 +221,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
     /**
+     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     */
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
      * long and match the regular expression `a-z?`
@@ -271,6 +275,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["consumerRejectLists"] = state ? state.consumerRejectLists : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
+            inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["natSubnets"] = state ? state.natSubnets : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -302,6 +307,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["targetService"] = args ? args.targetService : undefined;
             inputs["connectedEndpoints"] = undefined /*out*/;
+            inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -345,6 +351,10 @@ export interface ServiceAttachmentState {
      * destination servers.
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     */
+    fingerprint?: pulumi.Input<string>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters

@@ -17,10 +17,6 @@ namespace Pulumi.Gcp.Vertex
     /// ```sh
     ///  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
     /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/{{name}}
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType")]
     public partial class AiFeatureStoreEntityType : Pulumi.CustomResource

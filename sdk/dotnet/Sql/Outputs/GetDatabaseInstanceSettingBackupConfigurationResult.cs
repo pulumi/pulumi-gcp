@@ -14,19 +14,10 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceSettingBackupConfigurationResult
     {
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult> BackupRetentionSettings;
-        /// <summary>
-        /// True if binary logging is enabled.
-        /// </summary>
         public readonly bool BinaryLogEnabled;
-        /// <summary>
-        /// True if backup configuration is enabled.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string Location;
         public readonly bool PointInTimeRecoveryEnabled;
-        /// <summary>
-        /// `HH:MM` format time indicating when backup configuration starts.
-        /// </summary>
         public readonly string StartTime;
         public readonly int TransactionLogRetentionDays;
 

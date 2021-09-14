@@ -3203,27 +3203,17 @@ func (o GetDatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDat
 }
 
 type GetDatabaseInstanceReplicaConfiguration struct {
-	// PEM representation of the trusted CA's x509 certificate.
-	CaCertificate string `pulumi:"caCertificate"`
-	// PEM representation of the replica's x509 certificate.
-	ClientCertificate string `pulumi:"clientCertificate"`
-	// PEM representation of the replica's private key.
-	ClientKey string `pulumi:"clientKey"`
-	// The number of seconds between connect retries.
-	ConnectRetryInterval int `pulumi:"connectRetryInterval"`
-	// Path to a SQL file in GCS from which replica instances are created.
-	DumpFilePath string `pulumi:"dumpFilePath"`
-	// Specifies if the replica is the failover target.
-	FailoverTarget bool `pulumi:"failoverTarget"`
-	// Time in ms between replication heartbeats.
-	MasterHeartbeatPeriod int `pulumi:"masterHeartbeatPeriod"`
-	// Password for the replication connection.
-	Password  string `pulumi:"password"`
-	SslCipher string `pulumi:"sslCipher"`
-	// Username for replication connection.
-	Username string `pulumi:"username"`
-	// True if the master's common name value is checked during the SSL handshake.
-	VerifyServerCertificate bool `pulumi:"verifyServerCertificate"`
+	CaCertificate           string `pulumi:"caCertificate"`
+	ClientCertificate       string `pulumi:"clientCertificate"`
+	ClientKey               string `pulumi:"clientKey"`
+	ConnectRetryInterval    int    `pulumi:"connectRetryInterval"`
+	DumpFilePath            string `pulumi:"dumpFilePath"`
+	FailoverTarget          bool   `pulumi:"failoverTarget"`
+	MasterHeartbeatPeriod   int    `pulumi:"masterHeartbeatPeriod"`
+	Password                string `pulumi:"password"`
+	SslCipher               string `pulumi:"sslCipher"`
+	Username                string `pulumi:"username"`
+	VerifyServerCertificate bool   `pulumi:"verifyServerCertificate"`
 }
 
 // GetDatabaseInstanceReplicaConfigurationInput is an input type that accepts GetDatabaseInstanceReplicaConfigurationArgs and GetDatabaseInstanceReplicaConfigurationOutput values.
@@ -3238,27 +3228,17 @@ type GetDatabaseInstanceReplicaConfigurationInput interface {
 }
 
 type GetDatabaseInstanceReplicaConfigurationArgs struct {
-	// PEM representation of the trusted CA's x509 certificate.
-	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
-	// PEM representation of the replica's x509 certificate.
-	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
-	// PEM representation of the replica's private key.
-	ClientKey pulumi.StringInput `pulumi:"clientKey"`
-	// The number of seconds between connect retries.
-	ConnectRetryInterval pulumi.IntInput `pulumi:"connectRetryInterval"`
-	// Path to a SQL file in GCS from which replica instances are created.
-	DumpFilePath pulumi.StringInput `pulumi:"dumpFilePath"`
-	// Specifies if the replica is the failover target.
-	FailoverTarget pulumi.BoolInput `pulumi:"failoverTarget"`
-	// Time in ms between replication heartbeats.
-	MasterHeartbeatPeriod pulumi.IntInput `pulumi:"masterHeartbeatPeriod"`
-	// Password for the replication connection.
-	Password  pulumi.StringInput `pulumi:"password"`
-	SslCipher pulumi.StringInput `pulumi:"sslCipher"`
-	// Username for replication connection.
-	Username pulumi.StringInput `pulumi:"username"`
-	// True if the master's common name value is checked during the SSL handshake.
-	VerifyServerCertificate pulumi.BoolInput `pulumi:"verifyServerCertificate"`
+	CaCertificate           pulumi.StringInput `pulumi:"caCertificate"`
+	ClientCertificate       pulumi.StringInput `pulumi:"clientCertificate"`
+	ClientKey               pulumi.StringInput `pulumi:"clientKey"`
+	ConnectRetryInterval    pulumi.IntInput    `pulumi:"connectRetryInterval"`
+	DumpFilePath            pulumi.StringInput `pulumi:"dumpFilePath"`
+	FailoverTarget          pulumi.BoolInput   `pulumi:"failoverTarget"`
+	MasterHeartbeatPeriod   pulumi.IntInput    `pulumi:"masterHeartbeatPeriod"`
+	Password                pulumi.StringInput `pulumi:"password"`
+	SslCipher               pulumi.StringInput `pulumi:"sslCipher"`
+	Username                pulumi.StringInput `pulumi:"username"`
+	VerifyServerCertificate pulumi.BoolInput   `pulumi:"verifyServerCertificate"`
 }
 
 func (GetDatabaseInstanceReplicaConfigurationArgs) ElementType() reflect.Type {
@@ -3312,42 +3292,34 @@ func (o GetDatabaseInstanceReplicaConfigurationOutput) ToGetDatabaseInstanceRepl
 	return o
 }
 
-// PEM representation of the trusted CA's x509 certificate.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.CaCertificate }).(pulumi.StringOutput)
 }
 
-// PEM representation of the replica's x509 certificate.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) ClientCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.ClientCertificate }).(pulumi.StringOutput)
 }
 
-// PEM representation of the replica's private key.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) ClientKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.ClientKey }).(pulumi.StringOutput)
 }
 
-// The number of seconds between connect retries.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) ConnectRetryInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) int { return v.ConnectRetryInterval }).(pulumi.IntOutput)
 }
 
-// Path to a SQL file in GCS from which replica instances are created.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) DumpFilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.DumpFilePath }).(pulumi.StringOutput)
 }
 
-// Specifies if the replica is the failover target.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) FailoverTarget() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) bool { return v.FailoverTarget }).(pulumi.BoolOutput)
 }
 
-// Time in ms between replication heartbeats.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) MasterHeartbeatPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) int { return v.MasterHeartbeatPeriod }).(pulumi.IntOutput)
 }
 
-// Password for the replication connection.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -3356,12 +3328,10 @@ func (o GetDatabaseInstanceReplicaConfigurationOutput) SslCipher() pulumi.String
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.SslCipher }).(pulumi.StringOutput)
 }
 
-// Username for replication connection.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.Username }).(pulumi.StringOutput)
 }
 
-// True if the master's common name value is checked during the SSL handshake.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) VerifyServerCertificate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) bool { return v.VerifyServerCertificate }).(pulumi.BoolOutput)
 }
@@ -3496,11 +3466,9 @@ func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetDatabaseInstanceServerCaCert struct {
-	Cert       string `pulumi:"cert"`
-	CommonName string `pulumi:"commonName"`
-	CreateTime string `pulumi:"createTime"`
-	// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-	// formatted date time string indicating when this whitelist expires.
+	Cert            string `pulumi:"cert"`
+	CommonName      string `pulumi:"commonName"`
+	CreateTime      string `pulumi:"createTime"`
 	ExpirationTime  string `pulumi:"expirationTime"`
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
@@ -3517,11 +3485,9 @@ type GetDatabaseInstanceServerCaCertInput interface {
 }
 
 type GetDatabaseInstanceServerCaCertArgs struct {
-	Cert       pulumi.StringInput `pulumi:"cert"`
-	CommonName pulumi.StringInput `pulumi:"commonName"`
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-	// formatted date time string indicating when this whitelist expires.
+	Cert            pulumi.StringInput `pulumi:"cert"`
+	CommonName      pulumi.StringInput `pulumi:"commonName"`
+	CreateTime      pulumi.StringInput `pulumi:"createTime"`
 	ExpirationTime  pulumi.StringInput `pulumi:"expirationTime"`
 	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
 }
@@ -3589,8 +3555,6 @@ func (o GetDatabaseInstanceServerCaCertOutput) CreateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v GetDatabaseInstanceServerCaCert) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-// formatted date time string indicating when this whitelist expires.
 func (o GetDatabaseInstanceServerCaCertOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceServerCaCert) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
@@ -3620,46 +3584,26 @@ func (o GetDatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDatabaseInstanceSetting struct {
-	// This specifies when the instance should be
-	// active. Can be either `ALWAYS` or `NEVER`.
-	ActivationPolicy string `pulumi:"activationPolicy"`
-	// (Deprecated) This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
-	// The availability type of the Cloud SQL
-	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
-	AvailabilityType     string                                          `pulumi:"availabilityType"`
-	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
-	// The name of server instance collation.
-	Collation string `pulumi:"collation"`
-	// (Deprecated) This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	CrashSafeReplication bool                                     `pulumi:"crashSafeReplication"`
-	DatabaseFlags        []GetDatabaseInstanceSettingDatabaseFlag `pulumi:"databaseFlags"`
-	// Configuration to increase storage size automatically.
-	DiskAutoresize bool `pulumi:"diskAutoresize"`
-	// The maximum size, in GB, to which storage capacity can be automatically increased.
-	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB.
-	DiskSize int `pulumi:"diskSize"`
-	// The type of data disk.
-	DiskType            string                                         `pulumi:"diskType"`
-	InsightsConfigs     []GetDatabaseInstanceSettingInsightsConfig     `pulumi:"insightsConfigs"`
-	IpConfigurations    []GetDatabaseInstanceSettingIpConfiguration    `pulumi:"ipConfigurations"`
-	LocationPreferences []GetDatabaseInstanceSettingLocationPreference `pulumi:"locationPreferences"`
-	MaintenanceWindows  []GetDatabaseInstanceSettingMaintenanceWindow  `pulumi:"maintenanceWindows"`
-	// Pricing plan for this instance.
-	PricingPlan string `pulumi:"pricingPlan"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	ReplicationType string `pulumi:"replicationType"`
-	// The machine type to use.
-	Tier string `pulumi:"tier"`
-	// A set of key/value user label pairs to assign to the instance.
-	UserLabels map[string]string `pulumi:"userLabels"`
-	Version    int               `pulumi:"version"`
+	ActivationPolicy          string                                          `pulumi:"activationPolicy"`
+	AuthorizedGaeApplications []string                                        `pulumi:"authorizedGaeApplications"`
+	AvailabilityType          string                                          `pulumi:"availabilityType"`
+	BackupConfigurations      []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
+	Collation                 string                                          `pulumi:"collation"`
+	CrashSafeReplication      bool                                            `pulumi:"crashSafeReplication"`
+	DatabaseFlags             []GetDatabaseInstanceSettingDatabaseFlag        `pulumi:"databaseFlags"`
+	DiskAutoresize            bool                                            `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit       int                                             `pulumi:"diskAutoresizeLimit"`
+	DiskSize                  int                                             `pulumi:"diskSize"`
+	DiskType                  string                                          `pulumi:"diskType"`
+	InsightsConfigs           []GetDatabaseInstanceSettingInsightsConfig      `pulumi:"insightsConfigs"`
+	IpConfigurations          []GetDatabaseInstanceSettingIpConfiguration     `pulumi:"ipConfigurations"`
+	LocationPreferences       []GetDatabaseInstanceSettingLocationPreference  `pulumi:"locationPreferences"`
+	MaintenanceWindows        []GetDatabaseInstanceSettingMaintenanceWindow   `pulumi:"maintenanceWindows"`
+	PricingPlan               string                                          `pulumi:"pricingPlan"`
+	ReplicationType           string                                          `pulumi:"replicationType"`
+	Tier                      string                                          `pulumi:"tier"`
+	UserLabels                map[string]string                               `pulumi:"userLabels"`
+	Version                   int                                             `pulumi:"version"`
 }
 
 // GetDatabaseInstanceSettingInput is an input type that accepts GetDatabaseInstanceSettingArgs and GetDatabaseInstanceSettingOutput values.
@@ -3674,46 +3618,26 @@ type GetDatabaseInstanceSettingInput interface {
 }
 
 type GetDatabaseInstanceSettingArgs struct {
-	// This specifies when the instance should be
-	// active. Can be either `ALWAYS` or `NEVER`.
-	ActivationPolicy pulumi.StringInput `pulumi:"activationPolicy"`
-	// (Deprecated) This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-	AuthorizedGaeApplications pulumi.StringArrayInput `pulumi:"authorizedGaeApplications"`
-	// The availability type of the Cloud SQL
-	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
-	AvailabilityType     pulumi.StringInput                                      `pulumi:"availabilityType"`
-	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
-	// The name of server instance collation.
-	Collation pulumi.StringInput `pulumi:"collation"`
-	// (Deprecated) This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	CrashSafeReplication pulumi.BoolInput                                 `pulumi:"crashSafeReplication"`
-	DatabaseFlags        GetDatabaseInstanceSettingDatabaseFlagArrayInput `pulumi:"databaseFlags"`
-	// Configuration to increase storage size automatically.
-	DiskAutoresize pulumi.BoolInput `pulumi:"diskAutoresize"`
-	// The maximum size, in GB, to which storage capacity can be automatically increased.
-	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB.
-	DiskSize pulumi.IntInput `pulumi:"diskSize"`
-	// The type of data disk.
-	DiskType            pulumi.StringInput                                     `pulumi:"diskType"`
-	InsightsConfigs     GetDatabaseInstanceSettingInsightsConfigArrayInput     `pulumi:"insightsConfigs"`
-	IpConfigurations    GetDatabaseInstanceSettingIpConfigurationArrayInput    `pulumi:"ipConfigurations"`
-	LocationPreferences GetDatabaseInstanceSettingLocationPreferenceArrayInput `pulumi:"locationPreferences"`
-	MaintenanceWindows  GetDatabaseInstanceSettingMaintenanceWindowArrayInput  `pulumi:"maintenanceWindows"`
-	// Pricing plan for this instance.
-	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	ReplicationType pulumi.StringInput `pulumi:"replicationType"`
-	// The machine type to use.
-	Tier pulumi.StringInput `pulumi:"tier"`
-	// A set of key/value user label pairs to assign to the instance.
-	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
-	Version    pulumi.IntInput       `pulumi:"version"`
+	ActivationPolicy          pulumi.StringInput                                      `pulumi:"activationPolicy"`
+	AuthorizedGaeApplications pulumi.StringArrayInput                                 `pulumi:"authorizedGaeApplications"`
+	AvailabilityType          pulumi.StringInput                                      `pulumi:"availabilityType"`
+	BackupConfigurations      GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
+	Collation                 pulumi.StringInput                                      `pulumi:"collation"`
+	CrashSafeReplication      pulumi.BoolInput                                        `pulumi:"crashSafeReplication"`
+	DatabaseFlags             GetDatabaseInstanceSettingDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
+	DiskAutoresize            pulumi.BoolInput                                        `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit       pulumi.IntInput                                         `pulumi:"diskAutoresizeLimit"`
+	DiskSize                  pulumi.IntInput                                         `pulumi:"diskSize"`
+	DiskType                  pulumi.StringInput                                      `pulumi:"diskType"`
+	InsightsConfigs           GetDatabaseInstanceSettingInsightsConfigArrayInput      `pulumi:"insightsConfigs"`
+	IpConfigurations          GetDatabaseInstanceSettingIpConfigurationArrayInput     `pulumi:"ipConfigurations"`
+	LocationPreferences       GetDatabaseInstanceSettingLocationPreferenceArrayInput  `pulumi:"locationPreferences"`
+	MaintenanceWindows        GetDatabaseInstanceSettingMaintenanceWindowArrayInput   `pulumi:"maintenanceWindows"`
+	PricingPlan               pulumi.StringInput                                      `pulumi:"pricingPlan"`
+	ReplicationType           pulumi.StringInput                                      `pulumi:"replicationType"`
+	Tier                      pulumi.StringInput                                      `pulumi:"tier"`
+	UserLabels                pulumi.StringMapInput                                   `pulumi:"userLabels"`
+	Version                   pulumi.IntInput                                         `pulumi:"version"`
 }
 
 func (GetDatabaseInstanceSettingArgs) ElementType() reflect.Type {
@@ -3767,22 +3691,14 @@ func (o GetDatabaseInstanceSettingOutput) ToGetDatabaseInstanceSettingOutputWith
 	return o
 }
 
-// This specifies when the instance should be
-// active. Can be either `ALWAYS` or `NEVER`.
 func (o GetDatabaseInstanceSettingOutput) ActivationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ActivationPolicy }).(pulumi.StringOutput)
 }
 
-// (Deprecated) This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for information on how to upgrade to Second Generation instances.
-// A list of Google App Engine (GAE) project names that are allowed to access this instance.
 func (o GetDatabaseInstanceSettingOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
 }
 
-// The availability type of the Cloud SQL
-// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
 func (o GetDatabaseInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.AvailabilityType }).(pulumi.StringOutput)
 }
@@ -3793,13 +3709,10 @@ func (o GetDatabaseInstanceSettingOutput) BackupConfigurations() GetDatabaseInst
 	}).(GetDatabaseInstanceSettingBackupConfigurationArrayOutput)
 }
 
-// The name of server instance collation.
 func (o GetDatabaseInstanceSettingOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
-// (Deprecated) This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
 func (o GetDatabaseInstanceSettingOutput) CrashSafeReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.CrashSafeReplication }).(pulumi.BoolOutput)
 }
@@ -3808,22 +3721,18 @@ func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSet
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingDatabaseFlag { return v.DatabaseFlags }).(GetDatabaseInstanceSettingDatabaseFlagArrayOutput)
 }
 
-// Configuration to increase storage size automatically.
 func (o GetDatabaseInstanceSettingOutput) DiskAutoresize() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.DiskAutoresize }).(pulumi.BoolOutput)
 }
 
-// The maximum size, in GB, to which storage capacity can be automatically increased.
 func (o GetDatabaseInstanceSettingOutput) DiskAutoresizeLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskAutoresizeLimit }).(pulumi.IntOutput)
 }
 
-// The size of data disk, in GB.
 func (o GetDatabaseInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The type of data disk.
 func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -3852,23 +3761,18 @@ func (o GetDatabaseInstanceSettingOutput) MaintenanceWindows() GetDatabaseInstan
 	}).(GetDatabaseInstanceSettingMaintenanceWindowArrayOutput)
 }
 
-// Pricing plan for this instance.
 func (o GetDatabaseInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
 }
 
-// This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
 func (o GetDatabaseInstanceSettingOutput) ReplicationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ReplicationType }).(pulumi.StringOutput)
 }
 
-// The machine type to use.
 func (o GetDatabaseInstanceSettingOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Tier }).(pulumi.StringOutput)
 }
 
-// A set of key/value user label pairs to assign to the instance.
 func (o GetDatabaseInstanceSettingOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
@@ -3898,16 +3802,13 @@ func (o GetDatabaseInstanceSettingArrayOutput) Index(i pulumi.IntInput) GetDatab
 }
 
 type GetDatabaseInstanceSettingBackupConfiguration struct {
-	BackupRetentionSettings []GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting `pulumi:"backupRetentionSettings"`
-	// True if binary logging is enabled.
-	BinaryLogEnabled bool `pulumi:"binaryLogEnabled"`
-	// True if backup configuration is enabled.
-	Enabled                    bool   `pulumi:"enabled"`
-	Location                   string `pulumi:"location"`
-	PointInTimeRecoveryEnabled bool   `pulumi:"pointInTimeRecoveryEnabled"`
-	// `HH:MM` format time indicating when backup configuration starts.
-	StartTime                   string `pulumi:"startTime"`
-	TransactionLogRetentionDays int    `pulumi:"transactionLogRetentionDays"`
+	BackupRetentionSettings     []GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting `pulumi:"backupRetentionSettings"`
+	BinaryLogEnabled            bool                                                                  `pulumi:"binaryLogEnabled"`
+	Enabled                     bool                                                                  `pulumi:"enabled"`
+	Location                    string                                                                `pulumi:"location"`
+	PointInTimeRecoveryEnabled  bool                                                                  `pulumi:"pointInTimeRecoveryEnabled"`
+	StartTime                   string                                                                `pulumi:"startTime"`
+	TransactionLogRetentionDays int                                                                   `pulumi:"transactionLogRetentionDays"`
 }
 
 // GetDatabaseInstanceSettingBackupConfigurationInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationArgs and GetDatabaseInstanceSettingBackupConfigurationOutput values.
@@ -3922,16 +3823,13 @@ type GetDatabaseInstanceSettingBackupConfigurationInput interface {
 }
 
 type GetDatabaseInstanceSettingBackupConfigurationArgs struct {
-	BackupRetentionSettings GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput `pulumi:"backupRetentionSettings"`
-	// True if binary logging is enabled.
-	BinaryLogEnabled pulumi.BoolInput `pulumi:"binaryLogEnabled"`
-	// True if backup configuration is enabled.
-	Enabled                    pulumi.BoolInput   `pulumi:"enabled"`
-	Location                   pulumi.StringInput `pulumi:"location"`
-	PointInTimeRecoveryEnabled pulumi.BoolInput   `pulumi:"pointInTimeRecoveryEnabled"`
-	// `HH:MM` format time indicating when backup configuration starts.
-	StartTime                   pulumi.StringInput `pulumi:"startTime"`
-	TransactionLogRetentionDays pulumi.IntInput    `pulumi:"transactionLogRetentionDays"`
+	BackupRetentionSettings     GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput `pulumi:"backupRetentionSettings"`
+	BinaryLogEnabled            pulumi.BoolInput                                                              `pulumi:"binaryLogEnabled"`
+	Enabled                     pulumi.BoolInput                                                              `pulumi:"enabled"`
+	Location                    pulumi.StringInput                                                            `pulumi:"location"`
+	PointInTimeRecoveryEnabled  pulumi.BoolInput                                                              `pulumi:"pointInTimeRecoveryEnabled"`
+	StartTime                   pulumi.StringInput                                                            `pulumi:"startTime"`
+	TransactionLogRetentionDays pulumi.IntInput                                                               `pulumi:"transactionLogRetentionDays"`
 }
 
 func (GetDatabaseInstanceSettingBackupConfigurationArgs) ElementType() reflect.Type {
@@ -3991,12 +3889,10 @@ func (o GetDatabaseInstanceSettingBackupConfigurationOutput) BackupRetentionSett
 	}).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
 }
 
-// True if binary logging is enabled.
 func (o GetDatabaseInstanceSettingBackupConfigurationOutput) BinaryLogEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) bool { return v.BinaryLogEnabled }).(pulumi.BoolOutput)
 }
 
-// True if backup configuration is enabled.
 func (o GetDatabaseInstanceSettingBackupConfigurationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -4009,7 +3905,6 @@ func (o GetDatabaseInstanceSettingBackupConfigurationOutput) PointInTimeRecovery
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolOutput)
 }
 
-// `HH:MM` format time indicating when backup configuration starts.
 func (o GetDatabaseInstanceSettingBackupConfigurationOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -4144,8 +4039,7 @@ func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray
 
 type GetDatabaseInstanceSettingDatabaseFlag struct {
 	// The name of the instance.
-	Name string `pulumi:"name"`
-	// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -4162,8 +4056,7 @@ type GetDatabaseInstanceSettingDatabaseFlagInput interface {
 
 type GetDatabaseInstanceSettingDatabaseFlagArgs struct {
 	// The name of the instance.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4223,7 +4116,6 @@ func (o GetDatabaseInstanceSettingDatabaseFlagOutput) Name() pulumi.StringOutput
 	return o.ApplyT(func(v GetDatabaseInstanceSettingDatabaseFlag) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
 func (o GetDatabaseInstanceSettingDatabaseFlagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingDatabaseFlag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4249,14 +4141,10 @@ func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetDatabaseInstanceSettingInsightsConfig struct {
-	// True if Query Insights feature is enabled.
-	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
-	QueryStringLength int `pulumi:"queryStringLength"`
-	// True if Query Insights will record application tags from query when enabled.
+	QueryInsightsEnabled  bool `pulumi:"queryInsightsEnabled"`
+	QueryStringLength     int  `pulumi:"queryStringLength"`
 	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
-	// True if Query Insights will record client address when enabled.
-	RecordClientAddress bool `pulumi:"recordClientAddress"`
+	RecordClientAddress   bool `pulumi:"recordClientAddress"`
 }
 
 // GetDatabaseInstanceSettingInsightsConfigInput is an input type that accepts GetDatabaseInstanceSettingInsightsConfigArgs and GetDatabaseInstanceSettingInsightsConfigOutput values.
@@ -4271,14 +4159,10 @@ type GetDatabaseInstanceSettingInsightsConfigInput interface {
 }
 
 type GetDatabaseInstanceSettingInsightsConfigArgs struct {
-	// True if Query Insights feature is enabled.
-	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
-	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
-	// True if Query Insights will record application tags from query when enabled.
+	QueryInsightsEnabled  pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
+	QueryStringLength     pulumi.IntInput  `pulumi:"queryStringLength"`
 	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
-	// True if Query Insights will record client address when enabled.
-	RecordClientAddress pulumi.BoolInput `pulumi:"recordClientAddress"`
+	RecordClientAddress   pulumi.BoolInput `pulumi:"recordClientAddress"`
 }
 
 func (GetDatabaseInstanceSettingInsightsConfigArgs) ElementType() reflect.Type {
@@ -4332,22 +4216,18 @@ func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToGetDatabaseInstanceSet
 	return o
 }
 
-// True if Query Insights feature is enabled.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
 }
 
-// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
 }
 
-// True if Query Insights will record application tags from query when enabled.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) RecordApplicationTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.RecordApplicationTags }).(pulumi.BoolOutput)
 }
 
-// True if Query Insights will record client address when enabled.
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) RecordClientAddress() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.RecordClientAddress }).(pulumi.BoolOutput)
 }
@@ -4374,12 +4254,9 @@ func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) Index(i pulumi.IntI
 
 type GetDatabaseInstanceSettingIpConfiguration struct {
 	AuthorizedNetworks []GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
-	// Whether this Cloud SQL instance should be assigned a public IPV4 address.
-	Ipv4Enabled bool `pulumi:"ipv4Enabled"`
-	// The VPC network from which the Cloud SQL instance is accessible for private IP.
-	PrivateNetwork string `pulumi:"privateNetwork"`
-	// True if mysqld default to `REQUIRE X509` for users connecting over IP.
-	RequireSsl bool `pulumi:"requireSsl"`
+	Ipv4Enabled        bool                                                         `pulumi:"ipv4Enabled"`
+	PrivateNetwork     string                                                       `pulumi:"privateNetwork"`
+	RequireSsl         bool                                                         `pulumi:"requireSsl"`
 }
 
 // GetDatabaseInstanceSettingIpConfigurationInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationArgs and GetDatabaseInstanceSettingIpConfigurationOutput values.
@@ -4395,12 +4272,9 @@ type GetDatabaseInstanceSettingIpConfigurationInput interface {
 
 type GetDatabaseInstanceSettingIpConfigurationArgs struct {
 	AuthorizedNetworks GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
-	// Whether this Cloud SQL instance should be assigned a public IPV4 address.
-	Ipv4Enabled pulumi.BoolInput `pulumi:"ipv4Enabled"`
-	// The VPC network from which the Cloud SQL instance is accessible for private IP.
-	PrivateNetwork pulumi.StringInput `pulumi:"privateNetwork"`
-	// True if mysqld default to `REQUIRE X509` for users connecting over IP.
-	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
+	Ipv4Enabled        pulumi.BoolInput                                                     `pulumi:"ipv4Enabled"`
+	PrivateNetwork     pulumi.StringInput                                                   `pulumi:"privateNetwork"`
+	RequireSsl         pulumi.BoolInput                                                     `pulumi:"requireSsl"`
 }
 
 func (GetDatabaseInstanceSettingIpConfigurationArgs) ElementType() reflect.Type {
@@ -4460,17 +4334,14 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) AuthorizedNetworks() Ge
 	}).(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
-// Whether this Cloud SQL instance should be assigned a public IPV4 address.
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) Ipv4Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) bool { return v.Ipv4Enabled }).(pulumi.BoolOutput)
 }
 
-// The VPC network from which the Cloud SQL instance is accessible for private IP.
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) PrivateNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.PrivateNetwork }).(pulumi.StringOutput)
 }
 
-// True if mysqld default to `REQUIRE X509` for users connecting over IP.
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) RequireSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
@@ -4496,12 +4367,9 @@ func (o GetDatabaseInstanceSettingIpConfigurationArrayOutput) Index(i pulumi.Int
 }
 
 type GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork struct {
-	// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-	// formatted date time string indicating when this whitelist expires.
 	ExpirationTime string `pulumi:"expirationTime"`
 	// The name of the instance.
-	Name string `pulumi:"name"`
-	// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -4517,12 +4385,9 @@ type GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkInput interface {
 }
 
 type GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs struct {
-	// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-	// formatted date time string indicating when this whitelist expires.
 	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
 	// The name of the instance.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4577,8 +4442,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToGetD
 	return o
 }
 
-// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-// formatted date time string indicating when this whitelist expires.
 func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
@@ -4588,7 +4451,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) Name()
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
 func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4614,10 +4476,8 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) I
 }
 
 type GetDatabaseInstanceSettingLocationPreference struct {
-	// A GAE application whose zone to remain in.
 	FollowGaeApplication string `pulumi:"followGaeApplication"`
-	// The preferred compute engine.
-	Zone string `pulumi:"zone"`
+	Zone                 string `pulumi:"zone"`
 }
 
 // GetDatabaseInstanceSettingLocationPreferenceInput is an input type that accepts GetDatabaseInstanceSettingLocationPreferenceArgs and GetDatabaseInstanceSettingLocationPreferenceOutput values.
@@ -4632,10 +4492,8 @@ type GetDatabaseInstanceSettingLocationPreferenceInput interface {
 }
 
 type GetDatabaseInstanceSettingLocationPreferenceArgs struct {
-	// A GAE application whose zone to remain in.
 	FollowGaeApplication pulumi.StringInput `pulumi:"followGaeApplication"`
-	// The preferred compute engine.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	Zone                 pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetDatabaseInstanceSettingLocationPreferenceArgs) ElementType() reflect.Type {
@@ -4689,12 +4547,10 @@ func (o GetDatabaseInstanceSettingLocationPreferenceOutput) ToGetDatabaseInstanc
 	return o
 }
 
-// A GAE application whose zone to remain in.
 func (o GetDatabaseInstanceSettingLocationPreferenceOutput) FollowGaeApplication() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingLocationPreference) string { return v.FollowGaeApplication }).(pulumi.StringOutput)
 }
 
-// The preferred compute engine.
 func (o GetDatabaseInstanceSettingLocationPreferenceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingLocationPreference) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -4720,11 +4576,8 @@ func (o GetDatabaseInstanceSettingLocationPreferenceArrayOutput) Index(i pulumi.
 }
 
 type GetDatabaseInstanceSettingMaintenanceWindow struct {
-	// Day of week (`1-7`), starting on Monday.
-	Day int `pulumi:"day"`
-	// Hour of day (`0-23`), ignored if `day` not set.
-	Hour int `pulumi:"hour"`
-	// Receive updates earlier (`canary`) or later (`stable`).
+	Day         int    `pulumi:"day"`
+	Hour        int    `pulumi:"hour"`
 	UpdateTrack string `pulumi:"updateTrack"`
 }
 
@@ -4740,11 +4593,8 @@ type GetDatabaseInstanceSettingMaintenanceWindowInput interface {
 }
 
 type GetDatabaseInstanceSettingMaintenanceWindowArgs struct {
-	// Day of week (`1-7`), starting on Monday.
-	Day pulumi.IntInput `pulumi:"day"`
-	// Hour of day (`0-23`), ignored if `day` not set.
-	Hour pulumi.IntInput `pulumi:"hour"`
-	// Receive updates earlier (`canary`) or later (`stable`).
+	Day         pulumi.IntInput    `pulumi:"day"`
+	Hour        pulumi.IntInput    `pulumi:"hour"`
 	UpdateTrack pulumi.StringInput `pulumi:"updateTrack"`
 }
 
@@ -4799,17 +4649,14 @@ func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) ToGetDatabaseInstance
 	return o
 }
 
-// Day of week (`1-7`), starting on Monday.
 func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingMaintenanceWindow) int { return v.Day }).(pulumi.IntOutput)
 }
 
-// Hour of day (`0-23`), ignored if `day` not set.
 func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) Hour() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
 }
 
-// Receive updates earlier (`canary`) or later (`stable`).
 func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) UpdateTrack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingMaintenanceWindow) string { return v.UpdateTrack }).(pulumi.StringOutput)
 }

@@ -200,7 +200,9 @@ class InstanceNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipAddresses":
+        if key == "connectMode":
+            suggest = "connect_mode"
+        elif key == "ipAddresses":
             suggest = "ip_addresses"
         elif key == "reservedIpRange":
             suggest = "reserved_ip_range"
@@ -219,6 +221,7 @@ class InstanceNetwork(dict):
     def __init__(__self__, *,
                  modes: Sequence[str],
                  network: str,
+                 connect_mode: Optional[str] = None,
                  ip_addresses: Optional[Sequence[str]] = None,
                  reserved_ip_range: Optional[str] = None):
         """
@@ -234,6 +237,8 @@ class InstanceNetwork(dict):
         """
         pulumi.set(__self__, "modes", modes)
         pulumi.set(__self__, "network", network)
+        if connect_mode is not None:
+            pulumi.set(__self__, "connect_mode", connect_mode)
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
         if reserved_ip_range is not None:
@@ -257,6 +262,11 @@ class InstanceNetwork(dict):
         instance is connected.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="connectMode")
+    def connect_mode(self) -> Optional[str]:
+        return pulumi.get(self, "connect_mode")
 
     @property
     @pulumi.getter(name="ipAddresses")

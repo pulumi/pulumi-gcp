@@ -120,6 +120,9 @@ namespace Pulumi.Gcp.Dataproc
     [GcpResourceType("gcp:dataproc/workflowTemplate:WorkflowTemplate")]
     public partial class WorkflowTemplate : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Output only. The time template was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
@@ -171,6 +174,9 @@ namespace Pulumi.Gcp.Dataproc
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. The time template was last updated.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -305,6 +311,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class WorkflowTemplateState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. The time template was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
@@ -374,6 +383,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Output only. The time template was last updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

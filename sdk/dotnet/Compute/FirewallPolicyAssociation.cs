@@ -73,6 +73,9 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The short name of the firewall policy of the association.
+        /// </summary>
         [Output("shortName")]
         public Output<string> ShortName { get; private set; } = null!;
 
@@ -165,6 +168,9 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The short name of the firewall policy of the association.
+        /// </summary>
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }
 

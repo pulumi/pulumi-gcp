@@ -27,10 +27,6 @@ namespace Pulumi.Gcp.Compute
     /// ```sh
     ///  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
     /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation")]
     public partial class OrganizationSecurityPolicyAssociation : Pulumi.CustomResource
