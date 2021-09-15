@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.Filestore
     ///                     {
     ///                         "MODE_IPV4",
     ///                     },
+    ///                     ConnectMode = "DIRECT_PEERING",
     ///                 },
     ///             },
     ///         }, new CustomResourceOptions

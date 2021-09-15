@@ -1113,6 +1113,590 @@ func (o SecretTopicArrayOutput) Index(i pulumi.IntInput) SecretTopicOutput {
 	}).(SecretTopicOutput)
 }
 
+type GetSecretReplication struct {
+	Automatic    bool                              `pulumi:"automatic"`
+	UserManageds []GetSecretReplicationUserManaged `pulumi:"userManageds"`
+}
+
+// GetSecretReplicationInput is an input type that accepts GetSecretReplicationArgs and GetSecretReplicationOutput values.
+// You can construct a concrete instance of `GetSecretReplicationInput` via:
+//
+//          GetSecretReplicationArgs{...}
+type GetSecretReplicationInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationOutput() GetSecretReplicationOutput
+	ToGetSecretReplicationOutputWithContext(context.Context) GetSecretReplicationOutput
+}
+
+type GetSecretReplicationArgs struct {
+	Automatic    pulumi.BoolInput                          `pulumi:"automatic"`
+	UserManageds GetSecretReplicationUserManagedArrayInput `pulumi:"userManageds"`
+}
+
+func (GetSecretReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplication)(nil)).Elem()
+}
+
+func (i GetSecretReplicationArgs) ToGetSecretReplicationOutput() GetSecretReplicationOutput {
+	return i.ToGetSecretReplicationOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationArgs) ToGetSecretReplicationOutputWithContext(ctx context.Context) GetSecretReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationOutput)
+}
+
+// GetSecretReplicationArrayInput is an input type that accepts GetSecretReplicationArray and GetSecretReplicationArrayOutput values.
+// You can construct a concrete instance of `GetSecretReplicationArrayInput` via:
+//
+//          GetSecretReplicationArray{ GetSecretReplicationArgs{...} }
+type GetSecretReplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationArrayOutput() GetSecretReplicationArrayOutput
+	ToGetSecretReplicationArrayOutputWithContext(context.Context) GetSecretReplicationArrayOutput
+}
+
+type GetSecretReplicationArray []GetSecretReplicationInput
+
+func (GetSecretReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplication)(nil)).Elem()
+}
+
+func (i GetSecretReplicationArray) ToGetSecretReplicationArrayOutput() GetSecretReplicationArrayOutput {
+	return i.ToGetSecretReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationArray) ToGetSecretReplicationArrayOutputWithContext(ctx context.Context) GetSecretReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationArrayOutput)
+}
+
+type GetSecretReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplication)(nil)).Elem()
+}
+
+func (o GetSecretReplicationOutput) ToGetSecretReplicationOutput() GetSecretReplicationOutput {
+	return o
+}
+
+func (o GetSecretReplicationOutput) ToGetSecretReplicationOutputWithContext(ctx context.Context) GetSecretReplicationOutput {
+	return o
+}
+
+func (o GetSecretReplicationOutput) Automatic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretReplication) bool { return v.Automatic }).(pulumi.BoolOutput)
+}
+
+func (o GetSecretReplicationOutput) UserManageds() GetSecretReplicationUserManagedArrayOutput {
+	return o.ApplyT(func(v GetSecretReplication) []GetSecretReplicationUserManaged { return v.UserManageds }).(GetSecretReplicationUserManagedArrayOutput)
+}
+
+type GetSecretReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplication)(nil)).Elem()
+}
+
+func (o GetSecretReplicationArrayOutput) ToGetSecretReplicationArrayOutput() GetSecretReplicationArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationArrayOutput) ToGetSecretReplicationArrayOutputWithContext(ctx context.Context) GetSecretReplicationArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretReplication {
+		return vs[0].([]GetSecretReplication)[vs[1].(int)]
+	}).(GetSecretReplicationOutput)
+}
+
+type GetSecretReplicationUserManaged struct {
+	Replicas []GetSecretReplicationUserManagedReplica `pulumi:"replicas"`
+}
+
+// GetSecretReplicationUserManagedInput is an input type that accepts GetSecretReplicationUserManagedArgs and GetSecretReplicationUserManagedOutput values.
+// You can construct a concrete instance of `GetSecretReplicationUserManagedInput` via:
+//
+//          GetSecretReplicationUserManagedArgs{...}
+type GetSecretReplicationUserManagedInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationUserManagedOutput() GetSecretReplicationUserManagedOutput
+	ToGetSecretReplicationUserManagedOutputWithContext(context.Context) GetSecretReplicationUserManagedOutput
+}
+
+type GetSecretReplicationUserManagedArgs struct {
+	Replicas GetSecretReplicationUserManagedReplicaArrayInput `pulumi:"replicas"`
+}
+
+func (GetSecretReplicationUserManagedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationUserManaged)(nil)).Elem()
+}
+
+func (i GetSecretReplicationUserManagedArgs) ToGetSecretReplicationUserManagedOutput() GetSecretReplicationUserManagedOutput {
+	return i.ToGetSecretReplicationUserManagedOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationUserManagedArgs) ToGetSecretReplicationUserManagedOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedOutput)
+}
+
+// GetSecretReplicationUserManagedArrayInput is an input type that accepts GetSecretReplicationUserManagedArray and GetSecretReplicationUserManagedArrayOutput values.
+// You can construct a concrete instance of `GetSecretReplicationUserManagedArrayInput` via:
+//
+//          GetSecretReplicationUserManagedArray{ GetSecretReplicationUserManagedArgs{...} }
+type GetSecretReplicationUserManagedArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationUserManagedArrayOutput() GetSecretReplicationUserManagedArrayOutput
+	ToGetSecretReplicationUserManagedArrayOutputWithContext(context.Context) GetSecretReplicationUserManagedArrayOutput
+}
+
+type GetSecretReplicationUserManagedArray []GetSecretReplicationUserManagedInput
+
+func (GetSecretReplicationUserManagedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationUserManaged)(nil)).Elem()
+}
+
+func (i GetSecretReplicationUserManagedArray) ToGetSecretReplicationUserManagedArrayOutput() GetSecretReplicationUserManagedArrayOutput {
+	return i.ToGetSecretReplicationUserManagedArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationUserManagedArray) ToGetSecretReplicationUserManagedArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedArrayOutput)
+}
+
+type GetSecretReplicationUserManagedOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationUserManagedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationUserManaged)(nil)).Elem()
+}
+
+func (o GetSecretReplicationUserManagedOutput) ToGetSecretReplicationUserManagedOutput() GetSecretReplicationUserManagedOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedOutput) ToGetSecretReplicationUserManagedOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedOutput) Replicas() GetSecretReplicationUserManagedReplicaArrayOutput {
+	return o.ApplyT(func(v GetSecretReplicationUserManaged) []GetSecretReplicationUserManagedReplica { return v.Replicas }).(GetSecretReplicationUserManagedReplicaArrayOutput)
+}
+
+type GetSecretReplicationUserManagedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationUserManagedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationUserManaged)(nil)).Elem()
+}
+
+func (o GetSecretReplicationUserManagedArrayOutput) ToGetSecretReplicationUserManagedArrayOutput() GetSecretReplicationUserManagedArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedArrayOutput) ToGetSecretReplicationUserManagedArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationUserManagedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretReplicationUserManaged {
+		return vs[0].([]GetSecretReplicationUserManaged)[vs[1].(int)]
+	}).(GetSecretReplicationUserManagedOutput)
+}
+
+type GetSecretReplicationUserManagedReplica struct {
+	CustomerManagedEncryptions []GetSecretReplicationUserManagedReplicaCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
+	Location                   string                                                            `pulumi:"location"`
+}
+
+// GetSecretReplicationUserManagedReplicaInput is an input type that accepts GetSecretReplicationUserManagedReplicaArgs and GetSecretReplicationUserManagedReplicaOutput values.
+// You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaInput` via:
+//
+//          GetSecretReplicationUserManagedReplicaArgs{...}
+type GetSecretReplicationUserManagedReplicaInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationUserManagedReplicaOutput() GetSecretReplicationUserManagedReplicaOutput
+	ToGetSecretReplicationUserManagedReplicaOutputWithContext(context.Context) GetSecretReplicationUserManagedReplicaOutput
+}
+
+type GetSecretReplicationUserManagedReplicaArgs struct {
+	CustomerManagedEncryptions GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
+	Location                   pulumi.StringInput                                                        `pulumi:"location"`
+}
+
+func (GetSecretReplicationUserManagedReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationUserManagedReplica)(nil)).Elem()
+}
+
+func (i GetSecretReplicationUserManagedReplicaArgs) ToGetSecretReplicationUserManagedReplicaOutput() GetSecretReplicationUserManagedReplicaOutput {
+	return i.ToGetSecretReplicationUserManagedReplicaOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationUserManagedReplicaArgs) ToGetSecretReplicationUserManagedReplicaOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaOutput)
+}
+
+// GetSecretReplicationUserManagedReplicaArrayInput is an input type that accepts GetSecretReplicationUserManagedReplicaArray and GetSecretReplicationUserManagedReplicaArrayOutput values.
+// You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaArrayInput` via:
+//
+//          GetSecretReplicationUserManagedReplicaArray{ GetSecretReplicationUserManagedReplicaArgs{...} }
+type GetSecretReplicationUserManagedReplicaArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationUserManagedReplicaArrayOutput() GetSecretReplicationUserManagedReplicaArrayOutput
+	ToGetSecretReplicationUserManagedReplicaArrayOutputWithContext(context.Context) GetSecretReplicationUserManagedReplicaArrayOutput
+}
+
+type GetSecretReplicationUserManagedReplicaArray []GetSecretReplicationUserManagedReplicaInput
+
+func (GetSecretReplicationUserManagedReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationUserManagedReplica)(nil)).Elem()
+}
+
+func (i GetSecretReplicationUserManagedReplicaArray) ToGetSecretReplicationUserManagedReplicaArrayOutput() GetSecretReplicationUserManagedReplicaArrayOutput {
+	return i.ToGetSecretReplicationUserManagedReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationUserManagedReplicaArray) ToGetSecretReplicationUserManagedReplicaArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaArrayOutput)
+}
+
+type GetSecretReplicationUserManagedReplicaOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationUserManagedReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationUserManagedReplica)(nil)).Elem()
+}
+
+func (o GetSecretReplicationUserManagedReplicaOutput) ToGetSecretReplicationUserManagedReplicaOutput() GetSecretReplicationUserManagedReplicaOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaOutput) ToGetSecretReplicationUserManagedReplicaOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaOutput) CustomerManagedEncryptions() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
+	return o.ApplyT(func(v GetSecretReplicationUserManagedReplica) []GetSecretReplicationUserManagedReplicaCustomerManagedEncryption {
+		return v.CustomerManagedEncryptions
+	}).(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput)
+}
+
+func (o GetSecretReplicationUserManagedReplicaOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretReplicationUserManagedReplica) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type GetSecretReplicationUserManagedReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationUserManagedReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationUserManagedReplica)(nil)).Elem()
+}
+
+func (o GetSecretReplicationUserManagedReplicaArrayOutput) ToGetSecretReplicationUserManagedReplicaArrayOutput() GetSecretReplicationUserManagedReplicaArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaArrayOutput) ToGetSecretReplicationUserManagedReplicaArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationUserManagedReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretReplicationUserManagedReplica {
+		return vs[0].([]GetSecretReplicationUserManagedReplica)[vs[1].(int)]
+	}).(GetSecretReplicationUserManagedReplicaOutput)
+}
+
+type GetSecretReplicationUserManagedReplicaCustomerManagedEncryption struct {
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput is an input type that accepts GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs and GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput` via:
+//
+//          GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
+type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput
+	ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput
+}
+
+type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs struct {
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return i.ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput)
+}
+
+// GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput is an input type that accepts GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray and GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput` via:
+//
+//          GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray{ GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...} }
+type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput
+	ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutputWithContext(context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput
+}
+
+type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray []GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput
+
+func (GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
+	return i.ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput)
+}
+
+type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretReplicationUserManagedReplicaCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationUserManagedReplicaCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretReplicationUserManagedReplicaCustomerManagedEncryption {
+		return vs[0].([]GetSecretReplicationUserManagedReplicaCustomerManagedEncryption)[vs[1].(int)]
+	}).(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput)
+}
+
+type GetSecretRotation struct {
+	NextRotationTime string `pulumi:"nextRotationTime"`
+	RotationPeriod   string `pulumi:"rotationPeriod"`
+}
+
+// GetSecretRotationInput is an input type that accepts GetSecretRotationArgs and GetSecretRotationOutput values.
+// You can construct a concrete instance of `GetSecretRotationInput` via:
+//
+//          GetSecretRotationArgs{...}
+type GetSecretRotationInput interface {
+	pulumi.Input
+
+	ToGetSecretRotationOutput() GetSecretRotationOutput
+	ToGetSecretRotationOutputWithContext(context.Context) GetSecretRotationOutput
+}
+
+type GetSecretRotationArgs struct {
+	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
+	RotationPeriod   pulumi.StringInput `pulumi:"rotationPeriod"`
+}
+
+func (GetSecretRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretRotation)(nil)).Elem()
+}
+
+func (i GetSecretRotationArgs) ToGetSecretRotationOutput() GetSecretRotationOutput {
+	return i.ToGetSecretRotationOutputWithContext(context.Background())
+}
+
+func (i GetSecretRotationArgs) ToGetSecretRotationOutputWithContext(ctx context.Context) GetSecretRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretRotationOutput)
+}
+
+// GetSecretRotationArrayInput is an input type that accepts GetSecretRotationArray and GetSecretRotationArrayOutput values.
+// You can construct a concrete instance of `GetSecretRotationArrayInput` via:
+//
+//          GetSecretRotationArray{ GetSecretRotationArgs{...} }
+type GetSecretRotationArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretRotationArrayOutput() GetSecretRotationArrayOutput
+	ToGetSecretRotationArrayOutputWithContext(context.Context) GetSecretRotationArrayOutput
+}
+
+type GetSecretRotationArray []GetSecretRotationInput
+
+func (GetSecretRotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretRotation)(nil)).Elem()
+}
+
+func (i GetSecretRotationArray) ToGetSecretRotationArrayOutput() GetSecretRotationArrayOutput {
+	return i.ToGetSecretRotationArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretRotationArray) ToGetSecretRotationArrayOutputWithContext(ctx context.Context) GetSecretRotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretRotationArrayOutput)
+}
+
+type GetSecretRotationOutput struct{ *pulumi.OutputState }
+
+func (GetSecretRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretRotation)(nil)).Elem()
+}
+
+func (o GetSecretRotationOutput) ToGetSecretRotationOutput() GetSecretRotationOutput {
+	return o
+}
+
+func (o GetSecretRotationOutput) ToGetSecretRotationOutputWithContext(ctx context.Context) GetSecretRotationOutput {
+	return o
+}
+
+func (o GetSecretRotationOutput) NextRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretRotation) string { return v.NextRotationTime }).(pulumi.StringOutput)
+}
+
+func (o GetSecretRotationOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretRotation) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+type GetSecretRotationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretRotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretRotation)(nil)).Elem()
+}
+
+func (o GetSecretRotationArrayOutput) ToGetSecretRotationArrayOutput() GetSecretRotationArrayOutput {
+	return o
+}
+
+func (o GetSecretRotationArrayOutput) ToGetSecretRotationArrayOutputWithContext(ctx context.Context) GetSecretRotationArrayOutput {
+	return o
+}
+
+func (o GetSecretRotationArrayOutput) Index(i pulumi.IntInput) GetSecretRotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretRotation {
+		return vs[0].([]GetSecretRotation)[vs[1].(int)]
+	}).(GetSecretRotationOutput)
+}
+
+type GetSecretTopic struct {
+	Name string `pulumi:"name"`
+}
+
+// GetSecretTopicInput is an input type that accepts GetSecretTopicArgs and GetSecretTopicOutput values.
+// You can construct a concrete instance of `GetSecretTopicInput` via:
+//
+//          GetSecretTopicArgs{...}
+type GetSecretTopicInput interface {
+	pulumi.Input
+
+	ToGetSecretTopicOutput() GetSecretTopicOutput
+	ToGetSecretTopicOutputWithContext(context.Context) GetSecretTopicOutput
+}
+
+type GetSecretTopicArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSecretTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretTopic)(nil)).Elem()
+}
+
+func (i GetSecretTopicArgs) ToGetSecretTopicOutput() GetSecretTopicOutput {
+	return i.ToGetSecretTopicOutputWithContext(context.Background())
+}
+
+func (i GetSecretTopicArgs) ToGetSecretTopicOutputWithContext(ctx context.Context) GetSecretTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretTopicOutput)
+}
+
+// GetSecretTopicArrayInput is an input type that accepts GetSecretTopicArray and GetSecretTopicArrayOutput values.
+// You can construct a concrete instance of `GetSecretTopicArrayInput` via:
+//
+//          GetSecretTopicArray{ GetSecretTopicArgs{...} }
+type GetSecretTopicArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretTopicArrayOutput() GetSecretTopicArrayOutput
+	ToGetSecretTopicArrayOutputWithContext(context.Context) GetSecretTopicArrayOutput
+}
+
+type GetSecretTopicArray []GetSecretTopicInput
+
+func (GetSecretTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretTopic)(nil)).Elem()
+}
+
+func (i GetSecretTopicArray) ToGetSecretTopicArrayOutput() GetSecretTopicArrayOutput {
+	return i.ToGetSecretTopicArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretTopicArray) ToGetSecretTopicArrayOutputWithContext(ctx context.Context) GetSecretTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretTopicArrayOutput)
+}
+
+type GetSecretTopicOutput struct{ *pulumi.OutputState }
+
+func (GetSecretTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretTopic)(nil)).Elem()
+}
+
+func (o GetSecretTopicOutput) ToGetSecretTopicOutput() GetSecretTopicOutput {
+	return o
+}
+
+func (o GetSecretTopicOutput) ToGetSecretTopicOutputWithContext(ctx context.Context) GetSecretTopicOutput {
+	return o
+}
+
+func (o GetSecretTopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretTopic) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetSecretTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretTopic)(nil)).Elem()
+}
+
+func (o GetSecretTopicArrayOutput) ToGetSecretTopicArrayOutput() GetSecretTopicArrayOutput {
+	return o
+}
+
+func (o GetSecretTopicArrayOutput) ToGetSecretTopicArrayOutputWithContext(ctx context.Context) GetSecretTopicArrayOutput {
+	return o
+}
+
+func (o GetSecretTopicArrayOutput) Index(i pulumi.IntInput) GetSecretTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretTopic {
+		return vs[0].([]GetSecretTopic)[vs[1].(int)]
+	}).(GetSecretTopicOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecretIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(SecretIamBindingConditionPtrOutput{})
@@ -1130,4 +1714,16 @@ func init() {
 	pulumi.RegisterOutputType(SecretRotationPtrOutput{})
 	pulumi.RegisterOutputType(SecretTopicOutput{})
 	pulumi.RegisterOutputType(SecretTopicArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationUserManagedOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationUserManagedArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationUserManagedReplicaOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationUserManagedReplicaArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretRotationOutput{})
+	pulumi.RegisterOutputType(GetSecretRotationArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretTopicOutput{})
+	pulumi.RegisterOutputType(GetSecretTopicArrayOutput{})
 }

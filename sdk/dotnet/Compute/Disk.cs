@@ -129,8 +129,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        /// Default value is `SCSI`.
-        /// Possible values are `SCSI` and `NVME`.
         /// </summary>
         [Output("interface")]
         public Output<string?> Interface { get; private set; } = null!;
@@ -382,8 +380,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        /// Default value is `SCSI`.
-        /// Possible values are `SCSI` and `NVME`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -568,8 +564,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        /// Default value is `SCSI`.
-        /// Possible values are `SCSI` and `NVME`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }

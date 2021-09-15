@@ -29,7 +29,9 @@ import (
 type Feature struct {
 	pulumi.CustomResourceState
 
+	// Output only. When the Feature resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Output only. When the Feature resource was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -40,8 +42,9 @@ type Feature struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-	Spec       FeatureSpecPtrOutput `pulumi:"spec"`
-	UpdateTime pulumi.StringOutput  `pulumi:"updateTime"`
+	Spec FeatureSpecPtrOutput `pulumi:"spec"`
+	// Output only. When the Feature resource was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewFeature registers a new resource with the given unique name, arguments, and options.
@@ -76,7 +79,9 @@ func GetFeature(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Feature resources.
 type featureState struct {
+	// Output only. When the Feature resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Output only. When the Feature resource was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// GCP labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
@@ -87,12 +92,15 @@ type featureState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-	Spec       *FeatureSpec `pulumi:"spec"`
-	UpdateTime *string      `pulumi:"updateTime"`
+	Spec *FeatureSpec `pulumi:"spec"`
+	// Output only. When the Feature resource was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type FeatureState struct {
+	// Output only. When the Feature resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Output only. When the Feature resource was deleted.
 	DeleteTime pulumi.StringPtrInput
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapInput
@@ -103,7 +111,8 @@ type FeatureState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-	Spec       FeatureSpecPtrInput
+	Spec FeatureSpecPtrInput
+	// Output only. When the Feature resource was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
 

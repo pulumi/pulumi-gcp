@@ -18,10 +18,6 @@ import (
 // ```sh
 //  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
 // ```
-//
-// ```sh
-//  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/{{name}}
-// ```
 type AiFeatureStoreEntityType struct {
 	pulumi.CustomResourceState
 

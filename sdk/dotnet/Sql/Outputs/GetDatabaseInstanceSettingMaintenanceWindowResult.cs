@@ -13,17 +13,8 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingMaintenanceWindowResult
     {
-        /// <summary>
-        /// Day of week (`1-7`), starting on Monday.
-        /// </summary>
         public readonly int Day;
-        /// <summary>
-        /// Hour of day (`0-23`), ignored if `day` not set.
-        /// </summary>
         public readonly int Hour;
-        /// <summary>
-        /// Receive updates earlier (`canary`) or later (`stable`).
-        /// </summary>
         public readonly string UpdateTrack;
 
         [OutputConstructor]

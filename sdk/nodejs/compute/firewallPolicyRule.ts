@@ -106,6 +106,9 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      * The firewall policy of the resource.
      */
     public readonly firewallPolicy!: pulumi.Output<string>;
+    /**
+     * Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+     */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -115,6 +118,9 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      */
     public readonly priority!: pulumi.Output<number>;
+    /**
+     * Calculation of the complexity of a single firewall policy rule.
+     */
     public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
     /**
      * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -215,6 +221,9 @@ export interface FirewallPolicyRuleState {
      * The firewall policy of the resource.
      */
     firewallPolicy?: pulumi.Input<string>;
+    /**
+     * Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+     */
     kind?: pulumi.Input<string>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -224,6 +233,9 @@ export interface FirewallPolicyRuleState {
      * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      */
     priority?: pulumi.Input<number>;
+    /**
+     * Calculation of the complexity of a single firewall policy rule.
+     */
     ruleTupleCount?: pulumi.Input<number>;
     /**
      * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.

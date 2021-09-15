@@ -23,10 +23,6 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
  * ```
- *
- * ```sh
- *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/{{priority}}
- * ```
  */
 export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     /**

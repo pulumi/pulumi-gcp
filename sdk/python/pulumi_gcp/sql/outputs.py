@@ -1430,18 +1430,6 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
                  ssl_cipher: str,
                  username: str,
                  verify_server_certificate: bool):
-        """
-        :param str ca_certificate: PEM representation of the trusted CA's x509 certificate.
-        :param str client_certificate: PEM representation of the replica's x509 certificate.
-        :param str client_key: PEM representation of the replica's private key.
-        :param int connect_retry_interval: The number of seconds between connect retries.
-        :param str dump_file_path: Path to a SQL file in GCS from which replica instances are created.
-        :param bool failover_target: Specifies if the replica is the failover target.
-        :param int master_heartbeat_period: Time in ms between replication heartbeats.
-        :param str password: Password for the replication connection.
-        :param str username: Username for replication connection.
-        :param bool verify_server_certificate: True if the master's common name value is checked during the SSL handshake.
-        """
         pulumi.set(__self__, "ca_certificate", ca_certificate)
         pulumi.set(__self__, "client_certificate", client_certificate)
         pulumi.set(__self__, "client_key", client_key)
@@ -1457,65 +1445,41 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
     @property
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> str:
-        """
-        PEM representation of the trusted CA's x509 certificate.
-        """
         return pulumi.get(self, "ca_certificate")
 
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> str:
-        """
-        PEM representation of the replica's x509 certificate.
-        """
         return pulumi.get(self, "client_certificate")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> str:
-        """
-        PEM representation of the replica's private key.
-        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="connectRetryInterval")
     def connect_retry_interval(self) -> int:
-        """
-        The number of seconds between connect retries.
-        """
         return pulumi.get(self, "connect_retry_interval")
 
     @property
     @pulumi.getter(name="dumpFilePath")
     def dump_file_path(self) -> str:
-        """
-        Path to a SQL file in GCS from which replica instances are created.
-        """
         return pulumi.get(self, "dump_file_path")
 
     @property
     @pulumi.getter(name="failoverTarget")
     def failover_target(self) -> bool:
-        """
-        Specifies if the replica is the failover target.
-        """
         return pulumi.get(self, "failover_target")
 
     @property
     @pulumi.getter(name="masterHeartbeatPeriod")
     def master_heartbeat_period(self) -> int:
-        """
-        Time in ms between replication heartbeats.
-        """
         return pulumi.get(self, "master_heartbeat_period")
 
     @property
     @pulumi.getter
     def password(self) -> str:
-        """
-        Password for the replication connection.
-        """
         return pulumi.get(self, "password")
 
     @property
@@ -1526,17 +1490,11 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        Username for replication connection.
-        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="verifyServerCertificate")
     def verify_server_certificate(self) -> bool:
-        """
-        True if the master's common name value is checked during the SSL handshake.
-        """
         return pulumi.get(self, "verify_server_certificate")
 
 
@@ -1580,10 +1538,6 @@ class GetDatabaseInstanceServerCaCertResult(dict):
                  create_time: str,
                  expiration_time: str,
                  sha1_fingerprint: str):
-        """
-        :param str expiration_time: The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-               formatted date time string indicating when this whitelist expires.
-        """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "common_name", common_name)
         pulumi.set(__self__, "create_time", create_time)
@@ -1608,10 +1562,6 @@ class GetDatabaseInstanceServerCaCertResult(dict):
     @property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> str:
-        """
-        The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-        formatted date time string indicating when this whitelist expires.
-        """
         return pulumi.get(self, "expiration_time")
 
     @property
@@ -1643,28 +1593,6 @@ class GetDatabaseInstanceSettingResult(dict):
                  tier: str,
                  user_labels: Mapping[str, str],
                  version: int):
-        """
-        :param str activation_policy: This specifies when the instance should be
-               active. Can be either `ALWAYS` or `NEVER`.
-        :param Sequence[str] authorized_gae_applications: (Deprecated) This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-               for information on how to upgrade to Second Generation instances.
-               A list of Google App Engine (GAE) project names that are allowed to access this instance.
-        :param str availability_type: The availability type of the Cloud SQL
-               instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
-        :param str collation: The name of server instance collation.
-        :param bool crash_safe_replication: (Deprecated) This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        :param bool disk_autoresize: Configuration to increase storage size automatically.
-        :param int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased.
-        :param int disk_size: The size of data disk, in GB.
-        :param str disk_type: The type of data disk.
-        :param str pricing_plan: Pricing plan for this instance.
-        :param str replication_type: This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        :param str tier: The machine type to use.
-        :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
-        """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         pulumi.set(__self__, "availability_type", availability_type)
@@ -1689,30 +1617,16 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> str:
-        """
-        This specifies when the instance should be
-        active. Can be either `ALWAYS` or `NEVER`.
-        """
         return pulumi.get(self, "activation_policy")
 
     @property
     @pulumi.getter(name="authorizedGaeApplications")
     def authorized_gae_applications(self) -> Sequence[str]:
-        """
-        (Deprecated) This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for information on how to upgrade to Second Generation instances.
-        A list of Google App Engine (GAE) project names that are allowed to access this instance.
-        """
         return pulumi.get(self, "authorized_gae_applications")
 
     @property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> str:
-        """
-        The availability type of the Cloud SQL
-        instance, high availability (`REGIONAL`) or single zone (`ZONAL`).
-        """
         return pulumi.get(self, "availability_type")
 
     @property
@@ -1723,18 +1637,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter
     def collation(self) -> str:
-        """
-        The name of server instance collation.
-        """
         return pulumi.get(self, "collation")
 
     @property
     @pulumi.getter(name="crashSafeReplication")
     def crash_safe_replication(self) -> bool:
-        """
-        (Deprecated) This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        """
         return pulumi.get(self, "crash_safe_replication")
 
     @property
@@ -1745,33 +1652,21 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> bool:
-        """
-        Configuration to increase storage size automatically.
-        """
         return pulumi.get(self, "disk_autoresize")
 
     @property
     @pulumi.getter(name="diskAutoresizeLimit")
     def disk_autoresize_limit(self) -> int:
-        """
-        The maximum size, in GB, to which storage capacity can be automatically increased.
-        """
         return pulumi.get(self, "disk_autoresize_limit")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
-        """
-        The size of data disk, in GB.
-        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
-        """
-        The type of data disk.
-        """
         return pulumi.get(self, "disk_type")
 
     @property
@@ -1797,34 +1692,21 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> str:
-        """
-        Pricing plan for this instance.
-        """
         return pulumi.get(self, "pricing_plan")
 
     @property
     @pulumi.getter(name="replicationType")
     def replication_type(self) -> str:
-        """
-        This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        """
         return pulumi.get(self, "replication_type")
 
     @property
     @pulumi.getter
     def tier(self) -> str:
-        """
-        The machine type to use.
-        """
         return pulumi.get(self, "tier")
 
     @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Mapping[str, str]:
-        """
-        A set of key/value user label pairs to assign to the instance.
-        """
         return pulumi.get(self, "user_labels")
 
     @property
@@ -1843,11 +1725,6 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
                  point_in_time_recovery_enabled: bool,
                  start_time: str,
                  transaction_log_retention_days: int):
-        """
-        :param bool binary_log_enabled: True if binary logging is enabled.
-        :param bool enabled: True if backup configuration is enabled.
-        :param str start_time: `HH:MM` format time indicating when backup configuration starts.
-        """
         pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         pulumi.set(__self__, "enabled", enabled)
@@ -1864,17 +1741,11 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     @property
     @pulumi.getter(name="binaryLogEnabled")
     def binary_log_enabled(self) -> bool:
-        """
-        True if binary logging is enabled.
-        """
         return pulumi.get(self, "binary_log_enabled")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        True if backup configuration is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -1890,9 +1761,6 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
-        """
-        `HH:MM` format time indicating when backup configuration starts.
-        """
         return pulumi.get(self, "start_time")
 
     @property
@@ -1927,7 +1795,6 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
                  value: str):
         """
         :param str name: The name of the instance.
-        :param str value: A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -1943,9 +1810,6 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1956,12 +1820,6 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
                  query_string_length: int,
                  record_application_tags: bool,
                  record_client_address: bool):
-        """
-        :param bool query_insights_enabled: True if Query Insights feature is enabled.
-        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
-        :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
-        :param bool record_client_address: True if Query Insights will record client address when enabled.
-        """
         pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         pulumi.set(__self__, "query_string_length", query_string_length)
         pulumi.set(__self__, "record_application_tags", record_application_tags)
@@ -1970,33 +1828,21 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     @property
     @pulumi.getter(name="queryInsightsEnabled")
     def query_insights_enabled(self) -> bool:
-        """
-        True if Query Insights feature is enabled.
-        """
         return pulumi.get(self, "query_insights_enabled")
 
     @property
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> int:
-        """
-        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
-        """
         return pulumi.get(self, "query_string_length")
 
     @property
     @pulumi.getter(name="recordApplicationTags")
     def record_application_tags(self) -> bool:
-        """
-        True if Query Insights will record application tags from query when enabled.
-        """
         return pulumi.get(self, "record_application_tags")
 
     @property
     @pulumi.getter(name="recordClientAddress")
     def record_client_address(self) -> bool:
-        """
-        True if Query Insights will record client address when enabled.
-        """
         return pulumi.get(self, "record_client_address")
 
 
@@ -2007,11 +1853,6 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
                  ipv4_enabled: bool,
                  private_network: str,
                  require_ssl: bool):
-        """
-        :param bool ipv4_enabled: Whether this Cloud SQL instance should be assigned a public IPV4 address.
-        :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP.
-        :param bool require_ssl: True if mysqld default to `REQUIRE X509` for users connecting over IP.
-        """
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
@@ -2025,25 +1866,16 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @property
     @pulumi.getter(name="ipv4Enabled")
     def ipv4_enabled(self) -> bool:
-        """
-        Whether this Cloud SQL instance should be assigned a public IPV4 address.
-        """
         return pulumi.get(self, "ipv4_enabled")
 
     @property
     @pulumi.getter(name="privateNetwork")
     def private_network(self) -> str:
-        """
-        The VPC network from which the Cloud SQL instance is accessible for private IP.
-        """
         return pulumi.get(self, "private_network")
 
     @property
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> bool:
-        """
-        True if mysqld default to `REQUIRE X509` for users connecting over IP.
-        """
         return pulumi.get(self, "require_ssl")
 
 
@@ -2054,10 +1886,7 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
                  name: str,
                  value: str):
         """
-        :param str expiration_time: The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-               formatted date time string indicating when this whitelist expires.
         :param str name: The name of the instance.
-        :param str value: A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
         """
         pulumi.set(__self__, "expiration_time", expiration_time)
         pulumi.set(__self__, "name", name)
@@ -2066,10 +1895,6 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
     @property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> str:
-        """
-        The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-        formatted date time string indicating when this whitelist expires.
-        """
         return pulumi.get(self, "expiration_time")
 
     @property
@@ -2083,9 +1908,6 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
-        """
         return pulumi.get(self, "value")
 
 
@@ -2094,27 +1916,17 @@ class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
     def __init__(__self__, *,
                  follow_gae_application: str,
                  zone: str):
-        """
-        :param str follow_gae_application: A GAE application whose zone to remain in.
-        :param str zone: The preferred compute engine.
-        """
         pulumi.set(__self__, "follow_gae_application", follow_gae_application)
         pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="followGaeApplication")
     def follow_gae_application(self) -> str:
-        """
-        A GAE application whose zone to remain in.
-        """
         return pulumi.get(self, "follow_gae_application")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
-        """
-        The preferred compute engine.
-        """
         return pulumi.get(self, "zone")
 
 
@@ -2124,11 +1936,6 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
                  day: int,
                  hour: int,
                  update_track: str):
-        """
-        :param int day: Day of week (`1-7`), starting on Monday.
-        :param int hour: Hour of day (`0-23`), ignored if `day` not set.
-        :param str update_track: Receive updates earlier (`canary`) or later (`stable`).
-        """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "hour", hour)
         pulumi.set(__self__, "update_track", update_track)
@@ -2136,25 +1943,16 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     @property
     @pulumi.getter
     def day(self) -> int:
-        """
-        Day of week (`1-7`), starting on Monday.
-        """
         return pulumi.get(self, "day")
 
     @property
     @pulumi.getter
     def hour(self) -> int:
-        """
-        Hour of day (`0-23`), ignored if `day` not set.
-        """
         return pulumi.get(self, "hour")
 
     @property
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
-        """
-        Receive updates earlier (`canary`) or later (`stable`).
-        """
         return pulumi.get(self, "update_track")
 
 

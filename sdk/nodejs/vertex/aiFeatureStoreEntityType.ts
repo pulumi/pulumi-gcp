@@ -13,10 +13,6 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
  * ```
- *
- * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/{{name}}
- * ```
  */
 export class AiFeatureStoreEntityType extends pulumi.CustomResource {
     /**

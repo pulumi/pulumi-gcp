@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Logging.Inputs
         /// Must be greater than 0.
         /// </summary>
         [Input("width")]
-        public Input<int>? Width { get; set; }
+        public Input<double>? Width { get; set; }
 
         public MetricBucketOptionsLinearBucketsArgs()
         {

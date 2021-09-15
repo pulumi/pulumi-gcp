@@ -357,6 +357,7 @@ func (o InstanceFileSharesNfsExportOptionArrayOutput) Index(i pulumi.IntInput) I
 }
 
 type InstanceNetwork struct {
+	ConnectMode *string `pulumi:"connectMode"`
 	// -
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses []string `pulumi:"ipAddresses"`
@@ -384,6 +385,7 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
+	ConnectMode pulumi.StringPtrInput `pulumi:"connectMode"`
 	// -
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
@@ -448,6 +450,10 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutput() InstanceNetworkOutput {
 
 func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Context) InstanceNetworkOutput {
 	return o
+}
+
+func (o InstanceNetworkOutput) ConnectMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
 
 // -

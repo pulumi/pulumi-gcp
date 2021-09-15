@@ -107,6 +107,7 @@ import (
 type WorkflowTemplate struct {
 	pulumi.CustomResourceState
 
+	// Output only. The time template was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
 	DagTimeout pulumi.StringPtrOutput `pulumi:"dagTimeout"`
@@ -123,7 +124,8 @@ type WorkflowTemplate struct {
 	// Required. WorkflowTemplate scheduling information.
 	Placement WorkflowTemplatePlacementOutput `pulumi:"placement"`
 	// The project for the resource
-	Project    pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
 	Version pulumi.IntOutput `pulumi:"version"`
@@ -167,6 +169,7 @@ func GetWorkflowTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkflowTemplate resources.
 type workflowTemplateState struct {
+	// Output only. The time template was created.
 	CreateTime *string `pulumi:"createTime"`
 	// (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`
@@ -183,13 +186,15 @@ type workflowTemplateState struct {
 	// Required. WorkflowTemplate scheduling information.
 	Placement *WorkflowTemplatePlacement `pulumi:"placement"`
 	// The project for the resource
-	Project    *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Output only. The time template was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
 	Version *int `pulumi:"version"`
 }
 
 type WorkflowTemplateState struct {
+	// Output only. The time template was created.
 	CreateTime pulumi.StringPtrInput
 	// (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
 	DagTimeout pulumi.StringPtrInput
@@ -206,7 +211,8 @@ type WorkflowTemplateState struct {
 	// Required. WorkflowTemplate scheduling information.
 	Placement WorkflowTemplatePlacementPtrInput
 	// The project for the resource
-	Project    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
 	Version pulumi.IntPtrInput

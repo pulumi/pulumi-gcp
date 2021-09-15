@@ -98,7 +98,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Controls for advanced machine-related behavior features.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
      */
     public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceAdvancedMachineFeatures | undefined>;
     /**
@@ -389,7 +389,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Controls for advanced machine-related behavior features.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**
@@ -577,7 +577,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Controls for advanced machine-related behavior features.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**

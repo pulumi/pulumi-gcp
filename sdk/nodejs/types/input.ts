@@ -20364,6 +20364,7 @@ export namespace filestore {
     }
 
     export interface InstanceNetwork {
+        connectMode?: pulumi.Input<string>;
         /**
          * -
          * A list of IPv4 or IPv6 addresses.
@@ -25380,6 +25381,7 @@ export namespace secretmanager {
          */
         name: pulumi.Input<string>;
     }
+
 }
 
 export namespace securitycenter {

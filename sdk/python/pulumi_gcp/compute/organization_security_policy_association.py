@@ -164,10 +164,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
          $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
         ```
 
-        ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_id: The resource that the security policy is attached to.
@@ -197,10 +193,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         ```sh
          $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

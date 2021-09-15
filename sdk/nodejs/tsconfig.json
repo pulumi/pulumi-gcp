@@ -592,6 +592,7 @@
         "runtimeconfig/getVariable.ts",
         "runtimeconfig/index.ts",
         "runtimeconfig/variable.ts",
+        "secretmanager/getSecret.ts",
         "secretmanager/getSecretVersion.ts",
         "secretmanager/index.ts",
         "secretmanager/secret.ts",

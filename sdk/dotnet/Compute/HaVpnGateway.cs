@@ -171,14 +171,14 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Router = router1.Name,
     ///             Region = "us-central1",
-    ///             IpRange = "169.254.1.1/30",
+    ///             IpRange = "169.254.1.2/30",
     ///             VpnTunnel = tunnel2.Name,
     ///         });
     ///         var router1Peer2 = new Gcp.Compute.RouterPeer("router1Peer2", new Gcp.Compute.RouterPeerArgs
     ///         {
     ///             Router = router1.Name,
     ///             Region = "us-central1",
-    ///             PeerIpAddress = "169.254.1.2",
+    ///             PeerIpAddress = "169.254.1.1",
     ///             PeerAsn = 64515,
     ///             AdvertisedRoutePriority = 100,
     ///             Interface = router1Interface2.Name,
@@ -187,14 +187,14 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Router = router2.Name,
     ///             Region = "us-central1",
-    ///             IpRange = "169.254.0.1/30",
+    ///             IpRange = "169.254.0.2/30",
     ///             VpnTunnel = tunnel3.Name,
     ///         });
     ///         var router2Peer1 = new Gcp.Compute.RouterPeer("router2Peer1", new Gcp.Compute.RouterPeerArgs
     ///         {
     ///             Router = router2.Name,
     ///             Region = "us-central1",
-    ///             PeerIpAddress = "169.254.0.2",
+    ///             PeerIpAddress = "169.254.0.1",
     ///             PeerAsn = 64514,
     ///             AdvertisedRoutePriority = 100,
     ///             Interface = router2Interface1.Name,

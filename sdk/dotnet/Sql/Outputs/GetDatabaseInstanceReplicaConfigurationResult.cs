@@ -13,46 +13,16 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceReplicaConfigurationResult
     {
-        /// <summary>
-        /// PEM representation of the trusted CA's x509 certificate.
-        /// </summary>
         public readonly string CaCertificate;
-        /// <summary>
-        /// PEM representation of the replica's x509 certificate.
-        /// </summary>
         public readonly string ClientCertificate;
-        /// <summary>
-        /// PEM representation of the replica's private key.
-        /// </summary>
         public readonly string ClientKey;
-        /// <summary>
-        /// The number of seconds between connect retries.
-        /// </summary>
         public readonly int ConnectRetryInterval;
-        /// <summary>
-        /// Path to a SQL file in GCS from which replica instances are created.
-        /// </summary>
         public readonly string DumpFilePath;
-        /// <summary>
-        /// Specifies if the replica is the failover target.
-        /// </summary>
         public readonly bool FailoverTarget;
-        /// <summary>
-        /// Time in ms between replication heartbeats.
-        /// </summary>
         public readonly int MasterHeartbeatPeriod;
-        /// <summary>
-        /// Password for the replication connection.
-        /// </summary>
         public readonly string Password;
         public readonly string SslCipher;
-        /// <summary>
-        /// Username for replication connection.
-        /// </summary>
         public readonly string Username;
-        /// <summary>
-        /// True if the master's common name value is checked during the SSL handshake.
-        /// </summary>
         public readonly bool VerifyServerCertificate;
 
         [OutputConstructor]

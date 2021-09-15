@@ -133,8 +133,8 @@ export class Disk extends pulumi.CustomResource {
     public readonly image!: pulumi.Output<string | undefined>;
     /**
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-     * Default value is `SCSI`.
-     * Possible values are `SCSI` and `NVME`.
+     *
+     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
      */
     public readonly interface!: pulumi.Output<string | undefined>;
     /**
@@ -374,8 +374,8 @@ export interface DiskState {
     image?: pulumi.Input<string>;
     /**
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-     * Default value is `SCSI`.
-     * Possible values are `SCSI` and `NVME`.
+     *
+     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
      */
     interface?: pulumi.Input<string>;
     /**
@@ -539,8 +539,8 @@ export interface DiskArgs {
     image?: pulumi.Input<string>;
     /**
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-     * Default value is `SCSI`.
-     * Possible values are `SCSI` and `NVME`.
+     *
+     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
      */
     interface?: pulumi.Input<string>;
     /**

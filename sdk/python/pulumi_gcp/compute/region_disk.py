@@ -43,8 +43,7 @@ class RegionDiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-               value: "SCSI" Possible values: ["SCSI", "NVME"]
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -87,6 +86,9 @@ class RegionDiskArgs:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if interface is not None:
+            warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if labels is not None:
@@ -158,8 +160,7 @@ class RegionDiskArgs:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
         return pulumi.get(self, "interface")
 
@@ -341,8 +342,7 @@ class _RegionDiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-               value: "SCSI" Possible values: ["SCSI", "NVME"]
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -395,6 +395,9 @@ class _RegionDiskState:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if interface is not None:
+            warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if label_fingerprint is not None:
@@ -480,8 +483,7 @@ class _RegionDiskState:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
         return pulumi.get(self, "interface")
 
@@ -816,8 +818,7 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-               value: "SCSI" Possible values: ["SCSI", "NVME"]
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -976,6 +977,9 @@ class RegionDisk(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            if interface is not None and not opts.urn:
+                warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+                pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -1046,8 +1050,7 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-               value: "SCSI" Possible values: ["SCSI", "NVME"]
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -1158,8 +1161,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def interface(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
         return pulumi.get(self, "interface")
 

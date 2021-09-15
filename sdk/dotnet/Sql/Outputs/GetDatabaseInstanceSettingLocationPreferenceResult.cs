@@ -13,13 +13,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingLocationPreferenceResult
     {
-        /// <summary>
-        /// A GAE application whose zone to remain in.
-        /// </summary>
         public readonly string FollowGaeApplication;
-        /// <summary>
-        /// The preferred compute engine.
-        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

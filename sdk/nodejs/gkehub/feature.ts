@@ -50,7 +50,13 @@ export class Feature extends pulumi.CustomResource {
         return obj['__pulumiType'] === Feature.__pulumiType;
     }
 
+    /**
+     * Output only. When the Feature resource was created.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Output only. When the Feature resource was deleted.
+     */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
      * GCP labels for this Feature.
@@ -72,6 +78,9 @@ export class Feature extends pulumi.CustomResource {
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
     public readonly spec!: pulumi.Output<outputs.gkehub.FeatureSpec | undefined>;
+    /**
+     * Output only. When the Feature resource was last updated.
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
@@ -120,7 +129,13 @@ export class Feature extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Feature resources.
  */
 export interface FeatureState {
+    /**
+     * Output only. When the Feature resource was created.
+     */
     createTime?: pulumi.Input<string>;
+    /**
+     * Output only. When the Feature resource was deleted.
+     */
     deleteTime?: pulumi.Input<string>;
     /**
      * GCP labels for this Feature.
@@ -142,6 +157,9 @@ export interface FeatureState {
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
     spec?: pulumi.Input<inputs.gkehub.FeatureSpec>;
+    /**
+     * Output only. When the Feature resource was last updated.
+     */
     updateTime?: pulumi.Input<string>;
 }
 

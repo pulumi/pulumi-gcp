@@ -198,8 +198,10 @@ class _FirewallPolicyRuleState:
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
+        :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
         :param pulumi.Input['FirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
@@ -303,6 +305,9 @@ class _FirewallPolicyRuleState:
     @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+        """
         return pulumi.get(self, "kind")
 
     @kind.setter
@@ -336,6 +341,9 @@ class _FirewallPolicyRuleState:
     @property
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Calculation of the complexity of a single firewall policy rule.
+        """
         return pulumi.get(self, "rule_tuple_count")
 
     @rule_tuple_count.setter
@@ -590,8 +598,10 @@ class FirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
+        :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
         :param pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
@@ -664,6 +674,9 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
+        """
+        Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
+        """
         return pulumi.get(self, "kind")
 
     @property
@@ -685,6 +698,9 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> pulumi.Output[int]:
+        """
+        Calculation of the complexity of a single firewall policy rule.
+        """
         return pulumi.get(self, "rule_tuple_count")
 
     @property

@@ -114,8 +114,8 @@ type Disk struct {
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-	// Default value is `SCSI`.
-	// Possible values are `SCSI` and `NVME`.
+	//
+	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface pulumi.StringPtrOutput `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -258,8 +258,8 @@ type diskState struct {
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-	// Default value is `SCSI`.
-	// Possible values are `SCSI` and `NVME`.
+	//
+	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface *string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -374,8 +374,8 @@ type DiskState struct {
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-	// Default value is `SCSI`.
-	// Possible values are `SCSI` and `NVME`.
+	//
+	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -492,8 +492,8 @@ type diskArgs struct {
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-	// Default value is `SCSI`.
-	// Possible values are `SCSI` and `NVME`.
+	//
+	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -589,8 +589,8 @@ type DiskArgs struct {
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-	// Default value is `SCSI`.
-	// Possible values are `SCSI` and `NVME`.
+	//
+	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput

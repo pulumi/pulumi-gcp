@@ -29,9 +29,15 @@ namespace Pulumi.Gcp.GkeHub
     [GcpResourceType("gcp:gkehub/feature:Feature")]
     public partial class Feature : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Output only. When the Feature resource was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. When the Feature resource was deleted.
+        /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
@@ -65,6 +71,9 @@ namespace Pulumi.Gcp.GkeHub
         [Output("spec")]
         public Output<Outputs.FeatureSpec?> Spec { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. When the Feature resource was last updated.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -157,9 +166,15 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class FeatureState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. When the Feature resource was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Output only. When the Feature resource was deleted.
+        /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
@@ -199,6 +214,9 @@ namespace Pulumi.Gcp.GkeHub
         [Input("spec")]
         public Input<Inputs.FeatureSpecGetArgs>? Spec { get; set; }
 
+        /// <summary>
+        /// Output only. When the Feature resource was last updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

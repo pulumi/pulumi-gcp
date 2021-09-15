@@ -76,6 +76,7 @@ class _FirewallPolicyAssociationState:
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
+        :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
         if attachment_target is not None:
             pulumi.set(__self__, "attachment_target", attachment_target)
@@ -125,6 +126,9 @@ class _FirewallPolicyAssociationState:
     @property
     @pulumi.getter(name="shortName")
     def short_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The short name of the firewall policy of the association.
+        """
         return pulumi.get(self, "short_name")
 
     @short_name.setter
@@ -279,6 +283,7 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
+        :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -317,5 +322,8 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="shortName")
     def short_name(self) -> pulumi.Output[str]:
+        """
+        The short name of the firewall policy of the association.
+        """
         return pulumi.get(self, "short_name")
 

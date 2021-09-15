@@ -13,21 +13,9 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingInsightsConfigResult
     {
-        /// <summary>
-        /// True if Query Insights feature is enabled.
-        /// </summary>
         public readonly bool QueryInsightsEnabled;
-        /// <summary>
-        /// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
-        /// </summary>
         public readonly int QueryStringLength;
-        /// <summary>
-        /// True if Query Insights will record application tags from query when enabled.
-        /// </summary>
         public readonly bool RecordApplicationTags;
-        /// <summary>
-        /// True if Query Insights will record client address when enabled.
-        /// </summary>
         public readonly bool RecordClientAddress;
 
         [OutputConstructor]

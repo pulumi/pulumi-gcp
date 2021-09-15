@@ -50,7 +50,13 @@ export class WorkerPool extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkerPool.__pulumiType;
     }
 
+    /**
+     * Output only. Time at which the request to create the `WorkerPool` was received.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Output only. Time at which the request to delete the `WorkerPool` was received.
+     */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
      * The location for the resource
@@ -68,7 +74,13 @@ export class WorkerPool extends pulumi.CustomResource {
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Output only. Time at which the request to update the `WorkerPool` was received.
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`.
@@ -123,7 +135,13 @@ export class WorkerPool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkerPool resources.
  */
 export interface WorkerPoolState {
+    /**
+     * Output only. Time at which the request to create the `WorkerPool` was received.
+     */
     createTime?: pulumi.Input<string>;
+    /**
+     * Output only. Time at which the request to delete the `WorkerPool` was received.
+     */
     deleteTime?: pulumi.Input<string>;
     /**
      * The location for the resource
@@ -141,7 +159,13 @@ export interface WorkerPoolState {
      * The project for the resource
      */
     project?: pulumi.Input<string>;
+    /**
+     * Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Output only. Time at which the request to update the `WorkerPool` was received.
+     */
     updateTime?: pulumi.Input<string>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`.

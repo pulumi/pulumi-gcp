@@ -101,10 +101,13 @@ import (
 type Trigger struct {
 	pulumi.CustomResourceState
 
+	// Output only. The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationOutput `pulumi:"destination"`
-	Etag        pulumi.StringOutput      `pulumi:"etag"`
+	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+	// requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
@@ -119,7 +122,8 @@ type Trigger struct {
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayOutput `pulumi:"transports"`
-	UpdateTime pulumi.StringOutput         `pulumi:"updateTime"`
+	// Output only. The last-modified time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewTrigger registers a new resource with the given unique name, arguments, and options.
@@ -160,10 +164,13 @@ func GetTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Trigger resources.
 type triggerState struct {
+	// Output only. The creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination *TriggerDestination `pulumi:"destination"`
-	Etag        *string             `pulumi:"etag"`
+	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+	// requests to ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
@@ -178,14 +185,18 @@ type triggerState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports []TriggerTransport `pulumi:"transports"`
-	UpdateTime *string            `pulumi:"updateTime"`
+	// Output only. The last-modified time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type TriggerState struct {
+	// Output only. The creation time.
 	CreateTime pulumi.StringPtrInput
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationPtrInput
-	Etag        pulumi.StringPtrInput
+	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+	// requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
 	// The location for the resource
@@ -200,6 +211,7 @@ type TriggerState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayInput
+	// Output only. The last-modified time.
 	UpdateTime pulumi.StringPtrInput
 }
 

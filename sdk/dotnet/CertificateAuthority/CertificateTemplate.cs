@@ -155,6 +155,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     [GcpResourceType("gcp:certificateauthority/certificateTemplate:CertificateTemplate")]
     public partial class CertificateTemplate : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Output only. The time at which this CertificateTemplate was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
@@ -206,6 +209,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. The time at which this CertificateTemplate was updated.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -316,6 +322,9 @@ namespace Pulumi.Gcp.CertificateAuthority
 
     public sealed class CertificateTemplateState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. The time at which this CertificateTemplate was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
@@ -373,6 +382,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Output only. The time at which this CertificateTemplate was updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

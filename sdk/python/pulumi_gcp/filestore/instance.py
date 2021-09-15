@@ -410,6 +410,7 @@ class Instance(pulumi.CustomResource):
             networks=[gcp.filestore.InstanceNetworkArgs(
                 network="default",
                 modes=["MODE_IPV4"],
+                connect_mode="DIRECT_PEERING",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
@@ -517,6 +518,7 @@ class Instance(pulumi.CustomResource):
             networks=[gcp.filestore.InstanceNetworkArgs(
                 network="default",
                 modes=["MODE_IPV4"],
+                connect_mode="DIRECT_PEERING",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```

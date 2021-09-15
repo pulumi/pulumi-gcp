@@ -93,17 +93,11 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="connectionName")
     def connection_name(self) -> str:
-        """
-        The connection name of the instance to be used in connection strings.
-        """
         return pulumi.get(self, "connection_name")
 
     @property
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> str:
-        """
-        The MySQL, PostgreSQL or SQL Server (beta) version to use.
-        """
         return pulumi.get(self, "database_version")
 
     @property
@@ -114,17 +108,11 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> str:
-        """
-        The full path to the encryption key used for the CMEK disk encryption.
-        """
         return pulumi.get(self, "encryption_key_name")
 
     @property
     @pulumi.getter(name="firstIpAddress")
     def first_ip_address(self) -> str:
-        """
-        The first IPv4 address of any type assigned.
-        """
         return pulumi.get(self, "first_ip_address")
 
     @property
@@ -143,26 +131,16 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="masterInstanceName")
     def master_instance_name(self) -> str:
-        """
-        The name of the existing instance that will act as
-        the master in the replication setup.
-        """
         return pulumi.get(self, "master_instance_name")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        A name for this whitelist entry.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> str:
-        """
-        The first private (`PRIVATE`) IPv4 address assigned.
-        """
         return pulumi.get(self, "private_ip_address")
 
     @property
@@ -173,9 +151,6 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> str:
-        """
-        The first public (`PRIMARY`) IPv4 address assigned.
-        """
         return pulumi.get(self, "public_ip_address")
 
     @property
@@ -186,10 +161,6 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="replicaConfigurations")
     def replica_configurations(self) -> Sequence['outputs.GetDatabaseInstanceReplicaConfigurationResult']:
-        """
-        The configuration for replication. The
-        configuration is detailed below.
-        """
         return pulumi.get(self, "replica_configurations")
 
     @property
@@ -200,17 +171,11 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
-        """
-        Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
-        """
         return pulumi.get(self, "root_password")
 
     @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
-        """
-        The URI of the created resource.
-        """
         return pulumi.get(self, "self_link")
 
     @property
@@ -221,18 +186,11 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="serviceAccountEmailAddress")
     def service_account_email_address(self) -> str:
-        """
-        The service account email address assigned to the instance.
-        """
         return pulumi.get(self, "service_account_email_address")
 
     @property
     @pulumi.getter
     def settings(self) -> Sequence['outputs.GetDatabaseInstanceSettingResult']:
-        """
-        The settings to use for the database. The
-        configuration is detailed below.
-        """
         return pulumi.get(self, "settings")
 
 
@@ -269,7 +227,7 @@ def get_database_instance(name: Optional[str] = None,
                           project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstanceResult:
     """
-    Use this data source to get information about a Cloud SQL instance
+    Use this data source to get information about a Cloud SQL instance.
 
     ## Example Usage
 

@@ -211,6 +211,7 @@ class _ServiceAttachmentState:
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -231,6 +232,7 @@ class _ServiceAttachmentState:
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -257,6 +259,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "description", description)
         if enable_proxy_protocol is not None:
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat_subnets is not None:
@@ -347,6 +351,18 @@ class _ServiceAttachmentState:
     @enable_proxy_protocol.setter
     def enable_proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of this resource. This field is used internally during updates of this resource.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter
@@ -814,6 +830,7 @@ class ServiceAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'target_service'")
             __props__.__dict__["target_service"] = target_service
             __props__.__dict__["connected_endpoints"] = None
+            __props__.__dict__["fingerprint"] = None
             __props__.__dict__["self_link"] = None
         super(ServiceAttachment, __self__).__init__(
             'gcp:compute/serviceAttachment:ServiceAttachment',
@@ -831,6 +848,7 @@ class ServiceAttachment(pulumi.CustomResource):
             consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+            fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -856,6 +874,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -880,6 +899,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["consumer_reject_lists"] = consumer_reject_lists
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
+        __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
         __props__.__dict__["nat_subnets"] = nat_subnets
         __props__.__dict__["project"] = project
@@ -941,6 +961,14 @@ class ServiceAttachment(pulumi.CustomResource):
         destination servers.
         """
         return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. This field is used internally during updates of this resource.
+        """
+        return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter

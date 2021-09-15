@@ -14,17 +14,8 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceSettingIpConfigurationResult
     {
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult> AuthorizedNetworks;
-        /// <summary>
-        /// Whether this Cloud SQL instance should be assigned a public IPV4 address.
-        /// </summary>
         public readonly bool Ipv4Enabled;
-        /// <summary>
-        /// The VPC network from which the Cloud SQL instance is accessible for private IP.
-        /// </summary>
         public readonly string PrivateNetwork;
-        /// <summary>
-        /// True if mysqld default to `REQUIRE X509` for users connecting over IP.
-        /// </summary>
         public readonly bool RequireSsl;
 
         [OutputConstructor]

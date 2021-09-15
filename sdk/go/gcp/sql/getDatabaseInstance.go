@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a Cloud SQL instance
+// Use this data source to get information about a Cloud SQL instance.
 //
 // ## Example Usage
 //
@@ -50,42 +50,26 @@ type LookupDatabaseInstanceArgs struct {
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
-	Clones []GetDatabaseInstanceClone `pulumi:"clones"`
-	// The connection name of the instance to be used in connection strings.
-	ConnectionName string `pulumi:"connectionName"`
-	// The MySQL, PostgreSQL or SQL Server (beta) version to use.
-	DatabaseVersion    string `pulumi:"databaseVersion"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
-	// The full path to the encryption key used for the CMEK disk encryption.
-	EncryptionKeyName string `pulumi:"encryptionKeyName"`
-	// The first IPv4 address of any type assigned.
-	FirstIpAddress string `pulumi:"firstIpAddress"`
+	Clones             []GetDatabaseInstanceClone `pulumi:"clones"`
+	ConnectionName     string                     `pulumi:"connectionName"`
+	DatabaseVersion    string                     `pulumi:"databaseVersion"`
+	DeletionProtection bool                       `pulumi:"deletionProtection"`
+	EncryptionKeyName  string                     `pulumi:"encryptionKeyName"`
+	FirstIpAddress     string                     `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                         `pulumi:"id"`
-	IpAddresses []GetDatabaseInstanceIpAddress `pulumi:"ipAddresses"`
-	// The name of the existing instance that will act as
-	// the master in the replication setup.
-	MasterInstanceName string `pulumi:"masterInstanceName"`
-	// A name for this whitelist entry.
-	Name string `pulumi:"name"`
-	// The first private (`PRIVATE`) IPv4 address assigned.
-	PrivateIpAddress string  `pulumi:"privateIpAddress"`
-	Project          *string `pulumi:"project"`
-	// The first public (`PRIMARY`) IPv4 address assigned.
-	PublicIpAddress string `pulumi:"publicIpAddress"`
-	Region          string `pulumi:"region"`
-	// The configuration for replication. The
-	// configuration is detailed below.
-	ReplicaConfigurations []GetDatabaseInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
-	RestoreBackupContexts []GetDatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
-	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
-	RootPassword string `pulumi:"rootPassword"`
-	// The URI of the created resource.
-	SelfLink      string                            `pulumi:"selfLink"`
-	ServerCaCerts []GetDatabaseInstanceServerCaCert `pulumi:"serverCaCerts"`
-	// The service account email address assigned to the instance.
-	ServiceAccountEmailAddress string `pulumi:"serviceAccountEmailAddress"`
-	// The settings to use for the database. The
-	// configuration is detailed below.
-	Settings []GetDatabaseInstanceSetting `pulumi:"settings"`
+	Id                         string                                    `pulumi:"id"`
+	IpAddresses                []GetDatabaseInstanceIpAddress            `pulumi:"ipAddresses"`
+	MasterInstanceName         string                                    `pulumi:"masterInstanceName"`
+	Name                       string                                    `pulumi:"name"`
+	PrivateIpAddress           string                                    `pulumi:"privateIpAddress"`
+	Project                    *string                                   `pulumi:"project"`
+	PublicIpAddress            string                                    `pulumi:"publicIpAddress"`
+	Region                     string                                    `pulumi:"region"`
+	ReplicaConfigurations      []GetDatabaseInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
+	RestoreBackupContexts      []GetDatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
+	RootPassword               string                                    `pulumi:"rootPassword"`
+	SelfLink                   string                                    `pulumi:"selfLink"`
+	ServerCaCerts              []GetDatabaseInstanceServerCaCert         `pulumi:"serverCaCerts"`
+	ServiceAccountEmailAddress string                                    `pulumi:"serviceAccountEmailAddress"`
+	Settings                   []GetDatabaseInstanceSetting              `pulumi:"settings"`
 }

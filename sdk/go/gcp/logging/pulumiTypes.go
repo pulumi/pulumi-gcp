@@ -1045,7 +1045,7 @@ type MetricBucketOptionsLinearBuckets struct {
 	// Lower bound of the first bucket.
 	Offset *float64 `pulumi:"offset"`
 	// Must be greater than 0.
-	Width *int `pulumi:"width"`
+	Width *float64 `pulumi:"width"`
 }
 
 // MetricBucketOptionsLinearBucketsInput is an input type that accepts MetricBucketOptionsLinearBucketsArgs and MetricBucketOptionsLinearBucketsOutput values.
@@ -1065,7 +1065,7 @@ type MetricBucketOptionsLinearBucketsArgs struct {
 	// Lower bound of the first bucket.
 	Offset pulumi.Float64PtrInput `pulumi:"offset"`
 	// Must be greater than 0.
-	Width pulumi.IntPtrInput `pulumi:"width"`
+	Width pulumi.Float64PtrInput `pulumi:"width"`
 }
 
 func (MetricBucketOptionsLinearBucketsArgs) ElementType() reflect.Type {
@@ -1156,8 +1156,8 @@ func (o MetricBucketOptionsLinearBucketsOutput) Offset() pulumi.Float64PtrOutput
 }
 
 // Must be greater than 0.
-func (o MetricBucketOptionsLinearBucketsOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.Width }).(pulumi.IntPtrOutput)
+func (o MetricBucketOptionsLinearBucketsOutput) Width() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *float64 { return v.Width }).(pulumi.Float64PtrOutput)
 }
 
 type MetricBucketOptionsLinearBucketsPtrOutput struct{ *pulumi.OutputState }
@@ -1199,13 +1199,13 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) Offset() pulumi.Float64PtrOut
 }
 
 // Must be greater than 0.
-func (o MetricBucketOptionsLinearBucketsPtrOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) *int {
+func (o MetricBucketOptionsLinearBucketsPtrOutput) Width() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Width
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type MetricMetricDescriptor struct {

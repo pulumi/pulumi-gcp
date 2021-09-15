@@ -133,13 +133,13 @@ import * as utilities from "../utilities";
  * const router1Interface2 = new gcp.compute.RouterInterface("router1Interface2", {
  *     router: router1.name,
  *     region: "us-central1",
- *     ipRange: "169.254.1.1/30",
+ *     ipRange: "169.254.1.2/30",
  *     vpnTunnel: tunnel2.name,
  * });
  * const router1Peer2 = new gcp.compute.RouterPeer("router1Peer2", {
  *     router: router1.name,
  *     region: "us-central1",
- *     peerIpAddress: "169.254.1.2",
+ *     peerIpAddress: "169.254.1.1",
  *     peerAsn: 64515,
  *     advertisedRoutePriority: 100,
  *     "interface": router1Interface2.name,
@@ -147,13 +147,13 @@ import * as utilities from "../utilities";
  * const router2Interface1 = new gcp.compute.RouterInterface("router2Interface1", {
  *     router: router2.name,
  *     region: "us-central1",
- *     ipRange: "169.254.0.1/30",
+ *     ipRange: "169.254.0.2/30",
  *     vpnTunnel: tunnel3.name,
  * });
  * const router2Peer1 = new gcp.compute.RouterPeer("router2Peer1", {
  *     router: router2.name,
  *     region: "us-central1",
- *     peerIpAddress: "169.254.0.2",
+ *     peerIpAddress: "169.254.0.1",
  *     peerAsn: 64514,
  *     advertisedRoutePriority: 100,
  *     "interface": router2Interface1.name,

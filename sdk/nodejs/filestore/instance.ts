@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     networks: [{
  *         network: "default",
  *         modes: ["MODE_IPV4"],
+ *         connectMode: "DIRECT_PEERING",
  *     }],
  * }, {
  *     provider: google_beta,

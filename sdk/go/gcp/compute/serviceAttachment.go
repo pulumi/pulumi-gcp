@@ -273,6 +273,8 @@ type ServiceAttachment struct {
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
 	EnableProxyProtocol pulumi.BoolOutput `pulumi:"enableProxyProtocol"`
+	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -353,6 +355,8 @@ type serviceAttachmentState struct {
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
+	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	Fingerprint *string `pulumi:"fingerprint"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -393,6 +397,8 @@ type ServiceAttachmentState struct {
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
 	EnableProxyProtocol pulumi.BoolPtrInput
+	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	Fingerprint pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`

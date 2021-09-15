@@ -94,11 +94,18 @@ export class Trigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === Trigger.__pulumiType;
     }
 
+    /**
+     * Output only. The creation time.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Required. Destination specifies where the events should be sent to.
      */
     public readonly destination!: pulumi.Output<outputs.eventarc.TriggerDestination>;
+    /**
+     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+     * requests to ensure the client has an up-to-date value before proceeding.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
@@ -128,6 +135,9 @@ export class Trigger extends pulumi.CustomResource {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     public readonly transports!: pulumi.Output<outputs.eventarc.TriggerTransport[]>;
+    /**
+     * Output only. The last-modified time.
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
@@ -188,11 +198,18 @@ export class Trigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Trigger resources.
  */
 export interface TriggerState {
+    /**
+     * Output only. The creation time.
+     */
     createTime?: pulumi.Input<string>;
     /**
      * Required. Destination specifies where the events should be sent to.
      */
     destination?: pulumi.Input<inputs.eventarc.TriggerDestination>;
+    /**
+     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
+     * requests to ensure the client has an up-to-date value before proceeding.
+     */
     etag?: pulumi.Input<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
@@ -222,6 +239,9 @@ export interface TriggerState {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     transports?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransport>[]>;
+    /**
+     * Output only. The last-modified time.
+     */
     updateTime?: pulumi.Input<string>;
 }
 
